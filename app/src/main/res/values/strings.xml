@@ -4,4 +4,7 @@
     <string name="title_map_and_route">Trasy / Mapy</string>
     <string name="title_favoutites">Ulubione</string>
     <string name="title_more">Więcej...</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
