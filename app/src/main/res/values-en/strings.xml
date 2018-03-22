@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Arboretum</string>
+    <string name="title_home">News</string>
+    <string name="title_map_and_route">Route / Map</string>
+    <string name="title_favoutites">Favourites</string>
+    <string name="title_more">More...</string>
+</resources>
