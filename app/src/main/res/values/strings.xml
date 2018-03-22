@@ -4,7 +4,14 @@
     <string name="title_map_and_route">Trasy / Mapy</string>
     <string name="title_favoutites">Ulubione</string>
     <string name="title_more">Więcej...</string>
+    <string name="title_map">Mapa</string>
+    <string name="title_route">Trasy</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="tab_map">Mapa</string>
+    <string name="tab_route">Trasy</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
 </resources>
