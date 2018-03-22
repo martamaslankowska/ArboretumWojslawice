@@ -1,11 +1,13 @@
 package arboretum.arboretumwojslawice.View;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,16 +19,14 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import arboretum.arboretumwojslawice.R;
 
 public class RouteMapFragment extends Fragment {
 
-    private ViewPager mViewPager;
-    private SectionsPageAdapter mSectionsPageAdapter;
-    private static final String TAG = "MainActivity";
-    FragmentManager fm ;
+    private FrameLayout mFrameLayout;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -39,20 +39,34 @@ public class RouteMapFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_route_map, container, false);
 
-        //mSectionsPageAdapter = new SectionsPageAdapter(fm);
-        mViewPager = (ViewPager) v.findViewById(R.id.container);
-        //setupViewPager(mViewPager);
         TabLayout tabLayout = (TabLayout) v.findViewById(R.id.tabs);
-        tabLayout.setupWithViewPager(mViewPager);
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
 
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
         return v;
     }
 
-    private void setupViewPager(ViewPager viewPager) {
-        SectionsPageAdapter adapter = new SectionsPageAdapter(fm);
-        adapter.addFragment(new MapFragment(), "MAP");
-        adapter.addFragment(new RouteFragment(), "ROUTE");
-        viewPager.setAdapter(adapter);
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        Fragment mapFragment = new MapFragment();
+        FragmentTransaction transaction = getChildFragmentManager()
+                .beginTransaction();
+        transaction.replace(R.id.fragment_container, mapFragment).commit();
     }
+
+
 
 }

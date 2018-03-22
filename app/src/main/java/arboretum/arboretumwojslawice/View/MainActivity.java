@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -15,8 +16,13 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
     private android.support.v7.widget.Toolbar mToolbar;
-    FragmentManager fm = getSupportFragmentManager();
-    Fragment fragment = fm.findFragmentById(R.id.fragment_container);
+    FragmentManager mFragmentManager = getSupportFragmentManager();
+    Fragment fragment = mFragmentManager.findFragmentById(R.id.fragment_container);
+    FragmentTransaction mFragmentTransaction = mFragmentManager.beginTransaction();
+    HomeFragment mHomeFragment = new HomeFragment();
+    RouteMapFragment mRouteMapFragment = new RouteMapFragment();
+    FavouritesFragment mFavouritesFragment = new FavouritesFragment();
+    MoreFragment mMoreFragment = new MoreFragment();
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -25,42 +31,57 @@ public class MainActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    if(fragment == null) {
-                        fragment = new HomeFragment();
-                        fm.beginTransaction()
-                                .add(R.id.fragment_container, fragment)
-                                .commit();
-                    }
+                    mHomeFragment = new HomeFragment();
+                    getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.fragment_container,mHomeFragment)
+                            .addToBackStack(null)
+                            .commit();
                     return true;
                 case R.id.navigation_map_and_route:
-                    if(fragment == null) {
-                        fragment = new RouteMapFragment();
-                        fm.beginTransaction()
-                                .add(R.id.fragment_container, fragment)
-                                .commit();
-                    }
+                    mRouteMapFragment = new RouteMapFragment();
+                    getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.fragment_container,mRouteMapFragment)
+                            .addToBackStack(null)
+                            .commit();
                     return true;
                 case R.id.navigation_favourites:
-                    if(fragment == null) {
-                        fragment = new FavouritesFragment();
-                        fm.beginTransaction()
-                                .add(R.id.fragment_container, fragment)
-                                .commit();
-                    }
+                    mFavouritesFragment = new FavouritesFragment();
+                    getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.fragment_container,mFavouritesFragment)
+                            .addToBackStack(null)
+                            .commit();
                     return true;
                 case R.id.navigation_more:
-                    if(fragment == null) {
-                        fragment = new MoreFragment();
-                        fm.beginTransaction()
-                                .add(R.id.fragment_container, fragment)
-                                .commit();
-                    }
+                    mMoreFragment = new MoreFragment();
+                    getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.fragment_container,mMoreFragment)
+                            .addToBackStack(null)
+                            .commit();
                     return true;
             }
             return false;
         }
     };
+    private BottomNavigationView.OnNavigationItemReselectedListener mOnNavigationItemReselectedListener
+            = new BottomNavigationView.OnNavigationItemReselectedListener() {
+        @Override
+        public void onNavigationItemReselected(@NonNull MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.navigation_home:
+                    mFragmentTransaction.detach(mHomeFragment).commit();
+                    break;
+                case R.id.navigation_map_and_route:
 
+                    break;
+                case R.id.navigation_favourites:
+
+                    break;
+                case R.id.navigation_more:
+
+                    break;
+            }
+        }
+    };
 
 
     @Override
@@ -74,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         BottomNavigationViewHelper.removeShiftMode(navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-
+        navigation.setOnNavigationItemReselectedListener(mOnNavigationItemReselectedListener);
 
 
     }
