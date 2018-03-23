@@ -2,6 +2,7 @@ package arboretum.arboretumwojslawice.Model.Entity;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.PrimaryKey;
 import io.reactivex.annotations.NonNull;
 
@@ -21,10 +22,12 @@ That's why it's good to use @Ignore on other constructors to tell Room not to bo
 - It is also possible to create nested objects (see more info: https://developer.android.com/training/data-storage/room/defining-data.html)
 */
 
-@Entity(tableName = "Plants")
+@Entity(tableName = "Plants", foreignKeys = {
+        @ForeignKey(entity = Kind.class, parentColumns = "IdKind", childColumns = "IdKind")})
 public class Plant {
 
     @PrimaryKey(autoGenerate = true)
+    @NonNull
     @ColumnInfo(name = "IdPlant")
     private int idPlant;
 
