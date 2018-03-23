@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">Arboretum</string>
     <string name="title_home">Aktualności</string>
-    <string name="title_map_and_route">Trasy / Mapy</string>
+    <string name="title_map_and_route">Mapy / Trasy</string>
     <string name="title_favoutites">Ulubione</string>
-    <string name="title_more">Więcej...</string>
+    <string name="title_more">Więcej</string>
     <string name="title_map">Mapa</string>
     <string name="title_route">Trasy</string>
 
