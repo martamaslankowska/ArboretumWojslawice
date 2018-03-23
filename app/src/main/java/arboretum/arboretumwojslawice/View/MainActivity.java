@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         public void onNavigationItemReselected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    mFragmentTransaction.detach(mHomeFragment).commit();
+
                     break;
                 case R.id.navigation_map_and_route:
 
@@ -97,6 +97,11 @@ public class MainActivity extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         navigation.setOnNavigationItemReselectedListener(mOnNavigationItemReselectedListener);
 
+        mHomeFragment = new HomeFragment();
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container,mHomeFragment)
+                .addToBackStack(null)
+                .commit();
 
     }
 
