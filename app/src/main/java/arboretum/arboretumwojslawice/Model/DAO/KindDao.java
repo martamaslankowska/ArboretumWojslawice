@@ -24,9 +24,9 @@ public interface KindDao {
     @Query("SELECT * FROM Kinds WHERE IdKind IN (:id)")
     Kind getById(int id);
 
-    @Query("SELECT * FROM Plants WHERE Name IN (:name) LIMIT 1")
+    @Query("SELECT * FROM Kinds WHERE Name IN (:name) LIMIT 1")
     Kind getByName(int name);
-    
+
 
     // INSERT, DELETE and UPDATE
 

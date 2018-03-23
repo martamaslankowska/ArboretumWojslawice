@@ -6,7 +6,7 @@ import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.PrimaryKey;
 import io.reactivex.annotations.NonNull;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 
 /*
@@ -32,7 +32,6 @@ public class Plant {
     private int idPlant;
 
     @ColumnInfo(name = "Name")
-    @NonNull
     private String name;
 
     @ColumnInfo(name = "IdSpecies")
@@ -46,10 +45,10 @@ public class Plant {
     private int image;
 
     @ColumnInfo(name = "SeasonBegin")
-    private Date seasonBegin;
+    private LocalDate seasonBegin;
 
     @ColumnInfo(name = "SeasonEnd")
-    private Date seasonEnd;
+    private LocalDate seasonEnd;
 
 
     public int getIdPlant() {
@@ -92,19 +91,19 @@ public class Plant {
         this.image = image;
     }
 
-    public Date getSeasonBegin() {
+    public LocalDate getSeasonBegin() {
         return seasonBegin;
     }
 
-    public void setSeasonBegin(Date seasonBegin) {
+    public void setSeasonBegin(LocalDate seasonBegin) {
         this.seasonBegin = seasonBegin;
     }
 
-    public Date getSeasonEnd() {
+    public LocalDate getSeasonEnd() {
         return seasonEnd;
     }
 
-    public void setSeasonEnd(Date seasonEnd) {
+    public void setSeasonEnd(LocalDate seasonEnd) {
         this.seasonEnd = seasonEnd;
     }
 
