@@ -23,16 +23,16 @@ public class Event {
 
     @ColumnInfo(name = "DateBegin")
     @NonNull
-    private LocalDate dateBegin;
+    private int dateBegin;
 
     @ColumnInfo(name = "DateEnd")
-    private LocalDate dateEnd;
+    private int dateEnd;
 
     @ColumnInfo(name = "TimeBegin")
-    private LocalTime timeBegin;
+    private int timeBegin;
 
     @ColumnInfo(name = "TimeEnd")
-    private LocalTime timeEnd;
+    private int timeEnd;
 
 
     public int getIdEvent() {
@@ -43,35 +43,35 @@ public class Event {
         this.idEvent = idEvent;
     }
 
-    public LocalDate getDateBegin() {
+    public int getDateBegin() {
         return dateBegin;
     }
 
-    public void setDateBegin(LocalDate dateBegin) {
+    public void setDateBegin(int dateBegin) {
         this.dateBegin = dateBegin;
     }
 
-    public LocalDate getDateEnd() {
+    public int getDateEnd() {
         return dateEnd;
     }
 
-    public void setDateEnd(LocalDate dateEnd) {
+    public void setDateEnd(int dateEnd) {
         this.dateEnd = dateEnd;
     }
 
-    public LocalTime getTimeBegin() {
+    public int getTimeBegin() {
         return timeBegin;
     }
 
-    public void setTimeBegin(LocalTime timeBegin) {
+    public void setTimeBegin(int timeBegin) {
         this.timeBegin = timeBegin;
     }
 
-    public LocalTime getTimeEnd() {
+    public int getTimeEnd() {
         return timeEnd;
     }
 
-    public void setTimeEnd(LocalTime timeEnd) {
+    public void setTimeEnd(int timeEnd) {
         this.timeEnd = timeEnd;
     }
 

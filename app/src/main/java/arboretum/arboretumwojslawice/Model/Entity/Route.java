@@ -26,7 +26,7 @@ public class Route {
 
     @ColumnInfo(name = "Time")
     @NonNull
-    private Duration time;
+    private int time;
 
     @ColumnInfo(name = "MapImage")
     private int mapImage;
@@ -48,11 +48,11 @@ public class Route {
         this.length = length;
     }
 
-    public Duration getTime() {
+    public int getTime() {
         return time;
     }
 
-    public void setTime(Duration time) {
+    public void setTime(int time) {
         this.time = time;
     }
 

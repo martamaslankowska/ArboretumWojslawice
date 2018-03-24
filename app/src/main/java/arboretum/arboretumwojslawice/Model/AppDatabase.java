@@ -14,37 +14,38 @@ import android.content.Context;
 
 
 
-@Database(entities = {
-            Plant.class, FavouritePlant.class, Kind.class,
-            Location.class, RoutePoint.class, Route.class},
-          version = 1)
+//@Database(entities = {
+//            Plant.class, FavouritePlant.class, Kind.class,
+//            Location.class, RoutePoint.class, Route.class},
+//          version = 1)
 public abstract class AppDatabase extends RoomDatabase {
     private static AppDatabase INSTANCE;
-
-    public abstract PlantDao getPlantDao();
-    public abstract FavouritePlantDao getFavouritePlantDao();
-    public abstract KindDao getKindDao();
-    public abstract LocationDao getLocationDao();
-    public abstract RoutePointDao getRoutePointDao();
-    public abstract RouteDao getRouteDao();
-
-    /* Some copied code from https://medium.com/@ajaysaini.official/building-database-with-room-persistence-library-ecf7d0b8f3e9
-     * Here's also an different example: https://medium.com/@alahammad/database-with-room-using-rxjava-764ee6124974
-     * Still working on this method (especially thread) */
-
-    public static AppDatabase getAppDatabase(Context context) {
-        if (INSTANCE == null) {
-            INSTANCE =  Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, "ArboretumDatabase")
-                            // allow queries on the main thread.
-                            // Don't do this on a real app! See PersistenceBasicSample for an example.
-//                            .allowMainThreadQueries()
-                            .build();
-        }
-        return INSTANCE;
-    }
-
-    public static void destroyInstance() {
-        INSTANCE = null;
-    }
 }
+
+//    public abstract PlantDao getPlantDao();
+//    public abstract FavouritePlantDao getFavouritePlantDao();
+//    public abstract KindDao getKindDao();
+//    public abstract LocationDao getLocationDao();
+//    public abstract RoutePointDao getRoutePointDao();
+//    public abstract RouteDao getRouteDao();
+//
+//    /* Some copied code from https://medium.com/@ajaysaini.official/building-database-with-room-persistence-library-ecf7d0b8f3e9
+//     * Here's also an different example: https://medium.com/@alahammad/database-with-room-using-rxjava-764ee6124974
+//     * Still working on this method (especially thread) */
+//
+//    public static AppDatabase getAppDatabase(Context context) {
+//        if (INSTANCE == null) {
+//            INSTANCE =  Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, "ArboretumDatabase")
+//                            // allow queries on the main thread.
+//                            // Don't do this on a real app! See PersistenceBasicSample for an example.
+////                            .allowMainThreadQueries()
+//                            .build();
+//        }
+//        return INSTANCE;
+//    }
+//
+//    public static void destroyInstance() {
+//        INSTANCE = null;
+//    }
+//}
 

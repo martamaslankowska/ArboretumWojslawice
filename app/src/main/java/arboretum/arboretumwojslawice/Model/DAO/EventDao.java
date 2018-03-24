@@ -27,7 +27,7 @@ public interface EventDao {
     Event getById(int id);
 
     @Query("SELECT * FROM Events WHERE DateBegin IN (:dateBegin)")
-    Maybe<List<Event>> getByDateBegin(LocalDate dateBegin);
+    Maybe<List<Event>> getByDateBegin(int dateBegin);
 
 
     // INSERT, DELETE and UPDATE

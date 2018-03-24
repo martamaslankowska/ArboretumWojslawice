@@ -46,10 +46,10 @@ public class Plant {
     private int image;
 
     @ColumnInfo(name = "SeasonBegin")
-    private LocalDate seasonBegin;
+    private int seasonBegin;
 
     @ColumnInfo(name = "SeasonEnd")
-    private LocalDate seasonEnd;
+    private int seasonEnd;
 
 
     public int getIdPlant() {
@@ -92,19 +92,19 @@ public class Plant {
         this.image = image;
     }
 
-    public LocalDate getSeasonBegin() {
+    public int getSeasonBegin() {
         return seasonBegin;
     }
 
-    public void setSeasonBegin(LocalDate seasonBegin) {
+    public void setSeasonBegin(int seasonBegin) {
         this.seasonBegin = seasonBegin;
     }
 
-    public LocalDate getSeasonEnd() {
+    public int getSeasonEnd() {
         return seasonEnd;
     }
 
-    public void setSeasonEnd(LocalDate seasonEnd) {
+    public void setSeasonEnd(int seasonEnd) {
         this.seasonEnd = seasonEnd;
     }
 
