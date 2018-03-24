@@ -29,4 +29,27 @@ public class Species {
     private String speciesName;
 
 
+    public int getIdSpecies() {
+        return idSpecies;
+    }
+
+    public void setIdSpecies(int idSpecies) {
+        this.idSpecies = idSpecies;
+    }
+
+    public String getGenusName() {
+        return genusName;
+    }
+
+    public void setGenusName(String genusName) {
+        this.genusName = genusName;
+    }
+
+    public String getSpeciesName() {
+        return speciesName;
+    }
+
+    public void setSpeciesName(String speciesName) {
+        this.speciesName = speciesName;
+    }
 }
