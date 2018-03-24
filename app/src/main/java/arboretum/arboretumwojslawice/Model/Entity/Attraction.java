@@ -19,14 +19,6 @@ public class Attraction {
     @ColumnInfo(name = "IdAttraction")
     private int idAttraction;
 
-    @ColumnInfo(name = "Name")
-    @NonNull
-    private String name;
-
-    @ColumnInfo(name = "Description")
-    @NonNull
-    private String description;
-
     @ColumnInfo(name = "Image")
     private int image;
 
@@ -37,22 +29,6 @@ public class Attraction {
 
     public void setIdAttraction(int idAttraction) {
         this.idAttraction = idAttraction;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public int getImage() {

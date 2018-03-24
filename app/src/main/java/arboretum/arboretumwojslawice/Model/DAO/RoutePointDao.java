@@ -21,8 +21,8 @@ public interface RoutePointDao {
     @Query("SELECT * FROM RoutePoints")
     Maybe<List<RoutePoint>> getAll();
 
-    @Query("SELECT * FROM RoutePoints WHERE IdRoute IN (:idRoute) AND IdCoordinate IN (:idCoordinate)")
-    RoutePoint getByIds(int idRoute, int idCoordinate);
+    @Query("SELECT * FROM RoutePoints WHERE IdRoute IN (:idRoute) AND idLocations IN (:idLocation)")
+    RoutePoint getByIds(int idRoute, int idLocation);
 
     @Query("SELECT * FROM RoutePoints WHERE IdRoute IN (:idRoute)")
     Maybe<List<RoutePoint>> getByRouteId(int idRoute);

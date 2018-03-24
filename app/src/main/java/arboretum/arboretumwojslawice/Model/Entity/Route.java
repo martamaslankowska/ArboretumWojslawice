@@ -20,10 +20,6 @@ public class Route {
     @ColumnInfo(name = "IdRoute")
     private int idRoute;
 
-    @ColumnInfo(name = "Name")
-    @NonNull
-    private String name;
-
     @ColumnInfo(name = "Length")
     @NonNull
     private double length;
@@ -31,9 +27,6 @@ public class Route {
     @ColumnInfo(name = "Time")
     @NonNull
     private Duration time;
-
-    @ColumnInfo(name = "Description")
-    private String description;
 
     @ColumnInfo(name = "MapImage")
     private int mapImage;
@@ -45,14 +38,6 @@ public class Route {
 
     public void setIdRoute(int idRoute) {
         this.idRoute = idRoute;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public double getLength() {
@@ -69,14 +54,6 @@ public class Route {
 
     public void setTime(Duration time) {
         this.time = time;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public int getMapImage() {

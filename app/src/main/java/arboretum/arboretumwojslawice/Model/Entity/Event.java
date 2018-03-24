@@ -21,13 +21,6 @@ public class Event {
     @ColumnInfo(name = "IdEvent")
     private int idEvent;
 
-    @ColumnInfo(name = "Type")
-    private String type;
-
-    @ColumnInfo(name = "Name")
-    @NonNull
-    private String name;
-
     @ColumnInfo(name = "DateBegin")
     @NonNull
     private LocalDate dateBegin;
@@ -41,9 +34,6 @@ public class Event {
     @ColumnInfo(name = "TimeEnd")
     private LocalTime timeEnd;
 
-    @ColumnInfo(name = "Description")
-    private String descritpion;
-
 
     public int getIdEvent() {
         return idEvent;
@@ -51,22 +41,6 @@ public class Event {
 
     public void setIdEvent(int idEvent) {
         this.idEvent = idEvent;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public LocalDate getDateBegin() {
@@ -101,11 +75,4 @@ public class Event {
         this.timeEnd = timeEnd;
     }
 
-    public String getDescritpion() {
-        return descritpion;
-    }
-
-    public void setDescritpion(String descritpion) {
-        this.descritpion = descritpion;
-    }
 }

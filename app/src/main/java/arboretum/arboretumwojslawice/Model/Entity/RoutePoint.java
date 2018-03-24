@@ -3,7 +3,6 @@ package arboretum.arboretumwojslawice.Model.Entity;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
-import android.arch.persistence.room.PrimaryKey;
 
 import io.reactivex.annotations.NonNull;
 
@@ -15,17 +14,17 @@ import io.reactivex.annotations.NonNull;
 @Entity(tableName = "RoutePoints",
         foreignKeys = {
             @ForeignKey(entity = Route.class, parentColumns = "IdRoute", childColumns = "IdRoute"),
-            @ForeignKey(entity = Coordinate.class, parentColumns = "IdCoordinate", childColumns = "IdCoordinate")},
-        primaryKeys = {"IdRoute", "IdCoordinate"})
+            @ForeignKey(entity = Location.class, parentColumns = "IdLocation", childColumns = "IdLocation")},
+        primaryKeys = {"IdRoute", "IdLocation"})
 public class RoutePoint {
 
     @ColumnInfo(name = "IdRoute")
     @NonNull
     private int idRoute;
 
-    @ColumnInfo(name = "IdCoordinate")
+    @ColumnInfo(name = "IdLocation")
     @NonNull
-    private int idCoordinate;
+    private int idLocation;
 
     @ColumnInfo(name = "PointOrder")
     private int pointOrder;
@@ -39,12 +38,12 @@ public class RoutePoint {
         this.idRoute = idRoute;
     }
 
-    public int getIdCoordinate() {
-        return idCoordinate;
+    public int getIdLocation() {
+        return idLocation;
     }
 
-    public void setIdCoordinate(int idCoordinate) {
-        this.idCoordinate = idCoordinate;
+    public void setIdLocation(int idLocation) {
+        this.idLocation = idLocation;
     }
 
     public int getPointOrder() {

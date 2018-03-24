@@ -16,7 +16,7 @@ import android.content.Context;
 
 @Database(entities = {
             Plant.class, FavouritePlant.class, Kind.class,
-            Coordinate.class, RoutePoint.class, Route.class},
+            Location.class, RoutePoint.class, Route.class},
           version = 1)
 public abstract class AppDatabase extends RoomDatabase {
     private static AppDatabase INSTANCE;
@@ -24,7 +24,7 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract PlantDao getPlantDao();
     public abstract FavouritePlantDao getFavouritePlantDao();
     public abstract KindDao getKindDao();
-    public abstract CoordinateDao getCoordinateDao();
+    public abstract LocationDao getLocationDao();
     public abstract RoutePointDao getRoutePointDao();
     public abstract RouteDao getRouteDao();
 

@@ -23,10 +23,6 @@ public class Price {
     @NonNull
     private double amount;
 
-    @ColumnInfo(name = "Type")
-    @NonNull
-    private String type;
-
 
     public int getIdPrice() {
         return idPrice;
@@ -44,11 +40,4 @@ public class Price {
         this.amount = amount;
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
 }

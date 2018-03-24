@@ -11,15 +11,18 @@ import io.reactivex.annotations.NonNull;
  * Created by Komputer on 2018-03-23.
  */
 
-@Entity(tableName = "Coordinates",
+@Entity(tableName = "Locations",
         foreignKeys = {
             @ForeignKey(entity = Plant.class, parentColumns = "IdPlant", childColumns = "IdPlant")})
-public class Coordinate {
+public class Location {
 
     @PrimaryKey(autoGenerate = true)
     @NonNull
-    @ColumnInfo(name = "IdCoordinate")
-    private int idCoordinate;
+    @ColumnInfo(name = "IdLocation")
+    private int idLocation;
+
+    @ColumnInfo(name = "IdPlant")
+    private int idPlant;
 
     @ColumnInfo(name = "X")
     @NonNull
@@ -29,16 +32,13 @@ public class Coordinate {
     @NonNull
     private double y;
 
-    @ColumnInfo(name = "IdPlant")
-    private int idPlant;
 
-
-    public int getIdCoordinate() {
-        return idCoordinate;
+    public int getIdLocation() {
+        return idLocation;
     }
 
-    public void setIdCoordinate(int idCoordinate) {
-        this.idCoordinate = idCoordinate;
+    public void setIdLocation(int idLocation) {
+        this.idLocation = idLocation;
     }
 
     public double getX() {

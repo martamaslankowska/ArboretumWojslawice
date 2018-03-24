@@ -23,7 +23,8 @@ That's why it's good to use @Ignore on other constructors to tell Room not to bo
 */
 
 @Entity(tableName = "Plants", foreignKeys = {
-        @ForeignKey(entity = Kind.class, parentColumns = "IdKind", childColumns = "IdKind")})
+        @ForeignKey(entity = Kind.class, parentColumns = "IdKind", childColumns = "IdKind"),
+        @ForeignKey(entity = Species.class, parentColumns = "IdSpecies", childColumns = "IdSpecies")})
 public class Plant {
 
     @PrimaryKey(autoGenerate = true)
