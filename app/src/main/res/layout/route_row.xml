@@ -1,26 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:focusable="true"
-    android:paddingLeft="4dp"
-    android:paddingRight="4dp"
-    android:paddingTop="5dp"
-    android:paddingBottom="5dp">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <TextView
-        android:id="@+id/route_name"
-        android:textSize="16dp"
-        android:textStyle="bold"
-        android:layout_alignParentTop="true"
+    <data>
+        <variable
+            name="route"
+            type="arboretum.arboretumwojslawice.Model.Entity.Route"/>
+    </data>
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp">
 
-    <TextView
-        android:id="@+id/route_description"
-        android:layout_below="@id/route_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
 
+        <TextView
+            android:id="@+id/route_name"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:layout_alignParentTop="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{route.getName()}"/>
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/route_description"
+            android:layout_below="@id/route_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{route.getDescription()}"/>
+
+    </RelativeLayout>
+</layout>

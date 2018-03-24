@@ -38,6 +38,10 @@ public class Route {
     @ColumnInfo(name = "MapImage")
     private int mapImage;
 
+    public Route(String name, String desc) {
+       this.name = name;
+       this.description = desc;
+    }
 
     public int getIdRoute() {
         return idRoute;
@@ -71,9 +75,7 @@ public class Route {
         this.time = time;
     }
 
-    public String getDescription() {
-        return description;
-    }
+    public String getDescription() { return description; }
 
     public void setDescription(String description) {
         this.description = description;

@@ -14,6 +14,7 @@ import java.util.List;
 
 import arboretum.arboretumwojslawice.Model.Entity.Route;
 import arboretum.arboretumwojslawice.R;
+import arboretum.arboretumwojslawice.ViewModel.RouteViewModel;
 
 /**
  * Created by weronika on 22.03.2018.
@@ -21,10 +22,10 @@ import arboretum.arboretumwojslawice.R;
 
 public class RouteFragment extends Fragment {
 
-    private static final String TAG = "RouteFragment";
     private static final String KEY_LAYOUT_MANAGER = "route_fragment";
     private static final int SPAN_COUNT = 2;
-    private static final int DATASET_COUNT = 10;
+
+    RouteViewModel routeViewModel;
 
     private enum LayoutManagerType {
         GRID_LAYOUT_MANAGER,
@@ -41,22 +42,23 @@ public class RouteFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initDataset();
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         View rootView = inflater.inflate(R.layout.route_fragment, container, false);
-        rootView.setTag(TAG);
 
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.route_recycler_view);
+        routeViewModel = new RouteViewModel();
 
-        // LinearLayoutManager is used here, this will layout the elements in a similar fashion
-        // to the way ListView would layout elements. The RecyclerView.LayoutManager defines how
-        // elements are laid out.
+        mAdapter = new CustomAdapter();
+        mRecyclerView.setAdapter(mAdapter);
+        mAdapter.setData(routeViewModel.getData());
+
         mLayoutManager = new LinearLayoutManager(getActivity());
-
         mCurrentLayoutManagerType = LayoutManagerType.LINEAR_LAYOUT_MANAGER;
 
         if (savedInstanceState != null) {
@@ -66,18 +68,9 @@ public class RouteFragment extends Fragment {
         }
         setRecyclerViewLayoutManager(mCurrentLayoutManagerType);
 
-        mAdapter = new CustomAdapter(mRoutes);
-        // Set CustomAdapter as the adapter for RecyclerView.
-        mRecyclerView.setAdapter(mAdapter);
-
         return rootView;
     }
 
-    /**
-     * Set RecyclerView's LayoutManager to the one given.
-     *
-     * @param layoutManagerType Type of layout manager to switch to.
-     */
     public void setRecyclerViewLayoutManager(LayoutManagerType layoutManagerType) {
         int scrollPosition = 0;
 
@@ -112,14 +105,4 @@ public class RouteFragment extends Fragment {
         super.onSaveInstanceState(savedInstanceState);
     }
 
-    /**
-     * Generates Strings for RecyclerView's adapter. This data would usually come
-     * from a local content provider or remote server.
-     */
-    private void initDataset() {
-        mRoutes = new ArrayList<>();
-        for (int i = 0; i < DATASET_COUNT; i++) {
-            mRoutes.add(new Route("Trasa " + i, "Opis " + i));
-        }
-    }
 }
