@@ -32,6 +32,19 @@ public class Route {
         this.plantsOnRoute = plantsOnRoute;
     }
 
+    public Route(int idRoute, double length, int time, int mapImage, String name, String description) {
+        this.idRoute = idRoute;
+        this.length = length;
+        this.time = time;
+        this.mapImage = mapImage;
+        this.name = name;
+        this.description = description;
+    }
+
+    public Route(List<PlantOnRoute> plantsOnRoute) {
+        this.plantsOnRoute = plantsOnRoute;
+    }
+
     public Route(int idRoute, double length, int time, String name) {
         this.idRoute = idRoute;
         this.length = length;
@@ -126,6 +139,31 @@ public class Route {
         private double x;
         private double y;
 
+        public PlantOnRoute(int pointOrder) {
+            this.pointOrder = pointOrder;
+        }
+
+        public PlantOnRoute(Plant plant) {
+            this.plant = plant;
+        }
+
+        public PlantOnRoute(double x, double y) {
+            this.x = x;
+            this.y = y;
+        }
+
+        public PlantOnRoute(int pointOrder, double x, double y) {
+            this.pointOrder = pointOrder;
+            this.x = x;
+            this.y = y;
+        }
+
+        public PlantOnRoute(int pointOrder, Plant plant, double x, double y) {
+            this.pointOrder = pointOrder;
+            this.plant = plant;
+            this.x = x;
+            this.y = y;
+        }
 
         public int getPointOrder() {
             return pointOrder;

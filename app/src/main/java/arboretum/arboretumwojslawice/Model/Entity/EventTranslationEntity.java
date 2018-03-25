@@ -11,7 +11,7 @@ import io.reactivex.annotations.NonNull;
  * Created by Komputer on 2018-03-24.
  */
 
-@Entity(tableName = "EventTranslations",
+@Entity(tableName = "EventsTranslations",
         foreignKeys = @ForeignKey(entity = EventEntity.class, parentColumns = "IdEvent", childColumns = "IdEvent"))
 public class EventTranslationEntity {
 

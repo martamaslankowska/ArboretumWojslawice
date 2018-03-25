@@ -1,10 +1,7 @@
 package arboretum.arboretumwojslawice.Model.DAO;
 
 import android.arch.persistence.room.Dao;
-import android.arch.persistence.room.Delete;
-import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
-import android.arch.persistence.room.Update;
 
 import java.util.List;
 
@@ -19,14 +16,18 @@ import io.reactivex.Maybe;
 @Dao
 abstract class AttractionDao implements BaseDao<AttractionEntity> {
 
-    @Query("SELECT * FROM Attractions")
+    @Query("SELECT Attractions.IdAttraction, Name, Description, Image " +
+            "FROM Attractions INNER JOIN AttractionsTranslations ON Attractions.IdAttraction = AttractionsTranslations.IdAttraction")
     abstract Maybe<List<Attraction>> getAll();
 
-    @Query("SELECT * FROM Attractions WHERE IdAttraction IN (:id)")
+    @Query("SELECT Attractions.IdAttraction, Name, Description, Image " +
+            "FROM Attractions INNER JOIN AttractionsTranslations ON Attractions.IdAttraction = AttractionsTranslations.IdAttraction " +
+            "WHERE IdAttraction IN (:id)")
     abstract Attraction getById(int id);
 
-    @Query("SELECT * FROM Attractions WHERE Name IN (:name) LIMIT 1")
-    abstract AttractionEntity getByName(String Name);
-
+    @Query("SELECT Attractions.IdAttraction, Name, Description, Image " +
+            "FROM Attractions INNER JOIN AttractionsTranslations ON Attractions.IdAttraction = AttractionsTranslations.IdAttraction " +
+            "WHERE Name IN (:name)")
+    abstract Attraction getByName(int name);
 
 }

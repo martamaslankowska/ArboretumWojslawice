@@ -10,9 +10,9 @@ import java.util.List;
 public class Plant {
 
     private int idPlant;
-    private String name;
     private String genusName;
     private String speciesName;
+    private String name;
     private String kindName;
     private int image;
     private int seasonBegin;
@@ -24,16 +24,33 @@ public class Plant {
     public Plant() {
     }  // default constructor for FavouritePlant to handle
 
-    public Plant(int idPlant, String name, String genusName, String speciesName, String kindName, int image, int seasonBegin, int seasonEnd, String description, List<Location> locations) {
+    public Plant(int idPlant, String genusName, String speciesName, String name, String kindName, int image, int seasonBegin, int seasonEnd, String description, List<Location> locations) {
         this.idPlant = idPlant;
-        this.name = name;
         this.genusName = genusName;
         this.speciesName = speciesName;
+        this.name = name;
         this.kindName = kindName;
         this.image = image;
         this.seasonBegin = seasonBegin;
         this.seasonEnd = seasonEnd;
         this.description = description;
+        this.locations = locations;
+    }
+
+    // needed for Dao to get all plants
+    public Plant(int idPlant, String genusName, String speciesName, String name, String kindName, int image, int seasonBegin, int seasonEnd, String description) {
+        this.idPlant = idPlant;
+        this.genusName = genusName;
+        this.speciesName = speciesName;
+        this.name = name;
+        this.kindName = kindName;
+        this.image = image;
+        this.seasonBegin = seasonBegin;
+        this.seasonEnd = seasonEnd;
+        this.description = description;
+    }
+
+    public Plant(List<Location> locations) {
         this.locations = locations;
     }
 

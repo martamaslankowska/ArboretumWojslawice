@@ -11,7 +11,7 @@ import io.reactivex.annotations.NonNull;
  * Created by Komputer on 2018-03-24.
  */
 
-@Entity(tableName = "SpeciesEntity", foreignKeys =
+@Entity(tableName = "Species", foreignKeys =
         @ForeignKey(entity = GenusEntity.class, parentColumns = "Name", childColumns = "GenusName"))
 public class SpeciesEntity {
 

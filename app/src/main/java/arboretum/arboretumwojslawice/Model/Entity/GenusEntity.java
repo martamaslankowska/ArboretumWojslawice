@@ -11,7 +11,7 @@ import android.arch.persistence.room.PrimaryKey;
 
 import io.reactivex.annotations.NonNull;
 
-@Entity(tableName = "GenusEntity")
+@Entity(tableName = "Genus")
 public class GenusEntity {
 
     @PrimaryKey

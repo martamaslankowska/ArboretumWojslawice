@@ -1,15 +1,12 @@
 package arboretum.arboretumwojslawice.Model.DAO;
 
 import android.arch.persistence.room.Dao;
-import android.arch.persistence.room.Delete;
-import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
-import android.arch.persistence.room.Update;
 
 import java.util.List;
 
 import arboretum.arboretumwojslawice.Model.Entity.PriceEntity;
-import arboretum.arboretumwojslawice.Model.Entity.PriceEntity;
+import arboretum.arboretumwojslawice.Model.businessentity.Price;
 import io.reactivex.Maybe;
 
 /**
@@ -19,14 +16,19 @@ import io.reactivex.Maybe;
 @Dao
 abstract class PriceDao implements BaseDao<PriceEntity> {
 
-    @Query("SELECT * FROM PriceEntity")
-    abstract Maybe<List<PriceEntity>> getAll();
+    @Query("SELECT Prices.IdPrice, Amount, Type " +
+            "FROM Prices LEFT JOIN PricesTranslations ON Price.IdPrice = PricesTranslations.IdPrice")
+    abstract Maybe<List<Price>> getAll();
 
-    @Query("SELECT * FROM PriceEntity WHERE IdPrice IN (:id)")
-    abstract PriceEntity getById(int id);
+    @Query("SELECT Prices.IdPrice, Amount, Type " +
+            "FROM Prices LEFT JOIN PricesTranslations ON Price.IdPrice = PricesTranslations.IdPrice" +
+            " WHERE IdPrice IN (:id)")
+    abstract Price getById(int id);
 
-    @Query("SELECT * FROM PriceEntity WHERE Type IN (:type)")
-    abstract Maybe<List<PriceEntity>> getByType(String type);
+    @Query("SELECT Prices.IdPrice, Amount, Type " +
+            "FROM Prices LEFT JOIN PricesTranslations ON Price.IdPrice = PricesTranslations.IdPrice" +
+            " WHERE Type IN (:type)")
+    abstract Maybe<List<Price>> getByType(String type);
 
 
 }

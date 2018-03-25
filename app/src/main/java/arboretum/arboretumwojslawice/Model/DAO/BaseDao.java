@@ -6,8 +6,6 @@ import android.arch.persistence.room.Update;
 
 import java.util.List;
 
-import arboretum.arboretumwojslawice.Model.Entity.AttractionEntity;
-
 /**
  * Created by Komputer on 2018-03-25.
  */

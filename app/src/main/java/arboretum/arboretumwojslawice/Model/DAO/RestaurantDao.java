@@ -1,15 +1,12 @@
 package arboretum.arboretumwojslawice.Model.DAO;
 
 import android.arch.persistence.room.Dao;
-import android.arch.persistence.room.Delete;
-import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
-import android.arch.persistence.room.Update;
 
 import java.util.List;
 
 import arboretum.arboretumwojslawice.Model.Entity.RestaurantEntity;
-import arboretum.arboretumwojslawice.Model.Entity.RestaurantEntity;
+import arboretum.arboretumwojslawice.Model.businessentity.Restaurant;
 import io.reactivex.Maybe;
 
 /**
@@ -19,17 +16,17 @@ import io.reactivex.Maybe;
 @Dao
 abstract class RestaurantDao implements BaseDao<RestaurantEntity> {
 
-    @Query("SELECT * FROM RestaurantEntity")
-    abstract Maybe<List<RestaurantEntity>> getAll();
+    @Query("SELECT * FROM Restaurants")
+    abstract Maybe<List<Restaurant>> getAll();
 
-    @Query("SELECT * FROM RestaurantEntity WHERE IdRestaurant IN (:id)")
-    abstract RestaurantEntity getById(int id);
+    @Query("SELECT * FROM Restaurants WHERE IdRestaurant IN (:id)")
+    abstract Restaurant getById(int id);
 
-    @Query("SELECT * FROM RestaurantEntity WHERE Name IN (:name)")
-    abstract RestaurantEntity getByName(String name);
+    @Query("SELECT * FROM Restaurants WHERE Name IN (:name) LIMIT 1")
+    abstract Restaurant getByName(String name);
 
-    @Query("SELECT * FROM RestaurantEntity WHERE Rating >= (:rating)")
-    abstract Maybe<List<RestaurantEntity>> getAllBetterThan(double rating);
+    @Query("SELECT * FROM Restaurants WHERE Rating >= (:rating)")
+    abstract Maybe<List<Restaurant>> getAllBetterThan(double rating);
 
 
 }
