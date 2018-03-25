@@ -8,7 +8,7 @@ import android.arch.persistence.room.Update;
 
 import java.util.List;
 
-import arboretum.arboretumwojslawice.Model.Entity.RoutePoint;
+import arboretum.arboretumwojslawice.Model.Entity.RoutePointEntity;
 import io.reactivex.Maybe;
 
 /**
@@ -18,34 +18,34 @@ import io.reactivex.Maybe;
 @Dao
 public interface RoutePointDao {
 
-    @Query("SELECT * FROM RoutePoints")
-    Maybe<List<RoutePoint>> getAll();
+    @Query("SELECT * FROM RoutePointEntity")
+    Maybe<List<RoutePointEntity>> getAll();
 
-    @Query("SELECT * FROM RoutePoints WHERE IdRoute IN (:idRoute) AND idLocations IN (:idLocation)")
-    RoutePoint getByIds(int idRoute, int idLocation);
+    @Query("SELECT * FROM RoutePointEntity WHERE IdRoute IN (:idRoute) AND idLocations IN (:idLocation)")
+    RoutePointEntity getByIds(int idRoute, int idLocation);
 
-    @Query("SELECT * FROM RoutePoints WHERE IdRoute IN (:idRoute)")
-    Maybe<List<RoutePoint>> getByRouteId(int idRoute);
+    @Query("SELECT * FROM RoutePointEntity WHERE IdRoute IN (:idRoute)")
+    Maybe<List<RoutePointEntity>> getByRouteId(int idRoute);
 
 
     // INSERT, DELETE and UPDATE
 
     @Insert
-    void insert(RoutePoint... routePoints);
+    void insert(RoutePointEntity... routePoints);
 
     @Insert
-    void insert(List<RoutePoint> routePoints);
+    void insert(List<RoutePointEntity> routePoints);
 
     @Delete
-    void delete(RoutePoint... routePoints);
+    void delete(RoutePointEntity... routePoints);
 
     @Delete
-    void delete(List<RoutePoint> routePoints);
+    void delete(List<RoutePointEntity> routePoints);
 
     @Update
-    void update(RoutePoint... routePoints);
+    void update(RoutePointEntity... routePoints);
 
     @Update
-    void update(List<RoutePoint> routePoints);
+    void update(List<RoutePointEntity> routePoints);
 
 }

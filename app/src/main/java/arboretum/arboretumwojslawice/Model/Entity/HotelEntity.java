@@ -10,13 +10,13 @@ import io.reactivex.annotations.NonNull;
  * Created by Komputer on 2018-03-24.
  */
 
-@Entity(tableName = "Restaurants")
-public class Restaurant {
+@Entity(tableName = "Hotels")
+public class HotelEntity {
 
     @PrimaryKey(autoGenerate = true)
     @NonNull
-    @ColumnInfo(name = "IdRestaurant")
-    private int idRestaurant;
+    @ColumnInfo(name = "IdHotel")
+    private int idHotel;
 
     @ColumnInfo(name = "Name")
     @NonNull
@@ -39,12 +39,12 @@ public class Restaurant {
     private double rating;
 
 
-    public int getIdRestaurant() {
-        return idRestaurant;
+    public int getIdHotel() {
+        return idHotel;
     }
 
-    public void setIdRestaurant(int idRestaurant) {
-        this.idRestaurant = idRestaurant;
+    public void setIdHotel(int idHotel) {
+        this.idHotel = idHotel;
     }
 
     public String getName() {

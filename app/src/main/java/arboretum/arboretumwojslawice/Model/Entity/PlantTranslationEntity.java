@@ -5,8 +5,6 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.PrimaryKey;
 
-import java.time.LocalDate;
-
 import io.reactivex.annotations.NonNull;
 
 /**
@@ -14,8 +12,8 @@ import io.reactivex.annotations.NonNull;
  */
 
 @Entity(tableName = "PlantTranslations",
-        foreignKeys = @ForeignKey(entity = Plant.class, parentColumns = "IdPlant", childColumns = "IdPlant"))
-public class PlantTranslation {
+        foreignKeys = @ForeignKey(entity = PlantEntity.class, parentColumns = "IdPlant", childColumns = "IdPlant"))
+public class PlantTranslationEntity {
 
     @PrimaryKey
     @NonNull

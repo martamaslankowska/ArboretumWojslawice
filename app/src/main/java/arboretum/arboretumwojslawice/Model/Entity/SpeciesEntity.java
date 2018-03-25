@@ -11,9 +11,9 @@ import io.reactivex.annotations.NonNull;
  * Created by Komputer on 2018-03-24.
  */
 
-@Entity(tableName = "Species", foreignKeys =
-        @ForeignKey(entity = Genus.class, parentColumns = "Name", childColumns = "GenusName"))
-public class Species {
+@Entity(tableName = "SpeciesEntity", foreignKeys =
+        @ForeignKey(entity = GenusEntity.class, parentColumns = "Name", childColumns = "GenusName"))
+public class SpeciesEntity {
 
     @PrimaryKey(autoGenerate = true)
     @NonNull

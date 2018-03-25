@@ -5,18 +5,15 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.PrimaryKey;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
-
 import io.reactivex.annotations.NonNull;
 
 /**
  * Created by Komputer on 2018-03-24.
  */
 
-@Entity(tableName = "EventTranslations",
-        foreignKeys = @ForeignKey(entity = Event.class, parentColumns = "IdEvent", childColumns = "IdEvent"))
-public class EventTranslation {
+@Entity(tableName = "RoutesTranslations",
+        foreignKeys = @ForeignKey(entity = RouteEntity.class, parentColumns = "IdRoute", childColumns = "IdRoute"))
+public class RouteTranslationEntity {
 
     @PrimaryKey
     @NonNull
@@ -25,18 +22,15 @@ public class EventTranslation {
 
     @PrimaryKey
     @NonNull
-    @ColumnInfo(name = "IdEvent")
-    private int idEvent;
-
-    @ColumnInfo(name = "Type")
-    private String type;
+    @ColumnInfo(name = "IdRoute")
+    private int idRoute;
 
     @ColumnInfo(name = "Name")
     @NonNull
     private String name;
 
     @ColumnInfo(name = "Description")
-    private String descritpion;
+    private String description;
 
 
     public String getTranslationCode() {
@@ -47,20 +41,12 @@ public class EventTranslation {
         this.translationCode = translationCode;
     }
 
-    public int getIdEvent() {
-        return idEvent;
+    public int getIdRoute() {
+        return idRoute;
     }
 
-    public void setIdEvent(int idEvent) {
-        this.idEvent = idEvent;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
+    public void setIdRoute(int idRoute) {
+        this.idRoute = idRoute;
     }
 
     public String getName() {
@@ -71,11 +57,11 @@ public class EventTranslation {
         this.name = name;
     }
 
-    public String getDescritpion() {
-        return descritpion;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDescritpion(String descritpion) {
-        this.descritpion = descritpion;
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

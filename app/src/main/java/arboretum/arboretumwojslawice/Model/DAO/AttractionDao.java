@@ -8,7 +8,7 @@ import android.arch.persistence.room.Update;
 
 import java.util.List;
 
-import arboretum.arboretumwojslawice.Model.Entity.Attraction;
+import arboretum.arboretumwojslawice.Model.Entity.AttractionEntity;
 import io.reactivex.Maybe;
 
 /**
@@ -18,35 +18,35 @@ import io.reactivex.Maybe;
 @Dao
 public interface AttractionDao {
 
-    @Query("SELECT * FROM Attractions")
-    Maybe<List<Attraction>> getAll();
+    @Query("SELECT * FROM AttractionEntity")
+    Maybe<List<AttractionEntity>> getAll();
 
-    @Query("SELECT * FROM Attractions WHERE IdAttraction IN (:id)")
-    Attraction getById(int id);
+    @Query("SELECT * FROM AttractionEntity WHERE IdAttraction IN (:id)")
+    AttractionEntity getById(int id);
 
-    @Query("SELECT * FROM Attractions WHERE Name IN (:name) LIMIT 1")
-    Attraction getByName(String Name);
+    @Query("SELECT * FROM AttractionEntity WHERE Name IN (:name) LIMIT 1")
+    AttractionEntity getByName(String Name);
 
 
     // INSERT, DELETE and UPDATE
 
     @Insert
-    void insert(Attraction... attractions);
+    void insert(AttractionEntity... attractions);
 
     @Insert
-    void insert(List<Attraction> attractions);
+    void insert(List<AttractionEntity> attractions);
 
     @Delete
-    void delete(Attraction... attractions);
+    void delete(AttractionEntity... attractions);
 
     @Delete
-    void delete(List<Attraction> attractions);
+    void delete(List<AttractionEntity> attractions);
 
     @Update
-    void update(Attraction... attractions);
+    void update(AttractionEntity... attractions);
 
     @Update
-    void update(List<Attraction> attractions);
+    void update(List<AttractionEntity> attractions);
 
 
 }

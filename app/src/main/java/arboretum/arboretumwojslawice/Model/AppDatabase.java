@@ -15,8 +15,8 @@ import android.content.Context;
 
 
 //@Database(entities = {
-//            Plant.class, FavouritePlant.class, Kind.class,
-//            Location.class, RoutePoint.class, Route.class},
+//            PlantEntity.class, FavouritePlantEntity.class, KindEntity.class,
+//            LocationEntity.class, RoutePointEntity.class, RouteEntity.class},
 //          version = 1)
 public abstract class AppDatabase extends RoomDatabase {
     private static AppDatabase INSTANCE;

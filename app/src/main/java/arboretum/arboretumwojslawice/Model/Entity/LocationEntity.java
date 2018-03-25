@@ -13,8 +13,8 @@ import io.reactivex.annotations.NonNull;
 
 @Entity(tableName = "Locations",
         foreignKeys = {
-            @ForeignKey(entity = Plant.class, parentColumns = "IdPlant", childColumns = "IdPlant")})
-public class Location {
+            @ForeignKey(entity = PlantEntity.class, parentColumns = "IdPlant", childColumns = "IdPlant")})
+public class LocationEntity {
 
     @PrimaryKey(autoGenerate = true)
     @NonNull

@@ -8,7 +8,7 @@ import android.arch.persistence.room.Update;
 
 import java.util.List;
 
-import arboretum.arboretumwojslawice.Model.Entity.Hotel;
+import arboretum.arboretumwojslawice.Model.Entity.HotelEntity;
 import io.reactivex.Maybe;
 
 /**
@@ -18,38 +18,38 @@ import io.reactivex.Maybe;
 @Dao
 public interface HotelDao {
 
-    @Query("SELECT * FROM Hotels")
-    Maybe<List<Hotel>> getAll();
+    @Query("SELECT * FROM HotelEntity")
+    Maybe<List<HotelEntity>> getAll();
 
-    @Query("SELECT * FROM Hotels WHERE IdHotel IN (:id)")
-    Hotel getById(int id);
+    @Query("SELECT * FROM HotelEntity WHERE IdHotel IN (:id)")
+    HotelEntity getById(int id);
 
-    @Query("SELECT * FROM Hotels WHERE Name IN (:name)")
-    Hotel getByName(String name);
+    @Query("SELECT * FROM HotelEntity WHERE Name IN (:name)")
+    HotelEntity getByName(String name);
 
-    @Query("SELECT * FROM Hotels WHERE Rating >= (:rating)")
-    Maybe<List<Hotel>> getAllBetterThan(double rating);
+    @Query("SELECT * FROM HotelEntity WHERE Rating >= (:rating)")
+    Maybe<List<HotelEntity>> getAllBetterThan(double rating);
 
 
     // INSERT, DELETE and UPDATE
 
     @Insert
-    void insert(Hotel... hotels);
+    void insert(HotelEntity... hotels);
 
     @Insert
-    void insert(List<Hotel> hotels);
+    void insert(List<HotelEntity> hotels);
 
     @Delete
-    void delete(Hotel... hotels);
+    void delete(HotelEntity... hotels);
 
     @Delete
-    void delete(List<Hotel> hotels);
+    void delete(List<HotelEntity> hotels);
 
     @Update
-    void update(Hotel... hotels);
+    void update(HotelEntity... hotels);
 
     @Update
-    void update(List<Hotel> hotels);
+    void update(List<HotelEntity> hotels);
 
 
 }

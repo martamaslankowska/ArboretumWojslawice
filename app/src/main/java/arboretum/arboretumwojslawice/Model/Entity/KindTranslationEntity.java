@@ -5,17 +5,15 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.PrimaryKey;
 
-import java.time.Duration;
-
 import io.reactivex.annotations.NonNull;
 
 /**
  * Created by Komputer on 2018-03-24.
  */
 
-@Entity(tableName = "RoutesTranslations",
-        foreignKeys = @ForeignKey(entity = Route.class, parentColumns = "IdRoute", childColumns = "IdRoute"))
-public class RouteTranslation {
+@Entity(tableName = "KindsTranslations",
+        foreignKeys = @ForeignKey(entity = KindEntity.class, parentColumns = "IdKind", childColumns = "IdKind"))
+public class KindTranslationEntity {
 
     @PrimaryKey
     @NonNull
@@ -24,15 +22,12 @@ public class RouteTranslation {
 
     @PrimaryKey
     @NonNull
-    @ColumnInfo(name = "IdRoute")
-    private int idRoute;
+    @ColumnInfo(name = "IdKind")
+    private int idKind;
 
     @ColumnInfo(name = "Name")
     @NonNull
     private String name;
-
-    @ColumnInfo(name = "Description")
-    private String description;
 
 
     public String getTranslationCode() {
@@ -43,12 +38,12 @@ public class RouteTranslation {
         this.translationCode = translationCode;
     }
 
-    public int getIdRoute() {
-        return idRoute;
+    public int getIdKind() {
+        return idKind;
     }
 
-    public void setIdRoute(int idRoute) {
-        this.idRoute = idRoute;
+    public void setIdKind(int idKind) {
+        this.idKind = idKind;
     }
 
     public String getName() {
@@ -57,13 +52,5 @@ public class RouteTranslation {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 }

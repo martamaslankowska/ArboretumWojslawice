@@ -8,7 +8,7 @@ import android.arch.persistence.room.Update;
 
 import java.util.List;
 
-import arboretum.arboretumwojslawice.Model.Entity.Route;
+import arboretum.arboretumwojslawice.Model.Entity.RouteEntity;
 import io.reactivex.Maybe;
 
 /**
@@ -19,34 +19,34 @@ import io.reactivex.Maybe;
 @Dao
 public interface RouteDao {
 
-    @Query("SELECT * FROM Routes")
-    Maybe<List<Route>> getAll();
+    @Query("SELECT * FROM RouteEntity")
+    Maybe<List<RouteEntity>> getAll();
 
-    @Query("SELECT * FROM Routes WHERE IdRoute IN (:id)")
-    Route getById(int id);
+    @Query("SELECT * FROM RouteEntity WHERE IdRoute IN (:id)")
+    RouteEntity getById(int id);
 
-    @Query("SELECT * FROM Routes WHERE Name IN (:name) LIMIT 1")
-    Route getByName(int name);
+    @Query("SELECT * FROM RouteEntity WHERE Name IN (:name) LIMIT 1")
+    RouteEntity getByName(int name);
 
 
 
     // INSERT, DELETE and UPDATE
 
     @Insert
-    void insert(Route... routes);
+    void insert(RouteEntity... routes);
 
     @Insert
-    void insert(List<Route> routes);
+    void insert(List<RouteEntity> routes);
 
     @Delete
-    void delete(Route... routes);
+    void delete(RouteEntity... routes);
 
     @Delete
-    void delete(List<Route> routes);
+    void delete(List<RouteEntity> routes);
 
     @Update
-    void update(Route... routes);
+    void update(RouteEntity... routes);
 
     @Update
-    void update(List<Route> routes);
+    void update(List<RouteEntity> routes);
 }

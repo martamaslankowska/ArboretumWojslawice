@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ArboretumWojslawice.iml" filepath="$PROJECT_DIR$/ArboretumWojslawice.iml" />
-      <module fileurl="file://C:\Users\Komputer\Documents\Dokumenty\Nauka\AndroidStudio\ArboretumWojslawice\.idea\ArboretumWojslawice.iml" filepath="C:\Users\Komputer\Documents\Dokumenty\Nauka\AndroidStudio\ArboretumWojslawice\.idea\ArboretumWojslawice.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

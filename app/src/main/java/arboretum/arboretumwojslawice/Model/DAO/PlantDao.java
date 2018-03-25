@@ -1,5 +1,5 @@
 package arboretum.arboretumwojslawice.Model.DAO;
-import arboretum.arboretumwojslawice.Model.Entity.Plant;
+import arboretum.arboretumwojslawice.Model.Entity.PlantEntity;
 
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
@@ -19,42 +19,42 @@ import java.util.List;
 @Dao
 public interface PlantDao {
 
-    @Query("SELECT * FROM Plants")
-    Maybe<List<Plant>> getAll();
+    @Query("SELECT * FROM PlantEntity")
+    Maybe<List<PlantEntity>> getAll();
 
-    @Query("SELECT * FROM Plants WHERE IdPlant IN (:id)")
-    Plant getById(int id);
+    @Query("SELECT * FROM PlantEntity WHERE IdPlant IN (:id)")
+    PlantEntity getById(int id);
 
-    @Query("SELECT * FROM Plants WHERE Name IN (:name) LIMIT 1")
-    Plant getByName(int name);
+    @Query("SELECT * FROM PlantEntity WHERE Name IN (:name) LIMIT 1")
+    PlantEntity getByName(int name);
 
-    @Query("SELECT * FROM Plants WHERE IdKind IN (:kindId)")
-    Maybe<List<Plant>> getAllByKindId(int kindId);
+    @Query("SELECT * FROM PlantEntity WHERE IdKind IN (:kindId)")
+    Maybe<List<PlantEntity>> getAllByKindId(int kindId);
 
     @Query("SELECT IdPlant, Plant.Name,  IdSpecies, Plant.IdKind, Kind.Name, Image, SeasonBegin, SeasonEnd " +
-            "FROM Plants INNER JOIN Kinds ON Plants.IdKind = Kinds.IdKind WHERE Kind.Name IN (:kindName)")
-    Maybe<List<Plant>> getAllByKindName(int kindName);
+            "FROM PlantEntity INNER JOIN KindEntity ON PlantEntity.IdKind = KindEntity.IdKind WHERE Kind.Name IN (:kindName)")
+    Maybe<List<PlantEntity>> getAllByKindName(int kindName);
 
 
     // INSERT, DELETE and UPDATE
 
     @Insert
-    void insert(Plant... plants);
+    void insert(PlantEntity... plants);
 
     @Insert
-    void insert(List<Plant> plants);
+    void insert(List<PlantEntity> plants);
 
     @Delete
-    void delete(Plant... plants);
+    void delete(PlantEntity... plants);
 
     @Delete
-    void delete(List<Plant> plants);
+    void delete(List<PlantEntity> plants);
 
     @Update
-    void update(Plant... plants);
+    void update(PlantEntity... plants);
 
     @Update
-    void update(List<Plant> plants);
+    void update(List<PlantEntity> plants);
 
 
 }

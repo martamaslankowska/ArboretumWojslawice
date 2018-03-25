@@ -6,8 +6,6 @@ import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.PrimaryKey;
 import io.reactivex.annotations.NonNull;
 
-import java.time.LocalDate;
-
 
 /*
 IMPORTANT - Room must have only one constructor to deal with
@@ -23,9 +21,9 @@ That's why it's good to use @Ignore on other constructors to tell Room not to bo
 */
 
 @Entity(tableName = "Plants", foreignKeys = {
-        @ForeignKey(entity = Kind.class, parentColumns = "IdKind", childColumns = "IdKind"),
-        @ForeignKey(entity = Species.class, parentColumns = "IdSpecies", childColumns = "IdSpecies")})
-public class Plant {
+        @ForeignKey(entity = KindEntity.class, parentColumns = "IdKind", childColumns = "IdKind"),
+        @ForeignKey(entity = SpeciesEntity.class, parentColumns = "IdSpecies", childColumns = "IdSpecies")})
+public class PlantEntity {
 
     @PrimaryKey(autoGenerate = true)
     @NonNull

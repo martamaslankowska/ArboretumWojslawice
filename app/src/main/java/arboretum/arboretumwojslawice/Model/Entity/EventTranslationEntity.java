@@ -11,9 +11,9 @@ import io.reactivex.annotations.NonNull;
  * Created by Komputer on 2018-03-24.
  */
 
-@Entity(tableName = "PriceTranslations",
-        foreignKeys = @ForeignKey(entity = Price.class, parentColumns = "IdPrice", childColumns = "IdPrice"))
-public class PriceTranslation {
+@Entity(tableName = "EventTranslations",
+        foreignKeys = @ForeignKey(entity = EventEntity.class, parentColumns = "IdEvent", childColumns = "IdEvent"))
+public class EventTranslationEntity {
 
     @PrimaryKey
     @NonNull
@@ -22,12 +22,18 @@ public class PriceTranslation {
 
     @PrimaryKey
     @NonNull
-    @ColumnInfo(name = "IdPrice")
-    private int idPrice;
+    @ColumnInfo(name = "IdEvent")
+    private int idEvent;
 
     @ColumnInfo(name = "Type")
-    @NonNull
     private String type;
+
+    @ColumnInfo(name = "Name")
+    @NonNull
+    private String name;
+
+    @ColumnInfo(name = "Description")
+    private String descritpion;
 
 
     public String getTranslationCode() {
@@ -38,12 +44,12 @@ public class PriceTranslation {
         this.translationCode = translationCode;
     }
 
-    public int getIdPrice() {
-        return idPrice;
+    public int getIdEvent() {
+        return idEvent;
     }
 
-    public void setIdPrice(int idPrice) {
-        this.idPrice = idPrice;
+    public void setIdEvent(int idEvent) {
+        this.idEvent = idEvent;
     }
 
     public String getType() {
@@ -52,5 +58,21 @@ public class PriceTranslation {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescritpion() {
+        return descritpion;
+    }
+
+    public void setDescritpion(String descritpion) {
+        this.descritpion = descritpion;
     }
 }

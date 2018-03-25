@@ -8,7 +8,7 @@ import android.arch.persistence.room.Update;
 
 import java.util.List;
 
-import arboretum.arboretumwojslawice.Model.Entity.Restaurant;
+import arboretum.arboretumwojslawice.Model.Entity.RestaurantEntity;
 import io.reactivex.Maybe;
 
 /**
@@ -18,38 +18,38 @@ import io.reactivex.Maybe;
 @Dao
 public interface RestaurantDao {
 
-    @Query("SELECT * FROM Restaurants")
-    Maybe<List<Restaurant>> getAll();
+    @Query("SELECT * FROM RestaurantEntity")
+    Maybe<List<RestaurantEntity>> getAll();
 
-    @Query("SELECT * FROM Restaurants WHERE IdRestaurant IN (:id)")
-    Restaurant getById(int id);
+    @Query("SELECT * FROM RestaurantEntity WHERE IdRestaurant IN (:id)")
+    RestaurantEntity getById(int id);
 
-    @Query("SELECT * FROM Restaurants WHERE Name IN (:name)")
-    Restaurant getByName(String name);
+    @Query("SELECT * FROM RestaurantEntity WHERE Name IN (:name)")
+    RestaurantEntity getByName(String name);
 
-    @Query("SELECT * FROM Restaurants WHERE Rating >= (:rating)")
-    Maybe<List<Restaurant>> getAllBetterThan(double rating);
+    @Query("SELECT * FROM RestaurantEntity WHERE Rating >= (:rating)")
+    Maybe<List<RestaurantEntity>> getAllBetterThan(double rating);
 
 
     // INSERT, DELETE and UPDATE
 
     @Insert
-    void insert(Restaurant... restaurants);
+    void insert(RestaurantEntity... restaurants);
 
     @Insert
-    void insert(List<Restaurant> restaurants);
+    void insert(List<RestaurantEntity> restaurants);
 
     @Delete
-    void delete(Restaurant... restaurants);
+    void delete(RestaurantEntity... restaurants);
 
     @Delete
-    void delete(List<Restaurant> restaurants);
+    void delete(List<RestaurantEntity> restaurants);
 
     @Update
-    void update(Restaurant... restaurants);
+    void update(RestaurantEntity... restaurants);
 
     @Update
-    void update(List<Restaurant> restaurants);
+    void update(List<RestaurantEntity> restaurants);
 
 
 }

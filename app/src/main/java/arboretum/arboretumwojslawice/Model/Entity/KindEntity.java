@@ -11,7 +11,7 @@ import io.reactivex.annotations.NonNull;
  */
 
 @Entity(tableName = "Kinds")
-public class Kind {
+public class KindEntity {
 
     @PrimaryKey(autoGenerate = true)
     @NonNull

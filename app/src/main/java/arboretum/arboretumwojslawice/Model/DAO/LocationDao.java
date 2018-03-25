@@ -8,7 +8,7 @@ import android.arch.persistence.room.Update;
 
 import java.util.List;
 
-import arboretum.arboretumwojslawice.Model.Entity.Location;
+import arboretum.arboretumwojslawice.Model.Entity.LocationEntity;
 import io.reactivex.Maybe;
 
 /**
@@ -19,34 +19,34 @@ import io.reactivex.Maybe;
 public interface LocationDao {
 
     @Query("SELECT * FROM Location")
-    Maybe<List<Location>> getAll();
+    Maybe<List<LocationEntity>> getAll();
 
     @Query("SELECT * FROM Location WHERE IdLocation IN (:id)")
-    Location getByLocationId(int id);
+    LocationEntity getByLocationId(int id);
 
     @Query("SELECT * FROM Location WHERE IdPlant IN (:id)")
-    Maybe<List<Location>> getAllByPlantId(int id);
+    Maybe<List<LocationEntity>> getAllByPlantId(int id);
 
 
     // INSERT, DELETE and UPDATE
 
     @Insert
-    void insert(Location... locations);
+    void insert(LocationEntity... locations);
 
     @Insert
-    void insert(List<Location> locations);
+    void insert(List<LocationEntity> locations);
 
     @Delete
-    void delete(Location... locations);
+    void delete(LocationEntity... locations);
 
     @Delete
-    void delete(List<Location> locations);
+    void delete(List<LocationEntity> locations);
 
     @Update
-    void update(Location... locations);
+    void update(LocationEntity... locations);
 
     @Update
-    void update(List<Location> locations);
+    void update(List<LocationEntity> locations);
 
     
 }

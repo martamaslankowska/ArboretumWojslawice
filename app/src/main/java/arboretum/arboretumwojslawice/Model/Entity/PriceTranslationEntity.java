@@ -11,9 +11,9 @@ import io.reactivex.annotations.NonNull;
  * Created by Komputer on 2018-03-24.
  */
 
-@Entity(tableName = "KindsTranslations",
-        foreignKeys = @ForeignKey(entity = Kind.class, parentColumns = "IdKind", childColumns = "IdKind"))
-public class KindTranslation {
+@Entity(tableName = "PriceTranslations",
+        foreignKeys = @ForeignKey(entity = PriceEntity.class, parentColumns = "IdPrice", childColumns = "IdPrice"))
+public class PriceTranslationEntity {
 
     @PrimaryKey
     @NonNull
@@ -22,12 +22,12 @@ public class KindTranslation {
 
     @PrimaryKey
     @NonNull
-    @ColumnInfo(name = "IdKind")
-    private int idKind;
+    @ColumnInfo(name = "IdPrice")
+    private int idPrice;
 
-    @ColumnInfo(name = "Name")
+    @ColumnInfo(name = "Type")
     @NonNull
-    private String name;
+    private String type;
 
 
     public String getTranslationCode() {
@@ -38,19 +38,19 @@ public class KindTranslation {
         this.translationCode = translationCode;
     }
 
-    public int getIdKind() {
-        return idKind;
+    public int getIdPrice() {
+        return idPrice;
     }
 
-    public void setIdKind(int idKind) {
-        this.idKind = idKind;
+    public void setIdPrice(int idPrice) {
+        this.idPrice = idPrice;
     }
 
-    public String getName() {
-        return name;
+    public String getType() {
+        return type;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setType(String type) {
+        this.type = type;
     }
 }

@@ -14,7 +14,7 @@ import io.reactivex.annotations.NonNull;
  */
 
 @Entity(tableName = "Events")
-public class Event {
+public class EventEntity {
 
     @PrimaryKey(autoGenerate = true)
     @NonNull

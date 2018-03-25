@@ -13,7 +13,7 @@ import java.time.Duration;
 
 
 @Entity(tableName = "Routes")
-public class Route {
+public class RouteEntity {
 
     @PrimaryKey(autoGenerate = true)
     @NonNull

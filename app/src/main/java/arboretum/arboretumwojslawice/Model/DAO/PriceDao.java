@@ -8,7 +8,7 @@ import android.arch.persistence.room.Update;
 
 import java.util.List;
 
-import arboretum.arboretumwojslawice.Model.Entity.Price;
+import arboretum.arboretumwojslawice.Model.Entity.PriceEntity;
 import io.reactivex.Maybe;
 
 /**
@@ -18,35 +18,35 @@ import io.reactivex.Maybe;
 @Dao
 public interface PriceDao {
 
-    @Query("SELECT * FROM Prices")
-    Maybe<List<Price>> getAll();
+    @Query("SELECT * FROM PriceEntity")
+    Maybe<List<PriceEntity>> getAll();
 
-    @Query("SELECT * FROM Prices WHERE IdPrice IN (:id)")
-    Price getById(int id);
+    @Query("SELECT * FROM PriceEntity WHERE IdPrice IN (:id)")
+    PriceEntity getById(int id);
 
-    @Query("SELECT * FROM Prices WHERE Type IN (:type)")
-    Maybe<List<Price>> getByType(String type);
+    @Query("SELECT * FROM PriceEntity WHERE Type IN (:type)")
+    Maybe<List<PriceEntity>> getByType(String type);
 
 
     // INSERT, DELETE and UPDATE
 
     @Insert
-    void insert(Price... prices);
+    void insert(PriceEntity... prices);
 
     @Insert
-    void insert(List<Price> prices);
+    void insert(List<PriceEntity> prices);
 
     @Delete
-    void delete(Price... prices);
+    void delete(PriceEntity... prices);
 
     @Delete
-    void delete(List<Price> prices);
+    void delete(List<PriceEntity> prices);
 
     @Update
-    void update(Price... prices);
+    void update(PriceEntity... prices);
 
     @Update
-    void update(List<Price> prices);
+    void update(List<PriceEntity> prices);
 
 
 }

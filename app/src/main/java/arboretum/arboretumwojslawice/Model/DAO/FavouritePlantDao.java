@@ -8,8 +8,8 @@ import android.arch.persistence.room.Update;
 
 import java.util.List;
 
-import arboretum.arboretumwojslawice.Model.Entity.FavouritePlant;
-import arboretum.arboretumwojslawice.Model.Entity.Plant;
+import arboretum.arboretumwojslawice.Model.Entity.FavouritePlantEntity;
+import arboretum.arboretumwojslawice.Model.Entity.PlantEntity;
 import io.reactivex.Maybe;
 
 /**
@@ -20,32 +20,32 @@ import io.reactivex.Maybe;
 @Dao
 public interface FavouritePlantDao {
 
-    @Query("SELECT * FROM FavouritePlants")
-    Maybe<List<FavouritePlant>> getAll();
+    @Query("SELECT * FROM FavouritePlantEntity")
+    Maybe<List<FavouritePlantEntity>> getAll();
 
     @Query("SELECT Plant.IdPlant, Name, IdSpecies, IdKind, Image, SeasonBegin, SeasonEnd " +
-            "FROM Plants INNER JOIN FavouritePlants ON Plants.IdPlant = FavouritePlants.IdPlant WHERE FavouritePlants.IdPlant IN (:id)")
-    Maybe<List<Plant>> getById(int id);
+            "FROM PlantEntity INNER JOIN FavouritePlantEntity ON PlantEntity.IdPlant = FavouritePlantEntity.IdPlant WHERE FavouritePlantEntity.IdPlant IN (:id)")
+    Maybe<List<PlantEntity>> getById(int id);
 
 
     // INSERT, DELETE and UPDATE
 
     @Insert
-    void insert(FavouritePlant... favouritePlants);
+    void insert(FavouritePlantEntity... favouritePlants);
 
     @Insert
-    void insert(List<FavouritePlant> favouritePlants);
+    void insert(List<FavouritePlantEntity> favouritePlants);
 
     @Delete
-    void delete(FavouritePlant... favouritePlants);
+    void delete(FavouritePlantEntity... favouritePlants);
 
     @Delete
-    void delete(List<FavouritePlant> favouritePlants);
+    void delete(List<FavouritePlantEntity> favouritePlants);
 
     @Update
-    void update(FavouritePlant... favouritePlants);
+    void update(FavouritePlantEntity... favouritePlants);
 
     @Update
-    void update(List<FavouritePlant> favouritePlants);
+    void update(List<FavouritePlantEntity> favouritePlants);
     
 }

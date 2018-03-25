@@ -6,10 +6,9 @@ import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
 
-import java.time.LocalDate;
 import java.util.List;
 
-import arboretum.arboretumwojslawice.Model.Entity.Event;
+import arboretum.arboretumwojslawice.Model.Entity.EventEntity;
 import io.reactivex.Maybe;
 
 /**
@@ -20,34 +19,34 @@ import io.reactivex.Maybe;
 @Dao
 public interface EventDao {
 
-    @Query("SELECT * FROM Events")
-    Maybe<List<Event>> getAll();
+    @Query("SELECT * FROM EventEntity")
+    Maybe<List<EventEntity>> getAll();
 
-    @Query("SELECT * FROM Events WHERE IdEvent IN (:id)")
-    Event getById(int id);
+    @Query("SELECT * FROM EventEntity WHERE IdEvent IN (:id)")
+    EventEntity getById(int id);
 
-    @Query("SELECT * FROM Events WHERE DateBegin IN (:dateBegin)")
-    Maybe<List<Event>> getByDateBegin(int dateBegin);
+    @Query("SELECT * FROM EventEntity WHERE DateBegin IN (:dateBegin)")
+    Maybe<List<EventEntity>> getByDateBegin(int dateBegin);
 
 
     // INSERT, DELETE and UPDATE
 
     @Insert
-    void insert(Event... events);
+    void insert(EventEntity... events);
 
     @Insert
-    void insert(List<Event> events);
+    void insert(List<EventEntity> events);
 
     @Delete
-    void delete(Event... events);
+    void delete(EventEntity... events);
 
     @Delete
-    void delete(List<Event> events);
+    void delete(List<EventEntity> events);
 
     @Update
-    void update(Event... events);
+    void update(EventEntity... events);
 
     @Update
-    void update(List<Event> events);
+    void update(List<EventEntity> events);
 
 }
