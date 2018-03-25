@@ -9,6 +9,7 @@ import android.arch.persistence.room.Update;
 import java.util.List;
 
 import arboretum.arboretumwojslawice.Model.Entity.AttractionEntity;
+import arboretum.arboretumwojslawice.Model.businessentity.Attraction;
 import io.reactivex.Maybe;
 
 /**
@@ -16,37 +17,16 @@ import io.reactivex.Maybe;
  */
 
 @Dao
-public interface AttractionDao {
+abstract class AttractionDao implements BaseDao<AttractionEntity> {
 
-    @Query("SELECT * FROM AttractionEntity")
-    Maybe<List<AttractionEntity>> getAll();
+    @Query("SELECT * FROM Attractions")
+    abstract Maybe<List<Attraction>> getAll();
 
-    @Query("SELECT * FROM AttractionEntity WHERE IdAttraction IN (:id)")
-    AttractionEntity getById(int id);
+    @Query("SELECT * FROM Attractions WHERE IdAttraction IN (:id)")
+    abstract Attraction getById(int id);
 
-    @Query("SELECT * FROM AttractionEntity WHERE Name IN (:name) LIMIT 1")
-    AttractionEntity getByName(String Name);
-
-
-    // INSERT, DELETE and UPDATE
-
-    @Insert
-    void insert(AttractionEntity... attractions);
-
-    @Insert
-    void insert(List<AttractionEntity> attractions);
-
-    @Delete
-    void delete(AttractionEntity... attractions);
-
-    @Delete
-    void delete(List<AttractionEntity> attractions);
-
-    @Update
-    void update(AttractionEntity... attractions);
-
-    @Update
-    void update(List<AttractionEntity> attractions);
+    @Query("SELECT * FROM Attractions WHERE Name IN (:name) LIMIT 1")
+    abstract AttractionEntity getByName(String Name);
 
 
 }

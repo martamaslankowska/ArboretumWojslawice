@@ -8,6 +8,7 @@ import android.arch.persistence.room.Update;
 
 import java.util.List;
 
+import arboretum.arboretumwojslawice.Model.Entity.AttractionEntity;
 import arboretum.arboretumwojslawice.Model.Entity.EventEntity;
 import io.reactivex.Maybe;
 
@@ -17,36 +18,16 @@ import io.reactivex.Maybe;
 
 
 @Dao
-public interface EventDao {
+abstract class EventDao implements BaseDao<EventEntity>  {
 
     @Query("SELECT * FROM EventEntity")
-    Maybe<List<EventEntity>> getAll();
+    abstract Maybe<List<EventEntity>> getAll();
 
     @Query("SELECT * FROM EventEntity WHERE IdEvent IN (:id)")
-    EventEntity getById(int id);
+    abstract EventEntity getById(int id);
 
     @Query("SELECT * FROM EventEntity WHERE DateBegin IN (:dateBegin)")
-    Maybe<List<EventEntity>> getByDateBegin(int dateBegin);
+    abstract Maybe<List<EventEntity>> getByDateBegin(int dateBegin);
 
-
-    // INSERT, DELETE and UPDATE
-
-    @Insert
-    void insert(EventEntity... events);
-
-    @Insert
-    void insert(List<EventEntity> events);
-
-    @Delete
-    void delete(EventEntity... events);
-
-    @Delete
-    void delete(List<EventEntity> events);
-
-    @Update
-    void update(EventEntity... events);
-
-    @Update
-    void update(List<EventEntity> events);
 
 }

@@ -28,24 +28,5 @@ public interface FavouritePlantDao {
     Maybe<List<PlantEntity>> getById(int id);
 
 
-    // INSERT, DELETE and UPDATE
-
-    @Insert
-    void insert(FavouritePlantEntity... favouritePlants);
-
-    @Insert
-    void insert(List<FavouritePlantEntity> favouritePlants);
-
-    @Delete
-    void delete(FavouritePlantEntity... favouritePlants);
-
-    @Delete
-    void delete(List<FavouritePlantEntity> favouritePlants);
-
-    @Update
-    void update(FavouritePlantEntity... favouritePlants);
-
-    @Update
-    void update(List<FavouritePlantEntity> favouritePlants);
     
 }
