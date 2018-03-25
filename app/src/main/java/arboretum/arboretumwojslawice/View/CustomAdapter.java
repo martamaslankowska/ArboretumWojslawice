@@ -8,7 +8,10 @@ import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +25,7 @@ import arboretum.arboretumwojslawice.databinding.RouteRowBinding;
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
 
     private List<Route> mRoutes = new ArrayList<>();
+    AdapterView.OnItemClickListener mItemClickListener;
 
     public CustomAdapter(){
 
@@ -57,6 +61,16 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
             mBinding.setRoute(route);
             mBinding.executePendingBindings();
         }
+    }
+
+    public interface OnItemClickListener
+    {
+        public void onItemClick(View view, int position, String id);
+    }
+
+    public void SetOnItemClickListener(OnItemClickListener mItemClickListener)
+    {
+        this.mItemClickListener = (AdapterView.OnItemClickListener) mItemClickListener;
     }
 
     void setData(List<Route> route) {

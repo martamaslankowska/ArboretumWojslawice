@@ -16,16 +16,23 @@
         android:paddingTop="5dp"
         android:paddingBottom="5dp">
 
+        <!--<TextView-->
+            <!--android:id="@+id/route_id"-->
+            <!--android:textSize="16dp"-->
+            <!--android:layout_alignParentTop="true"-->
+            <!--android:layout_width="20dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="@{route.getIdRoute()}"/>-->
 
         <TextView
             android:id="@+id/route_name"
             android:textSize="16dp"
             android:textStyle="bold"
-            android:layout_alignParentTop="true"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@{route.getName()}"/>
-
+        <!--android:layout_toRightOf="@id/route_id"-->
         <TextView
             android:id="@+id/route_description"
             android:layout_below="@id/route_name"

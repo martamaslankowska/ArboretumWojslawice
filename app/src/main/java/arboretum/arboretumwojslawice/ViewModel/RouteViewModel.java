@@ -19,7 +19,7 @@ public class RouteViewModel {
     public List<Route> getData() {
         mRoutes = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
-            mRoutes.add(new Route("Trasa " + i, "Opis " + i));
+            mRoutes.add(new Route(i, "Trasa " + i, "Opis " + i));
         }
         return mRoutes;
     }

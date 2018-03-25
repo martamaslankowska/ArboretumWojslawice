@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout>
+    <data>
+        <variable
+            name="route"
+            type="arboretum.arboretumwojslawice.Model.Entity.Route"/>
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="arboretum.arboretumwojslawice.View.RouteDetail">
+
+        <TextView
+            android:id="@+id/route_detail_id"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:text="1"/>
+        <!--@{route.getIdRoute}-->
+
+        <TextView
+            android:id="@+id/route_detail_name"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:layout_toRightOf="@id/route_detail_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tytuł"/>
+        <!--@{route.getName()}-->
+
+        <TextView
+            android:id="@+id/route_detail_description"
+            android:layout_below="@id/route_detail_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Opis"/>
+        <!--@{route.getDescription()}-->
+
+    </RelativeLayout>
+</layout>

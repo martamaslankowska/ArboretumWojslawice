@@ -2,6 +2,9 @@ package arboretum.arboretumwojslawice.Model.Entity;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
+import android.os.Parcelable;
+
+import org.parceler.Parcel;
 
 import io.reactivex.annotations.NonNull;
 
@@ -13,7 +16,8 @@ import java.time.Duration;
 
 
 @Entity(tableName = "Routes")
-public class Route {
+@Parcel
+public class Route{
 
     @PrimaryKey(autoGenerate = true)
     @NonNull
@@ -38,9 +42,15 @@ public class Route {
     @ColumnInfo(name = "MapImage")
     private int mapImage;
 
-    public Route(String name, String desc) {
-       this.name = name;
-       this.description = desc;
+    public Route(int id, String name, String desc) {
+        this.idRoute = id;
+        this.name = name;
+        this.description = desc;
+    }
+
+    public Route()
+    {
+
     }
 
     public int getIdRoute() {

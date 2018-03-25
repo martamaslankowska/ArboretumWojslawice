@@ -45,4 +45,8 @@ dependencies {
 
     // ViewModel
     implementation "android.arch.lifecycle:viewmodel:1.1.1"
+
+    // Parcel
+    compile 'org.parceler:parceler-api:1.1.10'
+    annotationProcessor 'org.parceler:parceler:1.1.10'
 }
