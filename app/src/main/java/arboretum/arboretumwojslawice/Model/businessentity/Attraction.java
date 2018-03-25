@@ -17,6 +17,13 @@ public class Attraction {
     private int image;
 
 
+    public Attraction(int idAttraction, String name, String description, int image) {
+        this.idAttraction = idAttraction;
+        this.name = name;
+        this.description = description;
+        this.image = image;
+    }
+
     public int getIdAttraction() {
         return idAttraction;
     }
@@ -47,5 +54,11 @@ public class Attraction {
 
     public void setImage(int image) {
         this.image = image;
+    }
+
+
+    @Override
+    public String toString() {
+        return "(id = " + idAttraction + ") " + name + " --> " + description.substring(0, 20) + "...";
     }
 }

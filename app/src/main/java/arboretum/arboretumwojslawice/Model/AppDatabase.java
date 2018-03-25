@@ -22,12 +22,12 @@ public abstract class AppDatabase extends RoomDatabase {
     private static AppDatabase INSTANCE;
 
 
-    public abstract PlantDao getPlantDao();
-    public abstract FavouritePlantDao getFavouritePlantDao();
-    public abstract KindDao getKindDao();
-    public abstract LocationDao getLocationDao();
-    public abstract RoutePointDao getRoutePointDao();
-    public abstract RouteDao getRouteDao();
+//    public abstract PlantDao getPlantDao();
+//    public abstract FavouritePlantDao getFavouritePlantDao();
+//    public abstract KindDao getKindDao();
+//    public abstract LocationDao getLocationDao();
+//    public abstract RoutePointDao getRoutePointDao();
+//    public abstract RouteDao getRouteDao();
 //
 //    /* Some copied code from https://medium.com/@ajaysaini.official/building-database-with-room-persistence-library-ecf7d0b8f3e9
 //     * Here's also an different example: https://medium.com/@alahammad/database-with-room-using-rxjava-764ee6124974
