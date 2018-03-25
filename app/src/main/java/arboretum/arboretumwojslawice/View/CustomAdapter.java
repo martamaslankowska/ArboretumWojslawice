@@ -27,15 +27,17 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
     private List<Route> mRoutes = new ArrayList<>();
     AdapterView.OnItemClickListener mItemClickListener;
 
-    public CustomAdapter(){
+    OnItemClickListener listener;
 
+    public CustomAdapter(OnItemClickListener listener){
+        this.listener =  listener;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         RouteRowBinding binding = DataBindingUtil.inflate(inflater, R.layout.route_row, parent, false);
-        return new ViewHolder(binding);
+        return new ViewHolder(binding, listener);
     }
 
     @Override
@@ -52,9 +54,11 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         private RouteRowBinding mBinding;
-        public ViewHolder(RouteRowBinding binding) {
+
+        public ViewHolder(RouteRowBinding binding, final OnItemClickListener listener) {
             super(binding.getRoot());
             mBinding = binding;
+            itemView.setOnClickListener(__ -> listener.onItemClick(getAdapterPosition()));
         }
 
         public void bind(@NonNull Route route) {
@@ -65,7 +69,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 
     public interface OnItemClickListener
     {
-        public void onItemClick(View view, int position, String id);
+        public void onItemClick(int position);
     }
 
     public void SetOnItemClickListener(OnItemClickListener mItemClickListener)

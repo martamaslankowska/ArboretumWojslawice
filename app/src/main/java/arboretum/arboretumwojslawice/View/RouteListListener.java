@@ -13,9 +13,9 @@ import android.view.View;
 public class RouteListListener implements RecyclerView.OnItemTouchListener{
 
     private GestureDetector gestureDetector;
-    private ClickListener clickListener;
+    private CustomAdapter.OnItemClickListener clickListener;
 
-    public RouteListListener(Context context, final RecyclerView recyclerView, final ClickListener clickListener) {
+    public RouteListListener(Context context, final RecyclerView recyclerView, final CustomAdapter.OnItemClickListener clickListener) {
 
         this.clickListener = clickListener;
         gestureDetector = new GestureDetector(context, new GestureDetector.SimpleOnGestureListener()
@@ -24,8 +24,6 @@ public class RouteListListener implements RecyclerView.OnItemTouchListener{
             public boolean onSingleTapUp(MotionEvent e) {
                 return true;
             }
-
-
 
 //            @Override
 //            public void onLongPress(MotionEvent e)
@@ -46,7 +44,7 @@ public class RouteListListener implements RecyclerView.OnItemTouchListener{
         View child = rv.findChildViewUnder(e.getX(), e.getY());
         if (child != null && clickListener != null)
         {
-            clickListener.onClick(child, rv.getChildAdapterPosition(child));
+            clickListener.onItemClick(rv.getChildAdapterPosition(child));
         }
         return false;
     }
@@ -59,12 +57,5 @@ public class RouteListListener implements RecyclerView.OnItemTouchListener{
     @Override
     public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
 
-    }
-
-    public interface ClickListener
-    {
-        void onClick(View view, int route_id);
-
-        void onLongClick(View view, int route_id);
     }
 }

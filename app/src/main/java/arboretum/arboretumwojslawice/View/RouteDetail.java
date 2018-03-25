@@ -2,6 +2,7 @@ package arboretum.arboretumwojslawice.View;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -29,14 +30,12 @@ public class RouteDetail extends AppCompatActivity {
         Intent intent = getIntent();
         bundle = intent.getBundleExtra("BUNDLE");
         route_id = bundle.getInt("ROUTE_ID");
-        //mRoutes = Parcels.unwrap((Parcelable) bundle.getParcelableArrayList("M_LIST"));
+        mRoutes = Parcels.unwrap(bundle.getParcelable("M_LIST"));
 
         ActivityRouteDetailBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_route_detail);
         Log.i("mRoutes", String.valueOf(route_id));
-
-
-        //Route route = (Route) mRoutes.get(route_id);
-        //binding.setRoute(route);
+        Route route = (Route) mRoutes.get(route_id);
+        binding.setRoute(route);
     }
 
 

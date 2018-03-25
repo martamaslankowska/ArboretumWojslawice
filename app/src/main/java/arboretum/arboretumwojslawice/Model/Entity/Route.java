@@ -5,10 +5,15 @@ import android.arch.persistence.room.PrimaryKey;
 import android.os.Parcelable;
 
 import org.parceler.Parcel;
+import org.parceler.ParcelConverter;
+import org.parceler.ParcelPropertyConverter;
 
+import arboretum.arboretumwojslawice.Commons.CustomParcelConverter;
 import io.reactivex.annotations.NonNull;
 
 import java.time.Duration;
+import java.time.LocalTime;
+import java.util.Date;
 
 /**
  * Created by Komputer on 2018-03-23.
@@ -18,7 +23,6 @@ import java.time.Duration;
 @Entity(tableName = "Routes")
 @Parcel
 public class Route{
-
     @PrimaryKey(autoGenerate = true)
     @NonNull
     @ColumnInfo(name = "IdRoute")
@@ -34,7 +38,7 @@ public class Route{
 
     @ColumnInfo(name = "Time")
     @NonNull
-    private Duration time;
+    private int time;
 
     @ColumnInfo(name = "Description")
     private String description;
@@ -57,6 +61,8 @@ public class Route{
         return idRoute;
     }
 
+    public String getStringId() { return String.valueOf(idRoute);}
+
     public void setIdRoute(int idRoute) {
         this.idRoute = idRoute;
     }
@@ -77,11 +83,11 @@ public class Route{
         this.length = length;
     }
 
-    public Duration getTime() {
+    public int getTime() {
         return time;
     }
 
-    public void setTime(Duration time) {
+    public void setTime(int time) {
         this.time = time;
     }
 

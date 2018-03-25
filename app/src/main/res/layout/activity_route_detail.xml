@@ -18,8 +18,7 @@
             android:id="@+id/route_detail_id"
             android:layout_width="20dp"
             android:layout_height="wrap_content"
-            android:text="1"/>
-        <!--@{route.getIdRoute}-->
+            android:text="@{route.getStringId()}"/>
 
         <TextView
             android:id="@+id/route_detail_name"
@@ -28,16 +27,14 @@
             android:layout_toRightOf="@id/route_detail_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Tytuł"/>
-        <!--@{route.getName()}-->
+            android:text="@{route.getName()}"/>
 
         <TextView
             android:id="@+id/route_detail_description"
             android:layout_below="@id/route_detail_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Opis"/>
-        <!--@{route.getDescription()}-->
+            android:text="@{route.getDescription()}"/>
 
     </RelativeLayout>
 </layout>

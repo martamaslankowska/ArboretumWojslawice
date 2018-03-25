@@ -12,7 +12,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 
+import org.parceler.ParcelConverter;
 import org.parceler.Parcels;
 
 import java.io.Serializable;
@@ -28,12 +30,23 @@ import arboretum.arboretumwojslawice.ViewModel.RouteViewModel;
  */
 
 @SuppressLint("ValidFragment")
-public class RouteFragment extends Fragment{
+public class RouteFragment extends Fragment implements ParcelConverter<List<Route>> {
 
     private static final String KEY_LAYOUT_MANAGER = "route_fragment";
     private static final int SPAN_COUNT = 2;
 
     RouteViewModel routeViewModel;
+    CustomAdapter.OnItemClickListener listener;
+
+    @Override
+    public void toParcel(List<Route> input, Parcel parcel) {
+
+    }
+
+    @Override
+    public List<Route> fromParcel(Parcel parcel) {
+        return null;
+    }
 
 
     private enum LayoutManagerType {
@@ -51,8 +64,6 @@ public class RouteFragment extends Fragment{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
     }
 
     @Override
@@ -63,11 +74,24 @@ public class RouteFragment extends Fragment{
 
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.route_recycler_view);
         routeViewModel = new RouteViewModel();
+        mRoutes = routeViewModel.getData();
 
-        mAdapter = new CustomAdapter();
+        listener = new CustomAdapter.OnItemClickListener() {
+            public void onItemClick(int route_id) {
+                Intent intent = new Intent(getActivity().getApplicationContext(), RouteDetail.class);
+                Bundle bundle = new Bundle();
+                bundle.putInt("ROUTE_ID", route_id);
+
+                bundle.putParcelable("M_LIST", Parcels.wrap(mRoutes));
+                intent.putExtra("BUNDLE", bundle);
+                getActivity().startActivityForResult(intent, 123);
+            }
+        };
+
+        mAdapter = new CustomAdapter(listener);
         mRecyclerView.setAdapter(mAdapter);
         mAdapter.setData(routeViewModel.getData());
-        mRoutes = routeViewModel.getData();
+
 
         mLayoutManager = new LinearLayoutManager(getActivity());
         mCurrentLayoutManagerType = LayoutManagerType.LINEAR_LAYOUT_MANAGER;
@@ -79,23 +103,9 @@ public class RouteFragment extends Fragment{
         }
         setRecyclerViewLayoutManager(mCurrentLayoutManagerType);
 
-        mRecyclerView.addOnItemTouchListener(new RouteListListener(getContext(), mRecyclerView, new RouteListListener.ClickListener() {
-            @Override
-            public void onClick(View view, int route_id) {
-                Intent intent = new Intent(getActivity().getApplicationContext(), RouteDetail.class);
-                Bundle bundle = new Bundle();
-                bundle.putInt("ROUTE_ID", route_id);
+        //mRecyclerView.addOnItemTouchListener(new RouteListListener(getContext(), mRecyclerView, listener));
 
-                //bundle.putParcelable("M_LIST", Parcels.wrap(mRoutes));
-                intent.putExtra("BUNDLE", bundle);
-                getActivity().startActivityForResult(intent, 123);
-            }
 
-            @Override
-            public void onLongClick(View view, int position) {
-
-            }
-        }));
 
         return rootView;
     }
