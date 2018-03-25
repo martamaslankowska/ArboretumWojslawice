@@ -16,37 +16,16 @@ import io.reactivex.Maybe;
  */
 
 @Dao
-public interface LocationDao {
+abstract class LocationDao implements BaseDao<LocationEntity> {
 
     @Query("SELECT * FROM Location")
-    Maybe<List<LocationEntity>> getAll();
+    abstract Maybe<List<LocationEntity>> getAll();
 
     @Query("SELECT * FROM Location WHERE IdLocation IN (:id)")
-    LocationEntity getByLocationId(int id);
+    abstract LocationEntity getByLocationId(int id);
 
     @Query("SELECT * FROM Location WHERE IdPlant IN (:id)")
-    Maybe<List<LocationEntity>> getAllByPlantId(int id);
-
-
-    // INSERT, DELETE and UPDATE
-
-    @Insert
-    void insert(LocationEntity... locations);
-
-    @Insert
-    void insert(List<LocationEntity> locations);
-
-    @Delete
-    void delete(LocationEntity... locations);
-
-    @Delete
-    void delete(List<LocationEntity> locations);
-
-    @Update
-    void update(LocationEntity... locations);
-
-    @Update
-    void update(List<LocationEntity> locations);
+    abstract Maybe<List<LocationEntity>> getAllByPlantId(int id);
 
     
 }

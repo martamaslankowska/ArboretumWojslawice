@@ -9,6 +9,7 @@ import android.arch.persistence.room.Update;
 import java.util.List;
 
 import arboretum.arboretumwojslawice.Model.Entity.RestaurantEntity;
+import arboretum.arboretumwojslawice.Model.Entity.RestaurantEntity;
 import io.reactivex.Maybe;
 
 /**
@@ -16,40 +17,19 @@ import io.reactivex.Maybe;
  */
 
 @Dao
-public interface RestaurantDao {
+abstract class RestaurantDao implements BaseDao<RestaurantEntity> {
 
     @Query("SELECT * FROM RestaurantEntity")
-    Maybe<List<RestaurantEntity>> getAll();
+    abstract Maybe<List<RestaurantEntity>> getAll();
 
     @Query("SELECT * FROM RestaurantEntity WHERE IdRestaurant IN (:id)")
-    RestaurantEntity getById(int id);
+    abstract RestaurantEntity getById(int id);
 
     @Query("SELECT * FROM RestaurantEntity WHERE Name IN (:name)")
-    RestaurantEntity getByName(String name);
+    abstract RestaurantEntity getByName(String name);
 
     @Query("SELECT * FROM RestaurantEntity WHERE Rating >= (:rating)")
-    Maybe<List<RestaurantEntity>> getAllBetterThan(double rating);
-
-
-    // INSERT, DELETE and UPDATE
-
-    @Insert
-    void insert(RestaurantEntity... restaurants);
-
-    @Insert
-    void insert(List<RestaurantEntity> restaurants);
-
-    @Delete
-    void delete(RestaurantEntity... restaurants);
-
-    @Delete
-    void delete(List<RestaurantEntity> restaurants);
-
-    @Update
-    void update(RestaurantEntity... restaurants);
-
-    @Update
-    void update(List<RestaurantEntity> restaurants);
+    abstract Maybe<List<RestaurantEntity>> getAllBetterThan(double rating);
 
 
 }

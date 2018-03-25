@@ -18,7 +18,7 @@ import io.reactivex.Maybe;
 
 
 @Dao
-abstract class EventDao implements BaseDao<EventEntity>  {
+abstract class EventDao implements BaseDao<EventEntity> {
 
     @Query("SELECT * FROM EventEntity")
     abstract Maybe<List<EventEntity>> getAll();

@@ -1,10 +1,7 @@
 package arboretum.arboretumwojslawice.Model.DAO;
 
 import android.arch.persistence.room.Dao;
-import android.arch.persistence.room.Delete;
-import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
-import android.arch.persistence.room.Update;
 
 import java.util.List;
 
@@ -16,36 +13,17 @@ import io.reactivex.Maybe;
  */
 
 @Dao
-public interface RoutePointDao {
+abstract class RoutePointDao implements BaseDao<RoutePointEntity> {
 
     @Query("SELECT * FROM RoutePointEntity")
-    Maybe<List<RoutePointEntity>> getAll();
+    abstract Maybe<List<RoutePointEntity>> getAll();
 
     @Query("SELECT * FROM RoutePointEntity WHERE IdRoute IN (:idRoute) AND idLocations IN (:idLocation)")
-    RoutePointEntity getByIds(int idRoute, int idLocation);
+    abstract RoutePointEntity getByIds(int idRoute, int idLocation);
 
     @Query("SELECT * FROM RoutePointEntity WHERE IdRoute IN (:idRoute)")
-    Maybe<List<RoutePointEntity>> getByRouteId(int idRoute);
+    abstract Maybe<List<RoutePointEntity>> getByRouteId(int idRoute);
 
 
-    // INSERT, DELETE and UPDATE
-
-    @Insert
-    void insert(RoutePointEntity... routePoints);
-
-    @Insert
-    void insert(List<RoutePointEntity> routePoints);
-
-    @Delete
-    void delete(RoutePointEntity... routePoints);
-
-    @Delete
-    void delete(List<RoutePointEntity> routePoints);
-
-    @Update
-    void update(RoutePointEntity... routePoints);
-
-    @Update
-    void update(List<RoutePointEntity> routePoints);
 
 }

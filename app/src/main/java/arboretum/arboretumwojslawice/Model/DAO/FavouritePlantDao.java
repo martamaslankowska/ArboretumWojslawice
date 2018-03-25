@@ -18,15 +18,13 @@ import io.reactivex.Maybe;
 
 
 @Dao
-public interface FavouritePlantDao {
-
+abstract class FavouritePlantDao implements BaseDao<FavouritePlantEntity> {
+    
     @Query("SELECT * FROM FavouritePlantEntity")
-    Maybe<List<FavouritePlantEntity>> getAll();
+    abstract Maybe<List<FavouritePlantEntity>> getAll();
 
     @Query("SELECT Plant.IdPlant, Name, IdSpecies, IdKind, Image, SeasonBegin, SeasonEnd " +
             "FROM PlantEntity INNER JOIN FavouritePlantEntity ON PlantEntity.IdPlant = FavouritePlantEntity.IdPlant WHERE FavouritePlantEntity.IdPlant IN (:id)")
-    Maybe<List<PlantEntity>> getById(int id);
+    abstract Maybe<List<PlantEntity>> getById(int id);
 
-
-    
 }

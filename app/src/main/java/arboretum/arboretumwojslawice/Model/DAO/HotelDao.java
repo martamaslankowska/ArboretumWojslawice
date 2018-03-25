@@ -9,6 +9,7 @@ import android.arch.persistence.room.Update;
 import java.util.List;
 
 import arboretum.arboretumwojslawice.Model.Entity.HotelEntity;
+import arboretum.arboretumwojslawice.Model.Entity.HotelEntity;
 import io.reactivex.Maybe;
 
 /**
@@ -16,40 +17,20 @@ import io.reactivex.Maybe;
  */
 
 @Dao
-public interface HotelDao {
+abstract class HotelDao implements BaseDao<HotelEntity> {
 
     @Query("SELECT * FROM HotelEntity")
-    Maybe<List<HotelEntity>> getAll();
+    abstract Maybe<List<HotelEntity>> getAll();
 
     @Query("SELECT * FROM HotelEntity WHERE IdHotel IN (:id)")
-    HotelEntity getById(int id);
+    abstract HotelEntity getById(int id);
 
     @Query("SELECT * FROM HotelEntity WHERE Name IN (:name)")
-    HotelEntity getByName(String name);
+    abstract HotelEntity getByName(String name);
 
     @Query("SELECT * FROM HotelEntity WHERE Rating >= (:rating)")
-    Maybe<List<HotelEntity>> getAllBetterThan(double rating);
+    abstract Maybe<List<HotelEntity>> getAllBetterThan(double rating);
 
-
-    // INSERT, DELETE and UPDATE
-
-    @Insert
-    void insert(HotelEntity... hotels);
-
-    @Insert
-    void insert(List<HotelEntity> hotels);
-
-    @Delete
-    void delete(HotelEntity... hotels);
-
-    @Delete
-    void delete(List<HotelEntity> hotels);
-
-    @Update
-    void update(HotelEntity... hotels);
-
-    @Update
-    void update(List<HotelEntity> hotels);
 
 
 }
