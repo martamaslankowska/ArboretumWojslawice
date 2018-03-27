@@ -14,7 +14,7 @@ import io.reactivex.Maybe;
  */
 
 @Dao
-abstract class AttractionDao implements BaseDao<AttractionEntity> {
+public abstract class AttractionDao implements BaseDao<AttractionEntity> {
 
     @Query("SELECT Attractions.IdAttraction, Name, Description, Image " +
             "FROM Attractions INNER JOIN AttractionsTranslations ON Attractions.IdAttraction = AttractionsTranslations.IdAttraction")

@@ -12,15 +12,14 @@ import io.reactivex.annotations.NonNull;
  */
 
 @Entity(tableName = "PlantsTranslations",
-        foreignKeys = @ForeignKey(entity = PlantEntity.class, parentColumns = "IdPlant", childColumns = "IdPlant"))
+        foreignKeys = @ForeignKey(entity = PlantEntity.class, parentColumns = "IdPlant", childColumns = "IdPlant"),
+        primaryKeys = {"TranslationCode", "IdPlant"})
 public class PlantTranslationEntity {
 
-    @PrimaryKey
     @NonNull
     @ColumnInfo(name = "TranslationCode")
     private String translationCode;
 
-    @PrimaryKey
     @NonNull
     @ColumnInfo(name = "IdPlant")
     private int idPlant;

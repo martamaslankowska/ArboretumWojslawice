@@ -1,9 +1,12 @@
 package arboretum.arboretumwojslawice.Model.DAO;
 
+import android.arch.persistence.room.Dao;
+
 import arboretum.arboretumwojslawice.Model.Entity.PriceTranslationEntity;
 
 /**
  * Created by Komputer on 2018-03-26.
  */
 
-abstract class PriceTranslationDao  implements BaseDao<PriceTranslationEntity> {}
+@Dao
+public abstract class PriceTranslationDao  implements BaseDao<PriceTranslationEntity> {}

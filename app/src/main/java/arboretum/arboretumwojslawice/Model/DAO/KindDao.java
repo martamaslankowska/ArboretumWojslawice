@@ -10,4 +10,4 @@ import arboretum.arboretumwojslawice.Model.Entity.KindEntity;
 
 
 @Dao
-abstract class KindDao implements BaseDao<KindEntity> {}
+public abstract class KindDao implements BaseDao<KindEntity> {}

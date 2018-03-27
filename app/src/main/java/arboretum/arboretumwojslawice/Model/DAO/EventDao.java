@@ -15,7 +15,7 @@ import io.reactivex.Maybe;
 
 
 @Dao
-abstract class EventDao implements BaseDao<EventEntity> {
+public abstract class EventDao implements BaseDao<EventEntity> {
 
     @Query("SELECT Events.IdEvent, Type, Name, DateBegin, DateEnd, TimeBegin, TimeEnd, Description " +
             "FROM Events LEFT JOIN EventsTranslations ON Events.IdEvent = EventsTranslations.IdEvent")

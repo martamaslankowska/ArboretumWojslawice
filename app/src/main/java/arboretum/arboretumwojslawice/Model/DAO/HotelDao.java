@@ -13,7 +13,7 @@ import io.reactivex.Maybe;
  */
 
 @Dao
-abstract class HotelDao implements BaseDao<Hotel> {
+public abstract class HotelDao implements BaseDao<Hotel> {
 
     @Query("SELECT * FROM Hotels")
     abstract Maybe<List<Hotel>> getAll();

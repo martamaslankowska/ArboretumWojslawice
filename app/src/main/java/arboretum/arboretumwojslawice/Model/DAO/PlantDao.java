@@ -16,7 +16,7 @@ import io.reactivex.Maybe;
 
 
 @Dao
-abstract class PlantDao implements BaseDao<PlantEntity> {
+public abstract class PlantDao implements BaseDao<PlantEntity> {
 
     @Query("SELECT Plants.IdPlant, GenusName, SpeciesName, Plants.Name, Kinds.Name, Image, SeasonBegin, SeasonEnd, Description " +
             "FROM Plants LEFT JOIN Species ON Plants.IdSpecies = Species.IdSpecies " +

@@ -14,7 +14,7 @@ import io.reactivex.Maybe;
  */
 
 @Dao
-abstract class PriceDao implements BaseDao<PriceEntity> {
+public abstract class PriceDao implements BaseDao<PriceEntity> {
 
     @Query("SELECT Prices.IdPrice, Amount, Type " +
             "FROM Prices LEFT JOIN PricesTranslations ON Price.IdPrice = PricesTranslations.IdPrice")

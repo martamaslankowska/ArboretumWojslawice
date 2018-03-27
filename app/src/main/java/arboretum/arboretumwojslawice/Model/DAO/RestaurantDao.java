@@ -14,7 +14,7 @@ import io.reactivex.Maybe;
  */
 
 @Dao
-abstract class RestaurantDao implements BaseDao<RestaurantEntity> {
+public abstract class RestaurantDao implements BaseDao<RestaurantEntity> {
 
     @Query("SELECT * FROM Restaurants")
     abstract Maybe<List<Restaurant>> getAll();

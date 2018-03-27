@@ -13,4 +13,4 @@ import io.reactivex.Maybe;
  */
 
 @Dao
-abstract class RoutePointDao implements BaseDao<RoutePointEntity> {}
+public abstract class RoutePointDao implements BaseDao<RoutePointEntity> {}

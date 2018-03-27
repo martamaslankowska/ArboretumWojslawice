@@ -1,9 +1,12 @@
 package arboretum.arboretumwojslawice.Model.DAO;
 
+import android.arch.persistence.room.Dao;
+
 import arboretum.arboretumwojslawice.Model.Entity.KindTranslationEntity;
 
 /**
  * Created by Komputer on 2018-03-26.
  */
 
-abstract class KindTranslationDao implements BaseDao<KindTranslationEntity> {}
+@Dao
+public abstract class KindTranslationDao implements BaseDao<KindTranslationEntity> {}

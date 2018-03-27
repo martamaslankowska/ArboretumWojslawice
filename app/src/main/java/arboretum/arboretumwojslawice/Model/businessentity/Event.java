@@ -65,7 +65,7 @@ public class Event {
         this.name = name;
     }
 
-    public int getDateBeginInt() {
+    public int getDateBegin() {
         return dateBegin;
     }
 
@@ -89,7 +89,7 @@ public class Event {
         this.dateBegin = intDate;
     }
 
-    public int getDateEndInt() {
+    public int getDateEnd() {
         return dateEnd;
     }
 
@@ -113,7 +113,7 @@ public class Event {
         this.dateEnd = intDate;
     }
 
-    public int getTimeBeginInt() {
+    public int getTimeBegin() {
         return timeBegin;
     }
 

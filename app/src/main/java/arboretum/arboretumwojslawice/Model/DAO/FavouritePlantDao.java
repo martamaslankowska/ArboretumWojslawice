@@ -19,7 +19,7 @@ import io.reactivex.Maybe;
 
 
 @Dao
-abstract class FavouritePlantDao implements BaseDao<FavouritePlantEntity> {
+public abstract class FavouritePlantDao implements BaseDao<FavouritePlantEntity> {
     
 //    @Query("SELECT * FROM FavouritePlants")
 //    abstract Maybe<List<FavouritePlant>> getAll();

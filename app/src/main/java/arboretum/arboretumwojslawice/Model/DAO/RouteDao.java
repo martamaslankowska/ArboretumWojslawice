@@ -15,7 +15,7 @@ import io.reactivex.Maybe;
 
 
 @Dao
-abstract class RouteDao implements BaseDao<RouteEntity> {
+public abstract class RouteDao implements BaseDao<RouteEntity> {
 
     @Query("SELECT Routes.IdRoute, Length, Time, MapImage, Name, Description " +
             "FROM Routes LEFT JOIN RoutesTranslations ON Routes.IdRoute = RoutesTranslations.IdRoute")
