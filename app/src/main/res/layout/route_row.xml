@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="route"
+            type="arboretum.arboretumwojslawice.Model.Entity.Route"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp">
+
+        <!--<TextView-->
+            <!--android:id="@+id/route_id"-->
+            <!--android:textSize="16dp"-->
+            <!--android:layout_alignParentTop="true"-->
+            <!--android:layout_width="20dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="@{route.getIdRoute()}"/>-->
+
+        <TextView
+            android:id="@+id/route_name"
+            android:textSize="16dp"
+            android:textStyle="bold"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{route.getName()}"/>
+        <!--android:layout_toRightOf="@id/route_id"-->
+        <TextView
+            android:id="@+id/route_description"
+            android:layout_below="@id/route_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{route.getDescription()}"/>
+
+    </RelativeLayout>
+</layout>
