@@ -37,7 +37,7 @@ import android.arch.persistence.room.RoomDatabase;
         RouteEntity.class, RoutePointEntity.class, RouteTranslationEntity.class, SpeciesEntity.class},
         version = 1)
     public abstract class AppDatabase extends RoomDatabase {
-        private static AppDatabase INSTANCE;
+        public static final String DATABASE_NAME = "ArboretumDatabase";
 
         public abstract AttractionDao getAttractionDao();
         public abstract AttractionTranslationDao getAttractionTranslationDao();
