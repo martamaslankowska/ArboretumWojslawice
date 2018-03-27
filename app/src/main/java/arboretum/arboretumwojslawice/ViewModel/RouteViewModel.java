@@ -2,8 +2,7 @@ package arboretum.arboretumwojslawice.ViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import arboretum.arboretumwojslawice.Model.Entity.Route;
+import arboretum.arboretumwojslawice.Model.businessentity.Route;
 
 /**
  * Created by Michal on 24.03.2018.

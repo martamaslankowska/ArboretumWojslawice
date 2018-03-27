@@ -17,11 +17,10 @@ import android.widget.AdapterView;
 import org.parceler.ParcelConverter;
 import org.parceler.Parcels;
 
-import java.io.Serializable;
-import java.util.ArrayList;
+
 import java.util.List;
 
-import arboretum.arboretumwojslawice.Model.Entity.Route;
+import arboretum.arboretumwojslawice.Model.businessentity.Route;
 import arboretum.arboretumwojslawice.R;
 import arboretum.arboretumwojslawice.ViewModel.RouteViewModel;
 

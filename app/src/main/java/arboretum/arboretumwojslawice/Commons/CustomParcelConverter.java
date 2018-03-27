@@ -5,10 +5,8 @@ import android.os.Parcel;
 
 import org.parceler.ParcelConverter;
 import org.parceler.Parcels;
-
 import java.util.List;
-
-import arboretum.arboretumwojslawice.Model.Entity.Route;
+import arboretum.arboretumwojslawice.Model.businessentity.Route;
 
 /**
  * Created by Michal on 25.03.2018.

@@ -3,6 +3,8 @@ package arboretum.arboretumwojslawice.Model.businessentity;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Ignore;
 
+import org.parceler.Parcel;
+
 import java.util.Date;
 import java.util.List;
 
@@ -12,16 +14,17 @@ import io.reactivex.annotations.NonNull;
  * Created by Komputer on 2018-03-25.
  */
 
+@Parcel
 public class Route {
 
-    private Integer idRoute;
+    private int idRoute;
     private Double length;
     private Integer time;
     private Integer mapImage;
     private String name;
     private String description;
-    @Ignore
-    private List<PlantOnRoute> plantsOnRoute;
+    //@Ignore
+    //private List<PlantOnRoute> plantsOnRoute;
 
 
     @Ignore
@@ -32,7 +35,7 @@ public class Route {
         this.mapImage = mapImage;
         this.name = name;
         this.description = description;
-        this.plantsOnRoute = plantsOnRoute;
+        //this.plantsOnRoute = plantsOnRoute;
     }
 
     public Route(Integer idRoute, Double length, Integer time, Integer mapImage, String name, String description) {
@@ -44,10 +47,10 @@ public class Route {
         this.description = description;
     }
 
-    @Ignore
-    public Route(List<PlantOnRoute> plantsOnRoute) {
-        this.plantsOnRoute = plantsOnRoute;
-    }
+    //@Ignore
+//    public Route(List<PlantOnRoute> plantsOnRoute) {
+//        this.plantsOnRoute = plantsOnRoute;
+//    }
 
     @Ignore
     public Route(Integer idRoute, Double length, Integer time, String name) {
@@ -57,8 +60,20 @@ public class Route {
         this.name = name;
     }
 
+    @Ignore
+    public Route(Integer idRoute, String name, String description) {
+        this.idRoute = idRoute;
+        this.name = name;
+        this.description = description;
+    }
 
-    public Integer getIdRoute() {
+    @Ignore
+    public Route() {
+    }
+
+    public String getStringId() { return String.valueOf(idRoute);}
+
+    public int getIdRoute() {
         return idRoute;
     }
 
@@ -122,13 +137,13 @@ public class Route {
         this.description = description;
     }
 
-    public List<PlantOnRoute> getPlantsOnRoute() {
-        return plantsOnRoute;
-    }
-
-    public void setPlantsOnRoute(List<PlantOnRoute> plantsOnRoute) {
-        this.plantsOnRoute = plantsOnRoute;
-    }
+//    public List<PlantOnRoute> getPlantsOnRoute() {
+//        return plantsOnRoute;
+//    }
+//
+//    public void setPlantsOnRoute(List<PlantOnRoute> plantsOnRoute) {
+//        this.plantsOnRoute = plantsOnRoute;
+//    }
 
 
     @Override

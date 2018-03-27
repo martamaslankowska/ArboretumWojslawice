@@ -4,7 +4,7 @@
     <data>
         <variable
             name="route"
-            type="arboretum.arboretumwojslawice.Model.Entity.Route"/>
+            type="arboretum.arboretumwojslawice.Model.businessentity.Route"/>
     </data>
 
     <RelativeLayout

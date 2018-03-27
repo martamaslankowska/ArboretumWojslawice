@@ -12,7 +12,7 @@ import org.parceler.Parcels;
 
 import java.util.List;
 
-import arboretum.arboretumwojslawice.Model.Entity.Route;
+import arboretum.arboretumwojslawice.Model.businessentity.Route;
 import arboretum.arboretumwojslawice.R;
 import arboretum.arboretumwojslawice.databinding.ActivityRouteDetailBinding;
 
