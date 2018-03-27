@@ -6,30 +6,30 @@ package arboretum.arboretumwojslawice.Model.businessentity;
 
 public class Price {
 
-    private int idPrice;
-    private double amount;
+    private Integer idPrice;
+    private Double amount;
     private String type;
 
 
-    public Price(int idPrice, double amount, String type) {
+    public Price(Integer idPrice, Double amount, String type) {
         this.idPrice = idPrice;
         this.amount = amount;
         this.type = type;
     }
 
-    public int getIdPrice() {
+    public Integer getIdPrice() {
         return idPrice;
     }
 
-    public void setIdPrice(int idPrice) {
+    public void setIdPrice(Integer idPrice) {
         this.idPrice = idPrice;
     }
 
-    public double getAmount() {
+    public Double getAmount() {
         return amount;
     }
 
-    public void setAmount(double amount) {
+    public void setAmount(Double amount) {
         this.amount = amount;
     }
 

@@ -34,6 +34,7 @@ dependencies {
     // Room
     compile 'android.arch.persistence.room:runtime:1.0.0-beta1'
     compile 'android.arch.persistence.room:rxjava2:1.0.0-beta1'
+    implementation "android.arch.persistence.room:runtime:1.0.0"
     annotationProcessor "android.arch.persistence.room:compiler:1.0.0"
 
     // RXJava
@@ -42,4 +43,6 @@ dependencies {
 
     // ViewModel
     implementation "android.arch.lifecycle:viewmodel:1.1.1"
+
+
 }

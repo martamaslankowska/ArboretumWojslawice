@@ -1,20 +1,22 @@
 package arboretum.arboretumwojslawice.Model.businessentity;
 
+import android.arch.persistence.room.Ignore;
+
 /**
  * Created by Komputer on 2018-03-25.
  */
 
 public class Restaurant {
 
-    private int idRestaurant;
+    private Integer idRestaurant;
     private String name;
     private String address;
-    private int phone;
+    private Integer phone;
     private String website;
-    private double distance;
-    private double rating;
+    private Double distance;
+    private Double rating;
 
-    public Restaurant(int idRestaurant, String name, String address, int phone, String website, double distance, double rating) {
+    public Restaurant(Integer idRestaurant, String name, String address, Integer phone, String website, Double distance, Double rating) {
         this.idRestaurant = idRestaurant;
         this.name = name;
         this.address = address;
@@ -24,17 +26,18 @@ public class Restaurant {
         this.rating = rating;
     }
 
-    public Restaurant(int idRestaurant, String name, String address) {
+    @Ignore
+    public Restaurant(Integer idRestaurant, String name, String address) {
         this.idRestaurant = idRestaurant;
         this.name = name;
         this.address = address;
     }
 
-    public int getIdRestaurant() {
+    public Integer getIdRestaurant() {
         return idRestaurant;
     }
 
-    public void setIdRestaurant(int idRestaurant) {
+    public void setIdRestaurant(Integer idRestaurant) {
         this.idRestaurant = idRestaurant;
     }
 
@@ -54,11 +57,11 @@ public class Restaurant {
         this.address = address;
     }
 
-    public int getPhone() {
+    public Integer getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(Integer phone) {
         this.phone = phone;
     }
 
@@ -70,19 +73,19 @@ public class Restaurant {
         this.website = website;
     }
 
-    public double getDistance() {
+    public Double getDistance() {
         return distance;
     }
 
-    public void setDistance(double distance) {
+    public void setDistance(Double distance) {
         this.distance = distance;
     }
 
-    public double getRating() {
+    public Double getRating() {
         return rating;
     }
 
-    public void setRating(double rating) {
+    public void setRating(Double rating) {
         this.rating = rating;
     }
 

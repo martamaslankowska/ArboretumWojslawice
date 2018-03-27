@@ -1,5 +1,7 @@
 package arboretum.arboretumwojslawice.Model.businessentity;
 
+import android.arch.persistence.room.Ignore;
+
 import java.util.Date;
 import java.util.List;
 
@@ -9,22 +11,25 @@ import java.util.List;
 
 public class Plant {
 
-    private int idPlant;
+    private Integer idPlant;
     private String genusName;
     private String speciesName;
     private String name;
     private String kindName;
-    private int image;
-    private int seasonBegin;
-    private int seasonEnd;
+    private Integer image;
+    private Integer seasonBegin;
+    private Integer seasonEnd;
     private String description;
+    @Ignore
     private List<Location> locations;
 
 
+    @Ignore
     public Plant() {
     }  // default constructor for FavouritePlant to handle
 
-    public Plant(int idPlant, String genusName, String speciesName, String name, String kindName, int image, int seasonBegin, int seasonEnd, String description, List<Location> locations) {
+    @Ignore
+    public Plant(Integer idPlant, String genusName, String speciesName, String name, String kindName, Integer image, Integer seasonBegin, Integer seasonEnd, String description, List<Location> locations) {
         this.idPlant = idPlant;
         this.genusName = genusName;
         this.speciesName = speciesName;
@@ -38,7 +43,7 @@ public class Plant {
     }
 
     // needed for Dao to get all plants
-    public Plant(int idPlant, String genusName, String speciesName, String name, String kindName, int image, int seasonBegin, int seasonEnd, String description) {
+    public Plant(Integer idPlant, String genusName, String speciesName, String name, String kindName, Integer image, Integer seasonBegin, Integer seasonEnd, String description) {
         this.idPlant = idPlant;
         this.genusName = genusName;
         this.speciesName = speciesName;
@@ -50,21 +55,23 @@ public class Plant {
         this.description = description;
     }
 
+    @Ignore
     public Plant(List<Location> locations) {
         this.locations = locations;
     }
 
-    public Plant(int idPlant, String genusName, String kindName) {
+    @Ignore
+    public Plant(Integer idPlant, String genusName, String kindName) {
         this.idPlant = idPlant;
         this.genusName = genusName;
         this.kindName = kindName;
     }
 
-    public int getIdPlant() {
+    public Integer getIdPlant() {
         return idPlant;
     }
 
-    public void setIdPlant(int idPlant) {
+    public void setIdPlant(Integer idPlant) {
         this.idPlant = idPlant;
     }
 
@@ -100,59 +107,59 @@ public class Plant {
         this.kindName = kindName;
     }
 
-    public int getImage() {
+    public Integer getImage() {
         return image;
     }
 
-    public void setImage(int image) {
+    public void setImage(Integer image) {
         this.image = image;
     }
 
-    public int getSeasonBeginInt() {
+    public Integer getSeasonBegin() {
         return seasonBegin;
     }
 
-    public void setSeasonBegin(int seasonBegin) {
+    public void setSeasonBegin(Integer seasonBegin) {
         this.seasonBegin = seasonBegin;
     }
 
     public Date getSeasonBeginDate() {
-        int day = seasonBegin - ((seasonBegin / 100) * 100);
-        int month = (seasonBegin / 100) - ((seasonBegin / 10000) * 100);
-        int year = seasonBegin / 10000;
+        Integer day = seasonBegin - ((seasonBegin / 100) * 100);
+        Integer month = (seasonBegin / 100) - ((seasonBegin / 10000) * 100);
+        Integer year = seasonBegin / 10000;
         Date date = new Date(year, month, day);
         return date;
     }
 
     public void setSeasonBegin(Date seasonBegin) {
-        int day = seasonBegin.getDay();
-        int month = seasonBegin.getMonth();
-        int year = seasonBegin.getYear();
-        int intDate = 10000 * year + 100 * month + day;
+        Integer day = seasonBegin.getDay();
+        Integer month = seasonBegin.getMonth();
+        Integer year = seasonBegin.getYear();
+        Integer intDate = 10000 * year + 100 * month + day;
         this.seasonBegin = intDate;
     }
 
-    public int getSeasonEndInt() {
+    public Integer getSeasonEnd() {
         return seasonEnd;
     }
 
-    public void setSeasonEnd(int seasonEnd) {
+    public void setSeasonEnd(Integer seasonEnd) {
         this.seasonEnd = seasonEnd;
     }
 
     public Date getSeasonEndDate() {
-        int day = seasonEnd - ((seasonEnd / 100) * 100);
-        int month = (seasonEnd / 100) - ((seasonEnd / 10000) * 100);
-        int year = seasonEnd / 10000;
+        Integer day = seasonEnd - ((seasonEnd / 100) * 100);
+        Integer month = (seasonEnd / 100) - ((seasonEnd / 10000) * 100);
+        Integer year = seasonEnd / 10000;
         Date date = new Date(year, month, day);
         return date;
     }
 
     public void setSeasonEnd(Date seasonEnd) {
-        int day = seasonEnd.getDay();
-        int month = seasonEnd.getMonth();
-        int year = seasonEnd.getYear();
-        int intDate = 10000 * year + 100 * month + day;
+        Integer day = seasonEnd.getDay();
+        Integer month = seasonEnd.getMonth();
+        Integer year = seasonEnd.getYear();
+        Integer intDate = 10000 * year + 100 * month + day;
         this.seasonEnd = intDate;
     }
 
@@ -179,38 +186,38 @@ public class Plant {
 
 
     public class Location {
-        private int idLocation;
-        private double x;
-        private double y;
+        private Integer idLocation;
+        private Double x;
+        private Double y;
 
 
-        public Location(int idLocation, double x, double y) {
+        public Location(Integer idLocation, Double x, Double y) {
             this.idLocation = idLocation;
             this.x = x;
             this.y = y;
         }
 
-        public int getIdLocation() {
+        public Integer getIdLocation() {
             return idLocation;
         }
 
-        public void setIdLocation(int idLocation) {
+        public void setIdLocation(Integer idLocation) {
             this.idLocation = idLocation;
         }
 
-        public double getX() {
+        public Double getX() {
             return x;
         }
 
-        public void setX(double x) {
+        public void setX(Double x) {
             this.x = x;
         }
 
-        public double getY() {
+        public Double getY() {
             return y;
         }
 
-        public void setY(double y) {
+        public void setY(Double y) {
             this.y = y;
         }
 

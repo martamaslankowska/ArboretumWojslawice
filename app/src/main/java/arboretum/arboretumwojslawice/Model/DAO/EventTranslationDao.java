@@ -9,4 +9,4 @@ import arboretum.arboretumwojslawice.Model.Entity.EventTranslationEntity;
  */
 
 @Dao
-public abstract class EventTranslationDao implements BaseDao<EventTranslationEntity> {}
+public abstract class EventTranslationDao extends BaseDao<EventTranslationEntity> {}

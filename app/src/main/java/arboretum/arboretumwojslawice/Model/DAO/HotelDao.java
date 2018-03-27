@@ -2,9 +2,11 @@ package arboretum.arboretumwojslawice.Model.DAO;
 
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Query;
+import android.database.Cursor;
 
 import java.util.List;
 
+import arboretum.arboretumwojslawice.Model.Entity.HotelEntity;
 import arboretum.arboretumwojslawice.Model.businessentity.Hotel;
 import io.reactivex.Maybe;
 
@@ -13,18 +15,18 @@ import io.reactivex.Maybe;
  */
 
 @Dao
-public abstract class HotelDao implements BaseDao<Hotel> {
+public abstract class HotelDao extends BaseDao<HotelEntity> {
 
     @Query("SELECT * FROM Hotels")
-    abstract Maybe<List<Hotel>> getAll();
+    abstract Cursor getAll();
 
     @Query("SELECT * FROM Hotels WHERE IdHotel IN (:id)")
-    abstract Hotel getById(int id);
+    abstract Cursor getById(int id);
 
     @Query("SELECT * FROM Hotels WHERE Name IN (:name)")
-    abstract Hotel getByName(String name);
+    abstract Cursor getByName(String name);
 
     @Query("SELECT * FROM Hotels WHERE Rating >= (:rating)")
-    abstract Maybe<List<Hotel>> getAllBetterThan(double rating);
+    abstract Cursor getAllBetterThan(double rating);
 
 }

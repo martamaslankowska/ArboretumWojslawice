@@ -1,6 +1,8 @@
 package arboretum.arboretumwojslawice.Model.businessentity;
 
 import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 
 import io.reactivex.annotations.NonNull;
@@ -9,17 +11,18 @@ import io.reactivex.annotations.NonNull;
  * Created by Komputer on 2018-03-25.
  */
 
+
 public class Hotel {
 
-    private int idHotel;
+    private Integer idHotel;
     private String name;
     private String address;
-    private int phone;
+    private Integer phone;
     private String website;
-    private double distance;
-    private double rating;
+    private Double distance;
+    private Double rating;
 
-    public Hotel(int idHotel, String name, String address, int phone, String website, double distance, double rating) {
+    public Hotel(Integer idHotel, String name, String address, Integer phone, String website, Double distance, Double rating) {
         this.idHotel = idHotel;
         this.name = name;
         this.address = address;
@@ -29,17 +32,18 @@ public class Hotel {
         this.rating = rating;
     }
 
-    public Hotel(int idHotel, String name, String address) {
+    @Ignore
+    public Hotel(Integer idHotel, String name, String address) {
         this.idHotel = idHotel;
         this.name = name;
         this.address = address;
     }
 
-    public int getIdHotel() {
+    public Integer getIdHotel() {
         return idHotel;
     }
 
-    public void setIdHotel(int idHotel) {
+    public void setIdHotel(Integer idHotel) {
         this.idHotel = idHotel;
     }
 
@@ -59,11 +63,11 @@ public class Hotel {
         this.address = address;
     }
 
-    public int getPhone() {
+    public Integer getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(Integer phone) {
         this.phone = phone;
     }
 
@@ -75,19 +79,19 @@ public class Hotel {
         this.website = website;
     }
 
-    public double getDistance() {
+    public Double getDistance() {
         return distance;
     }
 
-    public void setDistance(double distance) {
+    public void setDistance(Double distance) {
         this.distance = distance;
     }
 
-    public double getRating() {
+    public Double getRating() {
         return rating;
     }
 
-    public void setRating(double rating) {
+    public void setRating(Double rating) {
         this.rating = rating;
     }
 

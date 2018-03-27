@@ -9,4 +9,4 @@ import arboretum.arboretumwojslawice.Model.Entity.GenusEntity;
  */
 
 @Dao
-public abstract class GenusDao implements BaseDao<GenusEntity> {}
+public abstract class GenusDao extends BaseDao<GenusEntity> {}

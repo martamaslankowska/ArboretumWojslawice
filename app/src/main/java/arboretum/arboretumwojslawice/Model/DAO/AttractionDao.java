@@ -2,6 +2,7 @@ package arboretum.arboretumwojslawice.Model.DAO;
 
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Query;
+import android.database.Cursor;
 
 import java.util.List;
 
@@ -14,20 +15,20 @@ import io.reactivex.Maybe;
  */
 
 @Dao
-public abstract class AttractionDao implements BaseDao<AttractionEntity> {
+public abstract class AttractionDao extends BaseDao<AttractionEntity> {
 
     @Query("SELECT Attractions.IdAttraction, Name, Description, Image " +
             "FROM Attractions INNER JOIN AttractionsTranslations ON Attractions.IdAttraction = AttractionsTranslations.IdAttraction")
-    abstract Maybe<List<Attraction>> getAll();
+    abstract Cursor getAll();
 
     @Query("SELECT Attractions.IdAttraction, Name, Description, Image " +
             "FROM Attractions INNER JOIN AttractionsTranslations ON Attractions.IdAttraction = AttractionsTranslations.IdAttraction " +
-            "WHERE IdAttraction IN (:id)")
-    abstract Attraction getById(int id);
+            "WHERE Attractions.IdAttraction IN (:id)")
+    abstract Cursor getById(int id);
 
     @Query("SELECT Attractions.IdAttraction, Name, Description, Image " +
             "FROM Attractions INNER JOIN AttractionsTranslations ON Attractions.IdAttraction = AttractionsTranslations.IdAttraction " +
             "WHERE Name IN (:name)")
-    abstract Attraction getByName(int name);
+    abstract Cursor getByName(int name);
 
 }

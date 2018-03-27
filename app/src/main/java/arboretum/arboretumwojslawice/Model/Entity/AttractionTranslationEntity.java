@@ -3,9 +3,8 @@ package arboretum.arboretumwojslawice.Model.Entity;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
-import android.arch.persistence.room.PrimaryKey;
 
-import io.reactivex.annotations.NonNull;
+import android.support.annotation.NonNull;
 
 /**
  * Created by Komputer on 2018-03-24.
@@ -16,21 +15,29 @@ import io.reactivex.annotations.NonNull;
         primaryKeys = {"TranslationCode", "IdAttraction"})
 public class AttractionTranslationEntity {
 
-    @ColumnInfo(name = "TranslationCode")
     @NonNull
+    @ColumnInfo(name = "TranslationCode")
     private String translationCode;
 
     @NonNull
     @ColumnInfo(name = "IdAttraction")
     private int idAttraction;
 
-    @ColumnInfo(name = "Name")
     @NonNull
+    @ColumnInfo(name = "Name")
     private String name;
 
-    @ColumnInfo(name = "Description")
     @NonNull
+    @ColumnInfo(name = "Description")
     private String description;
+
+
+//    public AttractionTranslationEntity(String translationCode, int idAttraction, String name, String description) {
+//        this.translationCode = translationCode;
+//        this.idAttraction = idAttraction;
+//        this.name = name;
+//        this.description = description;
+//    }
 
 
     public String getTranslationCode() {

@@ -1,6 +1,7 @@
 package arboretum.arboretumwojslawice.Model.businessentity;
 
 import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Ignore;
 
 import java.util.Date;
 import java.util.List;
@@ -13,16 +14,18 @@ import io.reactivex.annotations.NonNull;
 
 public class Route {
 
-    private int idRoute;
-    private double length;
-    private int time;
-    private int mapImage;
+    private Integer idRoute;
+    private Double length;
+    private Integer time;
+    private Integer mapImage;
     private String name;
     private String description;
+    @Ignore
     private List<PlantOnRoute> plantsOnRoute;
 
 
-    public Route(int idRoute, double length, int time, int mapImage, String name, String description, List<PlantOnRoute> plantsOnRoute) {
+    @Ignore
+    public Route(Integer idRoute, Double length, Integer time, Integer mapImage, String name, String description, List<PlantOnRoute> plantsOnRoute) {
         this.idRoute = idRoute;
         this.length = length;
         this.time = time;
@@ -32,7 +35,7 @@ public class Route {
         this.plantsOnRoute = plantsOnRoute;
     }
 
-    public Route(int idRoute, double length, int time, int mapImage, String name, String description) {
+    public Route(Integer idRoute, Double length, Integer time, Integer mapImage, String name, String description) {
         this.idRoute = idRoute;
         this.length = length;
         this.time = time;
@@ -41,11 +44,13 @@ public class Route {
         this.description = description;
     }
 
+    @Ignore
     public Route(List<PlantOnRoute> plantsOnRoute) {
         this.plantsOnRoute = plantsOnRoute;
     }
 
-    public Route(int idRoute, double length, int time, String name) {
+    @Ignore
+    public Route(Integer idRoute, Double length, Integer time, String name) {
         this.idRoute = idRoute;
         this.length = length;
         this.time = time;
@@ -53,33 +58,33 @@ public class Route {
     }
 
 
-    public int getIdRoute() {
+    public Integer getIdRoute() {
         return idRoute;
     }
 
-    public void setIdRoute(int idRoute) {
+    public void setIdRoute(Integer idRoute) {
         this.idRoute = idRoute;
     }
 
-    public double getLength() {
+    public Double getLength() {
         return length;
     }
 
-    public void setLength(double length) {
+    public void setLength(Double length) {
         this.length = length;
     }
 
-    public int getTimeInt() {
+    public Integer getTime() {
         return time;
     }
 
-    public void setTime(int time) {
+    public void setTime(Integer time) {
         this.time = time;
     }
 
     public Date getTimeDate() {
-        int minutes = time - ((time/100)*100);
-        int hour = time/100;
+        Integer minutes = time - ((time/100)*100);
+        Integer hour = time/100;
         Date time = new Date();
         time.setHours(hour);
         time.setMinutes(minutes);
@@ -87,17 +92,17 @@ public class Route {
     }
 
     public void setTime(Date time) {
-        int minutes = time.getMinutes();
-        int hour = time.getHours();
-        int intTime = hour*100 + minutes;
-        this.time = intTime;
+        Integer minutes = time.getMinutes();
+        Integer hour = time.getHours();
+        Integer IntegerTime = hour*100 + minutes;
+        this.time = IntegerTime;
     }
 
-    public int getMapImage() {
+    public Integer getMapImage() {
         return mapImage;
     }
 
-    public void setMapImage(int mapImage) {
+    public void setMapImage(Integer mapImage) {
         this.mapImage = mapImage;
     }
 
@@ -134,42 +139,46 @@ public class Route {
 
     public class PlantOnRoute {
 
-        private int pointOrder;
+        private Integer pointOrder;
+        @Ignore
         private Plant plant;
-        private double x;
-        private double y;
+        private Double x;
+        private Double y;
 
-        public PlantOnRoute(int pointOrder) {
+        @Ignore
+        public PlantOnRoute(Integer pointOrder) {
             this.pointOrder = pointOrder;
         }
 
+        @Ignore
         public PlantOnRoute(Plant plant) {
             this.plant = plant;
         }
 
-        public PlantOnRoute(double x, double y) {
+        @Ignore
+        public PlantOnRoute(Double x, Double y) {
             this.x = x;
             this.y = y;
         }
 
-        public PlantOnRoute(int pointOrder, double x, double y) {
+        public PlantOnRoute(Integer pointOrder, Double x, Double y) {
             this.pointOrder = pointOrder;
             this.x = x;
             this.y = y;
         }
 
-        public PlantOnRoute(int pointOrder, Plant plant, double x, double y) {
+        public PlantOnRoute(Integer pointOrder, Plant plant, Double x, Double y) {
             this.pointOrder = pointOrder;
             this.plant = plant;
             this.x = x;
             this.y = y;
         }
 
-        public int getPointOrder() {
+        public Integer getPointOrder() {
             return pointOrder;
         }
 
-        public void setPointOrder(int pointOrder) {
+        public void setPointOrder(Integer pointOrder) {
             this.pointOrder = pointOrder;
         }
 
@@ -181,19 +190,19 @@ public class Route {
             this.plant = plant;
         }
 
-        public double getX() {
+        public Double getX() {
             return x;
         }
 
-        public void setX(double x) {
+        public void setX(Double x) {
             this.x = x;
         }
 
-        public double getY() {
+        public Double getY() {
             return y;
         }
 
-        public void setY(double y) {
+        public void setY(Double y) {
             this.y = y;
         }
 

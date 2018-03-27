@@ -1,6 +1,7 @@
 package arboretum.arboretumwojslawice.Model.businessentity;
 
 import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 
 import java.sql.Time;
@@ -14,17 +15,17 @@ import io.reactivex.annotations.NonNull;
 
 public class Event {
 
-    private int idEvent;
+    private Integer idEvent;
     private String type;
     private String name;
-    private int dateBegin;
-    private int dateEnd;
-    private int timeBegin;
-    private int timeEnd;
+    private Integer dateBegin;
+    private Integer dateEnd;
+    private Integer timeBegin;
+    private Integer timeEnd;
     private String descritpion;
 
 
-    public Event(int idEvent, String type, String name, int dateBegin, int dateEnd, int timeBegin, int timeEnd, String descritpion) {
+    public Event(Integer idEvent, String type, String name, Integer dateBegin, Integer dateEnd, Integer timeBegin, Integer timeEnd, String descritpion) {
         this.idEvent = idEvent;
         this.type = type;
         this.name = name;
@@ -35,17 +36,18 @@ public class Event {
         this.descritpion = descritpion;
     }
 
-    public Event(int idEvent, String type, int dateBegin) {
+    @Ignore
+    public Event(Integer idEvent, String type, Integer dateBegin) {
         this.idEvent = idEvent;
         this.type = type;
         this.dateBegin = dateBegin;
     }
 
-    public int getIdEvent() {
+    public Integer getIdEvent() {
         return idEvent;
     }
 
-    public void setIdEvent(int idEvent) {
+    public void setIdEvent(Integer idEvent) {
         this.idEvent = idEvent;
     }
 
@@ -65,65 +67,65 @@ public class Event {
         this.name = name;
     }
 
-    public int getDateBegin() {
+    public Integer getDateBegin() {
         return dateBegin;
     }
 
-    public void setDateBegin(int dateBegin) {
+    public void setDateBegin(Integer dateBegin) {
         this.dateBegin = dateBegin;
     }
 
     public Date getDateBeginDate() {
-        int day = dateBegin - ((dateBegin/100)*100);
-        int month = (dateBegin/100) - ((dateBegin/10000)*100);
-        int year = dateBegin/10000;
+        Integer day = dateBegin - ((dateBegin/100)*100);
+        Integer month = (dateBegin/100) - ((dateBegin/10000)*100);
+        Integer year = dateBegin/10000;
         Date date = new Date(year, month, day);
         return date;
     }
 
     public void setDateBegin(Date dateBegin) {
-        int day = dateBegin.getDay();
-        int month = dateBegin.getMonth();
-        int year = dateBegin.getYear();
-        int intDate = 10000*year + 100*month + day;
-        this.dateBegin = intDate;
+        Integer day = dateBegin.getDay();
+        Integer month = dateBegin.getMonth();
+        Integer year = dateBegin.getYear();
+        Integer IntegerDate = 10000*year + 100*month + day;
+        this.dateBegin = IntegerDate;
     }
 
-    public int getDateEnd() {
+    public Integer getDateEnd() {
         return dateEnd;
     }
 
-    public void setDateEnd(int dateEnd) {
+    public void setDateEnd(Integer dateEnd) {
         this.dateEnd = dateEnd;
     }
 
     public Date getDateEndDate() {
-        int day = dateEnd - ((dateEnd/100)*100);
-        int month = (dateEnd/100) - ((dateEnd/10000)*100);
-        int year = dateEnd/10000;
+        Integer day = dateEnd - ((dateEnd/100)*100);
+        Integer month = (dateEnd/100) - ((dateEnd/10000)*100);
+        Integer year = dateEnd/10000;
         Date date = new Date(year, month, day);
         return date;
     }
 
     public void setDateEnd(Date dateEnd) {
-        int day = dateEnd.getDay();
-        int month = dateEnd.getMonth();
-        int year = dateEnd.getYear();
-        int intDate = 10000*year + 100*month + day;
-        this.dateEnd = intDate;
+        Integer day = dateEnd.getDay();
+        Integer month = dateEnd.getMonth();
+        Integer year = dateEnd.getYear();
+        Integer IntegerDate = 10000*year + 100*month + day;
+        this.dateEnd = IntegerDate;
     }
 
-    public int getTimeBegin() {
+    public Integer getTimeBegin() {
         return timeBegin;
     }
 
-    public void setTimeBegin(int timeBegin) {
+    public void setTimeBegin(Integer timeBegin) {
         this.timeBegin = timeBegin;
     }
 
     public Date getTimeBeginDate() {
-        int minutes = timeBegin - ((timeBegin/100)*100);
-        int hour = timeBegin/100;
+        Integer minutes = timeBegin - ((timeBegin/100)*100);
+        Integer hour = timeBegin/100;
         Date time = new Date();
         time.setHours(hour);
         time.setMinutes(minutes);
@@ -131,23 +133,23 @@ public class Event {
     }
 
     public void setTimeBegin(Date time) {
-        int minutes = time.getMinutes();
-        int hour = time.getHours();
-        int intTime = hour*100 + minutes;
+        Integer minutes = time.getMinutes();
+        Integer hour = time.getHours();
+        Integer intTime = hour*100 + minutes;
         this.timeBegin = intTime;
     }
 
-    public int getTimeEnd() {
+    public Integer getTimeEnd() {
         return timeEnd;
     }
 
-    public void setTimeEnd(int timeEnd) {
+    public void setTimeEnd(Integer timeEnd) {
         this.timeEnd = timeEnd;
     }
 
     public Date getTimeEndDate() {
-        int minutes = timeEnd - ((timeEnd/100)*100);
-        int hour = timeEnd/100;
+        Integer minutes = timeEnd - ((timeEnd/100)*100);
+        Integer hour = timeEnd/100;
         Date time = new Date();
         time.setHours(hour);
         time.setMinutes(minutes);
@@ -155,9 +157,9 @@ public class Event {
     }
 
     public void setTimeEnd(Date time) {
-        int minutes = time.getMinutes();
-        int hour = time.getHours();
-        int intTime = hour*100 + minutes;
+        Integer minutes = time.getMinutes();
+        Integer hour = time.getHours();
+        Integer intTime = hour*100 + minutes;
         this.timeBegin = intTime;
     }
 

@@ -30,34 +30,34 @@ import android.arch.persistence.room.RoomDatabase;
 
 
 
-//@Database(entities = {AttractionEntity.class, AttractionTranslationEntity.class, EventEntity.class,
-//        EventTranslationEntity.class, FavouritePlantEntity.class, GenusEntity.class, HotelEntity.class,
-//        KindEntity.class, KindTranslationEntity.class, LocationEntity.class, PlantEntity.class,
-//        PlantTranslationEntity.class, PriceEntity.class, PriceTranslationEntity.class, RestaurantEntity.class,
-//        RouteEntity.class, RoutePointEntity.class, RouteTranslationEntity.class, SpeciesEntity.class},
-//        version = 1)
+@Database(entities = {AttractionEntity.class, AttractionTranslationEntity.class, EventEntity.class,
+        EventTranslationEntity.class, FavouritePlantEntity.class, GenusEntity.class, HotelEntity.class,
+        KindEntity.class, KindTranslationEntity.class, LocationEntity.class, PlantEntity.class,
+        PlantTranslationEntity.class, PriceEntity.class, PriceTranslationEntity.class, RestaurantEntity.class,
+        RouteEntity.class, RoutePointEntity.class, RouteTranslationEntity.class, SpeciesEntity.class},
+        version = 1)
     public abstract class AppDatabase extends RoomDatabase {
         private static AppDatabase INSTANCE;
 
-//        public abstract AttractionDao getAttractionDao();
-//        public abstract AttractionTranslationDao getAttractionTranslationDao();
-//        public abstract EventDao getEventDao();
-//        public abstract EventTranslationDao getEventTranslationDao();
-//        public abstract FavouritePlantDao getFavouritePlantDao();
-//        public abstract GenusDao getGenusDao();
-//        public abstract HotelDao getHotelDao();
-//        public abstract KindDao getKindDao();
-//        public abstract KindTranslationDao getKindTranslationDao();
-//        public abstract LocationDao getLocationDao();
-//        public abstract PlantDao getPlantDao();
-//        public abstract PlantTranslationDao getPlantTranslationDao();
-//        public abstract PriceDao getPriceDao();
-//        public abstract PriceTranslationDao getPriceTranslationDao();
-//        public abstract RestaurantDao getRestaurantDao();
-//        public abstract RouteDao getRouteDao();
-//        public abstract RoutePointDao getRoutePointDao();
-//        public abstract RouteTranslationDao getRouteTranslationDao();
-//        public abstract SpeciesDao getSpeciesDao();
+        public abstract AttractionDao getAttractionDao();
+        public abstract AttractionTranslationDao getAttractionTranslationDao();
+        public abstract EventDao getEventDao();
+        public abstract EventTranslationDao getEventTranslationDao();
+        public abstract FavouritePlantDao getFavouritePlantDao();
+        public abstract GenusDao getGenusDao();
+        public abstract HotelDao getHotelDao();
+        public abstract KindDao getKindDao();
+        public abstract KindTranslationDao getKindTranslationDao();
+        public abstract LocationDao getLocationDao();
+        public abstract PlantDao getPlantDao();
+        public abstract PlantTranslationDao getPlantTranslationDao();
+        public abstract PriceDao getPriceDao();
+        public abstract PriceTranslationDao getPriceTranslationDao();
+        public abstract RestaurantDao getRestaurantDao();
+        public abstract RouteDao getRouteDao();
+        public abstract RoutePointDao getRoutePointDao();
+        public abstract RouteTranslationDao getRouteTranslationDao();
+        public abstract SpeciesDao getSpeciesDao();
 
 
 

@@ -2,6 +2,7 @@ package arboretum.arboretumwojslawice.Model.DAO;
 
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Query;
+import android.database.Cursor;
 
 import java.util.List;
 
@@ -14,21 +15,21 @@ import io.reactivex.Maybe;
  */
 
 @Dao
-public abstract class PriceDao implements BaseDao<PriceEntity> {
+public abstract class PriceDao extends BaseDao<PriceEntity> {
 
     @Query("SELECT Prices.IdPrice, Amount, Type " +
-            "FROM Prices LEFT JOIN PricesTranslations ON Price.IdPrice = PricesTranslations.IdPrice")
-    abstract Maybe<List<Price>> getAll();
+            "FROM Prices LEFT JOIN PricesTranslations ON Prices.IdPrice = PricesTranslations.IdPrice")
+    abstract Cursor getAll();
 
     @Query("SELECT Prices.IdPrice, Amount, Type " +
-            "FROM Prices LEFT JOIN PricesTranslations ON Price.IdPrice = PricesTranslations.IdPrice" +
-            " WHERE IdPrice IN (:id)")
-    abstract Price getById(int id);
+            "FROM Prices LEFT JOIN PricesTranslations ON Prices.IdPrice = PricesTranslations.IdPrice" +
+            " WHERE Prices.IdPrice IN (:id)")
+    abstract Cursor getById(int id);
 
     @Query("SELECT Prices.IdPrice, Amount, Type " +
-            "FROM Prices LEFT JOIN PricesTranslations ON Price.IdPrice = PricesTranslations.IdPrice" +
+            "FROM Prices LEFT JOIN PricesTranslations ON Prices.IdPrice = PricesTranslations.IdPrice" +
             " WHERE Type IN (:type)")
-    abstract Maybe<List<Price>> getByType(String type);
+    abstract Cursor getByType(String type);
 
 
 }

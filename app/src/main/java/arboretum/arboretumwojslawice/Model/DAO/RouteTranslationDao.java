@@ -9,4 +9,4 @@ import arboretum.arboretumwojslawice.Model.Entity.RouteTranslationEntity;
  */
 
 @Dao
-public abstract class RouteTranslationDao implements BaseDao<RouteTranslationEntity> {}
+public abstract class RouteTranslationDao extends BaseDao<RouteTranslationEntity> {}

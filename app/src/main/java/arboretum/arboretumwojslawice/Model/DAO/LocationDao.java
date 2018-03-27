@@ -9,4 +9,4 @@ import arboretum.arboretumwojslawice.Model.Entity.LocationEntity;
  */
 
 @Dao
-public abstract class LocationDao implements BaseDao<LocationEntity> {}
+public abstract class LocationDao extends BaseDao<LocationEntity> {}

@@ -9,4 +9,4 @@ import arboretum.arboretumwojslawice.Model.Entity.PlantTranslationEntity;
  */
 
 @Dao
-public abstract class PlantTranslationDao implements BaseDao<PlantTranslationEntity> {}
+public abstract class PlantTranslationDao extends BaseDao<PlantTranslationEntity> {}

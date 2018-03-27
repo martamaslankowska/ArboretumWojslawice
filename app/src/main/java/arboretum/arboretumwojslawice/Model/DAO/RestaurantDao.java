@@ -2,6 +2,7 @@ package arboretum.arboretumwojslawice.Model.DAO;
 
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Query;
+import android.database.Cursor;
 
 import java.util.List;
 
@@ -14,19 +15,19 @@ import io.reactivex.Maybe;
  */
 
 @Dao
-public abstract class RestaurantDao implements BaseDao<RestaurantEntity> {
+public abstract class RestaurantDao extends BaseDao<RestaurantEntity> {
 
     @Query("SELECT * FROM Restaurants")
-    abstract Maybe<List<Restaurant>> getAll();
+    abstract Cursor getAll();
 
     @Query("SELECT * FROM Restaurants WHERE IdRestaurant IN (:id)")
-    abstract Restaurant getById(int id);
+    abstract Cursor getById(int id);
 
     @Query("SELECT * FROM Restaurants WHERE Name IN (:name) LIMIT 1")
-    abstract Restaurant getByName(String name);
+    abstract Cursor getByName(String name);
 
     @Query("SELECT * FROM Restaurants WHERE Rating >= (:rating)")
-    abstract Maybe<List<Restaurant>> getAllBetterThan(double rating);
+    abstract Cursor getAllBetterThan(double rating);
 
 
 }

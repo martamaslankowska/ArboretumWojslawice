@@ -2,6 +2,7 @@ package arboretum.arboretumwojslawice.Model.DAO;
 
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Query;
+import android.database.Cursor;
 
 import java.util.List;
 
@@ -16,39 +17,39 @@ import io.reactivex.Maybe;
 
 
 @Dao
-public abstract class PlantDao implements BaseDao<PlantEntity> {
+public abstract class PlantDao extends BaseDao<PlantEntity> {
 
-    @Query("SELECT Plants.IdPlant, GenusName, SpeciesName, Plants.Name, Kinds.Name, Image, SeasonBegin, SeasonEnd, Description " +
+    @Query("SELECT Plants.IdPlant, GenusName, SpeciesName, Plants.Name, KindsTranslations.Name, Image, SeasonBegin, SeasonEnd, Description " +
             "FROM Plants LEFT JOIN Species ON Plants.IdSpecies = Species.IdSpecies " +
             "LEFT JOIN Genus ON Species.GenusName = Genus.Name " +
             "LEFT JOIN Kinds ON Plants.IdKind = Kinds.IdKind " +
             "LEFT JOIN KindsTranslations ON Kinds.IdKind = KindsTranslations.IdKind " +
 //            "LEFT JOIN Locations ON Plants.IdPlant = Locations.IdPlant " +
             "LEFT JOIN PlantsTranslations ON Plants.IdPlant = PlantsTranslations.IdPlant")
-    abstract Maybe<List<Plant>> getAll();
+    abstract Cursor getAll();
 
     @Query("SELECT IdLocation, X, Y " +
-            "FROM Plants INNER JOIN Locations ON Plants.IdPlant = Locations.IdLocation " +
-            "WHERE IdPlant IN (:idPlant)")
-    abstract Maybe<List<Plant.Location>> getLocationsByPlantId(int idPlant);
+            "FROM Plants INNER JOIN Locations ON Plants.IdPlant = Locations.IdPlant " +
+            "WHERE Plants.IdPlant IN (:idPlant)")
+    abstract Cursor getLocationsByPlantId(int idPlant);
 
-    @Query("SELECT Plants.IdPlant, GenusName, SpeciesName, Plants.Name, Kinds.Name, Image, SeasonBegin, SeasonEnd, Description " +
+    @Query("SELECT Plants.IdPlant, GenusName, SpeciesName, Plants.Name, KindsTranslations.Name, Image, SeasonBegin, SeasonEnd, Description " +
             "FROM Plants LEFT JOIN Species ON Plants.IdSpecies = Species.IdSpecies " +
             "LEFT JOIN Genus ON Species.GenusName = Genus.Name " +
             "LEFT JOIN Kinds ON Plants.IdKind = Kinds.IdKind " +
             "LEFT JOIN KindsTranslations ON Kinds.IdKind = KindsTranslations.IdKind " +
             "LEFT JOIN PlantsTranslations ON Plants.IdPlant = PlantsTranslations.IdPlant " +
-            "WHERE IdPlant IN (:idPlant)")
-    abstract Plant getById(int idPlant);
+            "WHERE Plants.IdPlant IN (:idPlant)")
+    abstract Cursor getById(int idPlant);
 
-    @Query("SELECT Plants.IdPlant, GenusName, SpeciesName, Plants.Name, Kinds.Name, Image, SeasonBegin, SeasonEnd, Description " +
+    @Query("SELECT Plants.IdPlant, GenusName, SpeciesName, Plants.Name, KindsTranslations.Name, Image, SeasonBegin, SeasonEnd, Description " +
             "FROM Plants LEFT JOIN Species ON Plants.IdSpecies = Species.IdSpecies " +
             "LEFT JOIN Genus ON Species.GenusName = Genus.Name " +
             "LEFT JOIN Kinds ON Plants.IdKind = Kinds.IdKind " +
             "LEFT JOIN KindsTranslations ON Kinds.IdKind = KindsTranslations.IdKind " +
             "LEFT JOIN PlantsTranslations ON Plants.IdPlant = PlantsTranslations.IdPlant " +
-            "WHERE Kinds.Name IN (:kindName)")
-    abstract Maybe<List<Plant>> getAllByKindName(String kindName);
+            "WHERE KindsTranslations.Name IN (:kindName)")
+    abstract Cursor getAllByKindName(String kindName);
 
 
 

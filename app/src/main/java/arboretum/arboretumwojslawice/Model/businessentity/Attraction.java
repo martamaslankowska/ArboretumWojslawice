@@ -11,24 +11,24 @@ import io.reactivex.annotations.NonNull;
 
 public class Attraction {
 
-    private int idAttraction;
+    private Integer idAttraction;
     private String name;
     private String description;
-    private int image;
+    private Integer image;
 
 
-    public Attraction(int idAttraction, String name, String description, int image) {
+    public Attraction(Integer idAttraction, String name, String description, Integer image) {
         this.idAttraction = idAttraction;
         this.name = name;
         this.description = description;
         this.image = image;
     }
 
-    public int getIdAttraction() {
+    public Integer getIdAttraction() {
         return idAttraction;
     }
 
-    public void setIdAttraction(int idAttraction) {
+    public void setIdAttraction(Integer idAttraction) {
         this.idAttraction = idAttraction;
     }
 
@@ -48,14 +48,13 @@ public class Attraction {
         this.description = description;
     }
 
-    public int getImage() {
+    public Integer getImage() {
         return image;
     }
 
-    public void setImage(int image) {
+    public void setImage(Integer image) {
         this.image = image;
     }
-
 
     @Override
     public String toString() {
