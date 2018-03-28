@@ -19,17 +19,17 @@ public abstract class PriceDao extends BaseDao<PriceEntity> {
 
     @Query("SELECT Prices.IdPrice, Amount, Type " +
             "FROM Prices LEFT JOIN PricesTranslations ON Prices.IdPrice = PricesTranslations.IdPrice")
-    abstract Cursor getAll();
+    public abstract Maybe<List<Price>> getAll();
 
     @Query("SELECT Prices.IdPrice, Amount, Type " +
             "FROM Prices LEFT JOIN PricesTranslations ON Prices.IdPrice = PricesTranslations.IdPrice" +
             " WHERE Prices.IdPrice IN (:id)")
-    abstract Cursor getById(int id);
+    public abstract Price getById(int id);
 
     @Query("SELECT Prices.IdPrice, Amount, Type " +
             "FROM Prices LEFT JOIN PricesTranslations ON Prices.IdPrice = PricesTranslations.IdPrice" +
             " WHERE Type IN (:type)")
-    abstract Cursor getByType(String type);
+    public abstract Maybe<List<Price>> getByType(String type);
 
 
 }

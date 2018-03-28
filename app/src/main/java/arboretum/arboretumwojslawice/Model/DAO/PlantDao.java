@@ -7,6 +7,7 @@ import android.database.Cursor;
 import java.util.List;
 
 import arboretum.arboretumwojslawice.Model.Entity.PlantEntity;
+import arboretum.arboretumwojslawice.Model.businessentity.Location;
 import arboretum.arboretumwojslawice.Model.businessentity.Plant;
 import io.reactivex.Maybe;
 
@@ -26,12 +27,12 @@ public abstract class PlantDao extends BaseDao<PlantEntity> {
             "LEFT JOIN KindsTranslations ON Kinds.IdKind = KindsTranslations.IdKind " +
 //            "LEFT JOIN Locations ON Plants.IdPlant = Locations.IdPlant " +
             "LEFT JOIN PlantsTranslations ON Plants.IdPlant = PlantsTranslations.IdPlant")
-    abstract Cursor getAll();
+    public abstract Maybe<List<Plant>> getAll();
 
     @Query("SELECT IdLocation, X, Y " +
             "FROM Plants INNER JOIN Locations ON Plants.IdPlant = Locations.IdPlant " +
             "WHERE Plants.IdPlant IN (:idPlant)")
-    abstract Cursor getLocationsByPlantId(int idPlant);
+    public abstract Maybe<List<Location>> getLocationsByPlantId(int idPlant);
 
     @Query("SELECT Plants.IdPlant, GenusName, SpeciesName, Plants.Name, KindsTranslations.Name, Image, SeasonBegin, SeasonEnd, Description " +
             "FROM Plants LEFT JOIN Species ON Plants.IdSpecies = Species.IdSpecies " +
@@ -40,7 +41,7 @@ public abstract class PlantDao extends BaseDao<PlantEntity> {
             "LEFT JOIN KindsTranslations ON Kinds.IdKind = KindsTranslations.IdKind " +
             "LEFT JOIN PlantsTranslations ON Plants.IdPlant = PlantsTranslations.IdPlant " +
             "WHERE Plants.IdPlant IN (:idPlant)")
-    abstract Cursor getById(int idPlant);
+    public abstract Plant getById(int idPlant);
 
     @Query("SELECT Plants.IdPlant, GenusName, SpeciesName, Plants.Name, KindsTranslations.Name, Image, SeasonBegin, SeasonEnd, Description " +
             "FROM Plants LEFT JOIN Species ON Plants.IdSpecies = Species.IdSpecies " +
@@ -49,7 +50,7 @@ public abstract class PlantDao extends BaseDao<PlantEntity> {
             "LEFT JOIN KindsTranslations ON Kinds.IdKind = KindsTranslations.IdKind " +
             "LEFT JOIN PlantsTranslations ON Plants.IdPlant = PlantsTranslations.IdPlant " +
             "WHERE KindsTranslations.Name IN (:kindName)")
-    abstract Cursor getAllByKindName(String kindName);
+    public abstract Maybe<List<Plant>> getAllByKindName(String kindName);
 
 
 

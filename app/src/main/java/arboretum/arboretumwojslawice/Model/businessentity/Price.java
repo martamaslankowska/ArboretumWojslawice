@@ -1,13 +1,20 @@
 package arboretum.arboretumwojslawice.Model.businessentity;
 
+import android.arch.persistence.room.ColumnInfo;
+
 /**
  * Created by Komputer on 2018-03-25.
  */
 
 public class Price {
 
+    @ColumnInfo(name = "IdPrice")
     private Integer idPrice;
+
+    @ColumnInfo(name = "Amount")
     private Double amount;
+
+    @ColumnInfo(name = "Type")
     private String type;
 
 

@@ -19,16 +19,16 @@ public abstract class AttractionDao extends BaseDao<AttractionEntity> {
 
     @Query("SELECT Attractions.IdAttraction, Name, Description, Image " +
             "FROM Attractions INNER JOIN AttractionsTranslations ON Attractions.IdAttraction = AttractionsTranslations.IdAttraction")
-    abstract Cursor getAll();
+    public abstract Maybe<List<Attraction>> getAll();
 
     @Query("SELECT Attractions.IdAttraction, Name, Description, Image " +
             "FROM Attractions INNER JOIN AttractionsTranslations ON Attractions.IdAttraction = AttractionsTranslations.IdAttraction " +
             "WHERE Attractions.IdAttraction IN (:id)")
-    abstract Cursor getById(int id);
+    public abstract Attraction getById(int id);
 
     @Query("SELECT Attractions.IdAttraction, Name, Description, Image " +
             "FROM Attractions INNER JOIN AttractionsTranslations ON Attractions.IdAttraction = AttractionsTranslations.IdAttraction " +
             "WHERE Name IN (:name)")
-    abstract Cursor getByName(int name);
+    public abstract Attraction getByName(int name);
 
 }

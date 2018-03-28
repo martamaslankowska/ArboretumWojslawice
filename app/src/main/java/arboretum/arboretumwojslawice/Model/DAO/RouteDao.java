@@ -7,6 +7,7 @@ import android.database.Cursor;
 import java.util.List;
 
 import arboretum.arboretumwojslawice.Model.Entity.RouteEntity;
+import arboretum.arboretumwojslawice.Model.businessentity.PointOnRoute;
 import arboretum.arboretumwojslawice.Model.businessentity.Route;
 import io.reactivex.Maybe;
 
@@ -20,30 +21,30 @@ public abstract class RouteDao extends BaseDao<RouteEntity> {
 
     @Query("SELECT Routes.IdRoute, Length, Time, MapImage, Name, Description " +
             "FROM Routes LEFT JOIN RoutesTranslations ON Routes.IdRoute = RoutesTranslations.IdRoute")
-    abstract Cursor getAll();
+    public abstract Maybe<List<Route>> getAll();
 
-    @Query("SELECT PointOrder, X, Y " +
+    @Query("SELECT PointOrder, IdPlant, X, Y " +
             "FROM Routes LEFT JOIN RoutePoints ON Routes.IdRoute = RoutePoints.IdRoute " +
             "LEFT JOIN Locations ON RoutePoints.IdLocation = Locations.IdLocation " +
             "WHERE Routes.IdRoute IN (:idRoute)")
-    abstract Cursor getRoutePointsByRouteId(int idRoute);
+    public abstract Maybe<List<PointOnRoute>> getRoutePointsByRouteId(int idRoute);
 
-    @Query("SELECT IdPlant " +
-            "FROM Routes LEFT JOIN RoutePoints ON Routes.IdRoute = RoutePoints.IdRoute " +
-            "LEFT JOIN Locations ON RoutePoints.IdLocation = Locations.IdLocation " +
-            "WHERE Routes.IdRoute IN (:idRoute)")
-    abstract Cursor getPlantsIdByRouteId(int idRoute);
+//    @Query("SELECT IdPlant " +
+//            "FROM Routes LEFT JOIN RoutePoints ON Routes.IdRoute = RoutePoints.IdRoute " +
+//            "LEFT JOIN Locations ON RoutePoints.IdLocation = Locations.IdLocation " +
+//            "WHERE Routes.IdRoute IN (:idRoute)")
+//    public abstract Cursor getPlantsIdByRouteId(int idRoute);
 
     @Query("SELECT Routes.IdRoute, Length, Time, MapImage, Name, Description " +
             "FROM Routes LEFT JOIN RoutePoints ON Routes.IdRoute = RoutePoints.IdRoute " +
             "LEFT JOIN RoutesTranslations ON Routes.IdRoute = RoutesTranslations.IdRoute " +
             "WHERE Routes.IdRoute IN (:id)")
-    abstract Cursor getById(int id);
+    public abstract Route getById(int id);
 
     @Query("SELECT Routes.IdRoute, Length, Time, MapImage, RoutesTranslations.Name, Description " +
             "FROM Routes LEFT JOIN RoutesTranslations ON Routes.IdRoute = RoutesTranslations.IdRoute " +
             "WHERE RoutesTranslations.Name IN (:name) LIMIT 1")
-    abstract Cursor getByName(int name);
+    public abstract Route getByName(int name);
 
 
 }

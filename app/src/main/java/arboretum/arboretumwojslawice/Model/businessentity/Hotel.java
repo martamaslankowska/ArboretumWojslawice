@@ -14,13 +14,27 @@ import io.reactivex.annotations.NonNull;
 
 public class Hotel {
 
+    @ColumnInfo(name = "IdHotel")
     private Integer idHotel;
+
+    @ColumnInfo(name = "Name")
     private String name;
+
+    @ColumnInfo(name = "Address")
     private String address;
+
+    @ColumnInfo(name = "Phone")
     private Integer phone;
+
+    @ColumnInfo(name = "Website")
     private String website;
+
+    @ColumnInfo(name = "Distance")
     private Double distance;
+
+    @ColumnInfo(name = "Rating")
     private Double rating;
+
 
     public Hotel(Integer idHotel, String name, String address, Integer phone, String website, Double distance, Double rating) {
         this.idHotel = idHotel;

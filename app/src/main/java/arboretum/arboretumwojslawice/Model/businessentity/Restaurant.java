@@ -1,5 +1,6 @@
 package arboretum.arboretumwojslawice.Model.businessentity;
 
+import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Ignore;
 
 /**
@@ -8,12 +9,25 @@ import android.arch.persistence.room.Ignore;
 
 public class Restaurant {
 
+    @ColumnInfo(name = "IdRestaurant")
     private Integer idRestaurant;
+
+    @ColumnInfo(name = "Name")
     private String name;
+
+    @ColumnInfo(name = "Address")
     private String address;
+
+    @ColumnInfo(name = "Phone")
     private Integer phone;
+
+    @ColumnInfo(name = "Website")
     private String website;
+
+    @ColumnInfo(name = "Distance")
     private Double distance;
+
+    @ColumnInfo(name = "Rating")
     private Double rating;
 
     public Restaurant(Integer idRestaurant, String name, String address, Integer phone, String website, Double distance, Double rating) {

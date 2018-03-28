@@ -11,9 +11,16 @@ import io.reactivex.annotations.NonNull;
 
 public class Attraction {
 
+    @ColumnInfo(name = "IdAttraction")
     private Integer idAttraction;
+
+    @ColumnInfo(name = "Name")
     private String name;
+
+    @ColumnInfo(name = "Description")
     private String description;
+
+    @ColumnInfo(name = "Image")
     private Integer image;
 
 
