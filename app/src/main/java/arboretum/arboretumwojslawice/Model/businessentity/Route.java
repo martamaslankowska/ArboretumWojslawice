@@ -1,15 +1,14 @@
 package arboretum.arboretumwojslawice.Model.businessentity;
 
-import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Ignore;
 
 import org.parceler.Parcel;
+import org.parceler.ParcelPropertyConverter;
 
 import java.util.Date;
 import java.util.List;
 
 import arboretum.arboretumwojslawice.Commons.AdapterItem;
-import io.reactivex.annotations.NonNull;
 
 /**
  * Created by Komputer on 2018-03-25.
