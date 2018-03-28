@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Toast;
 
 import org.parceler.ParcelConverter;
 import org.parceler.Parcels;
@@ -77,6 +78,10 @@ public class RouteFragment extends Fragment implements ParcelConverter<List<Rout
 
         listener = new CustomAdapter.OnItemClickListener() {
             public void onItemClick(int route_id) {
+                Toast.makeText(getContext(), "trasa" + route_id, Toast.LENGTH_SHORT).show();
+            }
+
+            public void onDetailClick(int route_id) {
                 Intent intent = new Intent(getActivity().getApplicationContext(), RouteDetail.class);
                 Bundle bundle = new Bundle();
                 bundle.putInt("ROUTE_ID", route_id);

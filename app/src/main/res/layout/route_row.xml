@@ -9,7 +9,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
         android:focusable="true"
         android:paddingLeft="4dp"
         android:paddingRight="4dp"
@@ -28,17 +28,28 @@
             android:id="@+id/route_name"
             android:textSize="16dp"
             android:textStyle="bold"
-
+            android:layout_marginTop="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_toStartOf="@id/route_detail_arrow"
             android:text="@{route.getName()}"/>
-        <!--android:layout_toRightOf="@id/route_id"-->
+        <!--"-->
         <TextView
             android:id="@+id/route_description"
             android:layout_below="@id/route_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_toStartOf="@id/route_detail_arrow"
             android:text="@{route.getDescription()}"/>
+
+        <ImageView
+            android:id="@+id/route_detail_arrow"
+            android:layout_margin="5dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/icons8_forward"/>
 
     </RelativeLayout>
 </layout>

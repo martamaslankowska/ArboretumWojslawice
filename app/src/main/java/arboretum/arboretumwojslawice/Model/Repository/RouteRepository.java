@@ -12,7 +12,7 @@ import arboretum.arboretumwojslawice.R;
 
 public class RouteRepository {
 
-    List<Route> getRoutesForMichal() {
+    public List<Route> getRoutesForMichal() {
         List<Route> routes = new ArrayList<>();
         Route route = new Route(1, 3.5, 215, R.drawable.icons8_more, "Traska dla emerytów", "To jest własnie taka jakaś lajtowa traska, bo pomimo tego, że jej przejście to poad dwie godziny, to ogarnia niewielki zakres Arboretum. Polecamy ją zatem osobom starszym, które mają już za słabe stawy i kolana do długiego zwiedzania");
         routes.add(route);

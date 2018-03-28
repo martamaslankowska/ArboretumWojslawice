@@ -1,7 +1,11 @@
 package arboretum.arboretumwojslawice.ViewModel;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import arboretum.arboretumwojslawice.Model.Repository.RouteRepository;
 import arboretum.arboretumwojslawice.Model.businessentity.Route;
 
 /**
@@ -10,16 +14,14 @@ import arboretum.arboretumwojslawice.Model.businessentity.Route;
 
 public class RouteViewModel {
     List<Route> mRoutes;
+    RouteRepository mRouteRepo;
 
-    public void onCreate() {
-
+    public RouteViewModel() {
+        mRouteRepo = new RouteRepository();
     }
 
     public List<Route> getData() {
-        mRoutes = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            mRoutes.add(new Route(i, "Trasa " + i, "Opis " + i));
-        }
+        mRoutes = mRouteRepo.getRoutesForMichal();
         return mRoutes;
     }
 }

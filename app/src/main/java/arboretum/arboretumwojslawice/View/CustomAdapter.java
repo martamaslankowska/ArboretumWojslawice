@@ -14,35 +14,43 @@ import android.widget.AdapterView;
 import java.util.ArrayList;
 import java.util.List;
 
+import arboretum.arboretumwojslawice.Commons.BindingViewHolder;
 import arboretum.arboretumwojslawice.Model.businessentity.Route;
 import arboretum.arboretumwojslawice.R;
+import arboretum.arboretumwojslawice.View.viewholder.RouteListViewHolder;
 import arboretum.arboretumwojslawice.databinding.RouteRowBinding;
 
 /**
  * Provide views to RecyclerView with data from mDataSet.
  */
-public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
+public class CustomAdapter extends RecyclerView.Adapter<BindingViewHolder> {
 
     private List<Route> mRoutes = new ArrayList<>();
-    AdapterView.OnItemClickListener mItemClickListener;
-
     OnItemClickListener listener;
 
     public CustomAdapter(OnItemClickListener listener){
         this.listener =  listener;
     }
 
-    @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
-        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        RouteRowBinding binding = DataBindingUtil.inflate(inflater, R.layout.route_row, parent, false);
-        return new ViewHolder(binding, listener);
-    }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(BindingViewHolder holder, int position) {
         Route route = mRoutes.get(position);
         holder.bind(route);
+    }
+
+
+    @Override
+    public BindingViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+        RouteRowBinding binding = RouteRowBinding.inflate(inflater, parent, false);
+
+        switch (viewType) {
+            case 0:
+                return new RouteListViewHolder(binding, listener);
+            default:
+                throw new IllegalArgumentException("This viewType is not supported " + viewType);
+        }
     }
 
     @Override
@@ -51,30 +59,12 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
         return mRoutes.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        private RouteRowBinding mBinding;
-
-        public ViewHolder(RouteRowBinding binding, final OnItemClickListener listener) {
-            super(binding.getRoot());
-            mBinding = binding;
-            itemView.setOnClickListener(__ -> listener.onItemClick(getAdapterPosition()));
-        }
-
-        public void bind(@NonNull Route route) {
-            mBinding.setRoute(route);
-            mBinding.executePendingBindings();
-        }
-    }
-
     public interface OnItemClickListener
     {
         public void onItemClick(int position);
+        public void onDetailClick(int position);
     }
 
-    public void SetOnItemClickListener(OnItemClickListener mItemClickListener)
-    {
-        this.mItemClickListener = (AdapterView.OnItemClickListener) mItemClickListener;
-    }
 
     void setData(List<Route> route) {
         this.mRoutes = route;

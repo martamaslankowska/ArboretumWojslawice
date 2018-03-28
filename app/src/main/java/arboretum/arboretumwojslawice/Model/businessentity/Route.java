@@ -8,6 +8,7 @@ import org.parceler.Parcel;
 import java.util.Date;
 import java.util.List;
 
+import arboretum.arboretumwojslawice.Commons.AdapterItem;
 import io.reactivex.annotations.NonNull;
 
 /**
@@ -15,7 +16,7 @@ import io.reactivex.annotations.NonNull;
  */
 
 @Parcel
-public class Route {
+public class Route implements AdapterItem {
 
     private int idRoute;
     private Double length;
@@ -150,7 +151,12 @@ public class Route {
     public String toString() {
         return "(id = " + idRoute + ") " + name + " - " + length + " km, " + getTimeDate().getHours() + ":" + getTimeDate().getMinutes();
     }
-    
+
+    @Override
+    public int getItemType() {
+        return 0;
+    }
+
 
     public class PlantOnRoute {
 
