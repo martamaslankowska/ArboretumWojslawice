@@ -7,6 +7,7 @@ import android.database.Cursor;
 import java.util.List;
 
 import arboretum.arboretumwojslawice.Model.Entity.RestaurantEntity;
+import arboretum.arboretumwojslawice.Model.businessentity.Hotel;
 import arboretum.arboretumwojslawice.Model.businessentity.Restaurant;
 import io.reactivex.Maybe;
 
@@ -18,16 +19,16 @@ import io.reactivex.Maybe;
 public abstract class RestaurantDao extends BaseDao<RestaurantEntity> {
 
     @Query("SELECT * FROM Restaurants")
-    abstract Cursor getAll();
+    public abstract Maybe<List<Restaurant>> getAll();
 
     @Query("SELECT * FROM Restaurants WHERE IdRestaurant IN (:id)")
-    abstract Cursor getById(int id);
+    public abstract Restaurant getById(int id);
 
     @Query("SELECT * FROM Restaurants WHERE Name IN (:name) LIMIT 1")
-    abstract Cursor getByName(String name);
+    public abstract Restaurant getByName(String name);
 
     @Query("SELECT * FROM Restaurants WHERE Rating >= (:rating)")
-    abstract Cursor getAllBetterThan(double rating);
+    public abstract Maybe<List<Restaurant>> getAllBetterThan(double rating);
 
 
 }

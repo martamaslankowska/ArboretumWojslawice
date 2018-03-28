@@ -18,15 +18,15 @@ import io.reactivex.Maybe;
 public abstract class HotelDao extends BaseDao<HotelEntity> {
 
     @Query("SELECT * FROM Hotels")
-    abstract Cursor getAll();
+    public abstract Maybe<List<Hotel>> getAll();
 
     @Query("SELECT * FROM Hotels WHERE IdHotel IN (:id)")
-    abstract Cursor getById(int id);
+    public abstract Hotel getById(int id);
 
     @Query("SELECT * FROM Hotels WHERE Name IN (:name)")
-    abstract Cursor getByName(String name);
+    public abstract Hotel getByName(String name);
 
     @Query("SELECT * FROM Hotels WHERE Rating >= (:rating)")
-    abstract Cursor getAllBetterThan(double rating);
+    public abstract Maybe<List<Hotel>> getAllBetterThan(double rating);
 
 }

@@ -15,13 +15,28 @@ import io.reactivex.annotations.NonNull;
 
 public class Event {
 
+    @ColumnInfo(name = "IdEvent")
     private Integer idEvent;
+
+    @ColumnInfo(name = "Type")
     private String type;
+
+    @ColumnInfo(name = "Name")
     private String name;
+
+    @ColumnInfo(name = "DateBegin")
     private Integer dateBegin;
+
+    @ColumnInfo(name = "DateEnd")
     private Integer dateEnd;
+
+    @ColumnInfo(name = "TimeBegin")
     private Integer timeBegin;
+
+    @ColumnInfo(name = "TimeEnd")
     private Integer timeEnd;
+
+    @ColumnInfo(name = "Description")
     private String descritpion;
 
 

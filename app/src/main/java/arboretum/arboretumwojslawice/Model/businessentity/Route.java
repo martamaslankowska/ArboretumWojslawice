@@ -17,26 +17,38 @@ import arboretum.arboretumwojslawice.Commons.AdapterItem;
 @Parcel
 public class Route implements AdapterItem {
 
+    @ColumnInfo(name = "IdRoute")
     private int idRoute;
+
+    @ColumnInfo(name = "Length")
     private Double length;
+
+    @ColumnInfo(name = "Time")
     private Integer time;
+
+    @ColumnInfo(name = "MapImage")
     private Integer mapImage;
+
+    @ColumnInfo(name = "Name")
     private String name;
+
+    @ColumnInfo(name = "Description")
     private String description;
+
     //@Ignore
     //private List<PlantOnRoute> plantsOnRoute;
 
 
-    @Ignore
-    public Route(Integer idRoute, Double length, Integer time, Integer mapImage, String name, String description, List<PlantOnRoute> plantsOnRoute) {
-        this.idRoute = idRoute;
-        this.length = length;
-        this.time = time;
-        this.mapImage = mapImage;
-        this.name = name;
-        this.description = description;
-        //this.plantsOnRoute = plantsOnRoute;
-    }
+//    @Ignore
+//    public Route(Integer idRoute, Double length, Integer time, Integer mapImage, String name, String description, List<PlantOnRoute> plantsOnRoute) {
+//        this.idRoute = idRoute;
+//        this.length = length;
+//        this.time = time;
+//        this.mapImage = mapImage;
+//        this.name = name;
+//        this.description = description;
+//        this.plantsOnRoute = plantsOnRoute;
+//    }
 
     public Route(Integer idRoute, Double length, Integer time, Integer mapImage, String name, String description) {
         this.idRoute = idRoute;
@@ -47,7 +59,7 @@ public class Route implements AdapterItem {
         this.description = description;
     }
 
-    //@Ignore
+//    @Ignore
 //    public Route(List<PlantOnRoute> plantsOnRoute) {
 //        this.plantsOnRoute = plantsOnRoute;
 //    }
@@ -156,81 +168,5 @@ public class Route implements AdapterItem {
         return 0;
     }
 
-
-    public class PlantOnRoute {
-
-        private Integer pointOrder;
-        @Ignore
-        private Plant plant;
-        private Double x;
-        private Double y;
-
-        @Ignore
-        public PlantOnRoute(Integer pointOrder) {
-            this.pointOrder = pointOrder;
-        }
-
-        @Ignore
-        public PlantOnRoute(Plant plant) {
-            this.plant = plant;
-        }
-
-        @Ignore
-        public PlantOnRoute(Double x, Double y) {
-            this.x = x;
-            this.y = y;
-        }
-
-        public PlantOnRoute(Integer pointOrder, Double x, Double y) {
-            this.pointOrder = pointOrder;
-            this.x = x;
-            this.y = y;
-        }
-
-        public PlantOnRoute(Integer pointOrder, Plant plant, Double x, Double y) {
-            this.pointOrder = pointOrder;
-            this.plant = plant;
-            this.x = x;
-            this.y = y;
-        }
-
-        public Integer getPointOrder() {
-            return pointOrder;
-        }
-
-        public void setPointOrder(Integer pointOrder) {
-            this.pointOrder = pointOrder;
-        }
-
-        public Plant getPlant() {
-            return plant;
-        }
-
-        public void setPlant(Plant plant) {
-            this.plant = plant;
-        }
-
-        public Double getX() {
-            return x;
-        }
-
-        public void setX(Double x) {
-            this.x = x;
-        }
-
-        public Double getY() {
-            return y;
-        }
-
-        public void setY(Double y) {
-            this.y = y;
-        }
-
-
-        @Override
-        public String toString() {
-            return "(RouteId = " + idRoute + ") nr " + pointOrder + " --> " + plant.getName() + "(id = " + plant.getIdPlant() + ")";
-        }
-    }
 
 }
