@@ -32,12 +32,12 @@ public class AttractionTranslationEntity {
     private String description;
 
 
-//    public AttractionTranslationEntity(String translationCode, int idAttraction, String name, String description) {
-//        this.translationCode = translationCode;
-//        this.idAttraction = idAttraction;
-//        this.name = name;
-//        this.description = description;
-//    }
+    public AttractionTranslationEntity(String translationCode, int idAttraction, String name, String description) {
+        this.translationCode = translationCode;
+        this.idAttraction = idAttraction;
+        this.name = name;
+        this.description = description;
+    }
 
 
     public String getTranslationCode() {

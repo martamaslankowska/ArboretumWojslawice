@@ -23,6 +23,11 @@ public class AttractionEntity {
     private int image;
 
 
+    public AttractionEntity(int idAttraction, int image) {
+        this.idAttraction = idAttraction;
+        this.image = image;
+    }
+
     public int getIdAttraction() {
         return idAttraction;
     }

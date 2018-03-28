@@ -2,6 +2,8 @@ package arboretum.arboretumwojslawice.Commons.modules;
 
 import android.app.Application;
 
+import java.util.Locale;
+
 import dagger.Module;
 import dagger.Provides;
 
@@ -20,6 +22,11 @@ public class ApplicationModule {
     @Provides
     public Application provideApplication() {
         return mApplication;
+    }
+
+    @Provides
+    public Locale provideLocale() {
+        return mApplication.getResources().getConfiguration().locale;
     }
 
     /* Not able to find @ApplicationContext... */

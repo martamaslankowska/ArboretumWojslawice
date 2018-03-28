@@ -17,21 +17,21 @@ import java.util.List;
 abstract class BaseDao<T> {  // extends Entity
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    abstract void insert(T... objects);
+    public abstract void insert(T... objects);
 
     @Insert
-    abstract void insert(List<T> objects);
+    public abstract void insert(List<T> objects);
 
     @Delete
-    abstract void delete(T... objects);
+    public abstract void delete(T... objects);
 
     @Delete
-    abstract void delete(List<T> objects);
+    public abstract void delete(List<T> objects);
 
     @Update
-    abstract void update(T... objects);
+    public abstract void update(T... objects);
 
     @Update
-    abstract void update(List<T> objects);
+    public abstract void update(List<T> objects);
 
 }
