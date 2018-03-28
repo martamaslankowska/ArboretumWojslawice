@@ -11,17 +11,23 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
         tools:context="arboretum.arboretumwojslawice.View.RouteDetail">
 
         <TextView
             android:id="@+id/route_detail_id"
             android:layout_width="20dp"
             android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:textStyle="bold"
             android:text="@{route.getStringId()}"/>
 
         <TextView
             android:id="@+id/route_detail_name"
-            android:textSize="16dp"
+            android:textSize="18dp"
             android:textStyle="bold"
             android:layout_toRightOf="@id/route_detail_id"
             android:layout_width="match_parent"
@@ -33,6 +39,8 @@
             android:layout_below="@id/route_detail_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textSize="16dp"
             android:text="@{route.getDescription()}"/>
 
     </RelativeLayout>

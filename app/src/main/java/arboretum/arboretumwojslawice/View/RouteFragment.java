@@ -61,7 +61,7 @@ public class RouteFragment extends Fragment  {
 
         listener = new CustomAdapter.OnItemClickListener() {
             public void onItemClick(int route_id) {
-                Toast.makeText(getContext(), "trasa" + route_id, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Trasa nr " + (route_id+1), Toast.LENGTH_SHORT).show();
             }
 
             public void onDetailClick(int route_id) {

@@ -20,7 +20,7 @@ public class RouteRepository {
         routes.add(route);
         route = new Route(3, 7.2, 420, R.drawable.icons8_map, "Trasa idealna dla poszukiwaczy przygód", "W sumie nie mam pomysłu na opis, ale jakoś tak mi ci poszukiwacze przygód wpadli, jak dałam jako obrazek ikonkę mapki.... :D");
         routes.add(route);
-        route = new Route(4, 5., 200, R.drawable.ic_home_black_24dp, "Trasa rododendronowa", "W końcu czy nie po to każdy przyjeżdża do Arboretum? Z powodu sławnych rododendronów?\n(teraz się zastanawiam czy zrobi się ta spacja czy nie)\nNIEEEE - my tam przyjedziemy jedynie służbowo :(");
+        route = new Route(4, 5., 200, R.drawable.ic_home_black_24dp, "Trasa rododendronowa", "W końcu czy nie po to każdy przyjeżdża do Arboretum? Z powodu sławnych rododendronów?\n\n(teraz się zastanawiam czy zrobi się ta spacja czy nie)\n\nNIEEEE - my tam przyjedziemy jedynie służbowo :(");
         routes.add(route);
         route = new Route(5, 3.1, 130, R.drawable.icons8_more, "Sprinterska", "Nie masz zbyt wiele czasu, bo w brzuszku już burczy? Trasa w sam raz dla Ciebie! Oferuje krótki spacer po najciekawszych okazach w Arboretum, kończąc Twoją przygodę w naszej restauracji ;)");
         routes.add(route);

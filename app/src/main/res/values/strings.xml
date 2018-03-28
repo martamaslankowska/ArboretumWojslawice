@@ -14,4 +14,9 @@
     <string name="tab_route">Trasy</string>
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
+
+    <!-- Marta - example strings to use with data binding -->
+    <string name="route_length">Długość trasy - %s</string>
+    <string name="route_time">Szacowany czas - %sh</string>
+
 </resources>

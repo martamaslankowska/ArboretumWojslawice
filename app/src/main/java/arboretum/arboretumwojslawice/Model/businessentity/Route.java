@@ -1,5 +1,6 @@
 package arboretum.arboretumwojslawice.Model.businessentity;
 
+import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Ignore;
 
 import org.parceler.Parcel;
@@ -97,6 +98,10 @@ public class Route implements AdapterItem {
         return length;
     }
 
+    public String getLengthString() {
+        return length.toString() + " km";
+    }
+
     public void setLength(Double length) {
         this.length = length;
     }
@@ -116,6 +121,12 @@ public class Route implements AdapterItem {
         time.setHours(hour);
         time.setMinutes(minutes);
         return time;
+    }
+
+    public String getTimeString() {
+        Date time = getTimeDate();
+        String stringTime = time.getHours() + ":" + time.getMinutes();
+        return stringTime;
     }
 
     public void setTime(Date time) {
