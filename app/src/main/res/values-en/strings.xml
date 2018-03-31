@@ -2,11 +2,22 @@
 <resources>
     <string name="app_name">Arboretum</string>
     <string name="title_home">News</string>
-    <string name="title_map_and_route">Route / Map</string>
+    <string name="title_map_and_route">Map / Route</string>
     <string name="title_favoutites">Favourites</string>
     <string name="title_more">More...</string>
+
+    <string name="tab_map">Map</string>
+    <string name="tab_route">Routes</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- Marta - example strings to use with data binding -->
+    <string name="route_length">Route length - %s</string>
+    <string name="route_time">Estimated time - %sh</string>
+
 </resources>
 
 <!--Tutaj Michał-->
 <!--Gdzie kawa tam zabawa :D-->
 <!--Pozdrawiam-->
+
+<!--Całkiem to zabawne :p-->
