@@ -6,11 +6,13 @@ import android.arch.persistence.room.Ignore;
 import java.util.Date;
 import java.util.List;
 
+import arboretum.arboretumwojslawice.Commons.AdapterItem;
+
 /**
  * Created by Komputer on 2018-03-25.
  */
 
-public class Plant {
+public class Plant implements AdapterItem {
 
     @ColumnInfo(name = "IdPlant")
     private Integer idPlant;
@@ -209,5 +211,10 @@ public class Plant {
     @Override
     public String toString() {
         return "(id = " + idPlant + ") name: " + name + " (genus: " + genusName + ") --> " + kindName;
+    }
+
+    @Override
+    public int getItemType() {
+        return 0;
     }
 }

@@ -35,5 +35,8 @@
     <!-- Marta - example strings to use with data binding -->
     <string name="route_length">Długość trasy - %s</string>
     <string name="route_time">Szacowany czas - %sh</string>
+    <string name="plant_name">Nazwa kwiatka - %s</string>
+    <string name="plant_genus">Rodzaj - %s</string>
+    <string name="plant_kind">Gatunek - %s</string>
 
 </resources>
