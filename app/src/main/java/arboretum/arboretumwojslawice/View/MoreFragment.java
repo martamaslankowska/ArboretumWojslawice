@@ -1,5 +1,6 @@
 package arboretum.arboretumwojslawice.View;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
@@ -51,8 +52,33 @@ public class MoreFragment extends Fragment {
         mRecyclerView = (RecyclerView) view.findViewById(R.id.more_recycler_view);
 
         listener = new MoreAdapter.OnItemClickListener() {
-            public void onItemClick(int route_id) {
-                Toast.makeText(getContext(), "Trasa nr " + (route_id+1), Toast.LENGTH_SHORT).show();
+            public void onItemClick(int position) {
+                Intent intent;
+                switch (position) {
+                    case 0:
+                        intent = new Intent(getActivity().getApplicationContext(), PlantActivity.class);
+                        getActivity().startActivity(intent);
+                        break;
+                    case 1:
+                        intent = new Intent(getActivity().getApplicationContext(), EventActivity.class);
+                        getActivity().startActivity(intent);
+                        break;
+                    case 2:
+                        intent = new Intent(getActivity().getApplicationContext(), PriceActivity.class);
+                        getActivity().startActivity(intent);
+                        break;
+                    case 3:
+                        intent = new Intent(getActivity().getApplicationContext(), ContactActivity.class);
+                        getActivity().startActivity(intent);
+                        break;
+                    case 4:
+                        intent = new Intent(getActivity().getApplicationContext(), RulesActivity.class);
+                        getActivity().startActivity(intent);
+                        break;
+                    default:
+                        Toast.makeText(getContext(), "Pozycja nr " + (position+1), Toast.LENGTH_SHORT).show();
+                }
+
             }
         };
 

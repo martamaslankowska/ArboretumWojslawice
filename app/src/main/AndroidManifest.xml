@@ -19,7 +19,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".View.RouteDetailActivity" />
-        <activity android:name=".View.QRCodeActivity"></activity>
+        <activity android:name=".View.QRCodeActivity" />
+        <activity android:name=".View.PlantActivity" />
+        <activity android:name=".View.EventActivity" />
+        <activity android:name=".View.PriceActivity" />
+        <activity android:name=".View.ContactActivity" />
+        <activity android:name=".View.RulesActivity"></activity>
     </application>
 
 </manifest>
