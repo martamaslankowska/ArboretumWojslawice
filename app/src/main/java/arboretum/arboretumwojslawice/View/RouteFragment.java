@@ -6,9 +6,11 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 
@@ -42,6 +44,7 @@ public class RouteFragment extends Fragment  {
     protected CustomAdapter mAdapter;
     protected RecyclerView.LayoutManager mLayoutManager;
     protected List<Route> mRoutes;
+    protected ImageView route_map;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -60,7 +63,9 @@ public class RouteFragment extends Fragment  {
 
         listener = new CustomAdapter.OnItemClickListener() {
             public void onItemClick(int route_id) {
-                Toast.makeText(getContext(), "Trasa nr " + (route_id+1), Toast.LENGTH_SHORT).show();
+                route_map = rootView.findViewById(R.id.route_map);
+                route_map.setImageResource(mRoutes.get(route_id).getMapImage());
+                Log.d("route_map", mRoutes.get(route_id).getMapString());
             }
 
             public void onDetailClick(int route_id) {

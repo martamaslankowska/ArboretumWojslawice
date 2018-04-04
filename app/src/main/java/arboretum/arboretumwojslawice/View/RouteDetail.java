@@ -2,15 +2,9 @@ package arboretum.arboretumwojslawice.View;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
-import android.os.Parcel;
-import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-
-import org.parceler.Parcels;
-
-import java.util.List;
 
 import arboretum.arboretumwojslawice.Model.businessentity.Route;
 import arboretum.arboretumwojslawice.R;

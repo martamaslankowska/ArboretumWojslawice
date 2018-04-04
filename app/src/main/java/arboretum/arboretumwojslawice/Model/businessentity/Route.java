@@ -2,12 +2,16 @@ package arboretum.arboretumwojslawice.Model.businessentity;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Ignore;
+import android.databinding.BindingAdapter;
+import android.widget.ImageView;
 
 import org.parceler.Parcel;
 import org.parceler.ParcelPropertyConverter;
 
 import java.util.Date;
 import java.util.List;
+
+import javax.inject.Inject;
 
 import arboretum.arboretumwojslawice.Commons.AdapterItem;
 
@@ -64,6 +68,12 @@ public class Route implements AdapterItem {
 //    public Route(List<PlantOnRoute> plantsOnRoute) {
 //        this.plantsOnRoute = plantsOnRoute;
 //    }
+
+    @Ignore
+    @BindingAdapter({"android:src"})
+    public static void setImageViewResource(ImageView imageView, int resource) {
+        imageView.setImageResource(resource);
+    }
 
     @Ignore
     public Route(Integer idRoute, Double length, Integer time, String name) {
@@ -138,6 +148,10 @@ public class Route implements AdapterItem {
 
     public Integer getMapImage() {
         return mapImage;
+    }
+
+    public String getMapString() {
+        return String.valueOf(mapImage);
     }
 
     public void setMapImage(Integer mapImage) {
