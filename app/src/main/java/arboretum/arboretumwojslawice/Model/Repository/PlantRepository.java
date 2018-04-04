@@ -49,6 +49,8 @@ public class PlantRepository extends  BaseRepository {
         this.locale = locale;
     }
 
+    public PlantRepository() {}
+
     public Maybe<List<Plant>> getAllPlants() {
         return plantDao.getAll();
     }
