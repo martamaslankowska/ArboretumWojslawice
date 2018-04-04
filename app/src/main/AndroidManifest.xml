@@ -18,7 +18,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".View.RouteDetail"></activity>
+        <activity android:name=".View.RouteDetail" />
+        <activity android:name=".View.QRCodeActivity"></activity>
     </application>
 
 </manifest>

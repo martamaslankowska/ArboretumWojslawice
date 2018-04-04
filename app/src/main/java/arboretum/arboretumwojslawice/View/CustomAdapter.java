@@ -42,6 +42,7 @@ public class CustomAdapter extends RecyclerView.Adapter<BindingViewHolder> {
 
     @Override
     public BindingViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         RouteRowBinding binding = RouteRowBinding.inflate(inflater, parent, false);
 

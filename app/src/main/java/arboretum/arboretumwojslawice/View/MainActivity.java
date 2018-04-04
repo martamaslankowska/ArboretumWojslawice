@@ -1,5 +1,6 @@
 package arboretum.arboretumwojslawice.View;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -8,6 +9,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import arboretum.arboretumwojslawice.R;
@@ -103,6 +105,11 @@ public class MainActivity extends AppCompatActivity {
                 .addToBackStack(null)
                 .commit();
 
+    }
+
+    public void getQRCode(View view) {
+        Intent intent = new Intent(this, QRCodeActivity.class);
+        startActivity(intent);
     }
 
 }

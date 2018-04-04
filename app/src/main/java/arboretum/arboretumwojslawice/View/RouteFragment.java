@@ -23,7 +23,7 @@ import arboretum.arboretumwojslawice.ViewModel.RouteViewModel;
  * Created by weronika on 22.03.2018.
  */
 
-@SuppressLint("ValidFragment")
+
 public class RouteFragment extends Fragment  {
 
     private static final String KEY_LAYOUT_MANAGER = "route_fragment";

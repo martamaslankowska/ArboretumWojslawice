@@ -15,6 +15,7 @@
         android:background="@color/colorPrimary"
         android:layout_marginEnd="@dimen/bottom_navigation_icon"
         android:layout_gravity="right"
-        android:contentDescription="Qr button"/>
+        android:contentDescription="Qr button"
+        android:onClick="getQRCode"/>
 
 </android.support.v7.widget.Toolbar>

@@ -6,6 +6,7 @@
     <string name="title_more">Więcej</string>
     <string name="title_map">Mapa</string>
     <string name="title_route">Trasy</string>
+    <string name="title_qr_code">QR Code</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
