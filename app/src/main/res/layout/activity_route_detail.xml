@@ -40,36 +40,67 @@
             android:layout_height="wrap_content"
             android:textSize="18dp"
             android:textStyle="bold"
-            android:layout_below="@id/route_detail_map"
+            android:layout_below="@+id/route_detail_map"
             android:text="@{route.getStringId()}"/>
 
         <TextView
             android:id="@+id/route_detail_name"
             android:textSize="18dp"
             android:textStyle="bold"
-            android:layout_toRightOf="@id/route_detail_id"
+            android:layout_toRightOf="@+id/route_detail_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/route_detail_map"
+            android:layout_below="@+id/route_detail_map"
             android:text="@{route.getName()}"/>
 
         <TextView
             android:id="@+id/route_detail_description"
-            android:layout_below="@id/route_detail_name"
+            android:layout_below="@+id/route_detail_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:textSize="16dp"
             android:text="@{route.getDescription()}"/>
 
-        <android.support.v4.view.ViewPager
-            android:id="@+id/viewPager"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_above="@+id/route_detail_button"
+            android:id="@+id/route_detail_pager">
+
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="@dimen/plant_page_image_height"
+                android:id="@+id/route_detail_left_arrow"
+                android:layout_alignParentLeft="true"
+                android:src="@drawable/left_arrow"/>
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/viewPager"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/plant_page_image_height"
+                android:layout_toEndOf="@+id/route_detail_left_arrow"
+                android:layout_toStartOf="@+id/route_detail_right_arrow"/>
+
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="@dimen/plant_page_image_height"
+                android:id="@+id/route_detail_right_arrow"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/right_arrow"/>
+
+
+
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/route_detail_button"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
             android:layout_alignParentBottom="true"
-            android:layout_marginTop="8dp"
-            android:layout_below="@+id/route_detail_description"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            android:text="NAWIGUJ"
+            android:textSize="40dp" />
 
     </RelativeLayout>
     </LinearLayout>

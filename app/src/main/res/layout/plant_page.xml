@@ -2,18 +2,27 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="@dimen/plant_page_image_height">
+
+    <ImageView
+        android:layout_width="35dp"
+        android:layout_height="match_parent"
+        android:id="@+id/plant_page_left_arrow"
+        android:layout_alignParentLeft="true" />
 
     <ImageView
         android:layout_width="@dimen/plant_page_image_width"
-        android:layout_height="@dimen/plant_page_image_height"
-        android:id="@+id/plant_page_image" />
+        android:layout_height="match_parent"
+        android:id="@+id/plant_page_image"
+        android:layout_toEndOf="@+id/plant_page_left_arrow"/>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/plant_page_image_height"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_toRightOf="@id/plant_page_image">
+        android:layout_centerVertical="true"
+        android:layout_toStartOf="@id/plant_page_right_arrow"
+        android:layout_toEndOf="@+id/plant_page_image">
 
         <TextView
             android:layout_width="match_parent"
@@ -26,8 +35,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/plant_page_kind"
-            android:layout_below="@id/plant_page_genus"
+            android:layout_below="@+id/plant_page_genus"
             android:layout_gravity="center"
             android:gravity="center_vertical|bottom" />
     </LinearLayout>
+
+    <ImageView
+        android:layout_width="35dp"
+        android:layout_height="match_parent"
+        android:id="@+id/plant_page_right_arrow"
+        android:layout_alignParentRight="true" />
 </RelativeLayout>

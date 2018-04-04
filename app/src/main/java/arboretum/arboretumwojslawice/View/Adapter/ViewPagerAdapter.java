@@ -1,4 +1,4 @@
-package arboretum.arboretumwojslawice.View;
+package arboretum.arboretumwojslawice.View.Adapter;
 
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
@@ -34,6 +34,8 @@ public class ViewPagerAdapter extends PagerAdapter {
         this.mPlants = pList;
     }
 
+
+
     @Override
     public int getCount() {
         return mPlants.size();
@@ -58,6 +60,12 @@ public class ViewPagerAdapter extends PagerAdapter {
         TextView textView2 = (TextView) view.findViewById(R.id.plant_page_kind);
         textView2.setText(plant.getKindName());
 
+
+        ImageView leftArrow = (ImageView) view.findViewById(R.id.plant_page_left_arrow);
+        leftArrow.setImageResource(R.drawable.left_arrow);
+
+        ImageView rightArrow = (ImageView) view.findViewById(R.id.plant_page_right_arrow);
+        rightArrow.setImageResource(R.drawable.right_arrow);
 
         ViewPager vp = (ViewPager) container;
         vp.addView(view, 0);

@@ -74,7 +74,7 @@ public class PlantRepository extends  BaseRepository {
         plants1.add(route);
         route = new Plant(2, "Rodzaj2", "Gatunek2", R.drawable.flower2);
         plants1.add(route);
-        route = new Plant(3, "Rodzaj3", "Gatunek3", R.drawable.flower3);
+        route = new Plant(3, "Rodzaj3", "Gatunek3", R.drawable.flower1);
         plants1.add(route);
 
         return plants1;

@@ -19,12 +19,12 @@ import arboretum.arboretumwojslawice.databinding.RouteRowBinding;
 /**
  * Provide views to RecyclerView with data from mDataSet.
  */
-public class CustomAdapter extends RecyclerView.Adapter<BindingViewHolder> {
+public class RouteAdapter extends RecyclerView.Adapter<BindingViewHolder> {
 
     private List<Route> mRoutes = new ArrayList<>();
     OnItemClickListener listener;
 
-    public CustomAdapter(OnItemClickListener listener){
+    public RouteAdapter(OnItemClickListener listener){
         this.listener =  listener;
     }
 

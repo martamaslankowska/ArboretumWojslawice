@@ -17,7 +17,7 @@ import java.util.List;
 
 import arboretum.arboretumwojslawice.Model.businessentity.Route;
 import arboretum.arboretumwojslawice.R;
-import arboretum.arboretumwojslawice.View.Adapter.CustomAdapter;
+import arboretum.arboretumwojslawice.View.Adapter.RouteAdapter;
 import arboretum.arboretumwojslawice.ViewModel.RouteViewModel;
 
 /**
@@ -31,7 +31,7 @@ public class RouteFragment extends Fragment  {
     private static final int SPAN_COUNT = 2;
 
     RouteViewModel routeViewModel;
-    CustomAdapter.OnItemClickListener listener;
+    RouteAdapter.OnItemClickListener listener;
 
     private enum LayoutManagerType {
         GRID_LAYOUT_MANAGER,
@@ -41,7 +41,7 @@ public class RouteFragment extends Fragment  {
     protected LayoutManagerType mCurrentLayoutManagerType;
 
     protected RecyclerView mRecyclerView;
-    protected CustomAdapter mAdapter;
+    protected RouteAdapter mAdapter;
     protected RecyclerView.LayoutManager mLayoutManager;
     protected List<Route> mRoutes;
     protected ImageView route_map;
@@ -61,7 +61,7 @@ public class RouteFragment extends Fragment  {
         routeViewModel = new RouteViewModel();
         mRoutes = routeViewModel.getData();
 
-        listener = new CustomAdapter.OnItemClickListener() {
+        listener = new RouteAdapter.OnItemClickListener() {
             public void onItemClick(int route_id) {
                 route_map = rootView.findViewById(R.id.route_map);
                 route_map.setImageResource(mRoutes.get(route_id).getMapImage());
@@ -77,7 +77,7 @@ public class RouteFragment extends Fragment  {
             }
         };
 
-        mAdapter = new CustomAdapter(listener);
+        mAdapter = new RouteAdapter(listener);
         mRecyclerView.setAdapter(mAdapter);
         mAdapter.setData(routeViewModel.getData());
 

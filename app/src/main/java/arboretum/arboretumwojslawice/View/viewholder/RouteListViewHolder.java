@@ -4,7 +4,7 @@ import android.support.annotation.NonNull;
 
 import arboretum.arboretumwojslawice.Commons.BindingViewHolder;
 import arboretum.arboretumwojslawice.Model.businessentity.Route;
-import arboretum.arboretumwojslawice.View.Adapter.CustomAdapter;
+import arboretum.arboretumwojslawice.View.Adapter.RouteAdapter;
 import arboretum.arboretumwojslawice.databinding.RouteRowBinding;
 
 /**
@@ -13,7 +13,7 @@ import arboretum.arboretumwojslawice.databinding.RouteRowBinding;
 
 public class RouteListViewHolder extends BindingViewHolder<Route, RouteRowBinding> {
 
-    public RouteListViewHolder(RouteRowBinding binding, final CustomAdapter.OnItemClickListener listener) {
+    public RouteListViewHolder(RouteRowBinding binding, final RouteAdapter.OnItemClickListener listener) {
         super(binding);
         itemView.setOnClickListener(__ -> listener.onItemClick(getAdapterPosition()));
         binding.routeDetailArrow.setOnClickListener(__ -> listener.onDetailClick(getAdapterPosition()));
