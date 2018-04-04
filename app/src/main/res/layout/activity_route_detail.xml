@@ -52,5 +52,14 @@
             android:textSize="16dp"
             android:text="@{route.getDescription()}"/>
 
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="8dp"
+            android:layout_below="@+id/route_detail_description"
+            android:layout_centerHorizontal="true" />
+
     </RelativeLayout>
 </layout>

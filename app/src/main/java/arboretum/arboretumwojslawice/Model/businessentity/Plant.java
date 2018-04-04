@@ -86,6 +86,14 @@ public class Plant {
         this.kindName = kindName;
     }
 
+    @Ignore
+    public Plant(Integer idPlant, String genusName, String kindName, Integer image) {
+        this.idPlant = idPlant;
+        this.genusName = genusName;
+        this.kindName = kindName;
+        this.image = image;
+    }
+
     public Integer getIdPlant() {
         return idPlant;
     }
