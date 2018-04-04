@@ -1,6 +1,5 @@
 package arboretum.arboretumwojslawice.View;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -26,7 +25,7 @@ import arboretum.arboretumwojslawice.ViewModel.RouteViewModel;
 
 public class RouteFragment extends Fragment  {
 
-    private static final String KEY_LAYOUT_MANAGER = "route_fragment";
+    private static final String KEY_LAYOUT_MANAGER = "fragment_route";
     private static final int SPAN_COUNT = 2;
 
     RouteViewModel routeViewModel;
@@ -53,7 +52,7 @@ public class RouteFragment extends Fragment  {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.route_fragment, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_route, container, false);
 
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.route_recycler_view);
         routeViewModel = new RouteViewModel();
