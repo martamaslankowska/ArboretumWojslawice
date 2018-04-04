@@ -11,13 +11,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 
 import java.util.List;
 
 import arboretum.arboretumwojslawice.Model.businessentity.Route;
 import arboretum.arboretumwojslawice.R;
+import arboretum.arboretumwojslawice.View.Adapter.CustomAdapter;
 import arboretum.arboretumwojslawice.ViewModel.RouteViewModel;
 
 /**
@@ -69,7 +69,7 @@ public class RouteFragment extends Fragment  {
             }
 
             public void onDetailClick(int route_id) {
-                Intent intent = new Intent(getActivity().getApplicationContext(), RouteDetail.class);
+                Intent intent = new Intent(getActivity().getApplicationContext(), RouteDetailActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putInt("ROUTE_ID", route_id);
                 intent.putExtra("BUNDLE", bundle);

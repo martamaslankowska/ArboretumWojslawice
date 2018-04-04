@@ -1,13 +1,10 @@
 package arboretum.arboretumwojslawice.View.viewholder;
 
 import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
 
 import arboretum.arboretumwojslawice.Commons.BindingViewHolder;
 import arboretum.arboretumwojslawice.Model.businessentity.Route;
-import arboretum.arboretumwojslawice.R;
-import arboretum.arboretumwojslawice.View.CustomAdapter;
+import arboretum.arboretumwojslawice.View.Adapter.CustomAdapter;
 import arboretum.arboretumwojslawice.databinding.RouteRowBinding;
 
 /**

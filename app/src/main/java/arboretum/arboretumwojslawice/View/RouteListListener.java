@@ -6,6 +6,8 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 
+import arboretum.arboretumwojslawice.View.Adapter.CustomAdapter;
+
 /**
  * Created by Michal on 25.03.2018.
  */

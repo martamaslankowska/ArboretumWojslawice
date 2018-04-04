@@ -11,7 +11,7 @@ import arboretum.arboretumwojslawice.R;
 import arboretum.arboretumwojslawice.ViewModel.RouteDetailViewModel;
 import arboretum.arboretumwojslawice.databinding.ActivityRouteDetailBinding;
 
-public class RouteDetail extends AppCompatActivity {
+public class RouteDetailActivity extends AppCompatActivity {
 
     private Bundle bundle;
     private int route_id;

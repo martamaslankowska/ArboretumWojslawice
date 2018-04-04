@@ -16,7 +16,7 @@
         android:paddingRight="16dp"
         android:paddingTop="16dp"
         android:paddingBottom="16dp"
-        tools:context="arboretum.arboretumwojslawice.View.RouteDetail">
+        tools:context="arboretum.arboretumwojslawice.View.RouteDetailActivity">
 
         <ImageView
             android:layout_width="match_parent"

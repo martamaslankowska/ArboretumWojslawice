@@ -1,22 +1,18 @@
-package arboretum.arboretumwojslawice.View;
+package arboretum.arboretumwojslawice.View.Adapter;
 
 /**
  * Created by Michal on 24.03.2018.
  */
 
-import android.databinding.DataBindingUtil;
-import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import arboretum.arboretumwojslawice.Commons.BindingViewHolder;
 import arboretum.arboretumwojslawice.Model.businessentity.Route;
-import arboretum.arboretumwojslawice.R;
 import arboretum.arboretumwojslawice.View.viewholder.RouteListViewHolder;
 import arboretum.arboretumwojslawice.databinding.RouteRowBinding;
 
@@ -67,7 +63,7 @@ public class CustomAdapter extends RecyclerView.Adapter<BindingViewHolder> {
     }
 
 
-    void setData(List<Route> route) {
+    public void setData(List<Route> route) {
         this.mRoutes = route;
         notifyDataSetChanged();
     }

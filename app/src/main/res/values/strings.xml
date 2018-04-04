@@ -8,6 +8,22 @@
     <string name="title_route">Trasy</string>
     <string name="title_qr_code">QR Code</string>
 
+    <string-array name="more_options">
+        <item>Spis roślin</item>
+        <item>Kalendarz imprez</item>
+        <item>Cennik</item>
+        <item>Kontakt (+dojazd do Arboretum)</item>
+        <item>Regulamin</item>
+        <item>Okoliczne/w pobliżu</item>
+    </string-array>
+
+    <string name="more_plants">Spis roślin</string>
+    <string name="more_events">Kalendarz imprez</string>
+    <string name="more_price">Cennik</string>
+    <string name="more_contact">Kontakt (+dojazd do Arboretum)</string>
+    <string name="more_rules">Regulamin</string>
+    <string name="more_neighbourhood">Okoliczne/w pobliżu</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_main2">Main2Activity</string>
