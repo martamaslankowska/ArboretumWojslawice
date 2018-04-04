@@ -8,6 +8,7 @@ import java.util.List;
 import arboretum.arboretumwojslawice.Model.Entity.AttractionEntity;
 import arboretum.arboretumwojslawice.Model.businessentity.Attraction;
 import io.reactivex.Maybe;
+import io.reactivex.Single;
 
 /**
  * Created by Komputer on 2018-03-24.
@@ -23,11 +24,11 @@ public abstract class AttractionDao extends BaseDao<AttractionEntity> {
     @Query("SELECT Attractions.IdAttraction, Name, Description, Image " +
             "FROM Attractions INNER JOIN AttractionsTranslations ON Attractions.IdAttraction = AttractionsTranslations.IdAttraction " +
             "WHERE Attractions.IdAttraction IN (:id)")
-    public abstract Attraction getById(int id);
+    public abstract Single<Attraction> getById(int id);
 
     @Query("SELECT Attractions.IdAttraction, Name, Description, Image " +
             "FROM Attractions INNER JOIN AttractionsTranslations ON Attractions.IdAttraction = AttractionsTranslations.IdAttraction " +
             "WHERE Name IN (:name)")
-    public abstract Attraction getByName(int name);
+    public abstract Single<Attraction> getByName(String name);
 
 }

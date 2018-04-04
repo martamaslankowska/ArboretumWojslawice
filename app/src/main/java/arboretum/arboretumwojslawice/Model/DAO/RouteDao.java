@@ -10,6 +10,7 @@ import arboretum.arboretumwojslawice.Model.Entity.RouteEntity;
 import arboretum.arboretumwojslawice.Model.businessentity.PointOnRoute;
 import arboretum.arboretumwojslawice.Model.businessentity.Route;
 import io.reactivex.Maybe;
+import io.reactivex.Single;
 
 /**
  * Created by Komputer on 2018-03-23.
@@ -39,12 +40,12 @@ public abstract class RouteDao extends BaseDao<RouteEntity> {
             "FROM Routes LEFT JOIN RoutePoints ON Routes.IdRoute = RoutePoints.IdRoute " +
             "LEFT JOIN RoutesTranslations ON Routes.IdRoute = RoutesTranslations.IdRoute " +
             "WHERE Routes.IdRoute IN (:id)")
-    public abstract Route getById(int id);
+    public abstract Single<Route> getById(int id);
 
     @Query("SELECT Routes.IdRoute, Length, Time, MapImage, RoutesTranslations.Name, Description " +
             "FROM Routes LEFT JOIN RoutesTranslations ON Routes.IdRoute = RoutesTranslations.IdRoute " +
             "WHERE RoutesTranslations.Name IN (:name) LIMIT 1")
-    public abstract Route getByName(int name);
+    public abstract Single<Route> getByName(String name);
 
 
 }

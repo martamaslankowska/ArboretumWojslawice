@@ -2,15 +2,59 @@ package arboretum.arboretumwojslawice.Model.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
+import javax.inject.Inject;
+
+import arboretum.arboretumwojslawice.Model.DAO.LocationDao;
+import arboretum.arboretumwojslawice.Model.DAO.RouteDao;
+import arboretum.arboretumwojslawice.Model.DAO.RoutePointDao;
+import arboretum.arboretumwojslawice.Model.DAO.RouteTranslationDao;
+import arboretum.arboretumwojslawice.Model.businessentity.PointOnRoute;
 import arboretum.arboretumwojslawice.Model.businessentity.Route;
 import arboretum.arboretumwojslawice.R;
+import io.reactivex.Maybe;
+import io.reactivex.Single;
 
 /**
  * Created by Komputer on 2018-03-25.
  */
 
-public class RouteRepository {
+public class RouteRepository extends BaseRepository {
+
+    private RouteDao routeDao;
+    private RouteTranslationDao routeTranslationDao;
+    private RoutePointDao routePointDao;
+    private LocationDao locationDao;
+
+    @Inject
+    public RouteRepository(RouteDao routeDao, RouteTranslationDao routeTranslationDao, RoutePointDao routePointDao, LocationDao locationDao, Locale locale) {
+        this.routeDao = routeDao;
+        this.routeTranslationDao = routeTranslationDao;
+        this.routePointDao = routePointDao;
+        this.locationDao = locationDao;
+        this.locale = locale;
+    }
+
+    public RouteRepository() {}
+
+    public Maybe<List<Route>> getAllRoutes() {
+        return routeDao.getAll();
+    }
+
+    public Single<Route> getById(int id) {
+        return routeDao.getById(id);
+    }
+
+    public Single<Route> getByName(String name) {
+        return routeDao.getByName(name);
+    }
+
+    public Maybe<List<PointOnRoute>> getRoutePointsByRouteId(int idRoute) {
+        return routeDao.getRoutePointsByRouteId(idRoute);
+    }
+
+
 
     public List<Route> getRoutesForMichal() {
         List<Route> routes = new ArrayList<>();
@@ -31,6 +75,5 @@ public class RouteRepository {
 
         return routes;
     }
-
 
 }

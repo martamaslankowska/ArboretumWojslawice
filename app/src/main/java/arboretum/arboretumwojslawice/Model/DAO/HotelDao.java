@@ -9,6 +9,7 @@ import java.util.List;
 import arboretum.arboretumwojslawice.Model.Entity.HotelEntity;
 import arboretum.arboretumwojslawice.Model.businessentity.Hotel;
 import io.reactivex.Maybe;
+import io.reactivex.Single;
 
 /**
  * Created by Komputer on 2018-03-24.
@@ -21,10 +22,10 @@ public abstract class HotelDao extends BaseDao<HotelEntity> {
     public abstract Maybe<List<Hotel>> getAll();
 
     @Query("SELECT * FROM Hotels WHERE IdHotel IN (:id)")
-    public abstract Hotel getById(int id);
+    public abstract Single<Hotel> getById(int id);
 
     @Query("SELECT * FROM Hotels WHERE Name IN (:name)")
-    public abstract Hotel getByName(String name);
+    public abstract Single<Hotel> getByName(String name);
 
     @Query("SELECT * FROM Hotels WHERE Rating >= (:rating)")
     public abstract Maybe<List<Hotel>> getAllBetterThan(double rating);

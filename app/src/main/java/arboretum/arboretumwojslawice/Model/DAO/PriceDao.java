@@ -9,6 +9,7 @@ import java.util.List;
 import arboretum.arboretumwojslawice.Model.Entity.PriceEntity;
 import arboretum.arboretumwojslawice.Model.businessentity.Price;
 import io.reactivex.Maybe;
+import io.reactivex.Single;
 
 /**
  * Created by Komputer on 2018-03-24.
@@ -24,7 +25,7 @@ public abstract class PriceDao extends BaseDao<PriceEntity> {
     @Query("SELECT Prices.IdPrice, Amount, Type " +
             "FROM Prices LEFT JOIN PricesTranslations ON Prices.IdPrice = PricesTranslations.IdPrice" +
             " WHERE Prices.IdPrice IN (:id)")
-    public abstract Price getById(int id);
+    public abstract Single<Price> getById(int id);
 
     @Query("SELECT Prices.IdPrice, Amount, Type " +
             "FROM Prices LEFT JOIN PricesTranslations ON Prices.IdPrice = PricesTranslations.IdPrice" +

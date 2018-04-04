@@ -10,6 +10,7 @@ import arboretum.arboretumwojslawice.Model.Entity.RestaurantEntity;
 import arboretum.arboretumwojslawice.Model.businessentity.Hotel;
 import arboretum.arboretumwojslawice.Model.businessentity.Restaurant;
 import io.reactivex.Maybe;
+import io.reactivex.Single;
 
 /**
  * Created by Komputer on 2018-03-24.
@@ -22,10 +23,10 @@ public abstract class RestaurantDao extends BaseDao<RestaurantEntity> {
     public abstract Maybe<List<Restaurant>> getAll();
 
     @Query("SELECT * FROM Restaurants WHERE IdRestaurant IN (:id)")
-    public abstract Restaurant getById(int id);
+    public abstract Single<Restaurant> getById(int id);
 
     @Query("SELECT * FROM Restaurants WHERE Name IN (:name) LIMIT 1")
-    public abstract Restaurant getByName(String name);
+    public abstract Single<Restaurant> getByName(String name);
 
     @Query("SELECT * FROM Restaurants WHERE Rating >= (:rating)")
     public abstract Maybe<List<Restaurant>> getAllBetterThan(double rating);

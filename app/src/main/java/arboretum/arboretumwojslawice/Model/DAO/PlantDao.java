@@ -10,6 +10,7 @@ import arboretum.arboretumwojslawice.Model.Entity.PlantEntity;
 import arboretum.arboretumwojslawice.Model.businessentity.Location;
 import arboretum.arboretumwojslawice.Model.businessentity.Plant;
 import io.reactivex.Maybe;
+import io.reactivex.Single;
 
 
 /**
@@ -41,7 +42,7 @@ public abstract class PlantDao extends BaseDao<PlantEntity> {
             "LEFT JOIN KindsTranslations ON Kinds.IdKind = KindsTranslations.IdKind " +
             "LEFT JOIN PlantsTranslations ON Plants.IdPlant = PlantsTranslations.IdPlant " +
             "WHERE Plants.IdPlant IN (:idPlant)")
-    public abstract Plant getById(int idPlant);
+    public abstract Single<Plant> getById(int idPlant);
 
     @Query("SELECT Plants.IdPlant, GenusName, SpeciesName, Plants.Name, KindsTranslations.Name, Image, SeasonBegin, SeasonEnd, Description " +
             "FROM Plants LEFT JOIN Species ON Plants.IdSpecies = Species.IdSpecies " +
