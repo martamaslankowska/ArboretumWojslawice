@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -31,8 +32,10 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
             switch (item.getItemId()) {
                 case R.id.navigation_home:
+                    mFragmentManager.popBackStackImmediate();
                     mHomeFragment = new HomeFragment();
                     getSupportFragmentManager().beginTransaction()
                             .replace(R.id.fragment_container,mHomeFragment)
@@ -40,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
                             .commit();
                     return true;
                 case R.id.navigation_map_and_route:
+                    mFragmentManager.popBackStackImmediate();
                     mRouteMapFragment = new RouteMapFragment();
                     getSupportFragmentManager().beginTransaction()
                             .replace(R.id.fragment_container,mRouteMapFragment)
@@ -47,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
                             .commit();
                     return true;
                 case R.id.navigation_favourites:
+                    mFragmentManager.popBackStackImmediate();
                     mFavouritesFragment = new FavouritesFragment();
                     getSupportFragmentManager().beginTransaction()
                             .replace(R.id.fragment_container,mFavouritesFragment)
@@ -54,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
                             .commit();
                     return true;
                 case R.id.navigation_more:
+                    mFragmentManager.popBackStackImmediate();
                     mMoreFragment = new MoreFragment();
                     getSupportFragmentManager().beginTransaction()
                             .replace(R.id.fragment_container,mMoreFragment)
@@ -64,22 +70,19 @@ public class MainActivity extends AppCompatActivity {
             return false;
         }
     };
+
     private BottomNavigationView.OnNavigationItemReselectedListener mOnNavigationItemReselectedListener
             = new BottomNavigationView.OnNavigationItemReselectedListener() {
         @Override
         public void onNavigationItemReselected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-
                     break;
                 case R.id.navigation_map_and_route:
-
                     break;
                 case R.id.navigation_favourites:
-
                     break;
                 case R.id.navigation_more:
-
                     break;
             }
         }
@@ -112,4 +115,13 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    @Override
+    public void onBackPressed() {
+        mFragmentManager.popBackStackImmediate();
+        mHomeFragment = new HomeFragment();
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container,mHomeFragment)
+                .addToBackStack(null)
+                .commit();
+    }
 }
