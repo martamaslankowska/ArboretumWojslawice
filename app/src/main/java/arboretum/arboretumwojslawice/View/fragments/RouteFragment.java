@@ -1,4 +1,4 @@
-package arboretum.arboretumwojslawice.View;
+package arboretum.arboretumwojslawice.View.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,6 +18,7 @@ import java.util.List;
 import arboretum.arboretumwojslawice.Model.businessentity.Route;
 import arboretum.arboretumwojslawice.R;
 import arboretum.arboretumwojslawice.View.Adapter.RouteAdapter;
+import arboretum.arboretumwojslawice.View.activities.RouteDetailActivity;
 import arboretum.arboretumwojslawice.ViewModel.RouteViewModel;
 
 /**

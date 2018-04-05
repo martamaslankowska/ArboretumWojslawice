@@ -1,4 +1,4 @@
-package arboretum.arboretumwojslawice.View;
+package arboretum.arboretumwojslawice.View.fragments;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;

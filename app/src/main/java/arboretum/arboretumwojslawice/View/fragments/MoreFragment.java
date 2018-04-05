@@ -1,4 +1,4 @@
-package arboretum.arboretumwojslawice.View;
+package arboretum.arboretumwojslawice.View.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,6 +16,11 @@ import java.util.List;
 import arboretum.arboretumwojslawice.Model.MoreOptionItem;
 import arboretum.arboretumwojslawice.R;
 import arboretum.arboretumwojslawice.View.Adapter.MoreAdapter;
+import arboretum.arboretumwojslawice.View.activities.ContactActivity;
+import arboretum.arboretumwojslawice.View.activities.EventActivity;
+import arboretum.arboretumwojslawice.View.activities.PlantActivity;
+import arboretum.arboretumwojslawice.View.activities.PriceActivity;
+import arboretum.arboretumwojslawice.View.activities.RulesActivity;
 import arboretum.arboretumwojslawice.ViewModel.MoreViewModel;
 
 public class MoreFragment extends Fragment {

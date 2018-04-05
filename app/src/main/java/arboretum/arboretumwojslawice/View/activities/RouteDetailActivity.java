@@ -1,5 +1,6 @@
-package arboretum.arboretumwojslawice.View;
+package arboretum.arboretumwojslawice.View.activities;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.support.v4.view.ViewPager;
@@ -38,6 +39,8 @@ public class RouteDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_route_detail);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_back);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(R.string.toolbar_route_detail);
 
 
 

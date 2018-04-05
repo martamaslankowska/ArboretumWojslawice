@@ -1,4 +1,4 @@
-package arboretum.arboretumwojslawice.View;
+package arboretum.arboretumwojslawice.View.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,14 +7,16 @@ import android.view.MenuItem;
 
 import arboretum.arboretumwojslawice.R;
 
-public class ContactActivity extends AppCompatActivity {
+public class QRCodeActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_contact);
+        setContentView(R.layout.activity_qrcode);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_back);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(R.string.toolbar_qr_code);
 
         if (getSupportActionBar() != null){
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);

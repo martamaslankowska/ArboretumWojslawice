@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".View.MainActivity"
+            android:name=".View.activities.MainActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,13 +18,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".View.RouteDetailActivity" />
-        <activity android:name=".View.QRCodeActivity" />
-        <activity android:name=".View.PlantActivity" />
-        <activity android:name=".View.EventActivity" />
-        <activity android:name=".View.PriceActivity" />
-        <activity android:name=".View.ContactActivity" />
-        <activity android:name=".View.RulesActivity"></activity>
+        <activity android:name=".View.activities.RouteDetailActivity" />
+        <activity android:name=".View.activities.QRCodeActivity" />
+        <activity android:name=".View.activities.PlantActivity" />
+        <activity android:name=".View.activities.EventActivity" />
+        <activity android:name=".View.activities.PriceActivity" />
+        <activity android:name=".View.activities.ContactActivity" />
+        <activity android:name=".View.activities.RulesActivity"></activity>
     </application>
 
 </manifest>

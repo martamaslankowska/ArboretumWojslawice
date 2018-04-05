@@ -1,4 +1,4 @@
-package arboretum.arboretumwojslawice.View;
+package arboretum.arboretumwojslawice.View.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,14 +7,15 @@ import android.view.MenuItem;
 
 import arboretum.arboretumwojslawice.R;
 
-public class RulesActivity extends AppCompatActivity {
+public class PriceActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_rules);
+        setContentView(R.layout.activity_price);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_back);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(R.string.toolbar_price);
 
         if (getSupportActionBar() != null){
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);

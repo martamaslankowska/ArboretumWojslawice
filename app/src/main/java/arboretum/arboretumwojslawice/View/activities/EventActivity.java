@@ -1,4 +1,4 @@
-package arboretum.arboretumwojslawice.View;
+package arboretum.arboretumwojslawice.View.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,12 +12,9 @@ import android.widget.Toast;
 import java.util.List;
 
 import arboretum.arboretumwojslawice.Model.businessentity.Event;
-import arboretum.arboretumwojslawice.Model.businessentity.Plant;
 import arboretum.arboretumwojslawice.R;
 import arboretum.arboretumwojslawice.View.Adapter.EventAdapter;
-import arboretum.arboretumwojslawice.View.Adapter.PlantAdapter;
 import arboretum.arboretumwojslawice.ViewModel.EventViewModel;
-import arboretum.arboretumwojslawice.ViewModel.PlantViewModel;
 
 public class EventActivity extends AppCompatActivity {
 
@@ -45,6 +42,7 @@ public class EventActivity extends AppCompatActivity {
         setContentView(R.layout.activity_event);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_back);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(R.string.toolbar_events_list);
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);

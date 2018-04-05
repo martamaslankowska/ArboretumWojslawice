@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Arboretum</string>
+    <string name="app_name">Arboretum w Wojsławicach</string>
     <string name="title_home">Aktualności</string>
     <string name="title_map_and_route">Mapy / Trasy</string>
     <string name="title_favoutites">Ulubione</string>
@@ -7,6 +7,17 @@
     <string name="title_map">Mapa</string>
     <string name="title_route">Trasy</string>
     <string name="title_qr_code">QR Code</string>
+
+    <string name="toolbar_qr_code">QR Kod</string>
+    <string name="toolbar_plants_list">Spis roślin</string>
+    <string name="toolbar_events_list">Kalendarz imprez</string>
+    <string name="toolbar_price">Cennik</string>
+    <string name="toolbar_contact">Kontakt (+ dojazd)</string>
+    <string name="toolbar_rules">Regulamin</string>
+    <string name="toolbar_hotels_list">Hotele w pobliżu</string>
+    <string name="toolbar_attractions_list">Atrakcje w pobliżu</string>
+    <string name="toolbar_restaurants_list">Restauracje w pobliżu</string>
+    <string name="toolbar_route_detail">Szczegóły trasy</string>
 
     <string-array name="more_options">
         <item>Spis roślin</item>

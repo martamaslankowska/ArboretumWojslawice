@@ -1,4 +1,4 @@
-package arboretum.arboretumwojslawice.View;
+package arboretum.arboretumwojslawice.View.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,6 +16,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import arboretum.arboretumwojslawice.R;
+import arboretum.arboretumwojslawice.View.BottomNavigationViewHelper;
+import arboretum.arboretumwojslawice.View.fragments.FavouritesFragment;
+import arboretum.arboretumwojslawice.View.fragments.HomeFragment;
+import arboretum.arboretumwojslawice.View.fragments.MoreFragment;
+import arboretum.arboretumwojslawice.View.fragments.RouteMapFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     RouteMapFragment mRouteMapFragment = new RouteMapFragment();
     FavouritesFragment mFavouritesFragment = new FavouritesFragment();
     MoreFragment mMoreFragment = new MoreFragment();
-    int isExit = 0;
+    int isExit = 1;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -44,7 +49,8 @@ public class MainActivity extends AppCompatActivity {
                             .replace(R.id.fragment_container,mHomeFragment)
                             .addToBackStack(null)
                             .commit();
-                    isExit = 0;
+                    isExit = 1;
+                    Log.d("Arboretum", "Home" + String.valueOf(isExit));
                     return true;
                 case R.id.navigation_map_and_route:
                     mFragmentManager.popBackStackImmediate();
@@ -54,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
                             .addToBackStack(null)
                             .commit();
                     isExit = 0;
+                    Log.d("Arboretum", String.valueOf(isExit));
                     return true;
                 case R.id.navigation_favourites:
                     mFragmentManager.popBackStackImmediate();
@@ -63,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
                             .addToBackStack(null)
                             .commit();
                     isExit = 0;
+                    Log.d("Arboretum", String.valueOf(isExit));
                     return true;
                 case R.id.navigation_more:
                     mFragmentManager.popBackStackImmediate();
@@ -72,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
                             .addToBackStack(null)
                             .commit();
                     isExit = 0;
+                    Log.d("Arboretum", String.valueOf(isExit));
                     return true;
             }
             return false;
@@ -128,6 +137,7 @@ public class MainActivity extends AppCompatActivity {
             finish();
             System.exit(0);
         }
+        isExit ++;
             BottomNavigationView bottomNavigationView;
             bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigation);
             bottomNavigationView.setSelectedItemId(R.id.navigation_home);
@@ -137,12 +147,12 @@ public class MainActivity extends AppCompatActivity {
                     .replace(R.id.fragment_container, mHomeFragment)
                     .addToBackStack(null)
                     .commit();
-            isExit ++;
             if (isExit == 2) {
                 Toast toast = new Toast(getApplicationContext());
                 toast.setGravity(Gravity.CENTER, 0, 0);
                 toast.makeText(getApplicationContext(), R.string.toast_exit, Toast.LENGTH_SHORT).show();
             }
+            Log.d("Arboretum", String.valueOf(isExit));
 
     }
 }
