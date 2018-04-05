@@ -6,8 +6,8 @@
 
     <item>
         <bitmap
-            android:src="@drawable/flower1"
-            android:gravity="center"/>
+            android:src="@drawable/splash"
+            android:gravity="fill"/>
     </item>
 
 </layer-list>
