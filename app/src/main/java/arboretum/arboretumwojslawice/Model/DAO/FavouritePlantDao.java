@@ -22,10 +22,10 @@ import io.reactivex.Maybe;
 public abstract class FavouritePlantDao extends BaseDao<FavouritePlantEntity> {
     
 //    @Query("SELECT * FROM FavouritePlants")
-//    abstract Maybe<List<FavouritePlant>> getAll();
+//    abstract List<FavouritePlant> getAll();
 //
 //    @Query("SELECT Plant.IdPlant, Name, IdSpecies, IdKind, Image, SeasonBegin, SeasonEnd " +
 //            "FROM Plans INNER JOIN FavouritePlants ON Plants.IdPlant = FavouritePlants.IdPlant WHERE FavouritePlants.IdPlant IN (:id)")
-//    abstract Maybe<List<FavouritePlant>> getById(int id);
+//    abstract List<FavouritePlant> getById(int id);
 
 }

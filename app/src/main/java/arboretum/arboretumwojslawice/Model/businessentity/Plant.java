@@ -23,6 +23,9 @@ public class Plant implements AdapterItem {
     @ColumnInfo(name = "SpeciesName")
     private String speciesName;
 
+    @ColumnInfo(name = "LatinName")
+    private String latinName;
+
     @ColumnInfo(name = "Name")
     private String name;
 
@@ -50,10 +53,11 @@ public class Plant implements AdapterItem {
     }  // default constructor for FavouritePlant to handle
 
     @Ignore
-    public Plant(Integer idPlant, String genusName, String speciesName, String name, String kindName, Integer image, Integer seasonBegin, Integer seasonEnd, String description, List<Location> locations) {
+    public Plant(Integer idPlant, String genusName, String speciesName, String latinName, String name, String kindName, Integer image, Integer seasonBegin, Integer seasonEnd, String description, List<Location> locations) {
         this.idPlant = idPlant;
         this.genusName = genusName;
         this.speciesName = speciesName;
+        this.latinName = latinName;
         this.name = name;
         this.kindName = kindName;
         this.image = image;
@@ -64,10 +68,11 @@ public class Plant implements AdapterItem {
     }
 
     // needed for Dao to get all plants
-    public Plant(Integer idPlant, String genusName, String speciesName, String name, String kindName, Integer image, Integer seasonBegin, Integer seasonEnd, String description) {
+    public Plant(Integer idPlant, String genusName, String speciesName, String latinName, String name, String kindName, Integer image, Integer seasonBegin, Integer seasonEnd, String description) {
         this.idPlant = idPlant;
         this.genusName = genusName;
         this.speciesName = speciesName;
+        this.latinName = latinName;
         this.name = name;
         this.kindName = kindName;
         this.image = image;
@@ -102,6 +107,14 @@ public class Plant implements AdapterItem {
 
     public void setIdPlant(Integer idPlant) {
         this.idPlant = idPlant;
+    }
+
+    public String getLatinName() {
+        return latinName;
+    }
+
+    public void setLatinName(String latinName) {
+        this.latinName = latinName;
     }
 
     public String getName() {

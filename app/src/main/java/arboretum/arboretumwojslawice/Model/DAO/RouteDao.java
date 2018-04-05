@@ -22,13 +22,13 @@ public abstract class RouteDao extends BaseDao<RouteEntity> {
 
     @Query("SELECT Routes.IdRoute, Length, Time, MapImage, Name, Description " +
             "FROM Routes LEFT JOIN RoutesTranslations ON Routes.IdRoute = RoutesTranslations.IdRoute")
-    public abstract Maybe<List<Route>> getAll();
+    public abstract List<Route> getAll();
 
     @Query("SELECT PointOrder, IdPlant, X, Y " +
             "FROM Routes LEFT JOIN RoutePoints ON Routes.IdRoute = RoutePoints.IdRoute " +
             "LEFT JOIN Locations ON RoutePoints.IdLocation = Locations.IdLocation " +
             "WHERE Routes.IdRoute IN (:idRoute)")
-    public abstract Maybe<List<PointOnRoute>> getRoutePointsByRouteId(int idRoute);
+    public abstract List<PointOnRoute> getRoutePointsByRouteId(int idRoute);
 
 //    @Query("SELECT IdPlant " +
 //            "FROM Routes LEFT JOIN RoutePoints ON Routes.IdRoute = RoutePoints.IdRoute " +
@@ -40,12 +40,12 @@ public abstract class RouteDao extends BaseDao<RouteEntity> {
             "FROM Routes LEFT JOIN RoutePoints ON Routes.IdRoute = RoutePoints.IdRoute " +
             "LEFT JOIN RoutesTranslations ON Routes.IdRoute = RoutesTranslations.IdRoute " +
             "WHERE Routes.IdRoute IN (:id)")
-    public abstract Single<Route> getById(int id);
+    public abstract  Route getById(int id);
 
     @Query("SELECT Routes.IdRoute, Length, Time, MapImage, RoutesTranslations.Name, Description " +
             "FROM Routes LEFT JOIN RoutesTranslations ON Routes.IdRoute = RoutesTranslations.IdRoute " +
             "WHERE RoutesTranslations.Name IN (:name) LIMIT 1")
-    public abstract Single<Route> getByName(String name);
+    public abstract  Route getByName(String name);
 
 
 }

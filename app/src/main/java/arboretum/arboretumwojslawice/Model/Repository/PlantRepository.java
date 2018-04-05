@@ -29,41 +29,39 @@ import arboretum.arboretumwojslawice.R;
 
 public class PlantRepository extends  BaseRepository {
 
-    private PlantDao plantDao;
-    private PlantTranslationDao plantTranslationDao;
-    private GenusDao genusDao;
-    private SpeciesDao speciesDao;
-    private KindDao kindDao;
-    private KindTranslationDao kindTranslationDao;
-    private LocationDao locationDao;
+    @Inject
+    PlantDao plantDao;
+    @Inject
+    PlantTranslationDao plantTranslationDao;
+    @Inject
+    GenusDao genusDao;
+    @Inject
+    SpeciesDao speciesDao;
+    @Inject
+    KindDao kindDao;
+    @Inject
+    KindTranslationDao kindTranslationDao;
+    @Inject
+    LocationDao locationDao;
+
 
     @Inject
-    public PlantRepository(PlantDao plantDao, PlantTranslationDao plantTranslationDao, GenusDao genusDao, SpeciesDao speciesDao, KindDao kindDao, KindTranslationDao kindTranslationDao, LocationDao locationDao, Locale locale) {
-        this.plantDao = plantDao;
-        this.plantTranslationDao = plantTranslationDao;
-        this.genusDao = genusDao;
-        this.speciesDao = speciesDao;
-        this.kindDao = kindDao;
-        this.kindTranslationDao = kindTranslationDao;
-        this.locationDao = locationDao;
-        this.locale = locale;
-    }
-
     public PlantRepository() {}
 
-    public Maybe<List<Plant>> getAllPlants() {
+
+    public List<Plant> getAllPlants() {
         return plantDao.getAll();
     }
 
-    public Single<Plant> getById(int id) {
+    public  Plant getById(int id) {
         return plantDao.getById(id);
     }
 
-    public Maybe<List<Plant>> getByName(String name) {
+    public List<Plant> getByName(String name) {
         return plantDao.getAllByKindName(name);
     }
 
-    public Maybe<List<Location>> getLocationsByPlantId(int idPlant) {
+    public List<Location> getLocationsByPlantId(int idPlant) {
         return plantDao.getLocationsByPlantId(idPlant);
     }
 

@@ -22,35 +22,32 @@ import io.reactivex.Single;
 
 public class RouteRepository extends BaseRepository {
 
-    private RouteDao routeDao;
-    private RouteTranslationDao routeTranslationDao;
-    private RoutePointDao routePointDao;
-    private LocationDao locationDao;
+    @Inject
+    RouteDao routeDao;
+    @Inject
+    RouteTranslationDao routeTranslationDao;
+    @Inject
+    RoutePointDao routePointDao;
+    @Inject
+    LocationDao locationDao;
 
     @Inject
-    public RouteRepository(RouteDao routeDao, RouteTranslationDao routeTranslationDao, RoutePointDao routePointDao, LocationDao locationDao, Locale locale) {
-        this.routeDao = routeDao;
-        this.routeTranslationDao = routeTranslationDao;
-        this.routePointDao = routePointDao;
-        this.locationDao = locationDao;
-        this.locale = locale;
-    }
-
     public RouteRepository() {}
 
-    public Maybe<List<Route>> getAllRoutes() {
+
+    public List<Route> getAllRoutes() {
         return routeDao.getAll();
     }
 
-    public Single<Route> getById(int id) {
+    public  Route getById(int id) {
         return routeDao.getById(id);
     }
 
-    public Single<Route> getByName(String name) {
+    public  Route getByName(String name) {
         return routeDao.getByName(name);
     }
 
-    public Maybe<List<PointOnRoute>> getRoutePointsByRouteId(int idRoute) {
+    public List<PointOnRoute> getRoutePointsByRouteId(int idRoute) {
         return routeDao.getRoutePointsByRouteId(idRoute);
     }
 
@@ -68,7 +65,7 @@ public class RouteRepository extends BaseRepository {
         routes.add(route);
         route = new Route(5, 3.1, 130, R.drawable.icons8_more, "Sprinterska", "Nie masz zbyt wiele czasu, bo w brzuszku już burczy? Trasa w sam raz dla Ciebie! Oferuje krótki spacer po najciekawszych okazach w Arboretum, kończąc Twoją przygodę w naszej restauracji ;)");
         routes.add(route);
-        route = new Route(6, 8.9, 530, R.drawable.icons8_qrcode, "W poszukiwaniu ciekawych roślinek", "Za pomocą naszej super funkcjonalności, jaką jest QR kod, już nie będziesz musiał chodzić po Arboretum z Atlasem roślin! (jakbyś kiedykolwiek w ogóle wpadł na pomysł, że można tak robić) Sciągnij naszą super aplikację już dziś! (oł jeee)");
+        route = new Route(6, 8.9, 530, R.drawable.icons8_map, "W poszukiwaniu ciekawych roślinek", "Za pomocą naszej super funkcjonalności, jaką jest QR kod, już nie będziesz musiał chodzić po Arboretum z Atlasem roślin! (jakbyś kiedykolwiek w ogóle wpadł na pomysł, że można tak robić) Sciągnij naszą super aplikację już dziś! (oł jeee)");
         routes.add(route);
         route = new Route(7, 13., 540, R.drawable.icons8_heart, "Całodzienna trasa dla cieszących się życiem", "To jest trasa dla prawdziwych kozaków! " + System.getProperty("line.separator") + "(zastanawiam się czy zrobił się enter normalnie - bo to taki kozacki enter, prawie tak kozacki jak ta trasa :D) ");
         routes.add(route);

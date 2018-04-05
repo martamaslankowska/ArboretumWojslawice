@@ -17,25 +17,23 @@ import io.reactivex.Single;
 
 public class PriceRepository extends BaseRepository {
 
-    private PriceDao priceDao;
-    private PriceTranslationDao priceTranslationDao;
+    @Inject
+    PriceDao priceDao;
+    @Inject
+    PriceTranslationDao priceTranslationDao;
 
     @Inject
-    public PriceRepository(PriceDao PriceDao, PriceTranslationDao PriceTranslationDao, Locale locale) {
-        this.priceDao = PriceDao;
-        this.priceTranslationDao = PriceTranslationDao;
-        this.locale = locale;
-    }
+    public PriceRepository() {}
 
-    public Maybe<List<Price>> getAllPrices() {
+    public List<Price> getAllPrices() {
         return priceDao.getAll();
     }
 
-    public Single<Price> getById(int id) {
+    public  Price getById(int id) {
         return priceDao.getById(id);
     }
 
-    public Maybe<List<Price>> getByType(String type) {
+    public List<Price> getByType(String type) {
         return priceDao.getByType(type);
     }
 }

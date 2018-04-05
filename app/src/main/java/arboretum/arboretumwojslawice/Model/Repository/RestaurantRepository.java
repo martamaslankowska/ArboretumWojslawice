@@ -16,27 +16,25 @@ import io.reactivex.Single;
 
 public class RestaurantRepository extends BaseRepository {
 
-    private RestaurantDao restaurantDao;
+    @Inject
+    RestaurantDao restaurantDao;
 
     @Inject
-    public RestaurantRepository(RestaurantDao RestaurantDao, Locale locale) {
-        this.restaurantDao = RestaurantDao;
-        this.locale = locale;
-    }
+    public RestaurantRepository() { }
 
-    public Maybe<List<Restaurant>> getAllRestaurants() {
+    public List<Restaurant> getAllRestaurants() {
         return restaurantDao.getAll();
     }
 
-    public Single<Restaurant> getById(int id) {
+    public  Restaurant getById(int id) {
         return restaurantDao.getById(id);
     }
 
-    public Single<Restaurant> getByName(String name) {
+    public  Restaurant getByName(String name) {
         return restaurantDao.getByName(name);
     }
 
-    public Maybe<List<Restaurant>> getAllBetterThan(double rating) {
+    public List<Restaurant> getAllBetterThan(double rating) {
         return restaurantDao.getAllBetterThan(rating);
     }
     

@@ -3,6 +3,8 @@ package arboretum.arboretumwojslawice.Model.Repository;
 import java.util.List;
 import java.util.Locale;
 
+import javax.inject.Inject;
+
 import arboretum.arboretumwojslawice.Model.businessentity.Attraction;
 import io.reactivex.Maybe;
 
@@ -12,6 +14,7 @@ import io.reactivex.Maybe;
 
 public class BaseRepository {
 
+    @Inject
     protected Locale locale;
 
 }

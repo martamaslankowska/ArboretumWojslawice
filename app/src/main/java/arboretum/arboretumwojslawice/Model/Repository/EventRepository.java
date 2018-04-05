@@ -19,27 +19,24 @@ import io.reactivex.Single;
 
 public class EventRepository extends BaseRepository {
 
-    private EventDao eventDao;
-    private EventTranslationDao eventTranslationDao;
+    @Inject
+    EventDao eventDao;
+    @Inject
+    EventTranslationDao eventTranslationDao;
 
     @Inject
-    public EventRepository(EventDao EventDao, EventTranslationDao EventTranslationDao, Locale locale) {
-        this.eventDao = EventDao;
-        this.eventTranslationDao = EventTranslationDao;
-        this.locale = locale;
-    }
-
     public EventRepository() {}
 
-    public Maybe<List<Event>> getAllEvents() {
+
+    public List<Event> getAllEvents() {
         return eventDao.getAll();
     }
 
-    public Single<Event> getById(int id) {
+    public  Event getById(int id) {
         return eventDao.getById(id);
     }
 
-    public Maybe<List<Event>> getAllByDateBegin(int dateBegin) {
+    public List<Event> getAllByDateBegin(int dateBegin) {
         return eventDao.getAllByDateBegin(dateBegin);
     }
 

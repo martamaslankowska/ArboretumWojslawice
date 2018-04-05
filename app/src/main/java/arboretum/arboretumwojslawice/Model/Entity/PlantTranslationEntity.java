@@ -23,6 +23,9 @@ public class PlantTranslationEntity {
     @ColumnInfo(name = "IdPlant")
     private int idPlant;
 
+    @ColumnInfo(name = "Name")
+    private String name;
+
     @ColumnInfo(name = "Description")
     private String description;
 
@@ -41,6 +44,14 @@ public class PlantTranslationEntity {
 
     public void setIdPlant(int idPlant) {
         this.idPlant = idPlant;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDescription() {

@@ -27,59 +27,39 @@ import io.reactivex.schedulers.Schedulers;
 
 public class AttractionRepository extends BaseRepository {
 
-    private AttractionDao attractionDao;
-    private AttractionTranslationDao attractionTranslationDao;
+    @Inject
+    AttractionDao attractionDao;
+    @Inject
+    AttractionTranslationDao attractionTranslationDao;
+
 
     @Inject
-    public AttractionRepository(AttractionDao attractionDao, AttractionTranslationDao attractionTranslationDao, Locale locale) {
-        this.attractionDao = attractionDao;
-        this.attractionTranslationDao = attractionTranslationDao;
-        this.locale = locale;
-    }
+    public AttractionRepository() {}
 
-    public Maybe<List<Attraction>> getAllAttractions() {
+    public List<Attraction> getAllAttractions() {
         return attractionDao.getAll();
     }
 
-    public Single<Attraction> getById(int id) {
+    public  Attraction getById(int id) {
         return attractionDao.getById(id);
     }
 
-    public Single<Attraction> getByName(String name) {
+    public  Attraction getByName(String name) {
         return attractionDao.getByName(name);
     }
 
 
-//    public void test(int id) {
-//        final Wrapper<Attraction> resultWrapper = new Wrapper<>();
-//        attractionDao.getById(id)
-//                .subscribeOn(Schedulers.computation())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe(data -> { resultWrapper.setContent(data); },
-//                        error-> { Log.e("REPO", "An error during retrieving data from database occured."); });
-//
-//    }
-//
-//    public void addAttraction(Attraction attraction) {
-//        AttractionEntity attractionEntity = new AttractionEntity(attraction.getIdAttraction(), attraction.getImage());
-//        AttractionTranslationEntity attractionTranslationEntity = new AttractionTranslationEntity(locale.getLanguage(),
-//                attraction.getIdAttraction(), attraction.getName(), attraction.getDescription());
-//
-//        attractionDao.insert(attractionEntity);
-//        attractionTranslationDao.insert(attractionTranslationEntity);
-//    }
-//
-//    private static class Wrapper<T> {
-//        private T content;
-//
-//        public T getContent() {
-//            return content;
-//        }
-//
-//        public void setContent(T content) {
-//            this.content = content;
-//        }
-//    }
+
+    public void addAttraction(Attraction attraction) {
+        AttractionEntity attractionEntity = new AttractionEntity(attraction.getIdAttraction(), attraction.getImage());
+        AttractionTranslationEntity attractionTranslationEntity = new AttractionTranslationEntity(locale.getLanguage(),
+                attraction.getIdAttraction(), attraction.getName(), attraction.getDescription());
+
+        /* CHANGE TO TRANSACTION */
+        attractionDao.insert(attractionEntity);
+        attractionTranslationDao.insert(attractionTranslationEntity);
+    }
+
 
 }
 

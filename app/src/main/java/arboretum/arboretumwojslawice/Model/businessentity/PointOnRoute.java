@@ -15,6 +15,7 @@ public class PointOnRoute {
 
     @ColumnInfo(name = "IdPlant")
     private Integer idPlant;
+
     @Ignore
     private Plant plant;
 

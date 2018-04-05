@@ -21,17 +21,17 @@ public abstract class EventDao extends BaseDao<EventEntity> {
 
     @Query("SELECT Events.IdEvent, Type, Name, DateBegin, DateEnd, TimeBegin, TimeEnd, Description " +
             "FROM Events LEFT JOIN EventsTranslations ON Events.IdEvent = EventsTranslations.IdEvent")
-    public abstract Maybe<List<Event>> getAll();
+    public abstract List<Event> getAll();
 
     @Query("SELECT Events.IdEvent, Type, Name, DateBegin, DateEnd, TimeBegin, TimeEnd, Description " +
             "FROM Events LEFT JOIN EventsTranslations ON Events.IdEvent = EventsTranslations.IdEvent " +
             "WHERE Events.IdEvent IN (:id)")
-    public abstract Single<Event> getById(int id);
+    public abstract  Event getById(int id);
 
     @Query("SELECT Events.IdEvent, Type, Name, DateBegin, DateEnd, TimeBegin, TimeEnd, Description " +
             "FROM Events LEFT JOIN EventsTranslations ON Events.IdEvent = EventsTranslations.IdEvent " +
             "WHERE DateBegin IN (:dateBegin)")
-    public abstract Maybe<List<Event>> getAllByDateBegin(int dateBegin);
+    public abstract List<Event> getAllByDateBegin(int dateBegin);
 
 
 }

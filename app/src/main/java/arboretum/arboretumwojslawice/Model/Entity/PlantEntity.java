@@ -30,8 +30,8 @@ public class PlantEntity {
     @ColumnInfo(name = "IdPlant")
     private int idPlant;
 
-    @ColumnInfo(name = "Name")
-    private String name;
+    @ColumnInfo(name = "LatinName")
+    private String latinName;
 
     @ColumnInfo(name = "IdSpecies")
     private int idSpecies;
@@ -58,12 +58,12 @@ public class PlantEntity {
         this.idPlant = idPlant;
     }
 
-    public String getName() {
-        return name;
+    public String getLatinName() {
+        return latinName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setLatinName(String latinName) {
+        this.latinName = latinName;
     }
 
     public int getIdSpecies() {

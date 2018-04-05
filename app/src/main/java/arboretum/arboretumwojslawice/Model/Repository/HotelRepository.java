@@ -16,27 +16,25 @@ import io.reactivex.Single;
 
 public class HotelRepository extends BaseRepository {
 
-    private HotelDao hotelDao;
+    @Inject
+    HotelDao hotelDao;
 
     @Inject
-    public HotelRepository(HotelDao HotelDao, Locale locale) {
-        this.hotelDao = HotelDao;
-        this.locale = locale;
-    }
+    public HotelRepository() {}
 
-    public Maybe<List<Hotel>> getAllHotels() {
+    public List<Hotel> getAllHotels() {
         return hotelDao.getAll();
     }
 
-    public Single<Hotel> getById(int id) {
+    public  Hotel getById(int id) {
         return hotelDao.getById(id);
     }
 
-    public Single<Hotel> getByName(String name) {
+    public  Hotel getByName(String name) {
         return hotelDao.getByName(name);
     }
 
-    public Maybe<List<Hotel>> getAllBetterThan(double rating) {
+    public List<Hotel> getAllBetterThan(double rating) {
         return hotelDao.getAllBetterThan(rating);
     }
     
