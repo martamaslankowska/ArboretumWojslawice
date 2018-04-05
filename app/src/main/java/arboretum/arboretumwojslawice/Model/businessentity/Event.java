@@ -193,6 +193,11 @@ public class Event implements AdapterItem {
         return "(id = " + idEvent + ") " + type + " " + name + " - " + getDateBeginDate().getHours() + ":" + getDateBeginDate().getMinutes();
     }
 
+    public String getBeginDate() {
+        return String.valueOf(getDateBeginDate().getYear()) + '-' + String.valueOf(getDateBeginDate().getMonth())
+                + '-' + String.valueOf(getDateBeginDate().getDay());
+    }
+
     @Override
     public int getItemType() {
         return 0;

@@ -45,11 +45,11 @@ public class EventRepository extends BaseRepository {
 
     public List<Event> getEventsForMichal() {
         List<Event> events1 = new ArrayList<>();
-        Event event = new Event(1, "Impreza1", 26022018);
+        Event event = new Event(1, "Impreza1", 20180212);
         events1.add(event);
-        event = new Event(2, "Impreza2", 1111111111);
+        event = new Event(2, "Impreza2", 20180523);
         events1.add(event);
-        event = new Event(3, "Impreza3", 1212121212);
+        event = new Event(3, "Impreza3", 20180312);
         events1.add(event);
 
         return events1;
