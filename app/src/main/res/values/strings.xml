@@ -39,4 +39,6 @@
     <string name="plant_genus">Rodzaj - %s</string>
     <string name="plant_kind">Gatunek - %s</string>
 
+    <string name="toast_exit">Naciśnij jeszcze raz przycisk "Powrót", aby zakończyć działanie aplikacji</string>
+
 </resources>

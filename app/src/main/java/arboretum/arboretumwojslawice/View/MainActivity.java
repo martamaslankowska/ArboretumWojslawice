@@ -9,9 +9,11 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import arboretum.arboretumwojslawice.R;
 
@@ -26,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     RouteMapFragment mRouteMapFragment = new RouteMapFragment();
     FavouritesFragment mFavouritesFragment = new FavouritesFragment();
     MoreFragment mMoreFragment = new MoreFragment();
+    int isExit = 0;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -41,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
                             .replace(R.id.fragment_container,mHomeFragment)
                             .addToBackStack(null)
                             .commit();
+                    isExit = 0;
                     return true;
                 case R.id.navigation_map_and_route:
                     mFragmentManager.popBackStackImmediate();
@@ -49,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
                             .replace(R.id.fragment_container,mRouteMapFragment)
                             .addToBackStack(null)
                             .commit();
+                    isExit = 0;
                     return true;
                 case R.id.navigation_favourites:
                     mFragmentManager.popBackStackImmediate();
@@ -57,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
                             .replace(R.id.fragment_container,mFavouritesFragment)
                             .addToBackStack(null)
                             .commit();
+                    isExit = 0;
                     return true;
                 case R.id.navigation_more:
                     mFragmentManager.popBackStackImmediate();
@@ -65,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
                             .replace(R.id.fragment_container,mMoreFragment)
                             .addToBackStack(null)
                             .commit();
+                    isExit = 0;
                     return true;
             }
             return false;
@@ -117,11 +124,25 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        mFragmentManager.popBackStackImmediate();
-        mHomeFragment = new HomeFragment();
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container,mHomeFragment)
-                .addToBackStack(null)
-                .commit();
+        if(isExit == 2) {
+            finish();
+            System.exit(0);
+        }
+            BottomNavigationView bottomNavigationView;
+            bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigation);
+            bottomNavigationView.setSelectedItemId(R.id.navigation_home);
+            mFragmentManager.popBackStackImmediate();
+            mHomeFragment = new HomeFragment();
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_container, mHomeFragment)
+                    .addToBackStack(null)
+                    .commit();
+            isExit ++;
+            if (isExit == 2) {
+                Toast toast = new Toast(getApplicationContext());
+                toast.setGravity(Gravity.CENTER, 0, 0);
+                toast.makeText(getApplicationContext(), R.string.toast_exit, Toast.LENGTH_SHORT).show();
+            }
+
     }
 }
