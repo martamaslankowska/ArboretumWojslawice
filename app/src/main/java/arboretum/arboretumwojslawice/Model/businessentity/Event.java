@@ -7,13 +7,14 @@ import android.arch.persistence.room.PrimaryKey;
 import java.sql.Time;
 import java.util.Date;
 
+import arboretum.arboretumwojslawice.Commons.AdapterItem;
 import io.reactivex.annotations.NonNull;
 
 /**
  * Created by Komputer on 2018-03-25.
  */
 
-public class Event {
+public class Event implements AdapterItem {
 
     @ColumnInfo(name = "IdEvent")
     private Integer idEvent;
@@ -190,6 +191,11 @@ public class Event {
     @Override
     public String toString() {
         return "(id = " + idEvent + ") " + type + " " + name + " - " + getDateBeginDate().getHours() + ":" + getDateBeginDate().getMinutes();
+    }
+
+    @Override
+    public int getItemType() {
+        return 0;
     }
 
 }

@@ -49,6 +49,8 @@ public class PlantActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
+
+        getSupportActionBar().setTitle("Spis roślin");
         mRecyclerView = (RecyclerView) findViewById(R.id.plant_recycler_view);
         plantViewModel = new PlantViewModel();
         mPlants = plantViewModel.getData();

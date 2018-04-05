@@ -15,6 +15,14 @@
             android:id="@+id/toolbar_back"
             layout="@layout/toolbar_empty" />
 
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/event_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="vertical"
+            android:layout_marginBottom="8dp"
+            android:layout_alignParentStart="true"/>
+
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
