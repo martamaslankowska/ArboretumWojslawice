@@ -13,7 +13,7 @@ import java.util.List;
 
 import arboretum.arboretumwojslawice.Model.businessentity.Event;
 import arboretum.arboretumwojslawice.R;
-import arboretum.arboretumwojslawice.View.Adapter.EventAdapter;
+import arboretum.arboretumwojslawice.View.adapter.EventAdapter;
 import arboretum.arboretumwojslawice.ViewModel.EventViewModel;
 
 public class EventActivity extends AppCompatActivity {

@@ -1,4 +1,4 @@
-package arboretum.arboretumwojslawice.View.Adapter;
+package arboretum.arboretumwojslawice.View.adapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;

@@ -2,7 +2,7 @@ package arboretum.arboretumwojslawice.View.viewholder;
 
 import arboretum.arboretumwojslawice.Commons.BindingViewHolder;
 import arboretum.arboretumwojslawice.Model.MoreOptionItem;
-import arboretum.arboretumwojslawice.View.Adapter.MoreAdapter;
+import arboretum.arboretumwojslawice.View.adapter.MoreAdapter;
 import arboretum.arboretumwojslawice.databinding.MoreRowBinding;
 
 /**

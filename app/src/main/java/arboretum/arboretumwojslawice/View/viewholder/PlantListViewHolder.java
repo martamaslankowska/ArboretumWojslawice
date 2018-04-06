@@ -2,7 +2,7 @@ package arboretum.arboretumwojslawice.View.viewholder;
 
 import arboretum.arboretumwojslawice.Commons.BindingViewHolder;
 import arboretum.arboretumwojslawice.Model.businessentity.Plant;
-import arboretum.arboretumwojslawice.View.Adapter.PlantAdapter;
+import arboretum.arboretumwojslawice.View.adapter.PlantAdapter;
 import arboretum.arboretumwojslawice.databinding.PlantRowBinding;
 
 /**

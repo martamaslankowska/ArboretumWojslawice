@@ -15,7 +15,7 @@ import java.util.List;
 
 import arboretum.arboretumwojslawice.Model.MoreOptionItem;
 import arboretum.arboretumwojslawice.R;
-import arboretum.arboretumwojslawice.View.Adapter.MoreAdapter;
+import arboretum.arboretumwojslawice.View.adapter.MoreAdapter;
 import arboretum.arboretumwojslawice.View.activities.ContactActivity;
 import arboretum.arboretumwojslawice.View.activities.EventActivity;
 import arboretum.arboretumwojslawice.View.activities.PlantActivity;

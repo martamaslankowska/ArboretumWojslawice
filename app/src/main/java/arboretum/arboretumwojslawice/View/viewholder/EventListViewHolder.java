@@ -2,11 +2,8 @@ package arboretum.arboretumwojslawice.View.viewholder;
 
 import arboretum.arboretumwojslawice.Commons.BindingViewHolder;
 import arboretum.arboretumwojslawice.Model.businessentity.Event;
-import arboretum.arboretumwojslawice.Model.businessentity.Plant;
-import arboretum.arboretumwojslawice.View.Adapter.EventAdapter;
-import arboretum.arboretumwojslawice.View.Adapter.PlantAdapter;
+import arboretum.arboretumwojslawice.View.adapter.EventAdapter;
 import arboretum.arboretumwojslawice.databinding.EventRowBinding;
-import arboretum.arboretumwojslawice.databinding.PlantRowBinding;
 
 /**
  * Created by weronika on 05.04.2018.

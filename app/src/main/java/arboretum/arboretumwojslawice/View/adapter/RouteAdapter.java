@@ -1,4 +1,4 @@
-package arboretum.arboretumwojslawice.View.Adapter;
+package arboretum.arboretumwojslawice.View.adapter;
 
 /**
  * Created by Michal on 24.03.2018.

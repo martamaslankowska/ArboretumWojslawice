@@ -1,17 +1,13 @@
 package arboretum.arboretumwojslawice.View.activities;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.util.List;
@@ -19,7 +15,7 @@ import java.util.List;
 import arboretum.arboretumwojslawice.Model.businessentity.Plant;
 import arboretum.arboretumwojslawice.Model.businessentity.Route;
 import arboretum.arboretumwojslawice.R;
-import arboretum.arboretumwojslawice.View.Adapter.ViewPagerAdapter;
+import arboretum.arboretumwojslawice.View.adapter.ViewPagerAdapter;
 import arboretum.arboretumwojslawice.ViewModel.RouteDetailViewModel;
 import arboretum.arboretumwojslawice.databinding.ActivityRouteDetailBinding;
 

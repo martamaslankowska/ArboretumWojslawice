@@ -13,7 +13,7 @@ import java.util.List;
 
 import arboretum.arboretumwojslawice.Model.businessentity.Plant;
 import arboretum.arboretumwojslawice.R;
-import arboretum.arboretumwojslawice.View.Adapter.PlantAdapter;
+import arboretum.arboretumwojslawice.View.adapter.PlantAdapter;
 import arboretum.arboretumwojslawice.ViewModel.PlantViewModel;
 
 public class PlantActivity extends AppCompatActivity {

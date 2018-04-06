@@ -17,7 +17,7 @@ import java.util.List;
 
 import arboretum.arboretumwojslawice.Model.businessentity.Route;
 import arboretum.arboretumwojslawice.R;
-import arboretum.arboretumwojslawice.View.Adapter.RouteAdapter;
+import arboretum.arboretumwojslawice.View.adapter.RouteAdapter;
 import arboretum.arboretumwojslawice.View.activities.RouteDetailActivity;
 import arboretum.arboretumwojslawice.ViewModel.RouteViewModel;
 

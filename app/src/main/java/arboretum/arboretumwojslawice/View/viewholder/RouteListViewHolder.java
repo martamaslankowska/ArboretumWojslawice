@@ -4,7 +4,7 @@ import android.support.annotation.NonNull;
 
 import arboretum.arboretumwojslawice.Commons.BindingViewHolder;
 import arboretum.arboretumwojslawice.Model.businessentity.Route;
-import arboretum.arboretumwojslawice.View.Adapter.RouteAdapter;
+import arboretum.arboretumwojslawice.View.adapter.RouteAdapter;
 import arboretum.arboretumwojslawice.databinding.RouteRowBinding;
 
 /**

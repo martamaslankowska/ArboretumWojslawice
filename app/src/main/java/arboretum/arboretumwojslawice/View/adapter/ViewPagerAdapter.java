@@ -1,4 +1,4 @@
-package arboretum.arboretumwojslawice.View.Adapter;
+package arboretum.arboretumwojslawice.View.adapter;
 
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
