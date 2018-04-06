@@ -94,7 +94,8 @@ public class Plant implements AdapterItem {
     }
 
     @Ignore
-    public Plant(Integer idPlant, String genusName, String kindName, Integer image) {
+    public Plant(String name, Integer idPlant, String genusName, String kindName, Integer image) {
+        this.name = name;
         this.idPlant = idPlant;
         this.genusName = genusName;
         this.kindName = kindName;

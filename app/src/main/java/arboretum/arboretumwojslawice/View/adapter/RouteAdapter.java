@@ -28,7 +28,6 @@ public class RouteAdapter extends RecyclerView.Adapter<BindingViewHolder> {
         this.listener =  listener;
     }
 
-
     @Override
     public void onBindViewHolder(BindingViewHolder holder, int position) {
         Route route = mRoutes.get(position);

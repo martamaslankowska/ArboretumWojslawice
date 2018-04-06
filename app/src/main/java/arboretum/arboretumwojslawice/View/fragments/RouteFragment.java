@@ -15,6 +15,7 @@ import android.widget.ImageView;
 
 import java.util.List;
 
+import arboretum.arboretumwojslawice.Commons.DividerItemDecoration;
 import arboretum.arboretumwojslawice.Model.businessentity.Route;
 import arboretum.arboretumwojslawice.R;
 import arboretum.arboretumwojslawice.View.adapter.RouteAdapter;
@@ -78,6 +79,7 @@ public class RouteFragment extends Fragment  {
             }
         };
 
+        mRecyclerView.addItemDecoration(new DividerItemDecoration(this.getContext()));
         mAdapter = new RouteAdapter(listener);
         mRecyclerView.setAdapter(mAdapter);
         mAdapter.setData(routeViewModel.getData());

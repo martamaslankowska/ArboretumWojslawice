@@ -5,6 +5,8 @@ import android.databinding.ViewDataBinding;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import io.reactivex.annotations.Nullable;
+
 /**
  * Created by Michal on 28.03.2018.
  */

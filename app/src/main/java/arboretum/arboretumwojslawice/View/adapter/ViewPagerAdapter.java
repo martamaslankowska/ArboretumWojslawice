@@ -23,18 +23,13 @@ public class ViewPagerAdapter extends PagerAdapter {
     private Context context;
     private LayoutInflater layoutInflater;
     private List<Plant> mPlants;
-
-
-    public ViewPagerAdapter(Context context) {
-        this.context = context;
-    }
+    OnItemClickListener listener;
 
     public ViewPagerAdapter(Context context, List<Plant> pList) {
         this.context = context;
         this.mPlants = pList;
+        this.listener = listener;
     }
-
-
 
     @Override
     public int getCount() {
@@ -55,17 +50,13 @@ public class ViewPagerAdapter extends PagerAdapter {
 
         ImageView imageView = (ImageView) view.findViewById(R.id.plant_page_image);
         imageView.setImageResource(plant.getImage());
-        TextView textView1 = (TextView) view.findViewById(R.id.plant_page_genus);
-        textView1.setText(plant.getGenusName());
-        TextView textView2 = (TextView) view.findViewById(R.id.plant_page_kind);
-        textView2.setText(plant.getKindName());
 
-
-        ImageView leftArrow = (ImageView) view.findViewById(R.id.plant_page_left_arrow);
-        leftArrow.setImageResource(R.drawable.left_arrow);
-
-        ImageView rightArrow = (ImageView) view.findViewById(R.id.plant_page_right_arrow);
-        rightArrow.setImageResource(R.drawable.right_arrow);
+        TextView name_textView = (TextView) view.findViewById(R.id.plant_page_name);
+        name_textView.setText(plant.getName());
+        TextView genus_textView = (TextView) view.findViewById(R.id.plant_page_genus);
+        genus_textView.setText(plant.getGenusName());
+        TextView kind_textView = (TextView) view.findViewById(R.id.plant_page_kind);
+        kind_textView.setText(plant.getKindName());
 
         ViewPager vp = (ViewPager) container;
         vp.addView(view, 0);
@@ -77,5 +68,10 @@ public class ViewPagerAdapter extends PagerAdapter {
         ViewPager vp = (ViewPager) container;
         View view = (View) object;
         vp.removeView(view);
+    }
+
+    public interface OnItemClickListener
+    {
+        public void onItemClick(int position);
     }
 }

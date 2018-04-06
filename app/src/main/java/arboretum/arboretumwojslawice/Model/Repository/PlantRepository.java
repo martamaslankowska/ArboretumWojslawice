@@ -68,11 +68,11 @@ public class PlantRepository extends  BaseRepository {
 
     public List<Plant> getPlantsForMichal() {
         List<Plant> plants1 = new ArrayList<>();
-        Plant route = new Plant(1, "Rodzaj1", "Gatunek1", R.drawable.flower1);
+        Plant route = new Plant("Kwiatek_1", 1, "Rodzaj_1", "Gatunek_1", R.drawable.flower1);
         plants1.add(route);
-        route = new Plant(2, "Rodzaj2", "Gatunek2", R.drawable.flower2);
+        route = new Plant("Kwiatek_2", 2, "Rodzaj_2", "Gatunek_2", R.drawable.flower2);
         plants1.add(route);
-        route = new Plant(3, "Rodzaj3", "Gatunek3", R.drawable.flower1);
+        route = new Plant("Kwiatek_3", 3, "Rodzaj_3", "Gatunek_3", R.drawable.flower1);
         plants1.add(route);
 
         return plants1;
