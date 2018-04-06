@@ -20,9 +20,13 @@ public class DividerItemDecoration extends RecyclerView.ItemDecoration
 
     private Drawable mDivider;
 
-    public DividerItemDecoration(Context context) {
+    private int dividerPosition;
+
+
+    public DividerItemDecoration(Context context, int dividerPosition) {
         final TypedArray a = context.obtainStyledAttributes(ATTRS);
         mDivider = a.getDrawable(0);
+        this.dividerPosition = dividerPosition;
         a.recycle();
     }
 
@@ -40,8 +44,24 @@ public class DividerItemDecoration extends RecyclerView.ItemDecoration
             final View child = parent.getChildAt(i);
             final RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) child
                     .getLayoutParams();
-            final int top = child.getBottom() + params.bottomMargin;
-            final int bottom = top + mDivider.getIntrinsicHeight()+2;
+            final int top;
+            final int bottom;
+
+            // divider na dole wiersza
+            if(dividerPosition == 0)
+            {
+
+                top = child.getBottom() + params.bottomMargin;
+                bottom = top + mDivider.getIntrinsicHeight()+2;
+            }
+            // divider na górze wiersza
+            else
+            {
+
+                top = child.getTop() + params.topMargin;
+                bottom = top + mDivider.getIntrinsicHeight()+2;
+            }
+
             mDivider.setBounds(left, top, right, bottom);
             mDivider.setColorFilter(new PorterDuffColorFilter(0xFF000000,PorterDuff.Mode.MULTIPLY));
             mDivider.draw(c);

@@ -2,7 +2,6 @@ package arboretum.arboretumwojslawice.View.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -47,8 +46,8 @@ public class PlantActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
-
         getSupportActionBar().setTitle(R.string.toolbar_plants_list);
+
         mRecyclerView = (RecyclerView) findViewById(R.id.plant_recycler_view);
         plantViewModel = new PlantViewModel();
         mPlants = plantViewModel.getData();
