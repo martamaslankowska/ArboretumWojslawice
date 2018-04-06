@@ -104,7 +104,6 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -153,6 +152,5 @@ public class MainActivity extends AppCompatActivity {
                 toast.makeText(getApplicationContext(), R.string.toast_exit, Toast.LENGTH_SHORT).show();
             }
             Log.d("Arboretum", String.valueOf(isExit));
-
     }
 }

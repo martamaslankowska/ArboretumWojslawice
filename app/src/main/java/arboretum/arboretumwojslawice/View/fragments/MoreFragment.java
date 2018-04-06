@@ -91,7 +91,6 @@ public class MoreFragment extends Fragment {
         mAdapter = new MoreAdapter(listener, mOptions);
         mRecyclerView.setAdapter(mAdapter);
 
-
         mLayoutManager = new LinearLayoutManager(getActivity());
         mCurrentLayoutManagerType = MoreFragment.LayoutManagerType.LINEAR_LAYOUT_MANAGER;
 
@@ -100,12 +99,12 @@ public class MoreFragment extends Fragment {
             mCurrentLayoutManagerType = (MoreFragment.LayoutManagerType) savedInstanceState
                     .getSerializable(KEY_LAYOUT_MANAGER);
         }
-        setRecyclerViewLayoutManager(mCurrentLayoutManagerType);
+        setRecyclerViewLayoutManager();
 
         return view;
     }
 
-    public void setRecyclerViewLayoutManager(MoreFragment.LayoutManagerType layoutManagerType) {
+    public void setRecyclerViewLayoutManager() {
         int scrollPosition = 0;
 
         // If a layout manager has already been set, get current scroll position.
@@ -113,22 +112,7 @@ public class MoreFragment extends Fragment {
             scrollPosition = ((LinearLayoutManager) mRecyclerView.getLayoutManager())
                     .findFirstCompletelyVisibleItemPosition();
         }
-
-        switch (layoutManagerType) {
-            case GRID_LAYOUT_MANAGER:
-                mLayoutManager = new GridLayoutManager(getActivity(), SPAN_COUNT);
-                mCurrentLayoutManagerType = MoreFragment.LayoutManagerType.GRID_LAYOUT_MANAGER;
-                break;
-            case LINEAR_LAYOUT_MANAGER:
-                mLayoutManager = new LinearLayoutManager(getActivity());
-                mCurrentLayoutManagerType = MoreFragment.LayoutManagerType.LINEAR_LAYOUT_MANAGER;
-                break;
-            default:
-                mLayoutManager = new LinearLayoutManager(getActivity());
-                mCurrentLayoutManagerType = MoreFragment.LayoutManagerType.LINEAR_LAYOUT_MANAGER;
-        }
-
-        mRecyclerView.setLayoutManager(mLayoutManager);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mRecyclerView.scrollToPosition(scrollPosition);
     }
 

@@ -25,9 +25,11 @@ import arboretum.arboretumwojslawice.databinding.ActivityRouteDetailBinding;
 
 public class RouteDetailActivity extends AppCompatActivity {
 
+    public static final String BUNDLE = "BUNDLE";
+    public static final String ROUTE_ID = "ROUTE_ID";
     private Bundle bundle;
     private int route_id;
-    protected Route route;
+    private Route route;
     private List<Plant> plantList;
     RouteDetailViewModel routeDetailViewModel;
     private int currentPage = 0;
@@ -44,14 +46,19 @@ public class RouteDetailActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_back);
         setSupportActionBar(toolbar);
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
         getSupportActionBar().setTitle(R.string.toolbar_route_detail);
 
         routeDetailViewModel = new RouteDetailViewModel();
 
         Intent intent = getIntent();
-        bundle = intent.getBundleExtra("BUNDLE");
+        bundle = intent.getBundleExtra(BUNDLE);
 
-        route_id = bundle.getInt("ROUTE_ID");
+        route_id = bundle.getInt(ROUTE_ID);
         route = routeDetailViewModel.getRouteById(route_id);
         ActivityRouteDetailBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_route_detail);
 
@@ -84,7 +91,6 @@ public class RouteDetailActivity extends AppCompatActivity {
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
             }
 
             @Override
@@ -113,10 +119,8 @@ public class RouteDetailActivity extends AppCompatActivity {
 
             @Override
             public void onPageScrollStateChanged(int state) {
-
             }
         });
-
 
         Log.i("mRoutes", String.valueOf(route_id));
         binding.setRoute(route);
@@ -130,16 +134,4 @@ public class RouteDetailActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
-
-//    @Override
-//    public void onBackPressed()
-//    {
-//        Intent intent_out = new Intent();
-//        intent_out.putExtra("RatingFromFragment", ff.getRating());
-//        intent_out.putExtra("Position", position);
-//        setResult(Activity.RESULT_OK, intent_out);
-//        Log.i("Zapisana ocena:", String.valueOf(ff.getRating()));
-//        finish();
-//    }
 }

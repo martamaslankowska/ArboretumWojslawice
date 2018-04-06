@@ -61,14 +61,11 @@ public class EventActivity extends AppCompatActivity {
         mAdapter = new EventAdapter(listener, mEvents);
         mRecyclerView.setAdapter(mAdapter);
         mAdapter.setData(eventViewModel.getData());
-
         mLayoutManager = new LinearLayoutManager(this);
-        mCurrentLayoutManagerType = EventActivity.LayoutManagerType.LINEAR_LAYOUT_MANAGER;
-
-        setRecyclerViewLayoutManager(mCurrentLayoutManagerType);
+        setRecyclerViewLayoutManager();
     }
 
-    public void setRecyclerViewLayoutManager(EventActivity.LayoutManagerType layoutManagerType) {
+    public void setRecyclerViewLayoutManager() {
         int scrollPosition = 0;
 
         // If a layout manager has already been set, get current scroll position.
@@ -76,21 +73,8 @@ public class EventActivity extends AppCompatActivity {
             scrollPosition = ((LinearLayoutManager) mRecyclerView.getLayoutManager())
                     .findFirstCompletelyVisibleItemPosition();
         }
-        switch (layoutManagerType) {
-            case GRID_LAYOUT_MANAGER:
-                mLayoutManager = new GridLayoutManager(this, SPAN_COUNT);
-                mCurrentLayoutManagerType = EventActivity.LayoutManagerType.GRID_LAYOUT_MANAGER;
-                break;
-            case LINEAR_LAYOUT_MANAGER:
-                mLayoutManager = new LinearLayoutManager(this);
-                mCurrentLayoutManagerType = EventActivity.LayoutManagerType.LINEAR_LAYOUT_MANAGER;
-                break;
-            default:
-                mLayoutManager = new LinearLayoutManager(this);
-                mCurrentLayoutManagerType = EventActivity.LayoutManagerType.LINEAR_LAYOUT_MANAGER;
-        }
 
-        mRecyclerView.setLayoutManager(mLayoutManager);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.scrollToPosition(scrollPosition);
     }
 

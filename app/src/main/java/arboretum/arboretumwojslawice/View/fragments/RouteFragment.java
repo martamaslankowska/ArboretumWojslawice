@@ -26,11 +26,11 @@ import arboretum.arboretumwojslawice.ViewModel.RouteViewModel;
  * Created by weronika on 22.03.2018.
  */
 
-
 public class RouteFragment extends Fragment  {
 
     private static final String KEY_LAYOUT_MANAGER = "fragment_route";
-    private static final int SPAN_COUNT = 2;
+    public static final String ROUTE_ID = "ROUTE_ID";
+    public static final String BUNDLE = "BUNDLE";
 
     RouteViewModel routeViewModel;
     RouteAdapter.OnItemClickListener listener;
@@ -41,7 +41,6 @@ public class RouteFragment extends Fragment  {
     }
 
     protected LayoutManagerType mCurrentLayoutManagerType;
-
     protected RecyclerView mRecyclerView;
     protected RouteAdapter mAdapter;
     protected RecyclerView.LayoutManager mLayoutManager;
@@ -73,8 +72,8 @@ public class RouteFragment extends Fragment  {
             public void onDetailClick(int route_id) {
                 Intent intent = new Intent(getActivity().getApplicationContext(), RouteDetailActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putInt("ROUTE_ID", route_id);
-                intent.putExtra("BUNDLE", bundle);
+                bundle.putInt(ROUTE_ID, route_id);
+                intent.putExtra(BUNDLE, bundle);
                 getActivity().startActivityForResult(intent, 123);
             }
         };
@@ -84,25 +83,19 @@ public class RouteFragment extends Fragment  {
         mRecyclerView.setAdapter(mAdapter);
         mAdapter.setData(routeViewModel.getData());
 
-
         mLayoutManager = new LinearLayoutManager(getActivity());
-        mCurrentLayoutManagerType = LayoutManagerType.LINEAR_LAYOUT_MANAGER;
 
         if (savedInstanceState != null) {
             // Restore saved layout manager type.
             mCurrentLayoutManagerType = (LayoutManagerType) savedInstanceState
                     .getSerializable(KEY_LAYOUT_MANAGER);
         }
-        setRecyclerViewLayoutManager(mCurrentLayoutManagerType);
 
-        //mRecyclerView.addOnItemTouchListener(new RouteListListener(getContext(), mRecyclerView, listener));
-
-
-
+        setRecyclerViewLayoutManager();
         return rootView;
     }
 
-    public void setRecyclerViewLayoutManager(LayoutManagerType layoutManagerType) {
+    public void setRecyclerViewLayoutManager() {
         int scrollPosition = 0;
 
         // If a layout manager has already been set, get current scroll position.
@@ -111,21 +104,7 @@ public class RouteFragment extends Fragment  {
                     .findFirstCompletelyVisibleItemPosition();
         }
 
-        switch (layoutManagerType) {
-            case GRID_LAYOUT_MANAGER:
-                mLayoutManager = new GridLayoutManager(getActivity(), SPAN_COUNT);
-                mCurrentLayoutManagerType = LayoutManagerType.GRID_LAYOUT_MANAGER;
-                break;
-            case LINEAR_LAYOUT_MANAGER:
-                mLayoutManager = new LinearLayoutManager(getActivity());
-                mCurrentLayoutManagerType = LayoutManagerType.LINEAR_LAYOUT_MANAGER;
-                break;
-            default:
-                mLayoutManager = new LinearLayoutManager(getActivity());
-                mCurrentLayoutManagerType = LayoutManagerType.LINEAR_LAYOUT_MANAGER;
-        }
-
-        mRecyclerView.setLayoutManager(mLayoutManager);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mRecyclerView.scrollToPosition(scrollPosition);
     }
 

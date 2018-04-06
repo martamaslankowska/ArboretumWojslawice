@@ -16,9 +16,6 @@ import arboretum.arboretumwojslawice.Model.businessentity.Route;
 import arboretum.arboretumwojslawice.View.viewholder.RouteListViewHolder;
 import arboretum.arboretumwojslawice.databinding.RouteRowBinding;
 
-/**
- * Provide views to RecyclerView with data from mDataSet.
- */
 public class RouteAdapter extends RecyclerView.Adapter<BindingViewHolder> {
 
     private List<Route> mRoutes = new ArrayList<>();
