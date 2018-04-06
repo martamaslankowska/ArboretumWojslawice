@@ -40,15 +40,16 @@ public class RouteDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_route_detail);
+        ActivityRouteDetailBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_route_detail);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_back);
         setSupportActionBar(toolbar);
-        toolbar.setNavigationIcon(R.drawable.left_arrow);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
         getSupportActionBar().setTitle(R.string.toolbar_route_detail);
-
         routeDetailViewModel = new RouteDetailViewModel();
 
         Intent intent = getIntent();
@@ -56,7 +57,7 @@ public class RouteDetailActivity extends AppCompatActivity {
 
         route_id = bundle.getInt(ROUTE_ID);
         route = routeDetailViewModel.getRouteById(route_id);
-        ActivityRouteDetailBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_route_detail);
+
 
         plantList = routeDetailViewModel.getPlants();
 
