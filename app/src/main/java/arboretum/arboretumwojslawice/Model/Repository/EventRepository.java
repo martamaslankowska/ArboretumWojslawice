@@ -29,15 +29,15 @@ public class EventRepository extends BaseRepository {
 
 
     public List<Event> getAllEvents() {
-        return eventDao.getAll();
+        return eventDao.getAll(languageCode);
     }
 
     public  Event getById(int id) {
-        return eventDao.getById(id);
+        return eventDao.getById(id, languageCode);
     }
 
     public List<Event> getAllByDateBegin(int dateBegin) {
-        return eventDao.getAllByDateBegin(dateBegin);
+        return eventDao.getAllByDateBegin(dateBegin, languageCode);
     }
 
     public List<Event> getEventsForMichal() {

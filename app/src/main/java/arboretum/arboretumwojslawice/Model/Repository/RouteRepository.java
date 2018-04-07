@@ -36,15 +36,15 @@ public class RouteRepository extends BaseRepository {
 
 
     public List<Route> getAllRoutes() {
-        return routeDao.getAll();
+        return routeDao.getAll(languageCode);
     }
 
     public  Route getById(int id) {
-        return routeDao.getById(id);
+        return routeDao.getById(id, languageCode);
     }
 
     public  Route getByName(String name) {
-        return routeDao.getByName(name);
+        return routeDao.getByName(name, languageCode);
     }
 
     public List<PointOnRoute> getRoutePointsByRouteId(int idRoute) {

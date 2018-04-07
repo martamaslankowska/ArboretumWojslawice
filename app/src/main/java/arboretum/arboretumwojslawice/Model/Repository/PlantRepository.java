@@ -50,15 +50,15 @@ public class PlantRepository extends  BaseRepository {
 
 
     public List<Plant> getAllPlants() {
-        return plantDao.getAll();
+        return plantDao.getAll(languageCode);
     }
 
     public  Plant getById(int id) {
-        return plantDao.getById(id);
+        return plantDao.getById(id, languageCode);
     }
 
     public List<Plant> getByName(String name) {
-        return plantDao.getAllByKindName(name);
+        return plantDao.getAllByKindName(name, languageCode);
     }
 
     public List<Location> getLocationsByPlantId(int idPlant) {

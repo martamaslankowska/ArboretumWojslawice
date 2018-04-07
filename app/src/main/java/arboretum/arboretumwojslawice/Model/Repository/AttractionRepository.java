@@ -37,15 +37,15 @@ public class AttractionRepository extends BaseRepository {
     public AttractionRepository() {}
 
     public List<Attraction> getAllAttractions() {
-        return attractionDao.getAll();
+        return attractionDao.getAll(languageCode);
     }
 
-    public  Attraction getById(int id) {
-        return attractionDao.getById(id);
+    public Attraction getById(int id) {
+        return attractionDao.getById(id, languageCode);
     }
 
-    public  Attraction getByName(String name) {
-        return attractionDao.getByName(name);
+    public Attraction getByName(String name) {
+        return attractionDao.getByName(name, languageCode);
     }
 
 

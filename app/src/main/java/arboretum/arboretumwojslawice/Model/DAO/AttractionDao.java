@@ -18,17 +18,18 @@ import io.reactivex.Single;
 public abstract class AttractionDao extends BaseDao<AttractionEntity> {
 
     @Query("SELECT Attractions.IdAttraction, Name, Description, Image " +
-            "FROM Attractions INNER JOIN AttractionsTranslations ON Attractions.IdAttraction = AttractionsTranslations.IdAttraction")
-    public abstract List<Attraction> getAll();
+            "FROM Attractions INNER JOIN AttractionsTranslations ON Attractions.IdAttraction = AttractionsTranslations.IdAttraction " +
+            "WHERE TranslationCode IN (:translationCode)")
+    public abstract List<Attraction> getAll(String translationCode);
 
     @Query("SELECT Attractions.IdAttraction, Name, Description, Image " +
             "FROM Attractions INNER JOIN AttractionsTranslations ON Attractions.IdAttraction = AttractionsTranslations.IdAttraction " +
-            "WHERE Attractions.IdAttraction IN (:id)")
-    public abstract  Attraction getById(int id);
+            "WHERE Attractions.IdAttraction IN (:id) AND TranslationCode IN (:translationCode)")
+    public abstract  Attraction getById(int id, String translationCode);
 
     @Query("SELECT Attractions.IdAttraction, Name, Description, Image " +
             "FROM Attractions INNER JOIN AttractionsTranslations ON Attractions.IdAttraction = AttractionsTranslations.IdAttraction " +
-            "WHERE Name IN (:name)")
-    public abstract  Attraction getByName(String name);
+            "WHERE Name IN (:name) AND TranslationCode IN (:translationCode)")
+    public abstract  Attraction getByName(String name, String translationCode);
 
 }

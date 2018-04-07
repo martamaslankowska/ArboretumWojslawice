@@ -26,14 +26,14 @@ public class PriceRepository extends BaseRepository {
     public PriceRepository() {}
 
     public List<Price> getAllPrices() {
-        return priceDao.getAll();
+        return priceDao.getAll(languageCode);
     }
 
     public  Price getById(int id) {
-        return priceDao.getById(id);
+        return priceDao.getById(id, languageCode);
     }
 
     public List<Price> getByType(String type) {
-        return priceDao.getByType(type);
+        return priceDao.getByType(type, languageCode);
     }
 }

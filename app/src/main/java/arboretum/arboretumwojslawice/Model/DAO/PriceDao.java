@@ -19,18 +19,19 @@ import io.reactivex.Single;
 public abstract class PriceDao extends BaseDao<PriceEntity> {
 
     @Query("SELECT Prices.IdPrice, Amount, Type, Description " +
-            "FROM Prices LEFT JOIN PricesTranslations ON Prices.IdPrice = PricesTranslations.IdPrice")
-    public abstract List<Price> getAll();
+            "FROM Prices LEFT JOIN PricesTranslations ON Prices.IdPrice = PricesTranslations.IdPrice " +
+            "WHERE TranslationCode IN (:translationCode)")
+    public abstract List<Price> getAll(String translationCode);
 
     @Query("SELECT Prices.IdPrice, Amount, Type, Description " +
             "FROM Prices LEFT JOIN PricesTranslations ON Prices.IdPrice = PricesTranslations.IdPrice" +
-            " WHERE Prices.IdPrice IN (:id)")
-    public abstract  Price getById(int id);
+            " WHERE Prices.IdPrice IN (:id) AND TranslationCode IN (:translationCode)")
+    public abstract  Price getById(int id, String translationCode);
 
     @Query("SELECT Prices.IdPrice, Amount, Type, Description " +
             "FROM Prices LEFT JOIN PricesTranslations ON Prices.IdPrice = PricesTranslations.IdPrice" +
-            " WHERE Type IN (:type)")
-    public abstract List<Price> getByType(String type);
+            " WHERE Type IN (:type) AND TranslationCode IN (:translationCode)")
+    public abstract List<Price> getByType(String type, String translationCode);
 
 
 }

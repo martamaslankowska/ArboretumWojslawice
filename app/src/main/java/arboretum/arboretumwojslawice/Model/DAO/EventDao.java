@@ -20,18 +20,19 @@ import io.reactivex.Single;
 public abstract class EventDao extends BaseDao<EventEntity> {
 
     @Query("SELECT Events.IdEvent, Type, Name, DateBegin, DateEnd, TimeBegin, TimeEnd, Description " +
-            "FROM Events LEFT JOIN EventsTranslations ON Events.IdEvent = EventsTranslations.IdEvent")
-    public abstract List<Event> getAll();
+            "FROM Events LEFT JOIN EventsTranslations ON Events.IdEvent = EventsTranslations.IdEvent " +
+            "WHERE TranslationCode IN (:translationCode)")
+    public abstract List<Event> getAll(String translationCode);
 
     @Query("SELECT Events.IdEvent, Type, Name, DateBegin, DateEnd, TimeBegin, TimeEnd, Description " +
             "FROM Events LEFT JOIN EventsTranslations ON Events.IdEvent = EventsTranslations.IdEvent " +
-            "WHERE Events.IdEvent IN (:id)")
-    public abstract  Event getById(int id);
+            "WHERE Events.IdEvent IN (:id) AND TranslationCode IN (:translationCode)")
+    public abstract  Event getById(int id, String translationCode);
 
     @Query("SELECT Events.IdEvent, Type, Name, DateBegin, DateEnd, TimeBegin, TimeEnd, Description " +
             "FROM Events LEFT JOIN EventsTranslations ON Events.IdEvent = EventsTranslations.IdEvent " +
-            "WHERE DateBegin IN (:dateBegin)")
-    public abstract List<Event> getAllByDateBegin(int dateBegin);
+            "WHERE DateBegin IN (:dateBegin) AND TranslationCode IN (:translationCode)")
+    public abstract List<Event> getAllByDateBegin(int dateBegin, String translationCode);
 
 
 }

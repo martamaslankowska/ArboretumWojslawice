@@ -21,8 +21,9 @@ import io.reactivex.Single;
 public abstract class RouteDao extends BaseDao<RouteEntity> {
 
     @Query("SELECT Routes.IdRoute, Length, Time, MapImage, MapImageDetailed, Name, Description " +
-            "FROM Routes LEFT JOIN RoutesTranslations ON Routes.IdRoute = RoutesTranslations.IdRoute")
-    public abstract List<Route> getAll();
+            "FROM Routes LEFT JOIN RoutesTranslations ON Routes.IdRoute = RoutesTranslations.IdRoute " +
+            "WHERE TranslationCode IN (:translationCode)")
+    public abstract List<Route> getAll(String translationCode);
 
     @Query("SELECT PointOrder, IdPlant, X, Y " +
             "FROM Routes LEFT JOIN RoutePoints ON Routes.IdRoute = RoutePoints.IdRoute " +
@@ -39,13 +40,13 @@ public abstract class RouteDao extends BaseDao<RouteEntity> {
     @Query("SELECT Routes.IdRoute, Length, Time, MapImage, MapImageDetailed, Name, Description " +
             "FROM Routes LEFT JOIN RoutePoints ON Routes.IdRoute = RoutePoints.IdRoute " +
             "LEFT JOIN RoutesTranslations ON Routes.IdRoute = RoutesTranslations.IdRoute " +
-            "WHERE Routes.IdRoute IN (:id)")
-    public abstract  Route getById(int id);
+            "WHERE Routes.IdRoute IN (:id) AND TranslationCode IN (:translationCode)")
+    public abstract  Route getById(int id, String translationCode);
 
     @Query("SELECT Routes.IdRoute, Length, Time, MapImage, MapImageDetailed, RoutesTranslations.Name, Description " +
             "FROM Routes LEFT JOIN RoutesTranslations ON Routes.IdRoute = RoutesTranslations.IdRoute " +
-            "WHERE RoutesTranslations.Name IN (:name) LIMIT 1")
-    public abstract  Route getByName(String name);
+            "WHERE RoutesTranslations.Name IN (:name) AND TranslationCode IN (:translationCode) LIMIT 1")
+    public abstract  Route getByName(String name, String translationCode);
 
 
 }
