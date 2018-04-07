@@ -30,7 +30,11 @@ public class Restaurant {
     @ColumnInfo(name = "Rating")
     private Double rating;
 
-    public Restaurant(Integer idRestaurant, String name, String address, Integer phone, String website, Double distance, Double rating) {
+    @ColumnInfo(name = "Image")
+    private Integer image;
+
+
+    public Restaurant(Integer idRestaurant, String name, String address, Integer phone, String website, Double distance, Double rating, Integer image) {
         this.idRestaurant = idRestaurant;
         this.name = name;
         this.address = address;
@@ -38,6 +42,7 @@ public class Restaurant {
         this.website = website;
         this.distance = distance;
         this.rating = rating;
+        this.image = image;
     }
 
     @Ignore
@@ -103,6 +108,13 @@ public class Restaurant {
         this.rating = rating;
     }
 
+    public Integer getImage() {
+        return image;
+    }
+
+    public void setImage(Integer image) {
+        this.image = image;
+    }
 
     @Override
     public String toString() {

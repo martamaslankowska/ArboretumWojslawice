@@ -35,8 +35,11 @@ public class Hotel {
     @ColumnInfo(name = "Rating")
     private Double rating;
 
+    @ColumnInfo(name = "Image")
+    private Integer image;
 
-    public Hotel(Integer idHotel, String name, String address, Integer phone, String website, Double distance, Double rating) {
+
+    public Hotel(Integer idHotel, String name, String address, Integer phone, String website, Double distance, Double rating, Integer image) {
         this.idHotel = idHotel;
         this.name = name;
         this.address = address;
@@ -44,6 +47,7 @@ public class Hotel {
         this.website = website;
         this.distance = distance;
         this.rating = rating;
+        this.image = image;
     }
 
     @Ignore
@@ -109,6 +113,13 @@ public class Hotel {
         this.rating = rating;
     }
 
+    public Integer getImage() {
+        return image;
+    }
+
+    public void setImage(Integer image) {
+        this.image = image;
+    }
 
     @Override
     public String toString() {

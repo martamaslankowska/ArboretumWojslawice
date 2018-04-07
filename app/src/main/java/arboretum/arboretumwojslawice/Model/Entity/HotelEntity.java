@@ -40,6 +40,9 @@ public class HotelEntity {
     @ColumnInfo(name = "Rating")
     private double rating;
 
+    @ColumnInfo(name = "Image")
+    private int image;
+
 
     public int getIdHotel() {
         return idHotel;
@@ -95,5 +98,13 @@ public class HotelEntity {
 
     public void setRating(double rating) {
         this.rating = rating;
+    }
+
+    public int getImage() {
+        return image;
+    }
+
+    public void setImage(int image) {
+        this.image = image;
     }
 }
