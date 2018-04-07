@@ -10,6 +10,8 @@ import arboretum.arboretumwojslawice.Model.Entity.HotelEntity;
 import arboretum.arboretumwojslawice.Model.Entity.KindEntity;
 import arboretum.arboretumwojslawice.Model.Entity.KindTranslationEntity;
 import arboretum.arboretumwojslawice.Model.Entity.LocationEntity;
+import arboretum.arboretumwojslawice.Model.Entity.NewsEntity;
+import arboretum.arboretumwojslawice.Model.Entity.NewsTranslationEntity;
 import arboretum.arboretumwojslawice.Model.Entity.PlantEntity;
 import arboretum.arboretumwojslawice.Model.Entity.PlantTranslationEntity;
 import arboretum.arboretumwojslawice.Model.Entity.PriceEntity;
@@ -19,6 +21,7 @@ import arboretum.arboretumwojslawice.Model.Entity.RouteEntity;
 import arboretum.arboretumwojslawice.Model.Entity.RoutePointEntity;
 import arboretum.arboretumwojslawice.Model.Entity.RouteTranslationEntity;
 import arboretum.arboretumwojslawice.Model.Entity.SpeciesEntity;
+import arboretum.arboretumwojslawice.Model.businessentity.News;
 
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.RoomDatabase;
@@ -34,7 +37,8 @@ import android.arch.persistence.room.RoomDatabase;
         EventTranslationEntity.class, FavouritePlantEntity.class, GenusEntity.class, HotelEntity.class,
         KindEntity.class, KindTranslationEntity.class, LocationEntity.class, PlantEntity.class,
         PlantTranslationEntity.class, PriceEntity.class, PriceTranslationEntity.class, RestaurantEntity.class,
-        RouteEntity.class, RoutePointEntity.class, RouteTranslationEntity.class, SpeciesEntity.class},
+        RouteEntity.class, RoutePointEntity.class, RouteTranslationEntity.class, SpeciesEntity.class,
+        NewsEntity.class, NewsTranslationEntity.class},
         version = 1)
     public abstract class AppDatabase extends RoomDatabase {
         public static final String DATABASE_NAME = "ArboretumDatabase";
@@ -58,7 +62,8 @@ import android.arch.persistence.room.RoomDatabase;
         public abstract RoutePointDao getRoutePointDao();
         public abstract RouteTranslationDao getRouteTranslationDao();
         public abstract SpeciesDao getSpeciesDao();
-
+        public abstract NewsDao getNewsDao();
+        public abstract NewsTranslationDao getNewsTranslationDao();
 
 
 //    /* Some copied code from https://medium.com/@ajaysaini.official/building-database-with-room-persistence-library-ecf7d0b8f3e9

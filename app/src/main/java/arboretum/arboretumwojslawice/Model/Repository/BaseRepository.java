@@ -16,5 +16,7 @@ public class BaseRepository {
 
     @Inject
     protected Locale locale;
+    @Inject
+    protected String languageCode;
 
 }

@@ -33,7 +33,7 @@ public class EventTranslationEntity {
     private String name;
 
     @ColumnInfo(name = "Description")
-    private String descritpion;
+    private String description;
 
 
     public String getTranslationCode() {
@@ -68,11 +68,11 @@ public class EventTranslationEntity {
         this.name = name;
     }
 
-    public String getDescritpion() {
-        return descritpion;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDescritpion(String descritpion) {
-        this.descritpion = descritpion;
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

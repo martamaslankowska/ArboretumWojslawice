@@ -16,6 +16,8 @@ import arboretum.arboretumwojslawice.Model.DAO.HotelDao;
 import arboretum.arboretumwojslawice.Model.DAO.KindDao;
 import arboretum.arboretumwojslawice.Model.DAO.KindTranslationDao;
 import arboretum.arboretumwojslawice.Model.DAO.LocationDao;
+import arboretum.arboretumwojslawice.Model.DAO.NewsDao;
+import arboretum.arboretumwojslawice.Model.DAO.NewsTranslationDao;
 import arboretum.arboretumwojslawice.Model.DAO.PlantDao;
 import arboretum.arboretumwojslawice.Model.DAO.PlantTranslationDao;
 import arboretum.arboretumwojslawice.Model.DAO.PriceDao;
@@ -161,4 +163,17 @@ public class DatabaseModule {
     SpeciesDao providesSpeciesDao(AppDatabase appDatabase) {
         return appDatabase.getSpeciesDao();
     }
+
+    @Singleton
+    @Provides
+    NewsDao providesNewsDao(AppDatabase appDatabase) {
+        return appDatabase.getNewsDao();
+    }
+
+    @Singleton
+    @Provides
+    NewsTranslationDao providesNewsTranslationDao(AppDatabase appDatabase) {
+        return appDatabase.getNewsTranslationDao();
+    }
+
 }

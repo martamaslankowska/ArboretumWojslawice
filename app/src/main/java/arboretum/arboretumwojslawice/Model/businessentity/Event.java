@@ -38,10 +38,10 @@ public class Event implements AdapterItem {
     private Integer timeEnd;
 
     @ColumnInfo(name = "Description")
-    private String descritpion;
+    private String description;
 
 
-    public Event(Integer idEvent, String type, String name, Integer dateBegin, Integer dateEnd, Integer timeBegin, Integer timeEnd, String descritpion) {
+    public Event(Integer idEvent, String type, String name, Integer dateBegin, Integer dateEnd, Integer timeBegin, Integer timeEnd, String description) {
         this.idEvent = idEvent;
         this.type = type;
         this.name = name;
@@ -49,7 +49,7 @@ public class Event implements AdapterItem {
         this.dateEnd = dateEnd;
         this.timeBegin = timeBegin;
         this.timeEnd = timeEnd;
-        this.descritpion = descritpion;
+        this.description = description;
     }
 
     @Ignore
@@ -179,14 +179,13 @@ public class Event implements AdapterItem {
         this.timeBegin = intTime;
     }
 
-    public String getDescritpion() {
-        return descritpion;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDescritpion(String descritpion) {
-        this.descritpion = descritpion;
+    public void setDescription(String description) {
+        this.description = description;
     }
-
 
     @Override
     public String toString() {

@@ -35,6 +35,11 @@ public class ApplicationModule {
         return mApplication.getResources().getConfiguration().locale;
     }
 
+    @Provides
+    public String provideLocaleLanguageCode() {
+        return mApplication.getResources().getConfiguration().locale.getLanguage();
+    }
+
     /* Not able to find @ApplicationContext... */
 //    @Provides
 //    @ApplicationContext
