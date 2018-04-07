@@ -3,36 +3,22 @@ package arboretum.arboretumwojslawice.View.activities;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
-import android.widget.Toast;
 
-import java.util.List;
+import java.util.Stack;
 
-import arboretum.arboretumwojslawice.Model.businessentity.Plant;
 import arboretum.arboretumwojslawice.R;
-import arboretum.arboretumwojslawice.View.adapter.PlantAdapter;
-import arboretum.arboretumwojslawice.View.fragments.ConiferousFragment;
-import arboretum.arboretumwojslawice.View.fragments.DeciduousFragment;
-import arboretum.arboretumwojslawice.View.fragments.MapFragment;
-import arboretum.arboretumwojslawice.View.fragments.NationalCollectionFragment;
-import arboretum.arboretumwojslawice.View.fragments.PerennialPlantsFragment;
-import arboretum.arboretumwojslawice.View.fragments.RouteFragment;
-import arboretum.arboretumwojslawice.ViewModel.PlantViewModel;
+import arboretum.arboretumwojslawice.View.fragments.ListOfPlantsFragment;
 
 public class PlantActivity extends AppCompatActivity {
     private static final String KEY_LAYOUT_MANAGER = "activity_plant";
     private static final int SPAN_COUNT = 2;
 
-    private ConiferousFragment mConiferousFragment;
-    private DeciduousFragment mDeciduousFragment;
-    private NationalCollectionFragment mNationalCollectionFragment;
-    private PerennialPlantsFragment mPerennialPlantsFragment;
-
-
+    private ListOfPlantsFragment mListOfPlantsFragment;
+    private Stack<Integer> stos = new Stack<>();
+    private TabLayout tabLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,43 +33,45 @@ public class PlantActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
         getSupportActionBar().setTitle(R.string.toolbar_plants_list);
+        Bundle numOfTab = new Bundle();
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.plant_tabs);
+        tabLayout = (TabLayout) findViewById(R.id.plant_tabs);
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+
 
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
+                if(numOfTab != null) {
+                    numOfTab.remove("NumberOfTab");
+                }
                 Log.d("Arboretum", "tab.getPosition() = " + String.valueOf(tab.getPosition()));
+                mListOfPlantsFragment = new ListOfPlantsFragment();
                 switch (tab.getPosition()) {
                     case 0:
-                        mDeciduousFragment = new DeciduousFragment();
-                        getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.plant_fragment,mDeciduousFragment)
-                                .addToBackStack(null)
-                                .commit();
+                        numOfTab.putInt("NumberOfTab", 0);
+                        mListOfPlantsFragment.setArguments(numOfTab);
+                        stos.push(0);
                         break;
                     case 1:
-                        mConiferousFragment = new ConiferousFragment();
-                        getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.plant_fragment, mConiferousFragment)
-                                .addToBackStack(null)
-                                .commit();
+                        numOfTab.putInt("NumberOfTab", 1);
+                        mListOfPlantsFragment.setArguments(numOfTab);
+                        stos.push(1);
                         break;
                     case 2:
-                        mPerennialPlantsFragment = new PerennialPlantsFragment();
-                        getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.plant_fragment,mPerennialPlantsFragment)
-                                .addToBackStack(null)
-                                .commit();
+                        numOfTab.putInt("NumberOfTab", 2);
+                        mListOfPlantsFragment.setArguments(numOfTab);
+                        stos.push(2);
                         break;
                     case 3:
-                        mNationalCollectionFragment = new NationalCollectionFragment();
-                        getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.plant_fragment,mNationalCollectionFragment)
-                                .addToBackStack(null)
-                                .commit();
+                        numOfTab.putInt("NumberOfTab", 3);
+                        mListOfPlantsFragment.setArguments(numOfTab);
+                        stos.push(3);
                         break;
                 }
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.plant_fragment, mListOfPlantsFragment)
+                        .addToBackStack(null)
+                        .commit();
 
             }
 
@@ -98,11 +86,14 @@ public class PlantActivity extends AppCompatActivity {
             }
         });
 
-        mDeciduousFragment = new DeciduousFragment();
+        mListOfPlantsFragment = new ListOfPlantsFragment();
+        numOfTab.putInt("NumberOfTab", 0);
+        mListOfPlantsFragment.setArguments(numOfTab);
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.plant_fragment,mDeciduousFragment)
+                .replace(R.id.plant_fragment,mListOfPlantsFragment)
                 .addToBackStack(null)
                 .commit();
+        stos.push(0);
 
     }
 
@@ -121,4 +112,43 @@ public class PlantActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+//    @Override
+//    public void onBackPressed() {
+//        int i = stos.pop();
+//        switch (i) {
+//            case 0:
+//                mDeciduousFragment = new DeciduousFragment();
+//                getSupportFragmentManager().beginTransaction()
+//                        .replace(R.id.plant_fragment,mDeciduousFragment)
+//                        .addToBackStack(null)
+//                        .commit();
+//                break;
+//            case 1:
+//                mListOfPlantsFragment = new ListOfPlantsFragment();
+//                getSupportFragmentManager().beginTransaction()
+//                        .replace(R.id.plant_fragment, mListOfPlantsFragment)
+//                        .addToBackStack(null)
+//                        .commit();
+//                tabLayout.setTabMode(1);
+//                break;
+//            case 2:
+//                mPerennialPlantsFragment = new PerennialPlantsFragment();
+//                getSupportFragmentManager().beginTransaction()
+//                        .replace(R.id.plant_fragment,mPerennialPlantsFragment)
+//                        .addToBackStack(null)
+//                        .commit();
+//                tabLayout.setTabMode(2);
+//                break;
+//            case 3:
+//                mNationalCollectionFragment = new NationalCollectionFragment();
+//                getSupportFragmentManager().beginTransaction()
+//                        .replace(R.id.plant_fragment,mNationalCollectionFragment)
+//                        .addToBackStack(null)
+//                        .commit();
+//                tabLayout.setTabMode(3);
+//                break;
+//        }
+//
+//    }
 }

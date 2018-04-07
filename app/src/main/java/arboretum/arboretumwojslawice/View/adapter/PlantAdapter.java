@@ -53,6 +53,7 @@ public class PlantAdapter extends RecyclerView.Adapter<BindingViewHolder> {
     public interface OnItemClickListener
     {
         public void onItemClick(int position);
+        public void onHeartClick(int position);
     }
 
 

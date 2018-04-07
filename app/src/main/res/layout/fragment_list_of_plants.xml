@@ -2,11 +2,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="arboretum.arboretumwojslawice.View.fragments.DeciduousFragment">
+    tools:context="arboretum.arboretumwojslawice.View.fragments.ListOfPlantsFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/deciduous_recycler_view"
+        android:id="@+id/conifeerous_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scrollbars="vertical"
