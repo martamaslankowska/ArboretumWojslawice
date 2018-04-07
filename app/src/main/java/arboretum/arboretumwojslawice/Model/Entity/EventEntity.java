@@ -2,6 +2,7 @@ package arboretum.arboretumwojslawice.Model.Entity;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
 
 import java.time.LocalDate;
@@ -14,6 +15,7 @@ import io.reactivex.annotations.NonNull;
  */
 
 @Entity(tableName = "Events")
+//        indices = {@Index(value = {"IdEvent"}, unique = true)})
 public class EventEntity {
 
     @PrimaryKey(autoGenerate = true)

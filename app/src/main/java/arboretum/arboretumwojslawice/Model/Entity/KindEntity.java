@@ -2,6 +2,7 @@ package arboretum.arboretumwojslawice.Model.Entity;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
 
 import io.reactivex.annotations.NonNull;
@@ -11,6 +12,7 @@ import io.reactivex.annotations.NonNull;
  */
 
 @Entity(tableName = "Kinds")
+//        indices = {@Index(value = {"IdKind"}, unique = true)})
 public class KindEntity {
 
     @PrimaryKey(autoGenerate = true)

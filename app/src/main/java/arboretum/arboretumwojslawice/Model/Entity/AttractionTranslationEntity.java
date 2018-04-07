@@ -4,6 +4,7 @@ import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
 
+import android.arch.persistence.room.Index;
 import android.support.annotation.NonNull;
 
 /**
@@ -13,6 +14,7 @@ import android.support.annotation.NonNull;
 @Entity(tableName = "AttractionsTranslations",
         foreignKeys = @ForeignKey(entity = AttractionEntity.class, parentColumns = "IdAttraction", childColumns = "IdAttraction"),
         primaryKeys = {"TranslationCode", "IdAttraction"})
+//        indices = {@Index(value = {"TranslationCode, IdAttraction"}, unique = true)})
 public class AttractionTranslationEntity {
 
     @NonNull

@@ -1,6 +1,7 @@
 package arboretum.arboretumwojslawice.Commons.modules;
 
 import android.app.Application;
+import android.content.Context;
 
 import java.util.Locale;
 
@@ -22,6 +23,11 @@ public class ApplicationModule {
     @Provides
     public Application provideApplication() {
         return mApplication;
+    }
+
+    @Provides
+    public Context provideApplicationContext() {
+        return mApplication.getApplicationContext();
     }
 
     @Provides

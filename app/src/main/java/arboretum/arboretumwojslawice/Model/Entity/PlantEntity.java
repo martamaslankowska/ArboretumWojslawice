@@ -3,6 +3,7 @@ package arboretum.arboretumwojslawice.Model.Entity;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
+import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
 import io.reactivex.annotations.NonNull;
 
@@ -23,6 +24,7 @@ That's why it's good to use @Ignore on other constructors to tell Room not to bo
 @Entity(tableName = "Plants", foreignKeys = {
         @ForeignKey(entity = KindEntity.class, parentColumns = "IdKind", childColumns = "IdKind"),
         @ForeignKey(entity = SpeciesEntity.class, parentColumns = "IdSpecies", childColumns = "IdSpecies")})
+//        indices = {@Index(value = {"IdPlant"}, unique = true)})
 public class PlantEntity {
 
     @PrimaryKey(autoGenerate = true)

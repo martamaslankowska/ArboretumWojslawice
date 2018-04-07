@@ -1,6 +1,7 @@
 package arboretum.arboretumwojslawice.Model.Entity;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
 
 import io.reactivex.annotations.NonNull;
@@ -13,6 +14,7 @@ import java.time.Duration;
 
 
 @Entity(tableName = "Routes")
+//        indices = {@Index(value = {"IdRoute"}, unique = true)})
 public class RouteEntity {
 
     @PrimaryKey(autoGenerate = true)
@@ -30,6 +32,9 @@ public class RouteEntity {
 
     @ColumnInfo(name = "MapImage")
     private int mapImage;
+
+    @ColumnInfo(name = "MapImageDetailed")
+    private int mapImageDetailed;
 
 
     public int getIdRoute() {
@@ -62,5 +67,13 @@ public class RouteEntity {
 
     public void setMapImage(int mapImage) {
         this.mapImage = mapImage;
+    }
+
+    public int getMapImageDetailed() {
+        return mapImageDetailed;
+    }
+
+    public void setMapImageDetailed(int mapImageDetailed) {
+        this.mapImageDetailed = mapImageDetailed;
     }
 }

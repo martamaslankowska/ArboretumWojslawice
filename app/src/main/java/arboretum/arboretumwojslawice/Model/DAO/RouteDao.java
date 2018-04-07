@@ -20,7 +20,7 @@ import io.reactivex.Single;
 @Dao
 public abstract class RouteDao extends BaseDao<RouteEntity> {
 
-    @Query("SELECT Routes.IdRoute, Length, Time, MapImage, Name, Description " +
+    @Query("SELECT Routes.IdRoute, Length, Time, MapImage, MapImageDetailed, Name, Description " +
             "FROM Routes LEFT JOIN RoutesTranslations ON Routes.IdRoute = RoutesTranslations.IdRoute")
     public abstract List<Route> getAll();
 
@@ -36,13 +36,13 @@ public abstract class RouteDao extends BaseDao<RouteEntity> {
 //            "WHERE Routes.IdRoute IN (:idRoute)")
 //    public abstract Cursor getPlantsIdByRouteId(int idRoute);
 
-    @Query("SELECT Routes.IdRoute, Length, Time, MapImage, Name, Description " +
+    @Query("SELECT Routes.IdRoute, Length, Time, MapImage, MapImageDetailed, Name, Description " +
             "FROM Routes LEFT JOIN RoutePoints ON Routes.IdRoute = RoutePoints.IdRoute " +
             "LEFT JOIN RoutesTranslations ON Routes.IdRoute = RoutesTranslations.IdRoute " +
             "WHERE Routes.IdRoute IN (:id)")
     public abstract  Route getById(int id);
 
-    @Query("SELECT Routes.IdRoute, Length, Time, MapImage, RoutesTranslations.Name, Description " +
+    @Query("SELECT Routes.IdRoute, Length, Time, MapImage, MapImageDetailed, RoutesTranslations.Name, Description " +
             "FROM Routes LEFT JOIN RoutesTranslations ON Routes.IdRoute = RoutesTranslations.IdRoute " +
             "WHERE RoutesTranslations.Name IN (:name) LIMIT 1")
     public abstract  Route getByName(String name);

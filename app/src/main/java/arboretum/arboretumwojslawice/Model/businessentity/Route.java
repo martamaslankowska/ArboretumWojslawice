@@ -23,7 +23,7 @@ import arboretum.arboretumwojslawice.Commons.AdapterItem;
 public class Route implements AdapterItem {
 
     @ColumnInfo(name = "IdRoute")
-    private int idRoute;
+    private Integer idRoute;
 
     @ColumnInfo(name = "Length")
     private Double length;
@@ -33,6 +33,9 @@ public class Route implements AdapterItem {
 
     @ColumnInfo(name = "MapImage")
     private Integer mapImage;
+
+    @ColumnInfo(name = "MapImageDetailed")
+    private Integer mapImageDetailed;
 
     @ColumnInfo(name = "Name")
     private String name;
@@ -55,11 +58,12 @@ public class Route implements AdapterItem {
 //        this.plantsOnRoute = plantsOnRoute;
 //    }
 
-    public Route(Integer idRoute, Double length, Integer time, Integer mapImage, String name, String description) {
+    public Route(Integer idRoute, Double length, Integer time, Integer mapImage,Integer mapImageDetailed, String name, String description) {
         this.idRoute = idRoute;
         this.length = length;
         this.time = time;
         this.mapImage = mapImage;
+        this.mapImageDetailed = mapImageDetailed;
         this.name = name;
         this.description = description;
     }
@@ -94,9 +98,10 @@ public class Route implements AdapterItem {
     public Route() {
     }
 
+
     public String getStringId() { return String.valueOf(idRoute);}
 
-    public int getIdRoute() {
+    public Integer getIdRoute() {
         return idRoute;
     }
 
@@ -174,7 +179,15 @@ public class Route implements AdapterItem {
         this.description = description;
     }
 
-//    public List<PlantOnRoute> getPlantsOnRoute() {
+    public Integer getMapImageDetailed() {
+        return mapImageDetailed;
+    }
+
+    public void setMapImageDetailed(Integer mapImageDetailed) {
+        this.mapImageDetailed = mapImageDetailed;
+    }
+
+    //    public List<PlantOnRoute> getPlantsOnRoute() {
 //        return plantsOnRoute;
 //    }
 //

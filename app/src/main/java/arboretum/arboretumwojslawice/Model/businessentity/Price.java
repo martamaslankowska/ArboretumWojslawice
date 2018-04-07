@@ -17,11 +17,15 @@ public class Price {
     @ColumnInfo(name = "Type")
     private String type;
 
+    @ColumnInfo(name = "Description")
+    private String description;
 
-    public Price(Integer idPrice, Double amount, String type) {
+
+    public Price(Integer idPrice, Double amount, String type, String description) {
         this.idPrice = idPrice;
         this.amount = amount;
         this.type = type;
+        this.description = description;
     }
 
     public Integer getIdPrice() {
@@ -48,6 +52,13 @@ public class Price {
         this.type = type;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     @Override
     public String toString() {

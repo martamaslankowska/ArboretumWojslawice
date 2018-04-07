@@ -3,6 +3,7 @@ package arboretum.arboretumwojslawice.Model.Entity;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
+import android.arch.persistence.room.Index;
 
 import io.reactivex.annotations.NonNull;
 
@@ -16,6 +17,7 @@ import io.reactivex.annotations.NonNull;
             @ForeignKey(entity = RouteEntity.class, parentColumns = "IdRoute", childColumns = "IdRoute"),
             @ForeignKey(entity = LocationEntity.class, parentColumns = "IdLocation", childColumns = "IdLocation")},
         primaryKeys = {"IdRoute", "IdLocation"})
+//        indices = {@Index(value = {"IdRoute", "IdLocation"}, unique = true)})
 public class RoutePointEntity {
 
     @ColumnInfo(name = "IdRoute")

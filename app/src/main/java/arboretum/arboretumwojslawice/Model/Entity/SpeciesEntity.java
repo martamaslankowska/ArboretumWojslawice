@@ -3,6 +3,7 @@ package arboretum.arboretumwojslawice.Model.Entity;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
+import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
 
 import io.reactivex.annotations.NonNull;
@@ -13,6 +14,7 @@ import io.reactivex.annotations.NonNull;
 
 @Entity(tableName = "Species", foreignKeys =
         @ForeignKey(entity = GenusEntity.class, parentColumns = "Name", childColumns = "GenusName"))
+//        indices = {@Index(value = {"IdSpecies"}, unique = true)})
 public class SpeciesEntity {
 
     @PrimaryKey(autoGenerate = true)
