@@ -35,7 +35,7 @@ public class RouteDetailViewModel {
     }
 
     public List<Plant> getPlants() {
-        mPlants = mPlantRepo.getPlantsForMichal();
+        mPlants = mPlantRepo.getPlantsForMichal(0);
         return mPlants;
     }
 }

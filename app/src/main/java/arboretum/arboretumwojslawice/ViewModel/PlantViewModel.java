@@ -1,5 +1,7 @@
 package arboretum.arboretumwojslawice.ViewModel;
 
+import android.content.Context;
+
 import java.util.List;
 
 import arboretum.arboretumwojslawice.Model.Repository.PlantRepository;
@@ -15,12 +17,13 @@ public class PlantViewModel {
     List<Plant> mPlant;
     PlantRepository mPlantRepo;
 
+
     public PlantViewModel() {
         mPlantRepo = new PlantRepository();
     }
 
-    public List<Plant> getData() {
-        mPlant = mPlantRepo.getPlantsForMichal();
+    public List<Plant> getData(int n) {
+        mPlant = mPlantRepo.getPlantsForMichal(n);
         return mPlant;
     }
 }

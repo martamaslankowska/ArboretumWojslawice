@@ -1,10 +1,12 @@
 package arboretum.arboretumwojslawice.View.activities;
 
+import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -13,26 +15,24 @@ import java.util.List;
 import arboretum.arboretumwojslawice.Model.businessentity.Plant;
 import arboretum.arboretumwojslawice.R;
 import arboretum.arboretumwojslawice.View.adapter.PlantAdapter;
+import arboretum.arboretumwojslawice.View.fragments.ConiferousFragment;
+import arboretum.arboretumwojslawice.View.fragments.DeciduousFragment;
+import arboretum.arboretumwojslawice.View.fragments.MapFragment;
+import arboretum.arboretumwojslawice.View.fragments.NationalCollectionFragment;
+import arboretum.arboretumwojslawice.View.fragments.PerennialPlantsFragment;
+import arboretum.arboretumwojslawice.View.fragments.RouteFragment;
 import arboretum.arboretumwojslawice.ViewModel.PlantViewModel;
 
 public class PlantActivity extends AppCompatActivity {
     private static final String KEY_LAYOUT_MANAGER = "activity_plant";
     private static final int SPAN_COUNT = 2;
 
-    PlantViewModel plantViewModel;
-    PlantAdapter.OnItemClickListener listener;
-    protected RecyclerView.LayoutManager mLayoutManager;
+    private ConiferousFragment mConiferousFragment;
+    private DeciduousFragment mDeciduousFragment;
+    private NationalCollectionFragment mNationalCollectionFragment;
+    private PerennialPlantsFragment mPerennialPlantsFragment;
 
-    private enum LayoutManagerType {
-        GRID_LAYOUT_MANAGER,
-        LINEAR_LAYOUT_MANAGER
-    }
 
-    protected PlantActivity.LayoutManagerType mCurrentLayoutManagerType;
-
-    protected RecyclerView mRecyclerView;
-    protected PlantAdapter mAdapter;
-    protected List<Plant> mPlants;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,42 +48,68 @@ public class PlantActivity extends AppCompatActivity {
         }
         getSupportActionBar().setTitle(R.string.toolbar_plants_list);
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.plant_recycler_view);
-        plantViewModel = new PlantViewModel();
-        mPlants = plantViewModel.getData();
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.plant_tabs);
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
 
-        listener = new PlantAdapter.OnItemClickListener() {
-            public void onItemClick(int position) {
-                Toast.makeText(getApplicationContext(), "Pozycja nr " + (position + 1), Toast.LENGTH_SHORT).show();
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                Log.d("Arboretum", "tab.getPosition() = " + String.valueOf(tab.getPosition()));
+                switch (tab.getPosition()) {
+                    case 0:
+                        mDeciduousFragment = new DeciduousFragment();
+                        getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.plant_fragment,mDeciduousFragment)
+                                .addToBackStack(null)
+                                .commit();
+                        break;
+                    case 1:
+                        mConiferousFragment = new ConiferousFragment();
+                        getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.plant_fragment, mConiferousFragment)
+                                .addToBackStack(null)
+                                .commit();
+                        break;
+                    case 2:
+                        mPerennialPlantsFragment = new PerennialPlantsFragment();
+                        getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.plant_fragment,mPerennialPlantsFragment)
+                                .addToBackStack(null)
+                                .commit();
+                        break;
+                    case 3:
+                        mNationalCollectionFragment = new NationalCollectionFragment();
+                        getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.plant_fragment,mNationalCollectionFragment)
+                                .addToBackStack(null)
+                                .commit();
+                        break;
+                }
+
             }
-        };
 
-        mAdapter = new PlantAdapter(listener, mPlants);
-        mRecyclerView.setAdapter(mAdapter);
-        mAdapter.setData(plantViewModel.getData());
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
 
-        mLayoutManager = new LinearLayoutManager(this);
+            }
 
-        setRecyclerViewLayoutManager();
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+
+        mDeciduousFragment = new DeciduousFragment();
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.plant_fragment,mDeciduousFragment)
+                .addToBackStack(null)
+                .commit();
+
     }
 
-    public void setRecyclerViewLayoutManager() {
-        int scrollPosition = 0;
-
-        // If a layout manager has already been set, get current scroll position.
-        if (mRecyclerView.getLayoutManager() != null) {
-            scrollPosition = ((LinearLayoutManager) mRecyclerView.getLayoutManager())
-                    .findFirstCompletelyVisibleItemPosition();
-        }
-
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mRecyclerView.scrollToPosition(scrollPosition);
-    }
 
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
         // Save currently selected layout manager.
-        savedInstanceState.putSerializable(KEY_LAYOUT_MANAGER, mCurrentLayoutManagerType);
         super.onSaveInstanceState(savedInstanceState);
     }
 
