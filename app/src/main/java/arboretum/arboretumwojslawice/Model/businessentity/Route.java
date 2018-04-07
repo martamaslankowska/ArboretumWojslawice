@@ -19,7 +19,6 @@ import arboretum.arboretumwojslawice.Commons.AdapterItem;
  * Created by Komputer on 2018-03-25.
  */
 
-@Parcel
 public class Route implements AdapterItem {
 
     @ColumnInfo(name = "IdRoute")

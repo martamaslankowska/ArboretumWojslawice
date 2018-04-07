@@ -16,7 +16,6 @@
         android:paddingTop="8dp"
         android:paddingBottom="8dp">
 
-
         <TextView
             android:id="@+id/route_name"
             android:textSize="16dp"

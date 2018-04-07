@@ -1,10 +1,11 @@
 package arboretum.arboretumwojslawice.Model.businessentity;
 
 import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Ignore;
 
 import arboretum.arboretumwojslawice.Commons.AdapterItem;
 
-public class News {
+public class News implements AdapterItem {
 
     @ColumnInfo(name = "IdNews")
     private Integer idNews;
@@ -30,10 +31,24 @@ public class News {
         this.date = date;
     }
 
+    @Ignore
+    public News(Integer idNews, String name)
+    {
+        this.idNews = idNews;
+        this.name = name;
+    }
+
+    @Ignore
+    public News()
+    {
+
+    }
 
     public Integer getIdNews() {
         return idNews;
     }
+
+    public String getIdString() {return String.valueOf(idNews); }
 
     public void setIdNews(Integer idNews) {
         this.idNews = idNews;
@@ -67,10 +82,11 @@ public class News {
         return date;
     }
 
+    public String getDateString() {return String.valueOf(date); }
+
     public void setDate(Integer date) {
         this.date = date;
     }
-
 
     @Override
     public String toString() {
@@ -78,4 +94,8 @@ public class News {
     }
 
 
+    @Override
+    public int getItemType() {
+        return 0;
+    }
 }

@@ -81,7 +81,7 @@ public class RouteFragment extends Fragment  {
         mRecyclerView.addItemDecoration(new DividerItemDecoration(this.getContext(), 1));
         mAdapter = new RouteAdapter(listener);
         mRecyclerView.setAdapter(mAdapter);
-        mAdapter.setData(routeViewModel.getData());
+        mAdapter.setData(mRoutes);
 
         mLayoutManager = new LinearLayoutManager(getActivity());
 
