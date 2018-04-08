@@ -28,14 +28,12 @@ public class SplashActivity extends AppCompatActivity {
         try {
             myDbHelper.createDatabase();
         } catch (IOException ioe) {
-            Toast.makeText(this, "Create database - failed", Toast.LENGTH_LONG).show();
             throw new Error("Unable to create Database");
         }
 
         try {
             myDbHelper.openDatabase();
         } catch(SQLException sqle){
-            Toast.makeText(this, "Open database - failed", Toast.LENGTH_LONG).show();
             throw sqle;
         }
 

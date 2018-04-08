@@ -41,7 +41,7 @@ import android.arch.persistence.room.RoomDatabase;
         NewsEntity.class, NewsTranslationEntity.class},
         version = 1)
     public abstract class AppDatabase extends RoomDatabase {
-        public static final String DATABASE_NAME = "ArboretumDatabase";
+        public static final String DATABASE_NAME = "ArboretumDB";
 
         public abstract AttractionDao getAttractionDao();
         public abstract AttractionTranslationDao getAttractionTranslationDao();

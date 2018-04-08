@@ -114,9 +114,6 @@ public class MainActivity extends AppCompatActivity {
         mToolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
 
-//        File path = this.getDatabasePath("ArboretumDatabase");
-//        String name = path.getName();
-
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         BottomNavigationViewHelper.removeShiftMode(navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
