@@ -15,6 +15,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
+
 import arboretum.arboretumwojslawice.R;
 import arboretum.arboretumwojslawice.View.BottomNavigationViewHelper;
 import arboretum.arboretumwojslawice.View.fragments.FavouritesFragment;
@@ -111,6 +113,9 @@ public class MainActivity extends AppCompatActivity {
 
         mToolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
+
+//        File path = this.getDatabasePath("ArboretumDatabase");
+//        String name = path.getName();
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         BottomNavigationViewHelper.removeShiftMode(navigation);
