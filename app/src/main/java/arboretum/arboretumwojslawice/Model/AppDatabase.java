@@ -92,7 +92,7 @@ import android.content.Context;
         if (INSTANCE == null) {
             INSTANCE =
                     Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, DATABASE_NAME)
-                            .addMigrations(MIGRATION_1_2)
+//                            .addMigrations(MIGRATION_1_2)
                             .build();
         }
         return INSTANCE;

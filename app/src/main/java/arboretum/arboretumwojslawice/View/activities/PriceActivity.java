@@ -75,32 +75,33 @@ public class PriceActivity extends AppCompatActivity {
                 .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(prices -> {
-                            Toast.makeText(this, "Oooo, weszło :)", Toast.LENGTH_LONG).show();
-                            type1.setText(prices.get(0).getType());
+                    String path = getDatabasePath("ArboretumDB").getAbsolutePath();
+                            Toast.makeText(this, path, Toast.LENGTH_LONG).show();
+//                            type1.setText(prices.get(0).getType());
                         }
                         ,throwable -> {
                             Toast.makeText(this, "Tu też błąd... -.- -.-", Toast.LENGTH_LONG).show();
                         });
 
         compositeDisposable.add(gettingPriceList2);
-
-
-
-
-        compositeDisposable = new CompositeDisposable();
-        Disposable gettingPriceList = Single.fromCallable(() -> {
-            return priceViewModel.getAllPrices();
-        })
-                .subscribeOn(Schedulers.computation())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(prices -> {
-                    type1.setText(prices.get(0).getType());
-                        }
-                        ,throwable -> {
-                            Toast.makeText(this, "Aaaaaa, błąd... -.-", Toast.LENGTH_LONG).show();
-                });
-
-        compositeDisposable.add(gettingPriceList);
+//
+//
+//
+//
+//        compositeDisposable = new CompositeDisposable();
+//        Disposable gettingPriceList = Single.fromCallable(() -> {
+//            return priceViewModel.getAllPrices();
+//        })
+//                .subscribeOn(Schedulers.computation())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(prices -> {
+//                    type1.setText(prices.get(0).getType());
+//                        }
+//                        ,throwable -> {
+//                            Toast.makeText(this, "Aaaaaa, błąd... -.-", Toast.LENGTH_LONG).show();
+//                });
+//
+//        compositeDisposable.add(gettingPriceList);
 
 
     }
@@ -118,6 +119,6 @@ public class PriceActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        compositeDisposable.clear();
+//        compositeDisposable.clear();
     }
 }

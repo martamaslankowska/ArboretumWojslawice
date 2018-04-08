@@ -26,9 +26,6 @@ public class PriceViewModel {
         app = application;
         db = AppDatabase.getAppDatabase(app.getApplicationContext());
         priceDao = db.getPriceDao();
-        db.isOpen();
-//        Cursor c = db.query(new SimpleSQLiteQuery("SELECT * FROM Prices"));
-//        c.getCount();
     }
 
     public List<Price> getAllPrices() {

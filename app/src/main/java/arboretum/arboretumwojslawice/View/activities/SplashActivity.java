@@ -1,5 +1,7 @@
 package arboretum.arboretumwojslawice.View.activities;
 
+import android.arch.persistence.room.Room;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.SQLException;
@@ -12,6 +14,8 @@ import android.widget.Toast;
 import java.io.File;
 import java.io.IOException;
 
+import arboretum.arboretumwojslawice.Model.AppDatabase;
+import arboretum.arboretumwojslawice.Model.DAO.AttractionDao;
 import arboretum.arboretumwojslawice.Model.DatabaseHelper;
 
 public class SplashActivity extends AppCompatActivity {
@@ -37,10 +41,12 @@ public class SplashActivity extends AppCompatActivity {
             throw sqle;
         }
 
-        /* Checking if table exists in the database */
-        boolean exists = tableExists("ArboretumDB");
+//        /* Checking if table exists in the database */
+        boolean exists = tableExists((DatabaseHelper.DB_NAME + DatabaseHelper.DB_EX));
 
         /* FINISHED COPING DATABASE */
+
+        AppDatabase database = AppDatabase.getAppDatabase(getApplicationContext());
 
 
         Intent intent = new Intent(this, MainActivity.class);
@@ -50,7 +56,7 @@ public class SplashActivity extends AppCompatActivity {
 
     public boolean tableExists(String databaseName) {
         Cursor c = null;
-        SQLiteDatabase mDatabase = openOrCreateDatabase((databaseName + ".db"), MODE_PRIVATE,null);
+        SQLiteDatabase mDatabase = openOrCreateDatabase(databaseName, MODE_PRIVATE,null);
         boolean tableExists = false;
 
         /* get cursor on it */
