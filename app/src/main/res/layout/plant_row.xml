@@ -34,14 +34,15 @@
             android:layout_height="wrap_content"
             android:text="@{@string/plant_name(plant.getName())}"/>
 
+
         <TextView
             android:id="@+id/plant_genus"
-            android:layout_below="@id/plant_name"
             android:layout_toEndOf="@id/plant_image"
             android:layout_toStartOf="@id/plant_heart"
             android:layout_marginLeft="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@id/plant_name"
             android:text="@{plant.getGenusName()}"/>
 
         <TextView

@@ -9,7 +9,7 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="@dimen/route_map_height"
-        android:src="@drawable/select_route"
+        android:src="@drawable/full_map"
         android:id="@+id/route_map"/>
 
     <android.support.v7.widget.RecyclerView

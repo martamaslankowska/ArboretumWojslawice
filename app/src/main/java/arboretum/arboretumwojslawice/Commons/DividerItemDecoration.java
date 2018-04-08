@@ -58,7 +58,7 @@ public class DividerItemDecoration extends RecyclerView.ItemDecoration
             else
             {
 
-                top = child.getTop() + params.topMargin;
+                top = child.getTop();
                 bottom = top + mDivider.getIntrinsicHeight()+2;
             }
 

@@ -82,7 +82,10 @@ public class News implements AdapterItem {
         return date;
     }
 
-    public String getDateString() {return String.valueOf(date); }
+    public String getDateString() {
+        String sDate = String.valueOf(date);
+        return sDate.substring(0,4)+"/"+sDate.substring(4,6)+"/"+sDate.substring(6,8);
+    }
 
     public void setDate(Integer date) {
         this.date = date;
@@ -92,7 +95,6 @@ public class News implements AdapterItem {
     public String toString() {
         return "(id = " + idNews + ") " + name;
     }
-
 
     @Override
     public int getItemType() {
