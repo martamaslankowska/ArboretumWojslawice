@@ -39,23 +39,8 @@ public class SplashActivity extends AppCompatActivity {
             throw sqle;
         }
 
-//        File path = this.getDatabasePath("ArboretumDatabase");
-//        String name = path.getName();
-
-        SQLiteDatabase mDatabase = openOrCreateDatabase("ArboretumDatabase.db", MODE_PRIVATE,null);
-        Cursor c = null;
-        boolean tableExists = false;
-        /* get cursor on it */
-        try
-        {
-            c = mDatabase.query("Prices", null,null, null, null, null, null);
-            tableExists = true;
-        }
-        catch (Exception e) {
-            /* fail */
-            Log.d("ERROR", "Table doesn't exist :(");
-        }
-        boolean x = tableExists;
+        /* Checking if table exists in the database */
+        boolean exists = tableExists("ArboretumDB");
 
         /* FINISHED COPING DATABASE */
 
@@ -64,4 +49,23 @@ public class SplashActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
+
+    public boolean tableExists(String databaseName) {
+        Cursor c = null;
+        SQLiteDatabase mDatabase = openOrCreateDatabase((databaseName + ".db"), MODE_PRIVATE,null);
+        boolean tableExists = false;
+
+        /* get cursor on it */
+        try {
+            c = mDatabase.query("Prices", null,null, null, null, null, null);
+            tableExists = true;
+        } catch (Exception e) {
+            /* fail */
+            Log.d("ERROR", "Table doesn't exist :(");
+        }
+
+        return tableExists;
+    }
+
+
 }

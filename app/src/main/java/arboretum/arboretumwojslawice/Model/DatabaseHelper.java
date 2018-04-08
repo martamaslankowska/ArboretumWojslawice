@@ -18,9 +18,9 @@ import java.io.OutputStream;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     //The Android's default system path of your application database.
-//    private static String DB_PATH = "/data/data/arboretum.arboretumwojslawice/databases/";
-    private static String DB_PATH = "/data/user/0/arboretum.arboretumwojslawice/databases/";
-    private static String DB_NAME = "ArboretumDatabase";
+    private static String DB_PATH = "/data/data/arboretum.arboretumwojslawice/databases/";
+//    private static String DB_PATH = "/data/user/0/arboretum.arboretumwojslawice/databases/";
+    private static String DB_NAME = "ArboretumDB";
 
     private SQLiteDatabase arboretumDatabase;
     private final Context myContext;
@@ -90,7 +90,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         InputStream myInput = myContext.getAssets().open(databaseName);
 
         // Path to the just created empty db
-        String outFileName = DB_PATH + DB_NAME;
+        String outFileName = DB_PATH + databaseName;
 
         //Open the empty db as the output stream
         OutputStream myOutput = new FileOutputStream(outFileName);
