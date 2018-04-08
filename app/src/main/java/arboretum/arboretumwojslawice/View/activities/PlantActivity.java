@@ -1,5 +1,6 @@
 package arboretum.arboretumwojslawice.View.activities;
 
+import android.support.design.widget.TabItem;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -19,6 +20,12 @@ public class PlantActivity extends AppCompatActivity {
     private ListOfPlantsFragment mListOfPlantsFragment;
     private Stack<Integer> stos = new Stack<>();
     private TabLayout tabLayout;
+    Bundle numOfTab = new Bundle();
+    private TabItem mTabItem0;
+    private TabItem mTabItem1;
+    private TabItem mTabItem2;
+    private TabItem mTabItem3;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +40,12 @@ public class PlantActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
         getSupportActionBar().setTitle(R.string.toolbar_plants_list);
-        Bundle numOfTab = new Bundle();
+
+
+        mTabItem0 = (TabItem) findViewById(R.id.tabItem);
+        mTabItem1 = (TabItem) findViewById(R.id.tabItem2);
+        mTabItem2 = (TabItem) findViewById(R.id.tabItem3);
+        mTabItem3 = (TabItem) findViewById(R.id.tabItem4);
 
         tabLayout = (TabLayout) findViewById(R.id.plant_tabs);
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -113,42 +125,43 @@ public class PlantActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-//    @Override
-//    public void onBackPressed() {
-//        int i = stos.pop();
-//        switch (i) {
-//            case 0:
-//                mDeciduousFragment = new DeciduousFragment();
-//                getSupportFragmentManager().beginTransaction()
-//                        .replace(R.id.plant_fragment,mDeciduousFragment)
-//                        .addToBackStack(null)
-//                        .commit();
-//                break;
-//            case 1:
-//                mListOfPlantsFragment = new ListOfPlantsFragment();
-//                getSupportFragmentManager().beginTransaction()
-//                        .replace(R.id.plant_fragment, mListOfPlantsFragment)
-//                        .addToBackStack(null)
-//                        .commit();
-//                tabLayout.setTabMode(1);
-//                break;
-//            case 2:
-//                mPerennialPlantsFragment = new PerennialPlantsFragment();
-//                getSupportFragmentManager().beginTransaction()
-//                        .replace(R.id.plant_fragment,mPerennialPlantsFragment)
-//                        .addToBackStack(null)
-//                        .commit();
-//                tabLayout.setTabMode(2);
-//                break;
-//            case 3:
-//                mNationalCollectionFragment = new NationalCollectionFragment();
-//                getSupportFragmentManager().beginTransaction()
-//                        .replace(R.id.plant_fragment,mNationalCollectionFragment)
-//                        .addToBackStack(null)
-//                        .commit();
-//                tabLayout.setTabMode(3);
-//                break;
-//        }
-//
-//    }
+    @Override
+    public void onBackPressed() {
+        if (stos.isEmpty()) {
+            finish();
+        }
+        else {
+            int n = stos.pop();
+            if (n == tabLayout.getSelectedTabPosition()) {
+                return;
+            }
+            if (numOfTab != null) {
+                numOfTab.remove("NumberOfTab");
+            }
+            mListOfPlantsFragment = new ListOfPlantsFragment();
+            switch (n) {
+                case 0:
+                    numOfTab.putInt("NumberOfTab", 0);
+                    mListOfPlantsFragment.setArguments(numOfTab);
+                    break;
+                case 1:
+                    numOfTab.putInt("NumberOfTab", 1);
+                    mListOfPlantsFragment.setArguments(numOfTab);
+                    break;
+                case 2:
+                    numOfTab.putInt("NumberOfTab", 2);
+                    mListOfPlantsFragment.setArguments(numOfTab);
+                    break;
+                case 3:
+                    numOfTab.putInt("NumberOfTab", 3);
+                    mListOfPlantsFragment.setArguments(numOfTab);
+                    break;
+            }
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.plant_fragment, mListOfPlantsFragment)
+                    .addToBackStack(null)
+                    .commit();
+        }
+
+    }
 }
