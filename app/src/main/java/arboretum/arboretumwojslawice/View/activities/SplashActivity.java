@@ -56,6 +56,7 @@ public class SplashActivity extends AppCompatActivity {
         /* get cursor on it */
         try {
             c = mDatabase.query("Prices", null,null, null, null, null, null);
+            int nrOfRows = c.getCount();
             tableExists = true;
         } catch (Exception e) {
             /* fail */

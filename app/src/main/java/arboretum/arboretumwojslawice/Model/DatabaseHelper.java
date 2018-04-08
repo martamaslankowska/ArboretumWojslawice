@@ -18,9 +18,9 @@ import java.io.OutputStream;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     //The Android's default system path of your application database.
-    private static String DB_PATH = "/data/data/arboretum.arboretumwojslawice/databases/";
+    public static String DB_PATH = "/data/data/arboretum.arboretumwojslawice/databases/";
 //    private static String DB_PATH = "/data/user/0/arboretum.arboretumwojslawice/databases/";
-    private static String DB_NAME = AppDatabase.DATABASE_NAME;
+    public static String DB_NAME = AppDatabase.DATABASE_NAME;
 
     private SQLiteDatabase arboretumDatabase;
     private final Context myContext;

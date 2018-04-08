@@ -23,8 +23,12 @@ import arboretum.arboretumwojslawice.Model.Entity.RouteTranslationEntity;
 import arboretum.arboretumwojslawice.Model.Entity.SpeciesEntity;
 import arboretum.arboretumwojslawice.Model.businessentity.News;
 
+import android.arch.persistence.db.SupportSQLiteDatabase;
 import android.arch.persistence.room.Database;
+import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
+import android.arch.persistence.room.migration.Migration;
+import android.content.Context;
 
 
 /**
@@ -39,7 +43,7 @@ import android.arch.persistence.room.RoomDatabase;
         PlantTranslationEntity.class, PriceEntity.class, PriceTranslationEntity.class, RestaurantEntity.class,
         RouteEntity.class, RoutePointEntity.class, RouteTranslationEntity.class, SpeciesEntity.class,
         NewsEntity.class, NewsTranslationEntity.class},
-        version = 1)
+        version = 2)
     public abstract class AppDatabase extends RoomDatabase {
         public static final String DATABASE_NAME = "ArboretumDB";
 
@@ -66,24 +70,35 @@ import android.arch.persistence.room.RoomDatabase;
         public abstract NewsTranslationDao getNewsTranslationDao();
 
 
+
+
+
 //    /* Some copied code from https://medium.com/@ajaysaini.official/building-database-with-room-persistence-library-ecf7d0b8f3e9
 //     * Here's also an different example: https://medium.com/@alahammad/database-with-room-using-rxjava-764ee6124974
 //     * Still working on this method (especially thread) */
-//
-//    public static AppDatabase getAppDatabase(Context context) {
-//        if (INSTANCE == null) {
-//            INSTANCE =  Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, "ArboretumDatabase")
-//                            // allow queries on the main thread.
-//                            // Don't do this on a real app! See PersistenceBasicSample for an example.
-////                            .allowMainThreadQueries()
-//                            .build();
-//        }
-//        return INSTANCE;
-//    }
-//
-//    public static void destroyInstance() {
-//        INSTANCE = null;
-//    }
+
+    private static AppDatabase INSTANCE;
+
+    static final Migration MIGRATION_1_2 = new Migration(1, 2) {
+        @Override
+        public void migrate(SupportSQLiteDatabase database) {
+            // Since we didn't alter the table, there's nothing else to do here.
+        }
+    };
+
+
+
+    public static AppDatabase getAppDatabase(Context context) {
+        if (INSTANCE == null) {
+            INSTANCE =
+                    Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, DATABASE_NAME)
+                            .addMigrations(MIGRATION_1_2)
+                            .build();
+        }
+        return INSTANCE;
+    }
+
+
 
 }
 
