@@ -55,7 +55,7 @@ public class RouteRepository extends BaseRepository {
 
     public List<Route> getRoutesForMichal() {
         List<Route> routes = new ArrayList<>();
-        Route route = new Route(1, 3.5, 215, R.drawable.route_full_1, R.drawable.route_1, "Traska dla emerytów", "To jest własnie taka jakaś lajtowa traska, bo pomimo tego, że jej przejście to poad dwie godziny, to ogarnia niewielki zakres Arboretum. Polecamy ją zatem osobom starszym, które mają już za słabe stawy i kolana do długiego zwiedzania.");
+        Route route = new Route(1, 3.5, 215, R.drawable.route_full_1, R.drawable.route_1, "Trasa dla seniorów", "Trasa prowadzi po niewielkim obszarze Arboretum. Ścieżki są płaskie, ale prowadzi przez malownicze tereny. Czas przejścia trasy był liczony dla wolnego spaceru, dlatego wynosi trzy godziny. Polecamy ją zatem osobom starszym, które mają już za słabe stawy i kolana do długiego zwiedzania.");
         routes.add(route);
         route = new Route(2, 1.5, 315, R.drawable.route_full_2, R.drawable.route_2, "Dla rodzin z dziećmi", "Traska przechodzi przez wiele terenów zakrzaczonych, gdzie wasze małe urwisy będą się wam mogły zgubić w lesie i będziecie mieli święty spokój chociaż przez chwilę, by móc podziwiać zbiory roślin w naszym Arboretum.");
         routes.add(route);
