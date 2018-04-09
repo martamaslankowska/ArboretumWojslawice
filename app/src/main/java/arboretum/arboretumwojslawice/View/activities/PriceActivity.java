@@ -69,6 +69,8 @@ public class PriceActivity extends AppCompatActivity {
 
 
         compositeDisposable = new CompositeDisposable();
+
+
         Disposable gettingPriceList2 = Maybe.fromCallable(() -> {
             return priceViewModel.getAllPrices();
         })
@@ -81,10 +83,14 @@ public class PriceActivity extends AppCompatActivity {
                             type1.setText(prices.get(0).getType());
                             description1.setText(prices.get(0).getDescription());
                             price1.setText(Double.toString(prices.get(0).getAmount()) + " zł");
+                            type2.setText(prices.get(1).getType());
+                            description2.setText(prices.get(1).getDescription());
+                            price2.setText(Double.toString(prices.get(1).getAmount()) + " zł");
                         }
                         ,throwable -> {
                             Toast.makeText(this, "Tu też błąd... -.- -.-", Toast.LENGTH_LONG).show();
                         });
+
 
         compositeDisposable.add(gettingPriceList2);
 //

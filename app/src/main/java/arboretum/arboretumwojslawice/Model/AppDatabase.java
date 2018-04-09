@@ -91,7 +91,7 @@ import android.content.Context;
             INSTANCE =
                     Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, DATABASE_NAME)
 //                            .addMigrations(MIGRATION_1_2)
-                            .allowMainThreadQueries() // DELETE after tests
+//                            .allowMainThreadQueries() // DELETE after tests
                             .build();
         }
         return INSTANCE;
