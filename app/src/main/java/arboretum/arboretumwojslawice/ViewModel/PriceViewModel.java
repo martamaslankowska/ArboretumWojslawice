@@ -16,25 +16,20 @@ import arboretum.arboretumwojslawice.Model.businessentity.Price;
 
 public class PriceViewModel {
 
-    /* DELETE WHEN DAGGER STARTS WORKING... */
-    Application app;
     AppDatabase db;
-    PriceDao priceDao;
-
     PriceRepository repository;
-    List<Price> mPrices;
 
     public PriceViewModel(Application application) {
-        app = application;
-        db = AppDatabase.getAppDatabase(app.getApplicationContext());
-        priceDao = db.getPriceDao();
+        db = AppDatabase.getAppDatabase(application.getApplicationContext());
         repository = new PriceRepository(application, db);
     }
 
     public List<Price> getAllPrices() {
-        String translationCode = app.getResources().getConfiguration().locale.getLanguage();
-        mPrices = priceDao.getAll(translationCode);
-        return mPrices;
+        return repository.getAllPrices();
+    }
+
+    public Price getPrice(int idPrice) {
+        return repository.getById(idPrice);
     }
 
 

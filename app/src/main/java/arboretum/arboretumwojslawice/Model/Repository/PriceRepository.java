@@ -28,6 +28,8 @@ public class PriceRepository extends BaseRepository {
     @Inject
     public PriceRepository() {}
 
+
+    /* Constructor without Dagger */
     public PriceRepository(Application appliaction, AppDatabase db) {
         this.priceDao = db.getPriceDao();
         this.priceTranslationDao = db.getPriceTranslationDao();

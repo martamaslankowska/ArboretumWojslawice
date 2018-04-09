@@ -58,28 +58,28 @@ public class PriceActivity extends AppCompatActivity {
 
         compositeDisposable = new CompositeDisposable();
 
-
+        /* GETTING DATA FROM DATABASE - in RXJava (it's not so hard ;)) */
         Disposable gettingPriceList2 = Maybe.fromCallable(() -> {
             return priceViewModel.getAllPrices();
         })
                 .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(prices -> {
-                    /* onSuccess() :) Here we do whatever :) */
-                    String path = getDatabasePath("ArboretumDB").getAbsolutePath();
+                    /* onSuccess() :) Here we do whatever :)
+                    * For example here we do the DataBinding or RecyclerView stuff */
                     String length = Integer.toString(prices.size());
-                            Toast.makeText(this, length, Toast.LENGTH_LONG).show();
-                            type1.setText(prices.get(0).getType());
-                            description1.setText(prices.get(0).getDescription());
-                            price1.setText(Double.toString(prices.get(0).getAmount()) + " zł");
-                            type2.setText(prices.get(1).getType());
-                            description2.setText(prices.get(1).getDescription());
-                            price2.setText(Double.toString(prices.get(1).getAmount()) + " zł");
-                        }
-                        ,throwable -> {
-                            /* onError() - here we are sad... :( */
-                            Toast.makeText(this, "Tu też błąd... -.- -.-", Toast.LENGTH_LONG).show();
-                        });
+                    Toast.makeText(this, length, Toast.LENGTH_LONG).show();
+                    type1.setText(prices.get(0).getType());
+                    description1.setText(prices.get(0).getDescription());
+                    price1.setText(Double.toString(prices.get(0).getAmount()) + " zł");
+                    type2.setText(prices.get(1).getType());
+                    description2.setText(prices.get(1).getDescription());
+                    price2.setText(Double.toString(prices.get(1).getAmount()) + " zł");
+                }
+                ,throwable -> {
+                    /* onError() - here we are sad... :( */
+                    Toast.makeText(this, "Jakiś błąąąd... -.- -.-", Toast.LENGTH_LONG).show();
+                });
 
 
         compositeDisposable.add(gettingPriceList2);
