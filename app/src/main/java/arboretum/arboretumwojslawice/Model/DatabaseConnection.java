@@ -18,39 +18,68 @@ public class DatabaseConnection extends AsyncTask<Void,Void,Boolean>
 {
     private Context context;
     AppDatabase database;
+    String language; //translationCode
+    String polish = "pl";
 
     /* LISTS OF TABLES - ENTITIES */
     List<AttractionEntity> attractionEntities = new ArrayList<>();
     List<AttractionTranslationEntity> attractionTranslationEntities = new ArrayList<>();
+    /*...*/
+    List<PriceEntity> priceEntities = new ArrayList<>();
+    List<PriceTranslationEntity> priceTranslationEntities = new ArrayList<>();
+    /*...*/
+
 
     public DatabaseConnection(Context context, AppDatabase db) {
         this.context = context;
         this.database = db;
+        language = context.getResources().getConfiguration().locale.getLanguage();
     }
 
     private void createData() {
-//        attractionEntities.add(new AttractionEntity(1, context.getResources()));
+        /* Attractions */
+        attractionEntities.add(new AttractionEntity(1, 0));
+        attractionEntities.add(new AttractionEntity(2, 0));
+        attractionEntities.add(new AttractionEntity(3, 0));
+        attractionTranslationEntities.add(new AttractionTranslationEntity(polish, 1, "Niemcza", "Średniowieczne miasto, położone niecałe 2 km od Wojsławic. Jest zabytkiem urbanistycznym i należy do najstarszych miast w Polsce.    W 2017 roku Niemcza będzie obchodziła 1000-lecie wielkiej bitwy obrony grodu z 1017 roku. Zapraszamy do zapoznania się z legendą: www.um.niemcza.pl/images/stories/ulotki/Niemcza/index.html"));
+        attractionTranslationEntities.add(new AttractionTranslationEntity(polish, 2, "Uzdrowisko Przerzeczyn Zdrój",""));
+        attractionTranslationEntities.add(new AttractionTranslationEntity(polish, 3, "Krzywa Wieża w Ząbkowicach Śląskich","W odległości 15 km od Arboretum w Wojsławicach znajduje się 34-metrowa wieża dawnej dzwonnicy.       Jest prawdopodobnie pozostałością zamku z XV w. Obecnie pełni funkcję turystycznego punktu widokowego. Jej odchylenie od pionu wynosi już 2,14 m (w Pizie ok. 5 m). Tuż obok znajduje się Izba Pamiątek z Laboratorium dr. Frankensteina, która nawiązuję do pewnych tajemniczych wydarzeń z XVII w. Warto dodać, że miasto Ząbkowice nosiło dawniej nazwę Frankenstein."));
+
+        /*...*/
+
+        /* Prices */
+        priceEntities.add(new PriceEntity(1, 15));
+        priceEntities.add(new PriceEntity(2, 10));
+        priceEntities.add(new PriceEntity(21, 10));
+        priceEntities.add(new PriceEntity(22, 10));
+        priceEntities.add(new PriceEntity(23, 10));
+        priceEntities.add(new PriceEntity(3, 60));
+        priceEntities.add(new PriceEntity(4, 40));
+        priceTranslationEntities.add(new PriceTranslationEntity(polish, 1, "normalny", null));
+        priceTranslationEntities.add(new PriceTranslationEntity(polish, 2, "ulgowy", "za okazaniem stosownych dokumentów"));
+        priceTranslationEntities.add(new PriceTranslationEntity(polish, 21, "ulgowy", "uczniowie (z wyłączeniem szkół dla dorosłych)"));
+        priceTranslationEntities.add(new PriceTranslationEntity(polish, 22, "ulgowy", "studenci"));
+        priceTranslationEntities.add(new PriceTranslationEntity(polish, 23, "ulgowy", "osoby niepełnosprawne"));
+        priceTranslationEntities.add(new PriceTranslationEntity(polish, 3, "wielokrotny normalny", "5 wejść w cenie 4; 1 dzień = 1 wejście\n"));
+        priceTranslationEntities.add(new PriceTranslationEntity(polish, 4, "wielokrotny ulgowy", "5 wejść w cenie 4; 1 dzień = 1 wejście\n"));
+
+        /*...*/
     }
 
     protected Boolean doInBackground(Void... urls) {
-
         createData();
-        Price p1 = new Price(1, 30.0, "normalny", "bilet dla normalnych ludzi");
-        Price p2 = new Price(2, 10.0, "ulgowy", "bilet tylko za pokazaniem ważnego dokumentu potwierdzającego przysługujące ulgi");
-        Price p3 = new Price(3, 15.0, "inny", "a jakiśtam inny, trzeci bilet");
-        String translationCode = context.getResources().getConfiguration().locale.getLanguage();
 
         database.runInTransaction(new Runnable() {
             @Override
             public void run() {
+
+                /* DELETE ALL - in a different order than insert; first delete translation, then entity */
                 database.getPriceTranslationDao().deleteAll();
                 database.getPriceDao().deleteAll();
-                database.getPriceDao().insert(new PriceEntity(p1.getIdPrice(), p1.getAmount()),
-                        new PriceEntity(p2.getIdPrice(), p2.getAmount()),
-                        new PriceEntity(p3.getIdPrice(), p3.getAmount()));
-                database.getPriceTranslationDao().insert(new PriceTranslationEntity(translationCode, p1.getIdPrice(), p1.getType(), p1.getDescription()),
-                        new PriceTranslationEntity(translationCode, p2.getIdPrice(), p2.getType(), p2.getDescription()),
-                        new PriceTranslationEntity(translationCode, p3.getIdPrice(), p3.getType(), p3.getDescription()));
+
+                /* INSERT ALL - first insert to entity, then to translation */
+                database.getPriceDao().insert(priceEntities);
+                database.getPriceTranslationDao().insert(priceTranslationEntities);
             }
         });
 

@@ -33,28 +33,30 @@ public class SplashActivity extends AppCompatActivity {
 
         /* COPYING DATABASE */
 
-        DatabaseHelper myDbHelper = new DatabaseHelper(this);
-
-        try {
-            myDbHelper.createDatabase();
-        } catch (IOException ioe) {
-            throw new Error("Unable to create Database");
-        }
-
-        try {
-            myDbHelper.openDatabase();
-        } catch(SQLException sqle){
-            throw sqle;
-        }
-
-        /* Checking if table exists in the database */
-        boolean exists = tableExists((DatabaseHelper.DB_NAME + DatabaseHelper.DB_EX));
+//        DatabaseHelper myDbHelper = new DatabaseHelper(this);
+//
+//        try {
+//            myDbHelper.createDatabase();
+//        } catch (IOException ioe) {
+//            throw new Error("Unable to create Database");
+//        }
+//
+//        try {
+//            myDbHelper.openDatabase();
+//        } catch(SQLException sqle){
+//            throw sqle;
+//        }
+//
+//        /* Checking if table exists in the database */
+//        boolean exists = tableExists((DatabaseHelper.DB_NAME + DatabaseHelper.DB_EX));
 
         /* FINISHED COPING DATABASE */
 
-//        AppDatabase database = AppDatabase.getAppDatabase(getApplicationContext());
-//        DatabaseConnection dbConnect = new DatabaseConnection(getApplicationContext(), database);
-//        dbConnect.execute();
+
+        /* USING ROOM DATABASE */
+        AppDatabase database = AppDatabase.getAppDatabase(getApplicationContext());
+        DatabaseConnection dbConnect = new DatabaseConnection(getApplicationContext(), database);
+        dbConnect.execute();
 
 
         Intent intent = new Intent(this, MainActivity.class);
@@ -72,9 +74,6 @@ public class SplashActivity extends AppCompatActivity {
             c = mDatabase.query("Prices", null,null, null, null, null, null);
             int nrOfRows = c.getCount();
             tableExists = true;
-            c = mDatabase.query("Blaaa", null,null, null, null, null, null);
-            tableExists = true;
-
         } catch (Exception e) {
             /* fail */
             Log.d("ERROR", "Table doesn't exist :(");

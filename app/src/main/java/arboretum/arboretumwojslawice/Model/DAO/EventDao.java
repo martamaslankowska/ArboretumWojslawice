@@ -35,4 +35,8 @@ public abstract class EventDao extends BaseDao<EventEntity> {
     public abstract List<Event> getAllByDateBegin(int dateBegin, String translationCode);
 
 
+    /* probably temporary */
+    @Query("DELETE FROM Events")
+    public abstract void deleteAll();
+
 }

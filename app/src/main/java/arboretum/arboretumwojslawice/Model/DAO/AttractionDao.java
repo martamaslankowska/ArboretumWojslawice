@@ -32,4 +32,9 @@ public abstract class AttractionDao extends BaseDao<AttractionEntity> {
             "WHERE Name IN (:name) AND TranslationCode IN (:translationCode)")
     public abstract  Attraction getByName(String name, String translationCode);
 
+
+    /* probably temporary */
+    @Query("DELETE FROM Attractions")
+    public abstract void deleteAll();
+
 }
