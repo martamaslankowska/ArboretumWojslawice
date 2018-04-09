@@ -33,36 +33,28 @@ public class SplashActivity extends AppCompatActivity {
 
         /* COPYING DATABASE */
 
-//        DatabaseHelper myDbHelper = new DatabaseHelper(this);
-//
-//        try {
-//            myDbHelper.createDatabase();
-//        } catch (IOException ioe) {
-//            throw new Error("Unable to create Database");
-//        }
-//
-//        try {
-//            myDbHelper.openDatabase();
-//        } catch(SQLException sqle){
-//            throw sqle;
-//        }
+        DatabaseHelper myDbHelper = new DatabaseHelper(this);
 
-//        /* Checking if table exists in the database */
-//        boolean exists = tableExists((DatabaseHelper.DB_NAME + DatabaseHelper.DB_EX));
+        try {
+            myDbHelper.createDatabase();
+        } catch (IOException ioe) {
+            throw new Error("Unable to create Database");
+        }
+
+        try {
+            myDbHelper.openDatabase();
+        } catch(SQLException sqle){
+            throw sqle;
+        }
+
+        /* Checking if table exists in the database */
+        boolean exists = tableExists((DatabaseHelper.DB_NAME + DatabaseHelper.DB_EX));
 
         /* FINISHED COPING DATABASE */
 
-        AppDatabase database = AppDatabase.getAppDatabase(getApplicationContext());
-
-//        /* INSERTING TEST DATA */
-//        Price p1 = new Price(1, 30.0, "normalny", "bilet dla normalnych ludzi");
-//        Price p2 = new Price(2, 10.0, "ulgowy", "bilet tylko za pokazaniem ważnego dokumentu potwierdzającego przysługujące ulgi");
-//        Price p3 = new Price(3, 15.0, "inny", "a jakiśtam inny, trzeci bilet");
-//        String translationCode = this.getResources().getConfiguration().locale.getLanguage();
-
-
-        DatabaseConnection dbConnect = new DatabaseConnection(getApplicationContext(), database);
-        dbConnect.execute();
+//        AppDatabase database = AppDatabase.getAppDatabase(getApplicationContext());
+//        DatabaseConnection dbConnect = new DatabaseConnection(getApplicationContext(), database);
+//        dbConnect.execute();
 
 
         Intent intent = new Intent(this, MainActivity.class);

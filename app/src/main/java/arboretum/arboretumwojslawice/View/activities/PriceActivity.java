@@ -80,12 +80,12 @@ public class PriceActivity extends AppCompatActivity {
                     String path = getDatabasePath("ArboretumDB").getAbsolutePath();
                     String length = Integer.toString(prices.size());
                             Toast.makeText(this, length, Toast.LENGTH_LONG).show();
-                            type1.setText(prices.get(0).getType());
-                            description1.setText(prices.get(0).getDescription());
-                            price1.setText(Double.toString(prices.get(0).getAmount()) + " zł");
-                            type2.setText(prices.get(1).getType());
-                            description2.setText(prices.get(1).getDescription());
-                            price2.setText(Double.toString(prices.get(1).getAmount()) + " zł");
+//                            type1.setText(prices.get(0).getType());
+//                            description1.setText(prices.get(0).getDescription());
+//                            price1.setText(Double.toString(prices.get(0).getAmount()) + " zł");
+//                            type2.setText(prices.get(1).getType());
+//                            description2.setText(prices.get(1).getDescription());
+//                            price2.setText(Double.toString(prices.get(1).getAmount()) + " zł");
                         }
                         ,throwable -> {
                             Toast.makeText(this, "Tu też błąd... -.- -.-", Toast.LENGTH_LONG).show();
