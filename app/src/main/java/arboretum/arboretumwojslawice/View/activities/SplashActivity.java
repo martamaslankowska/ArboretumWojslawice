@@ -17,6 +17,9 @@ import java.io.IOException;
 import arboretum.arboretumwojslawice.Model.AppDatabase;
 import arboretum.arboretumwojslawice.Model.DAO.AttractionDao;
 import arboretum.arboretumwojslawice.Model.DatabaseHelper;
+import arboretum.arboretumwojslawice.Model.Entity.PriceEntity;
+import arboretum.arboretumwojslawice.Model.Entity.PriceTranslationEntity;
+import arboretum.arboretumwojslawice.Model.businessentity.Price;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -25,28 +28,52 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
 
-        /* COPING DATABASE */
-
-        DatabaseHelper myDbHelper = new DatabaseHelper(this);
-
-        try {
-            myDbHelper.createDatabase();
-        } catch (IOException ioe) {
-            throw new Error("Unable to create Database");
-        }
-
-        try {
-            myDbHelper.openDatabase();
-        } catch(SQLException sqle){
-            throw sqle;
-        }
-
-//        /* Checking if table exists in the database */
-        boolean exists = tableExists((DatabaseHelper.DB_NAME + DatabaseHelper.DB_EX));
+        /* COPYING DATABASE */
+//
+//        DatabaseHelper myDbHelper = new DatabaseHelper(this);
+//
+//        try {
+//            myDbHelper.createDatabase();
+//        } catch (IOException ioe) {
+//            throw new Error("Unable to create Database");
+//        }
+//
+//        try {
+//            myDbHelper.openDatabase();
+//        } catch(SQLException sqle){
+//            throw sqle;
+//        }
+//
+////        /* Checking if table exists in the database */
+//        boolean exists = tableExists((DatabaseHelper.DB_NAME + DatabaseHelper.DB_EX));
 
         /* FINISHED COPING DATABASE */
 
         AppDatabase database = AppDatabase.getAppDatabase(getApplicationContext());
+
+        /* INSERTING TEST DATA */
+        Price p1 = new Price(1, 30.0, "normalny", "bilet dla normalnych ludzi");
+        Price p2 = new Price(2, 10.0, "ulgowy", "bilet tylko za pokazaniem ważnego dokumentu potwierdzającego przysługujące ulgi");
+        Price p3 = new Price(3, 15.0, "inny", "a jakiśtam inny, trzeci bilet");
+        String translationCode = this.getResources().getConfiguration().locale.getLanguage();
+
+
+
+
+
+        database.runInTransaction(new Runnable() {
+            @Override
+            public void run() {
+                database.getPriceTranslationDao().deleteAll();
+                database.getPriceDao().deleteAll();
+                database.getPriceDao().insert(new PriceEntity(p1.getIdPrice(), p1.getAmount()),
+                        new PriceEntity(p2.getIdPrice(), p2.getAmount()),
+                        new PriceEntity(p3.getIdPrice(), p3.getAmount()));
+                database.getPriceTranslationDao().insert(new PriceTranslationEntity(translationCode, p1.getIdPrice(), p1.getType(), p1.getDescription()),
+                        new PriceTranslationEntity(translationCode, p2.getIdPrice(), p2.getType(), p2.getDescription()),
+                        new PriceTranslationEntity(translationCode, p3.getIdPrice(), p3.getType(), p3.getDescription()));
+            }
+        });
 
 
         Intent intent = new Intent(this, MainActivity.class);

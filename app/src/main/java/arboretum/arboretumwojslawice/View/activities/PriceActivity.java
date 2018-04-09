@@ -76,8 +76,11 @@ public class PriceActivity extends AppCompatActivity {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(prices -> {
                     String path = getDatabasePath("ArboretumDB").getAbsolutePath();
-                            Toast.makeText(this, path, Toast.LENGTH_LONG).show();
-//                            type1.setText(prices.get(0).getType());
+                    String length = Integer.toString(prices.size());
+                            Toast.makeText(this, length, Toast.LENGTH_LONG).show();
+                            type1.setText(prices.get(0).getType());
+                            description1.setText(prices.get(0).getDescription());
+                            price1.setText(Double.toString(prices.get(0).getAmount()) + " zł");
                         }
                         ,throwable -> {
                             Toast.makeText(this, "Tu też błąd... -.- -.-", Toast.LENGTH_LONG).show();

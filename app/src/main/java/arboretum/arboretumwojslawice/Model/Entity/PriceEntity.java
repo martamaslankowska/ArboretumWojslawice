@@ -25,6 +25,10 @@ public class PriceEntity {
     @NonNull
     private double amount;
 
+    public PriceEntity(int idPrice, double amount) {
+        this.idPrice = idPrice;
+        this.amount = amount;
+    }
 
     public int getIdPrice() {
         return idPrice;

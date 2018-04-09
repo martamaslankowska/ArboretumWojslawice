@@ -1,6 +1,7 @@
 package arboretum.arboretumwojslawice.Model.DAO;
 
 import android.arch.persistence.room.Dao;
+import android.arch.persistence.room.Query;
 
 import arboretum.arboretumwojslawice.Model.Entity.PriceTranslationEntity;
 
@@ -9,4 +10,10 @@ import arboretum.arboretumwojslawice.Model.Entity.PriceTranslationEntity;
  */
 
 @Dao
-public abstract class PriceTranslationDao  extends BaseDao<PriceTranslationEntity> {}
+public abstract class PriceTranslationDao  extends BaseDao<PriceTranslationEntity> {
+
+    /* probably temporary */
+    @Query("DELETE FROM PricesTranslations")
+    public abstract void deleteAll();
+
+}

@@ -86,13 +86,12 @@ import android.content.Context;
         }
     };
 
-
-
     public static AppDatabase getAppDatabase(Context context) {
         if (INSTANCE == null) {
             INSTANCE =
                     Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, DATABASE_NAME)
 //                            .addMigrations(MIGRATION_1_2)
+                            .allowMainThreadQueries() // DELETE after tests
                             .build();
         }
         return INSTANCE;
