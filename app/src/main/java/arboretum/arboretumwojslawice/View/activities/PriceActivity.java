@@ -29,10 +29,6 @@ public class PriceActivity extends AppCompatActivity {
     TextView price2;
     TextView description2;
 
-//    @Inject
-//    PriceRepository priceRepository;
-//    private PriceComponent priceComponent;
-
     CompositeDisposable compositeDisposable;
     PriceViewModel priceViewModel;
 
@@ -47,12 +43,6 @@ public class PriceActivity extends AppCompatActivity {
 
         priceViewModel = new PriceViewModel(this.getApplication());
 
-        /* COMPONENT - DAGGER */
-//        priceComponent = DaggerPriceComponent.builder()
-//                .applicationModule(new ApplicationModule(getApplication())).build();
-
-
-
         if (getSupportActionBar() != null){
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -65,8 +55,6 @@ public class PriceActivity extends AppCompatActivity {
         price2 = findViewById(R.id.price2);
         description2 = findViewById(R.id.description2);
 
-        price1.setText("5,- zł");
-
 
         compositeDisposable = new CompositeDisposable();
 
@@ -77,6 +65,7 @@ public class PriceActivity extends AppCompatActivity {
                 .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(prices -> {
+                    /* onSuccess() :) Here we do whatever :) */
                     String path = getDatabasePath("ArboretumDB").getAbsolutePath();
                     String length = Integer.toString(prices.size());
                             Toast.makeText(this, length, Toast.LENGTH_LONG).show();
@@ -88,31 +77,12 @@ public class PriceActivity extends AppCompatActivity {
                             price2.setText(Double.toString(prices.get(1).getAmount()) + " zł");
                         }
                         ,throwable -> {
+                            /* onError() - here we are sad... :( */
                             Toast.makeText(this, "Tu też błąd... -.- -.-", Toast.LENGTH_LONG).show();
                         });
 
 
         compositeDisposable.add(gettingPriceList2);
-//
-//
-//
-//
-//        compositeDisposable = new CompositeDisposable();
-//        Disposable gettingPriceList = Single.fromCallable(() -> {
-//            return priceViewModel.getAllPrices();
-//        })
-//                .subscribeOn(Schedulers.computation())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe(prices -> {
-//                    type1.setText(prices.get(0).getType());
-//                        }
-//                        ,throwable -> {
-//                            Toast.makeText(this, "Aaaaaa, błąd... -.-", Toast.LENGTH_LONG).show();
-//                });
-//
-//        compositeDisposable.add(gettingPriceList);
-
-
     }
 
 
