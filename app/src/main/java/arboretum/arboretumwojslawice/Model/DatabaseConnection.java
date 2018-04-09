@@ -4,11 +4,14 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import arboretum.arboretumwojslawice.Model.Entity.AttractionEntity;
+import arboretum.arboretumwojslawice.Model.Entity.AttractionTranslationEntity;
 import arboretum.arboretumwojslawice.Model.Entity.PriceEntity;
 import arboretum.arboretumwojslawice.Model.Entity.PriceTranslationEntity;
 import arboretum.arboretumwojslawice.Model.businessentity.Price;
-
-
 
 
 public class DatabaseConnection extends AsyncTask<Void,Void,Boolean>
@@ -16,13 +19,22 @@ public class DatabaseConnection extends AsyncTask<Void,Void,Boolean>
     private Context context;
     AppDatabase database;
 
+    /* LISTS OF TABLES - ENTITIES */
+    List<AttractionEntity> attractionEntities = new ArrayList<>();
+    List<AttractionTranslationEntity> attractionTranslationEntities = new ArrayList<>();
+
     public DatabaseConnection(Context context, AppDatabase db) {
         this.context = context;
         this.database = db;
     }
 
+    private void createData() {
+//        attractionEntities.add(new AttractionEntity(1, context.getResources()));
+    }
+
     protected Boolean doInBackground(Void... urls) {
 
+        createData();
         Price p1 = new Price(1, 30.0, "normalny", "bilet dla normalnych ludzi");
         Price p2 = new Price(2, 10.0, "ulgowy", "bilet tylko za pokazaniem ważnego dokumentu potwierdzającego przysługujące ulgi");
         Price p3 = new Price(3, 15.0, "inny", "a jakiśtam inny, trzeci bilet");

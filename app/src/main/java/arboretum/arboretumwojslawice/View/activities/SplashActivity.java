@@ -72,6 +72,9 @@ public class SplashActivity extends AppCompatActivity {
             c = mDatabase.query("Prices", null,null, null, null, null, null);
             int nrOfRows = c.getCount();
             tableExists = true;
+            c = mDatabase.query("Blaaa", null,null, null, null, null, null);
+            tableExists = true;
+
         } catch (Exception e) {
             /* fail */
             Log.d("ERROR", "Table doesn't exist :(");
