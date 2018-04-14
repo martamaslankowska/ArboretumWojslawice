@@ -1,5 +1,6 @@
 package arboretum.arboretumwojslawice.View.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,6 +15,7 @@ import java.util.List;
 
 import arboretum.arboretumwojslawice.Model.businessentity.Plant;
 import arboretum.arboretumwojslawice.R;
+import arboretum.arboretumwojslawice.View.activities.PlantDetailActivity;
 import arboretum.arboretumwojslawice.View.adapter.PlantAdapter;
 import arboretum.arboretumwojslawice.ViewModel.PlantViewModel;
 import arboretum.arboretumwojslawice.databinding.PlantRowBinding;
@@ -24,6 +26,9 @@ public class ListOfPlantsFragment extends Fragment {
 
     private static final String KEY_LAYOUT_MANAGER = "fragment_list_of_plants";
     private static final int SPAN_COUNT = 2;
+    public static final String PLANT_ID = "PLANT_ID";
+    public static final String TAB_ID = "TAB_ID";
+    public static final String BUNDLE = "BUNDLE";
 
     private enum LayoutManagerType {
         GRID_LAYOUT_MANAGER,
@@ -65,6 +70,13 @@ public class ListOfPlantsFragment extends Fragment {
         listener = new PlantAdapter.OnItemClickListener() {
             public void onItemClick(int position) {
                 Toast.makeText(getContext(), "Pozycja nr " + (position + 1), Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(getActivity().getApplicationContext(), PlantDetailActivity.class);
+                Bundle bundle = new Bundle();                ;
+                bundle.putInt(PLANT_ID, mPlants.get(position).getIdPlant());
+                bundle.putInt(TAB_ID, n);
+                intent.putExtra(BUNDLE, bundle);
+                getActivity().startActivityForResult(intent, 123);
             }
 
             @Override
@@ -75,16 +87,16 @@ public class ListOfPlantsFragment extends Fragment {
         };
         switch(n) {
             case 0:
-                mPlants = mPlantViewModel.getData(0);
+                mPlants = mPlantViewModel.getPlantsFromTab(1);
                 break;
             case 1:
-                mPlants = mPlantViewModel.getData(1);
+                mPlants = mPlantViewModel.getPlantsFromTab(2);
                 break;
             case 2:
-                mPlants = mPlantViewModel.getData(2);
+                mPlants = mPlantViewModel.getPlantsFromTab(3);
                 break;
             case 3:
-                mPlants = mPlantViewModel.getData(3);
+                mPlants = mPlantViewModel.getPlantsFromTab(4);
                 break;
         }
         mAdapter = new PlantAdapter(listener, mPlants);

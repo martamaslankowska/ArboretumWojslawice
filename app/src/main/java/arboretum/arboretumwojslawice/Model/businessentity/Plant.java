@@ -30,7 +30,7 @@ public class Plant implements AdapterItem {
     private String name;
 
     @ColumnInfo(name = "KindsTranslations.Name")
-    private String kindName;
+    private Integer kind;
 
     @ColumnInfo(name = "Image")
     private Integer image;
@@ -53,13 +53,13 @@ public class Plant implements AdapterItem {
     }  // default constructor for FavouritePlant to handle
 
     @Ignore
-    public Plant(Integer idPlant, String genusName, String speciesName, String latinName, String name, String kindName, Integer image, Integer seasonBegin, Integer seasonEnd, String description, List<Location> locations) {
+    public Plant(Integer idPlant, String genusName, String speciesName, String latinName, String name, Integer kind, Integer image, Integer seasonBegin, Integer seasonEnd, String description, List<Location> locations) {
         this.idPlant = idPlant;
         this.genusName = genusName;
         this.speciesName = speciesName;
         this.latinName = latinName;
         this.name = name;
-        this.kindName = kindName;
+        this.kind = kind;
         this.image = image;
         this.seasonBegin = seasonBegin;
         this.seasonEnd = seasonEnd;
@@ -68,13 +68,13 @@ public class Plant implements AdapterItem {
     }
 
     // needed for Dao to get all plants
-    public Plant(Integer idPlant, String genusName, String speciesName, String latinName, String name, String kindName, Integer image, Integer seasonBegin, Integer seasonEnd, String description) {
+    public Plant(Integer idPlant, String genusName, String speciesName, String latinName, String name, Integer kind, Integer image, Integer seasonBegin, Integer seasonEnd, String description) {
         this.idPlant = idPlant;
         this.genusName = genusName;
         this.speciesName = speciesName;
         this.latinName = latinName;
         this.name = name;
-        this.kindName = kindName;
+        this.kind = kind;
         this.image = image;
         this.seasonBegin = seasonBegin;
         this.seasonEnd = seasonEnd;
@@ -87,18 +87,18 @@ public class Plant implements AdapterItem {
     }
 
     @Ignore
-    public Plant(Integer idPlant, String genusName, String kindName) {
+    public Plant(Integer idPlant, String genusName, Integer kind) {
         this.idPlant = idPlant;
         this.genusName = genusName;
-        this.kindName = kindName;
+        this.kind = kind;
     }
 
     @Ignore
-    public Plant(String name, Integer idPlant, String genusName, String kindName, Integer image) {
+    public Plant(String name, Integer idPlant, String genusName, Integer kind, Integer image) {
         this.name = name;
         this.idPlant = idPlant;
         this.genusName = genusName;
-        this.kindName = kindName;
+        this.kind = kind;
         this.image = image;
     }
 
@@ -142,12 +142,12 @@ public class Plant implements AdapterItem {
         this.speciesName = speciesName;
     }
 
-    public String getKindName() {
-        return kindName;
+    public Integer getKind() {
+        return kind;
     }
 
-    public void setKindName(String kindName) {
-        this.kindName = kindName;
+    public void setKind(Integer kind) {
+        this.kind = kind;
     }
 
     public Integer getImage() {
@@ -182,6 +182,11 @@ public class Plant implements AdapterItem {
         this.seasonBegin = intDate;
     }
 
+    public String getSeasonBeginDateString() {
+        String sDate = String.valueOf(getSeasonBegin());
+        return sDate.substring(0,4)+"/"+sDate.substring(4,6)+"/"+sDate.substring(6,8);
+    }
+
     public Integer getSeasonEnd() {
         return seasonEnd;
     }
@@ -206,6 +211,11 @@ public class Plant implements AdapterItem {
         this.seasonEnd = intDate;
     }
 
+    public String getSeasonEndDateString() {
+        String sDate = String.valueOf(getSeasonEnd());
+        return sDate.substring(0,4)+"/"+sDate.substring(4,6)+"/"+sDate.substring(6,8);
+    }
+
     public String getDescription() {
         return description;
     }
@@ -224,7 +234,7 @@ public class Plant implements AdapterItem {
 
     @Override
     public String toString() {
-        return "(id = " + idPlant + ") name: " + name + " (genus: " + genusName + ") --> " + kindName;
+        return "(id = " + idPlant + ") name: " + name + " (genus: " + genusName + ") --> " + kind;
     }
 
     @Override

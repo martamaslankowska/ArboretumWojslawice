@@ -45,15 +45,6 @@
             android:layout_below="@id/plant_name"
             android:text="@{plant.getGenusName()}"/>
 
-        <TextView
-            android:id="@+id/plant_kind"
-            android:layout_below="@id/plant_genus"
-            android:layout_toEndOf="@id/plant_image"
-            android:layout_toStartOf="@id/plant_heart"
-            android:layout_marginLeft="5dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@{plant.getKindName()}"/>
 
         <ImageView
             android:id="@+id/plant_heart"

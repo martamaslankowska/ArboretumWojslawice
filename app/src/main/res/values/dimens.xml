@@ -9,4 +9,5 @@
     <dimen name="route_detail_map_height">160dp</dimen>
     <dimen name="plant_page_image_width">100dp</dimen>
     <dimen name="plant_page_image_height">100dp</dimen>
+    <dimen name="plant_detail_image_height">150dp</dimen>
 </resources>
