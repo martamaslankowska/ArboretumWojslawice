@@ -17,10 +17,12 @@ public class RouteDetailViewModel {
     List<Route> mRoutes;
     RouteRepository mRouteRepo;
     PlantRepository mPlantRepo;
+    PlantViewModel mPlantViewModel;
 
     public RouteDetailViewModel() {
         mRouteRepo = new RouteRepository();
         mPlantRepo = new PlantRepository();
+        mPlantViewModel = new PlantViewModel();
     }
 
     public Route getRouteById(int route_id)
@@ -35,7 +37,7 @@ public class RouteDetailViewModel {
     }
 
     public List<Plant> getPlants() {
-        mPlants = mPlantRepo.getPlantsForMichal();
+        mPlants = mPlantViewModel.getPlantsFromTab(1);
         return mPlants;
     }
 }

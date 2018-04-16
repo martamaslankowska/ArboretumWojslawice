@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ArboretumWojslawice.iml" filepath="$PROJECT_DIR$/ArboretumWojslawice.iml" />
-      <module fileurl="file://C:\Users\Weronika\Desktop\AndroidExample\GoogleMaps\ArboretumWojslawice\ArboretumWojslawice.iml" filepath="C:\Users\Weronika\Desktop\AndroidExample\GoogleMaps\ArboretumWojslawice\ArboretumWojslawice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../../../Weronika/Desktop/AndroidExample/GoogleMaps/ArboretumWojslawice/ArboretumWojslawice.iml" filepath="$PROJECT_DIR$/../../../../Weronika/Desktop/AndroidExample/GoogleMaps/ArboretumWojslawice/ArboretumWojslawice.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
