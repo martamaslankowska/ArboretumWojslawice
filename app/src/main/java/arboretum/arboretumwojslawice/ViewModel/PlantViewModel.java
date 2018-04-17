@@ -23,7 +23,7 @@ public class PlantViewModel {
         mPlantRepo = new PlantRepository();
     }
 
-    // getData return one from four plant list, but it should return all plants
+    // getRoutes return one from four plant list, but it should return all plants
     public List<Plant> getData() {
         mPlant = mPlantRepo.getPlantsForMichal();
         return mPlant;

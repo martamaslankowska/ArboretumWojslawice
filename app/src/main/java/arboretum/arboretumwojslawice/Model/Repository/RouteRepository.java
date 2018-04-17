@@ -73,4 +73,13 @@ public class RouteRepository extends BaseRepository {
         return routes;
     }
 
+    //na potrzeby prezentacji działania szczegółów tras (bez działającej bazy danych)
+    public List<PointOnRoute> getRoutePointsByRouteIdForRoutes1() {
+        List <PointOnRoute> rotesPoints = new ArrayList<>();
+        PointOnRoute point = new PointOnRoute(0, 1, 50.711856, 16.858557);
+        rotesPoints.add(point);
+
+        return rotesPoints;
+    }
+
 }

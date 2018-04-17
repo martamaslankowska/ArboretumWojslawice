@@ -67,26 +67,48 @@ public class PlantRepository extends  BaseRepository {
 
 
     public List<Plant> getPlantsForMichal() {
-        List<Plant> plants = new ArrayList<Plant>();
-        Plant plant = new Plant("Kwiatek_1", 1, "Rodzaj_1", 1, R.drawable.flower1);
+        List<Plant> plants = new ArrayList<>();
+        Plant plant = new Plant(1, "Rodzaj_1", "Gatunek_1", "latinlatin",
+                "Kwiatuszek1", 1, R.drawable.flower1,20180509, 20180810,
+                "Opis pierwszego pięknego kwiatuszka");
         plants.add(plant);
-        plant = new Plant("Kwiatek_2", 2, "Rodzaj_2", 2, R.drawable.flower2);
+        plant = new Plant(2, "Rodzaj_2", "Gatunek_2", "rose",
+                "Kwiatuszek2", 2, R.drawable.flower2,20181209, 20181210,
+                "Opis drugiego pięknego kwiatuszka");
         plants.add(plant);
-        plant = new Plant("Kwiatek_3", 3, "Rodzaj_3", 3, R.drawable.flower1);
+        plant = new Plant(3, "Rodzaj_3", "Gatunek_3", "tulipanix",
+                "Kwiatuszek3", 2, R.drawable.flower3,20181209, 20181210,
+                "Opis trzeciego pięknego kwiatuszka");
         plants.add(plant);
-        plant = new Plant("Kwiatek_4", 4, "Rodzaj_4", 2, R.drawable.flower3);
+        plant = new Plant(4, "Rodzaj_4", "Gatunek_4", "kwiacix",
+                "Kwiatuszek4", 3, R.drawable.flower2,20181209, 20181210,
+                "Opis czwartego pięknego kwiatuszka");
         plants.add(plant);
-        plant = new Plant("Kwiatek_5", 5, "Rodzaj_5", 3, R.drawable.flower2);
+        plant = new Plant(5, "Rodzaj_5", "Gatunek_5", "drzewkox",
+                "Kwiatuszek5", 3, R.drawable.flower2,20181209, 20181210,
+                "Opis piątego pięknego kwiatuszka");
         plants.add(plant);
-        plant = new Plant("Kwiatek_6", 6, "Rodzaj_6", 1, R.drawable.flower1);
+        plant = new Plant(6, "Rodzaj_6", "Gatunek_6", "lipix",
+                "Kwiatuszek6", 4, R.drawable.flower3,20181209, 20181210,
+                "Opis szóstego pięknego kwiatuszka");
         plants.add(plant);
-        plant = new Plant("Kwiatek_7", 7, "Rodzaj_7", 1, R.drawable.flower3);
+        plant = new Plant(7, "Rodzaj_7", "Gatunek_7", "rododendronix",
+                "Kwiatuszek7", 2, R.drawable.flower1,20181209, 20181210,
+                "Opis siódmego pięknego kwiatuszka");
         plants.add(plant);
-        plant = new Plant("Kwiatek_8", 8, "Rodzaj_8", 4, R.drawable.flower2);
+        plant = new Plant(8, "Rodzaj_8", "Gatunek_8", "kwiatuszex",
+                "Kwiatuszek8", 3, R.drawable.flower1,20181209, 20181210,
+                "Opis ósmego pięknego kwiatuszka");
         plants.add(plant);
+        plant = new Plant(9, "Rodzaj_9", "Gatunek_9", "lilielix",
+                "Kwiatuszek9", 2, R.drawable.flower2,20181209, 20181210,
+                "Opis dziewiątego pięknego kwiatuszka");
+        plants.add(plant);
+        plant = new Plant(10, "Rodzaj_10", "Gatunek_10", "gerberix",
+                "Kwiatuszek10", 3, R.drawable.flower3,20181209, 20181210,
+                "Opis dzieisątego pięknego kwiatuszka");
+        plants.add(plant);
+
         return plants;
     }
-
-
-
 }

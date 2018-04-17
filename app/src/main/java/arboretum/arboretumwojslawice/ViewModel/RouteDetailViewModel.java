@@ -5,6 +5,7 @@ import java.util.List;
 import arboretum.arboretumwojslawice.Model.Repository.PlantRepository;
 import arboretum.arboretumwojslawice.Model.Repository.RouteRepository;
 import arboretum.arboretumwojslawice.Model.businessentity.Plant;
+import arboretum.arboretumwojslawice.Model.businessentity.PointOnRoute;
 import arboretum.arboretumwojslawice.Model.businessentity.Route;
 
 /**
@@ -15,6 +16,7 @@ public class RouteDetailViewModel {
 
     List<Plant> mPlants;
     List<Route> mRoutes;
+    List<PointOnRoute> mPointOnRoutes;
     RouteRepository mRouteRepo;
     PlantRepository mPlantRepo;
     PlantViewModel mPlantViewModel;
@@ -27,17 +29,22 @@ public class RouteDetailViewModel {
 
     public Route getRouteById(int route_id)
     {
-        getData();
+        getRoutes();
         return mRoutes.get(route_id);
     }
 
-    public List<Route> getData() {
+    public List<Route> getRoutes() {
         mRoutes = mRouteRepo.getRoutesForMichal();
         return mRoutes;
     }
 
+    public List<PointOnRoute> getRoutePointsForRoute1() {
+        mPointOnRoutes = mRouteRepo.getRoutePointsByRouteIdForRoutes1();
+        return mPointOnRoutes;
+    }
+
     public List<Plant> getPlants() {
-        mPlants = mPlantViewModel.getPlantsFromTab(1);
+        mPlants = mPlantRepo.getPlantsForMichal();
         return mPlants;
     }
 }
