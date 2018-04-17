@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -36,6 +37,8 @@ public class RouteDetailActivity extends AppCompatActivity {
 
     private ImageView leftArrow;
     private ImageView rightArrow;
+
+    private Button mButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,6 +119,15 @@ public class RouteDetailActivity extends AppCompatActivity {
 
             @Override
             public void onPageScrollStateChanged(int state) {
+            }
+        });
+
+        mButton = (Button) findViewById(R.id.route_detail_button);
+        mButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), NavigationActivity.class);
+                startActivity(intent);
             }
         });
 

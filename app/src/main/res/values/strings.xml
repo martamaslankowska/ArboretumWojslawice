@@ -18,6 +18,7 @@
     <string name="toolbar_attractions_list">Atrakcje w pobliżu</string>
     <string name="toolbar_restaurants_list">Restauracje w pobliżu</string>
     <string name="toolbar_route_detail">Szczegóły trasy</string>
+    <string name="toolbar_navigation">Nawigacja</string>
 
     <string-array name="more_options">
         <item>Spis roślin</item>
@@ -56,5 +57,6 @@
     <string name="price_title">Cennik (biletów)</string>
 
     <string name="toast_exit">Naciśnij jeszcze raz przycisk "Powrót", aby zakończyć działanie aplikacji</string>
+
 
 </resources>

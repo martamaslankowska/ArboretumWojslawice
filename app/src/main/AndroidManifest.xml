@@ -26,7 +26,8 @@
         <activity android:name=".View.activities.PriceActivity" />
         <activity android:name=".View.activities.ContactActivity" />
         <activity android:name=".View.activities.RulesActivity" />
-        <activity android:name=".View.activities.PlantDetailActivity"></activity>
+        <activity android:name=".View.activities.PlantDetailActivity" />
+        <activity android:name=".View.activities.NavigationActivity"></activity>
     </application>
 
 </manifest>
