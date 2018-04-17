@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorPrimary"
+    app:titleTextColor="@color/white"
+    android:elevation="4dp">
+
+    <ImageButton
+        android:id="@+id/favourites"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:src="@drawable/icons8_heart_white_frame"
+        android:background="@color/colorPrimary"
+        android:layout_marginEnd="@dimen/bottom_navigation_icon"
+        android:layout_gravity="right"
+        android:contentDescription="FavouritesPlants"
+        android:onClick="getFavourites"/>
+
+</android.support.v7.widget.Toolbar>

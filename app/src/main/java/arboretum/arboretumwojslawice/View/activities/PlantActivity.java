@@ -1,5 +1,6 @@
 package arboretum.arboretumwojslawice.View.activities;
 
+import android.content.Intent;
 import android.support.design.widget.TabItem;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +8,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 
 import java.util.Stack;
 
@@ -164,4 +166,10 @@ public class PlantActivity extends AppCompatActivity {
         }
 
     }
+
+    public void getQRCode(View view) {
+        Intent intent = new Intent(this, QRCodeActivity.class);
+        startActivity(intent);
+    }
+
 }

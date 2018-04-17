@@ -4,9 +4,15 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
+import android.view.View;
 
+import arboretum.arboretumwojslawice.Model.businessentity.FavouritePlant;
 import arboretum.arboretumwojslawice.Model.businessentity.Plant;
 import arboretum.arboretumwojslawice.R;
+import arboretum.arboretumwojslawice.View.fragments.FavouritesFragment;
+import arboretum.arboretumwojslawice.View.fragments.HomeFragment;
 import arboretum.arboretumwojslawice.ViewModel.PlantViewModel;
 import arboretum.arboretumwojslawice.databinding.ActivityPlantDetailBinding;
 import arboretum.arboretumwojslawice.databinding.ActivityRouteDetailBinding;
@@ -28,6 +34,14 @@ public class PlantDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         ActivityPlantDetailBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_plant_detail);
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_back);
+        setSupportActionBar(toolbar);
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
+
         plantViewModel = new PlantViewModel();
 
         Intent intent = getIntent();
@@ -36,6 +50,23 @@ public class PlantDetailActivity extends AppCompatActivity {
         plant_id = bundle.getInt(PLANT_ID);
         plant = plantViewModel.getPlantById(plant_id);
 
+        getSupportActionBar().setTitle(plant.getName());
+
         binding.setPlant(plant);
     }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // handle arrow click here
+        if (item.getItemId() == android.R.id.home) {
+            finish(); // close this activity and return to preview activity (if there is any)
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    public void getQRCode(View view) {
+        Intent intent = new Intent(this, QRCodeActivity.class);
+        startActivity(intent);
+    }
+
 }

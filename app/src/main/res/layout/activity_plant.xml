@@ -13,7 +13,7 @@
 
         <include
             android:id="@+id/toolbar_back"
-            layout="@layout/toolbar_empty" />
+            layout="@layout/toolbar" />
 
         <android.support.design.widget.AppBarLayout
             android:id="@+id/appbar"
