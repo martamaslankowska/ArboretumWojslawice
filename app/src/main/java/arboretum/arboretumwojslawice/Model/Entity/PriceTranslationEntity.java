@@ -33,6 +33,13 @@ public class PriceTranslationEntity {
     private String description;
 
 
+    public PriceTranslationEntity(@NonNull String translationCode, @NonNull int idPrice, @NonNull String type, String description) {
+        this.translationCode = translationCode;
+        this.idPrice = idPrice;
+        this.type = type;
+        this.description = description;
+    }
+
     public String getTranslationCode() {
         return translationCode;
     }

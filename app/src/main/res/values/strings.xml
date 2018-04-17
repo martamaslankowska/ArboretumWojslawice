@@ -52,6 +52,9 @@
     <string name="plant_genus">Rodzaj - %s</string>
     <string name="plant_kind">Gatunek - %s</string>
 
+    <!-- Marta - example strings to use in PriceActivity (activity_price.xml) -->
+    <string name="price_title">Cennik (biletów)</string>
+
     <string name="toast_exit">Naciśnij jeszcze raz przycisk "Powrót", aby zakończyć działanie aplikacji</string>
 
 </resources>

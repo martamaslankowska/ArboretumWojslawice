@@ -15,6 +15,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
+
 import arboretum.arboretumwojslawice.R;
 import arboretum.arboretumwojslawice.View.BottomNavigationViewHelper;
 import arboretum.arboretumwojslawice.View.fragments.FavouritesFragment;

@@ -16,6 +16,7 @@ import java.util.List;
 @Dao
 abstract class BaseDao<T> {  // extends Entity
 
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     public abstract void insert(T... objects);
 

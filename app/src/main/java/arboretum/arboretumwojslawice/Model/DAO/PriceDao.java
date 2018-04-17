@@ -34,4 +34,8 @@ public abstract class PriceDao extends BaseDao<PriceEntity> {
     public abstract List<Price> getByType(String type, String translationCode);
 
 
+    /* probably temporary */
+    @Query("DELETE FROM Prices")
+    public abstract void deleteAll();
+
 }

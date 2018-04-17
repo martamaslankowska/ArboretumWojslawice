@@ -20,6 +20,7 @@ public class ApplicationModule {
         mApplication = application;
     }
 
+
     @Provides
     public Application provideApplication() {
         return mApplication;
@@ -40,11 +41,6 @@ public class ApplicationModule {
         return mApplication.getResources().getConfiguration().locale.getLanguage();
     }
 
-    /* Not able to find @ApplicationContext... */
-//    @Provides
-//    @ApplicationContext
-//    public Context provideApplicationContext() {
-//        return mApplication;
-//    }
+
 
 }
