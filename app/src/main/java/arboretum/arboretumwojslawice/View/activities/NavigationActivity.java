@@ -1,9 +1,11 @@
 package arboretum.arboretumwojslawice.View.activities;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 
 import arboretum.arboretumwojslawice.R;
 
@@ -31,5 +33,10 @@ public class NavigationActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void getQRCode(View view) {
+        Intent intent = new Intent(this, QRCodeActivity.class);
+        startActivity(intent);
     }
 }
