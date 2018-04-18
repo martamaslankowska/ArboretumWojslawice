@@ -69,7 +69,7 @@ public class RouteRepository extends BaseRepository {
         routes.add(route);
         route = new Route(6, 8.9, 530, R.drawable.icons8_map, R.drawable.icons8_map, "W poszukiwaniu ciekawych roślinek", "Za pomocą naszej super funkcjonalności, jaką jest QR kod, już nie będziesz musiał chodzić po Arboretum z Atlasem roślin! (jakbyś kiedykolwiek w ogóle wpadł na pomysł, że można tak robić) Sciągnij naszą super aplikację już dziś! (oł jeee).");
         routes.add(route);
-        route = new Route(7, 13., 540, R.drawable.icons8_heart, R.drawable.icons8_heart, "Całodzienna trasa dla cieszących się życiem", "To jest trasa dla prawdziwych kozaków! " + System.getProperty("line.separator") + "(zastanawiam się czy zrobił się enter normalnie - bo to taki kozacki enter, prawie tak kozacki jak ta trasa :D).");
+        route = new Route(7, 13., 540, R.drawable.icons8_heart, R.drawable.icons8_heart, "Całodzienna trasa dla cieszących się życiem", "To jest trasa dla prawdziwych kozaków! " + System.getProperty("line.separator") + "(zastanawiam się czy zrobił się enter normalnie - bo to taki kozacki enter, prawie tak kozacki jak ta trasa :D). aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
         routes.add(route);
 
         return routes;

@@ -7,6 +7,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MenuItem;
@@ -14,6 +15,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
@@ -62,6 +64,9 @@ public class RouteDetailActivity extends AppCompatActivity {
         }
         getSupportActionBar().setTitle(R.string.toolbar_route_detail);
         routeDetailViewModel = new RouteDetailViewModel();
+
+        TextView textView = (TextView) findViewById(R.id.route_detail_description);
+        textView.setMovementMethod(new ScrollingMovementMethod());
 
         Intent intent = getIntent();
         bundle = intent.getBundleExtra(BUNDLE);
