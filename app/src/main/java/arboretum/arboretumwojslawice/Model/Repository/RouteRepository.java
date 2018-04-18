@@ -31,6 +31,8 @@ public class RouteRepository extends BaseRepository {
     @Inject
     LocationDao locationDao;
 
+    PlantRepository mPlantRepo;
+
     @Inject
     public RouteRepository() {}
 
@@ -75,8 +77,15 @@ public class RouteRepository extends BaseRepository {
 
     //na potrzeby prezentacji działania szczegółów tras (bez działającej bazy danych)
     public List<PointOnRoute> getRoutePointsByRouteIdForRoutes1() {
+        mPlantRepo = new PlantRepository();
         List <PointOnRoute> rotesPoints = new ArrayList<>();
-        PointOnRoute point = new PointOnRoute(0, 1, 50.711856, 16.858557);
+        PointOnRoute point = new PointOnRoute(0, mPlantRepo.getPlantsForMichal().get(0), 50.711856, 16.858557);
+        rotesPoints.add(point);
+        point = new PointOnRoute(1, mPlantRepo.getPlantsForMichal().get(2), 50.711856, 16.858557);
+        rotesPoints.add(point);
+        point = new PointOnRoute(2, mPlantRepo.getPlantsForMichal().get(3), 50.711856, 16.858557);
+        rotesPoints.add(point);
+        point = new PointOnRoute(3, mPlantRepo.getPlantsForMichal().get(6), 50.711856, 16.858557);
         rotesPoints.add(point);
 
         return rotesPoints;

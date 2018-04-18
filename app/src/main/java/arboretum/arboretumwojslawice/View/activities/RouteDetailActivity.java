@@ -1,5 +1,6 @@
 package arboretum.arboretumwojslawice.View.activities;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.support.v4.view.ViewPager;
@@ -7,7 +8,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.GestureDetector;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -15,7 +18,7 @@ import android.widget.Toast;
 
 import java.util.List;
 
-import arboretum.arboretumwojslawice.Model.businessentity.Plant;
+import arboretum.arboretumwojslawice.Model.businessentity.PointOnRoute;
 import arboretum.arboretumwojslawice.Model.businessentity.Route;
 import arboretum.arboretumwojslawice.R;
 import arboretum.arboretumwojslawice.View.adapter.ViewPagerAdapter;
@@ -26,12 +29,16 @@ public class RouteDetailActivity extends AppCompatActivity {
 
     public static final String BUNDLE = "BUNDLE";
     public static final String ROUTE_ID = "ROUTE_ID";
+    public static final String PLANT_ID = "PLANT_ID";
+    public static final String TAB_ID = "TAB_ID";
+
     private Bundle bundle;
     private int route_id;
     private Route route;
-    private List<Plant> plantList;
+    private List<PointOnRoute> routePointList;
     RouteDetailViewModel routeDetailViewModel;
     private int currentPage = 0;
+    View.OnClickListener listener;
 
     ViewPager viewPager;
 
@@ -40,6 +47,7 @@ public class RouteDetailActivity extends AppCompatActivity {
 
     private Button mButton;
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,14 +69,20 @@ public class RouteDetailActivity extends AppCompatActivity {
         route_id = bundle.getInt(ROUTE_ID);
         route = routeDetailViewModel.getRouteById(route_id);
 
-
-        plantList = routeDetailViewModel.getPlants();
+        if(route_id == 1)
+        {
+            routePointList = routeDetailViewModel.getRoutePointsForRoute1();
+        }
+        else
+        {
+            routePointList = routeDetailViewModel.getRoutePointsForRoute1();
+        }
 
         leftArrow = findViewById(R.id.route_detail_left_arrow);
         leftArrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(currentPage > 0) {
+                if(currentPage > 0 ) {
                     viewPager.setCurrentItem(currentPage - 1);
                 }
             }
@@ -78,14 +92,22 @@ public class RouteDetailActivity extends AppCompatActivity {
         rightArrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(currentPage < plantList.size()) {
+                if(currentPage < routePointList.size()) {
                     viewPager.setCurrentItem(currentPage + 1);
                 }
             }
         });
 
+        listener = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int plantId = routePointList.get(viewPager.getCurrentItem()).getPlant().getIdPlant();
+                Toast.makeText(getApplicationContext(), "This page was clicked: " + plantId, Toast.LENGTH_SHORT).show();
+            }
+        };
+
         viewPager = findViewById(R.id.viewPager);
-        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(this, plantList);
+        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(this, routePointList, listener);
         viewPager.setAdapter(viewPagerAdapter);
 
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -98,7 +120,7 @@ public class RouteDetailActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Kwiatek " + (position+1), Toast.LENGTH_SHORT).show();
                 currentPage = position;
 
-                if(position == 0)
+                if(position == 0 && routePointList.size() > 1)
                 {
                     leftArrow.setImageDrawable(null);
                 }
@@ -107,7 +129,7 @@ public class RouteDetailActivity extends AppCompatActivity {
                     leftArrow.setImageResource(R.drawable.left_arrow);
                 }
 
-                if(position == plantList.size()-1)
+                if(position == routePointList.size()-1)
                 {
                     rightArrow.setImageDrawable(null);
                 }

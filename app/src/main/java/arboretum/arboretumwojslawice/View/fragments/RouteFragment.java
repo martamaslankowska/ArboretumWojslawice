@@ -1,6 +1,7 @@
 package arboretum.arboretumwojslawice.View.fragments;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
@@ -66,6 +67,7 @@ public class RouteFragment extends Fragment  {
             public void onItemClick(int route_id) {
                 route_map = rootView.findViewById(R.id.route_map);
                 route_map.setImageResource(mRoutes.get(route_id).getMapImage());
+
                 Log.d("route_map", mRoutes.get(route_id).getMapString());
             }
 

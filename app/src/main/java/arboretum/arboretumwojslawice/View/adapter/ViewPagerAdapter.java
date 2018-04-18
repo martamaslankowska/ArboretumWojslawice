@@ -12,6 +12,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import arboretum.arboretumwojslawice.Model.businessentity.Plant;
+import arboretum.arboretumwojslawice.Model.businessentity.PointOnRoute;
 import arboretum.arboretumwojslawice.R;
 
 /**
@@ -22,10 +23,10 @@ public class ViewPagerAdapter extends PagerAdapter {
 
     private Context context;
     private LayoutInflater layoutInflater;
-    private List<Plant> mPlants;
-    OnItemClickListener listener;
+    private List<PointOnRoute> mPlants;
+    View.OnClickListener listener;
 
-    public ViewPagerAdapter(Context context, List<Plant> pList) {
+    public ViewPagerAdapter(Context context, List<PointOnRoute> pList, View.OnClickListener listener) {
         this.context = context;
         this.mPlants = pList;
         this.listener = listener;
@@ -46,21 +47,23 @@ public class ViewPagerAdapter extends PagerAdapter {
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = layoutInflater.inflate(R.layout.plant_page, null);
 
-        Plant plant = mPlants.get(position);
+        Plant plant = mPlants.get(position).getPlant();
 
         ImageView imageView = (ImageView) view.findViewById(R.id.plant_page_image);
         imageView.setImageResource(plant.getImage());
-
         TextView name_textView = (TextView) view.findViewById(R.id.plant_page_name);
         name_textView.setText(plant.getName());
         TextView genus_textView = (TextView) view.findViewById(R.id.plant_page_genus);
         genus_textView.setText(plant.getGenusName());
 
         ViewPager vp = (ViewPager) container;
+        view.setOnClickListener(listener);
         vp.addView(view, 0);
 
         return view;
     }
+
+
 
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
