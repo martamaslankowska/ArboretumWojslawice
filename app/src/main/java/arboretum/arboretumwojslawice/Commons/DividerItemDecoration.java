@@ -50,7 +50,6 @@ public class DividerItemDecoration extends RecyclerView.ItemDecoration
             // divider na dole wiersza
             if(dividerPosition == 0)
             {
-
                 top = child.getBottom() + params.bottomMargin;
                 bottom = top + mDivider.getIntrinsicHeight()+2;
             }
@@ -58,8 +57,8 @@ public class DividerItemDecoration extends RecyclerView.ItemDecoration
             else
             {
 
-                top = child.getTop();
-                bottom = top + mDivider.getIntrinsicHeight()+2;
+                top = child.getTop()-3;
+                bottom = top + mDivider.getIntrinsicHeight();
             }
 
             mDivider.setBounds(left, top, right, bottom);

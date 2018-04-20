@@ -68,6 +68,9 @@ public class RouteFragment extends Fragment  {
                 route_map = rootView.findViewById(R.id.route_map);
                 route_map.setImageResource(mRoutes.get(route_id).getMapImage());
 
+                mAdapter.selectedPosition = route_id;
+                mAdapter.notifyDataSetChanged();
+
                 Log.d("route_map", mRoutes.get(route_id).getMapString());
             }
 
@@ -79,6 +82,8 @@ public class RouteFragment extends Fragment  {
                 getActivity().startActivityForResult(intent, 123);
             }
         };
+
+
 
         mRecyclerView.addItemDecoration(new DividerItemDecoration(this.getContext(), 1));
         mAdapter = new RouteAdapter(listener);

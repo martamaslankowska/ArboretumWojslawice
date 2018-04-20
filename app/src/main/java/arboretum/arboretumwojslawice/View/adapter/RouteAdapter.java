@@ -4,6 +4,9 @@ package arboretum.arboretumwojslawice.View.adapter;
  * Created by Michal on 24.03.2018.
  */
 
+import android.annotation.SuppressLint;
+import android.graphics.Color;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
@@ -14,6 +17,7 @@ import java.util.List;
 
 import arboretum.arboretumwojslawice.Commons.BindingViewHolder;
 import arboretum.arboretumwojslawice.Model.businessentity.Route;
+import arboretum.arboretumwojslawice.R;
 import arboretum.arboretumwojslawice.View.viewholder.RouteListViewHolder;
 import arboretum.arboretumwojslawice.databinding.RouteRowBinding;
 
@@ -21,15 +25,21 @@ public class RouteAdapter extends RecyclerView.Adapter<BindingViewHolder> {
 
     private List<Route> mRoutes = new ArrayList<>();
     OnItemClickListener listener;
+    public int selectedPosition = -1;
 
     public RouteAdapter(OnItemClickListener listener){
         this.listener =  listener;
     }
 
+    @SuppressLint("ResourceAsColor")
     @Override
     public void onBindViewHolder(BindingViewHolder holder, int position) {
         Route route = mRoutes.get(position);
         holder.bind(route);
+        if(selectedPosition == position)
+            holder.itemView.setBackgroundColor(Color.parseColor("#62b452"));
+        else
+            holder.itemView.setBackgroundColor(Color.TRANSPARENT);
     }
 
 
