@@ -113,7 +113,6 @@ public class NavigationActivity extends AppCompatActivity implements LocationLis
         double lat = location.getLatitude();
         int x = countX(lon);
         int y=countY(lat);
-        DrawCanvas();
         drawMarker(x,y);
     }
 
