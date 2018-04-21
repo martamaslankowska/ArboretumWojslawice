@@ -15,26 +15,27 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.File;
-
 import arboretum.arboretumwojslawice.R;
 import arboretum.arboretumwojslawice.View.BottomNavigationViewHelper;
 import arboretum.arboretumwojslawice.View.fragments.FavouritesFragment;
 import arboretum.arboretumwojslawice.View.fragments.HomeFragment;
 import arboretum.arboretumwojslawice.View.fragments.MoreFragment;
 import arboretum.arboretumwojslawice.View.fragments.RouteMapFragment;
+import dagger.android.support.DaggerAppCompatActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends DaggerAppCompatActivity {
 
     private TextView mTextMessage;
     private android.support.v7.widget.Toolbar mToolbar;
     FragmentManager mFragmentManager = getSupportFragmentManager();
     Fragment fragment = mFragmentManager.findFragmentById(R.id.fragment_container);
     FragmentTransaction mFragmentTransaction = mFragmentManager.beginTransaction();
+
     HomeFragment mHomeFragment = new HomeFragment();
     RouteMapFragment mRouteMapFragment = new RouteMapFragment();
     FavouritesFragment mFavouritesFragment = new FavouritesFragment();
     MoreFragment mMoreFragment = new MoreFragment();
+
     int isExit = 1;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -109,6 +110,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
 
 
@@ -156,4 +158,5 @@ public class MainActivity extends AppCompatActivity {
             }
             Log.d("Arboretum", String.valueOf(isExit));
     }
+
 }

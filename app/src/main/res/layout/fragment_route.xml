@@ -1,26 +1,34 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="arboretum.arboretumwojslawice.View.fragments.RouteFragment">
+<layout>
+    <data>
+        <variable
+            name="route"
+            type="arboretum.arboretumwojslawice.Model.businessentity.Route"/>
+    </data>
 
-    <!-- TODO: Update blank fragment layout -->
+    <FrameLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context="arboretum.arboretumwojslawice.View.fragments.RouteFragment">
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/route_map_height"
-        android:src="@drawable/full_map"
-        android:id="@+id/route_map"/>
+            <!-- TODO: Update blank fragment layout -->
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/route_recycler_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scrollbars="vertical"
-        android:layout_marginBottom="8dp"
-        android:paddingLeft="12dp"
-        android:paddingRight="12dp"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="@dimen/route_map_height" />
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/route_map_height"
+                android:src="@drawable/full_map"
+                android:id="@+id/route_map"/>
 
-</FrameLayout>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/route_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="vertical"
+                android:layout_marginBottom="8dp"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="@dimen/route_map_height" />
+        </FrameLayout>
+</layout>

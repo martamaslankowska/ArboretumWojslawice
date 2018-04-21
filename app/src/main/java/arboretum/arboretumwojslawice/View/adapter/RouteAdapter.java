@@ -6,9 +6,7 @@ package arboretum.arboretumwojslawice.View.adapter;
 
 import android.annotation.SuppressLint;
 import android.graphics.Color;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
-import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -17,7 +15,6 @@ import java.util.List;
 
 import arboretum.arboretumwojslawice.Commons.BindingViewHolder;
 import arboretum.arboretumwojslawice.Model.businessentity.Route;
-import arboretum.arboretumwojslawice.R;
 import arboretum.arboretumwojslawice.View.viewholder.RouteListViewHolder;
 import arboretum.arboretumwojslawice.databinding.RouteRowBinding;
 

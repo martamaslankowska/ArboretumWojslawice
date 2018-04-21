@@ -5,6 +5,7 @@ import android.arch.persistence.room.Room;
 
 import javax.inject.Singleton;
 
+import arboretum.arboretumwojslawice.Commons.di.AppController;
 import arboretum.arboretumwojslawice.Model.AppDatabase;
 import arboretum.arboretumwojslawice.Model.DAO.AttractionDao;
 import arboretum.arboretumwojslawice.Model.DAO.AttractionTranslationDao;
@@ -27,8 +28,6 @@ import arboretum.arboretumwojslawice.Model.DAO.RouteDao;
 import arboretum.arboretumwojslawice.Model.DAO.RoutePointDao;
 import arboretum.arboretumwojslawice.Model.DAO.RouteTranslationDao;
 import arboretum.arboretumwojslawice.Model.DAO.SpeciesDao;
-import arboretum.arboretumwojslawice.Model.Entity.AttractionTranslationEntity;
-import arboretum.arboretumwojslawice.Model.businessentity.Attraction;
 import dagger.Module;
 import dagger.Provides;
 
@@ -46,8 +45,8 @@ public class DatabaseModule {
 
     @Singleton
     @Provides
-    AppDatabase providesAppDatabase() {
-        return appDatabase;
+    AppDatabase providesAppDatabase(AppController mApplication) {
+        return Room.databaseBuilder(mApplication, AppDatabase.class, AppDatabase.DATABASE_NAME).build();
     }
 
     @Singleton

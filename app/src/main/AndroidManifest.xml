@@ -8,7 +8,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:name=".Commons.di.AppController">
         <activity
             android:name=".View.activities.SplashActivity"
             android:theme="@style/SplashTheme">
@@ -27,7 +28,7 @@
         <activity android:name=".View.activities.ContactActivity" />
         <activity android:name=".View.activities.RulesActivity" />
         <activity android:name=".View.activities.PlantDetailActivity" />
-        <activity android:name=".View.activities.NavigationActivity"></activity>
+        <activity android:name=".View.activities.NavigationActivity"/>
     </application>
 
 </manifest>

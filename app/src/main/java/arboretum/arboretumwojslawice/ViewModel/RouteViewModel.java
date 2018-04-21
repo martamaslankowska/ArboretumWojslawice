@@ -5,6 +5,8 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import arboretum.arboretumwojslawice.Model.Repository.RouteRepository;
 import arboretum.arboretumwojslawice.Model.businessentity.Route;
 
@@ -16,6 +18,7 @@ public class RouteViewModel {
     List<Route> mRoutes;
     RouteRepository mRouteRepo;
 
+    @Inject
     public RouteViewModel() {
         mRouteRepo = new RouteRepository();
     }
