@@ -58,25 +58,25 @@ public class DatabaseConnection extends AsyncTask<Void,Void,Boolean>
         /* Prices */
         priceEntities.add(new PriceEntity(1, 15));
         priceEntities.add(new PriceEntity(2, 10));
-        priceEntities.add(new PriceEntity(21, 10));
-        priceEntities.add(new PriceEntity(22, 10));
-        priceEntities.add(new PriceEntity(23, 10));
-        priceEntities.add(new PriceEntity(3, 60));
-        priceEntities.add(new PriceEntity(4, 40));
+        priceEntities.add(new PriceEntity(3, 10));
+        priceEntities.add(new PriceEntity(4, 10));
+        priceEntities.add(new PriceEntity(5, 10));
+        priceEntities.add(new PriceEntity(10, 60));
+        priceEntities.add(new PriceEntity(11, 40));
         priceTranslationEntities.add(new PriceTranslationEntity(POLISH, 1, "normalny", null));
         priceTranslationEntities.add(new PriceTranslationEntity(POLISH, 2, "ulgowy", "za okazaniem stosownych dokumentów"));
-        priceTranslationEntities.add(new PriceTranslationEntity(POLISH, 21, "ulgowy", "uczniowie (z wyłączeniem szkół dla dorosłych)"));
-        priceTranslationEntities.add(new PriceTranslationEntity(POLISH, 22, "ulgowy", "studenci"));
-        priceTranslationEntities.add(new PriceTranslationEntity(POLISH, 23, "ulgowy", "osoby niepełnosprawne"));
-        priceTranslationEntities.add(new PriceTranslationEntity(POLISH, 3, "wielokrotny normalny", "5 wejść w cenie 4; 1 dzień = 1 wejście\n"));
-        priceTranslationEntities.add(new PriceTranslationEntity(POLISH, 4, "wielokrotny ulgowy", "5 wejść w cenie 4; 1 dzień = 1 wejście\n"));
+        priceTranslationEntities.add(new PriceTranslationEntity(POLISH, 3, "ulgowy", "uczniowie (z wyłączeniem szkół dla dorosłych)"));
+        priceTranslationEntities.add(new PriceTranslationEntity(POLISH, 4, "ulgowy", "studenci"));
+        priceTranslationEntities.add(new PriceTranslationEntity(POLISH, 5, "ulgowy", "osoby niepełnosprawne"));
+        priceTranslationEntities.add(new PriceTranslationEntity(POLISH, 10, "wielokrotny normalny", "5 wejść w cenie 4; 1 dzień = 1 wejście\n"));
+        priceTranslationEntities.add(new PriceTranslationEntity(POLISH, 11,"wielokrotny ulgowy", "5 wejść w cenie 4; 1 dzień = 1 wejście\n"));
         priceTranslationEntities.add(new PriceTranslationEntity(ENGLISH, 1, "standard", null));
         priceTranslationEntities.add(new PriceTranslationEntity(ENGLISH, 2, "reduced", "after showing revelant documents"));
-        priceTranslationEntities.add(new PriceTranslationEntity(ENGLISH, 21, "reduced", "school students"));
-        priceTranslationEntities.add(new PriceTranslationEntity(ENGLISH, 22, "reduced", "students"));
-        priceTranslationEntities.add(new PriceTranslationEntity(ENGLISH, 23, "reduced", "disabled people"));
-        priceTranslationEntities.add(new PriceTranslationEntity(ENGLISH, 3, "reusable normal", "5 for the price of 4; 1 day = 1 enter"));
-        priceTranslationEntities.add(new PriceTranslationEntity(ENGLISH, 4, "reusable reduced", "5 for the price of 4; 1 day = 1 enter"));
+        priceTranslationEntities.add(new PriceTranslationEntity(ENGLISH, 3, "reduced", "school students"));
+        priceTranslationEntities.add(new PriceTranslationEntity(ENGLISH, 4, "reduced", "students"));
+        priceTranslationEntities.add(new PriceTranslationEntity(ENGLISH, 5, "reduced", "disabled people"));
+        priceTranslationEntities.add(new PriceTranslationEntity(ENGLISH, 10, "reusable standard", "5 for the price of 4; 1 day = 1 enter"));
+        priceTranslationEntities.add(new PriceTranslationEntity(ENGLISH, 11, "reusable reduced", "5 for the price of 4; 1 day = 1 enter"));
 
 
         /*...*/
