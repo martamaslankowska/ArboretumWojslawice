@@ -75,10 +75,6 @@ public class SplashActivity extends AppCompatActivity {
         String language = mPrefs.getString(INFO, null);
 
         if (language == null) {
-            SharedPreferences.Editor editor = mPrefs.edit();
-            editor.putBoolean(INFO, true);
-            editor.commit(); // Very important to save the preference
-
             Intent intent = new Intent(this, LanguageActivity.class);
             startActivity(intent);
             finish();

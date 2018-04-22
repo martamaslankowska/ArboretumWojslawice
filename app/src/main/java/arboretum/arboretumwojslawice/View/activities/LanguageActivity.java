@@ -29,17 +29,23 @@ public class LanguageActivity extends AppCompatActivity {
         mPrefs = PreferenceManager.getDefaultSharedPreferences(this);
     }
 
-    public void halo(View view) {
-        Toast.makeText(this, "Czeeeeść :)", Toast.LENGTH_SHORT).show();
+    public void polishLanguage(View view) {
+        Toast.makeText(getApplicationContext(), "Polski", Toast.LENGTH_LONG).show();
+        setLanguage("pl");
     }
 
-
-    public void polishLanguage(View view) {
-        Toast.makeText(getApplicationContext(), "Ha! Nacisnąłeś frajerze!", Toast.LENGTH_LONG).show();
+    public void englishLanguage(View view) {
+        Toast.makeText(getApplicationContext(), "Angielski", Toast.LENGTH_LONG).show();
         setLanguage("en");
     }
 
-    /* Avaliable codes: 'pl', 'en' and 'de' */
+    public void germanLanguage(View view) {
+        Toast.makeText(getApplicationContext(), "Niemiecki, brrr...", Toast.LENGTH_LONG).show();
+        setLanguage("de");
+    }
+
+
+    /* Available codes: 'pl', 'en' and 'de' */
     public void setLanguage(String languageCode) {
         Locale myLocale = new Locale(languageCode);
         Resources res = getResources();
