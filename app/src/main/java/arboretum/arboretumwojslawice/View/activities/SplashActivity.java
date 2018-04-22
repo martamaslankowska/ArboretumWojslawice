@@ -5,6 +5,8 @@ import android.arch.persistence.room.Room;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
@@ -12,11 +14,13 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.widget.Toast;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Locale;
 
 import arboretum.arboretumwojslawice.Model.AppDatabase;
 import arboretum.arboretumwojslawice.Model.DAO.AttractionDao;
@@ -58,6 +62,7 @@ public class SplashActivity extends AppCompatActivity {
         /* FINISHED COPING DATABASE */
 
 
+
         /* USING ROOM DATABASE */
         AppDatabase database = AppDatabase.getAppDatabase(getApplicationContext());
         DatabaseConnection dbConnect = new DatabaseConnection(getApplicationContext(), database);
@@ -67,9 +72,9 @@ public class SplashActivity extends AppCompatActivity {
         /* Deciding weather show language screen or not */
 
         mPrefs = PreferenceManager.getDefaultSharedPreferences(this);
-        Boolean languageScreenShown = mPrefs.getBoolean(INFO, false); // false is default
+        String language = mPrefs.getString(INFO, null);
 
-        if (!languageScreenShown) {
+        if (language == null) {
             SharedPreferences.Editor editor = mPrefs.edit();
             editor.putBoolean(INFO, true);
             editor.commit(); // Very important to save the preference
@@ -79,6 +84,8 @@ public class SplashActivity extends AppCompatActivity {
             finish();
         }
         else {
+            setLanguage(language);
+
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
             finish();
@@ -87,6 +94,14 @@ public class SplashActivity extends AppCompatActivity {
 
     }
 
+    public void setLanguage(String languageCode) {
+        Locale myLocale = new Locale(languageCode);
+        Resources res = getResources();
+        DisplayMetrics dm = res.getDisplayMetrics();
+        Configuration conf = res.getConfiguration();
+        conf.locale = myLocale;
+        res.updateConfiguration(conf, dm);
+    }
 
 
     public boolean tableExists(String databaseName) {
@@ -106,7 +121,6 @@ public class SplashActivity extends AppCompatActivity {
 
         return tableExists;
     }
-
 
 }
 

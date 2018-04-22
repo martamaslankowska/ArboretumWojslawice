@@ -7,23 +7,35 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/arboretum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="LANGUAGE SCREEN - welcome :)"
-        android:textSize="30sp"
+        android:layout_marginTop="72dp"
+        android:text="Arboretum"
         android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="48sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorBlack"
+        android:onClick="halo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/wojslawice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:text="Wojsławice"
+        android:textAlignment="center"
+        android:textSize="32sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/arboretum" />
+
+
     <Button
-        android:id="@+id/button"
+        android:id="@+id/polishbutton"
         android:layout_width="wrap_content"
         android:layout_height="52dp"
         android:layout_marginBottom="8dp"
@@ -35,5 +47,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/arboretum" />
+
+
 </android.support.constraint.ConstraintLayout>
