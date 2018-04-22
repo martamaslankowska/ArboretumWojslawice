@@ -2,6 +2,7 @@ package arboretum.arboretumwojslawice.Model;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -35,6 +36,12 @@ public class DatabaseConnection extends AsyncTask<Void,Void,Boolean>
         this.context = context;
         this.database = db;
         language = context.getResources().getConfiguration().locale.getLanguage();
+    }
+
+    private void deleteAllData() {
+        Log.w("DatabaseConnection", "Weszło mi w deleteAllFiles() - choć i tak to bez sensu, bo baza jest tworzona od nowa... ;)");
+        database.getPriceTranslationDao().deleteAll();
+        database.getPriceDao().deleteAll();
     }
 
     private void createData() {

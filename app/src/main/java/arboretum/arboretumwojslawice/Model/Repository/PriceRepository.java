@@ -40,7 +40,7 @@ public class PriceRepository extends BaseRepository {
         return priceDao.getAll(languageCode);
     }
 
-    public  Price getById(int id) {
+    public Price getById(int id) {
         return priceDao.getById(id, languageCode);
     }
 

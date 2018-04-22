@@ -122,7 +122,7 @@ public class RouteDetailActivity extends AppCompatActivity {
 
             @Override
             public void onPageSelected(int position) {
-                Toast.makeText(getApplicationContext(), "Kwiatek " + (position+1), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getApplicationContext(), "Kwiatek " + (position+1), Toast.LENGTH_SHORT).show();
                 currentPage = position;
 
                 if(position == 0 && routePointList.size() > 1)

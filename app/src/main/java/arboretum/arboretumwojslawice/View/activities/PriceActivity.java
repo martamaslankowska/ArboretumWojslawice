@@ -71,10 +71,10 @@ public class PriceActivity extends AppCompatActivity {
                     Toast.makeText(this, length, Toast.LENGTH_LONG).show();
                     type1.setText(prices.get(0).getType());
                     description1.setText(prices.get(0).getDescription());
-                    price1.setText(Double.toString(prices.get(0).getAmount()) + " zł");
+                    price1.setText(Integer.toString((prices.get(0).getAmount()).intValue()) + " zł");
                     type2.setText(prices.get(1).getType());
                     description2.setText(prices.get(1).getDescription());
-                    price2.setText(Double.toString(prices.get(1).getAmount()) + " zł");
+                    price2.setText(Integer.toString((prices.get(1).getAmount()).intValue()) + " zł");
                 }
                 ,throwable -> {
                     /* onError() - here we are sad... :( */
