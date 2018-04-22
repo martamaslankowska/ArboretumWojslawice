@@ -104,9 +104,9 @@ public class PlantRepository extends  BaseRepository {
                 "Kwiatuszek9", 2, R.drawable.flower2,20181209, 20181210,
                 "Opis dziewiątego pięknego kwiatuszka");
         plants.add(plant);
-        plant = new Plant(10, "Rodzaj_10", "Gatunek_10", "gerberix",
-                "Kwiatuszek10", 3, R.drawable.flower3,20181209, 20181210,
-                "Opis dzieisątego pięknego kwiatuszka");
+        plant = new Plant(10, "Żółtakowate", "Lilia", "Xanthorrhoeaceae",
+                "Hemerocallis", 3, R.drawable.flower3,20181209, 20181210,
+                "Wojsławicki zbiór liliowców – pięknych bylin, kwitnących w czerwcu i lipcu, nazywanych „kwiatami jednego dnia” – jest największą i najlepiej prowadzoną kolekcją tego typu roślin w Polsce oraz jedną z największych w Europie. Kolekcja rozwijana jest systematycznie od 2002 roku – corocznie sadzonych jest około 200 nowych odmian liliowców. Obecnie zbiór ten obejmuje prawie 4 tysiące gatunków i odmian. W 2011 roku ta wzorcowa kolekcja została pozytywnie zweryfikowana przez komisję powołaną przez Polskie Towarzystwo Ogrodów Botanicznych i uzyskała status Kolekcji Narodowej. W Arboretum została wyodrębniona kolekcja gatunków oraz następujące grupy odmian: • liliowce miniaturowe • pełnokwiatowe • pachnące • pajęcze • nagrodzone amerykańskim medalem Stouta • wyhodowane w szkółce Siloam w Stanach Zjednoczonych • odmiany z serii Broadway wyhodowane na Florydzie liliowce polskiej hodowli, a wśród nich wyhodowane przez: – brata Stefana Franczaka, – Artura Jasińskiego, – Jerzego Byczyńskiego, – Leopolda Kurka, – Stanisława Achramowicza, – Grażyny Świątkowskiej, – i innych. W 2013 nasz kolekcja uzyskała prestiżowy certyfikat ogrodu pokazowego Amerykańskiego Towarzystwa Liliowcowego. Jesteśmy z tego dumni. W tym roku zostaliśmy także europejską stacją oceny odmian liliowców. Zainteresowanych tą wspaniała grupą roślin zapraszamy na coroczne spotkania liliowcowych entuzjastów „HEMEROmania”, które odbywa się w Wojsławicach w połowie lipca ");
         plants.add(plant);
 
         return plants;

@@ -103,6 +103,10 @@ public class RouteFragment extends DaggerFragment implements RouteAdapter.OnItem
         Bundle bundle = new Bundle();
         bundle.putInt("ROUTE_ID", route_id);
         intent.putExtra("BUNDLE", bundle);
+
+        mAdapter.selectedPosition = route_id;
+        mAdapter.notifyDataSetChanged();
+
         getActivity().startActivityForResult(intent, 123);
     }
 
