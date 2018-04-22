@@ -23,6 +23,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".View.activities.MainActivity" />
+        <activity android:name=".View.activities.LanguageActivity" />
         <activity android:name=".View.activities.RouteDetailActivity" />
         <activity android:name=".View.activities.QRCodeActivity" />
         <activity android:name=".View.activities.PlantActivity" />

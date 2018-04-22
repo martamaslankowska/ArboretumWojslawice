@@ -4,11 +4,13 @@ import android.arch.persistence.room.Database;
 import android.arch.persistence.room.Room;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Toast;
@@ -25,6 +27,9 @@ import arboretum.arboretumwojslawice.Model.Entity.PriceTranslationEntity;
 import arboretum.arboretumwojslawice.Model.businessentity.Price;
 
 public class SplashActivity extends AppCompatActivity {
+
+    SharedPreferences mPrefs;
+    final String INFO = "select_language";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,10 +64,30 @@ public class SplashActivity extends AppCompatActivity {
         dbConnect.execute();
 
 
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-        finish();
+        /* Deciding weather show language screen or not */
+
+        mPrefs = PreferenceManager.getDefaultSharedPreferences(this);
+        Boolean languageScreenShown = mPrefs.getBoolean(INFO, false); // false is default
+
+        if (!languageScreenShown) {
+            SharedPreferences.Editor editor = mPrefs.edit();
+            editor.putBoolean(INFO, true);
+            editor.commit(); // Very important to save the preference
+
+            Intent intent = new Intent(this, LanguageActivity.class);
+            startActivity(intent);
+            finish();
+        }
+        else {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
+
+
     }
+
+
 
     public boolean tableExists(String databaseName) {
         Cursor c = null;
