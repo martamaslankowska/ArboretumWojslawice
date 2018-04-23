@@ -4,7 +4,6 @@ import arboretum.arboretumwojslawice.Model.Entity.AttractionEntity;
 import arboretum.arboretumwojslawice.Model.Entity.AttractionTranslationEntity;
 import arboretum.arboretumwojslawice.Model.Entity.EventEntity;
 import arboretum.arboretumwojslawice.Model.Entity.EventTranslationEntity;
-import arboretum.arboretumwojslawice.Model.Entity.FavouritePlantEntity;
 import arboretum.arboretumwojslawice.Model.Entity.GenusEntity;
 import arboretum.arboretumwojslawice.Model.Entity.HotelEntity;
 import arboretum.arboretumwojslawice.Model.Entity.KindEntity;
@@ -21,15 +20,11 @@ import arboretum.arboretumwojslawice.Model.Entity.RouteEntity;
 import arboretum.arboretumwojslawice.Model.Entity.RoutePointEntity;
 import arboretum.arboretumwojslawice.Model.Entity.RouteTranslationEntity;
 import arboretum.arboretumwojslawice.Model.Entity.SpeciesEntity;
-import arboretum.arboretumwojslawice.Model.businessentity.News;
 
-import android.arch.persistence.db.SupportSQLiteDatabase;
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
-import android.arch.persistence.room.migration.Migration;
 import android.content.Context;
-import android.util.Log;
 
 
 /**
@@ -39,7 +34,7 @@ import android.util.Log;
 
 
 @Database(entities = {AttractionEntity.class, AttractionTranslationEntity.class, EventEntity.class,
-        EventTranslationEntity.class, FavouritePlantEntity.class, GenusEntity.class, HotelEntity.class,
+        EventTranslationEntity.class, GenusEntity.class, HotelEntity.class,
         KindEntity.class, KindTranslationEntity.class, LocationEntity.class, PlantEntity.class,
         PlantTranslationEntity.class, PriceEntity.class, PriceTranslationEntity.class, RestaurantEntity.class,
         RouteEntity.class, RoutePointEntity.class, RouteTranslationEntity.class, SpeciesEntity.class,
@@ -52,7 +47,6 @@ import android.util.Log;
         public abstract AttractionTranslationDao getAttractionTranslationDao();
         public abstract EventDao getEventDao();
         public abstract EventTranslationDao getEventTranslationDao();
-        public abstract FavouritePlantDao getFavouritePlantDao();
         public abstract GenusDao getGenusDao();
         public abstract HotelDao getHotelDao();
         public abstract KindDao getKindDao();
@@ -90,7 +84,6 @@ import android.util.Log;
 ////            database.execSQL("DROP TABLE IF EXISTS `AttractionsTranslations`");
 ////            database.execSQL("DROP TABLE IF EXISTS `Events`");
 ////            database.execSQL("DROP TABLE IF EXISTS `EventsTranslations`");
-////            database.execSQL("DROP TABLE IF EXISTS `FavouritePlants`");
 ////            database.execSQL("DROP TABLE IF EXISTS `Genus`");
 ////            database.execSQL("DROP TABLE IF EXISTS `Hotels`");
 ////            database.execSQL("DROP TABLE IF EXISTS `Kinds`");
@@ -112,7 +105,6 @@ import android.util.Log;
 ////            database.execSQL("CREATE TABLE IF NOT EXISTS `AttractionsTranslations` (`TranslationCode` TEXT NOT NULL, `IdAttraction` INTEGER NOT NULL, `Name` TEXT NOT NULL, `Description` TEXT NOT NULL, PRIMARY KEY(`TranslationCode`, `IdAttraction`), FOREIGN KEY(`IdAttraction`) REFERENCES `Attractions`(`IdAttraction`) ON UPDATE NO ACTION ON DELETE NO ACTION )");
 ////            database.execSQL("CREATE TABLE IF NOT EXISTS `Events` (`IdEvent` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `DateBegin` INTEGER NOT NULL, `DateEnd` INTEGER NOT NULL, `TimeBegin` INTEGER NOT NULL, `TimeEnd` INTEGER NOT NULL)");
 ////            database.execSQL("CREATE TABLE IF NOT EXISTS `EventsTranslations` (`TranslationCode` TEXT NOT NULL, `IdEvent` INTEGER NOT NULL, `Type` TEXT, `Name` TEXT NOT NULL, `Description` TEXT, PRIMARY KEY(`TranslationCode`, `IdEvent`), FOREIGN KEY(`IdEvent`) REFERENCES `Events`(`IdEvent`) ON UPDATE NO ACTION ON DELETE NO ACTION )");
-////            database.execSQL("CREATE TABLE IF NOT EXISTS `FavouritePlants` (`IdPlant` INTEGER NOT NULL, PRIMARY KEY(`IdPlant`), FOREIGN KEY(`IdPlant`) REFERENCES `Plants`(`IdPlant`) ON UPDATE NO ACTION ON DELETE NO ACTION )");
 ////            database.execSQL("CREATE TABLE IF NOT EXISTS `Genus` (`Name` INTEGER NOT NULL, PRIMARY KEY(`Name`))");
 ////            database.execSQL("CREATE TABLE IF NOT EXISTS `Hotels` (`IdHotel` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `Name` TEXT, `Address` TEXT, `Phone` INTEGER NOT NULL, `Website` TEXT, `Distance` REAL NOT NULL, `Rating` REAL NOT NULL, `Image` INTEGER NOT NULL)");
 ////            database.execSQL("CREATE TABLE IF NOT EXISTS `Kinds` (`IdKind` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)");

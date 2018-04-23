@@ -44,13 +44,15 @@ public class Plant implements AdapterItem {
     @ColumnInfo(name = "Description")
     private String description;
 
+    @ColumnInfo(name = "Favourite")
+    private Boolean favourite;
+
     @Ignore
     private List<Location> locations;
 
 
     @Ignore
-    public Plant() {
-    }  // default constructor for FavouritePlant to handle
+    public Plant() {}
 
     @Ignore
     public Plant(Integer idPlant, String genusName, String speciesName, String latinName, String name, Integer kind, Integer image, Integer seasonBegin, Integer seasonEnd, String description, List<Location> locations) {
@@ -68,7 +70,7 @@ public class Plant implements AdapterItem {
     }
 
     // needed for Dao to get all plants
-    public Plant(Integer idPlant, String genusName, String speciesName, String latinName, String name, Integer kind, Integer image, Integer seasonBegin, Integer seasonEnd, String description) {
+    public Plant(Integer idPlant, String genusName, String speciesName, String latinName, String name, Integer kind, Integer image, Integer seasonBegin, Integer seasonEnd, String description, Boolean favourite) {
         this.idPlant = idPlant;
         this.genusName = genusName;
         this.speciesName = speciesName;
@@ -79,6 +81,7 @@ public class Plant implements AdapterItem {
         this.seasonBegin = seasonBegin;
         this.seasonEnd = seasonEnd;
         this.description = description;
+        this.favourite = favourite;
     }
 
     @Ignore
@@ -222,6 +225,14 @@ public class Plant implements AdapterItem {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Boolean getFavourite() {
+        return favourite;
+    }
+
+    public void setFavourite(Boolean favourite) {
+        this.favourite = favourite;
     }
 
     public List<Location> getLocations() {

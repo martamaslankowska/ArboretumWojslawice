@@ -51,6 +51,9 @@ public class PlantEntity {
     @ColumnInfo(name = "SeasonEnd")
     private int seasonEnd;
 
+    @ColumnInfo(name = "Favourite")
+    private boolean favourite;
+
 
     public int getIdPlant() {
         return idPlant;
@@ -108,4 +111,11 @@ public class PlantEntity {
         this.seasonEnd = seasonEnd;
     }
 
+    public boolean isFavourite() {
+        return favourite;
+    }
+
+    public void setFavourite(boolean favourite) {
+        this.favourite = favourite;
+    }
 }

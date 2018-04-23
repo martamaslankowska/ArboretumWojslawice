@@ -21,7 +21,7 @@ import io.reactivex.Single;
 @Dao
 public abstract class PlantDao extends BaseDao<PlantEntity> {
 
-    @Query("SELECT Plants.IdPlant, GenusName, SpeciesName, Plants.LatinName, PlantsTranslations.Name, KindsTranslations.Name, Image, SeasonBegin, SeasonEnd, Description " +
+    @Query("SELECT Plants.IdPlant, GenusName, SpeciesName, Plants.LatinName, PlantsTranslations.Name, KindsTranslations.Name, Image, SeasonBegin, SeasonEnd, Description, Favourite " +
             "FROM Plants LEFT JOIN Species ON Plants.IdSpecies = Species.IdSpecies " +
             "LEFT JOIN Genus ON Species.GenusName = Genus.Name " +
             "LEFT JOIN Kinds ON Plants.IdKind = Kinds.IdKind " +
@@ -36,7 +36,7 @@ public abstract class PlantDao extends BaseDao<PlantEntity> {
             "WHERE Plants.IdPlant IN (:idPlant)")
     public abstract List<Location> getLocationsByPlantId(int idPlant);
 
-    @Query("SELECT Plants.IdPlant, GenusName, SpeciesName, Plants.LatinName, PlantsTranslations.Name, KindsTranslations.Name, Image, SeasonBegin, SeasonEnd, Description " +
+    @Query("SELECT Plants.IdPlant, GenusName, SpeciesName, Plants.LatinName, PlantsTranslations.Name, KindsTranslations.Name, Image, SeasonBegin, SeasonEnd, Description, Favourite " +
             "FROM Plants LEFT JOIN Species ON Plants.IdSpecies = Species.IdSpecies " +
             "LEFT JOIN Genus ON Species.GenusName = Genus.Name " +
             "LEFT JOIN Kinds ON Plants.IdKind = Kinds.IdKind " +
@@ -45,7 +45,7 @@ public abstract class PlantDao extends BaseDao<PlantEntity> {
             "WHERE Plants.IdPlant IN (:idPlant) AND PlantsTranslations.TranslationCode IN (:translationCode) AND KindsTranslations.TranslationCode IN (:translationCode)")
     public abstract  Plant getById(int idPlant, String translationCode);
 
-    @Query("SELECT Plants.IdPlant, GenusName, SpeciesName, Plants.LatinName, PlantsTranslations.Name, KindsTranslations.Name, Image, SeasonBegin, SeasonEnd, Description " +
+    @Query("SELECT Plants.IdPlant, GenusName, SpeciesName, Plants.LatinName, PlantsTranslations.Name, KindsTranslations.Name, Image, SeasonBegin, SeasonEnd, Description, Favourite " +
             "FROM Plants LEFT JOIN Species ON Plants.IdSpecies = Species.IdSpecies " +
             "LEFT JOIN Genus ON Species.GenusName = Genus.Name " +
             "LEFT JOIN Kinds ON Plants.IdKind = Kinds.IdKind " +

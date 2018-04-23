@@ -8,7 +8,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 
-import arboretum.arboretumwojslawice.Model.businessentity.FavouritePlant;
 import arboretum.arboretumwojslawice.Model.businessentity.Plant;
 import arboretum.arboretumwojslawice.R;
 import arboretum.arboretumwojslawice.View.fragments.FavouritesFragment;

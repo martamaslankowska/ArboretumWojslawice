@@ -11,7 +11,6 @@ import arboretum.arboretumwojslawice.Model.DAO.AttractionDao;
 import arboretum.arboretumwojslawice.Model.DAO.AttractionTranslationDao;
 import arboretum.arboretumwojslawice.Model.DAO.EventDao;
 import arboretum.arboretumwojslawice.Model.DAO.EventTranslationDao;
-import arboretum.arboretumwojslawice.Model.DAO.FavouritePlantDao;
 import arboretum.arboretumwojslawice.Model.DAO.GenusDao;
 import arboretum.arboretumwojslawice.Model.DAO.HotelDao;
 import arboretum.arboretumwojslawice.Model.DAO.KindDao;
@@ -71,12 +70,6 @@ public class DatabaseModule {
     @Provides
     EventTranslationDao providesEventTranslationDao(AppDatabase appDatabase) {
         return appDatabase.getEventTranslationDao();
-    }
-
-    @Singleton
-    @Provides
-    FavouritePlantDao providesFavouritePlantDao(AppDatabase appDatabase) {
-        return appDatabase.getFavouritePlantDao();
     }
 
     @Singleton
