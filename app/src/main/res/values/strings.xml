@@ -27,6 +27,8 @@
         <item>Kontakt (+dojazd do Arboretum)</item>
         <item>Regulamin</item>
         <item>Okoliczne/w pobliżu</item>
+        <item>Godziny otwarcia</item>
+        <item>Ustawienia</item>
     </string-array>
 
     <string name="more_plants">Spis roślin</string>

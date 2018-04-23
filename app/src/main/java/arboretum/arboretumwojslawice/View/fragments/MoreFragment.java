@@ -15,6 +15,9 @@ import java.util.List;
 
 import arboretum.arboretumwojslawice.Model.MoreOptionItem;
 import arboretum.arboretumwojslawice.R;
+import arboretum.arboretumwojslawice.View.activities.NeighbourhoodActivity;
+import arboretum.arboretumwojslawice.View.activities.OpeningHoursActivity;
+import arboretum.arboretumwojslawice.View.activities.SettingsActivity;
 import arboretum.arboretumwojslawice.View.adapter.MoreAdapter;
 import arboretum.arboretumwojslawice.View.activities.ContactActivity;
 import arboretum.arboretumwojslawice.View.activities.EventActivity;
@@ -60,24 +63,36 @@ public class MoreFragment extends Fragment {
             public void onItemClick(int position) {
                 Intent intent;
                 switch (position) {
-                    case 0:
+                    case 0: //spis roślin
                         intent = new Intent(getActivity().getApplicationContext(), PlantActivity.class);
                         getActivity().startActivity(intent);
                         break;
-                    case 1:
+                    case 1: //kalendarz imprez
                         intent = new Intent(getActivity().getApplicationContext(), EventActivity.class);
                         getActivity().startActivity(intent);
                         break;
-                    case 2:
+                    case 2: //cennik
                         intent = new Intent(getActivity().getApplicationContext(), PriceActivity.class);
                         getActivity().startActivity(intent);
                         break;
-                    case 3:
+                    case 3: //kontakt
                         intent = new Intent(getActivity().getApplicationContext(), ContactActivity.class);
                         getActivity().startActivity(intent);
                         break;
-                    case 4:
+                    case 4: //regulamin
                         intent = new Intent(getActivity().getApplicationContext(), RulesActivity.class);
+                        getActivity().startActivity(intent);
+                        break;
+                    case 5: //okoliczne
+                        intent = new Intent(getActivity().getApplicationContext(), NeighbourhoodActivity.class);
+                        getActivity().startActivity(intent);
+                        break;
+                    case 6: //godziny otwarcia
+                        intent = new Intent(getActivity().getApplicationContext(), OpeningHoursActivity.class);
+                        getActivity().startActivity(intent);
+                        break;
+                    case 7: //ustawienia
+                        intent = new Intent(getActivity().getApplicationContext(), SettingsActivity.class);
                         getActivity().startActivity(intent);
                         break;
                     default:
