@@ -46,11 +46,11 @@ public class DatabaseConnection extends AsyncTask<Void,Void,Boolean>
 
     private void createData() {
         /* Attractions */
-        attractionEntities.add(new AttractionEntity(1, 0));
-        attractionEntities.add(new AttractionEntity(2, 0));
-        attractionEntities.add(new AttractionEntity(3, 0));
+        attractionEntities.add(new AttractionEntity(1, 0, 23.0));
+        attractionEntities.add(new AttractionEntity(2, 0, 45.0));
+        attractionEntities.add(new AttractionEntity(3, 0, 53.0));
         attractionTranslationEntities.add(new AttractionTranslationEntity(POLISH, 1, "Niemcza", "Średniowieczne miasto, położone niecałe 2 km od Wojsławic. Jest zabytkiem urbanistycznym i należy do najstarszych miast w Polsce.    W 2017 roku Niemcza będzie obchodziła 1000-lecie wielkiej bitwy obrony grodu z 1017 roku. Zapraszamy do zapoznania się z legendą: www.um.niemcza.pl/images/stories/ulotki/Niemcza/index.html"));
-        attractionTranslationEntities.add(new AttractionTranslationEntity(POLISH, 2, "Uzdrowisko Przerzeczyn Zdrój",""));
+        attractionTranslationEntities.add(new AttractionTranslationEntity(POLISH, 2, "Uzdrowisko Przerzeczyn Zdrój","Najmniejsze na Śląsku, wiejskie uzdrowisko oddalone 6 km od Wojsławic. Znane od 1802 r. z ciepłych źródeł radanowo-siarczkowych. Warto zobaczyć także zabytkowy kościół z XIII w. i mauzoleum rodu Oheimbów, z którego pochodził założyciel naszego Arboretum."));
         attractionTranslationEntities.add(new AttractionTranslationEntity(POLISH, 3, "Krzywa Wieża w Ząbkowicach Śląskich","W odległości 15 km od Arboretum w Wojsławicach znajduje się 34-metrowa wieża dawnej dzwonnicy.       Jest prawdopodobnie pozostałością zamku z XV w. Obecnie pełni funkcję turystycznego punktu widokowego. Jej odchylenie od pionu wynosi już 2,14 m (w Pizie ok. 5 m). Tuż obok znajduje się Izba Pamiątek z Laboratorium dr. Frankensteina, która nawiązuję do pewnych tajemniczych wydarzeń z XVII w. Warto dodać, że miasto Ząbkowice nosiło dawniej nazwę Frankenstein."));
 
         /*...*/

@@ -24,10 +24,14 @@ public class AttractionEntity {
     @ColumnInfo(name = "Image")
     private int image;
 
+    @ColumnInfo(name = "Distance")
+    private double distance;
 
-    public AttractionEntity(int idAttraction, int image) {
+
+    public AttractionEntity(int idAttraction, int image, double distance) {
         this.idAttraction = idAttraction;
         this.image = image;
+        this.distance = distance;
     }
 
     public int getIdAttraction() {
@@ -44,5 +48,13 @@ public class AttractionEntity {
 
     public void setImage(int image) {
         this.image = image;
+    }
+
+    public double getDistance() {
+        return distance;
+    }
+
+    public void setDistance(double distance) {
+        this.distance = distance;
     }
 }

@@ -23,12 +23,16 @@ public class Attraction {
     @ColumnInfo(name = "Image")
     private Integer image;
 
+    @ColumnInfo(name = "Distance")
+    private Double distance;
 
-    public Attraction(Integer idAttraction, String name, String description, Integer image) {
+
+    public Attraction(Integer idAttraction, String name, String description, Integer image, Double distance) {
         this.idAttraction = idAttraction;
         this.name = name;
         this.description = description;
         this.image = image;
+        this.distance = distance;
     }
 
     public Integer getIdAttraction() {
@@ -61,6 +65,14 @@ public class Attraction {
 
     public void setImage(Integer image) {
         this.image = image;
+    }
+
+    public Double getDistance() {
+        return distance;
+    }
+
+    public void setDistance(Double distance) {
+        this.distance = distance;
     }
 
     @Override

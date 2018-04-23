@@ -51,7 +51,7 @@ public class AttractionRepository extends BaseRepository {
 
 
     public void addAttraction(Attraction attraction) {
-        AttractionEntity attractionEntity = new AttractionEntity(attraction.getIdAttraction(), attraction.getImage());
+        AttractionEntity attractionEntity = new AttractionEntity(attraction.getIdAttraction(), attraction.getImage(), attraction.getDistance());
         AttractionTranslationEntity attractionTranslationEntity = new AttractionTranslationEntity(locale.getLanguage(),
                 attraction.getIdAttraction(), attraction.getName(), attraction.getDescription());
 
