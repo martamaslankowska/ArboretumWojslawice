@@ -22,7 +22,6 @@ That's why it's good to use @Ignore on other constructors to tell Room not to bo
 */
 
 @Entity(tableName = "Plants", foreignKeys = {
-        @ForeignKey(entity = KindEntity.class, parentColumns = "IdKind", childColumns = "IdKind"),
         @ForeignKey(entity = SpeciesEntity.class, parentColumns = "IdSpecies", childColumns = "IdSpecies")})
 //        indices = {@Index(value = {"IdPlant"}, unique = true)})
 public class PlantEntity {

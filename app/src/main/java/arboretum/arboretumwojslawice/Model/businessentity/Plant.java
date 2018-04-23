@@ -29,7 +29,7 @@ public class Plant implements AdapterItem {
     @ColumnInfo(name = "Name")
     private String name;
 
-    @ColumnInfo(name = "KindsTranslations.Name")
+    @ColumnInfo(name = "IdKind")
     private Integer kind;
 
     @ColumnInfo(name = "Image")

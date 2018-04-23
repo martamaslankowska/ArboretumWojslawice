@@ -1,26 +1,19 @@
 package arboretum.arboretumwojslawice.Model.Repository;
 
 import java.util.List;
-import java.util.Locale;
 
 import javax.inject.Inject;
 
 import arboretum.arboretumwojslawice.Model.DAO.GenusDao;
-import arboretum.arboretumwojslawice.Model.DAO.KindDao;
-import arboretum.arboretumwojslawice.Model.DAO.KindTranslationDao;
 import arboretum.arboretumwojslawice.Model.DAO.LocationDao;
 import arboretum.arboretumwojslawice.Model.DAO.PlantDao;
 import arboretum.arboretumwojslawice.Model.DAO.PlantTranslationDao;
 import arboretum.arboretumwojslawice.Model.DAO.SpeciesDao;
 import arboretum.arboretumwojslawice.Model.businessentity.Location;
 import arboretum.arboretumwojslawice.Model.businessentity.Plant;
-import io.reactivex.Maybe;
-import io.reactivex.Single;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import arboretum.arboretumwojslawice.Model.businessentity.Plant;
 import arboretum.arboretumwojslawice.R;
 
 /**
@@ -38,10 +31,6 @@ public class PlantRepository extends  BaseRepository {
     @Inject
     SpeciesDao speciesDao;
     @Inject
-    KindDao kindDao;
-    @Inject
-    KindTranslationDao kindTranslationDao;
-    @Inject
     LocationDao locationDao;
 
 
@@ -57,8 +46,8 @@ public class PlantRepository extends  BaseRepository {
         return plantDao.getById(id, languageCode);
     }
 
-    public List<Plant> getByName(String name) {
-        return plantDao.getAllByKindName(name, languageCode);
+    public List<Plant> getAllByKindName(int kind) {
+        return plantDao.getAllByKindName(kind, languageCode);
     }
 
     public List<Location> getLocationsByPlantId(int idPlant) {

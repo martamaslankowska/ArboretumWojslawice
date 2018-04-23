@@ -6,8 +6,6 @@ import arboretum.arboretumwojslawice.Model.Entity.EventEntity;
 import arboretum.arboretumwojslawice.Model.Entity.EventTranslationEntity;
 import arboretum.arboretumwojslawice.Model.Entity.GenusEntity;
 import arboretum.arboretumwojslawice.Model.Entity.HotelEntity;
-import arboretum.arboretumwojslawice.Model.Entity.KindEntity;
-import arboretum.arboretumwojslawice.Model.Entity.KindTranslationEntity;
 import arboretum.arboretumwojslawice.Model.Entity.LocationEntity;
 import arboretum.arboretumwojslawice.Model.Entity.NewsEntity;
 import arboretum.arboretumwojslawice.Model.Entity.NewsTranslationEntity;
@@ -35,7 +33,7 @@ import android.content.Context;
 
 @Database(entities = {AttractionEntity.class, AttractionTranslationEntity.class, EventEntity.class,
         EventTranslationEntity.class, GenusEntity.class, HotelEntity.class,
-        KindEntity.class, KindTranslationEntity.class, LocationEntity.class, PlantEntity.class,
+        LocationEntity.class, PlantEntity.class,
         PlantTranslationEntity.class, PriceEntity.class, PriceTranslationEntity.class, RestaurantEntity.class,
         RouteEntity.class, RoutePointEntity.class, RouteTranslationEntity.class, SpeciesEntity.class,
         NewsEntity.class, NewsTranslationEntity.class},
@@ -49,8 +47,6 @@ import android.content.Context;
         public abstract EventTranslationDao getEventTranslationDao();
         public abstract GenusDao getGenusDao();
         public abstract HotelDao getHotelDao();
-        public abstract KindDao getKindDao();
-        public abstract KindTranslationDao getKindTranslationDao();
         public abstract LocationDao getLocationDao();
         public abstract PlantDao getPlantDao();
         public abstract PlantTranslationDao getPlantTranslationDao();
@@ -86,8 +82,6 @@ import android.content.Context;
 ////            database.execSQL("DROP TABLE IF EXISTS `EventsTranslations`");
 ////            database.execSQL("DROP TABLE IF EXISTS `Genus`");
 ////            database.execSQL("DROP TABLE IF EXISTS `Hotels`");
-////            database.execSQL("DROP TABLE IF EXISTS `Kinds`");
-////            database.execSQL("DROP TABLE IF EXISTS `KindsTranslations`");
 ////            database.execSQL("DROP TABLE IF EXISTS `Locations`");
 ////            database.execSQL("DROP TABLE IF EXISTS `Plants`");
 ////            database.execSQL("DROP TABLE IF EXISTS `PlantsTranslations`");
@@ -107,8 +101,6 @@ import android.content.Context;
 ////            database.execSQL("CREATE TABLE IF NOT EXISTS `EventsTranslations` (`TranslationCode` TEXT NOT NULL, `IdEvent` INTEGER NOT NULL, `Type` TEXT, `Name` TEXT NOT NULL, `Description` TEXT, PRIMARY KEY(`TranslationCode`, `IdEvent`), FOREIGN KEY(`IdEvent`) REFERENCES `Events`(`IdEvent`) ON UPDATE NO ACTION ON DELETE NO ACTION )");
 ////            database.execSQL("CREATE TABLE IF NOT EXISTS `Genus` (`Name` INTEGER NOT NULL, PRIMARY KEY(`Name`))");
 ////            database.execSQL("CREATE TABLE IF NOT EXISTS `Hotels` (`IdHotel` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `Name` TEXT, `Address` TEXT, `Phone` INTEGER NOT NULL, `Website` TEXT, `Distance` REAL NOT NULL, `Rating` REAL NOT NULL, `Image` INTEGER NOT NULL)");
-////            database.execSQL("CREATE TABLE IF NOT EXISTS `Kinds` (`IdKind` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)");
-////            database.execSQL("CREATE TABLE IF NOT EXISTS `KindsTranslations` (`TranslationCode` TEXT NOT NULL, `IdKind` INTEGER NOT NULL, `Name` TEXT NOT NULL, PRIMARY KEY(`TranslationCode`, `IdKind`), FOREIGN KEY(`IdKind`) REFERENCES `Kinds`(`IdKind`) ON UPDATE NO ACTION ON DELETE NO ACTION )");
 ////            database.execSQL("CREATE TABLE IF NOT EXISTS `Locations` (`IdLocation` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `IdPlant` INTEGER NOT NULL, `X` REAL NOT NULL, `Y` REAL NOT NULL, FOREIGN KEY(`IdPlant`) REFERENCES `Plants`(`IdPlant`) ON UPDATE NO ACTION ON DELETE NO ACTION )");
 ////            database.execSQL("CREATE TABLE IF NOT EXISTS `Plants` (`IdPlant` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `LatinName` TEXT, `IdSpecies` INTEGER NOT NULL, `IdKind` INTEGER NOT NULL, `Image` INTEGER NOT NULL, `SeasonBegin` INTEGER NOT NULL, `SeasonEnd` INTEGER NOT NULL, FOREIGN KEY(`IdKind`) REFERENCES `Kinds`(`IdKind`) ON UPDATE NO ACTION ON DELETE NO ACTION , FOREIGN KEY(`IdSpecies`) REFERENCES `Species`(`IdSpecies`) ON UPDATE NO ACTION ON DELETE NO ACTION )");
 ////            database.execSQL("CREATE TABLE IF NOT EXISTS `PlantsTranslations` (`TranslationCode` TEXT NOT NULL, `IdPlant` INTEGER NOT NULL, `Name` TEXT, `Description` TEXT, PRIMARY KEY(`TranslationCode`, `IdPlant`), FOREIGN KEY(`IdPlant`) REFERENCES `Plants`(`IdPlant`) ON UPDATE NO ACTION ON DELETE NO ACTION )");

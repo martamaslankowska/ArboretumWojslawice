@@ -21,14 +21,11 @@ import io.reactivex.Single;
 @Dao
 public abstract class PlantDao extends BaseDao<PlantEntity> {
 
-    @Query("SELECT Plants.IdPlant, GenusName, SpeciesName, Plants.LatinName, PlantsTranslations.Name, KindsTranslations.Name, Image, SeasonBegin, SeasonEnd, Description, Favourite " +
+    @Query("SELECT Plants.IdPlant, GenusName, SpeciesName, Plants.LatinName, PlantsTranslations.Name, IdKind, Image, SeasonBegin, SeasonEnd, Description, Favourite " +
             "FROM Plants LEFT JOIN Species ON Plants.IdSpecies = Species.IdSpecies " +
             "LEFT JOIN Genus ON Species.GenusName = Genus.Name " +
-            "LEFT JOIN Kinds ON Plants.IdKind = Kinds.IdKind " +
-            "LEFT JOIN KindsTranslations ON Kinds.IdKind = KindsTranslations.IdKind " +
-//            "LEFT JOIN Locations ON Plants.IdPlant = Locations.IdPlant " +
             "LEFT JOIN PlantsTranslations ON Plants.IdPlant = PlantsTranslations.IdPlant " +
-            "WHERE PlantsTranslations.TranslationCode IN (:translationCode) AND KindsTranslations.TranslationCode IN (:translationCode)")
+            "WHERE PlantsTranslations.TranslationCode IN (:translationCode)")
     public abstract List<Plant> getAll(String translationCode);
 
     @Query("SELECT IdLocation, X, Y " +
@@ -36,23 +33,19 @@ public abstract class PlantDao extends BaseDao<PlantEntity> {
             "WHERE Plants.IdPlant IN (:idPlant)")
     public abstract List<Location> getLocationsByPlantId(int idPlant);
 
-    @Query("SELECT Plants.IdPlant, GenusName, SpeciesName, Plants.LatinName, PlantsTranslations.Name, KindsTranslations.Name, Image, SeasonBegin, SeasonEnd, Description, Favourite " +
+    @Query("SELECT Plants.IdPlant, GenusName, SpeciesName, Plants.LatinName, PlantsTranslations.Name, IdKind, Image, SeasonBegin, SeasonEnd, Description, Favourite " +
             "FROM Plants LEFT JOIN Species ON Plants.IdSpecies = Species.IdSpecies " +
             "LEFT JOIN Genus ON Species.GenusName = Genus.Name " +
-            "LEFT JOIN Kinds ON Plants.IdKind = Kinds.IdKind " +
-            "LEFT JOIN KindsTranslations ON Kinds.IdKind = KindsTranslations.IdKind " +
             "LEFT JOIN PlantsTranslations ON Plants.IdPlant = PlantsTranslations.IdPlant " +
-            "WHERE Plants.IdPlant IN (:idPlant) AND PlantsTranslations.TranslationCode IN (:translationCode) AND KindsTranslations.TranslationCode IN (:translationCode)")
+            "WHERE Plants.IdPlant IN (:idPlant) AND PlantsTranslations.TranslationCode IN (:translationCode)")
     public abstract  Plant getById(int idPlant, String translationCode);
 
-    @Query("SELECT Plants.IdPlant, GenusName, SpeciesName, Plants.LatinName, PlantsTranslations.Name, KindsTranslations.Name, Image, SeasonBegin, SeasonEnd, Description, Favourite " +
+    @Query("SELECT Plants.IdPlant, GenusName, SpeciesName, Plants.LatinName, PlantsTranslations.Name, IdKind, Image, SeasonBegin, SeasonEnd, Description, Favourite " +
             "FROM Plants LEFT JOIN Species ON Plants.IdSpecies = Species.IdSpecies " +
             "LEFT JOIN Genus ON Species.GenusName = Genus.Name " +
-            "LEFT JOIN Kinds ON Plants.IdKind = Kinds.IdKind " +
-            "LEFT JOIN KindsTranslations ON Kinds.IdKind = KindsTranslations.IdKind " +
             "LEFT JOIN PlantsTranslations ON Plants.IdPlant = PlantsTranslations.IdPlant " +
-            "WHERE KindsTranslations.Name IN (:kindName) AND PlantsTranslations.TranslationCode IN (:translationCode) AND KindsTranslations.TranslationCode IN (:translationCode)")
-    public abstract List<Plant> getAllByKindName(String kindName, String translationCode);
+            "WHERE IdKind IN (:kind) AND PlantsTranslations.TranslationCode IN (:translationCode)")
+    public abstract List<Plant> getAllByKindName(int kind, String translationCode);
 
 
 
