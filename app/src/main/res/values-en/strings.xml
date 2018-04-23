@@ -17,6 +17,18 @@
     <!-- Marta - example strings to use in PriceActivity (activity_price.xml) -->
     <string name="price_title">Prices (tickets)</string>
 
+    <!-- KONTAKT (+ dojazd do Arboretum)-->
+    <string name="contact_main_text">Arboretum is open from 15/04/2018\ntill 21/10/2018 (including holidays)</string>
+    <string name="contact_opening_text">Arboretum opening hours</string>
+    <string name="contact_opening_hours">mon-sun 9:00-20:00</string>
+    <string name="contact_opening_ticket_text">Ticket office opening hours</string>
+    <string name="contact_opening_ticket_hours">mon-sun 9:00-18:00</string>
+    <string name="contact_info1">Tickets can be bought also in TVMs</string>
+    <string name="contact_subinfo1">Ticket office 1 and 2 have payment terminals</string>
+    <string name="contact_info2">Ticket is valid once validating</string>
+
+
+
 </resources>
 
 <!--Tutaj Michał-->

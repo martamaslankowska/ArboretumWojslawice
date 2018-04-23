@@ -16,4 +16,14 @@
     <dimen name="route_list_row_padding_top_bottom">4dp</dimen>
     <dimen name="route_detail_margin_left_right">12dp</dimen>
 
+    <!-- Dimens of layouts without RecyclerView (not details) = non RecyclerView ~ nonrec -->
+    <!-- Like: Contact, Prices etc. -->
+    <dimen name="nonrec_margin_vertical">16dp</dimen>
+    <dimen name="nonrec_margin_vertical_half">8dp</dimen>
+    <dimen name="nonrec_margin_horizontal">16dp</dimen>
+    <dimen name="nonrec_font_size">18sp</dimen>
+    <dimen name="nonrec_line_spacing">3dp</dimen>
+    <dimen name="contact_icon_size">30dp</dimen>
+
+
 </resources>

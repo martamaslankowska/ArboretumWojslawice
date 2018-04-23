@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context="arboretum.arboretumwojslawice.View.activities.ContactActivity">
 
-    <LinearLayout
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -15,6 +15,81 @@
             android:id="@+id/toolbar_back"
             layout="@layout/toolbar_empty" />
 
-    </LinearLayout>
+        <TextView
+            android:id="@+id/contactMainText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/nonrec_margin_horizontal"
+            android:layout_marginStart="@dimen/nonrec_margin_horizontal"
+            android:layout_marginTop="@dimen/nonrec_margin_vertical"
+            android:text="@string/contact_main_text"
+            android:textSize="@dimen/nonrec_font_size"
+            android:textColor="@color/colorBlack"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:lineSpacingExtra="@dimen/nonrec_line_spacing"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar_back" />
+
+
+        <View
+            android:id="@+id/line1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/nonrec_margin_vertical"
+            android:background="@android:color/darker_gray"
+            app:layout_constraintTop_toBottomOf="@+id/contactMainText" />
+
+        <ImageView
+            android:id="@+id/openingImage"
+            android:layout_width="@dimen/contact_icon_size"
+            android:layout_height="@dimen/contact_icon_size"
+            android:layout_marginStart="@dimen/nonrec_margin_horizontal"
+            android:layout_marginTop="@dimen/nonrec_margin_vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/line1"
+            app:srcCompat="@drawable/contact_icon01" />
+
+        <TextView
+            android:id="@+id/openingText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/nonrec_margin_horizontal"
+            android:layout_marginStart="@dimen/nonrec_margin_horizontal"
+            android:layout_marginTop="@dimen/nonrec_margin_vertical"
+            android:text="@string/contact_opening_text"
+            android:textAlignment="gravity"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/nonrec_font_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/openingImage"
+            app:layout_constraintTop_toBottomOf="@+id/line1" />
+
+        <TextView
+            android:id="@+id/openingHours"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/nonrec_margin_horizontal"
+            android:layout_marginTop="@dimen/nonrec_margin_vertical_half"
+            android:text="@string/contact_opening_hours"
+            android:textSize="@dimen/nonrec_font_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/openingText"
+            app:layout_constraintTop_toBottomOf="@+id/openingText" />
+
+
+        <View
+            android:id="@+id/line2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/nonrec_margin_vertical"
+            android:background="@android:color/darker_gray"
+            app:layout_constraintTop_toBottomOf="@+id/openingHours" />
+
+
+    </android.support.constraint.ConstraintLayout>
 
 </android.support.constraint.ConstraintLayout>
