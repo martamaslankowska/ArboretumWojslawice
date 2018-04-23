@@ -20,13 +20,10 @@
             android:id="@+id/toolbar_back"
             layout="@layout/toolbar_empty" />
 
-        <android.support.constraint.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingBottom="4dp"
-            android:paddingLeft="4dp"
-            android:paddingRight="4dp"
-            android:paddingTop="4dp"
+            android:orientation="vertical"
             tools:context="arboretum.arboretumwojslawice.View.activities.RouteDetailActivity">
 
             <ImageView
@@ -38,108 +35,136 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <!--<TextView-->
-            <!--android:id="@+id/route_detail_id"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:minWidth="20dp"-->
-            <!--android:layout_marginStart="8dp"-->
-            <!--android:text="@{route.getStringId()}"-->
-            <!--android:textSize="18dp"-->
-            <!--android:textStyle="bold"-->
-            <!--app:layout_constraintStart_toStartOf="parent"-->
-            <!--app:layout_constraintTop_toBottomOf="@+id/route_detail_map" />-->
-
-            <TextView
-                android:id="@+id/route_detail_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/route_detail_map"
-                android:minWidth="100dp"
-                android:text="@{route.getName()}"
-                android:textSize="18dp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/route_scroll_view"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/route_detail_map"
-                app:layout_constraintVertical_chainStyle="spread" />
-
-            <ScrollView
-                android:id="@+id/route_scroll_view"
+            <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="130dp"
-                android:fillViewport="true"
-                android:scrollbars="vertical"
-                app:layout_constraintBottom_toTopOf="@+id/route_detail_pager"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/route_detail_name"
-                app:layout_constraintVertical_chainStyle="packed">
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/route_detail_margin_left_right"
+                android:layout_marginRight="@dimen/route_detail_margin_left_right"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/route_detail_map">
 
                 <TextView
-                    android:id="@+id/route_detail_description"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:text="@{route.getDescription()}"
-                    android:textSize="16dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
+                    android:id="@+id/route_detail_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:minWidth="100dp"
+                    android:text="@{route.getName()}"
+                    android:textSize="24dp"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
-                    tools:layout_editor_absoluteY="0dp" />
-            </ScrollView>
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <RelativeLayout
-                android:id="@+id/route_detail_pager"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_above="@+id/route_detail_button"
-                app:layout_constraintBottom_toTopOf="@+id/route_detail_button"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/route_scroll_view"
-                app:layout_constraintVertical_chainStyle="packed">
+                <TextView
+                    android:id="@+id/route_detail_length"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:minWidth="100dp"
+                    android:text="@{@string/route_length(route.getLengthString())}"
+                    android:textSize="18dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/route_detail_name"/>
 
-                <ImageView
-                    android:id="@+id/route_detail_left_arrow"
-                    android:layout_width="40dp"
-                    android:layout_height="@dimen/plant_page_image_height"
-                    android:layout_alignParentLeft="true" />
+                <TextView
+                    android:id="@+id/route_detail_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:minWidth="100dp"
+                    android:text="@{@string/route_time(route.getTimeString())}"
+                    android:textSize="18dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/route_detail_length"/>
 
-                <android.support.v4.view.ViewPager
-                    android:id="@+id/viewPager"
+                <View
+                    android:id="@+id/route_detail_divider1"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/plant_page_image_height"
-                    android:layout_toEndOf="@+id/route_detail_left_arrow"
-                    android:layout_toStartOf="@+id/route_detail_right_arrow" />
+                    android:layout_height="1dp"
+                    android:background="@android:color/darker_gray"
+                    app:layout_constraintTop_toBottomOf="@+id/route_detail_time"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="4dp"/>
+
+                <ScrollView
+                    android:id="@+id/route_scroll_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:fillViewport="true"
+                    android:scrollbars="vertical"
+                    app:layout_constraintBottom_toTopOf="@+id/route_detail_divider2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/route_detail_divider1">
+
+                    <TextView
+                        android:id="@+id/route_detail_description"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:gravity="center_vertical"
+                        android:text="@{route.getDescription()}"
+                        android:textAlignment="inherit"
+                        android:textSize="16dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+                </ScrollView>
+
+                <View
+                    android:id="@+id/route_detail_divider2"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="4dp"
+                    android:background="@android:color/darker_gray"
+                    app:layout_constraintBottom_toTopOf="@+id/route_detail_pager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <RelativeLayout
+                    android:id="@+id/route_detail_pager"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
+
+                    <ImageView
+                        android:id="@+id/route_detail_left_arrow"
+                        android:layout_width="40dp"
+                        android:layout_height="@dimen/plant_page_image_height"
+                        android:layout_alignParentLeft="true" />
+
+                    <android.support.v4.view.ViewPager
+                        android:id="@+id/viewPager"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/plant_page_image_height"
+                        android:layout_toEndOf="@+id/route_detail_left_arrow"
+                        android:layout_toStartOf="@+id/route_detail_right_arrow" />
+
+                    <ImageView
+                        android:id="@+id/route_detail_right_arrow"
+                        android:layout_width="40dp"
+                        android:layout_height="@dimen/plant_page_image_height"
+                        android:layout_alignParentRight="true"
+                        android:src="@drawable/right_arrow" />
+                </RelativeLayout>
 
                 <ImageView
-                    android:id="@+id/route_detail_right_arrow"
-                    android:layout_width="40dp"
-                    android:layout_height="@dimen/plant_page_image_height"
-                    android:layout_alignParentRight="true"
-                    android:src="@drawable/right_arrow" />
+                    android:id="@+id/route_detail_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:src="@drawable/icons8_play"
+                    app:layout_constraintBottom_toBottomOf="@+id/route_detail_time"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/route_detail_length" />
 
-
-            </RelativeLayout>
-
-            <Button
-                android:id="@+id/route_detail_button"
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:text="NAWIGUJ"
-                android:textSize="40dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/route_detail_pager"
-                app:layout_constraintVertical_chainStyle="packed" />
-
-
-        </android.support.constraint.ConstraintLayout>
+            </android.support.constraint.ConstraintLayout>
+        </LinearLayout>
     </LinearLayout>
 </layout>

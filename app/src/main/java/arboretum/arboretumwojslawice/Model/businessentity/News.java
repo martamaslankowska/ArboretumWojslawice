@@ -84,7 +84,7 @@ public class News implements AdapterItem {
 
     public String getDateString() {
         String sDate = String.valueOf(date);
-        return sDate.substring(0,4)+"/"+sDate.substring(4,6)+"/"+sDate.substring(6,8);
+        return sDate.substring(6,8)+"/"+sDate.substring(4,6)+"/"+sDate.substring(0,4);
     }
 
     public void setDate(Integer date) {

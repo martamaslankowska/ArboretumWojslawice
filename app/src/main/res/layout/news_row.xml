@@ -12,13 +12,13 @@
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:focusable="true">
+        android:focusable="true"
+        android:layout_marginBottom="4dp">
 
         <ImageView
             android:id="@+id/news_image"
             android:layout_width="match_parent"
-            android:layout_height="160dp"
+            android:layout_height="150dp"
             android:src="@{news.getImage()}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -28,26 +28,25 @@
             android:id="@+id/news_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="4dp"
             android:layout_marginBottom="6dp"
+            android:padding="2dp"
             android:text="@{news.getName()}"
             android:textColor="@color/white"
             android:textSize="24dp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/news_image"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/news_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
             android:text="@{news.getDescription()}"
             android:textSize="14dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/news_image" />
 

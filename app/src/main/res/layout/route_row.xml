@@ -11,9 +11,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:focusable="true"
-        android:paddingTop="4dp"
-        android:paddingBottom="4dp"
-        >
+        android:paddingTop="@dimen/route_list_row_padding_top_bottom"
+        android:paddingBottom="@dimen/route_list_row_padding_top_bottom"
+        android:paddingLeft="@dimen/route_list_row_padding_left_right"
+        android:paddingRight="@dimen/route_list_row_padding_left_right">
 
         <!--<TextView-->
             <!--android:id="@+id/route_id"-->

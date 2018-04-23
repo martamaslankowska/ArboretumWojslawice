@@ -34,7 +34,7 @@ public class RouteAdapter extends RecyclerView.Adapter<BindingViewHolder> {
         Route route = mRoutes.get(position);
         holder.bind(route);
         if(selectedPosition == position)
-            holder.itemView.setBackgroundColor(Color.parseColor("#62b452"));
+            holder.itemView.setBackgroundColor(Color.parseColor("#bee0b8")); // 62b452
         else
             holder.itemView.setBackgroundColor(Color.TRANSPARENT);
     }

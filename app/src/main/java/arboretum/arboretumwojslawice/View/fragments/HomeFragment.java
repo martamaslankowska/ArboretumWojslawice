@@ -42,7 +42,7 @@ public class HomeFragment extends Fragment {
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.news_recycler_view);
         newsViewModel = new NewsViewModel();
 
-        mRecyclerView.addItemDecoration(new DividerItemDecoration(this.getContext(), 1));
+        mRecyclerView.addItemDecoration(new DividerItemDecoration(this.getContext(), 0));
         mAdapter = new NewsAdapter();
         mRecyclerView.setAdapter(mAdapter);
         mAdapter.setData(newsViewModel.getData());

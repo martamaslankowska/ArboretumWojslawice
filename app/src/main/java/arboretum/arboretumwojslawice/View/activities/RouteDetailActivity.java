@@ -47,7 +47,7 @@ public class RouteDetailActivity extends AppCompatActivity {
     private ImageView leftArrow;
     private ImageView rightArrow;
 
-    private Button mButton;
+    private ImageView mButton;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -149,7 +149,7 @@ public class RouteDetailActivity extends AppCompatActivity {
             }
         });
 
-        mButton = (Button) findViewById(R.id.route_detail_button);
+        mButton = findViewById(R.id.route_detail_button);
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
