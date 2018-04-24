@@ -23,4 +23,16 @@ public class EventViewModel {
         mEvent = mEventRepo.getEventsForMichal();
         return mEvent;
     }
+
+    // return one event founded by id
+    public Event getEventById(int plant_id) {
+        getData();
+        for(int i = 0; i < mEvent.size(); i++)
+        {
+            if(mEvent.get(i).getIdEvent() == plant_id){
+                return mEvent.get(i);
+            }
+        }
+        return mEvent.get(plant_id);
+    }
 }

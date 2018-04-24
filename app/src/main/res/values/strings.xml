@@ -8,6 +8,7 @@
     <string name="title_route">Trasy</string>
     <string name="title_qr_code">QR Code</string>
 
+    <!-- Toolbars -->
     <string name="toolbar_qr_code">QR Kod</string>
     <string name="toolbar_plants_list">Spis roślin</string>
     <string name="toolbar_events_list">Kalendarz imprez</string>
@@ -19,7 +20,15 @@
     <string name="toolbar_restaurants_list">Restauracje w pobliżu</string>
     <string name="toolbar_route_detail">Szczegóły trasy</string>
     <string name="toolbar_navigation">Nawigacja</string>
+    <string name="toolbar_neighbourhood">Okliczne miejsca</string>
+    <string name="toolbar_opening_hours">Godziny otwarcia</string>
+    <string name="toolbar_settings">Ustawienia</string>
 
+    <!-- TabBars -->
+    <string name="tab_map">Mapa</string>
+    <string name="tab_route">Trasy</string>
+
+    <!-- Options in MoreFragment-->
     <string-array name="more_options">
         <item>Spis roślin</item>
         <item>Kalendarz imprez</item>
@@ -31,20 +40,11 @@
         <item>Ustawienia</item>
     </string-array>
 
-    <string name="more_plants">Spis roślin</string>
-    <string name="more_events">Kalendarz imprez</string>
-    <string name="more_price">Cennik</string>
-    <string name="more_contact">Kontakt (+dojazd do Arboretum)</string>
-    <string name="more_rules">Regulamin</string>
-    <string name="more_neighbourhood">Okoliczne/w pobliżu</string>
-
     <string name="favourites_text">Nie masz żadnynch ulubionych roślin!</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
+    <!-- Przykładowe; wygenerowane automatycznie; tymczasowe; do usunięcia -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_main2">Main2Activity</string>
-    <string name="tab_map">Mapa</string>
-    <string name="tab_route">Trasy</string>
     <string name="action_settings">Ustawienia</string>
     <string name="section_format">Hello World from section: %1$d</string>
 
@@ -68,8 +68,7 @@
     <string name="contact_subinfo1">Kasy nr 1 i 2 wyposażone są w terminale płatnicze</string>
     <string name="contact_info2">Bilet jest ważny od momentu skasowania</string>
 
-
-
-
+    <!-- Toasts -->
     <string name="toast_exit">Naciśnij jeszcze raz przycisk "Powrót", aby zakończyć działanie aplikacji</string>
+
 </resources>

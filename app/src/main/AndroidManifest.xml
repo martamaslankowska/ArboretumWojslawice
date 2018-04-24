@@ -35,7 +35,8 @@
         <activity android:name=".View.activities.NavigationActivity" />
         <activity android:name=".View.activities.OpeningHoursActivity" />
         <activity android:name=".View.activities.SettingsActivity" />
-        <activity android:name=".View.activities.NeighbourhoodActivity"></activity>
+        <activity android:name=".View.activities.NeighbourhoodActivity" />
+        <activity android:name=".View.activities.EventDetailActivity"></activity>
     </application>
 
 </manifest>

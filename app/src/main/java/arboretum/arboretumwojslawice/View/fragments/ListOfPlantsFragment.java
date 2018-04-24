@@ -69,8 +69,6 @@ public class ListOfPlantsFragment extends Fragment {
 
         listener = new PlantAdapter.OnItemClickListener() {
             public void onItemClick(int position) {
-                Toast.makeText(getContext(), "Pozycja nr " + (position + 1), Toast.LENGTH_SHORT).show();
-
                 Intent intent = new Intent(getActivity().getApplicationContext(), PlantDetailActivity.class);
                 Bundle bundle = new Bundle();                ;
                 bundle.putInt(PLANT_ID, mPlants.get(position).getIdPlant());

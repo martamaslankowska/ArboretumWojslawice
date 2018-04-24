@@ -6,4 +6,8 @@
     android:layout_height="match_parent"
     tools:context="arboretum.arboretumwojslawice.View.activities.SettingsActivity">
 
+    <include
+        android:id="@+id/toolbar_back"
+        layout="@layout/toolbar_empty" />
+
 </android.support.constraint.ConstraintLayout>

@@ -1,5 +1,6 @@
 package arboretum.arboretumwojslawice.View.activities;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -20,6 +21,8 @@ public class EventActivity extends AppCompatActivity {
 
     private static final String KEY_LAYOUT_MANAGER = "activity_plant";
     private static final int SPAN_COUNT = 2;
+    public static final String EVENT_ID = "EVENT_ID";
+    public static final String BUNDLE = "BUNDLE";
 
     EventViewModel eventViewModel;
     EventAdapter.OnItemClickListener listener;
@@ -54,7 +57,11 @@ public class EventActivity extends AppCompatActivity {
 
         listener = new EventAdapter.OnItemClickListener() {
             public void onItemClick(int position) {
-                Toast.makeText(getApplicationContext(), "Pozycja nr " + (position + 1), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(), EventDetailActivity.class);
+                Bundle bundle = new Bundle();                ;
+                bundle.putInt(EVENT_ID, mEvents.get(position).getIdEvent());
+                intent.putExtra(BUNDLE, bundle);
+                startActivityForResult(intent, 123);
             }
         };
 
