@@ -1,6 +1,5 @@
 package arboretum.arboretumwojslawice.View.fragments;
 
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -45,13 +44,12 @@ public class MapFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_map, container, false);
-        imageview = (ImageView) rootView.findViewById(R.id.map);
+        imageview = rootView.findViewById(R.id.map);
         mapBitmap = BitmapFactory.decodeResource(getResources(),R.drawable.arboretum_map2);
         imageview.setImageBitmap(mapBitmap);
 
         //canvasBitmap = Bitmap.createBitmap(width,height,Bitmap.Config.RGB_565);
         markerBitmap = BitmapFactory.decodeResource(getResources(),R.drawable.marker_black);
-
 
         // Inflate the layout for this fragment
         return rootView;

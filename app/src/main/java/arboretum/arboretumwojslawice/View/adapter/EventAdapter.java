@@ -18,10 +18,9 @@ import arboretum.arboretumwojslawice.databinding.EventRowBinding;
 
 public class EventAdapter extends RecyclerView.Adapter<BindingViewHolder> {
     private List<Event> mEvents = new ArrayList<>();
-    EventAdapter.OnItemClickListener listener;
+    private EventAdapter.OnItemClickListener listener;
 
-    public EventAdapter(EventAdapter.OnItemClickListener listener, List<Event> pList){
-
+    public EventAdapter(EventAdapter.OnItemClickListener listener, List<Event> pList) {
         this.listener =  listener;
         this.mEvents = pList;
     }
@@ -50,11 +49,9 @@ public class EventAdapter extends RecyclerView.Adapter<BindingViewHolder> {
         return mEvents.size();
     }
 
-    public interface OnItemClickListener
-    {
-        public void onItemClick(int position);
+    public interface OnItemClickListener {
+        void onItemClick(int position);
     }
-
 
     public void setData(List<Event> event) {
         this.mEvents = event;

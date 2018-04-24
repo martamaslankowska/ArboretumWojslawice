@@ -1,12 +1,10 @@
 package arboretum.arboretumwojslawice.View.activities;
 
 import android.content.Intent;
-import android.support.design.widget.TabItem;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -16,25 +14,19 @@ import arboretum.arboretumwojslawice.R;
 import arboretum.arboretumwojslawice.View.fragments.ListOfPlantsFragment;
 
 public class PlantActivity extends AppCompatActivity {
-    private static final String KEY_LAYOUT_MANAGER = "activity_plant";
-    private static final int SPAN_COUNT = 2;
 
     private ListOfPlantsFragment mListOfPlantsFragment;
     private Stack<Integer> stos = new Stack<>();
     private TabLayout tabLayout;
     Bundle numOfTab = new Bundle();
-    private TabItem mTabItem0;
-    private TabItem mTabItem1;
-    private TabItem mTabItem2;
-    private TabItem mTabItem3;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plant);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_back);
+        /* toolbar */
+        Toolbar toolbar = findViewById(R.id.toolbar_back);
         setSupportActionBar(toolbar);
 
         if (getSupportActionBar() != null) {
@@ -42,23 +34,15 @@ public class PlantActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
         getSupportActionBar().setTitle(R.string.toolbar_plants_list);
+        /* /toolbar */
 
-
-        mTabItem0 = (TabItem) findViewById(R.id.tabItem);
-        mTabItem1 = (TabItem) findViewById(R.id.tabItem2);
-        mTabItem2 = (TabItem) findViewById(R.id.tabItem3);
-        mTabItem3 = (TabItem) findViewById(R.id.tabItem4);
-
-        tabLayout = (TabLayout) findViewById(R.id.plant_tabs);
+        tabLayout = findViewById(R.id.plant_tabs);
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-
-
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 if(numOfTab != null) {
                     numOfTab.remove("NumberOfTab");
                 }
-                Log.d("Arboretum", "tab.getPosition() = " + String.valueOf(tab.getPosition()));
                 mListOfPlantsFragment = new ListOfPlantsFragment();
                 switch (tab.getPosition()) {
                     case 0:
@@ -108,7 +92,6 @@ public class PlantActivity extends AppCompatActivity {
                 .addToBackStack(null)
                 .commit();
         stos.push(0);
-
     }
 
 
@@ -123,7 +106,6 @@ public class PlantActivity extends AppCompatActivity {
         if (item.getItemId() == android.R.id.home) {
             finish(); // close this activity and return to preview activity (if there is any)
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -164,12 +146,10 @@ public class PlantActivity extends AppCompatActivity {
                     .addToBackStack(null)
                     .commit();
         }
-
     }
 
     public void getQRCode(View view) {
         Intent intent = new Intent(this, QRCodeActivity.class);
         startActivity(intent);
     }
-
 }

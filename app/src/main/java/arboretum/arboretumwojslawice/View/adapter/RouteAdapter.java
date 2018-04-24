@@ -60,12 +60,10 @@ public class RouteAdapter extends RecyclerView.Adapter<BindingViewHolder> {
         return mRoutes.size();
     }
 
-    public interface OnItemClickListener
-    {
-        public void onItemClick(int position);
-        public void onDetailClick(int position);
+    public interface OnItemClickListener {
+        void onItemClick(int position);
+        void onDetailClick(int position);
     }
-
 
     public void setData(List<Route> route) {
         this.mRoutes = route;

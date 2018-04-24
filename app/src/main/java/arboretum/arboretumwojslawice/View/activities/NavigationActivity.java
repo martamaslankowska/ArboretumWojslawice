@@ -18,13 +18,21 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import arboretum.arboretumwojslawice.Model.businessentity.Route;
 import arboretum.arboretumwojslawice.R;
+import arboretum.arboretumwojslawice.ViewModel.RouteViewModel;
 
 public class NavigationActivity extends AppCompatActivity implements LocationListener{
+
+    private static final String BUNDLE = "BUNDLE";
+    private static final String ROUTE_ID = "ROUTE_ID";
+    private RouteViewModel routeViewModel;
+    private Bundle bundle;
+    private Route mRoute;
+    private int route_id;
 
     int x=0,y=0;
     Bitmap bitmap1,bitmap2,bitmap3;
@@ -57,7 +65,16 @@ public class NavigationActivity extends AppCompatActivity implements LocationLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_back);
+        routeViewModel = new RouteViewModel();
+
+        Intent intent = getIntent();
+        bundle = intent.getBundleExtra(BUNDLE);
+
+        route_id = bundle.getInt(ROUTE_ID);
+        mRoute = routeViewModel.getRouteById(route_id); //do mRoute przypisujemy odpowiednią trasę
+
+        /* toolbar */
+        Toolbar toolbar = findViewById(R.id.toolbar_back);
         setSupportActionBar(toolbar);
 
         if (getSupportActionBar() != null) {
@@ -65,6 +82,8 @@ public class NavigationActivity extends AppCompatActivity implements LocationLis
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
         getSupportActionBar().setTitle(R.string.toolbar_navigation);
+        getSupportActionBar().setSubtitle(mRoute.getName());
+        /* /toolbar */
 
         ActivityCompat.requestPermissions(NavigationActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 123);
         Location l = getLocation();
@@ -74,7 +93,7 @@ public class NavigationActivity extends AppCompatActivity implements LocationLis
             //Toast.makeText(getApplicationContext(), "LAT: " + lat + "\nLON: " + lon, Toast.LENGTH_SHORT).show();
         }
 
-        imageview = (ImageView)findViewById(R.id.map);
+        imageview = findViewById(R.id.map);
         resources = getResources();
         CreateBitmap();
         GetBitmapWidthHeight();

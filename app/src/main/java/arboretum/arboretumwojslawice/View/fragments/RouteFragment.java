@@ -59,7 +59,7 @@ public class RouteFragment extends DaggerFragment implements RouteAdapter.OnItem
                              Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_route, container, false);
 
-        mRecyclerView = (RecyclerView) rootView.findViewById(R.id.route_recycler_view);
+        mRecyclerView = rootView.findViewById(R.id.route_recycler_view);
         //routeViewModel = new RouteViewModel();
         mRoutes = routeViewModel.getData();
 

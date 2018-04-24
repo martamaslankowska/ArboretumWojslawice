@@ -27,8 +27,7 @@ public class RouteDetailViewModel {
         mPlantViewModel = new PlantViewModel();
     }
 
-    public Route getRouteById(int route_id)
-    {
+    public Route getRouteById(int route_id) {
         getRoutes();
         return mRoutes.get(route_id);
     }

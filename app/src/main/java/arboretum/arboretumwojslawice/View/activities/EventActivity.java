@@ -3,12 +3,10 @@ package arboretum.arboretumwojslawice.View.activities;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import java.util.List;
 
@@ -19,13 +17,12 @@ import arboretum.arboretumwojslawice.ViewModel.EventViewModel;
 
 public class EventActivity extends AppCompatActivity {
 
-    private static final String KEY_LAYOUT_MANAGER = "activity_plant";
-    private static final int SPAN_COUNT = 2;
+    private static final String KEY_LAYOUT_MANAGER = "activity_event";
     public static final String EVENT_ID = "EVENT_ID";
     public static final String BUNDLE = "BUNDLE";
 
-    EventViewModel eventViewModel;
-    EventAdapter.OnItemClickListener listener;
+    private EventViewModel eventViewModel;
+    private EventAdapter.OnItemClickListener listener;
     protected RecyclerView.LayoutManager mLayoutManager;
 
     private enum LayoutManagerType {
@@ -43,7 +40,9 @@ public class EventActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_back);
+
+        /* toolbar */
+        Toolbar toolbar = findViewById(R.id.toolbar_back);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(R.string.toolbar_events_list);
 
@@ -51,14 +50,16 @@ public class EventActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
-        mRecyclerView = (RecyclerView) findViewById(R.id.event_recycler_view);
+        /* toolbar */
+
+        mRecyclerView = findViewById(R.id.event_recycler_view);
         eventViewModel = new EventViewModel();
         mEvents = eventViewModel.getData();
 
         listener = new EventAdapter.OnItemClickListener() {
             public void onItemClick(int position) {
                 Intent intent = new Intent(getApplicationContext(), EventDetailActivity.class);
-                Bundle bundle = new Bundle();                ;
+                Bundle bundle = new Bundle();
                 bundle.putInt(EVENT_ID, mEvents.get(position).getIdEvent());
                 intent.putExtra(BUNDLE, bundle);
                 startActivityForResult(intent, 123);
@@ -97,7 +98,6 @@ public class EventActivity extends AppCompatActivity {
         if (item.getItemId() == android.R.id.home) {
             finish(); // close this activity and return to preview activity (if there is any)
         }
-
         return super.onOptionsItemSelected(item);
     }
 }

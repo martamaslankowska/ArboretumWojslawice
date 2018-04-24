@@ -51,11 +51,9 @@ public class MoreAdapter extends RecyclerView.Adapter<BindingViewHolder> {
         return mOptions.size();
     }
 
-    public interface OnItemClickListener
-    {
-        public void onItemClick(int position);
+    public interface OnItemClickListener {
+        void onItemClick(int position);
     }
-
 
     void setData(List<MoreOptionItem> option) {
         this.mOptions = option;

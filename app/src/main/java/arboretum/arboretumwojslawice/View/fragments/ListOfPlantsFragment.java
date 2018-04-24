@@ -18,14 +18,11 @@ import arboretum.arboretumwojslawice.R;
 import arboretum.arboretumwojslawice.View.activities.PlantDetailActivity;
 import arboretum.arboretumwojslawice.View.adapter.PlantAdapter;
 import arboretum.arboretumwojslawice.ViewModel.PlantViewModel;
-import arboretum.arboretumwojslawice.databinding.PlantRowBinding;
 
 
 public class ListOfPlantsFragment extends Fragment {
 
-
     private static final String KEY_LAYOUT_MANAGER = "fragment_list_of_plants";
-    private static final int SPAN_COUNT = 2;
     public static final String PLANT_ID = "PLANT_ID";
     public static final String TAB_ID = "TAB_ID";
     public static final String BUNDLE = "BUNDLE";
@@ -43,7 +40,6 @@ public class ListOfPlantsFragment extends Fragment {
     protected PlantViewModel mPlantViewModel;
     protected RecyclerView.LayoutManager mLayoutManager;
     protected List<Plant> mPlants;
-    protected ImageView mImageView;
 
     private int n;
 
@@ -54,7 +50,6 @@ public class ListOfPlantsFragment extends Fragment {
         if (bundle != null) {
             n = bundle.getInt("NumberOfTab");
         }
-
     }
 
     @Override
@@ -63,14 +58,12 @@ public class ListOfPlantsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_list_of_plants, container, false);
 
         mPlantViewModel = new PlantViewModel();
-        mRecyclerView = (RecyclerView) view.findViewById(R.id.conifeerous_recycler_view);
-//        View v = inflater.inflate(R.layout.plant_row, container, false);
-        //mImageView = (ImageView) v.findViewById(R.id.plant_heart);
+        mRecyclerView = view.findViewById(R.id.conifeerous_recycler_view);
 
         listener = new PlantAdapter.OnItemClickListener() {
             public void onItemClick(int position) {
                 Intent intent = new Intent(getActivity().getApplicationContext(), PlantDetailActivity.class);
-                Bundle bundle = new Bundle();                ;
+                Bundle bundle = new Bundle();
                 bundle.putInt(PLANT_ID, mPlants.get(position).getIdPlant());
                 bundle.putInt(TAB_ID, n);
                 intent.putExtra(BUNDLE, bundle);

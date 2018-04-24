@@ -1,6 +1,5 @@
 package arboretum.arboretumwojslawice.ViewModel;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import arboretum.arboretumwojslawice.Model.Repository.NewsRepository;

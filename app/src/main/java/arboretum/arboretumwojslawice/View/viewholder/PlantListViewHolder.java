@@ -13,7 +13,6 @@ import arboretum.arboretumwojslawice.databinding.PlantRowBinding;
 
 public class PlantListViewHolder extends BindingViewHolder<Plant, PlantRowBinding> {
 
-    ImageView mImageView;
     public PlantListViewHolder(PlantRowBinding binding, final PlantAdapter.OnItemClickListener listener) {
         super(binding);
         itemView.setOnClickListener(__ -> listener.onItemClick(getAdapterPosition()));

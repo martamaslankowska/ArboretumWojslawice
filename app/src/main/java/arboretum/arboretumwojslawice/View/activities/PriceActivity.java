@@ -7,14 +7,9 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import javax.inject.Inject;
-
-import arboretum.arboretumwojslawice.Commons.components.PriceComponent;
-import arboretum.arboretumwojslawice.Model.Repository.PriceRepository;
 import arboretum.arboretumwojslawice.R;
 import arboretum.arboretumwojslawice.ViewModel.PriceViewModel;
 import io.reactivex.Maybe;
-import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
@@ -40,16 +35,18 @@ public class PriceActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_price);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_back);
+
+        /* toolbar */
+        Toolbar toolbar = findViewById(R.id.toolbar_back);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(R.string.toolbar_price);
-
-        priceViewModel = new PriceViewModel(this.getApplication());
-
         if (getSupportActionBar() != null){
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
+        /* /toolbar */
+
+        priceViewModel = new PriceViewModel(this.getApplication());
 
         type1 = findViewById(R.id.type1);
         price1 = findViewById(R.id.price1);
@@ -96,10 +93,8 @@ public class PriceActivity extends AppCompatActivity {
                     Toast.makeText(this, "Jakiś błąąąd... -.- -.-", Toast.LENGTH_LONG).show();
                 });
 
-
         compositeDisposable.add(gettingPriceList2);
     }
-
 
     public boolean onOptionsItemSelected(MenuItem item) {
         // handle arrow click here
@@ -108,7 +103,6 @@ public class PriceActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
 
     @Override
     protected void onDestroy() {

@@ -1,7 +1,5 @@
 package arboretum.arboretumwojslawice.View.fragments;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -13,11 +11,9 @@ import arboretum.arboretumwojslawice.R;
 
 public class FavouritesFragment extends Fragment {
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
@@ -26,6 +22,4 @@ public class FavouritesFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_favourites, container, false);
     }
-
-
 }

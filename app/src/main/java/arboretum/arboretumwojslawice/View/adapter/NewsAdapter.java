@@ -13,11 +13,10 @@ import arboretum.arboretumwojslawice.databinding.NewsRowBinding;
 
 public class NewsAdapter extends RecyclerView.Adapter<BindingViewHolder> {
 
-    private List<News> mOptions;
+    private List<News> mNews;
 
     public NewsAdapter() {
     }
-
 
     @Override
     public BindingViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -34,22 +33,22 @@ public class NewsAdapter extends RecyclerView.Adapter<BindingViewHolder> {
 
     @Override
     public void onBindViewHolder(BindingViewHolder holder, int position) {
-        News option = mOptions.get(position);
+        News option = mNews.get(position);
         holder.bind(option);
     }
 
     @Override
     public int getItemCount() {
-        return mOptions.size();
+        return mNews.size();
     }
 
     public interface OnItemClickListener
     {
-        public void onItemClick(int position);
+        void onItemClick(int position);
     }
 
     public void setData(List<News> option) {
-        this.mOptions = option;
+        this.mNews = option;
         notifyDataSetChanged();
     }
 }

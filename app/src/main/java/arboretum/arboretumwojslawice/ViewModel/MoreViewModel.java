@@ -14,8 +14,8 @@ import arboretum.arboretumwojslawice.R;
  */
 
 public class MoreViewModel {
-    List<MoreOptionItem> mOptions;
-    Context mContext;
+    private List<MoreOptionItem> mOptions;
+    private Context mContext;
 
     public MoreViewModel(Context context) {
         mContext = context;
@@ -23,8 +23,8 @@ public class MoreViewModel {
 
     public List<MoreOptionItem> getData() {
         mOptions = new ArrayList<>();
-        List<String> Lines = Arrays.asList(mContext.getResources().getStringArray(R.array.more_options));
-        for (String item:Lines) {
+        List<String> options = Arrays.asList(mContext.getResources().getStringArray(R.array.more_options));
+        for (String item:options) {
             mOptions.add(new MoreOptionItem(item));
         }
         return mOptions;

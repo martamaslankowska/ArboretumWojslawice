@@ -49,11 +49,11 @@ public class ViewPagerAdapter extends PagerAdapter {
 
         Plant plant = mPlants.get(position).getPlant();
 
-        ImageView imageView = (ImageView) view.findViewById(R.id.plant_page_image);
+        ImageView imageView = view.findViewById(R.id.plant_page_image);
         imageView.setImageResource(plant.getImage());
-        TextView name_textView = (TextView) view.findViewById(R.id.plant_page_name);
+        TextView name_textView = view.findViewById(R.id.plant_page_name);
         name_textView.setText(plant.getName());
-        TextView genus_textView = (TextView) view.findViewById(R.id.plant_page_genus);
+        TextView genus_textView = view.findViewById(R.id.plant_page_genus);
         genus_textView.setText(plant.getGenusName());
 
         ViewPager vp = (ViewPager) container;
@@ -63,8 +63,6 @@ public class ViewPagerAdapter extends PagerAdapter {
         return view;
     }
 
-
-
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
         ViewPager vp = (ViewPager) container;
@@ -72,8 +70,7 @@ public class ViewPagerAdapter extends PagerAdapter {
         vp.removeView(view);
     }
 
-    public interface OnItemClickListener
-    {
-        public void onItemClick(int position);
+    public interface OnItemClickListener {
+        void onItemClick(int position);
     }
 }

@@ -70,5 +70,4 @@ public class LanguageActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
-
 }

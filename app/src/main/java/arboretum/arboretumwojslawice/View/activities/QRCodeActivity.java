@@ -14,7 +14,8 @@ public class QRCodeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_qrcode);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_back);
+        /* toolbar */
+        Toolbar toolbar = findViewById(R.id.toolbar_back);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(R.string.toolbar_qr_code);
 
@@ -22,6 +23,7 @@ public class QRCodeActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
+        /* /toolbar */
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -29,7 +31,6 @@ public class QRCodeActivity extends AppCompatActivity {
         if (item.getItemId() == android.R.id.home) {
             finish(); // close this activity and return to preview activity (if there is any)
         }
-
         return super.onOptionsItemSelected(item);
     }
 }

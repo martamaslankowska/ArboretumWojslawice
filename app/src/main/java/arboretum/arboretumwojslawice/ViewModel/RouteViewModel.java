@@ -1,8 +1,5 @@
 package arboretum.arboretumwojslawice.ViewModel;
 
-import android.util.Log;
-
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -26,5 +23,16 @@ public class RouteViewModel {
     public List<Route> getData() {
         mRoutes = mRouteRepo.getRoutesForMichal();
         return mRoutes;
+    }
+
+    // return one plant founded by id
+    public Route getRouteById(int plant_id) {
+        getData();
+        for(int i = 0; i < mRoutes.size(); i++) {
+            if(mRoutes.get(i).getIdRoute() == plant_id) {
+                return mRoutes.get(i);
+            }
+        }
+        return mRoutes.get(plant_id);
     }
 }

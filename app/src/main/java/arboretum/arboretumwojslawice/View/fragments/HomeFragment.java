@@ -30,7 +30,6 @@ public class HomeFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
@@ -39,7 +38,7 @@ public class HomeFragment extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
 
-        mRecyclerView = (RecyclerView) rootView.findViewById(R.id.news_recycler_view);
+        mRecyclerView = rootView.findViewById(R.id.news_recycler_view);
         newsViewModel = new NewsViewModel();
 
         mRecyclerView.addItemDecoration(new DividerItemDecoration(this.getContext(), 0));
@@ -79,5 +78,4 @@ public class HomeFragment extends Fragment {
         savedInstanceState.putSerializable(KEY_LAYOUT_MANAGER, mCurrentLayoutManagerType);
         super.onSaveInstanceState(savedInstanceState);
     }
-
 }

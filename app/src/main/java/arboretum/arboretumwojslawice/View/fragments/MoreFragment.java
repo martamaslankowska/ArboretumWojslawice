@@ -3,7 +3,6 @@ package arboretum.arboretumwojslawice.View.fragments;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -29,7 +28,6 @@ import arboretum.arboretumwojslawice.ViewModel.MoreViewModel;
 public class MoreFragment extends Fragment {
 
     private static final String KEY_LAYOUT_MANAGER = "fragment_more";
-    private static final int SPAN_COUNT = 2;
 
     private enum LayoutManagerType {
         GRID_LAYOUT_MANAGER,
@@ -57,48 +55,45 @@ public class MoreFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_more, container, false);
 
         mMoreViewModel = new MoreViewModel(getContext());
-        mRecyclerView = (RecyclerView) view.findViewById(R.id.more_recycler_view);
+        mRecyclerView = view.findViewById(R.id.more_recycler_view);
 
-        listener = new MoreAdapter.OnItemClickListener() {
-            public void onItemClick(int position) {
-                Intent intent;
-                switch (position) {
-                    case 0: //spis roślin
-                        intent = new Intent(getActivity().getApplicationContext(), PlantActivity.class);
-                        getActivity().startActivity(intent);
-                        break;
-                    case 1: //kalendarz imprez
-                        intent = new Intent(getActivity().getApplicationContext(), EventActivity.class);
-                        getActivity().startActivity(intent);
-                        break;
-                    case 2: //cennik
-                        intent = new Intent(getActivity().getApplicationContext(), PriceActivity.class);
-                        getActivity().startActivity(intent);
-                        break;
-                    case 3: //kontakt
-                        intent = new Intent(getActivity().getApplicationContext(), ContactActivity.class);
-                        getActivity().startActivity(intent);
-                        break;
-                    case 4: //regulamin
-                        intent = new Intent(getActivity().getApplicationContext(), RulesActivity.class);
-                        getActivity().startActivity(intent);
-                        break;
-                    case 5: //okoliczne
-                        intent = new Intent(getActivity().getApplicationContext(), NeighbourhoodActivity.class);
-                        getActivity().startActivity(intent);
-                        break;
-                    case 6: //godziny otwarcia
-                        intent = new Intent(getActivity().getApplicationContext(), OpeningHoursActivity.class);
-                        getActivity().startActivity(intent);
-                        break;
-                    case 7: //ustawienia
-                        intent = new Intent(getActivity().getApplicationContext(), SettingsActivity.class);
-                        getActivity().startActivity(intent);
-                        break;
-                    default:
-                        Toast.makeText(getContext(), "Pozycja nr " + (position+1), Toast.LENGTH_SHORT).show();
-                }
-
+        listener = position -> {
+            Intent intent;
+            switch (position) {
+                case 0: //spis roślin
+                    intent = new Intent(getActivity().getApplicationContext(), PlantActivity.class);
+                    getActivity().startActivity(intent);
+                    break;
+                case 1: //kalendarz imprez
+                    intent = new Intent(getActivity().getApplicationContext(), EventActivity.class);
+                    getActivity().startActivity(intent);
+                    break;
+                case 2: //cennik
+                    intent = new Intent(getActivity().getApplicationContext(), PriceActivity.class);
+                    getActivity().startActivity(intent);
+                    break;
+                case 3: //kontakt
+                    intent = new Intent(getActivity().getApplicationContext(), ContactActivity.class);
+                    getActivity().startActivity(intent);
+                    break;
+                case 4: //regulamin
+                    intent = new Intent(getActivity().getApplicationContext(), RulesActivity.class);
+                    getActivity().startActivity(intent);
+                    break;
+                case 5: //okoliczne
+                    intent = new Intent(getActivity().getApplicationContext(), NeighbourhoodActivity.class);
+                    getActivity().startActivity(intent);
+                    break;
+                case 6: //godziny otwarcia
+                    intent = new Intent(getActivity().getApplicationContext(), OpeningHoursActivity.class);
+                    getActivity().startActivity(intent);
+                    break;
+                case 7: //ustawienia
+                    intent = new Intent(getActivity().getApplicationContext(), SettingsActivity.class);
+                    getActivity().startActivity(intent);
+                    break;
+                default:
+                    Toast.makeText(getContext(), "Pozycja nr " + (position+1), Toast.LENGTH_SHORT).show();
             }
         };
 
@@ -137,6 +132,4 @@ public class MoreFragment extends Fragment {
         savedInstanceState.putSerializable(KEY_LAYOUT_MANAGER, mCurrentLayoutManagerType);
         super.onSaveInstanceState(savedInstanceState);
     }
-
-
 }

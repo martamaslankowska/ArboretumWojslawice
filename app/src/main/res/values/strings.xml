@@ -23,6 +23,7 @@
     <string name="toolbar_neighbourhood">Okliczne miejsca</string>
     <string name="toolbar_opening_hours">Godziny otwarcia</string>
     <string name="toolbar_settings">Ustawienia</string>
+    <string name="toolbar_plant_location_map">Lokalizacja kwiatków</string>
 
     <!-- TabBars -->
     <string name="tab_map">Mapa</string>
@@ -70,6 +71,5 @@
 
     <!-- Toasts -->
     <string name="toast_exit">Naciśnij jeszcze raz przycisk "Powrót", aby zakończyć działanie aplikacji</string>
-    <string name="toolbar_plant_location_map">Lokalizacja kwiatków</string>
 
 </resources>

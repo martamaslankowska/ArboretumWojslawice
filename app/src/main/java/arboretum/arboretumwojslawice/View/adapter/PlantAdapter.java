@@ -20,8 +20,7 @@ public class PlantAdapter extends RecyclerView.Adapter<BindingViewHolder> {
     private List<Plant> mPlants = new ArrayList<>();
     PlantAdapter.OnItemClickListener listener;
 
-    public PlantAdapter(PlantAdapter.OnItemClickListener listener, List<Plant> pList){
-
+    public PlantAdapter(PlantAdapter.OnItemClickListener listener, List<Plant> pList) {
         this.listener =  listener;
         this.mPlants = pList;
     }
@@ -50,10 +49,9 @@ public class PlantAdapter extends RecyclerView.Adapter<BindingViewHolder> {
         return mPlants.size();
     }
 
-    public interface OnItemClickListener
-    {
-        public void onItemClick(int position);
-        public void onHeartClick(int position);
+    public interface OnItemClickListener {
+        void onItemClick(int position);
+        void onHeartClick(int position);
     }
 
 

@@ -55,7 +55,7 @@ public class RouteDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         ActivityRouteDetailBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_route_detail);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_back);
+        Toolbar toolbar = findViewById(R.id.toolbar_back);
         setSupportActionBar(toolbar);
 
         if (getSupportActionBar() != null) {
@@ -65,7 +65,7 @@ public class RouteDetailActivity extends AppCompatActivity {
         getSupportActionBar().setTitle(R.string.toolbar_route_detail);
         routeDetailViewModel = new RouteDetailViewModel();
 
-        TextView textView = (TextView) findViewById(R.id.route_detail_description);
+        TextView textView = findViewById(R.id.route_detail_description);
         textView.setMovementMethod(new ScrollingMovementMethod());
 
         Intent intent = getIntent();
@@ -154,7 +154,10 @@ public class RouteDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), NavigationActivity.class);
-                startActivity(intent);
+                Bundle navigation_bundle = new Bundle();
+                navigation_bundle.putInt(ROUTE_ID, route_id);
+                intent.putExtra(BUNDLE, navigation_bundle);
+                startActivityForResult(intent, 123);
             }
         });
 

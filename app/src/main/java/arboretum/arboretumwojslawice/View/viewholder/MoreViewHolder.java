@@ -14,7 +14,6 @@ public class MoreViewHolder extends BindingViewHolder<MoreOptionItem, MoreRowBin
     public MoreViewHolder(MoreRowBinding binding, final MoreAdapter.OnItemClickListener listener) {
         super(binding);
         itemView.setOnClickListener(__ -> listener.onItemClick(getAdapterPosition()));
-
     }
 
     @Override

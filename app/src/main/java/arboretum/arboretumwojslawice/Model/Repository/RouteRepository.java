@@ -81,11 +81,11 @@ public class RouteRepository extends BaseRepository {
         List <PointOnRoute> rotesPoints = new ArrayList<>();
         PointOnRoute point = new PointOnRoute(0, mPlantRepo.getPlantsForMichal().get(0), 50.711856, 16.858557);
         rotesPoints.add(point);
-        point = new PointOnRoute(1, mPlantRepo.getPlantsForMichal().get(2), 50.711856, 16.858557);
+        point = new PointOnRoute(1, mPlantRepo.getPlantsForMichal().get(2), 50.711844, 16.858560);
         rotesPoints.add(point);
-        point = new PointOnRoute(2, mPlantRepo.getPlantsForMichal().get(3), 50.711856, 16.858557);
+        point = new PointOnRoute(2, mPlantRepo.getPlantsForMichal().get(3), 50.711865, 16.858543);
         rotesPoints.add(point);
-        point = new PointOnRoute(3, mPlantRepo.getPlantsForMichal().get(6), 50.711856, 16.858557);
+        point = new PointOnRoute(3, mPlantRepo.getPlantsForMichal().get(6), 50.711866, 16.858553);
         rotesPoints.add(point);
 
         return rotesPoints;

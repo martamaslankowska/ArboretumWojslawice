@@ -1,8 +1,5 @@
 package arboretum.arboretumwojslawice.View.activities;
 
-import android.arch.persistence.room.Database;
-import android.arch.persistence.room.Room;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -10,25 +7,18 @@ import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.util.Log;
-import android.widget.Toast;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.Locale;
 
 import arboretum.arboretumwojslawice.Model.AppDatabase;
-import arboretum.arboretumwojslawice.Model.DAO.AttractionDao;
 import arboretum.arboretumwojslawice.Model.DatabaseConnection;
 import arboretum.arboretumwojslawice.Model.DatabaseHelper;
-import arboretum.arboretumwojslawice.Model.Entity.PriceEntity;
-import arboretum.arboretumwojslawice.Model.Entity.PriceTranslationEntity;
-import arboretum.arboretumwojslawice.Model.businessentity.Price;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -86,8 +76,6 @@ public class SplashActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         }
-
-
     }
 
     public void setLanguage(String languageCode) {
@@ -98,7 +86,6 @@ public class SplashActivity extends AppCompatActivity {
         conf.locale = myLocale;
         res.updateConfiguration(conf, dm);
     }
-
 
     public boolean tableExists(String databaseName) {
         Cursor c = null;
@@ -117,7 +104,6 @@ public class SplashActivity extends AppCompatActivity {
 
         return tableExists;
     }
-
 }
 
 
