@@ -36,7 +36,8 @@
         <activity android:name=".View.activities.OpeningHoursActivity" />
         <activity android:name=".View.activities.SettingsActivity" />
         <activity android:name=".View.activities.NeighbourhoodActivity" />
-        <activity android:name=".View.activities.EventDetailActivity"></activity>
+        <activity android:name=".View.activities.EventDetailActivity" />
+        <activity android:name=".View.activities.PlantLocationMapActivity"></activity>
     </application>
 
 </manifest>

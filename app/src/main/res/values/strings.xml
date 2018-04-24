@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Arboretum w Wojsławicach</string>
+    <string name="app_name">Arboretum Wojsławice</string>
     <string name="title_home">Aktualności</string>
     <string name="title_map_and_route">Mapy / Trasy</string>
     <string name="title_favoutites">Ulubione</string>
@@ -70,5 +70,6 @@
 
     <!-- Toasts -->
     <string name="toast_exit">Naciśnij jeszcze raz przycisk "Powrót", aby zakończyć działanie aplikacji</string>
+    <string name="toolbar_plant_location_map">Lokalizacja kwiatków</string>
 
 </resources>
