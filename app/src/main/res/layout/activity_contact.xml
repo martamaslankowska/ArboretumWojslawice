@@ -72,7 +72,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/nonrec_margin_horizontal"
-            android:layout_marginTop="@dimen/nonrec_margin_vertical_half"
             android:text="@string/contact_opening_hours"
             android:textSize="@dimen/nonrec_font_size"
             app:layout_constraintEnd_toEndOf="parent"
@@ -88,6 +87,132 @@
             android:layout_marginTop="@dimen/nonrec_margin_vertical"
             android:background="@android:color/darker_gray"
             app:layout_constraintTop_toBottomOf="@+id/openingHours" />
+
+
+
+
+        <ImageView
+            android:id="@+id/ticketImage"
+            android:layout_width="@dimen/contact_icon_size"
+            android:layout_height="@dimen/contact_icon_size"
+            android:layout_marginStart="@dimen/nonrec_margin_horizontal"
+            android:layout_marginTop="@dimen/nonrec_margin_vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/line2"
+            app:srcCompat="@drawable/contact_icon04" />
+
+        <TextView
+            android:id="@+id/ticketText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/nonrec_margin_horizontal"
+            android:layout_marginStart="@dimen/nonrec_margin_horizontal"
+            android:layout_marginTop="@dimen/nonrec_margin_vertical"
+            android:text="@string/contact_opening_ticket_text"
+            android:textAlignment="gravity"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/nonrec_font_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/ticketImage"
+            app:layout_constraintTop_toBottomOf="@+id/line2" />
+
+        <TextView
+            android:id="@+id/ticketHours"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/nonrec_margin_horizontal"
+            android:text="@string/contact_opening_ticket_hours"
+            android:textSize="@dimen/nonrec_font_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/ticketText"
+            app:layout_constraintTop_toBottomOf="@+id/ticketText" />
+
+
+        <View
+            android:id="@+id/line3"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/nonrec_margin_vertical"
+            android:background="@android:color/darker_gray"
+            app:layout_constraintTop_toBottomOf="@+id/ticketHours" />
+
+
+        <ImageView
+            android:id="@+id/info1Image"
+            android:layout_width="@dimen/contact_icon_size"
+            android:layout_height="@dimen/contact_icon_size"
+            android:layout_marginStart="@dimen/nonrec_margin_horizontal"
+            android:layout_marginTop="@dimen/nonrec_margin_vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/line3"
+            app:srcCompat="@drawable/contact_icon03" />
+
+        <TextView
+            android:id="@+id/info1Text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/nonrec_margin_horizontal"
+            android:layout_marginStart="@dimen/nonrec_margin_horizontal"
+            android:layout_marginTop="@dimen/nonrec_margin_vertical"
+            android:text="@string/contact_info1"
+            android:textAlignment="gravity"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/nonrec_font_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/ticketImage"
+            app:layout_constraintTop_toBottomOf="@+id/line3" />
+
+        <TextView
+            android:id="@+id/subinfo1Text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/nonrec_margin_horizontal"
+            android:text="@string/contact_subinfo1"
+            android:textAlignment="viewStart"
+            android:textSize="@dimen/nonrec_font_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/info1Text"
+            app:layout_constraintTop_toBottomOf="@+id/info1Text" />
+
+
+
+        <View
+            android:id="@+id/line4"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/nonrec_margin_vertical"
+            android:background="@android:color/darker_gray"
+            app:layout_constraintTop_toBottomOf="@+id/subinfo1Text" />
+
+        <ImageView
+            android:id="@+id/info2Image"
+            android:layout_width="@dimen/contact_icon_size"
+            android:layout_height="@dimen/contact_icon_size"
+            android:layout_marginStart="@dimen/nonrec_margin_horizontal"
+            android:layout_marginTop="@dimen/nonrec_margin_vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/line4"
+            app:srcCompat="@drawable/contact_icon02" />
+
+        <TextView
+            android:id="@+id/info2Text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/nonrec_margin_horizontal"
+            android:layout_marginStart="@dimen/nonrec_margin_horizontal"
+            android:layout_marginTop="@dimen/nonrec_margin_vertical"
+            android:text="@string/contact_info2"
+            android:textAlignment="gravity"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/nonrec_font_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/ticketImage"
+            app:layout_constraintTop_toBottomOf="@+id/line4" />
 
 
     </android.support.constraint.ConstraintLayout>

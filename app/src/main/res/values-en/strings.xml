@@ -18,7 +18,7 @@
     <string name="price_title">Prices (tickets)</string>
 
     <!-- KONTAKT (+ dojazd do Arboretum)-->
-    <string name="contact_main_text">Arboretum is open from 15/04/2018\ntill 21/10/2018 (including holidays)</string>
+    <string name="contact_main_text">Arboretum is open from 15/04/2018\nuntil 21/10/2018 (including holidays)</string>
     <string name="contact_opening_text">Arboretum opening hours</string>
     <string name="contact_opening_hours">mon-sun 9:00-20:00</string>
     <string name="contact_opening_ticket_text">Ticket office opening hours</string>
@@ -31,8 +31,3 @@
 
 </resources>
 
-<!--Tutaj Michał-->
-<!--Gdzie kawa tam zabawa :D-->
-<!--Pozdrawiam-->
-
-<!--Całkiem to zabawne :p-->
