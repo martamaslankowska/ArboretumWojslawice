@@ -4,11 +4,10 @@
     <string name="title_home">News</string>
     <string name="title_map_and_route">Map / Route</string>
     <string name="title_favoutites">Favourites</string>
-    <string name="title_more">More...</string>
+    <string name="title_more">More</string>
 
     <string name="tab_map">Map</string>
     <string name="tab_route">Routes</string>
-    <string name="action_settings">Settings</string>
 
     <!-- Marta - example strings to use with data binding -->
     <string name="route_length">Route length - %s</string>
@@ -17,22 +16,19 @@
     <!-- Marta - example strings to use in PriceActivity (activity_price.xml) -->
     <string name="price_title">Prices (tickets)</string>
 
-    <!-- KONTAKT (+ dojazd do Arboretum)-->
-    <string name="contact_main_text">Arboretum is open from 15/04/2018\ntill 21/10/2018 (including holidays)</string>
-    <string name="contact_opening_text">Arboretum opening hours</string>
-    <string name="contact_opening_hours">mon-sun 9:00-20:00</string>
-    <string name="contact_opening_ticket_text">Ticket office opening hours</string>
-    <string name="contact_opening_ticket_hours">mon-sun 9:00-18:00</string>
-    <string name="contact_info1">Tickets can be bought also in TVMs</string>
-    <string name="contact_subinfo1">Ticket office 1 and 2 have payment terminals</string>
-    <string name="contact_info2">Ticket is valid once validating</string>
+    <!-- GODZINY OTWARCIA -->
+    <string name="open_hours_main_text">Arboretum is open from 15/04/2018\nuntil 21/10/2018 (including holidays)</string>
+    <string name="open_hours_opening_text">Arboretum opening hours</string>
+    <string name="open_hours_opening_hours">mon-sun 9:00-20:00</string>
+    <string name="open_hours_opening_ticket_text">Ticket office opening hours</string>
+    <string name="open_hours_opening_ticket_hours">mon-sun 9:00-18:00</string>
+    <string name="open_hours_info1">Tickets can be bought also in TVMs</string>
+    <string name="open_hours_subinfo1">Ticket office 1 and 2 have payment terminals</string>
+    <string name="open_hours_info2">Ticket is valid once validating</string>
 
+    <!-- KONTAKT -->
+    <string name="contact_main_text">Arboretum - contact</string>
 
 
 </resources>
 
-<!--Tutaj Michał-->
-<!--Gdzie kawa tam zabawa :D-->
-<!--Pozdrawiam-->
-
-<!--Całkiem to zabawne :p-->

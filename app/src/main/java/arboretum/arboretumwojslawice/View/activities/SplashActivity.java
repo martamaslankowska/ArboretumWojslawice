@@ -1,5 +1,8 @@
 package arboretum.arboretumwojslawice.View.activities;
 
+import android.arch.persistence.room.Database;
+import android.arch.persistence.room.Room;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -7,18 +10,23 @@ import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.widget.Toast;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Locale;
 
 import arboretum.arboretumwojslawice.Model.AppDatabase;
+import arboretum.arboretumwojslawice.Model.DAO.AttractionDao;
 import arboretum.arboretumwojslawice.Model.DatabaseConnection;
 import arboretum.arboretumwojslawice.Model.DatabaseHelper;
+import arboretum.arboretumwojslawice.Model.DziadekDatabaseHelper;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -52,11 +60,20 @@ public class SplashActivity extends AppCompatActivity {
         /* FINISHED COPING DATABASE */
 
 
+        /* TESTING DZIADEK SOLUTION FOR DATABASE COPY */
+        DziadekDatabaseHelper dziadekDbHelper = new DziadekDatabaseHelper();
+        try {
 
-        /* USING ROOM DATABASE */
+            dziadekDbHelper.execute(this);
+
+        } catch (Exception e) {
+            Log.e("DB - Splash screen", e.getMessage());
+        }
+
+
+
+//        /* USING ROOM DATABASE */
         AppDatabase database = AppDatabase.getAppDatabase(getApplicationContext());
-        DatabaseConnection dbConnect = new DatabaseConnection(getApplicationContext(), database);
-        dbConnect.execute();
 
 
         /* Deciding weather show language screen or not */
@@ -65,6 +82,16 @@ public class SplashActivity extends AppCompatActivity {
         String language = mPrefs.getString(INFO, null);
 
         if (language == null) {
+//            /* DATA INTO DATABASE INSERT */
+//            DatabaseConnection dbConnect = new DatabaseConnection(getApplicationContext(), database);
+//            dbConnect.execute();
+
+//            AppDatabase database = AppDatabase.getAppDatabase(this);
+            if (database == null)
+                Toast.makeText(this, "NUUUUL....", Toast.LENGTH_SHORT).show();
+            else
+                Toast.makeText(this, "There is an instance :)\n" + database.toString(), Toast.LENGTH_LONG).show();
+
             Intent intent = new Intent(this, LanguageActivity.class);
             startActivity(intent);
             finish();

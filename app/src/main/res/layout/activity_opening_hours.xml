@@ -6,8 +6,220 @@
     android:layout_height="match_parent"
     tools:context="arboretum.arboretumwojslawice.View.activities.OpeningHoursActivity">
 
-    <include
-        android:id="@+id/toolbar_back"
-        layout="@layout/toolbar_empty" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/nonrec_margin_vertical"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <include
+                android:id="@+id/toolbar_back"
+                layout="@layout/toolbar_empty" />
+
+            <TextView
+                android:id="@+id/open_hoursMainText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/nonrec_margin_horizontal"
+                android:layout_marginStart="@dimen/nonrec_margin_horizontal"
+                android:layout_marginTop="@dimen/nonrec_margin_vertical"
+                android:lineSpacingExtra="@dimen/nonrec_line_spacing"
+                android:text="@string/open_hours_main_text"
+                android:textAlignment="center"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/nonrec_font_size"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/toolbar_back" />
+
+
+            <View
+                android:id="@+id/line1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/nonrec_margin_vertical"
+                android:background="@android:color/darker_gray"
+                app:layout_constraintTop_toBottomOf="@+id/open_hoursMainText" />
+
+            <ImageView
+                android:id="@+id/openingImage"
+                android:layout_width="@dimen/open_hours_icon_size"
+                android:layout_height="@dimen/open_hours_icon_size"
+                android:layout_marginStart="@dimen/nonrec_margin_horizontal"
+                android:layout_marginTop="@dimen/nonrec_margin_vertical"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/line1"
+                app:srcCompat="@drawable/open_hours_icon01" />
+
+            <TextView
+                android:id="@+id/openingText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/nonrec_margin_horizontal"
+                android:layout_marginStart="@dimen/nonrec_margin_horizontal"
+                android:layout_marginTop="@dimen/nonrec_margin_vertical"
+                android:text="@string/open_hours_opening_text"
+                android:textAlignment="gravity"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/nonrec_font_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/openingImage"
+                app:layout_constraintTop_toBottomOf="@+id/line1" />
+
+            <TextView
+                android:id="@+id/openingHours"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/nonrec_margin_horizontal"
+                android:text="@string/open_hours_opening_hours"
+                android:textSize="@dimen/nonrec_font_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/openingText"
+                app:layout_constraintTop_toBottomOf="@+id/openingText" />
+
+
+            <View
+                android:id="@+id/line2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/nonrec_margin_vertical"
+                android:background="@android:color/darker_gray"
+                app:layout_constraintTop_toBottomOf="@+id/openingHours" />
+
+
+            <ImageView
+                android:id="@+id/ticketImage"
+                android:layout_width="@dimen/open_hours_icon_size"
+                android:layout_height="@dimen/open_hours_icon_size"
+                android:layout_marginStart="@dimen/nonrec_margin_horizontal"
+                android:layout_marginTop="@dimen/nonrec_margin_vertical"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/line2"
+                app:srcCompat="@drawable/open_hours_icon04" />
+
+            <TextView
+                android:id="@+id/ticketText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/nonrec_margin_horizontal"
+                android:layout_marginStart="@dimen/nonrec_margin_horizontal"
+                android:layout_marginTop="@dimen/nonrec_margin_vertical"
+                android:text="@string/open_hours_opening_ticket_text"
+                android:textAlignment="gravity"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/nonrec_font_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/ticketImage"
+                app:layout_constraintTop_toBottomOf="@+id/line2" />
+
+            <TextView
+                android:id="@+id/ticketHours"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/nonrec_margin_horizontal"
+                android:text="@string/open_hours_opening_ticket_hours"
+                android:textSize="@dimen/nonrec_font_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/ticketText"
+                app:layout_constraintTop_toBottomOf="@+id/ticketText" />
+
+
+            <View
+                android:id="@+id/line3"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/nonrec_margin_vertical"
+                android:background="@android:color/darker_gray"
+                app:layout_constraintTop_toBottomOf="@+id/ticketHours" />
+
+
+            <ImageView
+                android:id="@+id/info1Image"
+                android:layout_width="@dimen/open_hours_icon_size"
+                android:layout_height="@dimen/open_hours_icon_size"
+                android:layout_marginStart="@dimen/nonrec_margin_horizontal"
+                android:layout_marginTop="@dimen/nonrec_margin_vertical"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/line3"
+                app:srcCompat="@drawable/open_hours_icon03" />
+
+            <TextView
+                android:id="@+id/info1Text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/nonrec_margin_horizontal"
+                android:layout_marginStart="@dimen/nonrec_margin_horizontal"
+                android:layout_marginTop="@dimen/nonrec_margin_vertical"
+                android:text="@string/open_hours_info1"
+                android:textAlignment="gravity"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/nonrec_font_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/ticketImage"
+                app:layout_constraintTop_toBottomOf="@+id/line3" />
+
+            <TextView
+                android:id="@+id/subinfo1Text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/nonrec_margin_horizontal"
+                android:text="@string/open_hours_subinfo1"
+                android:textAlignment="viewStart"
+                android:textSize="@dimen/nonrec_font_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/info1Text"
+                app:layout_constraintTop_toBottomOf="@+id/info1Text" />
+
+
+            <View
+                android:id="@+id/line4"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/nonrec_margin_vertical"
+                android:background="@android:color/darker_gray"
+                app:layout_constraintTop_toBottomOf="@+id/subinfo1Text" />
+
+            <ImageView
+                android:id="@+id/info2Image"
+                android:layout_width="@dimen/open_hours_icon_size"
+                android:layout_height="@dimen/open_hours_icon_size"
+                android:layout_marginStart="@dimen/nonrec_margin_horizontal"
+                android:layout_marginTop="@dimen/nonrec_margin_vertical"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/line4"
+                app:srcCompat="@drawable/open_hours_icon02" />
+
+            <TextView
+                android:id="@+id/info2Text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/nonrec_margin_horizontal"
+                android:layout_marginStart="@dimen/nonrec_margin_horizontal"
+                android:layout_marginTop="@dimen/nonrec_margin_vertical"
+                android:text="@string/open_hours_info2"
+                android:textAlignment="gravity"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/nonrec_font_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/ticketImage"
+                app:layout_constraintTop_toBottomOf="@+id/line4" />
+
+
+        </android.support.constraint.ConstraintLayout>
+
+    </ScrollView>
 
 </android.support.constraint.ConstraintLayout>

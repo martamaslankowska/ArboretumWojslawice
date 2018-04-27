@@ -59,15 +59,18 @@
     <!-- Marta - example strings to use in PriceActivity (activity_price.xml) -->
     <string name="price_title">Cennik (biletów)</string>
 
-    <!-- KONTAKT (+ dojazd do Arboretum)-->
-    <string name="contact_main_text">Arboretum czynne od 15/04/2018\ndo 21/10/2018 (także w święta)</string>
-    <string name="contact_opening_text">Godziny otwarcia Arboretum</string>
-    <string name="contact_opening_hours">pon-niedz 9:00-20:00</string>
-    <string name="contact_opening_ticket_text">Godziny otwarcia kas</string>
-    <string name="contact_opening_ticket_hours">pon-niedz 9:00-18:00</string>
-    <string name="contact_info1">Bilet można kupić także w biletomacie</string>
-    <string name="contact_subinfo1">Kasy nr 1 i 2 wyposażone są w terminale płatnicze</string>
-    <string name="contact_info2">Bilet jest ważny od momentu skasowania</string>
+    <!-- OPENING HOURS -->
+    <string name="open_hours_main_text">Arboretum czynne od 15/04/2018\ndo 21/10/2018 (także w święta)</string>
+    <string name="open_hours_opening_text">Godziny otwarcia Arboretum</string>
+    <string name="open_hours_opening_hours">pon-niedz 9:00-20:00</string>
+    <string name="open_hours_opening_ticket_text">Godziny otwarcia kas</string>
+    <string name="open_hours_opening_ticket_hours">pon-niedz 9:00-18:00</string>
+    <string name="open_hours_info1">Bilet można kupić także w biletomacie</string>
+    <string name="open_hours_subinfo1">Kasy nr 1 i 2 wyposażone są\nw terminale płatnicze</string>
+    <string name="open_hours_info2">Bilet jest ważny od momentu skasowania</string>
+
+    <!-- CONTACT -->
+    <string name="contact_main_text">Arboretum - kontakt</string>
 
     <!-- Toasts -->
     <string name="toast_exit">Naciśnij jeszcze raz przycisk "Powrót", aby zakończyć działanie aplikacji</string>

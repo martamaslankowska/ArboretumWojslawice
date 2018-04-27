@@ -10,6 +10,7 @@ import java.util.List;
 
 import arboretum.arboretumwojslawice.Model.Entity.AttractionEntity;
 import arboretum.arboretumwojslawice.Model.Entity.AttractionTranslationEntity;
+import arboretum.arboretumwojslawice.Model.Entity.HotelEntity;
 import arboretum.arboretumwojslawice.Model.Entity.PriceEntity;
 import arboretum.arboretumwojslawice.Model.Entity.PriceTranslationEntity;
 import arboretum.arboretumwojslawice.Model.businessentity.Price;
@@ -30,6 +31,7 @@ public class DatabaseConnection extends AsyncTask<Void,Void,Boolean>
     List<PriceEntity> priceEntities = new ArrayList<>();
     List<PriceTranslationEntity> priceTranslationEntities = new ArrayList<>();
     /*...*/
+    List<HotelEntity> hotelEntities = new ArrayList<>();
 
 
     public DatabaseConnection(Context context, AppDatabase db) {
@@ -58,28 +60,31 @@ public class DatabaseConnection extends AsyncTask<Void,Void,Boolean>
         /* Prices */
         priceEntities.add(new PriceEntity(1, 15));
         priceEntities.add(new PriceEntity(2, 10));
-        priceEntities.add(new PriceEntity(3, 10));
-        priceEntities.add(new PriceEntity(4, 10));
-        priceEntities.add(new PriceEntity(5, 10));
+//        priceEntities.add(new PriceEntity(3, 10));
+//        priceEntities.add(new PriceEntity(4, 10));
+//        priceEntities.add(new PriceEntity(5, 10));
         priceEntities.add(new PriceEntity(10, 60));
         priceEntities.add(new PriceEntity(11, 40));
         priceTranslationEntities.add(new PriceTranslationEntity(POLISH, 1, "normalny", null));
-        priceTranslationEntities.add(new PriceTranslationEntity(POLISH, 2, "ulgowy", "za okazaniem stosownych dokumentów"));
-        priceTranslationEntities.add(new PriceTranslationEntity(POLISH, 3, "ulgowy", "uczniowie (z wyłączeniem szkół dla dorosłych)"));
-        priceTranslationEntities.add(new PriceTranslationEntity(POLISH, 4, "ulgowy", "studenci"));
-        priceTranslationEntities.add(new PriceTranslationEntity(POLISH, 5, "ulgowy", "osoby niepełnosprawne"));
+        priceTranslationEntities.add(new PriceTranslationEntity(POLISH, 2, "ulgowy", "za okazaniem stosownych dokumentów\n- uczniowie (z wyłączeniem szkół dla dorosłych)\n- studenci\n- osoby niepełnosprawne"));
+//        priceTranslationEntities.add(new PriceTranslationEntity(POLISH, 3, "ulgowy", "uczniowie (z wyłączeniem szkół dla dorosłych)"));
+//        priceTranslationEntities.add(new PriceTranslationEntity(POLISH, 4, "ulgowy", "studenci"));
+//        priceTranslationEntities.add(new PriceTranslationEntity(POLISH, 5, "ulgowy", "osoby niepełnosprawne"));
         priceTranslationEntities.add(new PriceTranslationEntity(POLISH, 10, "wielokrotny normalny", "5 wejść w cenie 4; 1 dzień = 1 wejście\n"));
         priceTranslationEntities.add(new PriceTranslationEntity(POLISH, 11,"wielokrotny ulgowy", "5 wejść w cenie 4; 1 dzień = 1 wejście\n"));
         priceTranslationEntities.add(new PriceTranslationEntity(ENGLISH, 1, "standard", null));
-        priceTranslationEntities.add(new PriceTranslationEntity(ENGLISH, 2, "reduced", "after showing revelant documents"));
-        priceTranslationEntities.add(new PriceTranslationEntity(ENGLISH, 3, "reduced", "school students"));
-        priceTranslationEntities.add(new PriceTranslationEntity(ENGLISH, 4, "reduced", "students"));
-        priceTranslationEntities.add(new PriceTranslationEntity(ENGLISH, 5, "reduced", "disabled people"));
+        priceTranslationEntities.add(new PriceTranslationEntity(ENGLISH, 2, "reduced", "after showing revelant documents\n- school students\n- students\n- disabled people"));
+//        priceTranslationEntities.add(new PriceTranslationEntity(ENGLISH, 3, "reduced", "school students"));
+//        priceTranslationEntities.add(new PriceTranslationEntity(ENGLISH, 4, "reduced", "students"));
+//        priceTranslationEntities.add(new PriceTranslationEntity(ENGLISH, 5, "reduced", "disabled people"));
         priceTranslationEntities.add(new PriceTranslationEntity(ENGLISH, 10, "reusable standard", "5 for the price of 4; 1 day = 1 enter"));
         priceTranslationEntities.add(new PriceTranslationEntity(ENGLISH, 11, "reusable reduced", "5 for the price of 4; 1 day = 1 enter"));
 
 
         /*...*/
+
+        hotelEntities.add(new HotelEntity(1, "Hotel z bazy danych - oł jeee", "", 0, "", 0.0, 5.0, 0));
+
     }
 
     protected Boolean doInBackground(Void... urls) {
@@ -96,6 +101,10 @@ public class DatabaseConnection extends AsyncTask<Void,Void,Boolean>
                 /* INSERT ALL - first insert to entity, then to translation */
                 database.getPriceDao().insert(priceEntities);
                 database.getPriceTranslationDao().insert(priceTranslationEntities);
+                database.getAttractionDao().insert(attractionEntities);
+                database.getAttractionTranslationDao().insert(attractionTranslationEntities);
+                database.getHotelDao().insert(hotelEntities);
+
             }
         });
 
