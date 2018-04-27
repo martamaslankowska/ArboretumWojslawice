@@ -1,5 +1,8 @@
 package arboretum.arboretumwojslawice.View.activities;
 
+import android.content.Context;
+import android.content.res.Configuration;
+import android.content.res.Configuration;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -7,6 +10,11 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import javax.inject.Inject;
+
+import arboretum.arboretumwojslawice.Commons.LanguageManager;
+import arboretum.arboretumwojslawice.Commons.components.PriceComponent;
+import arboretum.arboretumwojslawice.Model.Repository.PriceRepository;
 import arboretum.arboretumwojslawice.R;
 import arboretum.arboretumwojslawice.ViewModel.PriceViewModel;
 import io.reactivex.Maybe;
@@ -95,6 +103,18 @@ public class PriceActivity extends AppCompatActivity {
 
         compositeDisposable.add(gettingPriceList2);
     }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        LanguageManager.setLocale(this);
+    }
+
+//    @Override
+//    protected void attachBaseContext(Context base) {
+//        super.attachBaseContext(LanguageManager.setLocale(base));
+//    }
+
 
     public boolean onOptionsItemSelected(MenuItem item) {
         // handle arrow click here

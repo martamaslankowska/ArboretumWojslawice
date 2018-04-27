@@ -8,7 +8,6 @@
 
     <string name="tab_map">Map</string>
     <string name="tab_route">Routes</string>
-    <string name="action_settings">Settings</string>
 
     <!-- Marta - example strings to use with data binding -->
     <string name="route_length">Route length - %s</string>
