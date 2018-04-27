@@ -18,7 +18,7 @@
         <ImageView
             android:id="@+id/news_image"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="155dp"
             android:src="@{news.getImage()}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -29,7 +29,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="6dp"
-            android:padding="2dp"
+            android:padding="4dp"
             android:text="@{news.getName()}"
             android:textColor="@color/white"
             android:textSize="24dp"
@@ -37,7 +37,8 @@
             app:layout_constraintBottom_toBottomOf="@+id/news_image"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            android:background="#7f000000"/>
 
         <TextView
             android:id="@+id/news_description"
@@ -45,6 +46,8 @@
             android:layout_height="wrap_content"
             android:text="@{news.getDescription()}"
             android:textSize="14dp"
+            android:paddingRight="@dimen/news_list_margin"
+            android:paddingLeft="@dimen/news_list_margin"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -16,7 +16,7 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/route_map_height"
+                android:layout_height="@dimen/route_list_map_height"
                 android:src="@drawable/full_map"
                 android:id="@+id/route_map"/>
 
@@ -27,6 +27,6 @@
                 android:scrollbars="vertical"
                 android:layout_marginBottom="8dp"
                 android:layout_alignParentStart="true"
-                android:layout_marginTop="@dimen/route_list_margin_top" />
+                android:layout_marginTop="@dimen/route_list_recycler_margin_top" />
         </FrameLayout>
 </layout>

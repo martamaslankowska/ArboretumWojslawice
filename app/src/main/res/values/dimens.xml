@@ -1,17 +1,31 @@
 <resources>
     <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
     <dimen name="appbar_padding_top">4dp</dimen>
     <dimen name="route_map_height">190dp</dimen>
     <dimen name="route_list_margin_top">198dp</dimen>
-    <dimen name="route_detail_map_height">175dp</dimen>
-    <dimen name="plant_page_image_width">100dp</dimen>
     <dimen name="plant_page_image_height">100dp</dimen>
-    <dimen name="plant_detail_image_height">150dp</dimen>
 
+    <!-- News list -->
     <dimen name="news_list_margin">12dp</dimen>
+
+    <!-- Route list -->
     <dimen name="route_list_row_padding_left_right">12dp</dimen>
     <dimen name="route_list_row_padding_top_bottom">4dp</dimen>
+    <dimen name="route_list_recycler_margin_top">198dp</dimen>
+    <dimen name="route_list_map_height">190dp</dimen>
+
+    <!-- Route detail -->
     <dimen name="route_detail_margin_left_right">12dp</dimen>
+    <dimen name="route_detail_map_height">175dp</dimen>
+
+    <!-- Plant page (slider in route detail) -->
+    <dimen name="plant_page_image_width">100dp</dimen>
+
+    <!-- Plant detail-->
+    <dimen name="plant_detail_image_height">150dp</dimen>
 
     <!-- Dimens of layouts without RecyclerView (not details) = non RecyclerView ~ nonrec -->
     <!-- Like: Contact, Prices etc. -->
