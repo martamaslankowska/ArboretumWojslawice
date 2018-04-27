@@ -48,6 +48,8 @@
     <string name="title_activity_main2">Main2Activity</string>
     <string name="action_settings">Ustawienia</string>
     <string name="section_format">Hello World from section: %1$d</string>
+    <string name="hello_price_for_services">Usługi</string>
+    <string name="hello_price_for_tickets">Bilety</string>
 
     <!-- Marta - example strings to use with data binding -->
     <string name="route_length">Długość trasy - %s</string>
