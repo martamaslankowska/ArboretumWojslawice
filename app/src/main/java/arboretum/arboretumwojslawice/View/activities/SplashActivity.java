@@ -26,6 +26,7 @@ import arboretum.arboretumwojslawice.Model.AppDatabase;
 import arboretum.arboretumwojslawice.Model.DAO.AttractionDao;
 import arboretum.arboretumwojslawice.Model.DatabaseConnection;
 import arboretum.arboretumwojslawice.Model.DatabaseHelper;
+import arboretum.arboretumwojslawice.Model.DziadekDatabaseHelper;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -58,10 +59,22 @@ public class SplashActivity extends AppCompatActivity {
 
         /* FINISHED COPING DATABASE */
 
+        /* TESTING DZIADEK SOLUTION FOR DATABASE COPY */
+        DziadekDatabaseHelper dziadekDbHelper = new DziadekDatabaseHelper();
+        try {
+
+            dziadekDbHelper.execute(this);
+
+        } catch (Exception e) {
+            Log.e("DB - Splash screen", e.getMessage());
+        }
 
 
-        /* USING ROOM DATABASE */
-        AppDatabase database = AppDatabase.getAppDatabase(getApplicationContext());
+
+
+
+//        /* USING ROOM DATABASE */
+//        AppDatabase database = AppDatabase.getAppDatabase(getApplicationContext());
 
 
         /* Deciding weather show language screen or not */
@@ -70,9 +83,15 @@ public class SplashActivity extends AppCompatActivity {
         String language = mPrefs.getString(INFO, null);
 
         if (language == null) {
-            // DATA INTO DATABASE INSERT
-            DatabaseConnection dbConnect = new DatabaseConnection(getApplicationContext(), database);
-            dbConnect.execute();
+//            /* DATA INTO DATABASE INSERT */
+//            DatabaseConnection dbConnect = new DatabaseConnection(getApplicationContext(), database);
+//            dbConnect.execute();
+
+            AppDatabase database = AppDatabase.getAppDatabase(this);
+            if (database == null)
+                Toast.makeText(this, "NUUUUL....", Toast.LENGTH_SHORT).show();
+            else
+                Toast.makeText(this, "There is an instance :)\n" + database.toString(), Toast.LENGTH_LONG).show();
 
             Intent intent = new Intent(this, LanguageActivity.class);
             startActivity(intent);

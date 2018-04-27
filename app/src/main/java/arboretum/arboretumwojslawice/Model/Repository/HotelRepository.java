@@ -1,10 +1,13 @@
 package arboretum.arboretumwojslawice.Model.Repository;
 
+import android.app.Application;
+
 import java.util.List;
 import java.util.Locale;
 
 import javax.inject.Inject;
 
+import arboretum.arboretumwojslawice.Model.AppDatabase;
 import arboretum.arboretumwojslawice.Model.DAO.HotelDao;
 import arboretum.arboretumwojslawice.Model.businessentity.Hotel;
 import io.reactivex.Maybe;
@@ -21,6 +24,11 @@ public class HotelRepository extends BaseRepository {
 
     @Inject
     public HotelRepository() {}
+
+    /* Constructor without Dagger */
+    public HotelRepository(AppDatabase db) {
+        this.hotelDao = db.getHotelDao();
+    }
 
     public List<Hotel> getAllHotels() {
         return hotelDao.getAll();

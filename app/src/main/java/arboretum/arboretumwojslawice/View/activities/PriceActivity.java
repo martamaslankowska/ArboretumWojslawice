@@ -31,9 +31,9 @@ public class PriceActivity extends AppCompatActivity {
     TextView type2;
     TextView price2;
     TextView description2;
-    TextView description2a;
-    TextView description2b;
-    TextView description2c;
+//    TextView description2a;
+//    TextView description2b;
+//    TextView description2c;
 
     CompositeDisposable compositeDisposable;
     PriceViewModel priceViewModel;
@@ -62,9 +62,9 @@ public class PriceActivity extends AppCompatActivity {
         type2 = findViewById(R.id.type2);
         price2 = findViewById(R.id.price2);
         description2 = findViewById(R.id.description2);
-        description2a = findViewById(R.id.description2a);
-        description2b = findViewById(R.id.description2b);
-        description2c = findViewById(R.id.description2c);
+//        description2a = findViewById(R.id.description2a);
+//        description2b = findViewById(R.id.description2b);
+//        description2c = findViewById(R.id.description2c);
 
 
         compositeDisposable = new CompositeDisposable();
@@ -81,18 +81,21 @@ public class PriceActivity extends AppCompatActivity {
 
 
                     String length = Integer.toString(prices.size());
-//                    Toast.makeText(this, length, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, length, Toast.LENGTH_SHORT).show();
 
-                    type1.setText(prices.get(0).getType());
-//                    description1.setText(prices.get(0).getDescription());
-                    price1.setText(Integer.toString((prices.get(0).getAmount()).intValue()) + " zł");
-                    type2.setText(prices.get(1).getType());
-                    description2.setText(prices.get(1).getDescription());
-                    price2.setText(Integer.toString((prices.get(1).getAmount()).intValue()) + " zł");
+//                    for (int i=0; i<prices.size(); i++)
+//                        Toast.makeText(this, prices.get(i).getType(), Toast.LENGTH_SHORT).show();
 
-                    description2a.setText(prices.get(2).getDescription());
-                    description2b.setText(prices.get(3).getDescription());
-                    description2c.setText(prices.get(4).getDescription());
+//                    type1.setText(prices.get(0).getType());
+////                    description1.setText(prices.get(0).getDescription());
+//                    price1.setText(Integer.toString((prices.get(0).getAmount()).intValue()) + " zł");
+//                    type2.setText(prices.get(1).getType());
+//                    description2.setText(prices.get(1).getDescription());
+//                    price2.setText(Integer.toString((prices.get(1).getAmount()).intValue()) + " zł");
+
+//                    description2a.setText(prices.get(2).getDescription());
+//                    description2b.setText(prices.get(3).getDescription());
+//                    description2c.setText(prices.get(4).getDescription());
 
 //                    Toast.makeText(this, prices.get(2).getDescription(), Toast.LENGTH_SHORT).show();
                 }

@@ -44,6 +44,17 @@ public class HotelEntity {
     private int image;
 
 
+    public HotelEntity(int idHotel, String name, String address, int phone, String website, double distance, double rating, int image) {
+        this.idHotel = idHotel;
+        this.name = name;
+        this.address = address;
+        this.phone = phone;
+        this.website = website;
+        this.distance = distance;
+        this.rating = rating;
+        this.image = image;
+    }
+
     public int getIdHotel() {
         return idHotel;
     }
