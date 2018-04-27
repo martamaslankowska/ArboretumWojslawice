@@ -20,6 +20,8 @@ public class DziadekDatabaseHelper {
             try (FileOutputStream outputStream = new FileOutputStream(databaseFilePath)) {
                 copyTo(inputStream, outputStream);
                 outputStream.flush();
+                inputStream.close();
+                outputStream.close();
             } catch (Exception e) {
 
             }

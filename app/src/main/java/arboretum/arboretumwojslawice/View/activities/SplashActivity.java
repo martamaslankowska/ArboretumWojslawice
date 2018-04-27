@@ -59,6 +59,7 @@ public class SplashActivity extends AppCompatActivity {
 
         /* FINISHED COPING DATABASE */
 
+
         /* TESTING DZIADEK SOLUTION FOR DATABASE COPY */
         DziadekDatabaseHelper dziadekDbHelper = new DziadekDatabaseHelper();
         try {
@@ -71,10 +72,8 @@ public class SplashActivity extends AppCompatActivity {
 
 
 
-
-
 //        /* USING ROOM DATABASE */
-//        AppDatabase database = AppDatabase.getAppDatabase(getApplicationContext());
+        AppDatabase database = AppDatabase.getAppDatabase(getApplicationContext());
 
 
         /* Deciding weather show language screen or not */
@@ -87,7 +86,7 @@ public class SplashActivity extends AppCompatActivity {
 //            DatabaseConnection dbConnect = new DatabaseConnection(getApplicationContext(), database);
 //            dbConnect.execute();
 
-            AppDatabase database = AppDatabase.getAppDatabase(this);
+//            AppDatabase database = AppDatabase.getAppDatabase(this);
             if (database == null)
                 Toast.makeText(this, "NUUUUL....", Toast.LENGTH_SHORT).show();
             else

@@ -47,22 +47,22 @@ public class ContactActivity extends AppCompatActivity {
         compositeDisposable = new CompositeDisposable();
 
         /* GETTING DATA FROM DATABASE - in RXJava (it's not so hard ;)) */
-        Disposable gettingPriceList2 = Maybe.fromCallable(() -> {
+
+        Disposable gettingHotels = Maybe.fromCallable(() -> {
             return hotelRepo.getAllHotels();
         })
                 .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(hotels -> {
-                            /* onSuccess() :) Here we do whatever :)
-                             * For example here we do the DataBinding or RecyclerView stuff */
+                            /* onSuccess() :) */
                             hotel.setText(hotels.get(0).getName());
                         }
                         ,throwable -> {
-                            /* onError() - here we are sad... :( */
+                            /* onError() */
                             Toast.makeText(this, "Jakiś błąąąd... -.- -.-", Toast.LENGTH_LONG).show();
                         });
 
-        compositeDisposable.add(gettingPriceList2);
+        compositeDisposable.add(gettingHotels);
 
     }
 
