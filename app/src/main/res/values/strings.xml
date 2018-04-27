@@ -76,5 +76,6 @@
 
     <!-- Toasts -->
     <string name="toast_exit">Naciśnij jeszcze raz przycisk "Powrót", aby zakończyć działanie aplikacji</string>
+    <string name="chose_language">Wybierz język:</string>
 
 </resources>

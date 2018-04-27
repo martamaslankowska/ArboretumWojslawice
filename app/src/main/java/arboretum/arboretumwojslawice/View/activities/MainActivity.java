@@ -149,4 +149,8 @@ public class MainActivity extends DaggerAppCompatActivity {
         Log.d("Arboretum", String.valueOf(isExit));
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
 }
