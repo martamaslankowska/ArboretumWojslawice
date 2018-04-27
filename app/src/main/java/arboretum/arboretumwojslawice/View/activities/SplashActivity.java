@@ -62,8 +62,6 @@ public class SplashActivity extends AppCompatActivity {
 
         /* USING ROOM DATABASE */
         AppDatabase database = AppDatabase.getAppDatabase(getApplicationContext());
-        DatabaseConnection dbConnect = new DatabaseConnection(getApplicationContext(), database);
-        dbConnect.execute();
 
 
         /* Deciding weather show language screen or not */
@@ -72,6 +70,10 @@ public class SplashActivity extends AppCompatActivity {
         String language = mPrefs.getString(INFO, null);
 
         if (language == null) {
+            // DATA INTO DATABASE INSERT
+            DatabaseConnection dbConnect = new DatabaseConnection(getApplicationContext(), database);
+            dbConnect.execute();
+
             Intent intent = new Intent(this, LanguageActivity.class);
             startActivity(intent);
             finish();

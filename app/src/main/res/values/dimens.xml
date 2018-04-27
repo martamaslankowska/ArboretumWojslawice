@@ -19,7 +19,7 @@
     <dimen name="nonrec_margin_horizontal">16dp</dimen>
     <dimen name="nonrec_font_size">18sp</dimen>
     <dimen name="nonrec_line_spacing">4dp</dimen>
-    <dimen name="contact_icon_size">30dp</dimen>
+    <dimen name="open_hours_icon_size">30dp</dimen>
 
 
 </resources>
