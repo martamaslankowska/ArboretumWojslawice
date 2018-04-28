@@ -16,7 +16,7 @@ public class DziadekDatabaseHelper {
     public void execute(Context context) {
         String databaseFilePath = context.getApplicationInfo().dataDir + "/databases/" + DB_NAME;
 
-        try (InputStream inputStream = context.getResources().openRawResource(R.raw.arboretum_db_from_phone)) {
+        try (InputStream inputStream = context.getResources().openRawResource(R.raw.arboretum_db_from_device)) {
             try (FileOutputStream outputStream = new FileOutputStream(databaseFilePath)) {
                 copyTo(inputStream, outputStream);
                 outputStream.flush();

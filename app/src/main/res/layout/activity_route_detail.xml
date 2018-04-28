@@ -30,7 +30,7 @@
                 android:id="@+id/route_detail_map"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/route_detail_map_height"
-                android:src="@{route.getMapImageDetailed()}"
+                android:src="@{route.getMapImageDetailedId(context)}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

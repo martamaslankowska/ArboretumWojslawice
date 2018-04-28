@@ -177,7 +177,7 @@ public class Route implements AdapterItem {
         this.mapImageDetailed = mapImageDetailed;
     }
 
-    public int getMadImageDetailedId(Context c) {
+    public int getMapImageDetailedId(Context c) {
         return c.getResources().getIdentifier("arboretum.arboretumwojslawice:drawable/" + mapImageDetailed, null, null);
     }
 

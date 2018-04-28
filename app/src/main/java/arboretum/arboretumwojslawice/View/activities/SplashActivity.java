@@ -63,9 +63,7 @@ public class SplashActivity extends AppCompatActivity {
         /* TESTING DZIADEK SOLUTION FOR DATABASE COPY */
 //        DziadekDatabaseHelper dziadekDbHelper = new DziadekDatabaseHelper();
 //        try {
-//
 //            dziadekDbHelper.execute(this);
-//
 //        } catch (Exception e) {
 //            Log.e("DB - Splash screen", e.getMessage());
 //        }
