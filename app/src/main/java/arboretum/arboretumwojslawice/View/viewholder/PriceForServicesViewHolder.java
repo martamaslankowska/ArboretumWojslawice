@@ -2,11 +2,11 @@ package arboretum.arboretumwojslawice.View.viewholder;
 
 import arboretum.arboretumwojslawice.Commons.BindingViewHolder;
 import arboretum.arboretumwojslawice.Model.businessentity.Price;
-import arboretum.arboretumwojslawice.databinding.PriceTicketRowBinding;
+import arboretum.arboretumwojslawice.databinding.PriceServiceRowBinding;
 
-public class PriceForTicketsViewHolder extends BindingViewHolder<Price, PriceTicketRowBinding> {
+public class PriceForServicesViewHolder extends BindingViewHolder<Price, PriceServiceRowBinding> {
 
-    public PriceForTicketsViewHolder(PriceTicketRowBinding binding) {
+    public PriceForServicesViewHolder(PriceServiceRowBinding binding) {
         super(binding);
     }
 

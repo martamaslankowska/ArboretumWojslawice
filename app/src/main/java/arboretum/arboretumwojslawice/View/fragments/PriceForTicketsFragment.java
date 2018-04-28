@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +15,6 @@ import arboretum.arboretumwojslawice.Model.businessentity.Price;
 import arboretum.arboretumwojslawice.R;
 import arboretum.arboretumwojslawice.View.adapter.PriceForTicketsAdapter;
 import arboretum.arboretumwojslawice.ViewModel.PriceViewModel;
-import arboretum.arboretumwojslawice.databinding.PriceRowBinding;
 
 public class PriceForTicketsFragment extends Fragment {
 

@@ -18,7 +18,7 @@
         android:layout_marginRight="12dp">
 
         <TextView
-            android:id="@+id/price_name"
+            android:id="@+id/ticket_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
@@ -29,17 +29,17 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/price_description"
+            android:id="@+id/ticket_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
             android:text="@{price.getDescription()}"
             android:textSize="14dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/price_name" />
+            app:layout_constraintTop_toBottomOf="@+id/ticket_name" />
 
         <TextView
-            android:id="@+id/price_amount"
+            android:id="@+id/ticket_amount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
