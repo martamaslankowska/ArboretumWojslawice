@@ -72,6 +72,7 @@ public class ContactActivity extends AppCompatActivity {
                             try {
                                 hotel.setText(hotels.get(0).getName());
                                 Toast.makeText(this, "Uuu, są dane w bazie! O.o", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(this, "I to w dodatku w ilości sztuk " + String.valueOf(hotels.size()), Toast.LENGTH_SHORT).show();
                             } catch (Exception e){
                                 Toast.makeText(this, "Ups, pusta baza :(", Toast.LENGTH_SHORT).show();
                             }

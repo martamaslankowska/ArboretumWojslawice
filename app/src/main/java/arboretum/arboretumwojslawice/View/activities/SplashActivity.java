@@ -24,9 +24,15 @@ import java.util.Locale;
 
 import arboretum.arboretumwojslawice.Model.AppDatabase;
 import arboretum.arboretumwojslawice.Model.DAO.AttractionDao;
+import arboretum.arboretumwojslawice.Model.DAO.HotelDao;
 import arboretum.arboretumwojslawice.Model.DatabaseConnection;
 import arboretum.arboretumwojslawice.Model.DatabaseHelper;
 import arboretum.arboretumwojslawice.Model.DziadekDatabaseHelper;
+import io.reactivex.Completable;
+import io.reactivex.Maybe;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -60,7 +66,14 @@ public class SplashActivity extends AppCompatActivity {
         /* FINISHED COPING DATABASE */
 
 
-        /* TESTING DZIADEK SOLUTION FOR DATABASE COPY */
+
+
+//        /* USING ROOM DATABASE */
+        AppDatabase database = AppDatabase.getAppDatabase(getApplicationContext());
+//        HotelDao hotelDao = database.getHotelDao();
+//
+//
+//        /* TESTING DZIADEK SOLUTION FOR DATABASE COPY */
 //        DziadekDatabaseHelper dziadekDbHelper = new DziadekDatabaseHelper();
 //        try {
 //            dziadekDbHelper.execute(this);
@@ -69,30 +82,41 @@ public class SplashActivity extends AppCompatActivity {
 //        }
 
 
-
-//        /* USING ROOM DATABASE */
-        AppDatabase database = AppDatabase.getAppDatabase(getApplicationContext());
-
-
         /* Deciding weather show language screen or not */
 
         mPrefs = PreferenceManager.getDefaultSharedPreferences(this);
         String language = mPrefs.getString(INFO, null);
 
         if (language == null) {
-//            /* DATA INTO DATABASE INSERT */
+            /* DATA INTO DATABASE INSERT */
 //            DatabaseConnection dbConnect = new DatabaseConnection(getApplicationContext(), database);
 //            dbConnect.execute();
 
-//            AppDatabase database = AppDatabase.getAppDatabase(this);
-            if (database == null)
-                Toast.makeText(this, "NUUUUL....", Toast.LENGTH_SHORT).show();
-            else
-                Toast.makeText(this, "There is an instance :)\n" + database.toString(), Toast.LENGTH_LONG).show();
+            /* RANDOM DATABASE QUERY - needed to initialize database */
+            HotelDao hotelDao = database.getHotelDao();
+            Disposable gettingHotels = Completable.fromCallable(() -> {
+                return hotelDao.getAll();
+            })
+                    .subscribeOn(Schedulers.computation())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(() -> {
+                                /* onSuccess() :) */
+                                try {
+                                    Toast.makeText(this, "Było odwołanie do bazy i fajnie", Toast.LENGTH_SHORT);
+                                } catch (Exception e){
+                                    Toast.makeText(this, "Ups, pusta baza :(", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
+                                }
+                            }
+                            ,throwable -> {
+                                /* onError() */
+                                Toast.makeText(this, "Jakiś błąąąd... -.- -.-", Toast.LENGTH_LONG).show();
+                            });
 
             Intent intent = new Intent(this, LanguageActivity.class);
             startActivity(intent);
             finish();
+
         }
         else {
             setLanguage(language);

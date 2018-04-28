@@ -88,7 +88,7 @@ public class DatabaseConnection extends AsyncTask<Void,Void,Boolean>
     }
 
     protected Boolean doInBackground(Void... urls) {
-//        createData();
+        createData();
 
         database.runInTransaction(new Runnable() {
             @Override

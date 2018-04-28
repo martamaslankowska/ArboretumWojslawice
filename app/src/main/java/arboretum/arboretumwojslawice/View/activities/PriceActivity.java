@@ -38,11 +38,6 @@ public class PriceActivity extends AppCompatActivity {
     private PriceForTicketsFragment mPriceForTicketsFragment;
     private TabLayout tabLayout;
 
-    /* MARTA */
-    CompositeDisposable compositeDisposable;
-    PriceViewModel priceViewModel;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,29 +53,6 @@ public class PriceActivity extends AppCompatActivity {
         }
         getSupportActionBar().setTitle(R.string.toolbar_price);
         /* /toolbar */
-
-
-        /* MARTA */
-        compositeDisposable = new CompositeDisposable();
-        Disposable gettingPriceList2 = Maybe.fromCallable(() -> {
-            return priceViewModel.getAllPrices();
-        })
-                .subscribeOn(Schedulers.computation())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(prices -> {
-                    /* onSuccess() :) Here we do whatever :)
-                    * For example here we do the DataBinding or RecyclerView stuff */
-                    String length = Integer.toString(prices.size());
-                    Toast.makeText(this, length, Toast.LENGTH_SHORT).show();
-                }
-                ,throwable -> {
-                    /* onError() - here we are sad... :( */
-                    Toast.makeText(this, "Jakiś błąąąd... -.- -.-", Toast.LENGTH_LONG).show();
-                });
-
-        compositeDisposable.add(gettingPriceList2);
-
-
 
 
         tabLayout = findViewById(R.id.price_tabs);

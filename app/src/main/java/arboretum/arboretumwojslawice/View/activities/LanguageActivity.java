@@ -8,12 +8,23 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import java.util.List;
 import java.util.Locale;
 
+import arboretum.arboretumwojslawice.Model.AppDatabase;
+import arboretum.arboretumwojslawice.Model.DAO.HotelDao;
+import arboretum.arboretumwojslawice.Model.DziadekDatabaseHelper;
+import arboretum.arboretumwojslawice.Model.businessentity.Hotel;
 import arboretum.arboretumwojslawice.R;
+import io.reactivex.Completable;
+import io.reactivex.Maybe;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 public class LanguageActivity extends AppCompatActivity {
 
@@ -25,6 +36,15 @@ public class LanguageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_language);
+
+
+        /* DZIADEK SOLUTION FOR DATABASE COPY - working <3 */
+        DziadekDatabaseHelper dziadekDbHelper = new DziadekDatabaseHelper();
+        try {
+            dziadekDbHelper.execute(this);
+        } catch (Exception e) {
+            Log.e("DB - Splash screen", e.getMessage());
+        }
 
         mPrefs = PreferenceManager.getDefaultSharedPreferences(this);
     }
