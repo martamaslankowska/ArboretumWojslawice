@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import java.util.List;
 
+import arboretum.arboretumwojslawice.Commons.DividerItemDecoration;
 import arboretum.arboretumwojslawice.Model.MoreOptionItem;
 import arboretum.arboretumwojslawice.R;
 import arboretum.arboretumwojslawice.View.activities.NeighbourhoodActivity;
@@ -100,6 +101,7 @@ public class MoreFragment extends Fragment {
         mOptions = mMoreViewModel.getData();
         mAdapter = new MoreAdapter(listener, mOptions);
         mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView.addItemDecoration(new DividerItemDecoration(this.getContext(), 0));
 
         mLayoutManager = new LinearLayoutManager(getActivity());
         mCurrentLayoutManagerType = MoreFragment.LayoutManagerType.LINEAR_LAYOUT_MANAGER;

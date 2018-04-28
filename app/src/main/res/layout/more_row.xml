@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
         <variable
@@ -7,23 +9,37 @@
             type="arboretum.arboretumwojslawice.Model.MoreOptionItem"/>
     </data>
 
-    <RelativeLayout
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:focusable="true"
-        android:paddingLeft="16dp"
-        android:paddingRight="8dp"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp">
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp">
+
+        <ImageView
+            android:id="@+id/more_image"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:src="@drawable/icons8_more"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/route_name"
-            android:textSize="16dp"
-            android:textStyle="bold"
-            android:layout_marginTop="5dp"
-            android:layout_width="match_parent"
+            android:id="@+id/more_name"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{more.getOption()}"/>
+            android:layout_marginBottom="4dp"
+            android:layout_marginTop="4dp"
+            android:text="@{more.getOption()}"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_marginLeft="4dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/more_image"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    </RelativeLayout>
+    </android.support.constraint.ConstraintLayout>
 </layout>
