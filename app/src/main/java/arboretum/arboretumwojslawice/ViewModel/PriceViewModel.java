@@ -34,8 +34,8 @@ public class PriceViewModel {
     public List<Price> getPriceForMichal()
     {
         List<Price> list = new ArrayList<>();
-        list.add(new Price(0,10.0,"Ulgowy", "Bilet dla dzieci"));
-        list.add(new Price(0,25.0,"Normalny", "Bilet dla dorosłych"));
+        list.add(new Price(1,10.0,"Ulgowy", "Bilet dla dzieci", 0));
+        list.add(new Price(2,25.0,"Normalny", "Bilet dla dorosłych", 0));
         return list;
     }
 
