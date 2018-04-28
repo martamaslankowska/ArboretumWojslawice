@@ -1,9 +1,12 @@
 package arboretum.arboretumwojslawice.Model.businessentity;
 
+import android.app.Application;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Ignore;
+import android.content.Context;
 
 import arboretum.arboretumwojslawice.Commons.AdapterItem;
+import dagger.android.DaggerApplication;
 
 public class News implements AdapterItem {
 
@@ -17,13 +20,13 @@ public class News implements AdapterItem {
     private String description;
 
     @ColumnInfo(name = "Image")
-    private Integer image;
+    private String image;
 
     @ColumnInfo(name = "Date")
     private Integer date;
 
 
-    public News(Integer idNews, String name, String description, Integer image, Integer date) {
+    public News(Integer idNews, String name, String description, String image, Integer date) {
         this.idNews = idNews;
         this.name = name;
         this.description = description;
@@ -70,12 +73,20 @@ public class News implements AdapterItem {
         this.description = description;
     }
 
-    public Integer getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(Integer image) {
+    public void setImage(String image) {
         this.image = image;
+    }
+
+    public int getImageId(Context c) {
+        return c.getResources().getIdentifier("arboretum.arboretumwojslawice:drawable/" + image, null, null);
+    }
+
+    public String getImageIdString(Context c) {
+        return String.valueOf(getImageId(c));
     }
 
     public Integer getDate() {

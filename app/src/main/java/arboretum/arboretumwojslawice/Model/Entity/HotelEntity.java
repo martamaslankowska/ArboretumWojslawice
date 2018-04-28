@@ -41,10 +41,10 @@ public class HotelEntity {
     private double rating;
 
     @ColumnInfo(name = "Image")
-    private int image;
+    private String image;
 
 
-    public HotelEntity(int idHotel, String name, String address, int phone, String website, double distance, double rating, int image) {
+    public HotelEntity(int idHotel, String name, String address, int phone, String website, double distance, double rating, String image) {
         this.idHotel = idHotel;
         this.name = name;
         this.address = address;
@@ -111,11 +111,11 @@ public class HotelEntity {
         this.rating = rating;
     }
 
-    public int getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(int image) {
+    public void setImage(String image) {
         this.image = image;
     }
 }

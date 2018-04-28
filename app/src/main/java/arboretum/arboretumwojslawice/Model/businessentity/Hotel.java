@@ -4,6 +4,7 @@ import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
+import android.content.Context;
 
 import io.reactivex.annotations.NonNull;
 
@@ -36,10 +37,10 @@ public class Hotel {
     private Double rating;
 
     @ColumnInfo(name = "Image")
-    private Integer image;
+    private String image;
 
 
-    public Hotel(Integer idHotel, String name, String address, Integer phone, String website, Double distance, Double rating, Integer image) {
+    public Hotel(Integer idHotel, String name, String address, Integer phone, String website, Double distance, Double rating, String image) {
         this.idHotel = idHotel;
         this.name = name;
         this.address = address;
@@ -113,12 +114,20 @@ public class Hotel {
         this.rating = rating;
     }
 
-    public Integer getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(Integer image) {
+    public void setImage(String image) {
         this.image = image;
+    }
+
+    public int getImageId(Context c) {
+        return c.getResources().getIdentifier("arboretum.arboretumwojslawice:drawable/" + image, null, null);
+    }
+
+    public String getImageIdString(Context c) {
+        return String.valueOf(getImageId(c));
     }
 
     @Override

@@ -20,7 +20,7 @@
             android:id="@+id/plant_image"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@{plant.getImage()}"/>
+            android:src="@{plant.getImageId(context)}"/>
 
         <TextView
             android:id="@+id/plant_name"

@@ -50,7 +50,7 @@ public class ViewPagerAdapter extends PagerAdapter {
         Plant plant = mPlants.get(position).getPlant();
 
         ImageView imageView = view.findViewById(R.id.plant_page_image);
-        imageView.setImageResource(plant.getImage());
+        imageView.setImageResource(plant.getImageId(context));
         TextView name_textView = view.findViewById(R.id.plant_page_name);
         name_textView.setText(plant.getName());
         TextView genus_textView = view.findViewById(R.id.plant_page_genus);

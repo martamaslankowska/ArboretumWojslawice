@@ -4,6 +4,7 @@ import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
+import android.content.Context;
 
 import io.reactivex.annotations.NonNull;
 
@@ -22,13 +23,13 @@ public class AttractionEntity {
     private int idAttraction;
 
     @ColumnInfo(name = "Image")
-    private int image;
+    private String image;
 
     @ColumnInfo(name = "Distance")
     private double distance;
 
 
-    public AttractionEntity(int idAttraction, int image, double distance) {
+    public AttractionEntity(int idAttraction, String image, double distance) {
         this.idAttraction = idAttraction;
         this.image = image;
         this.distance = distance;
@@ -42,11 +43,11 @@ public class AttractionEntity {
         this.idAttraction = idAttraction;
     }
 
-    public int getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(int image) {
+    public void setImage(String image) {
         this.image = image;
     }
 

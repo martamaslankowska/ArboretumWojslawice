@@ -35,7 +35,7 @@
             android:layout_marginEnd="4dp"
             android:layout_marginStart="4dp"
             android:layout_marginTop="4dp"
-            android:src="@{plant.getImage()}"
+            android:src="@{plant.getImageId(context)}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar_back" />

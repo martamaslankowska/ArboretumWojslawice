@@ -2,6 +2,7 @@ package arboretum.arboretumwojslawice.Model.businessentity;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Ignore;
+import android.content.Context;
 import android.databinding.BindingAdapter;
 import android.widget.ImageView;
 
@@ -31,10 +32,10 @@ public class Route implements AdapterItem {
     private Integer time;
 
     @ColumnInfo(name = "MapImage")
-    private Integer mapImage;
+    private String mapImage;
 
     @ColumnInfo(name = "MapImageDetailed")
-    private Integer mapImageDetailed;
+    private String mapImageDetailed;
 
     @ColumnInfo(name = "Name")
     private String name;
@@ -42,22 +43,8 @@ public class Route implements AdapterItem {
     @ColumnInfo(name = "Description")
     private String description;
 
-    //@Ignore
-    //private List<PlantOnRoute> plantsOnRoute;
 
-
-//    @Ignore
-//    public Route(Integer idRoute, Double length, Integer time, Integer mapImage, String name, String description, List<PlantOnRoute> plantsOnRoute) {
-//        this.idRoute = idRoute;
-//        this.length = length;
-//        this.time = time;
-//        this.mapImage = mapImage;
-//        this.name = name;
-//        this.description = description;
-//        this.plantsOnRoute = plantsOnRoute;
-//    }
-
-    public Route(Integer idRoute, Double length, Integer time, Integer mapImage,Integer mapImageDetailed, String name, String description) {
+    public Route(Integer idRoute, Double length, Integer time, String mapImage, String mapImageDetailed, String name, String description) {
         this.idRoute = idRoute;
         this.length = length;
         this.time = time;
@@ -150,15 +137,19 @@ public class Route implements AdapterItem {
         this.time = IntegerTime;
     }
 
-    public Integer getMapImage() {
+    public String getMapImage() {
         return mapImage;
     }
 
-    public String getMapString() {
-        return String.valueOf(mapImage);
+    public int getMapImageId(Context c) {
+        return c.getResources().getIdentifier("arboretum.arboretumwojslawice:drawable/" + mapImage, null, null);
     }
 
-    public void setMapImage(Integer mapImage) {
+    public String getMapString(Context c) {
+        return String.valueOf(getMapImageId(c));
+    }
+
+    public void setMapImage(String mapImage) {
         this.mapImage = mapImage;
     }
 
@@ -178,12 +169,16 @@ public class Route implements AdapterItem {
         this.description = description;
     }
 
-    public Integer getMapImageDetailed() {
+    public String getMapImageDetailed() {
         return mapImageDetailed;
     }
 
-    public void setMapImageDetailed(Integer mapImageDetailed) {
+    public void setMapImageDetailed(String mapImageDetailed) {
         this.mapImageDetailed = mapImageDetailed;
+    }
+
+    public int getMadImageDetailedId(Context c) {
+        return c.getResources().getIdentifier("arboretum.arboretumwojslawice:drawable/" + mapImageDetailed, null, null);
     }
 
     //    public List<PlantOnRoute> getPlantsOnRoute() {

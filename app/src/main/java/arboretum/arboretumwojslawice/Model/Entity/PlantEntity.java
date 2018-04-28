@@ -42,7 +42,7 @@ public class PlantEntity {
     private int idKind;
 
     @ColumnInfo(name = "Image")
-    private int image;
+    private String image;
 
     @ColumnInfo(name = "SeasonBegin")
     private int seasonBegin;
@@ -86,11 +86,11 @@ public class PlantEntity {
         this.idKind = idKind;
     }
 
-    public int getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(int image) {
+    public void setImage(String image) {
         this.image = image;
     }
 

@@ -1,7 +1,5 @@
 package arboretum.arboretumwojslawice.Commons.di;
 
-import android.app.Application;
-
 import dagger.android.AndroidInjector;
 import dagger.android.DaggerApplication;
 
@@ -13,4 +11,5 @@ public class AppController extends DaggerApplication {
         builder.seedInstance(this);
         return builder.build();
     }
+
 }

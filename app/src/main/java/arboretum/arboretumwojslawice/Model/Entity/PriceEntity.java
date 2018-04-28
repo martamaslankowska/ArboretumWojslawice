@@ -25,9 +25,14 @@ public class PriceEntity {
     @NonNull
     private double amount;
 
-    public PriceEntity(int idPrice, double amount) {
+    @ColumnInfo(name = "Kind")
+    @NonNull
+    private int kind;
+
+    public PriceEntity(int idPrice, double amount, int kind) {
         this.idPrice = idPrice;
         this.amount = amount;
+        this.kind = kind;
     }
 
     public int getIdPrice() {
@@ -46,4 +51,11 @@ public class PriceEntity {
         this.amount = amount;
     }
 
+    public int getKind() {
+        return kind;
+    }
+
+    public void setKind(int kind) {
+        this.kind = kind;
+    }
 }

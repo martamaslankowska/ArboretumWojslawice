@@ -2,6 +2,7 @@ package arboretum.arboretumwojslawice.Model.businessentity;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.PrimaryKey;
+import android.content.Context;
 
 import io.reactivex.annotations.NonNull;
 
@@ -21,13 +22,13 @@ public class Attraction {
     private String description;
 
     @ColumnInfo(name = "Image")
-    private Integer image;
+    private String image;
 
     @ColumnInfo(name = "Distance")
     private Double distance;
 
 
-    public Attraction(Integer idAttraction, String name, String description, Integer image, Double distance) {
+    public Attraction(Integer idAttraction, String name, String description, String image, Double distance) {
         this.idAttraction = idAttraction;
         this.name = name;
         this.description = description;
@@ -59,12 +60,20 @@ public class Attraction {
         this.description = description;
     }
 
-    public Integer getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(Integer image) {
+    public void setImage(String image) {
         this.image = image;
+    }
+
+    public int getImageId(Context c) {
+        return c.getResources().getIdentifier("arboretum.arboretumwojslawice:drawable/" + image, null, null);
+    }
+
+    public String getImageIdString(Context c) {
+        return String.valueOf(getImageId(c));
     }
 
     public Double getDistance() {

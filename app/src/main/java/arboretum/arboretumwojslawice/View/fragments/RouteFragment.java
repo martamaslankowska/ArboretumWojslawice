@@ -87,14 +87,14 @@ public class RouteFragment extends DaggerFragment implements RouteAdapter.OnItem
     @Override
     public void onItemClick(int route_id) {
         route_map =  rootView.findViewById(R.id.route_map);
-        route_map.setImageResource(mRoutes.get(route_id).getMapImage());
+        route_map.setImageResource(mRoutes.get(route_id).getMapImageId(getContext()));
 
 //        binding.setRoute(mRoutes.get(route_id));
 
         mAdapter.selectedPosition = route_id;
         mAdapter.notifyDataSetChanged();
 
-        Log.d("route_map", mRoutes.get(route_id).getMapString());
+        Log.d("route_map", mRoutes.get(route_id).getMapString(getContext()));
     }
 
     @Override

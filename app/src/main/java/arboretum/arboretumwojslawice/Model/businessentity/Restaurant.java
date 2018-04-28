@@ -2,6 +2,7 @@ package arboretum.arboretumwojslawice.Model.businessentity;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Ignore;
+import android.content.Context;
 
 /**
  * Created by Komputer on 2018-03-25.
@@ -31,10 +32,10 @@ public class Restaurant {
     private Double rating;
 
     @ColumnInfo(name = "Image")
-    private Integer image;
+    private String image;
 
 
-    public Restaurant(Integer idRestaurant, String name, String address, Integer phone, String website, Double distance, Double rating, Integer image) {
+    public Restaurant(Integer idRestaurant, String name, String address, Integer phone, String website, Double distance, Double rating, String image) {
         this.idRestaurant = idRestaurant;
         this.name = name;
         this.address = address;
@@ -108,12 +109,20 @@ public class Restaurant {
         this.rating = rating;
     }
 
-    public Integer getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(Integer image) {
+    public void setImage(String image) {
         this.image = image;
+    }
+
+    public int getImageId(Context c) {
+        return c.getResources().getIdentifier("arboretum.arboretumwojslawice:drawable/" + image, null, null);
+    }
+
+    public String getImageIdString(Context c) {
+        return String.valueOf(getImageId(c));
     }
 
     @Override

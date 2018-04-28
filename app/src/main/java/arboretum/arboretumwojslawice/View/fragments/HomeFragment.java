@@ -1,5 +1,6 @@
 package arboretum.arboretumwojslawice.View.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -21,6 +22,7 @@ public class HomeFragment extends Fragment {
     protected NewsViewModel newsViewModel;
     protected RecyclerView.LayoutManager mLayoutManager;
     protected NewsAdapter mAdapter;
+
 
     private enum LayoutManagerType {
         GRID_LAYOUT_MANAGER,

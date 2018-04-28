@@ -31,10 +31,10 @@ public class RouteEntity {
     private int time;
 
     @ColumnInfo(name = "MapImage")
-    private int mapImage;
+    private String mapImage;
 
     @ColumnInfo(name = "MapImageDetailed")
-    private int mapImageDetailed;
+    private String mapImageDetailed;
 
 
     public int getIdRoute() {
@@ -61,19 +61,19 @@ public class RouteEntity {
         this.time = time;
     }
 
-    public int getMapImage() {
+    public String getMapImage() {
         return mapImage;
     }
 
-    public void setMapImage(int mapImage) {
+    public void setMapImage(String mapImage) {
         this.mapImage = mapImage;
     }
 
-    public int getMapImageDetailed() {
+    public String getMapImageDetailed() {
         return mapImageDetailed;
     }
 
-    public void setMapImageDetailed(int mapImageDetailed) {
+    public void setMapImageDetailed(String mapImageDetailed) {
         this.mapImageDetailed = mapImageDetailed;
     }
 }

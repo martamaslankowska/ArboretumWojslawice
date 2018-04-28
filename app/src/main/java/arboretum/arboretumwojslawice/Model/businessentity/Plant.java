@@ -2,6 +2,7 @@ package arboretum.arboretumwojslawice.Model.businessentity;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Ignore;
+import android.content.Context;
 
 import java.util.Date;
 import java.util.List;
@@ -33,7 +34,7 @@ public class Plant implements AdapterItem {
     private Integer kind;
 
     @ColumnInfo(name = "Image")
-    private Integer image;
+    private String image;
 
     @ColumnInfo(name = "SeasonBegin")
     private Integer seasonBegin;
@@ -55,7 +56,7 @@ public class Plant implements AdapterItem {
     public Plant() {}
 
     @Ignore
-    public Plant(Integer idPlant, String genusName, String speciesName, String latinName, String name, Integer kind, Integer image, Integer seasonBegin, Integer seasonEnd, String description, List<Location> locations) {
+    public Plant(Integer idPlant, String genusName, String speciesName, String latinName, String name, Integer kind, String image, Integer seasonBegin, Integer seasonEnd, String description, List<Location> locations) {
         this.idPlant = idPlant;
         this.genusName = genusName;
         this.speciesName = speciesName;
@@ -70,7 +71,7 @@ public class Plant implements AdapterItem {
     }
 
     // needed for Dao to get all plants
-    public Plant(Integer idPlant, String genusName, String speciesName, String latinName, String name, Integer kind, Integer image, Integer seasonBegin, Integer seasonEnd, String description, Boolean favourite) {
+    public Plant(Integer idPlant, String genusName, String speciesName, String latinName, String name, Integer kind, String image, Integer seasonBegin, Integer seasonEnd, String description, Boolean favourite) {
         this.idPlant = idPlant;
         this.genusName = genusName;
         this.speciesName = speciesName;
@@ -97,7 +98,7 @@ public class Plant implements AdapterItem {
     }
 
     @Ignore
-    public Plant(String name, Integer idPlant, String genusName, Integer kind, Integer image) {
+    public Plant(String name, Integer idPlant, String genusName, Integer kind, String image) {
         this.name = name;
         this.idPlant = idPlant;
         this.genusName = genusName;
@@ -153,12 +154,20 @@ public class Plant implements AdapterItem {
         this.kind = kind;
     }
 
-    public Integer getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(Integer image) {
+    public void setImage(String image) {
         this.image = image;
+    }
+
+    public int getImageId(Context c) {
+        return c.getResources().getIdentifier("arboretum.arboretumwojslawice:drawable/" + image, null, null);
+    }
+
+    public String getImageIdString(Context c) {
+        return String.valueOf(getImageId(c));
     }
 
     public Integer getSeasonBegin() {

@@ -31,9 +31,9 @@ public class NewsRepository extends BaseRepository{
     {
         List<News> mNews = new ArrayList<News>();
         mNews.add(new News(1,"Wiosenny spacer", "WYSTAWA „Fotograficzne debiuty w Wojsławicach”, Tomek CIESIELSKI prezentuje dorobek uczestników warsztatów fotograficznych, wernisaż\n" +
-                "o godz. 12.00", R.drawable.news1, 20180415));
-        mNews.add(new News(2,"Kiermasz roślinnych nowości", "godz. 9:00-18:00", R.drawable.news2, 20180428));
-        mNews.add(new News(3,"Japoński spacer", "Drzewa i krzewy Japonii, zaprasza Juzer JURCZYŃSKI, przewodnik przygodniczy, godz. 12:00", R.drawable.news3, 20180501));
+                "o godz. 12.00", "news1", 20180415));
+        mNews.add(new News(2,"Kiermasz roślinnych nowości", "godz. 9:00-18:00", "news2", 20180428));
+        mNews.add(new News(3,"Japoński spacer", "Drzewa i krzewy Japonii, zaprasza Juzer JURCZYŃSKI, przewodnik przygodniczy, godz. 12:00", "news3", 20180501));
         return mNews;
     }
 

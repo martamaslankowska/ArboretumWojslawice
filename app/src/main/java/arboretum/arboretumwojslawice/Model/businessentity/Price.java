@@ -22,12 +22,16 @@ public class Price implements AdapterItem {
     @ColumnInfo(name = "Description")
     private String description;
 
+    @ColumnInfo(name = "Kind")
+    private Integer kind;
 
-    public Price(Integer idPrice, Double amount, String type, String description) {
+
+    public Price(Integer idPrice, Double amount, String type, String description, Integer kind) {
         this.idPrice = idPrice;
         this.amount = amount;
         this.type = type;
         this.description = description;
+        this.kind = kind;
     }
 
     public Integer getIdPrice() {
@@ -62,6 +66,14 @@ public class Price implements AdapterItem {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Integer getKind() {
+        return kind;
+    }
+
+    public void setKind(Integer kind) {
+        this.kind = kind;
     }
 
     @Override

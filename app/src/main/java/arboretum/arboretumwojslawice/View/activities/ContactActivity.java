@@ -4,12 +4,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import arboretum.arboretumwojslawice.Model.AppDatabase;
 import arboretum.arboretumwojslawice.Model.Repository.HotelRepository;
 import arboretum.arboretumwojslawice.Model.Repository.PriceRepository;
+import arboretum.arboretumwojslawice.Model.businessentity.Hotel;
 import arboretum.arboretumwojslawice.R;
 import io.reactivex.Maybe;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -20,6 +22,7 @@ import io.reactivex.schedulers.Schedulers;
 public class ContactActivity extends AppCompatActivity {
 
     TextView hotel;
+    ImageView hotelImage;
     CompositeDisposable compositeDisposable;
     HotelRepository hotelRepo;
 
@@ -43,6 +46,17 @@ public class ContactActivity extends AppCompatActivity {
         hotelRepo = new HotelRepository(db);
 
         hotel = findViewById(R.id.hotelText);
+        hotelImage = findViewById(R.id.hotelImageView);
+        Hotel hotelObject = new Hotel(1, "Aaa", "", 0, "", 9.0, 2.0, "news2");
+
+        try {
+//            String imageName = "news1"; // store only image name in database(means not   store "R.drawable.image") like "image".
+//            int id = getResources().getIdentifier("arboretum.arboretumwojslawice:drawable/" + imageName, null, null);
+            int id = hotelObject.getImageId(this);
+            hotelImage.setImageResource(id);
+        } catch (Exception e) {
+            Toast.makeText(this, "Coś z tą bazką nie pykło....", Toast.LENGTH_SHORT).show();
+        }
 
         compositeDisposable = new CompositeDisposable();
 
@@ -55,7 +69,12 @@ public class ContactActivity extends AppCompatActivity {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(hotels -> {
                             /* onSuccess() :) */
-                            hotel.setText(hotels.get(0).getName());
+                            try {
+                                hotel.setText(hotels.get(0).getName());
+                                Toast.makeText(this, "Uuu, są dane w bazie! O.o", Toast.LENGTH_SHORT).show();
+                            } catch (Exception e){
+                                Toast.makeText(this, "Ups, pusta baza :(", Toast.LENGTH_SHORT).show();
+                            }
                         }
                         ,throwable -> {
                             /* onError() */

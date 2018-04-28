@@ -16,7 +16,7 @@ public class NewsEntity {
     private int idNews;
 
     @ColumnInfo(name = "Image")
-    private int image;
+    private String image;
 
     @ColumnInfo(name = "Date")
     private int date;
@@ -31,11 +31,11 @@ public class NewsEntity {
         this.idNews = idNews;
     }
 
-    public int getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(int image) {
+    public void setImage(String image) {
         this.image = image;
     }
 

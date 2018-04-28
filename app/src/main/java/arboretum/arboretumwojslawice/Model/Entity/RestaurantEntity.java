@@ -41,7 +41,7 @@ public class RestaurantEntity {
     private double rating;
 
     @ColumnInfo(name = "Image")
-    private int image;
+    private String image;
 
 
     public int getIdRestaurant() {
@@ -100,11 +100,11 @@ public class RestaurantEntity {
         this.rating = rating;
     }
 
-    public int getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(int image) {
+    public void setImage(String image) {
         this.image = image;
     }
 }

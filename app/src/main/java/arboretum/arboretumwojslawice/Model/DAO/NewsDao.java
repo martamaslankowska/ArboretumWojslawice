@@ -13,12 +13,12 @@ import arboretum.arboretumwojslawice.Model.businessentity.News;
 @Dao
 public abstract class NewsDao extends BaseDao<EventEntity> {
 
-    @Query("SELECT News.IdNews, Name, Date, Description " +
+    @Query("SELECT News.IdNews, Name, Date, Description, Image " +
             "FROM News LEFT JOIN NewsTranslations ON News.IdNews = NewsTranslations.IdNews " +
             "WHERE TranslationCode IN (:translationCode)")
     public abstract List<News> getAll(String translationCode);
 
-    @Query("SELECT News.IdNews, Name, Date, Description " +
+    @Query("SELECT News.IdNews, Name, Date, Description, Image " +
             "FROM News LEFT JOIN NewsTranslations ON News.IdNews = NewsTranslations.IdNews " +
             "WHERE News.IdNews IN (:id) AND TranslationCode IN (:translationCode)")
     public abstract  News getById(int id, String translationCode);
