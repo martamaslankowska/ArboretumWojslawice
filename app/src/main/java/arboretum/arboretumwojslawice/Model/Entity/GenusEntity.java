@@ -10,7 +10,7 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
 
-import io.reactivex.annotations.NonNull;
+import android.support.annotation.NonNull;
 
 @Entity(tableName = "Genus")
 //        indices = {@Index(value = {"IdGenus"}, unique = true)})
@@ -19,14 +19,14 @@ public class GenusEntity {
     @PrimaryKey
     @NonNull
     @ColumnInfo(name = "Name")
-    private int name;
+    private String name;
 
 
-    public int getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(int name) {
+    public void setName(String name) {
         this.name = name;
     }
 }
