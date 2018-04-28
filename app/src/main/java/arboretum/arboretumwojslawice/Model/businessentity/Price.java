@@ -2,11 +2,13 @@ package arboretum.arboretumwojslawice.Model.businessentity;
 
 import android.arch.persistence.room.ColumnInfo;
 
+import arboretum.arboretumwojslawice.Commons.AdapterItem;
+
 /**
  * Created by Komputer on 2018-03-25.
  */
 
-public class Price {
+public class Price implements AdapterItem {
 
     @ColumnInfo(name = "IdPrice")
     private Integer idPrice;
@@ -40,6 +42,8 @@ public class Price {
         return amount;
     }
 
+    public String getAmountString() { return String.valueOf(amount);}
+
     public void setAmount(Double amount) {
         this.amount = amount;
     }
@@ -63,5 +67,10 @@ public class Price {
     @Override
     public String toString() {
         return "(id = " + idPrice + ") " + type + " - " + amount + " zł";
+    }
+
+    @Override
+    public int getItemType() {
+        return 0;
     }
 }

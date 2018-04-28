@@ -60,6 +60,7 @@
 
     <!-- Marta - example strings to use in PriceActivity (activity_price.xml) -->
     <string name="price_title">Cennik (biletów)</string>
+    <string name="price_amount">%s zł</string>
 
     <!-- OPENING HOURS -->
     <string name="open_hours_main_text">Arboretum czynne od 15/04/2018\ndo 21/10/2018 (także w święta)</string>

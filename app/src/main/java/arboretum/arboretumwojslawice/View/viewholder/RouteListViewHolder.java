@@ -7,10 +7,6 @@ import arboretum.arboretumwojslawice.Model.businessentity.Route;
 import arboretum.arboretumwojslawice.View.adapter.RouteAdapter;
 import arboretum.arboretumwojslawice.databinding.RouteRowBinding;
 
-/**
- * Created by Michal on 28.03.2018.
- */
-
 public class RouteListViewHolder extends BindingViewHolder<Route, RouteRowBinding> {
 
     public RouteListViewHolder(RouteRowBinding binding, final RouteAdapter.OnItemClickListener listener) {

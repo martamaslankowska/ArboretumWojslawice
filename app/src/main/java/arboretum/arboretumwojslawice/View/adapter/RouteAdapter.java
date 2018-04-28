@@ -1,9 +1,5 @@
 package arboretum.arboretumwojslawice.View.adapter;
 
-/**
- * Created by Michal on 24.03.2018.
- */
-
 import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
