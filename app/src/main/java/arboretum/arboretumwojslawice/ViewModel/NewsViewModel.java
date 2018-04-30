@@ -2,6 +2,8 @@ package arboretum.arboretumwojslawice.ViewModel;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import arboretum.arboretumwojslawice.Model.Repository.NewsRepository;
 import arboretum.arboretumwojslawice.Model.businessentity.News;
 

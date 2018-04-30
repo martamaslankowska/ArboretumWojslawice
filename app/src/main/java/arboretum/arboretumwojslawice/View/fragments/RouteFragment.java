@@ -44,6 +44,7 @@ public class RouteFragment extends DaggerFragment implements RouteAdapter.OnItem
     RouteViewModel routeViewModel;
     @Inject
     RouteAdapter mAdapter;
+
     protected RecyclerView.LayoutManager mLayoutManager;
     protected List<Route> mRoutes;
     protected ImageView route_map;

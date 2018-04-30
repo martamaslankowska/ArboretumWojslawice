@@ -2,26 +2,30 @@ package arboretum.arboretumwojslawice.View.activities;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
+import javax.inject.Inject;
+
 import arboretum.arboretumwojslawice.Model.businessentity.Plant;
 import arboretum.arboretumwojslawice.R;
-import arboretum.arboretumwojslawice.ViewModel.PlantViewModel;
+import arboretum.arboretumwojslawice.ViewModel.PlantDetailViewModel;
 import arboretum.arboretumwojslawice.databinding.ActivityPlantDetailBinding;
+import dagger.android.support.DaggerAppCompatActivity;
 
-public class PlantDetailActivity extends AppCompatActivity {
+public class PlantDetailActivity extends DaggerAppCompatActivity {
+
+    @Inject
+    protected PlantDetailViewModel plantDetailViewModel;
 
     private int plant_id;
     private Bundle bundle;
     public static final String BUNDLE = "BUNDLE";
     public static final String PLANT_ID = "PLANT_ID";
     private Plant plant;
-    private PlantViewModel plantViewModel;
     private ImageView mLocationMapButton;
 
     @Override
@@ -29,13 +33,11 @@ public class PlantDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         ActivityPlantDetailBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_plant_detail);
 
-        plantViewModel = new PlantViewModel();
-
         Intent intent = getIntent();
         bundle = intent.getBundleExtra(BUNDLE);
 
         plant_id = bundle.getInt(PLANT_ID);
-        plant = plantViewModel.getPlantById(plant_id);
+        plant = plantDetailViewModel.getPlantById(plant_id);
 
         /* toolbar */
         Toolbar toolbar = findViewById(R.id.toolbar_back);
