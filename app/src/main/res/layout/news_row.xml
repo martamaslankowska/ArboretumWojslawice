@@ -18,7 +18,8 @@
         <ImageView
             android:id="@+id/news_image"
             android:layout_width="match_parent"
-            android:layout_height="155dp"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
             android:src="@{news.getImageId(context)}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

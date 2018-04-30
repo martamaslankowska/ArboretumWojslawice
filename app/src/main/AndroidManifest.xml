@@ -22,22 +22,38 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".View.activities.MainActivity" />
-        <activity android:name=".View.activities.LanguageActivity" />
-        <activity android:name=".View.activities.RouteDetailActivity" />
-        <activity android:name=".View.activities.QRCodeActivity" />
-        <activity android:name=".View.activities.PlantActivity" />
-        <activity android:name=".View.activities.EventActivity" />
-        <activity android:name=".View.activities.PriceActivity" />
-        <activity android:name=".View.activities.ContactActivity" />
-        <activity android:name=".View.activities.RulesActivity" />
-        <activity android:name=".View.activities.PlantDetailActivity" />
-        <activity android:name=".View.activities.NavigationActivity" />
-        <activity android:name=".View.activities.OpeningHoursActivity" />
-        <activity android:name=".View.activities.SettingsActivity" />
-        <activity android:name=".View.activities.NeighbourhoodActivity" />
-        <activity android:name=".View.activities.EventDetailActivity" />
-        <activity android:name=".View.activities.PlantLocationMapActivity"></activity>
+        <activity android:name=".View.activities.MainActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".View.activities.LanguageActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".View.activities.RouteDetailActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".View.activities.QRCodeActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".View.activities.PlantActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".View.activities.EventActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".View.activities.PriceActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".View.activities.ContactActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".View.activities.RulesActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".View.activities.PlantDetailActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".View.activities.NavigationActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".View.activities.OpeningHoursActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".View.activities.SettingsActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".View.activities.NeighbourhoodActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".View.activities.EventDetailActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".View.activities.PlantLocationMapActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
