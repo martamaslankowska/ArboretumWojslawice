@@ -1,6 +1,7 @@
 package arboretum.arboretumwojslawice.Commons.modules;
 
 import arboretum.arboretumwojslawice.View.activities.PlantDetailActivity;
+import arboretum.arboretumwojslawice.View.fragments.HomeFragment;
 import arboretum.arboretumwojslawice.View.fragments.RouteFragment;
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
@@ -10,5 +11,8 @@ public abstract class MainActivityModule {
 
     @ContributesAndroidInjector(modules = RouteModule.class)
     abstract RouteFragment bindRouteFragment();
+
+    @ContributesAndroidInjector(modules = NewsModule.class)
+    abstract HomeFragment bindHomeFragment();
 
 }

@@ -12,8 +12,9 @@ import java.util.Stack;
 
 import arboretum.arboretumwojslawice.R;
 import arboretum.arboretumwojslawice.View.fragments.ListOfPlantsFragment;
+import dagger.android.support.DaggerAppCompatActivity;
 
-public class PlantActivity extends AppCompatActivity {
+public class PlantActivity extends DaggerAppCompatActivity {
 
     private ListOfPlantsFragment mListOfPlantsFragment;
     private Stack<Integer> stos = new Stack<>();

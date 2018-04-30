@@ -6,6 +6,8 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import arboretum.arboretumwojslawice.Commons.BindingViewHolder;
 import arboretum.arboretumwojslawice.Model.businessentity.News;
 import arboretum.arboretumwojslawice.View.viewholder.NewsViewHolder;
@@ -15,6 +17,7 @@ public class NewsAdapter extends RecyclerView.Adapter<BindingViewHolder> {
 
     private List<News> mNews;
 
+    @Inject
     public NewsAdapter() {
     }
 

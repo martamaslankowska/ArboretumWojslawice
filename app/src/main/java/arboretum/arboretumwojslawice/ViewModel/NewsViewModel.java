@@ -12,6 +12,7 @@ public class NewsViewModel {
     private List<News> mNews;
     NewsRepository mNewsRepo;
 
+    @Inject
     public NewsViewModel() {
         mNewsRepo = new NewsRepository();
     }

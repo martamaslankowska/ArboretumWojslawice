@@ -7,22 +7,20 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import arboretum.arboretumwojslawice.Commons.BindingViewHolder;
 import arboretum.arboretumwojslawice.Model.businessentity.Plant;
 import arboretum.arboretumwojslawice.View.viewholder.PlantListViewHolder;
 import arboretum.arboretumwojslawice.databinding.PlantRowBinding;
 
-/**
- * Created by weronika on 04.04.2018.
- */
-
 public class PlantAdapter extends RecyclerView.Adapter<BindingViewHolder> {
-    private List<Plant> mPlants = new ArrayList<>();
-    PlantAdapter.OnItemClickListener listener;
 
-    public PlantAdapter(PlantAdapter.OnItemClickListener listener, List<Plant> pList) {
+    private List<Plant> mPlants = new ArrayList<>();
+    OnItemClickListener listener;
+
+    public PlantAdapter(OnItemClickListener listener) {
         this.listener =  listener;
-        this.mPlants = pList;
     }
 
     @Override

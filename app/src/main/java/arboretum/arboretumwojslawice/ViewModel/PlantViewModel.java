@@ -3,6 +3,8 @@ package arboretum.arboretumwojslawice.ViewModel;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import arboretum.arboretumwojslawice.Model.Repository.PlantRepository;
 import arboretum.arboretumwojslawice.Model.businessentity.Plant;
 
@@ -14,7 +16,7 @@ public class PlantViewModel {
     List<Plant> mPlant;
     PlantRepository mPlantRepo;
 
-
+    @Inject
     public PlantViewModel() {
         mPlantRepo = new PlantRepository();
     }
