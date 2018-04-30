@@ -30,6 +30,22 @@ public class ListOfPlantsFragment extends DaggerFragment implements PlantAdapter
     public static final String TAB_ID = "TAB_ID";
     public static final String BUNDLE = "BUNDLE";
 
+    PlantAdapter.OnItemClickListener listener;
+
+    protected ListOfPlantsFragment.LayoutManagerType mCurrentLayoutManagerType;
+
+    protected RecyclerView mRecyclerView;
+
+    @Inject
+    protected PlantAdapter mAdapter;
+
+    @Inject
+    protected PlantViewModel mPlantViewModel;
+    protected RecyclerView.LayoutManager mLayoutManager;
+    protected List<Plant> mPlants;
+
+    private int n;
+
     @Override
     public void onItemClick(int position) {
         Intent intent = new Intent(getActivity().getApplicationContext(), PlantDetailActivity.class);
@@ -50,21 +66,6 @@ public class ListOfPlantsFragment extends DaggerFragment implements PlantAdapter
         GRID_LAYOUT_MANAGER,
         LINEAR_LAYOUT_MANAGER
     }
-    PlantAdapter.OnItemClickListener listener;
-
-    protected ListOfPlantsFragment.LayoutManagerType mCurrentLayoutManagerType;
-
-    protected RecyclerView mRecyclerView;
-
-    @Inject
-    protected PlantAdapter mAdapter;
-
-    @Inject
-    protected PlantViewModel mPlantViewModel;
-    protected RecyclerView.LayoutManager mLayoutManager;
-    protected List<Plant> mPlants;
-
-    private int n;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

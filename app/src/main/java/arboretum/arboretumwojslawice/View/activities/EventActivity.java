@@ -10,20 +10,33 @@ import android.view.MenuItem;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import arboretum.arboretumwojslawice.Model.businessentity.Event;
 import arboretum.arboretumwojslawice.R;
 import arboretum.arboretumwojslawice.View.adapter.EventAdapter;
 import arboretum.arboretumwojslawice.ViewModel.EventViewModel;
+import dagger.android.support.DaggerAppCompatActivity;
 
-public class EventActivity extends AppCompatActivity {
+public class EventActivity extends DaggerAppCompatActivity implements EventAdapter.OnItemClickListener {
 
     private static final String KEY_LAYOUT_MANAGER = "activity_event";
     public static final String EVENT_ID = "EVENT_ID";
     public static final String BUNDLE = "BUNDLE";
 
-    private EventViewModel eventViewModel;
+    @Inject
+    protected EventViewModel eventViewModel;
     private EventAdapter.OnItemClickListener listener;
     protected RecyclerView.LayoutManager mLayoutManager;
+
+    @Override
+    public void onItemClick(int position) {
+        Intent intent = new Intent(getApplicationContext(), EventDetailActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putInt(EVENT_ID, mEvents.get(position).getIdEvent());
+        intent.putExtra(BUNDLE, bundle);
+        startActivityForResult(intent, 123);
+    }
 
     private enum LayoutManagerType {
         GRID_LAYOUT_MANAGER,
@@ -33,6 +46,8 @@ public class EventActivity extends AppCompatActivity {
     protected EventActivity.LayoutManagerType mCurrentLayoutManagerType;
 
     protected RecyclerView mRecyclerView;
+
+    @Inject
     protected EventAdapter mAdapter;
     protected List<Event> mEvents;
 
@@ -56,17 +71,7 @@ public class EventActivity extends AppCompatActivity {
         eventViewModel = new EventViewModel();
         mEvents = eventViewModel.getData();
 
-        listener = new EventAdapter.OnItemClickListener() {
-            public void onItemClick(int position) {
-                Intent intent = new Intent(getApplicationContext(), EventDetailActivity.class);
-                Bundle bundle = new Bundle();
-                bundle.putInt(EVENT_ID, mEvents.get(position).getIdEvent());
-                intent.putExtra(BUNDLE, bundle);
-                startActivityForResult(intent, 123);
-            }
-        };
-
-        mAdapter = new EventAdapter(listener, mEvents);
+        mAdapter.setData(mEvents);
         mRecyclerView.setAdapter(mAdapter);
         mAdapter.setData(eventViewModel.getData());
         mLayoutManager = new LinearLayoutManager(this);

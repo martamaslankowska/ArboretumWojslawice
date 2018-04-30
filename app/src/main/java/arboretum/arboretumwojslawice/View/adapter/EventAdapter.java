@@ -20,9 +20,8 @@ public class EventAdapter extends RecyclerView.Adapter<BindingViewHolder> {
     private List<Event> mEvents = new ArrayList<>();
     private EventAdapter.OnItemClickListener listener;
 
-    public EventAdapter(EventAdapter.OnItemClickListener listener, List<Event> pList) {
+    public EventAdapter(EventAdapter.OnItemClickListener listener) {
         this.listener =  listener;
-        this.mEvents = pList;
     }
 
     @Override

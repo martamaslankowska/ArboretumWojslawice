@@ -2,6 +2,8 @@ package arboretum.arboretumwojslawice.ViewModel;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import arboretum.arboretumwojslawice.Model.Repository.EventRepository;
 import arboretum.arboretumwojslawice.Model.businessentity.Event;
 
@@ -13,6 +15,7 @@ public class EventViewModel {
     private List<Event> mEvent;
     private EventRepository mEventRepo;
 
+    @Inject
     public EventViewModel() {
         mEventRepo = new EventRepository();
     }
