@@ -1,26 +1,26 @@
 package arboretum.arboretumwojslawice.ViewModel;
 
-import android.app.Application;
-
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
+import arboretum.arboretumwojslawice.Commons.di.AppController;
 import arboretum.arboretumwojslawice.Model.AppDatabase;
 import arboretum.arboretumwojslawice.Model.Repository.PriceRepository;
 import arboretum.arboretumwojslawice.Model.businessentity.Price;
 
-public class PriceViewModel {
+public class PriceForServicesViewModel {
 
-    AppDatabase db;
-    PriceRepository repository;
+    @Inject
+    protected AppDatabase db;
+    @Inject
+    protected PriceRepository repository;
 
-    public PriceViewModel(Application application) {
-        db = AppDatabase.getAppDatabase(application.getApplicationContext());
-        repository = new PriceRepository(application, db);
-    }
-
-    public PriceViewModel() {
-
+    @Inject
+    public PriceForServicesViewModel(AppController appController) {
+        //db = AppDatabase.getAppDatabase(appController.getApplicationContext());
+        //repository = new PriceRepository(appController, db);
     }
 
     public List<Price> getAllPrices() {
@@ -38,6 +38,4 @@ public class PriceViewModel {
         list.add(new Price(2,25.0,"Normalny", "Bilet dla dorosłych", 0));
         return list;
     }
-
-
 }

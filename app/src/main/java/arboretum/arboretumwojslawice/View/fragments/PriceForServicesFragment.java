@@ -1,7 +1,5 @@
 package arboretum.arboretumwojslawice.View.fragments;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,22 +10,28 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import arboretum.arboretumwojslawice.Commons.DividerItemDecoration;
 import arboretum.arboretumwojslawice.Model.businessentity.Price;
 import arboretum.arboretumwojslawice.R;
 import arboretum.arboretumwojslawice.View.adapter.PriceForServicesAdapter;
-import arboretum.arboretumwojslawice.View.adapter.PriceForTicketsAdapter;
-import arboretum.arboretumwojslawice.ViewModel.PriceViewModel;
+import arboretum.arboretumwojslawice.ViewModel.PriceForServicesViewModel;
+import arboretum.arboretumwojslawice.ViewModel.PriceForTicketsViewModel;
+import dagger.android.support.DaggerFragment;
 
-public class PriceForServicesFragment extends Fragment {
+public class PriceForServicesFragment extends DaggerFragment {
 
     private static final String KEY_LAYOUT_MANAGER = "fragment_price_for_services";
     protected RecyclerView mRecyclerView;
 
     protected LayoutManagerType mCurrentLayoutManagerType;
-    PriceViewModel priceViewModel;
 
-    PriceForServicesAdapter mAdapter;
+    @Inject
+    protected PriceForServicesViewModel priceViewModel;
+    @Inject
+    protected PriceForServicesAdapter mAdapter;
+
     protected RecyclerView.LayoutManager mLayoutManager;
     protected List<Price> mPrices;
 
@@ -51,12 +55,12 @@ public class PriceForServicesFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_price_for_services, container, false);
 
         mRecyclerView = rootView.findViewById(R.id.price_services_recycler_view);
-        priceViewModel = new PriceViewModel();
+        //priceViewModel = new PriceForTicketsViewModel();
         mPrices = priceViewModel.getPriceForMichal();
 
 
         mRecyclerView.addItemDecoration(new DividerItemDecoration(this.getContext(), 0));
-        mAdapter = new PriceForServicesAdapter();
+        //mAdapter = new PriceForServicesAdapter();
         mRecyclerView.setAdapter(mAdapter);
         mAdapter.setData(mPrices);
 

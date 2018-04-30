@@ -10,21 +10,28 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import arboretum.arboretumwojslawice.Commons.DividerItemDecoration;
 import arboretum.arboretumwojslawice.Model.businessentity.Price;
 import arboretum.arboretumwojslawice.R;
 import arboretum.arboretumwojslawice.View.adapter.PriceForTicketsAdapter;
-import arboretum.arboretumwojslawice.ViewModel.PriceViewModel;
+import arboretum.arboretumwojslawice.ViewModel.PriceForTicketsViewModel;
+import dagger.android.support.DaggerFragment;
 
-public class PriceForTicketsFragment extends Fragment {
+public class PriceForTicketsFragment extends DaggerFragment {
 
     private static final String KEY_LAYOUT_MANAGER = "fragment_price_for_tickets";
     protected RecyclerView mRecyclerView;
 
     protected LayoutManagerType mCurrentLayoutManagerType;
-    PriceViewModel priceViewModel;
 
-    PriceForTicketsAdapter mAdapter;
+    @Inject
+    protected PriceForTicketsViewModel priceViewModel;
+
+    @Inject
+    protected PriceForTicketsAdapter mAdapter;
+
     protected RecyclerView.LayoutManager mLayoutManager;
     protected List<Price> mPrices;
 
@@ -48,12 +55,11 @@ public class PriceForTicketsFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_price_for_tickets, container, false);
 
         mRecyclerView = rootView.findViewById(R.id.price_tickets_recycler_view);
-        priceViewModel = new PriceViewModel();
+        //priceViewModel = new PriceForTicketsViewModel();
         mPrices = priceViewModel.getPriceForMichal();
 
-
         mRecyclerView.addItemDecoration(new DividerItemDecoration(this.getContext(), 0));
-        mAdapter = new PriceForTicketsAdapter();
+        //mAdapter = new PriceForTicketsAdapter();
         mRecyclerView.setAdapter(mAdapter);
         mAdapter.setData(mPrices);
 

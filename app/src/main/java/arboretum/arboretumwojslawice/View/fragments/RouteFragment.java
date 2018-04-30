@@ -61,14 +61,14 @@ public class RouteFragment extends DaggerFragment implements RouteAdapter.OnItem
         rootView = inflater.inflate(R.layout.fragment_route, container, false);
 
         mRecyclerView = rootView.findViewById(R.id.route_recycler_view);
-        //priceViewModel = new RouteViewModel();
+        //routeViewModel = new RouteViewModel();
         mRoutes = routeViewModel.getData();
 
         binding = FragmentRouteBinding.inflate(inflater); //DataBindingUtil.inflate(inflater,R.layout.fragment_route,container,false);
        // binding.setRoute();
 
         mRecyclerView.addItemDecoration(new DividerItemDecoration(this.getContext(), 1));
-       // mAdapter = new RouteAdapter();
+        //mAdapter = new RouteAdapter(this);
         mRecyclerView.setAdapter(mAdapter);
         mAdapter.setData(mRoutes);
         mAdapter.setData(mRoutes);

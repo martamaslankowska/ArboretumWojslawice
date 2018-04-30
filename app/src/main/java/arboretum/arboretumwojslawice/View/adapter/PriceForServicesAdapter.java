@@ -16,6 +16,8 @@ public class PriceForServicesAdapter extends RecyclerView.Adapter<BindingViewHol
 
     private List<Price> mPrices = new ArrayList<>();
 
+    public PriceForServicesAdapter() {}
+
     @Override
     public BindingViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 

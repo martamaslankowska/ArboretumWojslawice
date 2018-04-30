@@ -1,41 +1,22 @@
 package arboretum.arboretumwojslawice.View.activities;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.res.Configuration;
-import android.content.res.Configuration;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import java.util.Stack;
-
-import javax.inject.Inject;
-
-import arboretum.arboretumwojslawice.Commons.LanguageManager;
-import arboretum.arboretumwojslawice.Commons.components.PriceComponent;
-import arboretum.arboretumwojslawice.Model.Repository.PriceRepository;
 import arboretum.arboretumwojslawice.R;
-import arboretum.arboretumwojslawice.View.fragments.ListOfPlantsFragment;
-import arboretum.arboretumwojslawice.View.fragments.MapFragment;
 import arboretum.arboretumwojslawice.View.fragments.PriceForServicesFragment;
 import arboretum.arboretumwojslawice.View.fragments.PriceForTicketsFragment;
-import arboretum.arboretumwojslawice.ViewModel.PriceViewModel;
-import io.reactivex.Maybe;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.schedulers.Schedulers;
+import dagger.android.support.DaggerAppCompatActivity;
 
-public class PriceActivity extends AppCompatActivity {
+public class PriceActivity extends DaggerAppCompatActivity {
 
-    private PriceForServicesFragment mPriceForServicesFragment;
-    private PriceForTicketsFragment mPriceForTicketsFragment;
+    protected PriceForServicesFragment mPriceForServicesFragment;
+    protected PriceForTicketsFragment mPriceForTicketsFragment;
     private TabLayout tabLayout;
 
     @Override
@@ -134,7 +115,7 @@ public class PriceActivity extends AppCompatActivity {
 ////    TextView description2c;
 //
 //    CompositeDisposable compositeDisposable;
-//    PriceViewModel priceViewModel;
+//    PriceForTicketsViewModel priceViewModel;
 //
 //
 //    @Override
@@ -152,7 +133,7 @@ public class PriceActivity extends AppCompatActivity {
 //        }
 //        /* /toolbar */
 //
-//        priceViewModel = new PriceViewModel(this.getApplication());
+//        priceViewModel = new PriceForTicketsViewModel(this.getApplication());
 //
 //        type1 = findViewById(R.id.type1);
 //        price1 = findViewById(R.id.price1);

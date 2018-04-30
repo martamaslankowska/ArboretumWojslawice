@@ -1,6 +1,5 @@
 package arboretum.arboretumwojslawice.Commons.modules;
 
-import android.app.Application;
 import android.arch.persistence.room.Room;
 
 import javax.inject.Singleton;
@@ -34,11 +33,6 @@ import dagger.Provides;
 
 @Module
 public class DatabaseModule {
-    private AppDatabase appDatabase;
-
-    public DatabaseModule(Application mApplication) {
-        appDatabase = Room.databaseBuilder(mApplication, AppDatabase.class, AppDatabase.DATABASE_NAME).build();
-    }
 
     @Singleton
     @Provides

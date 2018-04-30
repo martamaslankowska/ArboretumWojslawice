@@ -13,6 +13,8 @@ import arboretum.arboretumwojslawice.Model.businessentity.Route;
 
 public class RouteViewModel {
     List<Route> mRoutes;
+
+
     RouteRepository mRouteRepo;
 
     @Inject
