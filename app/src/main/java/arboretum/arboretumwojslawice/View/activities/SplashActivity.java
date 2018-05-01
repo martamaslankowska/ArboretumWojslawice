@@ -87,6 +87,8 @@ public class SplashActivity extends AppCompatActivity {
         mPrefs = PreferenceManager.getDefaultSharedPreferences(this);
         String language = mPrefs.getString(INFO, null);
 
+//        Toast.makeText(this, "Language: " + language, Toast.LENGTH_LONG).show();
+
         if (language == null) {
             /* DATA INTO DATABASE INSERT */
 //            DatabaseConnection dbConnect = new DatabaseConnection(getApplicationContext(), database);
