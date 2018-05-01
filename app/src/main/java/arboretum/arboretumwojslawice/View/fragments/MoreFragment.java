@@ -61,32 +61,32 @@ public class MoreFragment extends Fragment {
         listener = position -> {
             Intent intent;
             switch (position) {
-                case 0: //spis roślin
-                    intent = new Intent(getActivity().getApplicationContext(), PlantActivity.class);
+                case 0: //godziny otwarcia
+                    intent = new Intent(getActivity().getApplicationContext(), OpeningHoursActivity.class);
                     getActivity().startActivity(intent);
                     break;
-                case 1: //kalendarz imprez
-                    intent = new Intent(getActivity().getApplicationContext(), EventActivity.class);
-                    getActivity().startActivity(intent);
-                    break;
-                case 2: //cennik
+                case 1: //cennik
                     intent = new Intent(getActivity().getApplicationContext(), PriceActivity.class);
                     getActivity().startActivity(intent);
                     break;
-                case 3: //kontakt
-                    intent = new Intent(getActivity().getApplicationContext(), ContactActivity.class);
+                case 2: //kalendarz imprez
+                    intent = new Intent(getActivity().getApplicationContext(), EventActivity.class);
                     getActivity().startActivity(intent);
                     break;
-                case 4: //regulamin
-                    intent = new Intent(getActivity().getApplicationContext(), RulesActivity.class);
+                case 3: //spis roślin
+                    intent = new Intent(getActivity().getApplicationContext(), PlantActivity.class);
                     getActivity().startActivity(intent);
                     break;
-                case 5: //okoliczne
+                case 4: //okoliczne
                     intent = new Intent(getActivity().getApplicationContext(), NeighbourhoodActivity.class);
                     getActivity().startActivity(intent);
                     break;
-                case 6: //godziny otwarcia
-                    intent = new Intent(getActivity().getApplicationContext(), OpeningHoursActivity.class);
+                case 5: //kontakt
+                    intent = new Intent(getActivity().getApplicationContext(), ContactActivity.class);
+                    getActivity().startActivity(intent);
+                    break;
+                case 6: //regulamin
+                    intent = new Intent(getActivity().getApplicationContext(), RulesActivity.class);
                     getActivity().startActivity(intent);
                     break;
                 case 7: //ustawienia
