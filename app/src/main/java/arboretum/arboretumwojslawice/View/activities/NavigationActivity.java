@@ -148,7 +148,7 @@ public class NavigationActivity extends AppCompatActivity implements LocationLis
     }
 
     public void CreateBitmap(){
-        bitmap1 = BitmapFactory.decodeResource(resources,R.drawable.marker_black);
+        bitmap1 = BitmapFactory.decodeResource(resources,R.drawable.ic_location);
         bitmap3 = BitmapFactory.decodeResource(resources,R.drawable.arboretum_map2);
     }
 

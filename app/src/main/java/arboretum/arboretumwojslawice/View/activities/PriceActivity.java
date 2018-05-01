@@ -18,6 +18,7 @@ public class PriceActivity extends DaggerAppCompatActivity {
     protected PriceForServicesFragment mPriceForServicesFragment;
     protected PriceForTicketsFragment mPriceForTicketsFragment;
     private TabLayout tabLayout;
+//    private PriceViewModel priceViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +35,9 @@ public class PriceActivity extends DaggerAppCompatActivity {
         }
         getSupportActionBar().setTitle(R.string.toolbar_price);
         /* /toolbar */
+
+
+//        Toast.makeText(this, "PriceViewModel:\n" + priceViewModel.toString(), Toast.LENGTH_LONG).show();
 
 
         tabLayout = findViewById(R.id.price_tabs);

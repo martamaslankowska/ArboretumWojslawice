@@ -49,7 +49,7 @@ public class MapFragment extends Fragment {
         imageview.setImageBitmap(mapBitmap);
 
         //canvasBitmap = Bitmap.createBitmap(width,height,Bitmap.Config.RGB_565);
-        markerBitmap = BitmapFactory.decodeResource(getResources(),R.drawable.marker_black);
+        markerBitmap = BitmapFactory.decodeResource(getResources(),R.drawable.ic_location);
 
         // Inflate the layout for this fragment
         return rootView;

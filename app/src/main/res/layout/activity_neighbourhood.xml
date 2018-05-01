@@ -31,19 +31,19 @@
                     android:id="@+id/attractions"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:icon="@drawable/castle"/>
+                    android:icon="@drawable/ic_attraction"/>
 
                 <android.support.design.widget.TabItem
                     android:id="@+id/restaurants"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:icon="@drawable/ic_local_dining_black_48dp"/>
+                    android:icon="@drawable/ic_restaurant"/>
 
                 <android.support.design.widget.TabItem
                     android:id="@+id/hotels"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:icon="@drawable/hotel"/>
+                    android:icon="@drawable/ic_hotel"/>
 
             </android.support.design.widget.TabLayout>
         </android.support.design.widget.AppBarLayout>

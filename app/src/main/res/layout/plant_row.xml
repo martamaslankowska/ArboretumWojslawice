@@ -52,7 +52,7 @@
             android:layout_height="30dp"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:src="@drawable/icons8_heart_white"/>
+            android:src="@drawable/ic_favourite_plant_empty"/>
 
     </RelativeLayout>
 </layout>

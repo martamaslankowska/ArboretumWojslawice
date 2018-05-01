@@ -55,7 +55,7 @@
                 android:layout_marginTop="@dimen/nonrec_margin_vertical"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/line1"
-                app:srcCompat="@drawable/open_hours_icon01" />
+                app:srcCompat="@drawable/ic_clock" />
 
             <TextView
                 android:id="@+id/openingText"
@@ -103,7 +103,7 @@
                 android:layout_marginTop="@dimen/nonrec_margin_vertical"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/line2"
-                app:srcCompat="@drawable/open_hours_icon04" />
+                app:srcCompat="@drawable/ic_tickets_black" />
 
             <TextView
                 android:id="@+id/ticketText"
@@ -151,7 +151,7 @@
                 android:layout_marginTop="@dimen/nonrec_margin_vertical"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/line3"
-                app:srcCompat="@drawable/open_hours_icon03" />
+                app:srcCompat="@drawable/ic_terminal" />
 
             <TextView
                 android:id="@+id/info1Text"
@@ -199,7 +199,7 @@
                 android:layout_marginTop="@dimen/nonrec_margin_vertical"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/line4"
-                app:srcCompat="@drawable/open_hours_icon02" />
+                app:srcCompat="@drawable/ic_important" />
 
             <TextView
                 android:id="@+id/info2Text"

@@ -31,25 +31,25 @@
                     android:id="@+id/tabItem"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:icon="@drawable/icons8_plant1"/>
+                    android:icon="@drawable/ic_tree_deciduous"/>
 
                 <android.support.design.widget.TabItem
                     android:id="@+id/tabItem2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:icon="@drawable/icons8_plant2"/>
+                    android:icon="@drawable/ic_tree_conifer"/>
 
                 <android.support.design.widget.TabItem
                     android:id="@+id/tabItem3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:icon="@drawable/icons8_plant3"/>
+                    android:icon="@drawable/ic_clover"/>
 
                 <android.support.design.widget.TabItem
                     android:id="@+id/tabItem4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:icon="@drawable/icons8_plant4"/>
+                    android:icon="@drawable/ic_world"/>
 
             </android.support.design.widget.TabLayout>
         </android.support.design.widget.AppBarLayout>
