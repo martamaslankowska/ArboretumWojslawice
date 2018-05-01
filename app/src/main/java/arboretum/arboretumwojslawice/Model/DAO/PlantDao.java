@@ -47,6 +47,12 @@ public abstract class PlantDao extends BaseDao<PlantEntity> {
             "WHERE IdKind IN (:kind) AND PlantsTranslations.TranslationCode IN (:translationCode)")
     public abstract List<Plant> getAllByKindName(int kind, String translationCode);
 
+    @Query("SELECT Plants.IdPlant, GenusName, SpeciesName, Plants.LatinName, PlantsTranslations.Name, IdKind, Image, SeasonBegin, SeasonEnd, Description, Favourite " +
+            "FROM Plants LEFT JOIN Species ON Plants.IdSpecies = Species.IdSpecies " +
+            "LEFT JOIN Genus ON Species.GenusName = Genus.Name " +
+            "LEFT JOIN PlantsTranslations ON Plants.IdPlant = PlantsTranslations.IdPlant " +
+            "WHERE PlantsTranslations.TranslationCode IN (:translationCode) AND Favourite = 1")
+    public abstract List<Plant> getFavouritePlants(String translationCode);
 
 
 }

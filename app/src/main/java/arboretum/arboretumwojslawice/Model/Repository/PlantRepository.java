@@ -54,6 +54,10 @@ public class PlantRepository extends  BaseRepository {
         return plantDao.getLocationsByPlantId(idPlant);
     }
 
+    public List<Plant> getFavouritePlants() {
+        return plantDao.getFavouritePlants(languageCode);
+    }
+
 
     public List<Plant> getPlantsForMichal() {
         List<Plant> plants = new ArrayList<>();
