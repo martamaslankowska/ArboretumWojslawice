@@ -108,6 +108,12 @@ public class RouteDetailActivity extends AppCompatActivity {
             public void onClick(View view) {
                 int plantId = routePointList.get(viewPager.getCurrentItem()).getPlant().getIdPlant();
                 Toast.makeText(getApplicationContext(), "This page was clicked: " + plantId, Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(getApplicationContext(), PlantDetailActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putInt(PLANT_ID, plantId);
+                intent.putExtra(BUNDLE, bundle);
+                startActivityForResult(intent, 123);
             }
         };
 
@@ -138,7 +144,7 @@ public class RouteDetailActivity extends AppCompatActivity {
                 {
                     rightArrow.setImageDrawable(null);
                 }
-                else if(position == 1)
+                else if(position == routePointList.size()-2)
                 {
                     rightArrow.setImageResource(R.drawable.right_arrow);
                 }

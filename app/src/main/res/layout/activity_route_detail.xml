@@ -33,7 +33,8 @@
                 android:src="@{route.getMapImageDetailedId(context)}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:alpha="0.8"/>
 
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
@@ -47,35 +48,41 @@
 
                 <TextView
                     android:id="@+id/route_detail_name"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
                     android:minWidth="100dp"
                     android:text="@{route.getName()}"
                     android:textSize="18dp"
-                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toStartOf="@+id/route_detail_button"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"/>
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/route_detail_length"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
                     android:layout_marginTop="4dp"
                     android:minWidth="100dp"
                     android:text="@{@string/route_length(route.getLengthString())}"
                     android:textSize="14dp"
+                    app:layout_constraintEnd_toStartOf="@+id/route_detail_button"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/route_detail_name"/>
+                    app:layout_constraintTop_toBottomOf="@+id/route_detail_name" />
 
                 <TextView
                     android:id="@+id/route_detail_time"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
                     android:minWidth="100dp"
                     android:text="@{@string/route_time(route.getTimeString())}"
                     android:textSize="14dp"
+                    app:layout_constraintEnd_toStartOf="@+id/route_detail_button"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/route_detail_length"/>
+                    app:layout_constraintTop_toBottomOf="@+id/route_detail_length" />
 
                 <View
                     android:id="@+id/route_detail_divider1"
@@ -94,6 +101,7 @@
                     android:layout_height="0dp"
                     android:fillViewport="true"
                     android:scrollbars="vertical"
+
                     app:layout_constraintBottom_toTopOf="@+id/route_detail_divider2"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -101,9 +109,9 @@
 
                     <TextView
                         android:id="@+id/route_detail_description"
-                        android:layout_width="fill_parent"
-                        android:layout_height="fill_parent"
-                        android:gravity="center_vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top"
                         android:text="@{route.getDescription()}"
                         android:textAlignment="inherit"
                         android:textSize="16dp"

@@ -19,14 +19,12 @@
 
         <ImageView
             android:id="@+id/plant_location_map_button"
-            android:layout_width="99dp"
-            android:layout_height="85dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="12dp"
+            android:layout_width="wrap_content"
+            android:layout_height="75dp"
             android:src="@drawable/icons8_map"
+            app:layout_constraintBottom_toTopOf="@+id/plant_detail_species"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar_back" />
+            app:layout_constraintTop_toBottomOf="@+id/plant_detail_image" />
 
         <ImageView
             android:id="@+id/plant_detail_image"
@@ -42,47 +40,44 @@
 
         <TextView
             android:id="@+id/plant_detail_name"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="4dp"
             android:layout_marginStart="4dp"
+            android:layout_marginEnd="8dp"
             android:layout_marginTop="4dp"
             android:text="@{plant.getName()}"
             android:textSize="18dp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/plant_detail_latin_name"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintEnd_toStartOf="@+id/plant_location_map_button"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/plant_detail_image" />
 
         <TextView
             android:id="@+id/plant_detail_latin_name"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="4dp"
+            android:layout_marginEnd="8dp"
             android:layout_marginStart="4dp"
             android:layout_marginTop="4dp"
             android:minHeight="20dp"
             android:text="@{plant.getLatinName()}"
             app:layout_constraintBottom_toTopOf="@+id/plant_detail_genus"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintEnd_toStartOf="@+id/plant_location_map_button"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/plant_detail_name" />
 
         <TextView
             android:id="@+id/plant_detail_genus"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="4dp"
+            android:layout_marginEnd="8dp"
             android:layout_marginStart="4dp"
             android:layout_marginTop="4dp"
             android:minHeight="20dp"
             android:text="@{plant.getGenusName()}"
             app:layout_constraintBottom_toTopOf="@+id/plant_detail_species"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintEnd_toStartOf="@+id/plant_location_map_button"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/plant_detail_latin_name" />
 
