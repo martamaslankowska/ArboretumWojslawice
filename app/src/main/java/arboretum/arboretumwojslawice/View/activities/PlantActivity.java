@@ -112,41 +112,7 @@ public class PlantActivity extends DaggerAppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if (stos.isEmpty()) {
-            finish();
-        }
-        else {
-            int n = stos.pop();
-            if (n == tabLayout.getSelectedTabPosition()) {
-                return;
-            }
-            if (numOfTab != null) {
-                numOfTab.remove("NumberOfTab");
-            }
-            mListOfPlantsFragment = new ListOfPlantsFragment();
-            switch (n) {
-                case 0:
-                    numOfTab.putInt("NumberOfTab", 0);
-                    mListOfPlantsFragment.setArguments(numOfTab);
-                    break;
-                case 1:
-                    numOfTab.putInt("NumberOfTab", 1);
-                    mListOfPlantsFragment.setArguments(numOfTab);
-                    break;
-                case 2:
-                    numOfTab.putInt("NumberOfTab", 2);
-                    mListOfPlantsFragment.setArguments(numOfTab);
-                    break;
-                case 3:
-                    numOfTab.putInt("NumberOfTab", 3);
-                    mListOfPlantsFragment.setArguments(numOfTab);
-                    break;
-            }
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.plant_fragment, mListOfPlantsFragment)
-                    .addToBackStack(null)
-                    .commit();
-        }
+        finish();
     }
 
     public void getQRCode(View view) {

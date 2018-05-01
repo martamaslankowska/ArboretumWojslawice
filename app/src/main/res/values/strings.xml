@@ -31,13 +31,13 @@
 
     <!-- Options in MoreFragment-->
     <string-array name="more_options">
-        <item>Spis roślin</item>
-        <item>Kalendarz imprez</item>
-        <item>Cennik</item>
-        <item>Kontakt (+dojazd do Arboretum)</item>
-        <item>Regulamin</item>
-        <item>Okoliczne/w pobliżu</item>
         <item>Godziny otwarcia</item>
+        <item>Cennik</item>
+        <item>Kalendarz imprez</item>
+        <item>Spis roślin</item>
+        <item>W pobliżu...</item>
+        <item>Kontakt</item>
+        <item>Regulamin</item>
         <item>Ustawienia</item>
     </string-array>
 
