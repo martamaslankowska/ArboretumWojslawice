@@ -11,6 +11,7 @@ import android.graphics.Canvas;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -42,29 +43,28 @@ public class NavigationActivity extends AppCompatActivity implements LocationLis
     int width, height;
 
     //arboretum
-//    public final static double MinLat = 50.708060;
-//    public final static double MaxLat = 50.713493;
-//    public final static double MinLon = 16.853841;
-//    public final static double MaxLon = 16.867359;
+    public final static double MinLat = 50.708060;
+    public final static double MaxLat = 50.713493;
+    public final static double MinLon = 16.853841;
+    public final static double MaxLon = 16.867359;
 
     //dom
-    public final static double MinLat = 51.092267;
-    public final static double MaxLat = 51.092772;
-    public final static double MinLon = 17.001062;
-    public final static double MaxLon = 17.002220;
+//    public final static double MinLat = 51.092267;
+//    public final static double MaxLat = 51.092772;
+//    public final static double MinLon = 17.001062;
+//    public final static double MaxLon = 17.002220;
 
 
     //restaurant
-//    double lon=16.856737;
-//    double lat=50.711166;
-    double lon,lat;
+    double lon=16.856737;
+    double lat=50.711166;
+    //double lon,lat;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation);
-
         routeViewModel = new RouteViewModel();
 
         Intent intent = getIntent();
@@ -86,12 +86,12 @@ public class NavigationActivity extends AppCompatActivity implements LocationLis
         /* /toolbar */
 
         ActivityCompat.requestPermissions(NavigationActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 123);
-        Location l = getLocation();
-        if (l != null) {
-            lat = l.getLatitude();
-            lon = l.getLongitude();
-            //Toast.makeText(getApplicationContext(), "LAT: " + lat + "\nLON: " + lon, Toast.LENGTH_SHORT).show();
-        }
+        //uncomment to check real position
+//        Location l = getLocation();
+//        if (l != null) {
+//            lat = l.getLatitude();
+//            lon = l.getLongitude();
+//        }
 
         imageview = findViewById(R.id.map);
         resources = getResources();
@@ -101,29 +101,36 @@ public class NavigationActivity extends AppCompatActivity implements LocationLis
 
         x=countX(lon);
         y=countY(lat);
-        //Toast.makeText(getApplicationContext(), x + "\n" +  y, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), x + "\n" +  y, Toast.LENGTH_SHORT).show();
         DrawCanvas();
         drawMarker(x,y);
         imageview.setImageBitmap(bitmap2);
 
     }
 
-    public Location getLocation(){
+   public Location getLocation(){
         Context context = getApplicationContext();
         if(ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
-            Toast.makeText(context, "brak pozwolenia na GPS", Toast.LENGTH_SHORT).show();
+
+            //Toast.makeText(context, "brak pozwolenia na GPS", Toast.LENGTH_SHORT).show();
+            turnGpsOn();
             return null;
         }
         LocationManager lm = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
         boolean isGPSEnabled = lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
         if(isGPSEnabled){
-            lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 3,0,this);
+            lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0,0,this);
             Location l = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
             return l;
         }else{
-            Toast.makeText(context, "włącz GPS", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(context, "włącz GPS", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
         }
         return null;
+    }
+
+    private void turnGpsOn(){
+        startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
     }
 
     @Override
@@ -148,7 +155,7 @@ public class NavigationActivity extends AppCompatActivity implements LocationLis
     }
 
     public void CreateBitmap(){
-        bitmap1 = BitmapFactory.decodeResource(resources,R.drawable.ic_location);
+        bitmap1 = BitmapFactory.decodeResource(resources,R.drawable.marker_black_big);
         bitmap3 = BitmapFactory.decodeResource(resources,R.drawable.arboretum_map2);
     }
 
@@ -178,11 +185,16 @@ public class NavigationActivity extends AppCompatActivity implements LocationLis
         double worldMapWidth = ((width/(MaxLon-MinLon))*360)/(2*Math.PI);
         double mapOffsetY=(worldMapWidth/2*Math.log((1+Math.sin(MaxLat*Math.PI/180))/(1-Math.sin(MaxLat*Math.PI/180))));
         y=(int)(height-((worldMapWidth/2*Math.log((1+Math.sin(lat))/(1-Math.sin(lat))))-mapOffsetY));
-        return y/4;
+        return y/4-24;
     }
 
+    private void turnGPSOn(){
+        Intent intent = new Intent("android.location.GPS_ENABLED_CHANGE");
+        intent.putExtra("enabled", true);
+        sendBroadcast(intent);
+    }
 
-    public boolean onOptionsItemSelected(MenuItem item) {
+        public boolean onOptionsItemSelected(MenuItem item) {
         // handle arrow click here
         if (item.getItemId() == android.R.id.home) {
             finish(); // close this activity and return to preview activity (if there is any)
