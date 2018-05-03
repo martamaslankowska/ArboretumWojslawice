@@ -127,9 +127,9 @@ public class PlantLocationMapActivity extends AppCompatActivity{
 
 
     public void CreateBitmap(){
-        positionMarkerBitmap = BitmapFactory.decodeResource(resources,R.drawable.marker_black_big);
+        positionMarkerBitmap = BitmapFactory.decodeResource(resources,R.drawable.ic_marker_black_big);
         mapBitmap = BitmapFactory.decodeResource(resources,R.drawable.arboretum_map2);
-        markerBitmap = BitmapFactory.decodeResource(resources, R.drawable.marker_flower);
+        markerBitmap = BitmapFactory.decodeResource(resources, R.drawable.ic_marker_flower);
         GetBitmapWidthHeight();
         canvasBitmap = Bitmap.createBitmap(width,height,Bitmap.Config.RGB_565);
     }
