@@ -12,13 +12,22 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.ImageView;
+import android.widget.Toast;
+
 import java.util.ArrayList;
+import java.util.List;
 
 import arboretum.arboretumwojslawice.Commons.map.LonLat;
 import arboretum.arboretumwojslawice.Commons.map.PixelCoordinates;
+import arboretum.arboretumwojslawice.Model.Repository.PlantRepository;
+import arboretum.arboretumwojslawice.Model.businessentity.Location;
 import arboretum.arboretumwojslawice.Model.businessentity.Plant;
 import arboretum.arboretumwojslawice.R;
 import arboretum.arboretumwojslawice.ViewModel.PlantViewModel;
+import io.reactivex.Maybe;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 public class PlantLocationMapActivity extends AppCompatActivity{
 
@@ -29,24 +38,24 @@ public class PlantLocationMapActivity extends AppCompatActivity{
     private Bundle bundle;
     private Plant mPlant;
 
-    /* map */
+    /* map variables*/
     int x=0,y=0;
     Bitmap positionMarkerBitmap,canvasBitmap,mapBitmap, markerBitmap;
     Canvas canvas;
     ImageView imageview;
     Resources resources;
     int width, height;
+    PlantRepository plantRepo;
+    List<LonLat> places = new ArrayList<>();
+    List<Location> locations;
 
     //arboretum
     public final static double MinLat = 50.708060;
     public final static double MaxLat = 50.713493;
     public final static double MinLon = 16.853841;
     public final static double MaxLon = 16.867359;
-    /* /map */
+    /* /map variables*/
 
-    /* test data */
-    ArrayList<LonLat> places = new ArrayList<>();
-    /* /test data */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +82,35 @@ public class PlantLocationMapActivity extends AppCompatActivity{
         }
         /* /toolbar */
 
+        /* get data from database */
+//        Disposable gettingPlants = Maybe.fromCallable(() -> {
+//            return plantRepo.getAllPlants();
+//        })
+//                .subscribeOn(Schedulers.computation())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(plants -> {
+//                            /* onSuccess() :) */
+//                            try {
+//                                mPlant = plants.get(plant_id);
+//                                Toast.makeText(this, "pobrane z bazy :D", Toast.LENGTH_SHORT).show();
+//                            } catch (Exception e){
+//                                Toast.makeText(this, "nieudało się :(", Toast.LENGTH_SHORT).show();
+//                            }
+//                        }
+//                        ,throwable -> {
+//                            /* onError() */
+//                            Toast.makeText(this, "Jakiś błąąąd... -.- -.-", Toast.LENGTH_LONG).show();
+//                        });
+         /* /get data from database */
+        locations = mPlant.getLocations();
+//        Toast.makeText(this, locations.get(0).getX()+", "+locations.get(0).getY() , Toast.LENGTH_LONG).show();
+//        for (Location l: locations) {
+//            double lat = l.getX();
+//            double lon = l.getY();
+//            places.add(new LonLat(lon, lat));
+//        }
+
+
         /* map */
         fillPlantsCoordinates();
         ActivityCompat.requestPermissions(PlantLocationMapActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 123);
@@ -87,7 +125,7 @@ public class PlantLocationMapActivity extends AppCompatActivity{
         /* /map */
     }
 
-    /*map*/
+
     public void CreateBitmap(){
         positionMarkerBitmap = BitmapFactory.decodeResource(resources,R.drawable.marker_black_big);
         mapBitmap = BitmapFactory.decodeResource(resources,R.drawable.arboretum_map2);
@@ -120,7 +158,7 @@ public class PlantLocationMapActivity extends AppCompatActivity{
         return y/4-24;
     }
 
-    public void drawMarkers(ArrayList<LonLat> pointsCoordinates){
+    public void drawMarkers(List<LonLat> pointsCoordinates){
         ArrayList<PixelCoordinates> pointsPixelsCoordinates= new ArrayList();
         for(LonLat l: pointsCoordinates){
             pointsPixelsCoordinates.add(new PixelCoordinates(countX(l.lon), countY(l.lat)));
@@ -129,7 +167,6 @@ public class PlantLocationMapActivity extends AppCompatActivity{
             canvas.drawBitmap(markerBitmap, p.x, p.y, null);
         }
     }
-
 /* /map */
 
     public boolean onOptionsItemSelected(MenuItem item) {
