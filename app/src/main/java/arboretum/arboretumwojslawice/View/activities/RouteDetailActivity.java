@@ -2,7 +2,11 @@ package arboretum.arboretumwojslawice.View.activities;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.databinding.DataBindingUtil;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,8 +22,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import arboretum.arboretumwojslawice.Commons.map.LonLat;
+import arboretum.arboretumwojslawice.Commons.map.PixelCoordinates;
+import arboretum.arboretumwojslawice.Model.Repository.PlantRepository;
+import arboretum.arboretumwojslawice.Model.businessentity.Location;
 import arboretum.arboretumwojslawice.Model.businessentity.PointOnRoute;
 import arboretum.arboretumwojslawice.Model.businessentity.Route;
 import arboretum.arboretumwojslawice.R;
@@ -49,6 +58,22 @@ public class RouteDetailActivity extends AppCompatActivity {
 
     private ImageView mButton;
 
+    /* map variables*/
+    int x=0,y=0;
+    Bitmap positionMarkerBitmap,canvasBitmap,mapBitmap, markerBitmap;
+    Canvas canvas;
+    Resources resources;
+    int width, height;
+    private ImageView mapImage;
+
+    //arboretum
+    public final static double MinLat = 50.708060;
+    public final static double MaxLat = 50.713493;
+    public final static double MinLon = 16.853841;
+    public final static double MaxLon = 16.867359;
+    /* /map variables*/
+
+
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +95,14 @@ public class RouteDetailActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         bundle = intent.getBundleExtra(BUNDLE);
+
+        /*map*/
+        mapImage = findViewById(R.id.route_detail_map);
+        resources = getResources();
+        CreateBitmap();
+        DrawCanvas();
+        mapImage.setImageBitmap(canvasBitmap);
+        /* /map*/
 
         route_id = bundle.getInt(ROUTE_ID);
         route = routeDetailViewModel.getRouteById(route_id);
@@ -179,4 +212,48 @@ public class RouteDetailActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    /* map */
+    public void CreateBitmap(){
+        positionMarkerBitmap = BitmapFactory.decodeResource(resources,R.drawable.ic_marker_black_big);
+        mapBitmap = BitmapFactory.decodeResource(resources,R.drawable.arboretum_map2);
+        markerBitmap = BitmapFactory.decodeResource(resources, R.drawable.ic_marker_flower);
+        GetBitmapWidthHeight();
+        canvasBitmap = Bitmap.createBitmap(width,height,Bitmap.Config.RGB_565);
+    }
+
+    public void GetBitmapWidthHeight(){
+        width = mapBitmap.getWidth();
+        height = mapBitmap.getHeight();
+    }
+
+    public void DrawCanvas(){
+        canvas = new Canvas(canvasBitmap);
+        canvas.drawBitmap(mapBitmap,0,0,null);
+    }
+
+    public int countX(double lon){
+        double ratioX=((lon-MinLon)*width)/(MaxLon-MinLon);
+        x=(int)ratioX;
+        return x;
+    }
+
+    public int countY(double lat){
+        lat=(lat*Math.PI)/180.0;
+        double worldMapWidth = ((width/(MaxLon-MinLon))*360)/(2*Math.PI);
+        double mapOffsetY=(worldMapWidth/2*Math.log((1+Math.sin(MaxLat*Math.PI/180))/(1-Math.sin(MaxLat*Math.PI/180))));
+        y=(int)(height-((worldMapWidth/2*Math.log((1+Math.sin(lat))/(1-Math.sin(lat))))-mapOffsetY));
+        return y/4-24;
+    }
+
+    public void drawMarkers(List<LonLat> pointsCoordinates){
+        ArrayList<PixelCoordinates> pointsPixelsCoordinates= new ArrayList();
+        for(LonLat l: pointsCoordinates){
+            pointsPixelsCoordinates.add(new PixelCoordinates(countX(l.lon), countY(l.lat)));
+        }
+        for (PixelCoordinates p: pointsPixelsCoordinates) {
+            canvas.drawBitmap(markerBitmap, p.x, p.y, null);
+        }
+    }
+    /* /map */
 }
