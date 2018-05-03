@@ -167,7 +167,6 @@ public class PlantLocationMapActivity extends AppCompatActivity{
             canvas.drawBitmap(markerBitmap, p.x, p.y, null);
         }
     }
-/* /map */
 
     public boolean onOptionsItemSelected(MenuItem item) {
         // handle arrow click here

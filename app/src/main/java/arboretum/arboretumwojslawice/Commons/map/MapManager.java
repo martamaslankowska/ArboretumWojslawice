@@ -101,10 +101,10 @@ public class MapManager implements LocationListener{
     }
 
     public void createBitmaps(Context c, int width, int height){
-        positionMarkerBitmap = BitmapFactory.decodeResource(c.getResources(), R.drawable.marker_black_big);
+        positionMarkerBitmap = BitmapFactory.decodeResource(c.getResources(), R.drawable.ic_marker_black_big);
         mapBitmap = BitmapFactory.decodeResource(c.getResources(), R.drawable.arboretum_map2);
         canvasBitmap = Bitmap.createBitmap(width,height,Bitmap.Config.RGB_565);
-        markerBitmap = BitmapFactory.decodeResource(c.getResources(), R.drawable.marker_black);
+        markerBitmap = BitmapFactory.decodeResource(c.getResources(), R.drawable.ic_marker_flower);
     }
 
     public PixelCoordinates getMapBitmapWidthHeight(){
