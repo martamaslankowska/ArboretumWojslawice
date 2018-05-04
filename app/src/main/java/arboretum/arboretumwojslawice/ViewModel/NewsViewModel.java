@@ -10,12 +10,12 @@ import arboretum.arboretumwojslawice.Model.businessentity.News;
 public class NewsViewModel {
 
     private List<News> mNews;
-    NewsRepository mNewsRepo;
 
     @Inject
-    public NewsViewModel() {
-        mNewsRepo = new NewsRepository();
-    }
+    protected NewsRepository mNewsRepo;
+
+    @Inject
+    public NewsViewModel() { }
 
     public List<News> getData()
     {

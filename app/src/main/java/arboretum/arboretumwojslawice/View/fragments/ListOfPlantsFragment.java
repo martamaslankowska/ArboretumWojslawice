@@ -30,8 +30,6 @@ public class ListOfPlantsFragment extends DaggerFragment implements PlantAdapter
     public static final String TAB_ID = "TAB_ID";
     public static final String BUNDLE = "BUNDLE";
 
-    PlantAdapter.OnItemClickListener listener;
-
     protected ListOfPlantsFragment.LayoutManagerType mCurrentLayoutManagerType;
 
     protected RecyclerView mRecyclerView;

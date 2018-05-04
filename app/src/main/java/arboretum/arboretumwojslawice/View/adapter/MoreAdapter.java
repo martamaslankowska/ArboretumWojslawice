@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import arboretum.arboretumwojslawice.Commons.BindingViewHolder;
 import arboretum.arboretumwojslawice.Model.MoreOptionItem;
 import arboretum.arboretumwojslawice.View.viewholder.MoreViewHolder;
@@ -21,10 +23,9 @@ public class MoreAdapter extends RecyclerView.Adapter<BindingViewHolder> {
     private List<MoreOptionItem> mOptions = new ArrayList<>();
     OnItemClickListener listener;
 
-
-    public MoreAdapter(OnItemClickListener listener, List<MoreOptionItem> mOptions) {
+    @Inject
+    public MoreAdapter(OnItemClickListener listener) {
         this.listener = listener;
-        this.mOptions = mOptions;
     }
 
     @Override
@@ -55,7 +56,7 @@ public class MoreAdapter extends RecyclerView.Adapter<BindingViewHolder> {
         void onItemClick(int position);
     }
 
-    void setData(List<MoreOptionItem> option) {
+    public void setData(List<MoreOptionItem> option) {
         this.mOptions = option;
         notifyDataSetChanged();
     }

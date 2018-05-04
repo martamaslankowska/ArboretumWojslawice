@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.inject.Inject;
+
+import arboretum.arboretumwojslawice.Commons.di.AppController;
 import arboretum.arboretumwojslawice.Model.MoreOptionItem;
 import arboretum.arboretumwojslawice.R;
 
@@ -17,8 +20,9 @@ public class MoreViewModel {
     private List<MoreOptionItem> mOptions;
     private Context mContext;
 
-    public MoreViewModel(Context context) {
-        mContext = context;
+    @Inject
+    public MoreViewModel(AppController appController) {
+        mContext = appController.getBaseContext();
     }
 
     public List<MoreOptionItem> getData() {

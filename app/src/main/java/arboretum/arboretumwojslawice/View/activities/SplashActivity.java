@@ -1,16 +1,11 @@
 package arboretum.arboretumwojslawice.View.activities;
 
-import android.arch.persistence.room.Database;
-import android.arch.persistence.room.Room;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.database.Cursor;
-import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
@@ -18,18 +13,11 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.widget.Toast;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.Locale;
 
 import arboretum.arboretumwojslawice.Model.AppDatabase;
-import arboretum.arboretumwojslawice.Model.DAO.AttractionDao;
 import arboretum.arboretumwojslawice.Model.DAO.HotelDao;
-import arboretum.arboretumwojslawice.Model.DatabaseConnection;
-import arboretum.arboretumwojslawice.Model.DatabaseHelper;
-import arboretum.arboretumwojslawice.Model.DziadekDatabaseHelper;
 import io.reactivex.Completable;
-import io.reactivex.Maybe;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
