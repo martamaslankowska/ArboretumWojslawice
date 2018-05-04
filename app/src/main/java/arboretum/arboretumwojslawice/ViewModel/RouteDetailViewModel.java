@@ -2,6 +2,8 @@ package arboretum.arboretumwojslawice.ViewModel;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import arboretum.arboretumwojslawice.Model.Repository.PlantRepository;
 import arboretum.arboretumwojslawice.Model.Repository.RouteRepository;
 import arboretum.arboretumwojslawice.Model.businessentity.Plant;
@@ -17,15 +19,13 @@ public class RouteDetailViewModel {
     List<Plant> mPlants;
     List<Route> mRoutes;
     List<PointOnRoute> mPointOnRoutes;
-    RouteRepository mRouteRepo;
-    PlantRepository mPlantRepo;
-    PlantViewModel mPlantViewModel;
+    @Inject
+    protected RouteRepository mRouteRepo;
+    @Inject
+    protected PlantRepository mPlantRepo;
 
-    public RouteDetailViewModel() {
-        mRouteRepo = new RouteRepository();
-        mPlantRepo = new PlantRepository();
-        mPlantViewModel = new PlantViewModel();
-    }
+    @Inject
+    public RouteDetailViewModel() { }
 
     public Route getRouteById(int route_id) {
         getRoutes();

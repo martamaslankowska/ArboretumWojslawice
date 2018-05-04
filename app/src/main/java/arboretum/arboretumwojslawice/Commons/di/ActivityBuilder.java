@@ -15,6 +15,7 @@ import arboretum.arboretumwojslawice.View.activities.PlantActivity;
 import arboretum.arboretumwojslawice.View.activities.PlantDetailActivity;
 import arboretum.arboretumwojslawice.View.activities.PlantLocationMapActivity;
 import arboretum.arboretumwojslawice.View.activities.PriceActivity;
+import arboretum.arboretumwojslawice.View.activities.RouteDetailActivity;
 import arboretum.arboretumwojslawice.View.fragments.RouteFragment;
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
@@ -48,4 +49,7 @@ public abstract class ActivityBuilder {
 
     @ContributesAndroidInjector
     abstract PlantLocationMapActivity bindPlantLocationMapActivity();
+
+    @ContributesAndroidInjector
+    abstract RouteDetailActivity bindRouteDetailActivity();
 }

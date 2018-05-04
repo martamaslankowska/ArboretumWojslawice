@@ -25,6 +25,8 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import arboretum.arboretumwojslawice.Commons.map.LonLat;
 import arboretum.arboretumwojslawice.Commons.map.PixelCoordinates;
 import arboretum.arboretumwojslawice.Model.Repository.PlantRepository;
@@ -35,8 +37,9 @@ import arboretum.arboretumwojslawice.R;
 import arboretum.arboretumwojslawice.View.adapter.ViewPagerAdapter;
 import arboretum.arboretumwojslawice.ViewModel.RouteDetailViewModel;
 import arboretum.arboretumwojslawice.databinding.ActivityRouteDetailBinding;
+import dagger.android.support.DaggerAppCompatActivity;
 
-public class RouteDetailActivity extends AppCompatActivity {
+public class RouteDetailActivity extends DaggerAppCompatActivity {
 
     public static final String BUNDLE = "BUNDLE";
     public static final String ROUTE_ID = "ROUTE_ID";
@@ -47,7 +50,8 @@ public class RouteDetailActivity extends AppCompatActivity {
     private int route_id;
     private Route route;
     private List<PointOnRoute> routePointList;
-    RouteDetailViewModel routeDetailViewModel;
+    @Inject
+    protected RouteDetailViewModel routeDetailViewModel;
     private int currentPage = 0;
     View.OnClickListener listener;
 
@@ -91,7 +95,6 @@ public class RouteDetailActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
         getSupportActionBar().setTitle(R.string.toolbar_route_detail);
-        routeDetailViewModel = new RouteDetailViewModel();
 
         TextView textView = findViewById(R.id.route_detail_description);
         textView.setMovementMethod(new ScrollingMovementMethod());
