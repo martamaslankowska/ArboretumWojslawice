@@ -46,7 +46,7 @@ public class Price implements AdapterItem {
         return amount;
     }
 
-    public String getAmountString() { return String.valueOf(amount);}
+    public String getAmountString() { return String.valueOf(amount.intValue());}
 
     public void setAmount(Double amount) {
         this.amount = amount;

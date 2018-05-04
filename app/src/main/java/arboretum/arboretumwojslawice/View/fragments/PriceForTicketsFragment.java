@@ -66,17 +66,6 @@ public class PriceForTicketsFragment extends DaggerFragment {
         mRecyclerView = rootView.findViewById(R.id.price_tickets_recycler_view);
         compositeDisposable = new CompositeDisposable();
 
-
-//        //priceViewModel = new PriceForTicketsViewModel();
-//        mPrices = priceViewModel.getPriceForMichal();
-//
-//        mRecyclerView.addItemDecoration(new DividerItemDecoration(this.getContext(), 0));
-//        //mAdapter = new PriceForTicketsAdapter();
-//        mRecyclerView.setAdapter(mAdapter);
-//        mAdapter.setData(mPrices);
-
-
-
         Disposable listOfPrices = Maybe.fromCallable(() -> {
             return priceViewModel.getAllPrices();
         })
@@ -84,20 +73,16 @@ public class PriceForTicketsFragment extends DaggerFragment {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(prices -> {
                             /* onSuccess() :) */
-                            int lenght = prices.size();
+                            int length = prices.size();
                             try {
-                                Toast.makeText(getActivity(), "Było odwołanie do bazy i fajnie\nLiczba cen w bazie biletowej: " + String.valueOf(lenght), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getActivity(), "Było odwołanie do bazy i fajnie\nLiczba cen w bazie biletowej: " + String.valueOf(length), Toast.LENGTH_SHORT).show();
                             } catch (Exception e){
                                 Toast.makeText(getActivity(), "Ups, pusta baza :(", Toast.LENGTH_SHORT).show();
                             }
 
-
-//                            priceViewModel = new PriceForTicketsViewModel();
-//                            mPrices = priceViewModel.getPriceForMichal();
                             mPrices = prices;
 
                             mRecyclerView.addItemDecoration(new DividerItemDecoration(this.getContext(), 0));
-                            //mAdapter = new PriceForTicketsAdapter();
                             mRecyclerView.setAdapter(mAdapter);
                             mAdapter.setData(mPrices);
 
@@ -108,7 +93,6 @@ public class PriceForTicketsFragment extends DaggerFragment {
                         });
 
         compositeDisposable.add(listOfPrices);
-
 
 
         mLayoutManager = new LinearLayoutManager(getActivity());
@@ -135,6 +119,12 @@ public class PriceForTicketsFragment extends DaggerFragment {
 
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mRecyclerView.scrollToPosition(scrollPosition);
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        compositeDisposable.clear();
     }
 
     @Override
