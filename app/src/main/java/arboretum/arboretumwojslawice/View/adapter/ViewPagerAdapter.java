@@ -26,9 +26,8 @@ public class ViewPagerAdapter extends PagerAdapter {
     private List<PointOnRoute> mPlants;
     View.OnClickListener listener;
 
-    public ViewPagerAdapter(Context context, List<PointOnRoute> pList, View.OnClickListener listener) {
+    public ViewPagerAdapter(Context context, View.OnClickListener listener) {
         this.context = context;
-        this.mPlants = pList;
         this.listener = listener;
     }
 
@@ -70,7 +69,11 @@ public class ViewPagerAdapter extends PagerAdapter {
         vp.removeView(view);
     }
 
-    public interface OnItemClickListener {
-        void onItemClick(int position);
+    public interface OnItemClickListener extends View.OnClickListener {
+        void onClick(View view);
+    }
+
+    public void setData(List<PointOnRoute> mPlants) {
+        this.mPlants = mPlants;
     }
 }

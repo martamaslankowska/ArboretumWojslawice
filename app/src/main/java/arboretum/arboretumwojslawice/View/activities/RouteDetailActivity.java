@@ -39,7 +39,7 @@ import arboretum.arboretumwojslawice.ViewModel.RouteDetailViewModel;
 import arboretum.arboretumwojslawice.databinding.ActivityRouteDetailBinding;
 import dagger.android.support.DaggerAppCompatActivity;
 
-public class RouteDetailActivity extends DaggerAppCompatActivity {
+public class RouteDetailActivity extends DaggerAppCompatActivity implements ViewPagerAdapter.OnItemClickListener {
 
     public static final String BUNDLE = "BUNDLE";
     public static final String ROUTE_ID = "ROUTE_ID";
@@ -56,6 +56,7 @@ public class RouteDetailActivity extends DaggerAppCompatActivity {
     View.OnClickListener listener;
 
     ViewPager viewPager;
+    ViewPagerAdapter viewPagerAdapter;
 
     private ImageView leftArrow;
     private ImageView rightArrow;
@@ -166,23 +167,11 @@ public class RouteDetailActivity extends DaggerAppCompatActivity {
             }
         });
 
-        listener = new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                int plantId = routePointList.get(viewPager.getCurrentItem()).getPlant().getIdPlant();
-                Toast.makeText(getApplicationContext(), "This page was clicked: " + plantId, Toast.LENGTH_SHORT).show();
-
-                Intent intent = new Intent(getApplicationContext(), PlantDetailActivity.class);
-                Bundle bundle = new Bundle();
-                bundle.putInt(PLANT_ID, plantId);
-                intent.putExtra(BUNDLE, bundle);
-                startActivityForResult(intent, 123);
-            }
-        };
-
         viewPager = findViewById(R.id.viewPager);
-        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(this, routePointList, listener);
+        viewPagerAdapter = new ViewPagerAdapter(this, listener);
+        viewPagerAdapter.setData(routePointList);
         viewPager.setAdapter(viewPagerAdapter);
+
 
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -321,4 +310,15 @@ public class RouteDetailActivity extends DaggerAppCompatActivity {
         }
     }
 
+    @Override
+    public void onClick(View view) {
+        int plantId = routePointList.get(viewPager.getCurrentItem()).getPlant().getIdPlant();
+        Toast.makeText(getApplicationContext(), "This page was clicked: " + plantId, Toast.LENGTH_SHORT).show();
+
+        Intent intent = new Intent(getApplicationContext(), PlantDetailActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putInt(PLANT_ID, plantId);
+        intent.putExtra(BUNDLE, bundle);
+        startActivityForResult(intent, 123);
+    }
 }

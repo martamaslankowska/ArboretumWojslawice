@@ -5,6 +5,7 @@ import arboretum.arboretumwojslawice.Commons.modules.MainActivityModule;
 import arboretum.arboretumwojslawice.Commons.modules.NeighbourhoodModule;
 import arboretum.arboretumwojslawice.Commons.modules.PlantModule;
 import arboretum.arboretumwojslawice.Commons.modules.PriceModule;
+import arboretum.arboretumwojslawice.Commons.modules.RouteDetailModule;
 import arboretum.arboretumwojslawice.Commons.modules.RouteModule;
 import arboretum.arboretumwojslawice.Model.businessentity.Plant;
 import arboretum.arboretumwojslawice.View.activities.ContactActivity;
@@ -53,7 +54,7 @@ public abstract class ActivityBuilder {
     @ContributesAndroidInjector
     abstract PlantLocationMapActivity bindPlantLocationMapActivity();
 
-    @ContributesAndroidInjector
+    @ContributesAndroidInjector(modules = RouteDetailModule.class)
     abstract RouteDetailActivity bindRouteDetailActivity();
 
     @ContributesAndroidInjector(modules = NeighbourhoodModule.class)
