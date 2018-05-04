@@ -6,6 +6,7 @@ import arboretum.arboretumwojslawice.Commons.modules.PlantModule;
 import arboretum.arboretumwojslawice.Commons.modules.PriceModule;
 import arboretum.arboretumwojslawice.Commons.modules.RouteModule;
 import arboretum.arboretumwojslawice.Model.businessentity.Plant;
+import arboretum.arboretumwojslawice.View.activities.ContactActivity;
 import arboretum.arboretumwojslawice.View.activities.EventActivity;
 import arboretum.arboretumwojslawice.View.activities.MainActivity;
 import arboretum.arboretumwojslawice.View.activities.PlantActivity;
@@ -21,9 +22,6 @@ public abstract class ActivityBuilder {
     @ContributesAndroidInjector(modules = MainActivityModule.class)
     abstract MainActivity bindMainActivity();
 
-    @ContributesAndroidInjector
-    abstract PlantDetailActivity bindPlantDetailActivity();
-
     @ContributesAndroidInjector(modules = PlantModule.class)
     abstract PlantActivity bindPlantActivity();
 
@@ -32,4 +30,10 @@ public abstract class ActivityBuilder {
 
     @ContributesAndroidInjector(modules = PriceModule.class)
     abstract PriceActivity bindPriceActivity();
+
+    @ContributesAndroidInjector
+    abstract PlantDetailActivity bindPlantDetailActivity();
+
+    @ContributesAndroidInjector
+    abstract ContactActivity bindContactActivity();
 }

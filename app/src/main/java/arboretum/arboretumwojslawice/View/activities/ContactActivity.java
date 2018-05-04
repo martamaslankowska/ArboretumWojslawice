@@ -1,6 +1,5 @@
 package arboretum.arboretumwojslawice.View.activities;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
@@ -8,23 +7,26 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import arboretum.arboretumwojslawice.Model.AppDatabase;
-import arboretum.arboretumwojslawice.Model.Repository.HotelRepository;
-import arboretum.arboretumwojslawice.Model.Repository.PriceRepository;
+import javax.inject.Inject;
+
 import arboretum.arboretumwojslawice.Model.businessentity.Hotel;
 import arboretum.arboretumwojslawice.R;
+import arboretum.arboretumwojslawice.ViewModel.ContactViewModel;
+import dagger.android.support.DaggerAppCompatActivity;
 import io.reactivex.Maybe;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
-public class ContactActivity extends AppCompatActivity {
+public class ContactActivity extends DaggerAppCompatActivity {
 
     TextView hotel;
     ImageView hotelImage;
     CompositeDisposable compositeDisposable;
-    HotelRepository hotelRepo;
+    //HotelRepository hotelRepo;
+    @Inject
+    protected ContactViewModel contactViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,8 +44,8 @@ public class ContactActivity extends AppCompatActivity {
         }
         /* /toolbar */
 
-        AppDatabase db = AppDatabase.getAppDatabase(getApplication().getApplicationContext());
-        hotelRepo = new HotelRepository(db);
+        //AppDatabase db = AppDatabase.getAppDatabase(getApplication().getApplicationContext());
+        //hotelRepo = new HotelRepository(db);
 
         hotel = findViewById(R.id.hotelText);
         hotelImage = findViewById(R.id.hotelImageView);
@@ -63,7 +65,7 @@ public class ContactActivity extends AppCompatActivity {
         /* GETTING DATA FROM DATABASE - in RXJava (it's not so hard ;)) */
 
         Disposable gettingHotels = Maybe.fromCallable(() -> {
-            return hotelRepo.getAllHotels();
+            return contactViewModel.getAllHotels();
         })
                 .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
