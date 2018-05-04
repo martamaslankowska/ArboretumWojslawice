@@ -6,16 +6,17 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.inject.Inject;
 
 import arboretum.arboretumwojslawice.Commons.map.LonLat;
 import arboretum.arboretumwojslawice.Commons.map.PixelCoordinates;
@@ -24,17 +25,16 @@ import arboretum.arboretumwojslawice.Model.businessentity.Location;
 import arboretum.arboretumwojslawice.Model.businessentity.Plant;
 import arboretum.arboretumwojslawice.R;
 import arboretum.arboretumwojslawice.ViewModel.PlantViewModel;
-import io.reactivex.Maybe;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.schedulers.Schedulers;
+import dagger.android.support.DaggerAppCompatActivity;
 
-public class PlantLocationMapActivity extends AppCompatActivity{
+public class PlantLocationMapActivity extends DaggerAppCompatActivity {
 
     public static final String BUNDLE = "BUNDLE";
     public static final String PLANT_ID = "PLANT_ID";
     private int plant_id;
-    private PlantViewModel plantViewModel;
+
+    @Inject
+    protected PlantViewModel plantViewModel;
     private Bundle bundle;
     private Plant mPlant;
 
@@ -61,8 +61,6 @@ public class PlantLocationMapActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plant_location_map);
-
-        plantViewModel = new PlantViewModel();
 
         Intent intent = getIntent();
         bundle = intent.getBundleExtra(BUNDLE);

@@ -14,12 +14,12 @@ import arboretum.arboretumwojslawice.Model.businessentity.Plant;
 
 public class PlantDetailViewModel {
     List<Plant> mPlant;
-    PlantRepository mPlantRepo;
 
     @Inject
-    public PlantDetailViewModel() {
-        mPlantRepo = new PlantRepository();
-    }
+    protected PlantRepository mPlantRepo;
+
+    @Inject
+    public PlantDetailViewModel() { }
 
     public List<Plant> getData() {
         mPlant = mPlantRepo.getPlantsForMichal();

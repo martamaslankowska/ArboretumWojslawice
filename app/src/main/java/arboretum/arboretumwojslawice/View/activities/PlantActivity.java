@@ -10,6 +10,8 @@ import android.view.View;
 
 import java.util.Stack;
 
+import javax.inject.Inject;
+
 import arboretum.arboretumwojslawice.R;
 import arboretum.arboretumwojslawice.View.fragments.ListOfPlantsFragment;
 import dagger.android.support.DaggerAppCompatActivity;

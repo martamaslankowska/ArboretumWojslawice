@@ -37,7 +37,6 @@ public class PlantRepository extends  BaseRepository {
     @Inject
     public PlantRepository() {}
 
-
     public List<Plant> getAllPlants() {
         return plantDao.getAll(languageCode);
     }
