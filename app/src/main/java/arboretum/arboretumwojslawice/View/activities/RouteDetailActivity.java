@@ -60,11 +60,14 @@ public class RouteDetailActivity extends AppCompatActivity {
 
     /* map variables*/
     int x=0,y=0;
-    Bitmap positionMarkerBitmap,canvasBitmap,mapBitmap, markerBitmap;
+    Bitmap positionMarkerBitmap,canvasBitmap,mapBitmap, markerBitmap, colorMarkerBitmap;
     Canvas canvas;
     Resources resources;
     int width, height;
     private ImageView mapImage;
+    //test
+    List<LonLat> places = new ArrayList<>();
+    ArrayList<PixelCoordinates> pointsPixelsCoordinates= new ArrayList();
 
     //arboretum
     public final static double MinLat = 50.708060;
@@ -93,16 +96,40 @@ public class RouteDetailActivity extends AppCompatActivity {
         TextView textView = findViewById(R.id.route_detail_description);
         textView.setMovementMethod(new ScrollingMovementMethod());
 
+//        /*map*/
+        fillPlantsCoordinates();
+        mapImage = findViewById(R.id.route_detail_map);
+        resources = getResources();
+        //mapBitmap = BitmapFactory.decodeResource(resources, resources.getIdentifier("route_"+route_id, "drawable", getPackageName()));
+        mapBitmap = BitmapFactory.decodeResource(resources, resources.getIdentifier("arboretum_map2", "drawable", getPackageName()));
+        createBitmap();
+        drawCanvas();
+        drawMarkers(places, 0);
+        /*drawing flowers*/
+//        ArrayList<PixelCoordinates> pointsPixelsCoordinates= new ArrayList();
+//        for(LonLat l: places){
+//            pointsPixelsCoordinates.add(new PixelCoordinates(countX(l.lon), countY(l.lat)));
+//        }
+//        for(int i=0; i<pointsPixelsCoordinates.size(); i++){
+//            if(i==0) {
+//                canvas.drawBitmap(colorMarkerBitmap, pointsPixelsCoordinates.get(i).x, pointsPixelsCoordinates.get(i).y, null);
+//            }else{
+//                canvas.drawBitmap(markerBitmap, pointsPixelsCoordinates.get(i).x, pointsPixelsCoordinates.get(i).y, null);
+//            }
+//        }
+//        for (PixelCoordinates p: pointsPixelsCoordinates) {
+//            canvas.drawBitmap(markerBitmap, p.x, p.y, null);
+//        }
+        /* /drawing flowers*/
+
+        mapImage.setImageBitmap(canvasBitmap);
+//        /* /map*/
+
+
         Intent intent = getIntent();
         bundle = intent.getBundleExtra(BUNDLE);
 
-        /*map*/
-        mapImage = findViewById(R.id.route_detail_map);
-        resources = getResources();
-        CreateBitmap();
-        DrawCanvas();
-        mapImage.setImageBitmap(canvasBitmap);
-        /* /map*/
+
 
         route_id = bundle.getInt(ROUTE_ID);
         route = routeDetailViewModel.getRouteById(route_id);
@@ -161,8 +188,20 @@ public class RouteDetailActivity extends AppCompatActivity {
 
             @Override
             public void onPageSelected(int position) {
-//                Toast.makeText(getApplicationContext(), "Kwiatek " + (position+1), Toast.LENGTH_SHORT).show();
                 currentPage = position;
+
+                /* map */
+                mapBitmap = BitmapFactory.decodeResource(resources, resources.getIdentifier("arboretum_map2", "drawable", getPackageName()));
+                drawCanvas();
+//                double lon=routePointList.get(position).getX();
+//                double lat=routePointList.get(position).getY();
+//                PixelCoordinates p=new PixelCoordinates(countX(lon), countY(lat));
+//                int x=pointsPixelsCoordinates.get(position).x;
+//                int y=pointsPixelsCoordinates.get(position).y;
+//                canvas.drawBitmap(markerBitmap, p.x, p.y, null);
+                drawMarkers(places, position);
+                mapImage.setImageBitmap(canvasBitmap);
+                /* /map */
 
                 if(position == 0 && routePointList.size() > 1)
                 {
@@ -202,6 +241,9 @@ public class RouteDetailActivity extends AppCompatActivity {
 
         Log.i("mRoutes", String.valueOf(route_id));
         binding.setRoute(route);
+
+
+
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -214,10 +256,10 @@ public class RouteDetailActivity extends AppCompatActivity {
     }
 
     /* map */
-    public void CreateBitmap(){
+    public void createBitmap(){
         positionMarkerBitmap = BitmapFactory.decodeResource(resources,R.drawable.ic_marker_black_big);
-        mapBitmap = BitmapFactory.decodeResource(resources,R.drawable.arboretum_map2);
         markerBitmap = BitmapFactory.decodeResource(resources, R.drawable.ic_marker_flower);
+        colorMarkerBitmap = BitmapFactory.decodeResource(resources, R.drawable.ic_marker_flower_color);
         GetBitmapWidthHeight();
         canvasBitmap = Bitmap.createBitmap(width,height,Bitmap.Config.RGB_565);
     }
@@ -227,7 +269,7 @@ public class RouteDetailActivity extends AppCompatActivity {
         height = mapBitmap.getHeight();
     }
 
-    public void DrawCanvas(){
+    public void drawCanvas(){
         canvas = new Canvas(canvasBitmap);
         canvas.drawBitmap(mapBitmap,0,0,null);
     }
@@ -246,14 +288,34 @@ public class RouteDetailActivity extends AppCompatActivity {
         return y/4-24;
     }
 
-    public void drawMarkers(List<LonLat> pointsCoordinates){
+    public void drawMarker(int x, int y){
+        canvas.drawBitmap(markerBitmap, x, y, null);
+    }
+
+    public void drawMarkers(List<LonLat> pointsCoordinates, int position){
         ArrayList<PixelCoordinates> pointsPixelsCoordinates= new ArrayList();
         for(LonLat l: pointsCoordinates){
             pointsPixelsCoordinates.add(new PixelCoordinates(countX(l.lon), countY(l.lat)));
         }
-        for (PixelCoordinates p: pointsPixelsCoordinates) {
-            canvas.drawBitmap(markerBitmap, p.x, p.y, null);
+        for(int i=0; i<pointsPixelsCoordinates.size(); i++) {
+            if (i == position) {
+                canvas.drawBitmap(colorMarkerBitmap, pointsPixelsCoordinates.get(i).x, pointsPixelsCoordinates.get(i).y, null);
+            } else {
+                canvas.drawBitmap(markerBitmap, pointsPixelsCoordinates.get(i).x, pointsPixelsCoordinates.get(i).y, null);
+            }
         }
     }
     /* /map */
+
+    public void fillPlantsCoordinates(){
+        places.add(new LonLat(16.856811,50.712181));
+        places.add(new LonLat(16.858742,50.712460));
+        places.add(new LonLat(16.861521,50.712269));
+        places.add(new LonLat(16.863012,50.710591));
+        //places.add(new LonLat(16.859096,50.710021));
+        for(LonLat l: places){
+            pointsPixelsCoordinates.add(new PixelCoordinates(countX(l.lon), countY(l.lat)));
+        }
+    }
+
 }
