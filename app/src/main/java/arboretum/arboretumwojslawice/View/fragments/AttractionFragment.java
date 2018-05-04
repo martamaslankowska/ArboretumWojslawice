@@ -1,16 +1,20 @@
 package arboretum.arboretumwojslawice.View.fragments;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import arboretum.arboretumwojslawice.R;
+import javax.inject.Inject;
 
-public class AttractionFragment extends Fragment {
+import arboretum.arboretumwojslawice.R;
+import arboretum.arboretumwojslawice.ViewModel.AttractionViewModel;
+import dagger.android.support.DaggerFragment;
+
+public class AttractionFragment extends DaggerFragment {
+
+    @Inject
+    AttractionViewModel attractionViewModel;
 
     public AttractionFragment() {
         // Required empty public constructor

@@ -18,10 +18,7 @@ public class PriceForTicketsViewModel {
     protected PriceRepository repository;
 
     @Inject
-    public PriceForTicketsViewModel(AppController appController) {
-        //db = AppDatabase.getAppDatabase(appController.getApplicationContext());
-        //repository = new PriceRepository(appController, db);
-    }
+    public PriceForTicketsViewModel() { }
 
     public List<Price> getAllPrices() {
         return repository.getAllPrices();

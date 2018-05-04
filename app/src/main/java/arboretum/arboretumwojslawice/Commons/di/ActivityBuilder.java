@@ -2,6 +2,7 @@ package arboretum.arboretumwojslawice.Commons.di;
 
 import arboretum.arboretumwojslawice.Commons.modules.EventModule;
 import arboretum.arboretumwojslawice.Commons.modules.MainActivityModule;
+import arboretum.arboretumwojslawice.Commons.modules.NeighbourhoodModule;
 import arboretum.arboretumwojslawice.Commons.modules.PlantModule;
 import arboretum.arboretumwojslawice.Commons.modules.PriceModule;
 import arboretum.arboretumwojslawice.Commons.modules.RouteModule;
@@ -11,6 +12,7 @@ import arboretum.arboretumwojslawice.View.activities.EventActivity;
 import arboretum.arboretumwojslawice.View.activities.EventDetailActivity;
 import arboretum.arboretumwojslawice.View.activities.MainActivity;
 import arboretum.arboretumwojslawice.View.activities.NavigationActivity;
+import arboretum.arboretumwojslawice.View.activities.NeighbourhoodActivity;
 import arboretum.arboretumwojslawice.View.activities.PlantActivity;
 import arboretum.arboretumwojslawice.View.activities.PlantDetailActivity;
 import arboretum.arboretumwojslawice.View.activities.PlantLocationMapActivity;
@@ -52,4 +54,7 @@ public abstract class ActivityBuilder {
 
     @ContributesAndroidInjector
     abstract RouteDetailActivity bindRouteDetailActivity();
+
+    @ContributesAndroidInjector(modules = NeighbourhoodModule.class)
+    abstract NeighbourhoodActivity bindNeighbourhoodActivity();
 }

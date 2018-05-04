@@ -1,16 +1,20 @@
 package arboretum.arboretumwojslawice.View.fragments;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import arboretum.arboretumwojslawice.R;
+import javax.inject.Inject;
 
-public class RestaurantFragment extends Fragment {
+import arboretum.arboretumwojslawice.R;
+import arboretum.arboretumwojslawice.ViewModel.RestaurantViewModel;
+import dagger.android.support.DaggerFragment;
+
+public class RestaurantFragment extends DaggerFragment {
+
+    @Inject
+    protected RestaurantViewModel restaurantViewModel;
 
     public RestaurantFragment() {
         // Required empty public constructor

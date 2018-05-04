@@ -1,16 +1,20 @@
 package arboretum.arboretumwojslawice.View.fragments;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import arboretum.arboretumwojslawice.R;
+import javax.inject.Inject;
 
-public class HotelFragment extends Fragment {
+import arboretum.arboretumwojslawice.R;
+import arboretum.arboretumwojslawice.ViewModel.HotelViewModel;
+import dagger.android.support.DaggerFragment;
+
+public class HotelFragment extends DaggerFragment {
+
+    @Inject
+    protected HotelViewModel hotelViewModel;
 
     public HotelFragment() {
         // Required empty public constructor

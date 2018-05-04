@@ -18,10 +18,7 @@ public class PriceForServicesViewModel {
     protected PriceRepository repository;
 
     @Inject
-    public PriceForServicesViewModel(AppController appController) {
-        //db = AppDatabase.getAppDatabase(appController.getApplicationContext());
-        //repository = new PriceRepository(appController, db);
-    }
+    public PriceForServicesViewModel() { }
 
     public List<Price> getAllPrices() {
         return repository.getAllPrices();

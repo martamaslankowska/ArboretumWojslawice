@@ -14,8 +14,9 @@ import arboretum.arboretumwojslawice.View.fragments.HotelFragment;
 import arboretum.arboretumwojslawice.View.fragments.PriceForServicesFragment;
 import arboretum.arboretumwojslawice.View.fragments.PriceForTicketsFragment;
 import arboretum.arboretumwojslawice.View.fragments.RestaurantFragment;
+import dagger.android.support.DaggerAppCompatActivity;
 
-public class NeighbourhoodActivity extends AppCompatActivity {
+public class NeighbourhoodActivity extends DaggerAppCompatActivity {
 
     private AttractionFragment mAttractionFragment;
     private HotelFragment mHotelFragment;
