@@ -41,6 +41,9 @@ public class PriceActivity extends DaggerAppCompatActivity {
 
 
         tabLayout = findViewById(R.id.price_tabs);
+
+
+
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {

@@ -7,17 +7,25 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import java.util.List;
 
 import javax.inject.Inject;
 
 import arboretum.arboretumwojslawice.Commons.DividerItemDecoration;
+import arboretum.arboretumwojslawice.Model.DAO.HotelDao;
 import arboretum.arboretumwojslawice.Model.businessentity.Price;
 import arboretum.arboretumwojslawice.R;
 import arboretum.arboretumwojslawice.View.adapter.PriceForTicketsAdapter;
 import arboretum.arboretumwojslawice.ViewModel.PriceForTicketsViewModel;
 import dagger.android.support.DaggerFragment;
+import io.reactivex.Completable;
+import io.reactivex.Maybe;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 public class PriceForTicketsFragment extends DaggerFragment {
 
@@ -34,6 +42,7 @@ public class PriceForTicketsFragment extends DaggerFragment {
 
     protected RecyclerView.LayoutManager mLayoutManager;
     protected List<Price> mPrices;
+    protected CompositeDisposable compositeDisposable;
 
     private enum LayoutManagerType {
         GRID_LAYOUT_MANAGER,
@@ -55,13 +64,52 @@ public class PriceForTicketsFragment extends DaggerFragment {
         View rootView = inflater.inflate(R.layout.fragment_price_for_tickets, container, false);
 
         mRecyclerView = rootView.findViewById(R.id.price_tickets_recycler_view);
-        //priceViewModel = new PriceForTicketsViewModel();
-        mPrices = priceViewModel.getPriceForMichal();
+        compositeDisposable = new CompositeDisposable();
 
-        mRecyclerView.addItemDecoration(new DividerItemDecoration(this.getContext(), 0));
-        //mAdapter = new PriceForTicketsAdapter();
-        mRecyclerView.setAdapter(mAdapter);
-        mAdapter.setData(mPrices);
+
+//        //priceViewModel = new PriceForTicketsViewModel();
+//        mPrices = priceViewModel.getPriceForMichal();
+//
+//        mRecyclerView.addItemDecoration(new DividerItemDecoration(this.getContext(), 0));
+//        //mAdapter = new PriceForTicketsAdapter();
+//        mRecyclerView.setAdapter(mAdapter);
+//        mAdapter.setData(mPrices);
+
+
+
+        Disposable listOfPrices = Maybe.fromCallable(() -> {
+            return priceViewModel.getAllPrices();
+        })
+                .subscribeOn(Schedulers.computation())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(prices -> {
+                            /* onSuccess() :) */
+                            int lenght = prices.size();
+                            try {
+                                Toast.makeText(getActivity(), "Było odwołanie do bazy i fajnie\nLiczba cen w bazie biletowej: " + String.valueOf(lenght), Toast.LENGTH_SHORT).show();
+                            } catch (Exception e){
+                                Toast.makeText(getActivity(), "Ups, pusta baza :(", Toast.LENGTH_SHORT).show();
+                            }
+
+
+//                            priceViewModel = new PriceForTicketsViewModel();
+//                            mPrices = priceViewModel.getPriceForMichal();
+                            mPrices = prices;
+
+                            mRecyclerView.addItemDecoration(new DividerItemDecoration(this.getContext(), 0));
+                            //mAdapter = new PriceForTicketsAdapter();
+                            mRecyclerView.setAdapter(mAdapter);
+                            mAdapter.setData(mPrices);
+
+                        }
+                        ,throwable -> {
+                            /* onError() */
+                            Toast.makeText(getActivity(), "Jakiś błąąąd... -.- -.-", Toast.LENGTH_LONG).show();
+                        });
+
+        compositeDisposable.add(listOfPrices);
+
+
 
         mLayoutManager = new LinearLayoutManager(getActivity());
 

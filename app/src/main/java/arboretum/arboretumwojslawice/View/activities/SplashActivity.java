@@ -31,56 +31,13 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
-        /* COPYING DATABASE */
-
-//        DatabaseHelper myDbHelper = new DatabaseHelper(this);
-//
-//        try {
-//            myDbHelper.createDatabase();
-//        } catch (IOException ioe) {
-//            throw new Error("Unable to create Database");
-//        }
-//
-//        try {
-//            myDbHelper.openDatabase();
-//        } catch(SQLException sqle){
-//            throw sqle;
-//        }
-//
-//        /* Checking if table exists in the database */
-//        boolean exists = tableExists((DatabaseHelper.DB_NAME + DatabaseHelper.DB_EX));
-
-        /* FINISHED COPING DATABASE */
-
-
-
-
-//        /* USING ROOM DATABASE */
         AppDatabase database = AppDatabase.getAppDatabase(getApplicationContext());
-//        HotelDao hotelDao = database.getHotelDao();
-//
-//
-//        /* TESTING DZIADEK SOLUTION FOR DATABASE COPY */
-//        DziadekDatabaseHelper dziadekDbHelper = new DziadekDatabaseHelper();
-//        try {
-//            dziadekDbHelper.execute(this);
-//        } catch (Exception e) {
-//            Log.e("DB - Splash screen", e.getMessage());
-//        }
-
 
         /* Deciding weather show language screen or not */
-
         mPrefs = PreferenceManager.getDefaultSharedPreferences(this);
         String language = mPrefs.getString(INFO, null);
 
-//        Toast.makeText(this, "Language: " + language, Toast.LENGTH_LONG).show();
-
         if (language == null) {
-            /* DATA INTO DATABASE INSERT */
-//            DatabaseConnection dbConnect = new DatabaseConnection(getApplicationContext(), database);
-//            dbConnect.execute();
 
             /* RANDOM DATABASE QUERY - needed to initialize database */
             HotelDao hotelDao = database.getHotelDao();
@@ -103,14 +60,13 @@ public class SplashActivity extends AppCompatActivity {
                                 Toast.makeText(this, "Jakiś błąąąd... -.- -.-", Toast.LENGTH_LONG).show();
                             });
 
+
             Intent intent = new Intent(this, LanguageActivity.class);
             startActivity(intent);
             finish();
-
         }
         else {
             setLanguage(language);
-
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
             finish();

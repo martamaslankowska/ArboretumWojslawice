@@ -31,15 +31,15 @@ public class PriceRepository extends BaseRepository {
 //        this.languageCode = appliaction.getResources().getConfiguration().locale.getLanguage();
 //    }
 
-    public List<Price> getAllPrices() {
-        return priceDao.getAll(languageCode);
+    public List<Price> getAllPrices(int kind) {
+        return priceDao.getAll(languageCode, kind);
     }
 
-    public Price getById(int id) {
-        return priceDao.getById(id, languageCode);
+    public Price getById(int id, int kind) {
+        return priceDao.getById(id, languageCode, kind);
     }
 
-    public List<Price> getByType(String type) {
-        return priceDao.getByType(type, languageCode);
+    public List<Price> getByType(String type, int kind) {
+        return priceDao.getByType(type, languageCode, kind);
     }
 }

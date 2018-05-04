@@ -16,16 +16,17 @@ public class PriceForServicesViewModel {
     protected AppDatabase db;
     @Inject
     protected PriceRepository repository;
+    private final int KIND = 1;
 
     @Inject
     public PriceForServicesViewModel() { }
 
     public List<Price> getAllPrices() {
-        return repository.getAllPrices();
+        return repository.getAllPrices(KIND);
     }
 
     public Price getPrice(int idPrice) {
-        return repository.getById(idPrice);
+        return repository.getById(idPrice, KIND);
     }
 
     public List<Price> getPriceForMichal()
