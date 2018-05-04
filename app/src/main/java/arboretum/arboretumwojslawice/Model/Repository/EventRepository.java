@@ -21,12 +21,12 @@ public class EventRepository extends BaseRepository {
 
     @Inject
     EventDao eventDao;
+
     @Inject
     EventTranslationDao eventTranslationDao;
 
     @Inject
     public EventRepository() {}
-
 
     public List<Event> getAllEvents() {
         return eventDao.getAll(languageCode);

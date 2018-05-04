@@ -8,6 +8,7 @@ import arboretum.arboretumwojslawice.Commons.modules.RouteModule;
 import arboretum.arboretumwojslawice.Model.businessentity.Plant;
 import arboretum.arboretumwojslawice.View.activities.ContactActivity;
 import arboretum.arboretumwojslawice.View.activities.EventActivity;
+import arboretum.arboretumwojslawice.View.activities.EventDetailActivity;
 import arboretum.arboretumwojslawice.View.activities.MainActivity;
 import arboretum.arboretumwojslawice.View.activities.PlantActivity;
 import arboretum.arboretumwojslawice.View.activities.PlantDetailActivity;
@@ -36,4 +37,7 @@ public abstract class ActivityBuilder {
 
     @ContributesAndroidInjector
     abstract ContactActivity bindContactActivity();
+
+    @ContributesAndroidInjector
+    abstract EventDetailActivity bindEventDetailActivity();
 }

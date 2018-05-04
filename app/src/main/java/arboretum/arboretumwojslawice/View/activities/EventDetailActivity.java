@@ -8,32 +8,36 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 
+import javax.inject.Inject;
+
 import arboretum.arboretumwojslawice.Model.businessentity.Event;
 import arboretum.arboretumwojslawice.R;
+import arboretum.arboretumwojslawice.ViewModel.EventDetailViewModel;
 import arboretum.arboretumwojslawice.ViewModel.EventViewModel;
 import arboretum.arboretumwojslawice.databinding.ActivityEventDetailBinding;
+import dagger.android.support.DaggerAppCompatActivity;
 
-public class EventDetailActivity extends AppCompatActivity {
+public class EventDetailActivity extends DaggerAppCompatActivity {
 
     int event_id;
     private Bundle bundle;
     public static final String BUNDLE = "BUNDLE";
     public static final String EVENT_ID = "EVENT_ID";
     private Event mEvent;
-    private EventViewModel eventViewModel;
+
+    @Inject
+    protected EventDetailViewModel eventDetailViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ActivityEventDetailBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_event_detail);
 
-        eventViewModel = new EventViewModel();
-
         Intent intent = getIntent();
         bundle = intent.getBundleExtra(BUNDLE);
 
         event_id = bundle.getInt(EVENT_ID);
-        mEvent = eventViewModel.getEventById(event_id);
+        mEvent = eventDetailViewModel.getEventById(event_id);
 
         /* toolbar */
         Toolbar toolbar = findViewById(R.id.toolbar_back);

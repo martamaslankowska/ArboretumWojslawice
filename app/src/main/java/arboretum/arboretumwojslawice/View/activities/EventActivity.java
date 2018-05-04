@@ -26,7 +26,6 @@ public class EventActivity extends DaggerAppCompatActivity implements EventAdapt
 
     @Inject
     protected EventViewModel eventViewModel;
-    private EventAdapter.OnItemClickListener listener;
     protected RecyclerView.LayoutManager mLayoutManager;
 
     @Override
