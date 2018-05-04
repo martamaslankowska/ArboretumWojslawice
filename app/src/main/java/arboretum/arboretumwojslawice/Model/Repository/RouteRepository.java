@@ -31,7 +31,8 @@ public class RouteRepository extends BaseRepository {
     @Inject
     LocationDao locationDao;
 
-    PlantRepository mPlantRepo;
+    @Inject
+    protected PlantRepository mPlantRepo;
 
     @Inject
     public RouteRepository() {}
@@ -41,11 +42,11 @@ public class RouteRepository extends BaseRepository {
         return routeDao.getAll(languageCode);
     }
 
-    public  Route getById(int id) {
+    public Route getById(int id) {
         return routeDao.getById(id, languageCode);
     }
 
-    public  Route getByName(String name) {
+    public Route getByName(String name) {
         return routeDao.getByName(name, languageCode);
     }
 

@@ -10,6 +10,7 @@ import arboretum.arboretumwojslawice.View.activities.ContactActivity;
 import arboretum.arboretumwojslawice.View.activities.EventActivity;
 import arboretum.arboretumwojslawice.View.activities.EventDetailActivity;
 import arboretum.arboretumwojslawice.View.activities.MainActivity;
+import arboretum.arboretumwojslawice.View.activities.NavigationActivity;
 import arboretum.arboretumwojslawice.View.activities.PlantActivity;
 import arboretum.arboretumwojslawice.View.activities.PlantDetailActivity;
 import arboretum.arboretumwojslawice.View.activities.PriceActivity;
@@ -40,4 +41,7 @@ public abstract class ActivityBuilder {
 
     @ContributesAndroidInjector
     abstract EventDetailActivity bindEventDetailActivity();
+
+    @ContributesAndroidInjector
+    abstract NavigationActivity bindNavigationActivity();
 }

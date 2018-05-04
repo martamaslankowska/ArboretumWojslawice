@@ -14,13 +14,11 @@ import arboretum.arboretumwojslawice.Model.businessentity.Route;
 public class RouteViewModel {
     List<Route> mRoutes;
 
-
-    RouteRepository mRouteRepo;
+    @Inject
+    protected RouteRepository mRouteRepo;
 
     @Inject
-    public RouteViewModel() {
-        mRouteRepo = new RouteRepository();
-    }
+    public RouteViewModel() { }
 
     public List<Route> getData() {
         mRoutes = mRouteRepo.getRoutesForMichal();

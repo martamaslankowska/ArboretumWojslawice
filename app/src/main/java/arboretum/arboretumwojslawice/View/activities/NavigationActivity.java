@@ -22,15 +22,20 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import javax.inject.Inject;
+
 import arboretum.arboretumwojslawice.Model.businessentity.Route;
 import arboretum.arboretumwojslawice.R;
 import arboretum.arboretumwojslawice.ViewModel.RouteViewModel;
+import dagger.android.support.DaggerAppCompatActivity;
 
-public class NavigationActivity extends AppCompatActivity implements LocationListener{
+public class NavigationActivity extends DaggerAppCompatActivity implements LocationListener{
 
     private static final String BUNDLE = "BUNDLE";
     private static final String ROUTE_ID = "ROUTE_ID";
-    private RouteViewModel routeViewModel;
+
+    @Inject
+    protected RouteViewModel routeViewModel;
     private Bundle bundle;
     private Route mRoute;
     private int route_id;
@@ -65,7 +70,6 @@ public class NavigationActivity extends AppCompatActivity implements LocationLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation);
-        routeViewModel = new RouteViewModel();
 
         Intent intent = getIntent();
         bundle = intent.getBundleExtra(BUNDLE);
