@@ -22,7 +22,6 @@ public class NewsEntity {
     private int date;
 
 
-
     public int getIdNews() {
         return idNews;
     }
