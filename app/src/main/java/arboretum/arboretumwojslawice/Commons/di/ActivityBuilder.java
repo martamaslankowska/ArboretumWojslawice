@@ -17,6 +17,7 @@ import arboretum.arboretumwojslawice.View.activities.PlantActivity;
 import arboretum.arboretumwojslawice.View.activities.PlantDetailActivity;
 import arboretum.arboretumwojslawice.View.activities.PlantLocationMapActivity;
 import arboretum.arboretumwojslawice.View.activities.PriceActivity;
+import arboretum.arboretumwojslawice.View.activities.QRCodeActivity;
 import arboretum.arboretumwojslawice.View.activities.RouteDetailActivity;
 import arboretum.arboretumwojslawice.View.fragments.RouteFragment;
 import dagger.Module;
@@ -57,4 +58,7 @@ public abstract class ActivityBuilder {
 
     @ContributesAndroidInjector(modules = NeighbourhoodModule.class)
     abstract NeighbourhoodActivity bindNeighbourhoodActivity();
+
+    @ContributesAndroidInjector
+    abstract QRCodeActivity bindQRCodeActivity();
 }

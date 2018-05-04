@@ -1,13 +1,19 @@
 package arboretum.arboretumwojslawice.View.activities;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
-import arboretum.arboretumwojslawice.R;
+import javax.inject.Inject;
 
-public class QRCodeActivity extends AppCompatActivity {
+import arboretum.arboretumwojslawice.R;
+import arboretum.arboretumwojslawice.ViewModel.QRCodeViewModel;
+import dagger.android.support.DaggerAppCompatActivity;
+
+public class QRCodeActivity extends DaggerAppCompatActivity {
+
+    @Inject
+    QRCodeViewModel qrCodeViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

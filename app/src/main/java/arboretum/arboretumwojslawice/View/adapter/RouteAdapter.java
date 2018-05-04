@@ -24,7 +24,6 @@ public class RouteAdapter extends RecyclerView.Adapter<BindingViewHolder> {
         this.listener =  listener;
     }
 
-    @SuppressLint("ResourceAsColor")
     @Override
     public void onBindViewHolder(BindingViewHolder holder, int position) {
         Route route = mRoutes.get(position);
