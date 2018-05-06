@@ -27,7 +27,12 @@
     <string name="open_hours_info2">Ticket is valid once validating</string>
 
     <!-- KONTAKT -->
-    <string name="contact_main_text">Arboretum - contact</string>
+    <string name="contact_main_text">Arboretum Wojsławice (Niemcza)</string>
+    <string name="contact_main_text_info">Botanical garden of Wrocław University</string>
+    <string name="contact_main_address">Wojsławice 2\n58–230 Niemcza, Poland</string>
+    <string name="contact_main_tel_info">(mon – fri, from 7:00 until 15:00)</string>
+    <string name="contact_extra_text">Invoices and bonfire reservations – Katarzyna Bondarczuk</string>
+    <string name="contact_extra_info">(mon – fri, from 7:00 until 15:00)</string>
 
 
 </resources>

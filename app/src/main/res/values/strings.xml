@@ -41,6 +41,17 @@
         <item>Ustawienia</item>
     </string-array>
 
+    <string-array name="more_options_images">
+        <item>ic_info</item>
+        <item>ic_tickets_black</item>
+        <item>ic_important</item>
+        <item>ic_flowering</item>
+        <item>ic_important</item>
+        <item>ic_phone</item>
+        <item>ic_important</item>
+        <item>ic_important</item>
+    </string-array>
+
     <string name="favourites_text">Nie masz żadnynch ulubionych roślin!</string>
 
     <!-- Przykładowe; wygenerowane automatycznie; tymczasowe; do usunięcia -->
@@ -73,7 +84,20 @@
     <string name="open_hours_info2">Bilet jest ważny od momentu skasowania</string>
 
     <!-- CONTACT -->
-    <string name="contact_main_text">Arboretum - kontakt</string>
+    <string name="contact_main_text">Arboretum Wojsławice w Niemczy</string>
+    <string name="contact_main_text_info">Ogród Botaniczny Uniwersytetu Wrocławskiego</string>
+    <string name="contact_main_address">Wojsławice 2\n58–230 Niemcza, Polska</string>
+    <string name="contact_main_mail">aw@uwr.edu.pl</string>
+    <string name="contact_main_telephone">71 322 59 57</string>
+    <string name="contact_main_tel_info">(w dni powszednie od 7:00 do 15:00)</string>
+    <string name="contact_extra_text">Wystawianie faktur i rezerwacja ogniska – Katarzyna Bondarczuk</string>
+    <string name="contact_extra_info">(od. pn. do pt., w godz. 7:00 – 15:00)</string>
+    <string name="contact_extra_mail">katarzyna.bondarczuk@uwr.edu.pl</string>
+    <string name="contact_extra_telephone">696 137 984</string>
+    <string name="contact_cafe_text">Cafe-bar „OGRODOWE SMAKI”</string>
+    <string name="contact_cafe_mail">kontakt@univerde.pl</string>
+    <string name="contact_cafe_telephone">503 317 100</string>
+
 
     <!-- Toasts -->
     <string name="toast_exit">Naciśnij jeszcze raz przycisk "Powrót", aby zakończyć działanie aplikacji</string>

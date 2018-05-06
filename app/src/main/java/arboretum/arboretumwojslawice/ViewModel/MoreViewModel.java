@@ -28,9 +28,14 @@ public class MoreViewModel {
     public List<MoreOptionItem> getData() {
         mOptions = new ArrayList<>();
         List<String> options = Arrays.asList(mContext.getResources().getStringArray(R.array.more_options));
-        for (String item:options) {
+        for (String item : options) {
             mOptions.add(new MoreOptionItem(item));
         }
+
+        List<String> options_images = Arrays.asList(mContext.getResources().getStringArray(R.array.more_options_images));
+        for (int i=0; i<options_images.size(); i++)
+            mOptions.get(i).setImageName(options_images.get(i));
+
         return mOptions;
     }
 }

@@ -73,12 +73,12 @@ public class PriceForTicketsFragment extends DaggerFragment {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(prices -> {
                             /* onSuccess() :) */
-                            int length = prices.size();
-                            try {
-                                Toast.makeText(getActivity(), "Było odwołanie do bazy i fajnie\nLiczba cen w bazie biletowej: " + String.valueOf(length), Toast.LENGTH_SHORT).show();
-                            } catch (Exception e){
-                                Toast.makeText(getActivity(), "Ups, pusta baza :(", Toast.LENGTH_SHORT).show();
-                            }
+//                            int length = prices.size();
+//                            try {
+//                                Toast.makeText(getActivity(), "Było odwołanie do bazy i fajnie\nLiczba cen w bazie biletowej: " + String.valueOf(length), Toast.LENGTH_SHORT).show();
+//                            } catch (Exception e){
+//                                Toast.makeText(getActivity(), "Ups, pusta baza :(", Toast.LENGTH_SHORT).show();
+//                            }
 
                             mPrices = prices;
 
@@ -89,7 +89,7 @@ public class PriceForTicketsFragment extends DaggerFragment {
                         }
                         ,throwable -> {
                             /* onError() */
-                            Toast.makeText(getActivity(), "Jakiś błąąąd... -.- -.-", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getActivity(), "Jakiś błąąąd... -.- -.-", Toast.LENGTH_LONG);
                         });
 
         compositeDisposable.add(listOfPrices);

@@ -33,6 +33,7 @@ public class MoreAdapter extends RecyclerView.Adapter<BindingViewHolder> {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         MoreRowBinding binding = MoreRowBinding.inflate(inflater, parent, false);
 
+
         switch (viewType) {
             case 0:
                 return new MoreViewHolder(binding, listener);

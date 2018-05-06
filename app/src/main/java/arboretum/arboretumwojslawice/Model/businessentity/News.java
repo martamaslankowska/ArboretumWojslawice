@@ -112,15 +112,15 @@ public class News implements AdapterItem {
             Log.i("kod pl: ", sDate.substring(4,6));
             switch(sDate.substring(4,6))
             {
-                case "01": month = "stycznia"; break;
-                case "02": month = "lutego"; break;
-                case "03": month = "marca"; break;
-                case "04": month = "kwietnia"; break;
-                case "05": month = "maja"; break;
-                case "06": month = "czerwca"; break;
-                case "07": month = "lipca"; break;
-                case "08": month = "sierpnia"; break;
-                case "09": month = "września"; break;
+                case "1": month = "stycznia"; break;
+                case "2": month = "lutego"; break;
+                case "3": month = "marca"; break;
+                case "4": month = "kwietnia"; break;
+                case "5": month = "maja"; break;
+                case "6": month = "czerwca"; break;
+                case "7": month = "lipca"; break;
+                case "8": month = "sierpnia"; break;
+                case "9": month = "września"; break;
                 case "10": month = "października"; break;
                 case "11": month = "listopada"; break;
                 case "12": month = "grudnia"; break;
@@ -131,15 +131,15 @@ public class News implements AdapterItem {
         {
             switch(sDate.substring(4,6))
             {
-                case "01": month = "January"; break;
-                case "02": month = "February"; break;
-                case "03": month = "March"; break;
-                case "04": month = "April"; break;
-                case "05": month = "May"; break;
-                case "06": month = "June"; break;
-                case "07": month = "July"; break;
-                case "08": month = "August"; break;
-                case "09": month = "Semptember"; break;
+                case "1": month = "January"; break;
+                case "2": month = "February"; break;
+                case "3": month = "March"; break;
+                case "4": month = "April"; break;
+                case "5": month = "May"; break;
+                case "6": month = "June"; break;
+                case "7": month = "July"; break;
+                case "8": month = "August"; break;
+                case "9": month = "Semptember"; break;
                 case "10": month = "October"; break;
                 case "11": month = "November"; break;
                 case "12": month = "December"; break;
@@ -150,15 +150,15 @@ public class News implements AdapterItem {
         {
             switch(sDate.substring(4,6))
             {
-                case "01": month = "Januar"; break;
-                case "02": month = "Februar"; break;
-                case "03": month = "März"; break;
-                case "04": month = "April"; break;
-                case "05": month = "Mai"; break;
-                case "06": month = "Juni"; break;
-                case "07": month = "Juli"; break;
-                case "08": month = "August"; break;
-                case "09": month = "Semptember"; break;
+                case "1": month = "Januar"; break;
+                case "2": month = "Februar"; break;
+                case "3": month = "März"; break;
+                case "4": month = "April"; break;
+                case "5": month = "Mai"; break;
+                case "6": month = "Juni"; break;
+                case "7": month = "Juli"; break;
+                case "8": month = "August"; break;
+                case "9": month = "Semptember"; break;
                 case "10": month = "Oktober"; break;
                 case "11": month = "November"; break;
                 case "12": month = "Dezember"; break;
@@ -168,7 +168,7 @@ public class News implements AdapterItem {
 
 
 
-        return sDate.substring(6,8)+" "+month;
+        return sDate.substring(6,8)+" "+ month;
     }
 
     public void setDate(Integer date) {

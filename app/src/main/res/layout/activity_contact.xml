@@ -9,20 +9,21 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="@dimen/nonrec_margin_vertical"
         app:layout_constraintBottom_toBottomOf="parent">
 
         <android.support.constraint.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/nonrec_margin"
             android:orientation="vertical">
 
             <include
                 android:id="@+id/toolbar_back"
                 layout="@layout/toolbar_empty" />
 
+
             <TextView
-                android:id="@+id/contactMainText"
+                android:id="@+id/mainText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/nonrec_margin_horizontal"
@@ -30,54 +31,293 @@
                 android:layout_marginTop="@dimen/nonrec_margin_vertical"
                 android:lineSpacingExtra="@dimen/nonrec_line_spacing"
                 android:text="@string/contact_main_text"
-                android:textAlignment="center"
-                android:textColor="@color/colorBlack"
-                android:textSize="@dimen/nonrec_font_size"
+                android:textColor="@color/darkTextGray"
+                android:textSize="@dimen/nonrec_font_size_big"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/toolbar_back" />
+
+
+            <TextView
+                android:id="@+id/mainTextInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/nonrec_margin_horizontal"
+                android:layout_marginStart="@dimen/nonrec_margin_horizontal"
+                android:text="@string/contact_main_text_info"
+                android:textColor="@color/darkTextDarkGray"
+                android:textSize="@dimen/nonrec_font_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/mainText" />
+
+
+            <ImageView
+                android:id="@+id/mainAddressImage"
+                android:layout_width="@dimen/open_hours_icon_size"
+                android:layout_height="@dimen/open_hours_icon_size"
+                android:layout_marginStart="@dimen/nonrec_margin_horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/mainAddressText"
+                app:srcCompat="@drawable/ic_location" />
+
+            <TextView
+                android:id="@+id/mainAddressText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/nonrec_margin_horizontal"
+                android:layout_marginStart="@dimen/nonrec_margin_horizontal"
+                android:layout_marginTop="@dimen/nonrec_margin"
+                android:text="@string/contact_main_address"
+                android:textAlignment="gravity"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/nonrec_font_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/mainAddressImage"
+                app:layout_constraintTop_toBottomOf="@+id/mainTextInfo" />
+
+
+            <ImageView
+                android:id="@+id/mainMailImage"
+                android:layout_width="@dimen/open_hours_icon_size"
+                android:layout_height="@dimen/open_hours_icon_size"
+                android:layout_marginStart="@dimen/nonrec_margin_horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/mainMailText"
+                app:srcCompat="@drawable/ic_mail" />
+
+            <TextView
+                android:id="@+id/mainMailText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/nonrec_margin_horizontal"
+                android:layout_marginStart="@dimen/nonrec_margin_horizontal"
+                android:layout_marginTop="@dimen/nonrec_margin"
+                android:text="@string/contact_main_mail"
+                android:textAlignment="gravity"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/nonrec_font_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/mainAddressImage"
+                app:layout_constraintTop_toBottomOf="@+id/mainAddressText" />
+
+
+            <ImageView
+                android:id="@+id/mainPhoneImage"
+                android:layout_width="@dimen/open_hours_icon_size"
+                android:layout_height="@dimen/open_hours_icon_size"
+                android:layout_marginStart="@dimen/nonrec_margin_horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/mainPhoneText"
+                app:srcCompat="@drawable/ic_phone" />
+
+            <TextView
+                android:id="@+id/mainPhoneText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/nonrec_margin_horizontal"
+                android:layout_marginStart="@dimen/nonrec_margin_horizontal"
+                android:layout_marginTop="@dimen/nonrec_margin"
+                android:text="@string/contact_main_telephone"
+                android:textAlignment="gravity"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/nonrec_font_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/mainAddressImage"
+                app:layout_constraintTop_toBottomOf="@+id/mainMailText" />
+
+            <TextView
+                android:id="@+id/mainPhoneInfoText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/nonrec_margin_horizontal"
+                android:layout_marginStart="@dimen/nonrec_margin_horizontal"
+                android:text="@string/contact_main_tel_info"
+                android:textAlignment="gravity"
+                android:textColor="@color/darkTextGray"
+                android:textSize="@dimen/nonrec_font_size_small"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/mainAddressImage"
+                app:layout_constraintTop_toBottomOf="@+id/mainPhoneText" />
 
 
             <View
                 android:id="@+id/line1"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginTop="@dimen/nonrec_margin_vertical"
+                android:layout_marginTop="@dimen/nonrec_margin"
                 android:background="@android:color/darker_gray"
-                app:layout_constraintTop_toBottomOf="@+id/contactMainText" />
+                app:layout_constraintTop_toBottomOf="@+id/mainPhoneInfoText" />
 
 
             <TextView
-                android:id="@+id/hotelText"
+                android:id="@+id/extraText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/nonrec_margin_horizontal"
                 android:layout_marginStart="@dimen/nonrec_margin_horizontal"
-                android:layout_marginTop="100dp"
-                android:lineSpacingExtra="@dimen/nonrec_line_spacing"
-                android:text="To nie jest z bazy"
-                android:textAlignment="center"
-                android:textColor="@color/colorBlack"
+                android:layout_marginTop="@dimen/nonrec_margin"
+                android:text="@string/contact_extra_text"
+                android:textColor="@color/darkTextGray"
                 android:textSize="@dimen/nonrec_font_size"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/toolbar_back" />
+                app:layout_constraintTop_toBottomOf="@+id/line1" />
+
+
+            <TextView
+                android:id="@+id/extraTextInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/nonrec_margin_horizontal"
+                android:layout_marginStart="@dimen/nonrec_margin_horizontal"
+                android:text="@string/contact_extra_info"
+                android:textColor="@color/darkTextGray"
+                android:textSize="@dimen/nonrec_font_size_small"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/extraText" />
 
 
             <ImageView
-                android:id="@+id/hotelImageView"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="30dp"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:id="@+id/extraMailImage"
+                android:layout_width="@dimen/open_hours_icon_size"
+                android:layout_height="@dimen/open_hours_icon_size"
+                android:layout_marginStart="@dimen/nonrec_margin_horizontal"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/hotelText"
-                app:srcCompat="@drawable/de" />
+                app:layout_constraintTop_toTopOf="@+id/extraMailText"
+                app:srcCompat="@drawable/ic_mail" />
+
+            <TextView
+                android:id="@+id/extraMailText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/nonrec_margin_horizontal"
+                android:layout_marginStart="@dimen/nonrec_margin_horizontal"
+                android:layout_marginTop="@dimen/nonrec_margin"
+                android:text="@string/contact_extra_mail"
+                android:textAlignment="gravity"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/nonrec_font_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/extraMailImage"
+                app:layout_constraintTop_toBottomOf="@+id/extraTextInfo" />
+
+
+            <ImageView
+                android:id="@+id/extraPhoneImage"
+                android:layout_width="@dimen/open_hours_icon_size"
+                android:layout_height="@dimen/open_hours_icon_size"
+                android:layout_marginStart="@dimen/nonrec_margin_horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/extraPhoneText"
+                app:srcCompat="@drawable/ic_phone" />
+
+            <TextView
+                android:id="@+id/extraPhoneText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/nonrec_margin_horizontal"
+                android:layout_marginStart="@dimen/nonrec_margin_horizontal"
+                android:layout_marginTop="@dimen/nonrec_margin"
+                android:text="@string/contact_extra_telephone"
+                android:textAlignment="gravity"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/nonrec_font_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/extraMailImage"
+                app:layout_constraintTop_toBottomOf="@+id/extraMailText" />
+
+
+
+            <View
+                android:id="@+id/line2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/nonrec_margin"
+                android:background="@android:color/darker_gray"
+                app:layout_constraintTop_toBottomOf="@+id/extraPhoneText" />
+
+
+            <TextView
+                android:id="@+id/cafeText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/nonrec_margin_horizontal"
+                android:layout_marginStart="@dimen/nonrec_margin_horizontal"
+                android:layout_marginTop="@dimen/nonrec_margin"
+                android:text="@string/contact_cafe_text"
+                android:textColor="@color/darkTextGray"
+                android:textSize="@dimen/nonrec_font_size"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/line2" />
+
+
+            <ImageView
+                android:id="@+id/cafeMailImage"
+                android:layout_width="@dimen/open_hours_icon_size"
+                android:layout_height="@dimen/open_hours_icon_size"
+                android:layout_marginStart="@dimen/nonrec_margin_horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/cafeMailText"
+                app:srcCompat="@drawable/ic_mail" />
+
+            <TextView
+                android:id="@+id/cafeMailText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/nonrec_margin_horizontal"
+                android:layout_marginStart="@dimen/nonrec_margin_horizontal"
+                android:layout_marginTop="@dimen/nonrec_margin"
+                android:text="@string/contact_cafe_mail"
+                android:textAlignment="gravity"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/nonrec_font_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/cafeMailImage"
+                app:layout_constraintTop_toBottomOf="@+id/cafeText" />
+
+
+            <ImageView
+                android:id="@+id/cafePhoneImage"
+                android:layout_width="@dimen/open_hours_icon_size"
+                android:layout_height="@dimen/open_hours_icon_size"
+                android:layout_marginStart="@dimen/nonrec_margin_horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/cafePhoneText"
+                app:srcCompat="@drawable/ic_phone" />
+
+            <TextView
+                android:id="@+id/cafePhoneText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/nonrec_margin_horizontal"
+                android:layout_marginStart="@dimen/nonrec_margin_horizontal"
+                android:layout_marginTop="@dimen/nonrec_margin"
+                android:layout_marginBottom="@dimen/nonrec_margin"
+                android:text="@string/contact_cafe_telephone"
+                android:textAlignment="gravity"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/nonrec_font_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/cafeMailImage"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cafeMailText" />
 
 
         </android.support.constraint.ConstraintLayout>
