@@ -32,7 +32,7 @@
             android:layout_toStartOf="@id/plant_heart"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{@string/plant_name(favourite.getName())}"/>
+            android:text="@{favourite.getName()}"/>
 
 
         <TextView
