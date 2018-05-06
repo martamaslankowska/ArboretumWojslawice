@@ -200,7 +200,7 @@ public class Plant implements AdapterItem {
 
     public String getSeasonBeginDateString() {
         String sDate = String.valueOf(getSeasonBegin());
-        return sDate.substring(0,4)+"/"+sDate.substring(4,6)+"/"+sDate.substring(6,8);
+        return sDate.substring(6, 8) + "." + sDate.substring(4, 6);
     }
 
     public Integer getSeasonEnd() {
@@ -229,7 +229,7 @@ public class Plant implements AdapterItem {
 
     public String getSeasonEndDateString() {
         String sDate = String.valueOf(getSeasonEnd());
-        return sDate.substring(0,4)+"/"+sDate.substring(4,6)+"/"+sDate.substring(6,8);
+        return sDate.substring(6, 8) + "." + sDate.substring(4, 6);
     }
 
     public String getDescription() {

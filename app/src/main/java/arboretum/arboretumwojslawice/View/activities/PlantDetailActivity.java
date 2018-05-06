@@ -2,6 +2,9 @@ package arboretum.arboretumwojslawice.View.activities;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.Toolbar;
@@ -37,6 +40,8 @@ public class PlantDetailActivity extends DaggerAppCompatActivity {
     private ImageView mLocationMapButton;
     private CompositeDisposable compositeDisposable;
 
+    private ImageView plantImage;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +52,7 @@ public class PlantDetailActivity extends DaggerAppCompatActivity {
         bundle = intent.getBundleExtra(BUNDLE);
 
         plant_id = bundle.getInt(PLANT_ID);
+        plantImage = findViewById(R.id.plant_detail_image);
 
 
         Disposable cdPlant = Maybe.fromCallable(() -> {
@@ -85,6 +91,18 @@ public class PlantDetailActivity extends DaggerAppCompatActivity {
                             });
 
                             binding.setPlant(plant);
+
+
+                            Drawable d = getResources().getDrawable(plant.getImageId(getApplicationContext()));
+                            int h = d.getIntrinsicHeight();
+                            int w = d.getIntrinsicWidth();
+
+                            if (h < 300 || w < 300)
+                                plantImage.setScaleType(ImageView.ScaleType.FIT_CENTER);
+                            else
+                                plantImage.setScaleType(ImageView.ScaleType.CENTER_CROP);
+
+                            Toast.makeText(this, "Wymiary zdjęcia to " + String.valueOf(h) + "x" + String.valueOf(w), Toast.LENGTH_SHORT).show();
                         }
                         ,throwable -> {
                             /* onError() */

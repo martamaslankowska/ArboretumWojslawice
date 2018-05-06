@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -9,7 +9,7 @@
             type="arboretum.arboretumwojslawice.Model.businessentity.Plant" />
     </data>
 
-    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -21,9 +21,8 @@
             android:id="@+id/plant_location_map_button"
             android:layout_width="wrap_content"
             android:layout_height="75dp"
-            android:src="@drawable/ic_map"
             android:layout_marginEnd="@dimen/nonrec_margin"
-            app:layout_constraintBottom_toTopOf="@+id/plant_detail_species"
+            android:src="@drawable/ic_map"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/plant_detail_image" />
 
@@ -31,134 +30,94 @@
             android:id="@+id/plant_detail_image"
             android:layout_width="match_parent"
             android:layout_height="@dimen/plant_detail_image_height"
-            android:layout_marginEnd="4dp"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="4dp"
             android:src="@{plant.getImageId(context)}"
+            android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar_back" />
 
+
+
         <TextView
-            android:id="@+id/plant_detail_name"
-            android:layout_width="0dp"
+            android:id="@+id/plantDetailName"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginTop="4dp"
+            android:layout_marginEnd="@dimen/nonrec_margin"
+            android:layout_marginStart="@dimen/nonrec_margin"
+            android:layout_marginTop="@dimen/nonrec_margin"
             android:text="@{plant.getName()}"
-            android:textSize="18dp"
+            android:textColor="@color/darkTextGray"
+            android:textSize="@dimen/nonrec_font_size_big"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/plant_detail_latin_name"
             app:layout_constraintEnd_toStartOf="@+id/plant_location_map_button"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/plant_detail_image" />
 
         <TextView
-            android:id="@+id/plant_detail_latin_name"
-            android:layout_width="0dp"
+            android:id="@+id/plantDetailLatin"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="4dp"
-            android:minHeight="20dp"
-            android:text="@{plant.getLatinName()}"
-            app:layout_constraintBottom_toTopOf="@+id/plant_detail_genus"
+            android:layout_marginEnd="@dimen/nonrec_margin"
+            android:text="@{plant.getGenusName() + ' ' + plant.getSpeciesName() + ' ' + plant.getLatinName()}"
+            android:textSize="@dimen/nonrec_font_size_small"
+            android:textStyle="italic"
             app:layout_constraintEnd_toStartOf="@+id/plant_location_map_button"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/plant_detail_name" />
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/plantDetailName"
+            app:layout_constraintTop_toBottomOf="@+id/plantDetailName" />
+
+        <ImageView
+            android:id="@+id/seassonImageView"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="@dimen/nonrec_half_margin"
+            app:layout_constraintStart_toStartOf="@+id/plantDetailLatin"
+            app:layout_constraintTop_toBottomOf="@+id/plantDetailLatin"
+            app:srcCompat="@drawable/ic_flowering" />
 
         <TextView
-            android:id="@+id/plant_detail_genus"
+            android:id="@+id/seassonTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="4dp"
-            android:minHeight="20dp"
-            android:text="@{plant.getGenusName()}"
-            app:layout_constraintBottom_toTopOf="@+id/plant_detail_species"
-            app:layout_constraintEnd_toStartOf="@+id/plant_location_map_button"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/plant_detail_latin_name" />
-
-        <TextView
-            android:id="@+id/plant_detail_species"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="4dp"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="4dp"
-            android:minHeight="20dp"
-            android:text="@{plant.getSpeciesName()}"
-            app:layout_constraintBottom_toTopOf="@+id/plant_detail_session"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/plant_detail_genus" />
-
-        <android.support.constraint.ConstraintLayout
-            android:id="@+id/plant_detail_session"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="4dp"
-            android:layout_marginStart="4dp"
-            android:minHeight="20dp"
-            app:layout_constraintBottom_toTopOf="@+id/route_scroll_view"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/plant_detail_species">
-
-            <TextView
-                android:id="@+id/plant_detail_session_begin"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="4dp"
-                android:minHeight="20dp"
-                android:text="POCZATEK"
-                android:textAlignment="center"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <TextView
-                android:id="@+id/plant_detail_session_end"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:layout_marginTop="4dp"
-                android:minHeight="20dp"
-                android:text="KONIEC"
-                android:textAlignment="center"
-                app:layout_constraintEnd_toEndOf="parent"
-                tools:ignore="MissingConstraints" />
-
-
-        </android.support.constraint.ConstraintLayout>
+            android:layout_marginLeft="@dimen/nonrec_half_margin"
+            android:text="@{@string/plant_seasson_date(plant.getSeasonBeginDateString(), plant.getSeasonEndDateString())}"
+            android:textSize="@dimen/nonrec_font_size"
+            android:textColor="@color/darkTextGray"
+            app:layout_constraintBottom_toBottomOf="@+id/seassonImageView"
+            app:layout_constraintStart_toEndOf="@+id/seassonImageView"
+            app:layout_constraintTop_toTopOf="@+id/seassonImageView" />
 
 
         <ScrollView
             android:id="@+id/route_scroll_view"
             android:layout_width="match_parent"
-            android:layout_height="220dp"
-            android:layout_marginBottom="4dp"
-            android:layout_marginEnd="4dp"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="4dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="@dimen/nonrec_half_margin"
+            android:layout_marginTop="@dimen/nonrec_margin"
             android:fillViewport="true"
             android:scrollbars="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/plant_detail_session"
+            app:layout_constraintTop_toBottomOf="@+id/seassonImageView"
+            app:layout_constraintVertical_bias="0.0"
             app:layout_constraintVertical_chainStyle="packed">
 
             <TextView
                 android:id="@+id/plant_detail_description"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:text="@{plant.getDescription()}" />
+                android:paddingBottom="@dimen/nonrec_half_margin"
+                android:paddingEnd="@dimen/nonrec_margin"
+                android:paddingStart="@dimen/nonrec_margin"
+                android:paddingTop="@dimen/nonrec_half_margin"
+                android:text="@{plant.getDescription()}"
+                android:textColor="@color/darkTextGray"
+                android:textSize="@dimen/nonrec_font_size_small" />
         </ScrollView>
+
 
     </android.support.constraint.ConstraintLayout>
 </layout>
