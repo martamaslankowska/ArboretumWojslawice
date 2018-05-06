@@ -58,6 +58,17 @@ public class EventDetailActivity extends DaggerAppCompatActivity {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(event -> {
                             mEvent = event;
+                            /* toolbar */
+                            Toolbar toolbar = findViewById(R.id.toolbar_back);
+                            setSupportActionBar(toolbar);
+                            getSupportActionBar().setTitle(mEvent.getType());
+                            if (getSupportActionBar() != null) {
+                                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+                                getSupportActionBar().setDisplayShowHomeEnabled(true);
+                            }
+        /* /toolbar */
+
+                            binding.setEvent(mEvent);
                         }
                         ,throwable -> {
                             Toast.makeText(this, "We have error here...", Toast.LENGTH_LONG);
@@ -65,17 +76,17 @@ public class EventDetailActivity extends DaggerAppCompatActivity {
 
         compositeDisposable.add(d_event);
 
-        /* toolbar */
-        Toolbar toolbar = findViewById(R.id.toolbar_back);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle(mEvent.getType());
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setDisplayShowHomeEnabled(true);
-        }
-        /* /toolbar */
-
-        binding.setEvent(mEvent);
+//        /* toolbar */
+//        Toolbar toolbar = findViewById(R.id.toolbar_back);
+//        setSupportActionBar(toolbar);
+//        getSupportActionBar().setTitle(mEvent.getType());
+//        if (getSupportActionBar() != null) {
+//            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//            getSupportActionBar().setDisplayShowHomeEnabled(true);
+//        }
+//        /* /toolbar */
+//
+//        binding.setEvent(mEvent);
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {

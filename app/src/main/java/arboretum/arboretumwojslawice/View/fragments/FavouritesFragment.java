@@ -22,6 +22,11 @@ import arboretum.arboretumwojslawice.View.adapter.PlantAdapter;
 import arboretum.arboretumwojslawice.ViewModel.FavouriteViewModel;
 import arboretum.arboretumwojslawice.ViewModel.PlantViewModel;
 import dagger.android.support.DaggerFragment;
+import io.reactivex.Maybe;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 
 public class FavouritesFragment extends DaggerFragment implements FavouritesAdapter.OnItemClickListener {
@@ -41,6 +46,7 @@ public class FavouritesFragment extends DaggerFragment implements FavouritesAdap
     protected FavouriteViewModel mFavouriteViewModel;
     protected RecyclerView.LayoutManager mLayoutManager;
     protected List<Plant> mPlants;
+    protected CompositeDisposable compositeDisposable;
 
     @Override
     public void onItemClick(int position) {
@@ -66,15 +72,45 @@ public class FavouritesFragment extends DaggerFragment implements FavouritesAdap
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_favourites, container, false);
 
-        // mPlantViewModel = new PlantViewModel();
         mRecyclerView = view.findViewById(R.id.favourite_recycler_view);
+        compositeDisposable = new CompositeDisposable();
 
-        mPlants = mFavouriteViewModel.getData();
+        Disposable listOfPlants = Maybe.fromCallable(() -> {
+            return mFavouriteViewModel.getAll();
+        })
+                .subscribeOn(Schedulers.computation())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(prices -> {
+                            /* onSuccess() :) */
+//                            int length = prices.size();
+//                            try {
+//                                Toast.makeText(getActivity(), "Było odwołanie do bazy i fajnie :)\nLiczba kwiatków w bazie: " + String.valueOf(length), Toast.LENGTH_SHORT).show();
+//                            } catch (Exception e){
+//                                Toast.makeText(getActivity(), "Ups, pusta baza :(", Toast.LENGTH_SHORT).show();
+//                            }
+
+                            mPlants = prices;
+
+                            mRecyclerView.setAdapter(mAdapter);
+                            mAdapter.setData(mPlants);
+                            mLayoutManager = new LinearLayoutManager(getActivity());
+                            mCurrentLayoutManagerType = FavouritesFragment.LayoutManagerType.LINEAR_LAYOUT_MANAGER;
+                            Toast.makeText(getActivity(), "Jeśli nic tutaj nie ma to znaczy że jeszcze nie lubisz żadnych naszych roślinek!" +
+                                    "\nJAK TO SIĘ STAŁO???\nMożesz to szybko nadrobić przechodząc do spisu roślin", Toast.LENGTH_LONG).show();
+                        }
+                        ,throwable -> {
+                            /* onError() */
+                            Toast.makeText(getActivity(), "Jakiś błąąąd... -.- -.-", Toast.LENGTH_LONG);
+                        });
+
+        compositeDisposable.add(listOfPlants);
+
+
         //mAdapter = new PlantAdapter(listener);
-        mRecyclerView.setAdapter(mAdapter);
-        mAdapter.setData(mPlants);
-        mLayoutManager = new LinearLayoutManager(getActivity());
-        mCurrentLayoutManagerType = FavouritesFragment.LayoutManagerType.LINEAR_LAYOUT_MANAGER;
+//        mRecyclerView.setAdapter(mAdapter);
+//        mAdapter.setData(mPlants);
+//        mLayoutManager = new LinearLayoutManager(getActivity());
+//        mCurrentLayoutManagerType = ListOfPlantsFragment.LayoutManagerType.LINEAR_LAYOUT_MANAGER;
 
         if (savedInstanceState != null) {
             // Restore saved layout manager type.

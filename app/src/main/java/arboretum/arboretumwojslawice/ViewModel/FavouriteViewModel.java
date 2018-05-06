@@ -25,6 +25,10 @@ public class FavouriteViewModel {
         return mPlant;
     }
 
+    public List<Plant> getAll() {
+        return mPlantRepo.getFavouritePlants();
+    }
+
     public Plant getPlantById(int plant_id) {
         getData();
         for(int i = 0; i < mPlant.size(); i++) {
