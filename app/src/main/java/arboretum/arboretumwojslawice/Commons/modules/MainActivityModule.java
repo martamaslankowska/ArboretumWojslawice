@@ -1,6 +1,7 @@
 package arboretum.arboretumwojslawice.Commons.modules;
 
 import arboretum.arboretumwojslawice.View.activities.PlantDetailActivity;
+import arboretum.arboretumwojslawice.View.fragments.FavouritesFragment;
 import arboretum.arboretumwojslawice.View.fragments.HomeFragment;
 import arboretum.arboretumwojslawice.View.fragments.MoreFragment;
 import arboretum.arboretumwojslawice.View.fragments.RouteFragment;
@@ -18,5 +19,8 @@ public abstract class MainActivityModule {
 
     @ContributesAndroidInjector(modules = MoreModule.class)
     abstract MoreFragment bindMoreFragment();
+
+    @ContributesAndroidInjector(modules = FavouritesModule.class)
+    abstract FavouritesFragment bindFavouritesFragment();
 
 }

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="favourite"
+            type="arboretum.arboretumwojslawice.Model.businessentity.Plant"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:paddingLeft="16dp"
+        android:paddingRight="8dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp">
+
+        <ImageView
+            android:id="@+id/plant_image"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@{favourite.getImageId(context)}"/>
+
+        <TextView
+            android:id="@+id/plant_name"
+            android:layout_toEndOf="@id/plant_image"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_toStartOf="@id/plant_heart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{@string/plant_name(favourite.getName())}"/>
+
+
+        <TextView
+            android:id="@+id/plant_genus"
+            android:layout_toEndOf="@id/plant_image"
+            android:layout_toStartOf="@id/plant_heart"
+            android:layout_marginLeft="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/plant_name"
+            android:text="@{favourite.getGenusName()}"/>
+
+
+    </RelativeLayout>
+</layout>
