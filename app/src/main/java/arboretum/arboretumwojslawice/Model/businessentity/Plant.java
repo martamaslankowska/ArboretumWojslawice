@@ -15,6 +15,8 @@ import arboretum.arboretumwojslawice.Commons.AdapterItem;
 
 public class Plant implements AdapterItem {
 
+    private static final String[] DEFAULT_IMAGE_NAMES = {"ic_tree_deciduous_black", "ic_tree_conifer_black", "ic_clover_black", "ic_world_black"};
+
     @ColumnInfo(name = "IdPlant")
     private Integer idPlant;
 
@@ -163,6 +165,8 @@ public class Plant implements AdapterItem {
     }
 
     public int getImageId(Context c) {
+        if (image == null || image.isEmpty())
+            image = Plant.DEFAULT_IMAGE_NAMES[kind];
         return c.getResources().getIdentifier("arboretum.arboretumwojslawice:drawable/" + image, null, null);
     }
 

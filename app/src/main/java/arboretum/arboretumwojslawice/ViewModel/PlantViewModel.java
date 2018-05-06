@@ -26,6 +26,12 @@ public class PlantViewModel {
         return mPlant;
     }
 
+    public List<Plant> getAllByKind(int kind) {
+        return mPlantRepo.getAllByKind(kind);
+    }
+
+
+
     // return one plant founded by id
     public Plant getPlantById(int plant_id) {
         getData();

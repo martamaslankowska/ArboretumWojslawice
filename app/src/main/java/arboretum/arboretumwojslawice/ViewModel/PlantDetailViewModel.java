@@ -26,6 +26,12 @@ public class PlantDetailViewModel {
         return mPlant;
     }
 
+
+    public Plant getById(int id) {
+        return mPlantRepo.getById(id);
+    }
+
+
     // return one plant founded by id
     public Plant getPlantById(int plant_id) {
         getData();
