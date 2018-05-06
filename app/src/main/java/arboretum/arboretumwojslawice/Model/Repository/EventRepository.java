@@ -32,7 +32,7 @@ public class EventRepository extends BaseRepository {
         return eventDao.getAll(languageCode);
     }
 
-    public  Event getById(int id) {
+    public Event getById(int id) {
         return eventDao.getById(id, languageCode);
     }
 

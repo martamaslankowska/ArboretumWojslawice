@@ -27,7 +27,7 @@ public abstract class EventDao extends BaseDao<EventEntity> {
     @Query("SELECT Events.IdEvent, Type, Name, DateBegin, DateEnd, TimeBegin, TimeEnd, Description " +
             "FROM Events LEFT JOIN EventsTranslations ON Events.IdEvent = EventsTranslations.IdEvent " +
             "WHERE Events.IdEvent IN (:id) AND TranslationCode IN (:translationCode)")
-    public abstract  Event getById(int id, String translationCode);
+    public abstract Event getById(int id, String translationCode);
 
     @Query("SELECT Events.IdEvent, Type, Name, DateBegin, DateEnd, TimeBegin, TimeEnd, Description " +
             "FROM Events LEFT JOIN EventsTranslations ON Events.IdEvent = EventsTranslations.IdEvent " +
