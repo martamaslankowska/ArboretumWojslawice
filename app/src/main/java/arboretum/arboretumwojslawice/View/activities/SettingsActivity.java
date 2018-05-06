@@ -1,10 +1,17 @@
 package arboretum.arboretumwojslawice.View.activities;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.v4.content.IntentCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
@@ -14,6 +21,7 @@ import android.widget.Toast;
 
 import java.util.Locale;
 
+import arboretum.arboretumwojslawice.Commons.LocaleHelper;
 import arboretum.arboretumwojslawice.R;
 
 public class SettingsActivity extends AppCompatActivity {
@@ -41,17 +49,17 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public void polishLanguage(View view) {
-        Toast.makeText(getApplicationContext(), "Polski", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "Zmieniono język na polski", Toast.LENGTH_LONG).show();
         setLanguage("pl");
     }
 
     public void englishLanguage(View view) {
-        Toast.makeText(getApplicationContext(), "Angielski", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "Zmieniono język na angielski", Toast.LENGTH_LONG).show();
         setLanguage("en");
     }
 
     public void germanLanguage(View view) {
-        Toast.makeText(getApplicationContext(), "Niemiecki, brrr...", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "Przemyśl swoje życie", Toast.LENGTH_LONG).show();
         setLanguage("de");
     }
 
@@ -66,9 +74,16 @@ public class SettingsActivity extends AppCompatActivity {
         res.updateConfiguration(conf, dm);
 
         saveLanguageToSharedPreferences(languageCode);
-        Toast.makeText(getApplicationContext(), "UWAGA!!! Język zmieni się tylko wtedy gdy wyłączysz aplikację i włączysz ją jeszcze raz!",
-                Toast.LENGTH_LONG).show();
-        this.recreate();
+        restartApp(getApplicationContext());
+    }
+
+    private void restartApp(Context context) {
+        PackageManager packageManager = context.getPackageManager();
+        Intent intent = packageManager.getLaunchIntentForPackage(context.getPackageName());
+        ComponentName componentName = intent.getComponent();
+        Intent mainIntent = IntentCompat.makeRestartActivityTask(componentName);
+        context.startActivity(mainIntent);
+        System.exit(0);
     }
 
     private void saveLanguageToSharedPreferences(String languageCode) {

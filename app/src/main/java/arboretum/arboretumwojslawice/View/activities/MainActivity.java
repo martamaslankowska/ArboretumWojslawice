@@ -1,5 +1,6 @@
 package arboretum.arboretumwojslawice.View.activities;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -15,6 +16,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import arboretum.arboretumwojslawice.Commons.LocaleHelper;
 import arboretum.arboretumwojslawice.R;
 import arboretum.arboretumwojslawice.View.BottomNavigationViewHelper;
 import arboretum.arboretumwojslawice.View.fragments.FavouritesFragment;
@@ -153,4 +155,5 @@ public class MainActivity extends DaggerAppCompatActivity {
     protected void onStart() {
         super.onStart();
     }
+
 }
