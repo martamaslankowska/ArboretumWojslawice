@@ -99,6 +99,14 @@ public class Event implements AdapterItem {
         return date;
     }
 
+    public String getBeginDateString() {
+        Integer day = dateBegin - ((dateBegin/100)*100);
+        Integer month = (dateBegin/100) - ((dateBegin/10000)*100);
+        Integer year = dateBegin/10000;
+
+        return (day<10 ? "0" : "") + String.valueOf(day) + "." + (month<10 ? "0" : "") + String.valueOf(month);
+    }
+
     public void setDateBegin(Date dateBegin) {
         Integer day = dateBegin.getDay();
         Integer month = dateBegin.getMonth();
@@ -121,6 +129,14 @@ public class Event implements AdapterItem {
         Integer year = dateEnd/10000;
         Date date = new Date(year, month, day);
         return date;
+    }
+
+    public String getEndDateString() {
+        Integer day = dateEnd - ((dateEnd/100)*100);
+        Integer month = (dateEnd/100) - ((dateEnd/10000)*100);
+        Integer year = dateEnd/10000;
+
+        return (day<10 ? "0" : "") + String.valueOf(day) + "." + (month<10 ? "0" : "") + String.valueOf(month);
     }
 
     public void setDateEnd(Date dateEnd) {

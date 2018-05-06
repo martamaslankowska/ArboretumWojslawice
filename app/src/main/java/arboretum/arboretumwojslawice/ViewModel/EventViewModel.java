@@ -18,10 +18,15 @@ public class EventViewModel {
     protected EventRepository mEventRepo;
 
     @Inject
-    public EventViewModel() { mEventRepo = new EventRepository(); }
+    public EventViewModel() {}
 
     public List<Event> getData() {
         mEvent = mEventRepo.getEventsForMichal();
+        return mEvent;
+    }
+
+    public List<Event> getAllEvents() {
+        mEvent = mEventRepo.getAllEvents();
         return mEvent;
     }
 }

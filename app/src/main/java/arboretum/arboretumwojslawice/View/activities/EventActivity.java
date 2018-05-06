@@ -7,16 +7,23 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import java.util.List;
 
 import javax.inject.Inject;
 
+import arboretum.arboretumwojslawice.Commons.DividerItemDecoration;
 import arboretum.arboretumwojslawice.Model.businessentity.Event;
 import arboretum.arboretumwojslawice.R;
 import arboretum.arboretumwojslawice.View.adapter.EventAdapter;
 import arboretum.arboretumwojslawice.ViewModel.EventViewModel;
 import dagger.android.support.DaggerAppCompatActivity;
+import io.reactivex.Maybe;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 public class EventActivity extends DaggerAppCompatActivity implements EventAdapter.OnItemClickListener {
 
@@ -49,6 +56,7 @@ public class EventActivity extends DaggerAppCompatActivity implements EventAdapt
     @Inject
     protected EventAdapter mAdapter;
     protected List<Event> mEvents;
+    protected CompositeDisposable compositeDisposable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,12 +75,29 @@ public class EventActivity extends DaggerAppCompatActivity implements EventAdapt
         /* toolbar */
 
         mRecyclerView = findViewById(R.id.event_recycler_view);
-        eventViewModel = new EventViewModel();
-        mEvents = eventViewModel.getData();
+        //eventViewModel = new EventViewModel();
+        //mEvents = eventViewModel.getAllEvents();
+        compositeDisposable = new CompositeDisposable();
 
-        mAdapter.setData(mEvents);
+        Disposable listOfEvents = Maybe.fromCallable(() -> {
+            return eventViewModel.getAllEvents();
+        })
+                .subscribeOn(Schedulers.computation())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(events -> {
+                            mEvents = events;
+                            mRecyclerView.addItemDecoration(new DividerItemDecoration(this, 0));
+                            mRecyclerView.setAdapter(mAdapter);
+                            mAdapter.setData(mEvents);
+                        }
+                        ,throwable -> {
+                            Toast.makeText(this, "We have error here...", Toast.LENGTH_LONG);
+                        });
+
+        compositeDisposable.add(listOfEvents);
+
         mRecyclerView.setAdapter(mAdapter);
-        mAdapter.setData(eventViewModel.getData());
+
         mLayoutManager = new LinearLayoutManager(this);
         setRecyclerViewLayoutManager();
     }

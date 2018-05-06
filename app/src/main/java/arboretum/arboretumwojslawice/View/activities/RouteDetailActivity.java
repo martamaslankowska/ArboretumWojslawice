@@ -7,6 +7,8 @@ import android.databinding.DataBindingUtil;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -233,7 +235,6 @@ public class RouteDetailActivity extends DaggerAppCompatActivity implements View
 
         Log.i("mRoutes", String.valueOf(route_id));
         binding.setRoute(route);
-
 
 
     }
