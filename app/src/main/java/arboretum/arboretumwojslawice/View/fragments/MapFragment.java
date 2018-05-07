@@ -1,11 +1,20 @@
 package arboretum.arboretumwojslawice.View.fragments;
 
+import android.Manifest;
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,9 +32,10 @@ import arboretum.arboretumwojslawice.R;
  * Created by weronika on 22.03.2018.
  */
 
-public class MapFragment extends Fragment {
+public class MapFragment extends Fragment implements LocationListener {
 
     /* map variables*/
+    double lon=0, lat=0;
     int x=0,y=0;
     Bitmap positionMarkerBitmap,canvasBitmap,mapBitmap, toiletMarkerBitmap, viewpointsMarkerBitmap, picnicMarkerBitmap;
     Canvas canvas;
@@ -56,6 +66,17 @@ public class MapFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_map, container, false);
 
+        /* location */
+        lon=16.856737;
+        lat=50.711166;
+//        Location l = getLocation();
+//        if (l != null) {
+//            lat = l.getLatitude();
+//            lon = l.getLongitude();
+//        }
+        x=countX(lon);
+        y=countY(lat);
+        /* /location */
         /* map */
         fillCoordinates();
         mapImage = rootView.findViewById(R.id.map);
@@ -68,6 +89,7 @@ public class MapFragment extends Fragment {
         drawMarkers(placesT, 0);
         drawMarkers(placesV, 1);
         drawMarkers(placesP, 2);
+        drawPositionMarker(y,x);
         mapImage.setImageBitmap(canvasBitmap);
         /* /map */
 
@@ -75,7 +97,7 @@ public class MapFragment extends Fragment {
         return rootView;
     }
 
-    /* map */
+
     public void createBitmap(){
         positionMarkerBitmap = BitmapFactory.decodeResource(resources,R.drawable.ic_marker_black_big);
         toiletMarkerBitmap = BitmapFactory.decodeResource(resources, R.drawable.ic_marker_toilet);
@@ -153,7 +175,7 @@ public class MapFragment extends Fragment {
 
         placesT.add(new LonLat(16.857109, 50.711267));
         placesT.add(new LonLat(16.861424, 50.712001));
-        placesT.add(new LonLat(16.865675, 50.709822));
+        placesT.add(new LonLat(16.863675, 50.709822));
 
         placesP.add(new LonLat(16.862115, 50.708872));
         placesP.add(new LonLat(16.857734, 50.710267));
@@ -161,9 +183,47 @@ public class MapFragment extends Fragment {
         placesP.add(new LonLat(16.855792, 50.712059));
         placesP.add(new LonLat(16.861059, 50.712497));
         placesP.add(new LonLat(16.858608, 50.713578));
-
     }
 
-    /* /map */
+    public Location getLocation(){
+        Context context = getActivity().getApplicationContext();
+        if(ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
 
+            //Toast.makeText(context, "brak pozwolenia na GPS", Toast.LENGTH_SHORT).show();
+            turnGpsOn();
+            return null;
+        }
+        LocationManager lm = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
+        boolean isGPSEnabled = lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
+        if(isGPSEnabled){
+            lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0,0,this);
+            Location l = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+            return l;
+        }else{
+            //Toast.makeText(context, "włącz GPS", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+        }
+        return null;
+    }
+
+    private void turnGpsOn(){
+        startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+    }
+
+
+    @Override
+    public void onLocationChanged(Location location) {
+    }
+
+    @Override
+    public void onStatusChanged(String s, int i, Bundle bundle) {
+    }
+
+    @Override
+    public void onProviderEnabled(String s) {
+    }
+
+    @Override
+    public void onProviderDisabled(String s) {
+    }
 }

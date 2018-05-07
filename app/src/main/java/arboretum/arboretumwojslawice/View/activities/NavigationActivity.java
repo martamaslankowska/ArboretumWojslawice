@@ -133,7 +133,7 @@ public class NavigationActivity extends DaggerAppCompatActivity implements Locat
 
         x=countX(lon);
         y=countY(lat);
-        Toast.makeText(getApplicationContext(), x + "\n" +  y, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getApplicationContext(), x + "\n" +  y, Toast.LENGTH_SHORT).show();
         DrawCanvas();
         drawMarker(x,y);
         imageview.setImageBitmap(bitmap2);
