@@ -1,6 +1,7 @@
 package arboretum.arboretumwojslawice.View.fragments;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -22,7 +23,9 @@ import arboretum.arboretumwojslawice.View.activities.PlantDetailActivity;
 import arboretum.arboretumwojslawice.View.adapter.PlantAdapter;
 import arboretum.arboretumwojslawice.ViewModel.PlantViewModel;
 import dagger.android.support.DaggerFragment;
+import io.reactivex.Completable;
 import io.reactivex.Maybe;
+import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
@@ -66,6 +69,33 @@ public class ListOfPlantsFragment extends DaggerFragment implements PlantAdapter
         Toast.makeText(getContext(), "Dodano do ulubionych; id: " + mPlants.get(position).getIdPlant(), Toast.LENGTH_SHORT).show();
         //mPlantViewModel.setFavourite(mPlants.get(position).getIdPlant());
         //mImageView.setImageResource(R.drawable.icons8_heart_red);
+
+
+        Disposable listOfPlants = Completable.fromAction(() -> {
+            mPlantViewModel.setFavourite(mPlants.get(position).getIdPlant());
+        })
+                .subscribeOn(Schedulers.computation())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(() -> {
+                            /* onSuccess() :) */
+//                            int length = prices.size();
+//                            try {
+//                                Toast.makeText(getActivity(), "Było odwołanie do bazy i fajnie :)\nLiczba kwiatków w bazie: " + String.valueOf(length), Toast.LENGTH_SHORT).show();
+//                            } catch (Exception e){
+//                                Toast.makeText(getActivity(), "Ups, pusta baza :(", Toast.LENGTH_SHORT).show();
+//                            }
+
+                            Toast.makeText(getActivity(), "Dodano do ulubionych Z RXJavy (vol 2): " + mPlants.get(position).getIdPlant(), Toast.LENGTH_SHORT).show();
+
+                        }
+                        ,throwable -> {
+                            /* onError() */
+                            Toast.makeText(getActivity(), "Jakiś błąąąd... -.- -.-", Toast.LENGTH_LONG);
+                        });
+
+        compositeDisposable.add(listOfPlants);
+
+
     }
 
     private enum LayoutManagerType {
@@ -92,28 +122,12 @@ public class ListOfPlantsFragment extends DaggerFragment implements PlantAdapter
         compositeDisposable = new CompositeDisposable();
 
 
-//        switch(n) {
-//            case 0:
-//                mPlants = mPlantViewModel.getPlantsFromTab(1);
-//                break;
-//            case 1:
-//                mPlants = mPlantViewModel.getPlantsFromTab(2);
-//                break;
-//            case 2:
-//                mPlants = mPlantViewModel.getPlantsFromTab(3);
-//                break;
-//            case 3:
-//                mPlants = mPlantViewModel.getPlantsFromTab(4);
-//                break;
-//        }
-
-
         Disposable listOfPlants = Maybe.fromCallable(() -> {
             return mPlantViewModel.getAllByKind(n);
         })
                 .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(prices -> {
+                .subscribe(plants -> {
                             /* onSuccess() :) */
 //                            int length = prices.size();
 //                            try {
@@ -122,7 +136,7 @@ public class ListOfPlantsFragment extends DaggerFragment implements PlantAdapter
 //                                Toast.makeText(getActivity(), "Ups, pusta baza :(", Toast.LENGTH_SHORT).show();
 //                            }
 
-                            mPlants = prices;
+                            mPlants = plants;
 
                             mRecyclerView.setAdapter(mAdapter);
                             mAdapter.setData(mPlants);
@@ -137,13 +151,6 @@ public class ListOfPlantsFragment extends DaggerFragment implements PlantAdapter
 
         compositeDisposable.add(listOfPlants);
 
-
-
-        //mAdapter = new PlantAdapter(listener);
-//        mRecyclerView.setAdapter(mAdapter);
-//        mAdapter.setData(mPlants);
-//        mLayoutManager = new LinearLayoutManager(getActivity());
-//        mCurrentLayoutManagerType = ListOfPlantsFragment.LayoutManagerType.LINEAR_LAYOUT_MANAGER;
 
         if (savedInstanceState != null) {
             // Restore saved layout manager type.

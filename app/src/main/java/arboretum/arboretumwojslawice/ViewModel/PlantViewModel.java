@@ -30,8 +30,12 @@ public class PlantViewModel {
         return mPlantRepo.getAllByKind(kind);
     }
 
-    public Plant setFavourite(int id) {
-        return mPlantRepo.setFavouriteById(id, true);
+    public void setFavourite(int id) {
+        mPlantRepo.setFavouriteById(id);
+    }
+
+    public Plant getById(int id) {
+        return mPlantRepo.getById(id);
     }
 
 

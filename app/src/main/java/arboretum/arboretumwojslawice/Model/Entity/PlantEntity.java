@@ -54,6 +54,17 @@ public class PlantEntity {
     private boolean favourite;
 
 
+    public PlantEntity(int idPlant, String latinName, int idSpecies, int idKind, String image, int seasonBegin, int seasonEnd, boolean favourite) {
+        this.idPlant = idPlant;
+        this.latinName = latinName;
+        this.idSpecies = idSpecies;
+        this.idKind = idKind;
+        this.image = image;
+        this.seasonBegin = seasonBegin;
+        this.seasonEnd = seasonEnd;
+        this.favourite = favourite;
+    }
+
     public int getIdPlant() {
         return idPlant;
     }

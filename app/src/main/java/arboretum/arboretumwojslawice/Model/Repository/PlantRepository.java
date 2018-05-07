@@ -9,6 +9,7 @@ import arboretum.arboretumwojslawice.Model.DAO.LocationDao;
 import arboretum.arboretumwojslawice.Model.DAO.PlantDao;
 import arboretum.arboretumwojslawice.Model.DAO.PlantTranslationDao;
 import arboretum.arboretumwojslawice.Model.DAO.SpeciesDao;
+import arboretum.arboretumwojslawice.Model.Entity.PlantEntity;
 import arboretum.arboretumwojslawice.Model.businessentity.Location;
 import arboretum.arboretumwojslawice.Model.businessentity.Plant;
 
@@ -45,10 +46,12 @@ public class PlantRepository extends  BaseRepository {
         return plantDao.getById(id, languageCode);
     }
 
-    public Plant setFavouriteById(int id, boolean isFavourite) {
+    public void setFavouriteById(int id) {
         Plant mPlant = getById(id);
-        mPlant.setFavourite(isFavourite);
-        return mPlant;
+        mPlant.setFavourite(true);
+        PlantEntity newPlant = new PlantEntity(mPlant.getIdPlant(), mPlant.getLatinName(), speciesDao.getSpeciesId(mPlant.getGenusName(), mPlant.getSpeciesName()),
+                mPlant.getKind(), mPlant.getImage(), mPlant.getSeasonBegin(), mPlant.getSeasonEnd(), mPlant.getFavourite());
+        plantDao.update(newPlant);
     }
 
     public List<Plant> getAllByKind(int kind) {
