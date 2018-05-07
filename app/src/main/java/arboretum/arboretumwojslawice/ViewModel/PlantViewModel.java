@@ -30,6 +30,9 @@ public class PlantViewModel {
         return mPlantRepo.getAllByKind(kind);
     }
 
+    public Plant setFavourite(int id) {
+        return mPlantRepo.setFavouriteById(id, true);
+    }
 
 
     // return one plant founded by id

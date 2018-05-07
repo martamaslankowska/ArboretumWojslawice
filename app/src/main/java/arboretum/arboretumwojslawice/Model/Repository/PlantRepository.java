@@ -41,8 +41,14 @@ public class PlantRepository extends  BaseRepository {
         return plantDao.getAll(languageCode);
     }
 
-    public  Plant getById(int id) {
+    public Plant getById(int id) {
         return plantDao.getById(id, languageCode);
+    }
+
+    public Plant setFavouriteById(int id, boolean isFavourite) {
+        Plant mPlant = getById(id);
+        mPlant.setFavourite(isFavourite);
+        return mPlant;
     }
 
     public List<Plant> getAllByKind(int kind) {

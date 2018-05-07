@@ -63,7 +63,8 @@ public class ListOfPlantsFragment extends DaggerFragment implements PlantAdapter
 
     @Override
     public void onHeartClick(int position) {
-        Toast.makeText(getContext(), "Dodano do ulubionych", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), "Dodano do ulubionych; id: " + mPlants.get(position).getIdPlant(), Toast.LENGTH_SHORT).show();
+        //mPlantViewModel.setFavourite(mPlants.get(position).getIdPlant());
         //mImageView.setImageResource(R.drawable.icons8_heart_red);
     }
 

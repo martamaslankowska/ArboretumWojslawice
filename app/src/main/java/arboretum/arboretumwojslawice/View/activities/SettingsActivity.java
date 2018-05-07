@@ -1,5 +1,6 @@
 package arboretum.arboretumwojslawice.View.activities;
 
+import android.annotation.SuppressLint;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.ComponentName;
@@ -17,6 +18,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Locale;
@@ -48,16 +50,19 @@ public class SettingsActivity extends AppCompatActivity {
         mPrefs = PreferenceManager.getDefaultSharedPreferences(this);
     }
 
+    @SuppressLint("ResourceAsColor")
     public void polishLanguage(View view) {
         Toast.makeText(getApplicationContext(), "Zmieniono język na polski", Toast.LENGTH_LONG).show();
         setLanguage("pl");
     }
 
+    @SuppressLint("ResourceAsColor")
     public void englishLanguage(View view) {
         Toast.makeText(getApplicationContext(), "Zmieniono język na angielski", Toast.LENGTH_LONG).show();
         setLanguage("en");
     }
 
+    @SuppressLint("ResourceAsColor")
     public void germanLanguage(View view) {
         Toast.makeText(getApplicationContext(), "Przemyśl swoje życie", Toast.LENGTH_LONG).show();
         setLanguage("de");
