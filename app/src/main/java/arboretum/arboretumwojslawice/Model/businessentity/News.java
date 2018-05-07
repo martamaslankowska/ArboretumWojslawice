@@ -3,7 +3,10 @@ package arboretum.arboretumwojslawice.Model.businessentity;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Ignore;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
+import android.preference.PreferenceManager;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import java.util.Locale;
@@ -12,6 +15,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import arboretum.arboretumwojslawice.Commons.AdapterItem;
+import arboretum.arboretumwojslawice.Commons.di.AppController;
 
 public class News implements AdapterItem {
 
@@ -102,12 +106,18 @@ public class News implements AdapterItem {
         return sDate.substring(6,8)+"/"+sDate.substring(4,6)+"/"+sDate.substring(0,4);
     }
 
-    public String getFullDate() {
+    public String getFullDate(Context context) {
         String sDate = String.valueOf(date);
         String month = "error";
 
-        String language = Locale.getDefault().getLanguage();
-        if(language == "pl")
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        String language = prefs.getString("select_language", "pl");
+
+
+        //String language = Locale.getDefault().getLanguage();
+
+        Log.i("język:", language);
+        if(language.equals("pl"))
         {
             Log.i("kod pl: ", sDate.substring(4,6));
             switch(sDate.substring(4,6))
@@ -127,8 +137,9 @@ public class News implements AdapterItem {
                 default: month = "zły miesiąc";
             }
         }
-        else if(language == "en")
+        else if(language.equals("en"))
         {
+            Log.i("kod en: ", sDate.substring(4,6));
             switch(sDate.substring(4,6))
             {
                 case "01": month = "January"; break;
@@ -146,7 +157,7 @@ public class News implements AdapterItem {
                 default: month = "bad month";
             }
         }
-        else if(language == "de")
+        else if(language.equals("de"))
         {
             switch(sDate.substring(4,6))
             {

@@ -23,6 +23,8 @@ import android.widget.Toast;
 
 import java.util.Locale;
 
+import javax.inject.Inject;
+
 import arboretum.arboretumwojslawice.Commons.LocaleHelper;
 import arboretum.arboretumwojslawice.R;
 
@@ -30,6 +32,8 @@ public class SettingsActivity extends AppCompatActivity {
 
     SharedPreferences mPrefs;
     final String INFO = "select_language";
+    @Inject
+    Locale myLocale;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

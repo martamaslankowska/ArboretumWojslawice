@@ -65,7 +65,7 @@
             android:layout_height="34dp"
             android:layout_marginEnd="8dp"
             android:layout_marginTop="8dp"
-            android:text="@{news.getFullDate()}"
+            android:text="@{news.getFullDate(context)}"
             android:textAlignment="textEnd"
             android:textSize="20dp"
             android:textColor="@color/white"
