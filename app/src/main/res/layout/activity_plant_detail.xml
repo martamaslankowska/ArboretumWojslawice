@@ -37,10 +37,9 @@
             app:layout_constraintTop_toBottomOf="@+id/toolbar_back" />
 
 
-
         <TextView
             android:id="@+id/plantDetailName"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/nonrec_margin"
             android:layout_marginStart="@dimen/nonrec_margin"
@@ -50,13 +49,13 @@
             android:textSize="@dimen/nonrec_font_size_big"
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/plant_location_map_button"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.057"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/plant_detail_image" />
 
         <TextView
             android:id="@+id/plantDetailLatin"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/nonrec_margin"
             android:text="@{plant.getGenusName() + ' ' + plant.getSpeciesName() + ' ' + plant.getLatinName()}"

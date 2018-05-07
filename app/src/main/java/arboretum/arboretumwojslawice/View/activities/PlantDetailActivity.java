@@ -62,11 +62,11 @@ public class PlantDetailActivity extends DaggerAppCompatActivity {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(dbPlant -> {
                             /* onSuccess() :) */
-                            try {
-                                Toast.makeText(this, "Było odwołanie do bazy i fajnie :)", Toast.LENGTH_SHORT).show();
-                            } catch (Exception e){
-                                Toast.makeText(this, "Ups, pusta baza :(", Toast.LENGTH_SHORT).show();
-                            }
+//                            try {
+//                                Toast.makeText(this, "Było odwołanie do bazy i fajnie :)", Toast.LENGTH_SHORT).show();
+//                            } catch (Exception e){
+//                                Toast.makeText(this, "Ups, pusta baza :(", Toast.LENGTH_SHORT).show();
+//                            }
 
                             Plant plant = dbPlant;
 
