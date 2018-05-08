@@ -5,9 +5,12 @@
     tools:context="arboretum.arboretumwojslawice.View.fragments.AttractionFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/attractionRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/toolbar_attractions_list" />
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical"
+        android:layout_marginBottom="8dp"
+        android:layout_alignParentStart="true"/>
 
 </FrameLayout>

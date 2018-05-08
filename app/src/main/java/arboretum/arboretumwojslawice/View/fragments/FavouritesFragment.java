@@ -107,11 +107,11 @@ public class FavouritesFragment extends DaggerFragment implements FavouritesAdap
         compositeDisposable.add(listOfPlants);
 
 
-        //mAdapter = new PlantAdapter(listener);
-//        mRecyclerView.setAdapter(mAdapter);
-//        mAdapter.setData(mPlants);
-//        mLayoutManager = new LinearLayoutManager(getActivity());
-//        mCurrentLayoutManagerType = ListOfPlantsFragment.LayoutManagerType.LINEAR_LAYOUT_MANAGER;
+        //adapter = new PlantAdapter(listener);
+//        recyclerView.setAdapter(adapter);
+//        adapter.setData(mPlants);
+//        layoutManager = new LinearLayoutManager(getActivity());
+//        currentLayoutManagerType = ListOfPlantsFragment.LayoutManagerType.LINEAR_LAYOUT_MANAGER;
 
         if (savedInstanceState != null) {
             // Restore saved layout manager type.

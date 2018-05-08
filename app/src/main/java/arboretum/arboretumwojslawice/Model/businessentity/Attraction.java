@@ -4,13 +4,14 @@ import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.PrimaryKey;
 import android.content.Context;
 
+import arboretum.arboretumwojslawice.Commons.AdapterItem;
 import io.reactivex.annotations.NonNull;
 
 /**
  * Created by Komputer on 2018-03-25.
  */
 
-public class Attraction {
+public class Attraction implements AdapterItem {
 
     @ColumnInfo(name = "IdAttraction")
     private Integer idAttraction;
@@ -87,5 +88,14 @@ public class Attraction {
     @Override
     public String toString() {
         return "(id = " + idAttraction + ") " + name + " --> " + description.substring(0, 20) + "...";
+    }
+
+    public String getDistanceString() {
+        return distance.toString() + "km";
+    }
+
+    @Override
+    public int getItemType() {
+        return 0;
     }
 }

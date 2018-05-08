@@ -68,7 +68,7 @@ public class RouteFragment extends DaggerFragment implements RouteAdapter.OnItem
        // binding.setRoute();
 
         mRecyclerView.addItemDecoration(new DividerItemDecoration(this.getContext(), 1));
-        //mAdapter = new RouteAdapter(this);
+        //adapter = new RouteAdapter(this);
         mRecyclerView.setAdapter(mAdapter);
         mAdapter.setData(mRoutes);
         mAdapter.setData(mRoutes);
