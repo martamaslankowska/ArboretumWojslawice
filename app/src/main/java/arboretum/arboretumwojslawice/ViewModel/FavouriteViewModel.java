@@ -12,7 +12,7 @@ import arboretum.arboretumwojslawice.Model.businessentity.Plant;
  */
 
 public class FavouriteViewModel {
-    List<Plant> mPlant;
+    //List<Plant> mPlant;
 
     @Inject
     protected PlantRepository mPlantRepo;
@@ -20,22 +20,24 @@ public class FavouriteViewModel {
     @Inject
     public FavouriteViewModel(){ }
 
-    public List<Plant> getData() {
-        mPlant = mPlantRepo.getPlantsForMichal();
-        return mPlant;
-    }
+    //tmp
+//    public List<Plant> getData() {
+//        mPlant = mPlantRepo.getPlantsForMichal();
+//        return mPlant;
+//    }
 
-    public List<Plant> getAll() {
+    public List<Plant> getAllFavourites() {
         return mPlantRepo.getFavouritePlants();
     }
 
-    public Plant getPlantById(int plant_id) {
-        getData();
-        for(int i = 0; i < mPlant.size(); i++) {
-            if(mPlant.get(i).getIdPlant() == plant_id) {
-                return mPlant.get(i);
-            }
-        }
-        return mPlant.get(plant_id);
-    }
+    //tmp
+//    public Plant getPlantById(int plant_id) {
+//        getData();
+//        for(int i = 0; i < mPlant.size(); i++) {
+//            if(mPlant.get(i).getIdPlant() == plant_id) {
+//                return mPlant.get(i);
+//            }
+//        }
+//        return mPlant.get(plant_id);
+//    }
 }

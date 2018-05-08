@@ -7,20 +7,18 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
 
 import javax.inject.Inject;
 
-import arboretum.arboretumwojslawice.Commons.DividerItemDecoration;
 import arboretum.arboretumwojslawice.Model.businessentity.Plant;
 import arboretum.arboretumwojslawice.R;
 import arboretum.arboretumwojslawice.View.activities.PlantDetailActivity;
 import arboretum.arboretumwojslawice.View.adapter.FavouritesAdapter;
-import arboretum.arboretumwojslawice.View.adapter.PlantAdapter;
 import arboretum.arboretumwojslawice.ViewModel.FavouriteViewModel;
-import arboretum.arboretumwojslawice.ViewModel.PlantViewModel;
 import dagger.android.support.DaggerFragment;
 import io.reactivex.Maybe;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -38,6 +36,7 @@ public class FavouritesFragment extends DaggerFragment implements FavouritesAdap
     protected FavouritesFragment.LayoutManagerType mCurrentLayoutManagerType;
 
     protected RecyclerView mRecyclerView;
+    private TextView noFavouritesTextView;
 
     @Inject
     protected FavouritesAdapter mAdapter;
@@ -74,9 +73,10 @@ public class FavouritesFragment extends DaggerFragment implements FavouritesAdap
 
         mRecyclerView = view.findViewById(R.id.favourite_recycler_view);
         compositeDisposable = new CompositeDisposable();
+        noFavouritesTextView = view.findViewById(R.id.noFavouriteTextView);
 
         Disposable listOfPlants = Maybe.fromCallable(() -> {
-            return mFavouriteViewModel.getAll();
+            return mFavouriteViewModel.getAllFavourites();
         })
                 .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -95,8 +95,9 @@ public class FavouritesFragment extends DaggerFragment implements FavouritesAdap
                             mAdapter.setData(mPlants);
                             mLayoutManager = new LinearLayoutManager(getActivity());
                             mCurrentLayoutManagerType = FavouritesFragment.LayoutManagerType.LINEAR_LAYOUT_MANAGER;
-                            Toast.makeText(getActivity(), "Jeśli nic tutaj nie ma to znaczy że jeszcze nie lubisz żadnych naszych roślinek!" +
-                                    "\nJAK TO SIĘ STAŁO???\nMożesz to szybko nadrobić przechodząc do spisu roślin", Toast.LENGTH_LONG).show();
+                            if (!mPlants.isEmpty()) {
+                                noFavouritesTextView.setVisibility(View.INVISIBLE);
+                            }
                         }
                         ,throwable -> {
                             /* onError() */

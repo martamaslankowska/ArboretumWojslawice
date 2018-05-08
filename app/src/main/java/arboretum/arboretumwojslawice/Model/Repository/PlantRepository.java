@@ -46,12 +46,23 @@ public class PlantRepository extends  BaseRepository {
         return plantDao.getById(id, languageCode);
     }
 
-    public void setFavouriteById(int id) {
+    public boolean setFavouriteById(int id) {
         Plant mPlant = getById(id);
-        mPlant.setFavourite(true);
+        if (mPlant.getFavourite()) {
+            mPlant.setFavourite(false);
+        }
+        else {
+            mPlant.setFavourite(true);
+        }
         PlantEntity newPlant = new PlantEntity(mPlant.getIdPlant(), mPlant.getLatinName(), speciesDao.getSpeciesId(mPlant.getGenusName(), mPlant.getSpeciesName()),
                 mPlant.getKind(), mPlant.getImage(), mPlant.getSeasonBegin(), mPlant.getSeasonEnd(), mPlant.getFavourite());
         plantDao.update(newPlant);
+        if (mPlant.getFavourite()) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     public List<Plant> getAllByKind(int kind) {
@@ -67,6 +78,7 @@ public class PlantRepository extends  BaseRepository {
     }
 
 
+    /* temporary method */
     public List<Plant> getPlantsForMichal() {
         List<Plant> plants = new ArrayList<>();
         Plant plant = new Plant(1, "Rodzaj_1", "Gatunek_1", "latinlatin",

@@ -13,14 +13,16 @@
         android:layout_marginBottom="8dp"
         android:layout_alignParentStart="true"/>
 
-    <!--<TextView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_gravity="center"-->
-        <!--android:textSize="30dp"-->
-        <!--android:textStyle="bold"-->
-        <!--android:layout_marginBottom="10dp"-->
-        <!--android:layout_margin="10dp"-->
-        <!--android:text="@string/favourites_text" />-->
+    <TextView
+        android:id="@+id/noFavouriteTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="@dimen/nonrec_font_size"
+        android:textColor="@color/darkTextDarkGray"
+        android:textStyle="bold"
+        android:layout_marginBottom="10dp"
+        android:layout_margin="10dp"
+        android:text="@string/favourites_text" />
 
 </FrameLayout>

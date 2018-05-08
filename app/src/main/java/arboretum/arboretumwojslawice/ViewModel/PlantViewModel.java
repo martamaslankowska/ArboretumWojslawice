@@ -21,6 +21,7 @@ public class PlantViewModel {
     @Inject
     public PlantViewModel(){ }
 
+    /* temporary method */
     public List<Plant> getData() {
         mPlant = mPlantRepo.getPlantsForMichal();
         return mPlant;
@@ -30,8 +31,8 @@ public class PlantViewModel {
         return mPlantRepo.getAllByKind(kind);
     }
 
-    public void setFavourite(int id) {
-        mPlantRepo.setFavouriteById(id);
+    public boolean setFavourite(int id) {
+        return mPlantRepo.setFavouriteById(id);
     }
 
     public Plant getById(int id) {
@@ -39,7 +40,7 @@ public class PlantViewModel {
     }
 
 
-    // return one plant founded by id
+    /* return one plant founded by id; temporary method */
     public Plant getPlantById(int plant_id) {
         getData();
         for(int i = 0; i < mPlant.size(); i++) {
@@ -50,14 +51,14 @@ public class PlantViewModel {
         return mPlant.get(plant_id);
     }
 
-    public List<Plant> getPlantsFromTab(int tab_id) {
-        List<Plant> tab_plants = new ArrayList<Plant>();
-        getData();
-        for(int i = 0 ; i < mPlant.size(); i++) {
-            if(mPlant.get(i).getKind() == tab_id) {
-                tab_plants.add(mPlant.get(i));
-            }
-        }
-        return tab_plants;
-    }
+//    public List<Plant> getPlantsFromTab(int tab_id) {
+//        List<Plant> tab_plants = new ArrayList<Plant>();
+//        getData();
+//        for(int i = 0 ; i < mPlant.size(); i++) {
+//            if(mPlant.get(i).getKind() == tab_id) {
+//                tab_plants.add(mPlant.get(i));
+//            }
+//        }
+//        return tab_plants;
+//    }
 }

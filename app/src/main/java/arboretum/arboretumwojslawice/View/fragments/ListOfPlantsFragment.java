@@ -51,6 +51,7 @@ public class ListOfPlantsFragment extends DaggerFragment implements PlantAdapter
     protected RecyclerView.LayoutManager mLayoutManager;
     protected List<Plant> mPlants;
     protected CompositeDisposable compositeDisposable;
+    private boolean isFavourite;
 
     private int n;
 
@@ -66,13 +67,13 @@ public class ListOfPlantsFragment extends DaggerFragment implements PlantAdapter
 
     @Override
     public void onHeartClick(int position) {
-        Toast.makeText(getContext(), "Dodano do ulubionych; id: " + mPlants.get(position).getIdPlant(), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getContext(), "Dodano do ulubionych; id: " + mPlants.get(position).getIdPlant(), Toast.LENGTH_SHORT).show();
         //mPlantViewModel.setFavourite(mPlants.get(position).getIdPlant());
         //mImageView.setImageResource(R.drawable.icons8_heart_red);
 
 
         Disposable listOfPlants = Completable.fromAction(() -> {
-            mPlantViewModel.setFavourite(mPlants.get(position).getIdPlant());
+            isFavourite = mPlantViewModel.setFavourite(mPlants.get(position).getIdPlant());
         })
                 .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -85,8 +86,14 @@ public class ListOfPlantsFragment extends DaggerFragment implements PlantAdapter
 //                                Toast.makeText(getActivity(), "Ups, pusta baza :(", Toast.LENGTH_SHORT).show();
 //                            }
 
-                            Toast.makeText(getActivity(), "Dodano do ulubionych Z RXJavy (vol 2): " + mPlants.get(position).getIdPlant(), Toast.LENGTH_SHORT).show();
+                            if (isFavourite) {
+                                Toast.makeText(getContext(), "Dodano do ulubionych", Toast.LENGTH_SHORT).show();
 
+                            }
+                            else {
+                                Toast.makeText(getContext(), "Usunięto z ulubionych", Toast.LENGTH_SHORT).show();
+
+                            }
                         }
                         ,throwable -> {
                             /* onError() */
