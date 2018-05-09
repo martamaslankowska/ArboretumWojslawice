@@ -65,7 +65,7 @@ public class AttractionFragment extends DaggerFragment {
         recyclerView.addItemDecoration(new DividerItemDecoration(this.getContext(), 0));
         compositeDisposable = new CompositeDisposable();
 
-        Disposable listOfPlants = Maybe.fromCallable(() -> {
+        Disposable listOfAttractions = Maybe.fromCallable(() -> {
             return attractionViewModel.getAll();
         })
                 .subscribeOn(Schedulers.computation())
@@ -84,7 +84,7 @@ public class AttractionFragment extends DaggerFragment {
                             Toast.makeText(getActivity(), "Jakiś błąąąd... -.- -.-", Toast.LENGTH_LONG);
                         });
 
-        compositeDisposable.add(listOfPlants);
+        compositeDisposable.add(listOfAttractions);
 
 
         if (savedInstanceState != null) {

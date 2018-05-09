@@ -6,6 +6,7 @@ import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 import android.content.Context;
 
+import arboretum.arboretumwojslawice.Commons.AdapterItem;
 import io.reactivex.annotations.NonNull;
 
 /**
@@ -13,7 +14,7 @@ import io.reactivex.annotations.NonNull;
  */
 
 
-public class Hotel {
+public class Hotel implements AdapterItem {
 
     @ColumnInfo(name = "IdHotel")
     private Integer idHotel;
@@ -135,4 +136,20 @@ public class Hotel {
         return "(id = " + idHotel + ") " + name + " - " + address;
     }
 
+    public String getPhoneString() {
+        return phone.toString();
+    }
+
+    public String getDistanceString() {
+        return distance.toString() + " km";
+    }
+
+    public String getRatingString() {
+        return rating.toString();
+    }
+
+    @Override
+    public int getItemType() {
+        return 0;
+    }
 }

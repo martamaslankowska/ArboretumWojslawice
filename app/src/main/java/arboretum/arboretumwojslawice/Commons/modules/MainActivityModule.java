@@ -5,6 +5,7 @@ import arboretum.arboretumwojslawice.View.activities.PlantDetailActivity;
 import arboretum.arboretumwojslawice.View.fragments.AttractionFragment;
 import arboretum.arboretumwojslawice.View.fragments.FavouritesFragment;
 import arboretum.arboretumwojslawice.View.fragments.HomeFragment;
+import arboretum.arboretumwojslawice.View.fragments.HotelFragment;
 import arboretum.arboretumwojslawice.View.fragments.MoreFragment;
 import arboretum.arboretumwojslawice.View.fragments.RouteFragment;
 import dagger.Module;
@@ -27,5 +28,8 @@ public abstract class MainActivityModule {
 
     @ContributesAndroidInjector(modules = AttractionModule.class)
     abstract AttractionFragment bindAttractionFragment();
+
+    @ContributesAndroidInjector(modules = HotelModule.class)
+    abstract HotelFragment bindHotelFragment();
 
 }

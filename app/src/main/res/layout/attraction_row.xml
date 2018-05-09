@@ -18,7 +18,7 @@
         <ImageView
             android:id="@+id/attractionImage"
             android:layout_width="match_parent"
-            android:layout_height="100sp"
+            android:layout_height="150sp"
             android:scaleType="fitXY"
             android:src="@{attraction.getImageId(context)}"
             app:layout_constraintEnd_toEndOf="parent"

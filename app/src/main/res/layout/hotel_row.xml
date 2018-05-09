@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="hotel"
+            type="arboretum.arboretumwojslawice.Model.businessentity.Hotel"/>
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:layout_marginBottom="4dp">
+
+        <ImageView
+            android:id="@+id/hotelImage"
+            android:layout_width="match_parent"
+            android:layout_height="150sp"
+            android:scaleType="fitXY"
+            android:src="@{hotel.getImageId(context)}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/hotelName"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{hotel.getName()}"
+            android:background="#a6000000"/>
+
+
+        <TextView
+            android:id="@+id/hotelDistance"
+            android:layout_marginStart="8dp"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/hotelName"
+            android:background="#a6000000"
+            android:text="@{hotel.getDistanceString()}"/>
+
+        <ImageView
+            android:id="@+id/addressImage"
+            android:layout_width="@dimen/open_hours_icon_size"
+            android:layout_height="@dimen/open_hours_icon_size"
+            android:layout_marginStart="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/hotelAddress"
+            app:srcCompat="@drawable/ic_location" />
+
+        <TextView
+            android:id="@+id/hotelAddress"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@{hotel.getAddress()}"
+            android:textColor="@color/darkTextGray"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/addressImage"
+            app:layout_constraintTop_toBottomOf="@+id/hotelImage"
+            tools:ignore="MissingConstraints" />
+
+        <ImageView
+            android:id="@+id/phoneImage"
+            android:layout_width="@dimen/open_hours_icon_size"
+            android:layout_height="@dimen/open_hours_icon_size"
+            android:layout_marginStart="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/hotelPhone"
+            app:srcCompat="@drawable/ic_phone" />
+
+        <TextView
+            android:id="@+id/hotelPhone"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@{hotel.getPhoneString()}"
+            android:textColor="@color/darkTextGray"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/phoneImage"
+            app:layout_constraintTop_toBottomOf="@+id/hotelAddress"
+            tools:ignore="MissingConstraints" />
+
+        <ImageView
+            android:id="@+id/websiteImage"
+            android:layout_width="@dimen/open_hours_icon_size"
+            android:layout_height="@dimen/open_hours_icon_size"
+            android:layout_marginStart="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/hotelWebsite"
+            app:srcCompat="@drawable/ic_info" />
+
+        <TextView
+            android:id="@+id/hotelWebsite"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp"
+            android:text="@{hotel.getWebsite()}"
+            android:textColor="@color/darkTextGray"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/websiteImage"
+            app:layout_constraintTop_toBottomOf="@+id/hotelPhone"
+            tools:ignore="MissingConstraints" />
+
+        <ImageView
+            android:id="@+id/ratingImage"
+            android:layout_width="@dimen/open_hours_icon_size"
+            android:layout_height="@dimen/open_hours_icon_size"
+            android:layout_marginStart="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/hotelRating"
+            app:srcCompat="@drawable/ic_star"
+            android:background="@color/colorBlack"/>
+
+        <TextView
+            android:id="@+id/hotelRating"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp"
+            android:text="@{hotel.getRatingString()}"
+            android:textColor="@color/darkTextGray"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/ratingImage"
+            app:layout_constraintTop_toBottomOf="@+id/hotelWebsite"
+            tools:ignore="MissingConstraints" />
+
+
+    </android.support.constraint.ConstraintLayout>
+</layout>
