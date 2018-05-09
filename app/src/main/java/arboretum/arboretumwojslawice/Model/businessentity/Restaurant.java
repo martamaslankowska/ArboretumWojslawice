@@ -4,11 +4,13 @@ import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Ignore;
 import android.content.Context;
 
+import arboretum.arboretumwojslawice.Commons.AdapterItem;
+
 /**
  * Created by Komputer on 2018-03-25.
  */
 
-public class Restaurant {
+public class Restaurant implements AdapterItem {
 
     @ColumnInfo(name = "IdRestaurant")
     private Integer idRestaurant;
@@ -130,5 +132,21 @@ public class Restaurant {
         return "(id = " + idRestaurant + ") " + name + " - " + address;
     }
 
+    public String getPhoneString() {
+        return phone.toString();
+    }
 
+    public String getDistanceString() {
+        return distance.toString() + " km";
+    }
+
+    public String getRatingString() {
+        return rating.toString();
+    }
+
+
+    @Override
+    public int getItemType() {
+        return 0;
+    }
 }
