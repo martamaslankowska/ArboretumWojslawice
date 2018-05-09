@@ -6,26 +6,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:fillViewport="true"
     tools:context="arboretum.arboretumwojslawice.View.fragments.HomeFragment">
 
-    <android.support.constraint.ConstraintLayout
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="@dimen/nonrec_margin"
-        android:orientation="vertical">
+        android:orientation="vertical" >
 
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="1000dp"
-            android:text="Aaaaaa\nBbbbbbbbb\nCcccccccccc\nDdddddddd\nEeeeee"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
         <android.support.constraint.ConstraintLayout
             android:id="@+id/constraintLayoutWeather"
@@ -36,7 +24,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
-
 
             <TextView
                 android:id="@+id/weatherStaticTextView"
@@ -63,7 +50,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/weatherStaticTextView" />
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/weatherTextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/nonrec_half_margin"
@@ -76,6 +63,7 @@
                 app:layout_constraintHorizontal_bias="0"
                 app:layout_constraintStart_toEndOf="@+id/weatherImageView"
                 app:layout_constraintTop_toTopOf="@+id/weatherImageView" />
+
         </android.support.constraint.ConstraintLayout>
 
 
@@ -110,33 +98,36 @@
 
             <TextView
                 android:id="@+id/newsTextView"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/nonrec_margin"
-                android:layout_marginStart="@dimen/nonrec_margin"
-                android:layout_marginTop="@dimen/nonrec_half_margin"
+                android:background="#a6000000"
+                android:paddingBottom="4dp"
+                android:paddingLeft="@dimen/nonrec_margin"
+                android:paddingRight="@dimen/nonrec_margin"
+                android:paddingTop="4dp"
                 android:text="Aktualności na dziś"
-                android:textStyle="bold"
+                android:textColor="@color/white"
                 android:textSize="@dimen/nonrec_font_size_big"
-                android:textColor="@color/darkTextDarkGray"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/newsImageView"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/newsImageView" />
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
                 android:id="@+id/newsInfoTextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/nonrec_half_margin"
                 android:layout_marginEnd="@dimen/nonrec_margin"
+                android:layout_marginStart="@dimen/nonrec_margin"
+                android:layout_marginTop="@dimen/nonrec_half_margin"
                 android:text="Blablabla, tutaj będzie jakiś dłuższy tekst, choć zrobiłabym go tylko ze dwie linijki, żeby taka zajawka była, a po kliknięciu dopiero szczegóły."
                 android:textColor="@color/darkTextGray"
                 android:textSize="@dimen/nonrec_font_size_small"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0"
-                app:layout_constraintStart_toStartOf="@+id/newsTextView"
-                app:layout_constraintTop_toBottomOf="@+id/newsTextView" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/newsImageView" />
+
         </android.support.constraint.ConstraintLayout>
 
 
@@ -151,11 +142,56 @@
         <android.support.constraint.ConstraintLayout
             android:id="@+id/constraintLayoutEvents"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
+            android:paddingBottom="@dimen/nonrec_margin"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/line2">
+
+
+            <ImageView
+                android:id="@+id/eventImageView"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintDimensionRatio="H,16:9"
+                android:scaleType="centerCrop"
+                android:src="@drawable/news1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/eventTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#a6000000"
+                android:paddingBottom="4dp"
+                android:paddingLeft="@dimen/nonrec_margin"
+                android:paddingRight="@dimen/nonrec_margin"
+                android:paddingTop="4dp"
+                android:text="W najbliższym czasie w Arboretum..."
+                android:textColor="@color/white"
+                android:textSize="@dimen/nonrec_font_size_big"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/eventImageView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/eventInfoTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/nonrec_margin"
+                android:layout_marginStart="@dimen/nonrec_margin"
+                android:layout_marginTop="@dimen/nonrec_half_margin"
+                android:text="A tu w końcu nie wiem czy mają być kwiatki czy eventy..."
+                android:textColor="@color/darkTextGray"
+                android:textSize="@dimen/nonrec_font_size_small"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/eventImageView" />
 
         </android.support.constraint.ConstraintLayout>
 
@@ -171,14 +207,59 @@
         <android.support.constraint.ConstraintLayout
             android:id="@+id/constraintLayoutPlants"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/nonrec_margin"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/line3">
 
+
+            <ImageView
+                android:id="@+id/plantImageView"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintDimensionRatio="H,16:9"
+                android:scaleType="centerCrop"
+                android:src="@drawable/hemerocallis_acatenango"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/plantTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#a6000000"
+                android:paddingBottom="4dp"
+                android:paddingLeft="@dimen/nonrec_margin"
+                android:paddingRight="@dimen/nonrec_margin"
+                android:paddingTop="4dp"
+                android:text="Rośliny sezonowe"
+                android:textColor="@color/white"
+                android:textSize="@dimen/nonrec_font_size_big"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/plantImageView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/plantInfoTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/nonrec_margin"
+                android:layout_marginStart="@dimen/nonrec_margin"
+                android:layout_marginTop="@dimen/nonrec_half_margin"
+                android:text="No i niby co takiego mam tu wpisać, hmm? :p"
+                android:textColor="@color/darkTextGray"
+                android:textSize="@dimen/nonrec_font_size_small"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/plantImageView" />
+
         </android.support.constraint.ConstraintLayout>
 
-
-    </android.support.constraint.ConstraintLayout>
+    </LinearLayout>
 </ScrollView>
