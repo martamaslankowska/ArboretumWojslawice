@@ -1,16 +1,184 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context="arboretum.arboretumwojslawice.View.fragments.HomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/news_recycler_view"
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scrollbars="vertical"
-        android:layout_marginBottom="@dimen/news_list_margin"
-        android:layout_alignParentStart="true" />
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/nonrec_margin"
+        android:orientation="vertical">
 
-</FrameLayout>
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="1000dp"
+            android:text="Aaaaaa\nBbbbbbbbb\nCcccccccccc\nDdddddddd\nEeeeee"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/constraintLayoutWeather"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/nonrec_margin"
+            android:paddingBottom="@dimen/nonrec_margin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <TextView
+                android:id="@+id/weatherStaticTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/nonrec_margin"
+                android:layout_marginStart="@dimen/nonrec_margin"
+                android:text="Pogoda na dziś!"
+                android:textSize="@dimen/nonrec_font_size_big"
+                android:textColor="@color/darkTextDarkGray"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/weatherImageView"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="@dimen/nonrec_half_margin"
+                android:src="@android:drawable/btn_star_big_on"
+                app:layout_constraintStart_toStartOf="@+id/weatherStaticTextView"
+                app:layout_constraintTop_toBottomOf="@+id/weatherStaticTextView" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/nonrec_half_margin"
+                android:layout_marginStart="@dimen/nonrec_half_margin"
+                android:text="Jest całkiem słonecznie, choć lekko pochmurno"
+                android:textColor="@color/darkTextGray"
+                android:textSize="@dimen/nonrec_font_size_small"
+                app:layout_constraintBottom_toBottomOf="@+id/weatherImageView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toEndOf="@+id/weatherImageView"
+                app:layout_constraintTop_toTopOf="@+id/weatherImageView" />
+        </android.support.constraint.ConstraintLayout>
+
+
+        <View
+            android:id="@+id/line1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayoutWeather"/>
+
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/constraintLayoutNews"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            android:paddingBottom="@dimen/nonrec_margin"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/line1">
+
+            <ImageView
+                android:id="@+id/newsImageView"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintDimensionRatio="H,16:9"
+                android:scaleType="centerCrop"
+                android:src="@drawable/news_01"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/newsTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/nonrec_margin"
+                android:layout_marginStart="@dimen/nonrec_margin"
+                android:layout_marginTop="@dimen/nonrec_half_margin"
+                android:text="Aktualności na dziś"
+                android:textStyle="bold"
+                android:textSize="@dimen/nonrec_font_size_big"
+                android:textColor="@color/darkTextDarkGray"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/newsImageView" />
+
+            <TextView
+                android:id="@+id/newsInfoTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/nonrec_half_margin"
+                android:layout_marginEnd="@dimen/nonrec_margin"
+                android:text="Blablabla, tutaj będzie jakiś dłuższy tekst, choć zrobiłabym go tylko ze dwie linijki, żeby taka zajawka była, a po kliknięciu dopiero szczegóły."
+                android:textColor="@color/darkTextGray"
+                android:textSize="@dimen/nonrec_font_size_small"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="@+id/newsTextView"
+                app:layout_constraintTop_toBottomOf="@+id/newsTextView" />
+        </android.support.constraint.ConstraintLayout>
+
+
+        <View
+            android:id="@+id/line2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayoutNews"/>
+
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/constraintLayoutEvents"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/line2">
+
+        </android.support.constraint.ConstraintLayout>
+
+
+        <View
+            android:id="@+id/line3"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayoutEvents"/>
+
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/constraintLayoutPlants"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/line3">
+
+        </android.support.constraint.ConstraintLayout>
+
+
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>

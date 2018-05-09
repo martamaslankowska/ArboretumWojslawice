@@ -17,22 +17,21 @@ import dagger.android.support.DaggerFragment;
 
 public class HomeFragment extends DaggerFragment {
 
-    protected RecyclerView mRecyclerView;
-    private static final String KEY_LAYOUT_MANAGER = "fragment_route";
-    protected LayoutManagerType mCurrentLayoutManagerType;
+//    protected RecyclerView mRecyclerView;
+//    private static final String KEY_LAYOUT_MANAGER = "fragment_route";
+//    protected LayoutManagerType mCurrentLayoutManagerType;
 
-    @Inject
-    protected NewsViewModel newsViewModel;
-    protected RecyclerView.LayoutManager mLayoutManager;
+//    @Inject
+//    protected NewsViewModel newsViewModel;
+//    protected RecyclerView.LayoutManager mLayoutManager;
 
-    @Inject
-    protected NewsAdapter mAdapter;
+//    @Inject
+//    protected NewsAdapter mAdapter;
 
-
-    private enum LayoutManagerType {
-        GRID_LAYOUT_MANAGER,
-        LINEAR_LAYOUT_MANAGER
-    }
+//    private enum LayoutManagerType {
+//        GRID_LAYOUT_MANAGER,
+//        LINEAR_LAYOUT_MANAGER
+//    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -43,43 +42,44 @@ public class HomeFragment extends DaggerFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.fragment_home, container, false);
-
-        mRecyclerView = rootView.findViewById(R.id.news_recycler_view);
-        mRecyclerView.addItemDecoration(new DividerItemDecoration(this.getContext(), 0));
-        mRecyclerView.setAdapter(mAdapter);
-        mAdapter.setData(newsViewModel.getData());
-
-        mLayoutManager = new LinearLayoutManager(getActivity());
-
-        if (savedInstanceState != null) {
-            // Restore saved layout manager type.
-            mCurrentLayoutManagerType = (HomeFragment.LayoutManagerType) savedInstanceState
-                    .getSerializable(KEY_LAYOUT_MANAGER);
-        }
-
-        setRecyclerViewLayoutManager();
-
-        return rootView;
+        return inflater.inflate(R.layout.fragment_home, container, false);
+//        View rootView = inflater.inflate(R.layout.fragment_home, container, false);
+//
+//        mRecyclerView = rootView.findViewById(R.id.news_recycler_view);
+//        mRecyclerView.addItemDecoration(new DividerItemDecoration(this.getContext(), 0));
+//        mRecyclerView.setAdapter(mAdapter);
+//        mAdapter.setData(newsViewModel.getData());
+//
+//        mLayoutManager = new LinearLayoutManager(getActivity());
+//
+//        if (savedInstanceState != null) {
+//            // Restore saved layout manager type.
+//            mCurrentLayoutManagerType = (HomeFragment.LayoutManagerType) savedInstanceState
+//                    .getSerializable(KEY_LAYOUT_MANAGER);
+//        }
+//
+//        setRecyclerViewLayoutManager();
+//
+//        return rootView;
     }
 
-    public void setRecyclerViewLayoutManager() {
-        int scrollPosition = 0;
+//    public void setRecyclerViewLayoutManager() {
+//        int scrollPosition = 0;
+//
+//        // If a layout manager has already been set, get current scroll position.
+//        if (mRecyclerView.getLayoutManager() != null) {
+//            scrollPosition = ((LinearLayoutManager) mRecyclerView.getLayoutManager())
+//                    .findFirstCompletelyVisibleItemPosition();
+//        }
+//
+//        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+//        mRecyclerView.scrollToPosition(scrollPosition);
+//    }
 
-        // If a layout manager has already been set, get current scroll position.
-        if (mRecyclerView.getLayoutManager() != null) {
-            scrollPosition = ((LinearLayoutManager) mRecyclerView.getLayoutManager())
-                    .findFirstCompletelyVisibleItemPosition();
-        }
-
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        mRecyclerView.scrollToPosition(scrollPosition);
-    }
-
-    @Override
-    public void onSaveInstanceState(Bundle savedInstanceState) {
-        // Save currently selected layout manager.
-        savedInstanceState.putSerializable(KEY_LAYOUT_MANAGER, mCurrentLayoutManagerType);
-        super.onSaveInstanceState(savedInstanceState);
-    }
+//    @Override
+//    public void onSaveInstanceState(Bundle savedInstanceState) {
+//        // Save currently selected layout manager.
+//        savedInstanceState.putSerializable(KEY_LAYOUT_MANAGER, mCurrentLayoutManagerType);
+//        super.onSaveInstanceState(savedInstanceState);
+//    }
 }
