@@ -19,8 +19,8 @@
             android:id="@+id/constraintLayoutWeather"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="@dimen/nonrec_margin"
-            android:paddingBottom="@dimen/nonrec_margin"
+            android:paddingTop="@dimen/nonrec_half_margin"
+            android:paddingBottom="@dimen/nonrec_half_margin"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -42,27 +42,38 @@
 
             <ImageView
                 android:id="@+id/weatherImageView"
-                android:layout_width="50dp"
+                android:layout_width="58dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="@dimen/nonrec_half_margin"
-                android:src="@android:drawable/btn_star_big_on"
+                android:paddingRight="@dimen/nonrec_half_margin"
+                android:src="@drawable/weather_empty"
                 app:layout_constraintStart_toStartOf="@+id/weatherStaticTextView"
                 app:layout_constraintTop_toBottomOf="@+id/weatherStaticTextView" />
 
             <TextView
-                android:id="@+id/weatherTextView"
+                android:id="@+id/weatherTemperatureTextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/nonrec_half_margin"
-                android:layout_marginStart="@dimen/nonrec_half_margin"
-                android:text="Jest całkiem słonecznie, choć lekko pochmurno"
+                android:layout_marginTop="@dimen/nonrec_half_margin"
+                android:text=" "
                 android:textColor="@color/darkTextGray"
                 android:textSize="@dimen/nonrec_font_size_small"
-                app:layout_constraintBottom_toBottomOf="@+id/weatherImageView"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0"
                 app:layout_constraintStart_toEndOf="@+id/weatherImageView"
-                app:layout_constraintTop_toTopOf="@+id/weatherImageView" />
+                app:layout_constraintTop_toBottomOf="@+id/weatherStaticTextView" />
+
+            <TextView
+                android:id="@+id/weatherDescriptionTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/nonrec_margin"
+                android:layout_marginStart="@dimen/nonrec_half_margin"
+                android:text=" "
+                android:textColor="@color/darkTextGray"
+                android:textSize="@dimen/nonrec_font_size_small"
+                app:layout_constraintBottom_toBottomOf="@+id/weatherTemperatureTextView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/weatherTemperatureTextView"
+                app:layout_constraintTop_toTopOf="@+id/weatherTemperatureTextView" />
 
         </android.support.constraint.ConstraintLayout>
 

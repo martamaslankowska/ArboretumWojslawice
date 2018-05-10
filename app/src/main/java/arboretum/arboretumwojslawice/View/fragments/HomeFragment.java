@@ -1,5 +1,7 @@
 package arboretum.arboretumwojslawice.View.fragments;
 
+import android.graphics.Typeface;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -23,7 +25,7 @@ import dagger.android.support.DaggerFragment;
 
 public class HomeFragment extends DaggerFragment {
 
-    TextView weather;
+    TextView weatherTemp, weatherDesc;
     ImageView weatherIcon;
 
     @Override
@@ -34,7 +36,6 @@ public class HomeFragment extends DaggerFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-
         return view;
     }
 
@@ -42,21 +43,34 @@ public class HomeFragment extends DaggerFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        weather = view.findViewById(R.id.weatherTextView);
+        weatherTemp = view.findViewById(R.id.weatherTemperatureTextView);
+        weatherDesc = view.findViewById(R.id.weatherDescriptionTextView);
         weatherIcon = view.findViewById(R.id.weatherImageView);
+
+        if (isNetworkConnected()) {
+            weatherTemp.setTypeface(null, Typeface.NORMAL);
+            weatherIcon.setVisibility(View.VISIBLE);
+            weatherDesc.setVisibility(View.VISIBLE);
+        } else {
+            weatherTemp.setTypeface(null, Typeface.ITALIC);
+            weatherTemp.setText(R.string.weather_no_info);
+            weatherIcon.setVisibility(View.GONE);
+            weatherDesc.setVisibility(View.GONE);
+        }
+
+
 
         WeatherManager.placeIdTask asyncTask = new WeatherManager.placeIdTask(new WeatherManager.AsyncResponse() {
             public void processFinish(String weather_city, String weather_description, String weather_temperature, String weather_humidity, String weather_pressure, String weather_updatedOn) {
-                String weatherText = weather_city + ": " + weather_description + " --> " + weather_temperature;
-                weather.setText(weatherText);
+                String weatherName = getWeatherIconName(weather_description);
 
-                String weatherIconName = getWeatherIconName(weather_description);
-                Toast.makeText(getContext(), getStringResourceByName(weatherIconName), Toast.LENGTH_LONG).show();
-                weatherIcon.setImageResource(getDrawableId(weatherIconName));
+                weatherTemp.setTextSize(32);
+                weatherTemp.setText(weather_temperature.replace(",00", ""));
+                weatherDesc.setText(getStringResourceByName(weatherName));
+                weatherIcon.setImageResource(getDrawableId(weatherName));
             }
         });
         asyncTask.execute("50.7163", "16.835");  // Niemcza - namiary ze strony openweathermap
-
 
     }
 
@@ -74,6 +88,11 @@ public class HomeFragment extends DaggerFragment {
     private String getStringResourceByName(String stringName) {
         int resId = getResources().getIdentifier(stringName, "string", "arboretum.arboretumwojslawice");
         return getString(resId);
+    }
+
+    private boolean isNetworkConnected() {
+        ConnectivityManager cm = (ConnectivityManager) getContext().getSystemService(getContext().CONNECTIVITY_SERVICE);
+        return cm.getActiveNetworkInfo() != null;
     }
 
 }
