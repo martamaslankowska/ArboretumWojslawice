@@ -97,6 +97,18 @@
     <string name="contact_cafe_text">Cafe-bar „OGRODOWE SMAKI”</string>
     <string name="contact_cafe_mail">kontakt@univerde.pl</string>
     <string name="contact_cafe_telephone">503 317 100</string>
+    
+    
+    <!-- WEATHER -->
+    <string name="weather_clear_sky">Słonecznie, bezchmurnie</string>
+    <string name="weather_few_clouds">Niewielkie zachmurzenie</string>
+    <string name="weather_scattered_clouds">Zachmurzenie</string>
+    <string name="weather_broken_clouds">Silne zachmurzenie</string>
+    <string name="weather_shower_rain">Silne opady deszczu</string>
+    <string name="weather_rain">Opady deszczu</string>
+    <string name="weather_thunderstorm">Burze</string>
+    <string name="weather_snow">Śnieg</string>
+    <string name="weather_mist">Mgła</string>
 
 
     <!-- Toasts -->

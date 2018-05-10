@@ -200,6 +200,8 @@ public class Plant implements AdapterItem {
 
     public String getSeasonBeginDateString() {
         String sDate = String.valueOf(getSeasonBegin());
+        if (sDate.length() != 8)
+            return "brak informacji";
         return sDate.substring(6, 8) + "." + sDate.substring(4, 6);
     }
 
@@ -229,6 +231,8 @@ public class Plant implements AdapterItem {
 
     public String getSeasonEndDateString() {
         String sDate = String.valueOf(getSeasonEnd());
+        if (sDate.length() != 8)
+            return "brak informacji";
         return sDate.substring(6, 8) + "." + sDate.substring(4, 6);
     }
 
