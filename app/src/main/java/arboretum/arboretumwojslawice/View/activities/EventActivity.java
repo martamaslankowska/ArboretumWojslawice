@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -95,6 +96,28 @@ public class EventActivity extends DaggerAppCompatActivity implements EventAdapt
                         });
 
         compositeDisposable.add(listOfEvents);
+
+
+        /* MICHAŁ - jak tu wpiszesz jakąś dowolną datę, to On Ci wypisze w Toast'cie wszystkie wydarzenia z tego dnia
+        *  Więc to znaczy, że chyba działa i możesz robić swoje - hehe :p */
+        Disposable listOfEventsByDate = Maybe.fromCallable(() -> {
+            return eventViewModel.getAllDuringGivenDate(20180513);
+        })
+                .subscribeOn(Schedulers.computation())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(events -> {
+                            List<Event> myEvents = events;
+                            String toast = "...\n";
+                            for(int i=0; i<myEvents.size(); i++) {
+                                toast += myEvents.get(i).getType() + "\n";
+                            }
+                            Toast.makeText(this, toast, Toast.LENGTH_LONG).show();
+                        }
+                        ,throwable -> {
+                            Toast.makeText(this, "We have error here...", Toast.LENGTH_LONG);
+                        });
+
+        compositeDisposable.add(listOfEventsByDate);
 
         mRecyclerView.setAdapter(mAdapter);
 

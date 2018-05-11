@@ -34,10 +34,10 @@ public abstract class EventDao extends BaseDao<EventEntity> {
             "WHERE DateBegin IN (:dateBegin) AND TranslationCode IN (:translationCode)")
     public abstract List<Event> getAllByDateBegin(int dateBegin, String translationCode);
 
-    /* TO IMPLEMENT */
     @Query("SELECT Events.IdEvent, Type, Name, DateBegin, DateEnd, TimeBegin, TimeEnd, Description " +
             "FROM Events LEFT JOIN EventsTranslations ON Events.IdEvent = EventsTranslations.IdEvent " +
-            "WHERE DateBegin IN (:date) AND TranslationCode IN (:translationCode)")
+            "WHERE (DateBegin IN (:date) OR (DateBegin < (:date) AND DateEnd >= (:date))) " +
+            "AND TranslationCode IN (:translationCode)")
     public abstract List<Event> getAllDuringGivenDate(int date, String translationCode);
 
 

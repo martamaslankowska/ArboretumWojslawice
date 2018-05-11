@@ -40,6 +40,10 @@ public class EventRepository extends BaseRepository {
         return eventDao.getAllByDateBegin(dateBegin, languageCode);
     }
 
+    public List<Event> getAllDuringGivenDate(int date) {
+        return eventDao.getAllDuringGivenDate(date, languageCode);
+    }
+
     public List<Event> getEventsForMichal() {
         List<Event> events1 = new ArrayList<>();
         Event event = new Event(1, "Impreza1", 20180212);

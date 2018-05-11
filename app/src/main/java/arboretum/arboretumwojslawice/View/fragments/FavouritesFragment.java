@@ -81,13 +81,6 @@ public class FavouritesFragment extends DaggerFragment implements FavouritesAdap
                 .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(prices -> {
-                            /* onSuccess() :) */
-//                            int length = prices.size();
-//                            try {
-//                                Toast.makeText(getActivity(), "Było odwołanie do bazy i fajnie :)\nLiczba kwiatków w bazie: " + String.valueOf(length), Toast.LENGTH_SHORT).show();
-//                            } catch (Exception e){
-//                                Toast.makeText(getActivity(), "Ups, pusta baza :(", Toast.LENGTH_SHORT).show();
-//                            }
 
                             mPlants = prices;
 
@@ -97,6 +90,8 @@ public class FavouritesFragment extends DaggerFragment implements FavouritesAdap
                             mCurrentLayoutManagerType = FavouritesFragment.LayoutManagerType.LINEAR_LAYOUT_MANAGER;
                             if (!mPlants.isEmpty()) {
                                 noFavouritesTextView.setVisibility(View.INVISIBLE);
+                            } else {
+                                noFavouritesTextView.setText(R.string.favourites_text);
                             }
                         }
                         ,throwable -> {

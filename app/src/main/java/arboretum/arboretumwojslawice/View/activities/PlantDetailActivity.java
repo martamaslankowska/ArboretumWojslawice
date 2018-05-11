@@ -107,7 +107,6 @@ public class PlantDetailActivity extends DaggerAppCompatActivity {
                             else {
                                 plantImage.getLayoutParams().height = width/2;
                                 plantImage.setScaleType(ImageView.ScaleType.CENTER_CROP);
-
                             }
 
                         }

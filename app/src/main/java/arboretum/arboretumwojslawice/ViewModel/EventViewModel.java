@@ -29,4 +29,8 @@ public class EventViewModel {
         mEvent = mEventRepo.getAllEvents();
         return mEvent;
     }
+
+    public List<Event> getAllDuringGivenDate(int date) {
+        return mEventRepo.getAllDuringGivenDate(date);
+    }
 }
