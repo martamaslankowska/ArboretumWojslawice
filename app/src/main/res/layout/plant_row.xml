@@ -53,17 +53,19 @@
             android:layout_toEndOf="@id/plant_image"
             android:layout_toStartOf="@id/plant_heart"
             android:text="@{plant.getGenusName()}"
+            app:layout_constraintHorizontal_bias="0"
             app:layout_constraintStart_toStartOf="@+id/plant_name"
             app:layout_constraintTop_toBottomOf="@+id/plant_name" />
 
         <TextView
             android:id="@+id/plant_species"
-            android:layout_width="148dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/plant_image"
             android:layout_alignParentEnd="true"
             android:layout_marginLeft="4dp"
             android:text="@{plant.getSpeciesName()}"
+            app:layout_constraintHorizontal_bias="0"
             app:layout_constraintStart_toEndOf="@+id/plant_genus"
             app:layout_constraintTop_toTopOf="@+id/plant_genus" />
 

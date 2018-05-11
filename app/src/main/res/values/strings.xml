@@ -20,7 +20,7 @@
     <string name="toolbar_restaurants_list">Restauracje w pobliżu</string>
     <string name="toolbar_route_detail">Szczegóły trasy</string>
     <string name="toolbar_navigation">Nawigacja</string>
-    <string name="toolbar_neighbourhood">Okliczne miejsca</string>
+    <string name="toolbar_neighbourhood">Okoliczne miejsca</string>
     <string name="toolbar_opening_hours">Godziny otwarcia</string>
     <string name="toolbar_settings">Ustawienia</string>
     <string name="toolbar_plant_location_map">Lokalizacja kwiatków</string>
@@ -35,7 +35,7 @@
         <item>Cennik</item>
         <item>Kalendarz imprez</item>
         <item>Spis roślin</item>
-        <item>W pobliżu...</item>
+        <item>W pobliżu</item>
         <item>Kontakt</item>
         <item>Regulamin</item>
         <item>Ustawienia</item>

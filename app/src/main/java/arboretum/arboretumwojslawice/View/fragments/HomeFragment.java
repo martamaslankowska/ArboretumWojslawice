@@ -57,30 +57,30 @@ public class HomeFragment extends DaggerFragment {
         weatherIcon = view.findViewById(R.id.weatherImageView);
 
 
-            if (isNetworkConnected() && isInternetOn()) {
-                weatherTemp.setTypeface(null, Typeface.NORMAL);
-                weatherIcon.setVisibility(View.VISIBLE);
-                weatherDesc.setVisibility(View.VISIBLE);
+        if (isNetworkConnected() && isInternetOn()) {
+            weatherTemp.setTypeface(null, Typeface.NORMAL);
+            weatherIcon.setVisibility(View.VISIBLE);
+            weatherDesc.setVisibility(View.VISIBLE);
 
-                WeatherManager.placeIdTask asyncTask = new WeatherManager.placeIdTask(new WeatherManager.AsyncResponse() {
-                    public void processFinish(String weather_city, String weather_description, String weather_temperature, String weather_humidity, String weather_pressure, String weather_updatedOn) {
-                        String weatherName = getWeatherIconName(weather_description);
+            WeatherManager.placeIdTask asyncTask = new WeatherManager.placeIdTask(new WeatherManager.AsyncResponse() {
+                public void processFinish(String weather_city, String weather_description, String weather_temperature, String weather_humidity, String weather_pressure, String weather_updatedOn) {
+                    String weatherName = getWeatherIconName(weather_description);
 
-                        weatherTemp.setTextSize(32);
-                        weatherTemp.setText(weather_temperature.replace(",00", ""));
-                        weatherDesc.setText(getStringResourceByName(weatherName));
-                        weatherIcon.setImageResource(getDrawableId(weatherName));
-                    }
-                });
-                asyncTask.execute("50.7163", "16.835");  // Niemcza - namiary ze strony openweathermap
+                    weatherTemp.setTextSize(32);
+                    weatherTemp.setText(weather_temperature.replace(",00", ""));
+                    weatherDesc.setText(getStringResourceByName(weatherName));
+                    weatherIcon.setImageResource(getDrawableId(weatherName));
+                }
+            });
+            asyncTask.execute("50.7163", "16.835");  // Niemcza - namiary ze strony openweathermap
 
 
-            } else {
-                weatherTemp.setTypeface(null, Typeface.ITALIC);
-                weatherTemp.setText(R.string.weather_no_info);
-                weatherIcon.setVisibility(View.GONE);
-                weatherDesc.setVisibility(View.GONE);
-            }
+        } else {
+            weatherTemp.setTypeface(null, Typeface.ITALIC);
+            weatherTemp.setText(R.string.weather_no_info);
+            weatherIcon.setVisibility(View.GONE);
+            weatherDesc.setVisibility(View.GONE);
+        }
 
     }
 
@@ -105,14 +105,6 @@ public class HomeFragment extends DaggerFragment {
         return cm.getActiveNetworkInfo() != null;
     }
 
-//    public boolean isInternetAvailable() {
-//        try {
-//            InetAddress ipAddr = InetAddress.getByName("google.com");
-//            return !ipAddr.equals("");
-//        } catch (Exception e) {
-//            return false;
-//        }
-//    }
 
     public boolean isInternetOn() {
         ConnectivityManager cm = (ConnectivityManager) getContext().getSystemService(Context.CONNECTIVITY_SERVICE);

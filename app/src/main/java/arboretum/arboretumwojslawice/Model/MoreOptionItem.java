@@ -25,8 +25,8 @@ public class MoreOptionItem implements AdapterItem {
         return option;
     }
 
-    public String getImageIdToString(Context c) {
-        return String.valueOf(c.getResources().getIdentifier("arboretum.arboretumwojslawice:drawable/" + imageName, null, null));
+    public Integer getImageId(Context c) {
+        return c.getResources().getIdentifier("arboretum.arboretumwojslawice:drawable/" + imageName, null, null);
     }
 
     public String getImageName() {

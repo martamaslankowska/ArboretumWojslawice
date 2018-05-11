@@ -1,6 +1,7 @@
 package arboretum.arboretumwojslawice.ViewModel;
 
 import android.content.Context;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -33,9 +34,10 @@ public class MoreViewModel {
         }
 
         List<String> options_images = Arrays.asList(mContext.getResources().getStringArray(R.array.more_options_images));
-        for (int i=0; i<options_images.size(); i++)
+        for (int i=0; i<options_images.size(); i++) {
             mOptions.get(i).setImageName(options_images.get(i));
-
+            Log.i("MoreViewModel", options_images.get(i));
+        }
         return mOptions;
     }
 }

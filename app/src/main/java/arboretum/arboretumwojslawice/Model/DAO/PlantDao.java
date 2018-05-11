@@ -56,4 +56,13 @@ public abstract class PlantDao extends BaseDao<PlantEntity> {
     public abstract List<Plant> getFavouritePlants(String translationCode);
 
 
+    @Query("SELECT Plants.IdPlant, GenusName, SpeciesName, Plants.LatinName, PlantsTranslations.Name, IdKind, Image, SeasonBegin, SeasonEnd, Description, Favourite " +
+            "FROM Plants LEFT JOIN Species ON Plants.IdSpecies = Species.IdSpecies " +
+            "LEFT JOIN Genus ON Species.GenusName = Genus.Name " +
+            "LEFT JOIN PlantsTranslations ON Plants.IdPlant = PlantsTranslations.IdPlant " +
+            "WHERE (SeasonBegin IN (:date) OR (SeasonBegin < (:date) AND SeasonEnd >= (:date))) " +
+            "AND TranslationCode IN (:translationCode)")
+    public abstract List<Plant> getAllSeasonPlants(int date, String translationCode);
+
+
 }

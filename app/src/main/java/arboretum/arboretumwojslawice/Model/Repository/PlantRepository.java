@@ -77,6 +77,10 @@ public class PlantRepository extends  BaseRepository {
         return plantDao.getFavouritePlants(languageCode);
     }
 
+    public List<Plant> getAllSeasonPlants(int date) {
+        return plantDao.getAllSeasonPlants(date, languageCode);
+    }
+
 
     /* temporary method */
     public List<Plant> getPlantsForMichal() {
