@@ -15,6 +15,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import arboretum.arboretumwojslawice.Commons.DividerItemDecoration;
+import arboretum.arboretumwojslawice.Model.AdditionalEntity.EventRowList;
 import arboretum.arboretumwojslawice.Model.businessentity.Event;
 import arboretum.arboretumwojslawice.R;
 import arboretum.arboretumwojslawice.View.adapter.EventAdapter;
@@ -29,7 +30,7 @@ import io.reactivex.schedulers.Schedulers;
 public class EventActivity extends DaggerAppCompatActivity implements EventAdapter.OnItemClickListener {
 
     private static final String KEY_LAYOUT_MANAGER = "activity_event";
-    public static final String EVENT_ID = "EVENT_ID";
+    public static final String EVENT_DATE = "EVENT_DATE";
     public static final String BUNDLE = "BUNDLE";
 
     @Inject
@@ -40,7 +41,7 @@ public class EventActivity extends DaggerAppCompatActivity implements EventAdapt
     public void onItemClick(int position) {
         Intent intent = new Intent(getApplicationContext(), EventDetailActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putInt(EVENT_ID, mEvents.get(position).getIdEvent());
+        bundle.putInt(EVENT_DATE, mEvents.get(position).getEventDateInteger());
         intent.putExtra(BUNDLE, bundle);
         startActivityForResult(intent, 123);
     }
@@ -56,7 +57,7 @@ public class EventActivity extends DaggerAppCompatActivity implements EventAdapt
 
     @Inject
     protected EventAdapter mAdapter;
-    protected List<Event> mEvents;
+    protected List<EventRowList> mEvents;
     protected CompositeDisposable compositeDisposable;
 
     @Override
@@ -76,19 +77,20 @@ public class EventActivity extends DaggerAppCompatActivity implements EventAdapt
         /* toolbar */
 
         mRecyclerView = findViewById(R.id.event_recycler_view);
+
+
         //eventViewModel = new EventViewModel();
         //mEvents = eventViewModel.getAllEvents();
         compositeDisposable = new CompositeDisposable();
 
         Disposable listOfEvents = Maybe.fromCallable(() -> {
-            return eventViewModel.getAllEvents();
+            return eventViewModel.getAllDateBegin();
         })
                 .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(events -> {
                             mEvents = events;
                             mRecyclerView.addItemDecoration(new DividerItemDecoration(this, 0));
-                            mRecyclerView.setAdapter(mAdapter);
                             mAdapter.setData(mEvents);
                         }
                         ,throwable -> {
@@ -97,27 +99,26 @@ public class EventActivity extends DaggerAppCompatActivity implements EventAdapt
 
         compositeDisposable.add(listOfEvents);
 
-
-        /* MICHAŁ - jak tu wpiszesz jakąś dowolną datę, to On Ci wypisze w Toast'cie wszystkie wydarzenia z tego dnia
-        *  Więc to znaczy, że chyba działa i możesz robić swoje - hehe :p */
-        Disposable listOfEventsByDate = Maybe.fromCallable(() -> {
-            return eventViewModel.getAllDuringGivenDate(20180513);
-        })
-                .subscribeOn(Schedulers.computation())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(events -> {
-                            List<Event> myEvents = events;
-                            String toast = "...\n";
-                            for(int i=0; i<myEvents.size(); i++) {
-                                toast += myEvents.get(i).getType() + "\n";
-                            }
-                            Toast.makeText(this, toast, Toast.LENGTH_LONG).show();
-                        }
-                        ,throwable -> {
-                            Toast.makeText(this, "We have error here...", Toast.LENGTH_LONG);
-                        });
-
-        compositeDisposable.add(listOfEventsByDate);
+//        /* MICHAŁ - jak tu wpiszesz jakąś dowolną datę, to On Ci wypisze w Toast'cie wszystkie wydarzenia z tego dnia
+//        *  Więc to znaczy, że chyba działa i możesz robić swoje - hehe :p */
+//        Disposable listOfEventsByDate = Maybe.fromCallable(() -> {
+//            return eventViewModel.getAllDuringGivenDate(20180415);
+//        })
+//                .subscribeOn(Schedulers.computation())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(events -> {
+//                            List<Event> myEvents = events;
+//                            String toast = "...\n";
+//                            for(int i=0; i<myEvents.size(); i++) {
+//                                toast += myEvents.get(i).getType() + "\n";
+//                            }
+//                            Toast.makeText(this, toast, Toast.LENGTH_LONG).show();
+//                        }
+//                        ,throwable -> {
+//                            Toast.makeText(this, "We have error here...", Toast.LENGTH_LONG);
+//                        });
+//
+//        compositeDisposable.add(listOfEventsByDate);
 
         mRecyclerView.setAdapter(mAdapter);
 

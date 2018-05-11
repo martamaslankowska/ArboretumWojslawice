@@ -7,6 +7,7 @@ import dagger.Provides;
 
 @Module
 public class EventModule {
+
     @Provides
     EventAdapter provideMyAdapter(EventActivity activity) { return new EventAdapter(activity); }
 }

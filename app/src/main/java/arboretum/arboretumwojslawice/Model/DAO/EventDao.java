@@ -40,6 +40,10 @@ public abstract class EventDao extends BaseDao<EventEntity> {
             "AND TranslationCode IN (:translationCode)")
     public abstract List<Event> getAllDuringGivenDate(int date, String translationCode);
 
+    @Query("SELECT DISTINCT Events.DateBegin " +
+            "FROM Events")
+    public abstract List<Integer> getAllDateBegin();
+
 
 
     /* probably temporary */

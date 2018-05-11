@@ -55,5 +55,10 @@ public class EventRepository extends BaseRepository {
 
         return events1;
     }
+
+    public List<Integer> getAllDateBegin() {
+        return eventDao.getAllDateBegin();
+    }
+
     
 }

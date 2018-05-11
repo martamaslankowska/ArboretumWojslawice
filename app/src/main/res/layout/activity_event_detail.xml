@@ -3,19 +3,57 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="event"
             type="arboretum.arboretumwojslawice.Model.businessentity.Event" />
     </data>
-    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    <android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="arboretum.arboretumwojslawice.View.activities.EventDetailActivity">
+        tools:context="arboretum.arboretumwojslawice.View.activities.EventDetailActivity"
+        >
 
         <include
             android:id="@+id/toolbar_back"
             layout="@layout/toolbar" />
+
+        <TextView
+            android:id="@+id/event_detail_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar_back"
+            app:layout_constraintBottom_toTopOf="@id/event_detail_recycler_view" />
+
+        <TextView
+            android:id="@+id/event_detail_names"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginBottom="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/event_detail_date"
+            app:layout_constraintTop_toBottomOf="@id/toolbar_back"
+            android:gravity="center|left"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/event_detail_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/event_detail_names">
+
+        </android.support.v7.widget.RecyclerView>
 
     </android.support.constraint.ConstraintLayout>
 </layout>

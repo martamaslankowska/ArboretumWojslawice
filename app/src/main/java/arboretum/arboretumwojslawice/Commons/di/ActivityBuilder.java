@@ -1,5 +1,6 @@
 package arboretum.arboretumwojslawice.Commons.di;
 
+import arboretum.arboretumwojslawice.Commons.modules.EventDetailModule;
 import arboretum.arboretumwojslawice.Commons.modules.EventModule;
 import arboretum.arboretumwojslawice.Commons.modules.MainActivityModule;
 import arboretum.arboretumwojslawice.Commons.modules.NeighbourhoodModule;
@@ -43,7 +44,7 @@ public abstract class ActivityBuilder {
     @ContributesAndroidInjector
     abstract ContactActivity bindContactActivity();
 
-    @ContributesAndroidInjector
+    @ContributesAndroidInjector(modules = EventDetailModule.class)
     abstract EventDetailActivity bindEventDetailActivity();
 
     @ContributesAndroidInjector

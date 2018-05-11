@@ -6,7 +6,7 @@
     <data>
         <variable
             name="event"
-            type="arboretum.arboretumwojslawice.Model.businessentity.Event"/>
+            type="arboretum.arboretumwojslawice.Model.AdditionalEntity.EventRowList"/>
     </data>
 
     <android.support.constraint.ConstraintLayout
@@ -22,28 +22,21 @@
             android:id="@+id/event_date_begin_date"
             android:layout_width="75dp"
             android:layout_height="wrap_content"
+            android:text="@{event.getEventDateString()}"
             android:textSize="16dp"
-            android:text="@{event.getBeginDateString()}"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/event_date_end_date"
-            android:layout_width="75dp"
-            android:textSize="16dp"
-            android:layout_height="wrap_content"
-            android:text='@{event.getDateEnd() != 0 ? "-" + event.getEndDateString() : ""}'
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/event_date_begin_date" />
-
-        <TextView
             android:id="@+id/event_name"
             android:layout_width="0dp"
-            android:textSize="18dp"
-            android:textStyle="bold"
             android:layout_height="wrap_content"
             android:layout_below="@id/event_date_begin_date"
-            android:text='@{event.getType() + " / " + event.getName()}'
+            android:text="@{event.getEventNames()}"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/event_date_begin_date"
             app:layout_constraintTop_toTopOf="parent" />
