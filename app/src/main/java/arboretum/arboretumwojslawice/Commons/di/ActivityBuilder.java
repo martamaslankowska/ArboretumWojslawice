@@ -6,8 +6,6 @@ import arboretum.arboretumwojslawice.Commons.modules.NeighbourhoodModule;
 import arboretum.arboretumwojslawice.Commons.modules.PlantModule;
 import arboretum.arboretumwojslawice.Commons.modules.PriceModule;
 import arboretum.arboretumwojslawice.Commons.modules.RouteDetailModule;
-import arboretum.arboretumwojslawice.Commons.modules.RouteModule;
-import arboretum.arboretumwojslawice.Model.businessentity.Plant;
 import arboretum.arboretumwojslawice.View.activities.ContactActivity;
 import arboretum.arboretumwojslawice.View.activities.EventActivity;
 import arboretum.arboretumwojslawice.View.activities.EventDetailActivity;
@@ -20,7 +18,7 @@ import arboretum.arboretumwojslawice.View.activities.PlantLocationMapActivity;
 import arboretum.arboretumwojslawice.View.activities.PriceActivity;
 import arboretum.arboretumwojslawice.View.activities.QRCodeActivity;
 import arboretum.arboretumwojslawice.View.activities.RouteDetailActivity;
-import arboretum.arboretumwojslawice.View.fragments.RouteFragment;
+import arboretum.arboretumwojslawice.View.activities.SplashActivity;
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
 
@@ -62,4 +60,7 @@ public abstract class ActivityBuilder {
 
     @ContributesAndroidInjector
     abstract QRCodeActivity bindQRCodeActivity();
+
+    @ContributesAndroidInjector
+    abstract SplashActivity bindSplashActivity();
 }

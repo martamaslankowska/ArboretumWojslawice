@@ -15,17 +15,24 @@ import android.widget.Toast;
 
 import java.util.Locale;
 
+import javax.inject.Inject;
+
 import arboretum.arboretumwojslawice.Model.AppDatabase;
 import arboretum.arboretumwojslawice.Model.DAO.HotelDao;
+import arboretum.arboretumwojslawice.ViewModel.SplashViewModel;
+import dagger.android.support.DaggerAppCompatActivity;
 import io.reactivex.Completable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
-public class SplashActivity extends AppCompatActivity {
+public class SplashActivity extends DaggerAppCompatActivity {
 
     SharedPreferences mPrefs;
     final String INFO = "select_language";
+
+    @Inject
+    SplashViewModel splashViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
