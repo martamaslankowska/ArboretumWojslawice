@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
@@ -19,19 +20,19 @@
 
         <ImageView
             android:id="@+id/plant_location_map_button"
-            android:layout_width="wrap_content"
-            android:layout_height="75dp"
+            android:layout_width="65dp"
+            android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/nonrec_margin"
             android:src="@drawable/ic_map"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/plant_detail_image" />
+            app:layout_constraintTop_toTopOf="@+id/plantDetailName" />
 
         <ImageView
             android:id="@+id/plant_detail_image"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/plant_detail_image_height"
-            android:src="@{plant.getImageId(context)}"
+            android:layout_height="50dp"
             android:scaleType="centerCrop"
+            android:src="@{plant.getImageId(context)}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar_back" />
@@ -43,7 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/nonrec_margin"
             android:layout_marginStart="@dimen/nonrec_margin"
-            android:layout_marginTop="@dimen/nonrec_margin"
+            android:layout_marginTop="@dimen/nonrec_half_margin"
             android:text="@{plant.getName()}"
             android:textColor="@color/darkTextGray"
             android:textSize="@dimen/nonrec_font_size_big"
@@ -68,24 +69,37 @@
 
         <ImageView
             android:id="@+id/seassonImageView"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
             android:layout_marginTop="@dimen/nonrec_half_margin"
             app:layout_constraintStart_toStartOf="@+id/plantDetailLatin"
             app:layout_constraintTop_toBottomOf="@+id/plantDetailLatin"
             app:srcCompat="@drawable/ic_flowering" />
+
+
+        <TextView
+            android:id="@+id/seassonStaticTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/nonrec_half_margin"
+            android:text="@string/plant_flowering"
+            android:textSize="@dimen/nonrec_font_size_small"
+            app:layout_constraintBottom_toTopOf="@+id/seassonTextView"
+            app:layout_constraintStart_toEndOf="@+id/seassonImageView"
+            app:layout_constraintTop_toTopOf="@+id/seassonImageView"
+            app:layout_constraintVertical_chainStyle="spread_inside" />
 
         <TextView
             android:id="@+id/seassonTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/nonrec_half_margin"
-            android:text="@{@string/plant_seasson_date(plant.getSeasonBeginDateString(), plant.getSeasonEndDateString())}"
-            android:textSize="@dimen/nonrec_font_size"
+            android:text="@{plant.getSeasonStartAndEndDateString(context)}"
             android:textColor="@color/darkTextGray"
+            android:textSize="@dimen/nonrec_font_size"
             app:layout_constraintBottom_toBottomOf="@+id/seassonImageView"
             app:layout_constraintStart_toEndOf="@+id/seassonImageView"
-            app:layout_constraintTop_toTopOf="@+id/seassonImageView" />
+            app:layout_constraintTop_toBottomOf="@+id/seassonStaticTextView" />
 
 
         <ScrollView
@@ -111,7 +125,6 @@
                 android:paddingBottom="@dimen/nonrec_half_margin"
                 android:paddingEnd="@dimen/nonrec_margin"
                 android:paddingStart="@dimen/nonrec_margin"
-                android:paddingTop="@dimen/nonrec_half_margin"
                 android:text="@{plant.getDescription()}"
                 android:textColor="@color/darkTextGray"
                 android:textSize="@dimen/nonrec_font_size_small" />

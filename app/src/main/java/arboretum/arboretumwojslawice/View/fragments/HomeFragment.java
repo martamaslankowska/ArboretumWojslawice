@@ -13,6 +13,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.net.InetAddress;
+
 import javax.inject.Inject;
 
 import arboretum.arboretumwojslawice.Commons.DividerItemDecoration;
@@ -47,7 +49,7 @@ public class HomeFragment extends DaggerFragment {
         weatherDesc = view.findViewById(R.id.weatherDescriptionTextView);
         weatherIcon = view.findViewById(R.id.weatherImageView);
 
-        if (isNetworkConnected()) {
+        if (isNetworkConnected() && isInternetAvailable()) {
             weatherTemp.setTypeface(null, Typeface.NORMAL);
             weatherIcon.setVisibility(View.VISIBLE);
             weatherDesc.setVisibility(View.VISIBLE);
@@ -57,7 +59,6 @@ public class HomeFragment extends DaggerFragment {
             weatherIcon.setVisibility(View.GONE);
             weatherDesc.setVisibility(View.GONE);
         }
-
 
 
         WeatherManager.placeIdTask asyncTask = new WeatherManager.placeIdTask(new WeatherManager.AsyncResponse() {
@@ -93,6 +94,15 @@ public class HomeFragment extends DaggerFragment {
     private boolean isNetworkConnected() {
         ConnectivityManager cm = (ConnectivityManager) getContext().getSystemService(getContext().CONNECTIVITY_SERVICE);
         return cm.getActiveNetworkInfo() != null;
+    }
+
+    public boolean isInternetAvailable() {
+        try {
+            InetAddress ipAddr = InetAddress.getByName("google.com");
+            return !ipAddr.equals("");
+        } catch (Exception e) {
+            return false;
+        }
     }
 
 }

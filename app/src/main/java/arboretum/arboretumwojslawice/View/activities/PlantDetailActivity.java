@@ -3,14 +3,18 @@ package arboretum.arboretumwojslawice.View.activities;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.graphics.Bitmap;
+import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.Toolbar;
+import android.text.Layout;
+import android.util.DisplayMetrics;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import javax.inject.Inject;
@@ -41,6 +45,7 @@ public class PlantDetailActivity extends DaggerAppCompatActivity {
     private CompositeDisposable compositeDisposable;
 
     private ImageView plantImage;
+    private TextView floweringTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +58,7 @@ public class PlantDetailActivity extends DaggerAppCompatActivity {
 
         plant_id = bundle.getInt(PLANT_ID);
         plantImage = findViewById(R.id.plant_detail_image);
+        floweringTextView = findViewById(R.id.seassonTextView);
 
 
         Disposable cdPlant = Maybe.fromCallable(() -> {
@@ -61,13 +67,6 @@ public class PlantDetailActivity extends DaggerAppCompatActivity {
                 .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(dbPlant -> {
-                            /* onSuccess() :) */
-//                            try {
-//                                Toast.makeText(this, "Było odwołanie do bazy i fajnie :)", Toast.LENGTH_SHORT).show();
-//                            } catch (Exception e){
-//                                Toast.makeText(this, "Ups, pusta baza :(", Toast.LENGTH_SHORT).show();
-//                            }
-
                             Plant plant = dbPlant;
 
                             /* toolbar */
@@ -97,12 +96,20 @@ public class PlantDetailActivity extends DaggerAppCompatActivity {
                             int h = d.getIntrinsicHeight();
                             int w = d.getIntrinsicWidth();
 
-                            if (h < 300 || w < 300)
+                            DisplayMetrics displayMetrics = new DisplayMetrics();
+                            getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+                            int width = displayMetrics.widthPixels;
+
+                            if (h < 300 || w < 300) {
                                 plantImage.setScaleType(ImageView.ScaleType.FIT_CENTER);
-                            else
+                                plantImage.getLayoutParams().height = width/2;
+                            }
+                            else {
+                                plantImage.getLayoutParams().height = width/2;
                                 plantImage.setScaleType(ImageView.ScaleType.CENTER_CROP);
 
-                            Toast.makeText(this, "Wymiary zdjęcia to " + String.valueOf(h) + "x" + String.valueOf(w), Toast.LENGTH_SHORT).show();
+                            }
+
                         }
                         ,throwable -> {
                             /* onError() */

@@ -25,7 +25,7 @@
     <dimen name="plant_page_image_width">100dp</dimen>
 
     <!-- Plant detail-->
-    <dimen name="plant_detail_image_height">150dp</dimen>
+    <dimen name="plant_detail_image_height">120dp</dimen>
 
     <!-- Dimens of layouts without RecyclerView (not details) = non RecyclerView ~ nonrec -->
     <!-- Like: Contact, Prices etc. -->

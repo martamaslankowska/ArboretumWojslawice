@@ -49,5 +49,10 @@
     <string name="weather_mist">Mist</string>
 
 
+    <!-- PLANTS -->
+    <string name="plant_flowering">Flowering</string>
+    <string name="plant_seasson_date">no information</string>
+
+
 </resources>
 

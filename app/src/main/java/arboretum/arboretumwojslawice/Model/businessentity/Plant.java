@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.List;
 
 import arboretum.arboretumwojslawice.Commons.AdapterItem;
+import arboretum.arboretumwojslawice.R;
 
 /**
  * Created by Komputer on 2018-03-25.
@@ -16,6 +17,7 @@ import arboretum.arboretumwojslawice.Commons.AdapterItem;
 public class Plant implements AdapterItem {
 
     private static final String[] DEFAULT_IMAGE_NAMES = {"ic_tree_deciduous_black", "ic_tree_conifer_black", "ic_clover_black", "ic_world_black"};
+
 
     @ColumnInfo(name = "IdPlant")
     private Integer idPlant;
@@ -201,7 +203,7 @@ public class Plant implements AdapterItem {
     public String getSeasonBeginDateString() {
         String sDate = String.valueOf(getSeasonBegin());
         if (sDate.length() != 8)
-            return "brak informacji";
+            return "";
         return sDate.substring(6, 8) + "." + sDate.substring(4, 6);
     }
 
@@ -232,8 +234,14 @@ public class Plant implements AdapterItem {
     public String getSeasonEndDateString() {
         String sDate = String.valueOf(getSeasonEnd());
         if (sDate.length() != 8)
-            return "brak informacji";
+            return "";
         return sDate.substring(6, 8) + "." + sDate.substring(4, 6);
+    }
+
+    public String getSeasonStartAndEndDateString(Context context) {
+        if (getSeasonBeginDateString().equals("") || getSeasonEndDateString().equals(""))
+            return context.getResources().getString(R.string.plant_seasson_date);
+        return getSeasonBeginDateString() + " - " + getSeasonEndDateString();
     }
 
     public String getDescription() {
@@ -269,4 +277,5 @@ public class Plant implements AdapterItem {
     public int getItemType() {
         return 0;
     }
+
 }
