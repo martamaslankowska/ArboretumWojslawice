@@ -156,4 +156,13 @@ public class MainActivity extends DaggerAppCompatActivity {
         super.onStart();
     }
 
+
+    public void newsClick(View view) {
+        Intent intent = new Intent(this, NewsDetailActivity.class);
+        startActivity(intent);
+    }
+
+
+
+
 }

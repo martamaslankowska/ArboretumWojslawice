@@ -104,7 +104,7 @@
     <string name="weather_few_clouds">Niewielkie zachmurzenie</string>
     <string name="weather_scattered_clouds">Zachmurzenie</string>
     <string name="weather_broken_clouds">Silne zachmurzenie</string>
-    <string name="weather_shower_rain">Silne opady deszczu</string>
+    <string name="weather_drizzle">Mżawka</string>
     <string name="weather_rain">Opady deszczu</string>
     <string name="weather_thunderstorm">Burze</string>
     <string name="weather_snow">Śnieg</string>

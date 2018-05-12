@@ -55,6 +55,8 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".View.activities.EventDetailActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name=".View.activities.NewsDetailActivity"
+            android:screenOrientation="portrait"/>
         <activity android:name=".View.activities.PlantLocationMapActivity"
             android:screenOrientation="portrait"/>
     </application>

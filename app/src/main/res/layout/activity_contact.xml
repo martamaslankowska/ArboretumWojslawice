@@ -24,7 +24,7 @@
 
             <TextView
                 android:id="@+id/mainText"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/nonrec_margin_horizontal"
                 android:layout_marginStart="@dimen/nonrec_margin_horizontal"
@@ -157,7 +157,7 @@
 
             <TextView
                 android:id="@+id/extraText"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/nonrec_margin_horizontal"
                 android:layout_marginStart="@dimen/nonrec_margin_horizontal"
@@ -250,7 +250,7 @@
 
             <TextView
                 android:id="@+id/cafeText"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/nonrec_margin_horizontal"
                 android:layout_marginStart="@dimen/nonrec_margin_horizontal"

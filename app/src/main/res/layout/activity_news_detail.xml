@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!--<data>-->
+        <!--<variable-->
+            <!--name="news"-->
+            <!--type="arboretum.arboretumwojslawice.Model.businessentity.News" />-->
+    <!--</data>-->
+
+    <android.support.constraint.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/toolbar_back"
+        layout="@layout/toolbar_empty" />
+
+
+    <ImageView
+        android:id="@+id/newsImageView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/news_01"
+        app:layout_constraintDimensionRatio="H,16:8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_back" />
+
+        <TextView
+            android:id="@+id/newsTitleTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/nonrec_margin"
+            android:layout_marginStart="@dimen/nonrec_margin"
+            android:layout_marginTop="@dimen/nonrec_half_margin"
+            android:lineSpacingExtra="@dimen/nonrec_line_spacing"
+            android:text="@string/contact_main_text"
+            android:textColor="@color/darkTextGray"
+            android:textSize="@dimen/nonrec_font_size_big"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/newsImageView" />
+
+
+        <ScrollView
+            android:id="@+id/route_scroll_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="@dimen/nonrec_half_margin"
+            android:layout_marginTop="@dimen/nonrec_half_margin"
+            android:fillViewport="true"
+            android:scrollbars="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/newsTitleTextView"
+            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintVertical_chainStyle="packed">
+
+            <TextView
+                android:id="@+id/plant_detail_description"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:paddingBottom="@dimen/nonrec_half_margin"
+                android:paddingEnd="@dimen/nonrec_margin"
+                android:paddingStart="@dimen/nonrec_margin"
+                android:text="Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\nbBbbbbbbbbbbbbbbbbbbbbbbbb"
+                android:textColor="@color/darkTextGray"
+                android:textSize="@dimen/nonrec_font_size_small" />
+        </ScrollView>
+
+    </android.support.constraint.ConstraintLayout>
+</layout>
+

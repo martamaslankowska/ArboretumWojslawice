@@ -1,6 +1,7 @@
 package arboretum.arboretumwojslawice.View.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -26,6 +27,7 @@ import arboretum.arboretumwojslawice.Commons.DividerItemDecoration;
 import arboretum.arboretumwojslawice.Commons.WeatherManager;
 import arboretum.arboretumwojslawice.Model.businessentity.Plant;
 import arboretum.arboretumwojslawice.R;
+import arboretum.arboretumwojslawice.View.activities.NewsDetailActivity;
 import arboretum.arboretumwojslawice.View.adapter.NewsAdapter;
 import arboretum.arboretumwojslawice.ViewModel.NewsViewModel;
 import dagger.android.support.DaggerFragment;
@@ -84,8 +86,27 @@ public class HomeFragment extends DaggerFragment {
 
     }
 
+
     private String getWeatherIconName(String weatherDescription) {
         String weatherString = weatherDescription.toLowerCase();
+
+        if (weatherString.indexOf("thunderstorm") >= 0) {
+            weatherString = "thunderstorm";
+        } else if (weatherString.indexOf("drizzle") >= 0 || weatherString.equals("shower rain")) {
+            weatherString = "drizzle";
+        } else if (weatherString.indexOf("snow") >= 0 || weatherString.indexOf("sleet") >= 0) {
+            weatherString = "snow";
+        } else if (weatherString.indexOf("rain") >= 0) {
+            weatherString = "rain";
+        } else if (weatherString.indexOf("clouds") >= 0) {
+            if (weatherString.equals("overcast clouds"))
+                weatherString = "broken clouds";
+        } else if (weatherString.equals("clear sky")) {
+            weatherString = weatherString;
+        } else {
+            weatherString = "mist";
+        }
+
         weatherString = weatherString.replace(" ", "_");
         weatherString = "weather_" + weatherString;
         return weatherString;
@@ -96,15 +117,14 @@ public class HomeFragment extends DaggerFragment {
     }
 
     private String getStringResourceByName(String stringName) {
-        int resId = getResources().getIdentifier(stringName, "string", "arboretum.arboretumwojslawice");
-        return getString(resId);
+        int resId = getContext().getResources().getIdentifier(stringName, "string", "arboretum.arboretumwojslawice");
+        return getContext().getString(resId);
     }
 
     private boolean isNetworkConnected() {
         ConnectivityManager cm = (ConnectivityManager) getContext().getSystemService(getContext().CONNECTIVITY_SERVICE);
         return cm.getActiveNetworkInfo() != null;
     }
-
 
     public boolean isInternetOn() {
         ConnectivityManager cm = (ConnectivityManager) getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
