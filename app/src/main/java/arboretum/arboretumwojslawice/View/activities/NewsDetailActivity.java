@@ -1,11 +1,17 @@
 package arboretum.arboretumwojslawice.View.activities;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+
+import javax.inject.Inject;
 
 import arboretum.arboretumwojslawice.R;
+import arboretum.arboretumwojslawice.ViewModel.NewsDetailViewModel;
+import dagger.android.support.DaggerAppCompatActivity;
 
-public class NewsDetailActivity extends AppCompatActivity {
+public class NewsDetailActivity extends DaggerAppCompatActivity {
+
+    @Inject
+    NewsDetailViewModel newsDetailViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

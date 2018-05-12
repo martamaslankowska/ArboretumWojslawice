@@ -13,6 +13,7 @@ import arboretum.arboretumwojslawice.View.activities.EventDetailActivity;
 import arboretum.arboretumwojslawice.View.activities.MainActivity;
 import arboretum.arboretumwojslawice.View.activities.NavigationActivity;
 import arboretum.arboretumwojslawice.View.activities.NeighbourhoodActivity;
+import arboretum.arboretumwojslawice.View.activities.NewsDetailActivity;
 import arboretum.arboretumwojslawice.View.activities.PlantActivity;
 import arboretum.arboretumwojslawice.View.activities.PlantDetailActivity;
 import arboretum.arboretumwojslawice.View.activities.PlantLocationMapActivity;
@@ -64,4 +65,7 @@ public abstract class ActivityBuilder {
 
     @ContributesAndroidInjector
     abstract SplashActivity bindSplashActivity();
+
+    @ContributesAndroidInjector
+    abstract NewsDetailActivity bindNewsDetailActivity();
 }
