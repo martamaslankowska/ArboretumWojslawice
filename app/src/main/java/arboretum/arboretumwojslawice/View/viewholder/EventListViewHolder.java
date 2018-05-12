@@ -1,7 +1,7 @@
 package arboretum.arboretumwojslawice.View.viewholder;
 
 import arboretum.arboretumwojslawice.Commons.BindingViewHolder;
-import arboretum.arboretumwojslawice.Model.AdditionalEntity.EventRowList;
+import arboretum.arboretumwojslawice.Model.additionalEntity.EventRowList;
 import arboretum.arboretumwojslawice.View.adapter.EventAdapter;
 import arboretum.arboretumwojslawice.databinding.EventRowBinding;
 

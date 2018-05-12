@@ -8,8 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import arboretum.arboretumwojslawice.Commons.BindingViewHolder;
-import arboretum.arboretumwojslawice.Model.AdditionalEntity.EventRowList;
-import arboretum.arboretumwojslawice.Model.businessentity.Event;
+import arboretum.arboretumwojslawice.Model.additionalEntity.EventRowList;
 import arboretum.arboretumwojslawice.View.viewholder.EventListViewHolder;
 import arboretum.arboretumwojslawice.databinding.EventRowBinding;
 

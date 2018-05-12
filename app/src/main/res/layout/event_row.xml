@@ -6,7 +6,7 @@
     <data>
         <variable
             name="event"
-            type="arboretum.arboretumwojslawice.Model.AdditionalEntity.EventRowList"/>
+            type="arboretum.arboretumwojslawice.Model.additionalEntity.EventRowList"/>
     </data>
 
     <android.support.constraint.ConstraintLayout

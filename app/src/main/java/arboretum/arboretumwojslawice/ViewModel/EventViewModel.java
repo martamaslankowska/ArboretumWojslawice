@@ -5,7 +5,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import arboretum.arboretumwojslawice.Model.AdditionalEntity.EventRowList;
+import arboretum.arboretumwojslawice.Model.additionalEntity.EventRowList;
 import arboretum.arboretumwojslawice.Model.Repository.EventRepository;
 import arboretum.arboretumwojslawice.Model.businessentity.Event;
 
@@ -35,7 +35,7 @@ public class EventViewModel {
 
 
     public List<EventRowList> getAllDateBegin() {
-        List<Integer> dateBeginInteger = mEventRepo.getAllDateBegin();
+        List<Integer> dateBeginInteger = mEventRepo.getAllDateFromToday();
         List<EventRowList> eventList = new ArrayList<EventRowList>();
         EventRowList eventRowList;
         List<Event> eventInTheDay;
@@ -65,6 +65,7 @@ public class EventViewModel {
     public List<Event> getAllDuringGivenDate(int date) {
         return mEventRepo.getAllDuringGivenDate(date);
     }
+
 
 
 }

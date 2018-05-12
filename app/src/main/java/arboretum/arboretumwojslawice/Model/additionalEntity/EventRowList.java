@@ -1,4 +1,4 @@
-package arboretum.arboretumwojslawice.Model.AdditionalEntity;
+package arboretum.arboretumwojslawice.Model.additionalEntity;
 
 import arboretum.arboretumwojslawice.Commons.AdapterItem;
 
