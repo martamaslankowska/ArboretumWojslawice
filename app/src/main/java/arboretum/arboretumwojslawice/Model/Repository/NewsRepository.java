@@ -1,6 +1,7 @@
 package arboretum.arboretumwojslawice.Model.Repository;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -24,6 +25,11 @@ public class NewsRepository extends BaseRepository {
         return newsDao.getAll(languageCode);
     }
 
+    public List<News> getAllPastNews() {
+        int today = getToday();
+        return newsDao.getAllPast(today, languageCode);
+    }
+
     public News getById(int id) {
         return newsDao.getById(id, languageCode);
     }
@@ -37,5 +43,7 @@ public class NewsRepository extends BaseRepository {
         mNews.add(new News(3,"Japoński spacer", "Drzewa i krzewy Japonii, zaprasza Juzer JURCZYŃSKI, przewodnik przygodniczy, godz. 12:00", "news3", 20180601));
         return mNews;
     }
+
+
 
 }

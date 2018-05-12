@@ -59,8 +59,6 @@ public class EventViewModel {
 
         String names;
 
-
-
         return eventList;
     }
 

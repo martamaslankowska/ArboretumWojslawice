@@ -116,6 +116,11 @@
     <string name="plant_seasson_date">brak informacji</string>
 
 
+    <!-- HOME FRAGMENT (NEWS) -->
+    <string name="news_title">Aktualności</string>
+    <string name="event_title">Zbliżające się wydarzenia</string>
+    <string name="plant_title">W okresie rozkwitu</string>
+
 
     <!-- Toasts -->
     <string name="toast_exit">Naciśnij jeszcze raz przycisk "Powrót", aby zakończyć działanie aplikacji</string>

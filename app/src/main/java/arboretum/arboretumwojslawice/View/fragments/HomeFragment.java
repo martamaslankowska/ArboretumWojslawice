@@ -86,6 +86,8 @@ public class HomeFragment extends DaggerFragment {
 
     }
 
+    public void newsClick(View view) { }
+
 
     private String getWeatherIconName(String weatherDescription) {
         String weatherString = weatherDescription.toLowerCase();

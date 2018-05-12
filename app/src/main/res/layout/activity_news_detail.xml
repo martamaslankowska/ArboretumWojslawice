@@ -3,11 +3,11 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!--<data>-->
-        <!--<variable-->
-            <!--name="news"-->
-            <!--type="arboretum.arboretumwojslawice.Model.businessentity.News" />-->
-    <!--</data>-->
+    <data>
+        <variable
+            name="news"
+            type="arboretum.arboretumwojslawice.Model.businessentity.News" />
+    </data>
 
     <android.support.constraint.ConstraintLayout
     android:layout_width="match_parent"
@@ -23,7 +23,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/news_01"
+        android:src="@{news.getImageId(context)}"
         app:layout_constraintDimensionRatio="H,16:8"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -38,7 +38,7 @@
             android:layout_marginStart="@dimen/nonrec_margin"
             android:layout_marginTop="@dimen/nonrec_half_margin"
             android:lineSpacingExtra="@dimen/nonrec_line_spacing"
-            android:text="@string/contact_main_text"
+            android:text="@{news.getName()}"
             android:textColor="@color/darkTextGray"
             android:textSize="@dimen/nonrec_font_size_big"
             android:textStyle="bold"
@@ -71,7 +71,7 @@
                 android:paddingBottom="@dimen/nonrec_half_margin"
                 android:paddingEnd="@dimen/nonrec_margin"
                 android:paddingStart="@dimen/nonrec_margin"
-                android:text="Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\nbBbbbbbbbbbbbbbbbbbbbbbbbb"
+                android:text="@{news.getDescription()}"
                 android:textColor="@color/darkTextGray"
                 android:textSize="@dimen/nonrec_font_size_small" />
         </ScrollView>
