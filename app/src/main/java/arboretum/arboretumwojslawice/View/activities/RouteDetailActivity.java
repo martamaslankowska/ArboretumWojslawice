@@ -135,8 +135,6 @@ public class RouteDetailActivity extends DaggerAppCompatActivity implements View
         Intent intent = getIntent();
         bundle = intent.getBundleExtra(BUNDLE);
 
-
-
         route_id = bundle.getInt(ROUTE_ID);
         route = routeDetailViewModel.getRouteById(route_id);
 

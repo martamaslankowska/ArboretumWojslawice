@@ -20,12 +20,24 @@ public class RouteDetailViewModel {
     List<Route> mRoutes;
     List<PointOnRoute> mPointOnRoutes;
     @Inject
-    protected RouteRepository mRouteRepo;
+    protected RouteRepository routeRepository;
     @Inject
-    protected PlantRepository mPlantRepo;
+    protected PlantRepository plantRepository;
 
     @Inject
     public RouteDetailViewModel() { }
+
+    public List<Route> getAllRoutes() {
+        return routeRepository.getAllRoutes();
+    }
+
+    public Route getById(int routeId) {
+        return routeRepository.getById(routeId);
+    }
+
+
+
+    /* I to też niech ktoś skasuje, no proszę... :D */
 
     public Route getRouteById(int route_id) {
         getRoutes();
@@ -33,17 +45,17 @@ public class RouteDetailViewModel {
     }
 
     public List<Route> getRoutes() {
-        mRoutes = mRouteRepo.getRoutesForMichal();
+        mRoutes = routeRepository.getRoutesForMichal();
         return mRoutes;
     }
 
     public List<PointOnRoute> getRoutePointsForRoute1() {
-        mPointOnRoutes = mRouteRepo.getRoutePointsByRouteIdForRoutes1();
+        mPointOnRoutes = routeRepository.getRoutePointsByRouteIdForRoutes1();
         return mPointOnRoutes;
     }
 
     public List<Plant> getPlants() {
-        mPlants = mPlantRepo.getPlantsForMichal();
+        mPlants = plantRepository.getPlantsForMichal();
         return mPlants;
     }
 }

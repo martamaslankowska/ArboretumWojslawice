@@ -24,10 +24,17 @@ import android.widget.Toast;
 
 import javax.inject.Inject;
 
+import arboretum.arboretumwojslawice.Commons.DividerItemDecoration;
 import arboretum.arboretumwojslawice.Model.businessentity.Route;
 import arboretum.arboretumwojslawice.R;
 import arboretum.arboretumwojslawice.ViewModel.RouteViewModel;
+import arboretum.arboretumwojslawice.databinding.FragmentRouteBinding;
 import dagger.android.support.DaggerAppCompatActivity;
+import io.reactivex.Maybe;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 public class NavigationActivity extends DaggerAppCompatActivity implements LocationListener{
 
@@ -36,6 +43,8 @@ public class NavigationActivity extends DaggerAppCompatActivity implements Locat
 
     @Inject
     protected RouteViewModel routeViewModel;
+    protected CompositeDisposable compositeDisposable;
+
     private Bundle bundle;
     private Route mRoute;
     private int route_id;
@@ -73,21 +82,40 @@ public class NavigationActivity extends DaggerAppCompatActivity implements Locat
 
         Intent intent = getIntent();
         bundle = intent.getBundleExtra(BUNDLE);
+        compositeDisposable = new CompositeDisposable();
 
         route_id = bundle.getInt(ROUTE_ID);
-        mRoute = routeViewModel.getRouteById(route_id); //do mRoute przypisujemy odpowiednią trasę
 
-        /* toolbar */
-        Toolbar toolbar = findViewById(R.id.toolbar_back);
-        setSupportActionBar(toolbar);
 
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setDisplayShowHomeEnabled(true);
-        }
-        getSupportActionBar().setTitle(R.string.toolbar_navigation);
-        getSupportActionBar().setSubtitle(mRoute.getName());
-        /* /toolbar */
+
+        Disposable cdRoutes = Maybe.fromCallable(() -> {
+            return routeViewModel.getById(route_id);
+        })
+                .subscribeOn(Schedulers.computation())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(routes -> {
+                            mRoute = routeViewModel.getRouteById(route_id); //do mRoute przypisujemy odpowiednią trasę
+
+                            /* toolbar */
+                            Toolbar toolbar = findViewById(R.id.toolbar_back);
+                            setSupportActionBar(toolbar);
+
+                            if (getSupportActionBar() != null) {
+                                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+                                getSupportActionBar().setDisplayShowHomeEnabled(true);
+                            }
+                            getSupportActionBar().setTitle(R.string.toolbar_navigation);
+                            getSupportActionBar().setSubtitle(mRoute.getName());
+                            /* /toolbar */
+                        }
+                        ,throwable -> {
+                            /* onError() */
+                            Toast.makeText(this, "Jakiś błąąąd w nawigacji, hehe...", Toast.LENGTH_LONG).show();
+                        });
+
+        compositeDisposable.add(cdRoutes);
+
+
 
         ActivityCompat.requestPermissions(NavigationActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 123);
         //uncomment to check real position
@@ -209,5 +237,11 @@ public class NavigationActivity extends DaggerAppCompatActivity implements Locat
     public void getQRCode(View view) {
         Intent intent = new Intent(this, QRCodeActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        compositeDisposable.clear();
     }
 }

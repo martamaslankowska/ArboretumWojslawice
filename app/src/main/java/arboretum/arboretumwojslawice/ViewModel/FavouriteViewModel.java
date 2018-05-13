@@ -22,7 +22,7 @@ public class FavouriteViewModel {
 
     //tmp
 //    public List<Plant> getData() {
-//        mPlant = mPlantRepo.getPlantsForMichal();
+//        mPlant = plantRepository.getPlantsForMichal();
 //        return mPlant;
 //    }
 

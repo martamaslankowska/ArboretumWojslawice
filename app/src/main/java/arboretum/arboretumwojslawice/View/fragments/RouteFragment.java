@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -22,6 +23,11 @@ import arboretum.arboretumwojslawice.View.adapter.RouteAdapter;
 import arboretum.arboretumwojslawice.ViewModel.RouteViewModel;
 import arboretum.arboretumwojslawice.databinding.FragmentRouteBinding;
 import dagger.android.support.DaggerFragment;
+import io.reactivex.Maybe;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by weronika on 22.03.2018.
@@ -49,29 +55,44 @@ public class RouteFragment extends DaggerFragment implements RouteAdapter.OnItem
     protected List<Route> mRoutes;
     protected ImageView route_map;
     FragmentRouteBinding binding;
+    protected CompositeDisposable compositeDisposable;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        compositeDisposable = new CompositeDisposable();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_route, container, false);
-
         mRecyclerView = rootView.findViewById(R.id.route_recycler_view);
-        //routeViewModel = new RouteViewModel();
-        mRoutes = routeViewModel.getData();
 
-        binding = FragmentRouteBinding.inflate(inflater); //DataBindingUtil.inflate(inflater,R.layout.fragment_route,container,false);
-       // binding.setRoute();
 
-        mRecyclerView.addItemDecoration(new DividerItemDecoration(this.getContext(), 1));
-        //adapter = new RouteAdapter(this);
-        mRecyclerView.setAdapter(mAdapter);
-        mAdapter.setData(mRoutes);
-        mAdapter.setData(mRoutes);
+        Disposable cdRoutes = Maybe.fromCallable(() -> {
+            return routeViewModel.getAllRoutes();
+        })
+                .subscribeOn(Schedulers.computation())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(routes -> {
+                            mRoutes = routes;
+
+                            binding = FragmentRouteBinding.inflate(inflater); //DataBindingUtil.inflate(inflater,R.layout.fragment_route,container,false);
+                            mRecyclerView.addItemDecoration(new DividerItemDecoration(this.getContext(), 1));
+                            mRecyclerView.setAdapter(mAdapter);
+                            mAdapter.setData(mRoutes);
+                            mAdapter.setData(mRoutes);
+                        }
+                        ,throwable -> {
+                            /* onError() */
+                            Toast.makeText(getContext(), "Jakiś błąąąd w traskach... -.- -.-", Toast.LENGTH_LONG).show();
+                        });
+
+        compositeDisposable.add(cdRoutes);
+
+
 
         mLayoutManager = new LinearLayoutManager(getActivity());
 
@@ -89,9 +110,6 @@ public class RouteFragment extends DaggerFragment implements RouteAdapter.OnItem
     public void onItemClick(int route_id) {
         route_map =  rootView.findViewById(R.id.route_map);
         route_map.setImageResource(mRoutes.get(route_id).getMapImageId(getContext()));
-
-//        binding.setRoute(mRoutes.get(route_id));
-
         mAdapter.selectedPosition = route_id;
         mAdapter.notifyDataSetChanged();
 
@@ -131,4 +149,9 @@ public class RouteFragment extends DaggerFragment implements RouteAdapter.OnItem
         super.onSaveInstanceState(savedInstanceState);
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        compositeDisposable.clear();
+    }
 }

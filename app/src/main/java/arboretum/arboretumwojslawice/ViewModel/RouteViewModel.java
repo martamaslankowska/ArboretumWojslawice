@@ -15,13 +15,25 @@ public class RouteViewModel {
     List<Route> mRoutes;
 
     @Inject
-    protected RouteRepository mRouteRepo;
+    protected RouteRepository routeRepository;
 
     @Inject
     public RouteViewModel() { }
 
+    public List<Route> getAllRoutes() {
+        return routeRepository.getAllRoutes();
+    }
+
+    public Route getById(int routeId) {
+        return routeRepository.getById(routeId);
+    }
+
+
+
+    /* Niech to ktoś skasuje..... :p */
+
     public List<Route> getData() {
-        mRoutes = mRouteRepo.getRoutesForMichal();
+        mRoutes = routeRepository.getRoutesForMichal();
         return mRoutes;
     }
 
