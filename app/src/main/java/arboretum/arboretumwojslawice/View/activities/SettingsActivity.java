@@ -18,6 +18,8 @@ import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +27,7 @@ import java.util.Locale;
 
 import javax.inject.Inject;
 
+import arboretum.arboretumwojslawice.Commons.LanguageManager;
 import arboretum.arboretumwojslawice.Commons.LocaleHelper;
 import arboretum.arboretumwojslawice.R;
 
@@ -34,11 +37,15 @@ public class SettingsActivity extends AppCompatActivity {
     final String INFO = "select_language";
     @Inject
     Locale myLocale;
+    RadioGroup rg;
+    String language;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+
+        rg = findViewById(R.id.radioGroup_language);
 
         /* toolbar */
         Toolbar toolbar = findViewById(R.id.toolbar_back);
@@ -52,7 +59,9 @@ public class SettingsActivity extends AppCompatActivity {
         /* /toolbar */
 
         mPrefs = PreferenceManager.getDefaultSharedPreferences(this);
+        language = LanguageManager.getLanguage(getApplicationContext());
     }
+
 
     @SuppressLint("ResourceAsColor")
     public void polishLanguage(View view) {
@@ -99,8 +108,8 @@ public class SettingsActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = mPrefs.edit();
         editor.putString(INFO, languageCode);
         editor.commit(); // Very important to save the preference
-
     }
+
 
     public boolean onOptionsItemSelected(MenuItem item) {
         // handle arrow click here
