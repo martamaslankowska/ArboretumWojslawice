@@ -24,6 +24,7 @@ import java.net.UnknownHostException;
 import javax.inject.Inject;
 
 import arboretum.arboretumwojslawice.Commons.DividerItemDecoration;
+import arboretum.arboretumwojslawice.Commons.Globals;
 import arboretum.arboretumwojslawice.Commons.WeatherManager;
 import arboretum.arboretumwojslawice.Model.businessentity.Plant;
 import arboretum.arboretumwojslawice.R;
@@ -31,6 +32,11 @@ import arboretum.arboretumwojslawice.View.activities.NewsDetailActivity;
 import arboretum.arboretumwojslawice.View.adapter.NewsAdapter;
 import arboretum.arboretumwojslawice.ViewModel.NewsViewModel;
 import dagger.android.support.DaggerFragment;
+import io.reactivex.Maybe;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 import static android.content.ContentValues.TAG;
 
@@ -39,9 +45,18 @@ public class HomeFragment extends DaggerFragment {
     TextView weatherTemp, weatherDesc;
     ImageView weatherIcon;
 
+    Context context;
+    CompositeDisposable compositeDisposable;
+    @Inject
+    NewsViewModel newsViewModel;
+
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        context = getActivity().getApplicationContext();
+        compositeDisposable = new CompositeDisposable();
     }
 
     @Override
@@ -54,10 +69,11 @@ public class HomeFragment extends DaggerFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        /* SETTING THE WEATHER */
+
         weatherTemp = view.findViewById(R.id.weatherTemperatureTextView);
         weatherDesc = view.findViewById(R.id.weatherDescriptionTextView);
         weatherIcon = view.findViewById(R.id.weatherImageView);
-
 
         if (isNetworkConnected() && isInternetOn()) {
             weatherTemp.setTypeface(null, Typeface.NORMAL);
@@ -75,8 +91,6 @@ public class HomeFragment extends DaggerFragment {
                 }
             });
             asyncTask.execute("50.7163", "16.835");  // Niemcza - namiary ze strony openweathermap
-
-
         } else {
             weatherTemp.setTypeface(null, Typeface.ITALIC);
             weatherTemp.setText(R.string.weather_no_info);
@@ -84,10 +98,64 @@ public class HomeFragment extends DaggerFragment {
             weatherDesc.setVisibility(View.GONE);
         }
 
+
+        /* SETTING NEWS IF NOT SET EARLIER */
+        if (Globals.currentNews == null) {
+            Disposable cdNews = Maybe.fromCallable(() -> {
+                return newsViewModel.getCurrentNews();
+            })
+                    .subscribeOn(Schedulers.computation())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(news -> {
+                                Globals.currentNews = news;
+                            }
+                            , throwable -> {
+                                Toast.makeText(context, "Oh no! Something went terribly wrong with news", Toast.LENGTH_LONG).show();
+                            });
+            compositeDisposable.add(cdNews);
+        }
+
+        /* SETTING EVENTS IF NOT SET EARLIER */
+        if (Globals.nearestEvents == null) {
+            Disposable cdEvent = Maybe.fromCallable(() -> {
+                return newsViewModel.getEventNameConcatenate(context);
+            })
+                    .subscribeOn(Schedulers.computation())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(eventRowList -> {
+                                Globals.nearestEvents = eventRowList;
+                            }
+                            , throwable -> {
+                                Toast.makeText(context, "Oh no! Something went terribly wrong with events", Toast.LENGTH_LONG).show();
+                            });
+            compositeDisposable.add(cdEvent);
+        }
+
+        /* SETTING SEASSON PLANT IF NOT SET EARLIER */
+        if (Globals.seasonPlant == null) {
+            Disposable cdPlant = Maybe.fromCallable(() -> {
+                return newsViewModel.getRandomSeassonPlant();
+            })
+                    .subscribeOn(Schedulers.computation())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(plant -> {
+                                Globals.seasonPlant = plant;
+                            }
+                            , throwable -> {
+                                Toast.makeText(context, "Oh no! Something went terribly wrong with plants", Toast.LENGTH_LONG).show();
+                            });
+            compositeDisposable.add(cdPlant);
+        }
+
     }
 
     public void newsClick(View view) { }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        compositeDisposable.clear();
+    }
 
     private String getWeatherIconName(String weatherDescription) {
         String weatherString = weatherDescription.toLowerCase();
@@ -115,12 +183,12 @@ public class HomeFragment extends DaggerFragment {
     }
 
     private int getDrawableId(String drawableName) {
-        return getContext().getResources().getIdentifier("arboretum.arboretumwojslawice:drawable/" + drawableName, null, null);
+        return context.getResources().getIdentifier("arboretum.arboretumwojslawice:drawable/" + drawableName, null, null);
     }
 
     private String getStringResourceByName(String stringName) {
-        int resId = getContext().getResources().getIdentifier(stringName, "string", "arboretum.arboretumwojslawice");
-        return getContext().getString(resId);
+        int resId = context.getResources().getIdentifier(stringName, "string", "arboretum.arboretumwojslawice");
+        return context.getString(resId);
     }
 
     private boolean isNetworkConnected() {

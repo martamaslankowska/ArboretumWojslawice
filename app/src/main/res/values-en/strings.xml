@@ -53,6 +53,12 @@
     <string name="plant_flowering">Flowering</string>
     <string name="plant_seasson_date">no information</string>
 
+    <!-- HOME FRAGMENT (NEWS) -->
+    <string name="news_title">News</string>
+    <string name="event_title">Upcoming events 2018</string>
+    <string name="plant_title">Flowering plants</string>
+    <string name="ampersand">and</string>
+
 
 </resources>
 

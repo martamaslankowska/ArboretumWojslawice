@@ -9,14 +9,14 @@
             type="arboretum.arboretumwojslawice.Model.businessentity.News" />
         <variable
             name="event"
-            type="arboretum.arboretumwojslawice.Model.businessentity.Event" />
+            type="arboretum.arboretumwojslawice.Model.additionalEntity.EventRowList" />
         <variable
             name="plant"
             type="arboretum.arboretumwojslawice.Model.businessentity.Plant" />
     </data>
 
 
-<ScrollView
+    <ScrollView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:fillViewport="true"
@@ -126,10 +126,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#a6000000"
-                android:paddingBottom="6dp"
+                android:paddingBottom="@dimen/nonrec_half_margin"
                 android:paddingLeft="@dimen/nonrec_margin"
                 android:paddingRight="@dimen/nonrec_margin"
-                android:paddingTop="6dp"
+                android:paddingTop="@dimen/nonrec_half_margin"
                 android:text="@string/news_title"
                 android:textColor="@color/white"
                 android:textSize="@dimen/nonrec_font_size_big"
@@ -146,7 +146,7 @@
                 android:layout_marginEnd="@dimen/nonrec_margin"
                 android:layout_marginStart="@dimen/nonrec_margin"
                 android:layout_marginTop="@dimen/nonrec_half_margin"
-                android:text="Rozpoczęcie sezonu"
+                android:text="@{news.getName()}"
                 android:textStyle="bold"
                 android:textColor="@color/darkTextGray"
                 android:textSize="@dimen/nonrec_font_size"
@@ -163,7 +163,7 @@
                 android:layout_marginTop="@dimen/nonrec_half_margin"
                 android:ellipsize="end"
                 android:maxLines="2"
-                android:text="Blablabla, tutaj będzie jakiś dłuższy tekst, choć zrobiłabym go tylko ze dwie linijki, żeby taka zajawka była, a po kliknięciu dopiero szczegóły."
+                android:text="@{news.getDescription()}"
                 android:textColor="@color/darkTextGray"
                 android:textSize="@dimen/nonrec_font_size_small"
                 app:layout_constraintEnd_toEndOf="parent"

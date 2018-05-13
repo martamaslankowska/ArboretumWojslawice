@@ -118,8 +118,9 @@
 
     <!-- HOME FRAGMENT (NEWS) -->
     <string name="news_title">Aktualności</string>
-    <string name="event_title">Zbliżające się wydarzenia</string>
+    <string name="event_title">Nadchodzące wydarzenia 2018</string>
     <string name="plant_title">W okresie rozkwitu</string>
+    <string name="ampersand">oraz</string>
 
 
     <!-- Toasts -->

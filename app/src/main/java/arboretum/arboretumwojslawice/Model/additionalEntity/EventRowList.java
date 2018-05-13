@@ -14,6 +14,8 @@ public class EventRowList implements AdapterItem {
         this.eventNames = eventNames;
     }
 
+
+
     @Override
     public int getItemType() {
         return 0;
@@ -47,4 +49,6 @@ public class EventRowList implements AdapterItem {
     public void setEventDateInteger(Integer eventDateInteger) {
         this.eventDateInteger = eventDateInteger;
     }
+
+
 }

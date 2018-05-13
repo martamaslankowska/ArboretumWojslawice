@@ -37,7 +37,6 @@ public class LanguageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_language);
 
-
         /* DZIADEK SOLUTION FOR DATABASE COPY - working <3 */
         DziadekDatabaseHelper dziadekDbHelper = new DziadekDatabaseHelper();
         try {
@@ -47,6 +46,10 @@ public class LanguageActivity extends AppCompatActivity {
         }
 
         mPrefs = PreferenceManager.getDefaultSharedPreferences(this);
+
+
+
+
     }
 
     public void polishLanguage(View view) {

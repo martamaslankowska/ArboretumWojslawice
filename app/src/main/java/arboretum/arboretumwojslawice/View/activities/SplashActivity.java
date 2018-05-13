@@ -6,23 +6,31 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.util.Locale;
 
 import javax.inject.Inject;
 
+import arboretum.arboretumwojslawice.Commons.Globals;
 import arboretum.arboretumwojslawice.Model.AppDatabase;
 import arboretum.arboretumwojslawice.Model.DAO.HotelDao;
+import arboretum.arboretumwojslawice.Model.businessentity.Plant;
+import arboretum.arboretumwojslawice.R;
 import arboretum.arboretumwojslawice.ViewModel.SplashViewModel;
 import dagger.android.support.DaggerAppCompatActivity;
 import io.reactivex.Completable;
+import io.reactivex.Maybe;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
@@ -33,12 +41,15 @@ public class SplashActivity extends DaggerAppCompatActivity {
 
     @Inject
     SplashViewModel splashViewModel;
+    private CompositeDisposable compositeDisposable;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         AppDatabase database = AppDatabase.getAppDatabase(getApplicationContext());
+        compositeDisposable = new CompositeDisposable();
 
         /* Deciding weather show language screen or not */
         mPrefs = PreferenceManager.getDefaultSharedPreferences(this);
@@ -73,11 +84,60 @@ public class SplashActivity extends DaggerAppCompatActivity {
             finish();
         }
         else {
+            /* SETTING DATA FOR NEWS FRAGMENT */
+
+            Disposable cdNews = Maybe.fromCallable(() -> {
+                return splashViewModel.getCurrentNews();
+            })
+                    .subscribeOn(Schedulers.computation())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(news -> {
+                                Globals.currentNews = news;
+
+                            }
+                            ,throwable -> {
+                                Toast.makeText(this, "Oh no! Something went terribly wrong with news", Toast.LENGTH_LONG).show();
+                            });
+            compositeDisposable.add(cdNews);
+
+            Disposable cdEvent = Maybe.fromCallable(() -> {
+                return splashViewModel.getEventNameConcatenate(getApplicationContext());
+            })
+                    .subscribeOn(Schedulers.computation())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(eventRowList -> {
+                                Globals.nearestEvents = eventRowList;
+                            }
+                            ,throwable -> {
+                                Toast.makeText(this, "Oh no! Something went terribly wrong with events", Toast.LENGTH_LONG).show();
+                            });
+            compositeDisposable.add(cdEvent);
+
+            Disposable cdPlant = Maybe.fromCallable(() -> {
+                return splashViewModel.getRandomSeassonPlant();
+            })
+                    .subscribeOn(Schedulers.computation())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(plant -> {
+                                Globals.seasonPlant = plant;
+                            }
+                            ,throwable -> {
+                                Toast.makeText(this, "Oh no! Something went terribly wrong with plants", Toast.LENGTH_LONG).show();
+                            });
+            compositeDisposable.add(cdPlant);
+
+
             setLanguage(language);
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
             finish();
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        compositeDisposable.clear();
     }
 
     public void setLanguage(String languageCode) {
@@ -89,23 +149,6 @@ public class SplashActivity extends DaggerAppCompatActivity {
         res.updateConfiguration(conf, dm);
     }
 
-    public boolean tableExists(String databaseName) {
-        Cursor c = null;
-        SQLiteDatabase mDatabase = openOrCreateDatabase(databaseName, MODE_PRIVATE,null);
-        boolean tableExists = false;
-
-        /* get cursor on it */
-        try {
-            c = mDatabase.query("Prices", null,null, null, null, null, null);
-            int nrOfRows = c.getCount();
-            tableExists = true;
-        } catch (Exception e) {
-            /* fail */
-            Log.d("ERROR", "Table doesn't exist :(");
-        }
-
-        return tableExists;
-    }
 }
 
 
