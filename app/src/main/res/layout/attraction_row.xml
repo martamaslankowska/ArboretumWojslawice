@@ -19,7 +19,7 @@
             android:id="@+id/attractionImage"
             android:layout_width="match_parent"
             android:layout_height="150sp"
-            android:scaleType="fitXY"
+            android:scaleType="centerCrop"
             android:src="@{attraction.getImageId(context)}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -27,28 +27,20 @@
 
         <TextView
             android:id="@+id/attractionName"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:textColor="@color/white"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="5dp"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@{attraction.getName()}"
-            android:background="#a6000000"/>
-
-
-        <TextView
-            android:id="@+id/attractionDistance"
-            android:layout_marginLeft="5dp"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/attractionName"
             android:background="#a6000000"
-            android:text="@{attraction.getDistanceString()}"/>
+            android:text="@{attraction.getName() + ' ' + attraction.getDistanceString()}"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:paddingLeft="@dimen/nonrec_half_margin"
+            android:textStyle="bold"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            app:layout_constraintBottom_toBottomOf="@+id/attractionImage"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
 
         <TextView
             android:id="@+id/attractionDescription"
@@ -58,6 +50,9 @@
             android:text="@{attraction.getDescription()}"
             android:textColor="@color/darkTextGray"
             android:textSize="16sp"
+            android:paddingBottom="8dp"
+            android:paddingLeft="@dimen/nonrec_half_margin"
+            android:paddingRight="@dimen/nonrec_half_margin"
             app:layout_constraintTop_toBottomOf="@+id/attractionImage"
             tools:ignore="MissingConstraints" />
 

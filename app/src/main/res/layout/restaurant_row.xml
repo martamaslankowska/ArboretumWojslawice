@@ -13,131 +13,192 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:focusable="true"
-        android:layout_marginBottom="4dp">
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp">
+
 
         <ImageView
-            android:id="@+id/restaurantImage"
-            android:layout_width="match_parent"
-            android:layout_height="150sp"
-            android:scaleType="fitXY"
+            android:id="@+id/restaurantImageView"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:scaleType="centerCrop"
+            android:layout_marginTop="@dimen/nonrec_half_margin"
             android:src="@{restaurant.getImageId(context)}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/restaurantNameTextView" />
+
+        <TextView
+            android:id="@+id/restaurantNameTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{restaurant.getName()}"
+            android:textColor="@color/darkTextDarkGray"
+            android:textSize="@dimen/nonrec_font_size"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/restaurantName"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:textColor="@color/white"
+            android:id="@+id/restaurantRatingTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/nonrec_margin"
             android:layout_marginTop="5dp"
-            android:layout_marginStart="8dp"
+            android:text="@{restaurant.getRatingString()}"
+            android:textColor="@color/darkTextGray"
+            android:textSize="@dimen/nonrec_font_size_small"
+            app:layout_constraintStart_toEndOf="@+id/restaurantImageView"
+            app:layout_constraintTop_toBottomOf="@+id/restaurantNameTextView" />
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            style="@style/Widget.AppCompat.RatingBar.Small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{restaurant.getName()}"
-            android:background="#a6000000"/>
+            android:layout_marginStart="@dimen/nonrec_half_margin"
+            android:numStars="5"
+            android:stepSize="0.1"
+            android:value="1.8"
+            app:layout_constraintBottom_toBottomOf="@+id/restaurantRatingTextView"
+            app:layout_constraintStart_toEndOf="@+id/restaurantRatingTextView"
+            app:layout_constraintTop_toTopOf="@+id/restaurantRatingTextView" />
 
-
-        <TextView
-            android:id="@+id/restaurantDistance"
-            android:layout_marginStart="8dp"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/restaurantName"
-            android:background="#a6000000"
-            android:text="@{restaurant.getDistanceString()}"/>
 
         <ImageView
-            android:id="@+id/addressImage"
-            android:layout_width="@dimen/open_hours_icon_size"
-            android:layout_height="@dimen/open_hours_icon_size"
-            android:layout_marginStart="8dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/restaurantAddress"
+            android:id="@+id/restaurantAddressImageView"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginLeft="12dp"
+            app:layout_constraintStart_toEndOf="@+id/restaurantImageView"
+            app:layout_constraintTop_toBottomOf="@+id/ratingBar"
             app:srcCompat="@drawable/ic_location" />
 
         <TextView
-            android:id="@+id/restaurantAddress"
+            android:id="@+id/restaurantAddressTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
             android:text="@{restaurant.getAddress()}"
             android:textColor="@color/darkTextGray"
-            android:textSize="16sp"
-            app:layout_constraintStart_toEndOf="@+id/addressImage"
-            app:layout_constraintTop_toBottomOf="@+id/restaurantImage"
-            tools:ignore="MissingConstraints" />
+            android:textSize="@dimen/nonrec_font_size_small"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toEndOf="@+id/restaurantAddressImageView"
+            app:layout_constraintTop_toTopOf="@+id/restaurantAddressImageView" />
+
 
         <ImageView
-            android:id="@+id/phoneImage"
-            android:layout_width="@dimen/open_hours_icon_size"
-            android:layout_height="@dimen/open_hours_icon_size"
-            android:layout_marginStart="8dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/restaurantPhone"
+            android:id="@+id/restaurantPhoneImageView"
+            android:layout_width="24dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="4dp"
+            app:layout_constraintStart_toStartOf="@+id/restaurantAddressImageView"
+            app:layout_constraintTop_toBottomOf="@+id/restaurantAddressTextView"
             app:srcCompat="@drawable/ic_phone" />
 
         <TextView
-            android:id="@+id/restaurantPhone"
+            android:id="@+id/restaurantPhoneTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
             android:text="@{restaurant.getPhoneString()}"
             android:textColor="@color/darkTextGray"
-            android:textSize="16sp"
-            app:layout_constraintStart_toEndOf="@+id/phoneImage"
-            app:layout_constraintTop_toBottomOf="@+id/restaurantAddress"
-            tools:ignore="MissingConstraints" />
+            android:textSize="@dimen/nonrec_font_size_small"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toEndOf="@+id/restaurantPhoneImageView"
+            app:layout_constraintTop_toTopOf="@+id/restaurantPhoneImageView" />
 
-        <ImageView
-            android:id="@+id/websiteImage"
-            android:layout_width="@dimen/open_hours_icon_size"
-            android:layout_height="@dimen/open_hours_icon_size"
-            android:layout_marginStart="8dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/restaurantWebsite"
-            app:srcCompat="@drawable/ic_info" />
 
-        <TextView
-            android:id="@+id/restaurantWebsite"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginStart="8dp"
-            android:text="@{restaurant.getWebsite()}"
-            android:textColor="@color/darkTextGray"
-            android:textSize="16sp"
-            app:layout_constraintStart_toEndOf="@+id/websiteImage"
-            app:layout_constraintTop_toBottomOf="@+id/restaurantPhone"
-            tools:ignore="MissingConstraints" />
 
-        <ImageView
-            android:id="@+id/ratingImage"
-            android:layout_width="@dimen/open_hours_icon_size"
-            android:layout_height="@dimen/open_hours_icon_size"
-            android:layout_marginStart="8dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/restaurantRating"
-            app:srcCompat="@drawable/ic_star"
-            android:background="@color/colorBlack"/>
 
-        <TextView
-            android:id="@+id/restaurantRating"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginStart="8dp"
-            android:text="@{restaurant.getRatingString()}"
-            android:textColor="@color/darkTextGray"
-            android:textSize="16sp"
-            app:layout_constraintStart_toEndOf="@+id/ratingImage"
-            app:layout_constraintTop_toBottomOf="@+id/restaurantWebsite"
-            tools:ignore="MissingConstraints" />
+
+
+
+
+        <!--<TextView-->
+            <!--android:id="@+id/restaurantAddress"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginStart="800dp"-->
+            <!--android:layout_marginTop="8dp"-->
+            <!--android:text="@{restaurant.getAddress()}"-->
+            <!--android:textColor="@color/darkTextGray"-->
+            <!--android:textSize="16sp"-->
+            <!--app:layout_constraintStart_toEndOf="@+id/addressImage"-->
+            <!--app:layout_constraintTop_toBottomOf="@+id/restaurantImage"-->
+            <!--tools:ignore="MissingConstraints" />-->
+
+        <!--<ImageView-->
+            <!--android:id="@+id/phoneImage"-->
+            <!--android:layout_width="@dimen/open_hours_icon_size"-->
+            <!--android:layout_height="@dimen/open_hours_icon_size"-->
+            <!--android:layout_marginStart="8dp"-->
+            <!--app:layout_constraintStart_toStartOf="parent"-->
+            <!--app:layout_constraintTop_toTopOf="@+id/restaurantPhone"-->
+            <!--app:srcCompat="@drawable/ic_phone" />-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/restaurantPhone"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginStart="8dp"-->
+            <!--android:layout_marginTop="8dp"-->
+            <!--android:text="@{restaurant.getPhoneString()}"-->
+            <!--android:textColor="@color/darkTextGray"-->
+            <!--android:textSize="16sp"-->
+            <!--app:layout_constraintStart_toEndOf="@+id/phoneImage"-->
+            <!--app:layout_constraintTop_toBottomOf="@+id/restaurantAddress"-->
+            <!--tools:ignore="MissingConstraints" />-->
+
+        <!--<ImageView-->
+            <!--android:id="@+id/websiteImage"-->
+            <!--android:layout_width="@dimen/open_hours_icon_size"-->
+            <!--android:layout_height="@dimen/open_hours_icon_size"-->
+            <!--android:layout_marginStart="8dp"-->
+            <!--app:layout_constraintStart_toStartOf="parent"-->
+            <!--app:layout_constraintTop_toTopOf="@+id/restaurantWebsite"-->
+            <!--app:srcCompat="@drawable/ic_info" />-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/restaurantWebsite"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginTop="8dp"-->
+            <!--android:layout_marginStart="8dp"-->
+            <!--android:text="@{restaurant.getWebsite()}"-->
+            <!--android:textColor="@color/darkTextGray"-->
+            <!--android:textSize="16sp"-->
+            <!--app:layout_constraintStart_toEndOf="@+id/websiteImage"-->
+            <!--app:layout_constraintTop_toBottomOf="@+id/restaurantPhone"-->
+            <!--tools:ignore="MissingConstraints" />-->
+
+        <!--<ImageView-->
+            <!--android:id="@+id/ratingImage"-->
+            <!--android:layout_width="@dimen/open_hours_icon_size"-->
+            <!--android:layout_height="@dimen/open_hours_icon_size"-->
+            <!--android:layout_marginStart="8dp"-->
+            <!--app:layout_constraintStart_toStartOf="parent"-->
+            <!--app:layout_constraintTop_toTopOf="@+id/restaurantRating"-->
+            <!--app:srcCompat="@drawable/ic_star"-->
+            <!--android:background="@color/colorBlack"/>-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/restaurantRating"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginTop="8dp"-->
+            <!--android:layout_marginStart="8dp"-->
+            <!--android:text="@{restaurant.getRatingString()}"-->
+            <!--android:textColor="@color/darkTextGray"-->
+            <!--android:textSize="16sp"-->
+            <!--app:layout_constraintStart_toEndOf="@+id/ratingImage"-->
+            <!--app:layout_constraintTop_toBottomOf="@+id/restaurantWebsite"-->
+            <!--tools:ignore="MissingConstraints" />-->
+
 
 
     </android.support.constraint.ConstraintLayout>
