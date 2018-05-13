@@ -133,4 +133,29 @@
     <string name="toast_exit">Naciśnij jeszcze raz przycisk "Powrót", aby zakończyć działanie aplikacji</string>
     <string name="chose_language">Wybierz język:</string>
 
+
+    <!--rules-->
+    <string name="rules_title">REGULAMIN</string>
+    <string name="rules_subtitle">Szanowni Goście, nie zezwalamy:</string>
+    <string name="rules_content_part1">
+        \t − zrywać i niszczyć roślin, \n\t
+        − zbierać nasion ani owoców \n\t\t(wyjątek stanowi sad czereśniowy), \n\t
+        − deptać rabat, \n\t
+        − przebywać na terenie parku w czasie burzy,\n\t
+        − wprowadzać psów \n\t\t(z wyjątkiem psów przewodników),\n\t
+        − wprowadzać rowerów,\n\t
+        − pozostawiać bez opieki dzieci do lat 14, \n\t
+        − palić papierosów, \n\t
+        − spożywać alkoholu.</string>
+    <string name="rules_content_part2">\t♦ Ze względu na teren podgórski, zalecamy odpowiednie obuwie.\n\t
+♦ W czasie owocowania sadu czereśniowego Goście korzystają z drabin na własną odpowiedzialność.\n\t
+♦ Grillowanie jest dozwolone tylko w miejscach do tego wyznaczonych i odpowiednio oznakowanych.\n\t
+♦ Wynajęcie wigwamu z ogniskiem jest płatne i wymaga zgłoszenia pod nr tel. 696 137 984.
+    \n\t\t(Cena obejmuje rezerwację miejsca, drewno, rozpalenie ogniska i sprzątanie.)\n\t
+♦ Korzystanie przez dzieci z wydzielonego placu zabaw możliwe jest pod nadzorem osób dorosłych.
+(Na terenie placu zabaw obowiązuje „Regulamin placu zabaw”.)\n\t
+♦ Za przestrzeganie regulaminu oraz zachowanie się grupy szkolnej odpowiada nauczyciel.\n\t
+♦ Fotografowanie i filmowanie w celach komercyjnych wymaga uzgodnienia z dyrekcją.\n\t
+♦ Dzwon zapowiada zamknięcie bramy za 15 minut.</string>
+
 </resources>

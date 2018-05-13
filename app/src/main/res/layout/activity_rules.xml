@@ -6,15 +6,46 @@
     android:layout_height="match_parent"
     tools:context="arboretum.arboretumwojslawice.View.activities.RulesActivity">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-        <include
-            android:id="@+id/toolbar_back"
-            layout="@layout/toolbar_empty" />
+            <include
+                android:id="@+id/toolbar_back"
+                layout="@layout/toolbar_empty" />
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/rules_subtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"/>
+
+            <TextView
+                android:id="@+id/rules_content1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"/>
+
+            <ImageView
+                android:id="@+id/rules_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/rules_pictures"/>
+
+            <TextView
+                android:id="@+id/rules_content2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10sp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"/>
+
+        </LinearLayout>
+    </ScrollView>
 
 </android.support.constraint.ConstraintLayout>
