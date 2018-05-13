@@ -56,8 +56,14 @@
     <!-- HOME FRAGMENT (NEWS) -->
     <string name="news_title">News</string>
     <string name="event_title">Upcoming events 2018</string>
-    <string name="plant_title">Flowering plants</string>
+
+    <string name="event_title_text">And during</string>
+    <string name="event_info_text_1">We would like to welcome you at</string>
+    <string name="event_info_text_2">For more information click here!</string>
+    <string name="event_today">Today...</string>
     <string name="ampersand">and</string>
+
+    <string name="plant_title">Flowering plants</string>
 
 
 </resources>

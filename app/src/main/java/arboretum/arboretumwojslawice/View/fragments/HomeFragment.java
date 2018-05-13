@@ -26,6 +26,8 @@ import javax.inject.Inject;
 import arboretum.arboretumwojslawice.Commons.DividerItemDecoration;
 import arboretum.arboretumwojslawice.Commons.Globals;
 import arboretum.arboretumwojslawice.Commons.WeatherManager;
+import arboretum.arboretumwojslawice.Model.additionalEntity.EventRowList;
+import arboretum.arboretumwojslawice.Model.businessentity.News;
 import arboretum.arboretumwojslawice.Model.businessentity.Plant;
 import arboretum.arboretumwojslawice.R;
 import arboretum.arboretumwojslawice.View.activities.NewsDetailActivity;
@@ -44,6 +46,8 @@ public class HomeFragment extends DaggerFragment {
 
     TextView weatherTemp, weatherDesc;
     ImageView weatherIcon;
+    TextView newsTitle, newsText, eventTitle, eventText, plantTitle, plantText;
+    ImageView newsImage, eventImage, plantImage;
 
     Context context;
     CompositeDisposable compositeDisposable;
@@ -99,7 +103,12 @@ public class HomeFragment extends DaggerFragment {
         }
 
 
-        /* SETTING NEWS IF NOT SET EARLIER */
+        /* SETTING NEWS */
+
+        newsTitle = view.findViewById(R.id.newsTitleTextView);
+        newsText = view.findViewById(R.id.newsInfoTextView);
+        newsImage = view.findViewById(R.id.newsImageView);
+
         if (Globals.currentNews == null) {
             Disposable cdNews = Maybe.fromCallable(() -> {
                 return newsViewModel.getCurrentNews();
@@ -108,14 +117,28 @@ public class HomeFragment extends DaggerFragment {
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(news -> {
                                 Globals.currentNews = news;
+                                newsTitle.setText(news.getName());
+                                newsText.setText(news.getDescription());
+                                newsImage.setImageResource(news.getImageId(context));
                             }
                             , throwable -> {
                                 Toast.makeText(context, "Oh no! Something went terribly wrong with news", Toast.LENGTH_LONG).show();
                             });
             compositeDisposable.add(cdNews);
+        } else {
+            News news = Globals.currentNews;
+            newsTitle.setText(news.getName());
+            newsText.setText(news.getDescription());
+            newsImage.setImageResource(news.getImageId(context));
         }
 
-        /* SETTING EVENTS IF NOT SET EARLIER */
+
+        /* SETTING EVENTS */
+
+        eventTitle = view.findViewById(R.id.eventTitleTextView);
+        eventText = view.findViewById(R.id.eventInfoTextView);
+        eventImage = view.findViewById(R.id.eventImageView);
+
         if (Globals.nearestEvents == null) {
             Disposable cdEvent = Maybe.fromCallable(() -> {
                 return newsViewModel.getEventNameConcatenate(context);
@@ -124,14 +147,37 @@ public class HomeFragment extends DaggerFragment {
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(eventRowList -> {
                                 Globals.nearestEvents = eventRowList;
+                                String eventTitleText;
+                                if (newsViewModel.getToday() == eventRowList.getEventDateInteger())
+                                    eventTitleText = context.getString(R.string.event_today);
+                                else
+                                    eventTitleText = getStringResourceByName("event_title_text") + " " + eventRowList.getEventDateString() + "...";
+                                eventTitle.setText(eventTitleText);
+                                String eventInfoText = getStringResourceByName("event_info_text_1") + eventRowList.getEventNames() + ".\n" + getStringResourceByName("event_info_text_2");
+                                eventText.setText(eventInfoText);
                             }
                             , throwable -> {
                                 Toast.makeText(context, "Oh no! Something went terribly wrong with events", Toast.LENGTH_LONG).show();
                             });
             compositeDisposable.add(cdEvent);
+        } else {
+            EventRowList eventRowList = Globals.nearestEvents;
+            String eventTitleText;
+            if (newsViewModel.getToday() == eventRowList.getEventDateInteger())
+                eventTitleText = context.getString(R.string.event_today);
+            else
+                eventTitleText = getStringResourceByName("event_title_text") + " " + eventRowList.getEventDateString() + "...";
+            eventTitle.setText(eventTitleText);
+            String eventInfoText = getStringResourceByName("event_info_text_1") + eventRowList.getEventNames() + ".\n" + getStringResourceByName("event_info_text_2");
+            eventText.setText(eventInfoText);
         }
 
-        /* SETTING SEASSON PLANT IF NOT SET EARLIER */
+        /* SETTING SEASSON PLANT */
+
+        plantTitle = view.findViewById(R.id.plantTitleTextView);
+        plantText = view.findViewById(R.id.plantInfoTextView);
+        plantImage = view.findViewById(R.id.plantImageView);
+
         if (Globals.seasonPlant == null) {
             Disposable cdPlant = Maybe.fromCallable(() -> {
                 return newsViewModel.getRandomSeassonPlant();
@@ -140,16 +186,30 @@ public class HomeFragment extends DaggerFragment {
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(plant -> {
                                 Globals.seasonPlant = plant;
+                                plantImage.setImageResource(plant.getImageId(context));
+                                plantTitle.setText(plant.getName());
+                                String plantGenusSpeciesText = plant.getGenusName() + " " + plant.getSpeciesName();
+                                plantText.setText(plantGenusSpeciesText);
                             }
                             , throwable -> {
                                 Toast.makeText(context, "Oh no! Something went terribly wrong with plants", Toast.LENGTH_LONG).show();
                             });
             compositeDisposable.add(cdPlant);
+        } else {
+            Plant plant = Globals.seasonPlant;
+            plantImage.setImageResource(plant.getImageId(context));
+            plantTitle.setText(plant.getName());
+            String plantGenusSpeciesText = plant.getGenusName() + " " + plant.getSpeciesName();
+            plantText.setText(plantGenusSpeciesText);
         }
 
     }
 
+
     public void newsClick(View view) { }
+    public void eventClick(View view) { }
+    public void plantClick(View view) { }
+
 
     @Override
     public void onDestroyView() {

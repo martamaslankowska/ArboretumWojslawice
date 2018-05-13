@@ -3,17 +3,17 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <data>
-        <variable
-            name="news"
-            type="arboretum.arboretumwojslawice.Model.businessentity.News" />
-        <variable
-            name="event"
-            type="arboretum.arboretumwojslawice.Model.additionalEntity.EventRowList" />
-        <variable
-            name="plant"
-            type="arboretum.arboretumwojslawice.Model.businessentity.Plant" />
-    </data>
+    <!--<data>-->
+        <!--<variable-->
+            <!--name="news"-->
+            <!--type="arboretum.arboretumwojslawice.Model.businessentity.News" />-->
+        <!--<variable-->
+            <!--name="event"-->
+            <!--type="arboretum.arboretumwojslawice.Model.additionalEntity.EventRowList" />-->
+        <!--<variable-->
+            <!--name="plant"-->
+            <!--type="arboretum.arboretumwojslawice.Model.businessentity.Plant" />-->
+    <!--</data>-->
 
 
     <ScrollView
@@ -146,7 +146,7 @@
                 android:layout_marginEnd="@dimen/nonrec_margin"
                 android:layout_marginStart="@dimen/nonrec_margin"
                 android:layout_marginTop="@dimen/nonrec_half_margin"
-                android:text="@{news.getName()}"
+                android:text=" "
                 android:textStyle="bold"
                 android:textColor="@color/darkTextGray"
                 android:textSize="@dimen/nonrec_font_size"
@@ -163,7 +163,7 @@
                 android:layout_marginTop="@dimen/nonrec_half_margin"
                 android:ellipsize="end"
                 android:maxLines="2"
-                android:text="@{news.getDescription()}"
+                android:text=" "
                 android:textColor="@color/darkTextGray"
                 android:textSize="@dimen/nonrec_font_size_small"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -189,6 +189,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             android:paddingBottom="@dimen/nonrec_margin"
+            android:onClick="eventClick"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/line2">
 
@@ -268,6 +269,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingBottom="@dimen/nonrec_margin"
+            android:onClick="plantClick"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -304,19 +306,36 @@
                 app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
-                android:id="@+id/plantInfoTextView"
+                android:id="@+id/plantTitleTextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/nonrec_margin"
                 android:layout_marginStart="@dimen/nonrec_margin"
                 android:layout_marginTop="@dimen/nonrec_half_margin"
-                android:text="No i niby co takiego mam tu wpisać, hmm? :p"
+                android:text="A już 15 maja..."
+                android:textStyle="bold"
                 android:textColor="@color/darkTextGray"
+                android:textSize="@dimen/nonrec_font_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/plantImageView" />
+
+
+            <TextView
+                android:id="@+id/plantInfoTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/nonrec_margin"
+                android:layout_marginStart="@dimen/nonrec_margin"
+                android:layout_marginTop="4dp"
+                android:text="Niestety teraz nic nie kwitnie :p"
+                android:textColor="@color/darkTextGray"
+                android:textStyle="italic"
                 android:textSize="@dimen/nonrec_font_size_small"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/plantImageView" />
+                app:layout_constraintTop_toBottomOf="@+id/plantTitleTextView" />
 
         </android.support.constraint.ConstraintLayout>
 

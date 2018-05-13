@@ -18,7 +18,7 @@ public class BaseRepository {
 
     @Inject
     @Named("languageCode")
-    protected String languageCode;
+    public String languageCode;
 
     public int getToday() {
         Date date = new Date();

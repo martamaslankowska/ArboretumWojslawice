@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import arboretum.arboretumwojslawice.Commons.Globals;
 import arboretum.arboretumwojslawice.Commons.LocaleHelper;
 import arboretum.arboretumwojslawice.R;
 import arboretum.arboretumwojslawice.View.BottomNavigationViewHelper;
@@ -24,6 +25,12 @@ import arboretum.arboretumwojslawice.View.fragments.HomeFragment;
 import arboretum.arboretumwojslawice.View.fragments.MoreFragment;
 import arboretum.arboretumwojslawice.View.fragments.RouteMapFragment;
 import dagger.android.support.DaggerAppCompatActivity;
+
+import static arboretum.arboretumwojslawice.View.activities.EventActivity.EVENT_DATE;
+import static arboretum.arboretumwojslawice.View.fragments.ListOfPlantsFragment.BUNDLE;
+import static arboretum.arboretumwojslawice.View.fragments.ListOfPlantsFragment.PLANT_ID;
+import static arboretum.arboretumwojslawice.View.fragments.ListOfPlantsFragment.TAB_ID;
+
 
 public class MainActivity extends DaggerAppCompatActivity {
 
@@ -162,7 +169,22 @@ public class MainActivity extends DaggerAppCompatActivity {
         startActivity(intent);
     }
 
+    public void eventClick(View view) {
+        Intent intent = new Intent(getApplicationContext(), EventDetailActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putInt(EVENT_DATE, Globals.nearestEvents.getEventDateInteger());
+        intent.putExtra(BUNDLE, bundle);
+        startActivityForResult(intent, 123);
+    }
 
+    public void plantClick(View view) {
+        Intent intent = new Intent(getApplicationContext(), PlantDetailActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putInt(PLANT_ID, Globals.seasonPlant.getIdPlant());
+        bundle.putInt(TAB_ID, Globals.seasonPlant.getKind());
+        intent.putExtra(BUNDLE, bundle);
+        startActivityForResult(intent, 123);
+    }
 
 
 }
