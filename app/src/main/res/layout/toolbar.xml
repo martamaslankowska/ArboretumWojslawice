@@ -5,7 +5,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/colorPrimary"
     app:titleTextColor="@color/white"
-    android:elevation="4dp">
+    android:elevation="4dp"
+    android:theme="@style/ToolbarStyle">
 
     <ImageButton
         android:id="@+id/qr_button"

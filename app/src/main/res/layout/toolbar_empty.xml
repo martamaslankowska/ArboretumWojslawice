@@ -6,6 +6,7 @@
     android:layout_height="wrap_content"
     android:background="@color/colorPrimary"
     app:titleTextColor="@color/white"
-    android:elevation="4dp">
+    android:elevation="4dp"
+    android:theme="@style/ToolbarStyle">
 
 </android.support.v7.widget.Toolbar>
