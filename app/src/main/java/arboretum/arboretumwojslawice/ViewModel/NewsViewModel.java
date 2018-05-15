@@ -36,7 +36,7 @@ public class NewsViewModel {
         return newsRepository.getAllPastNews().get(0);
     }
 
-    public Plant getRandomSeassonPlant() {
+    public Plant getRandomSeasonPlant() {
         int today = plantRepository.getToday();
         List<Plant> plants = plantRepository.getAllSeasonPlants(today);
         Random r = new Random();
@@ -46,12 +46,13 @@ public class NewsViewModel {
 
     public EventRowList getEventNameConcatenate(Context context) {
         String eventNames = "";
-        Map<String, String> ampersandMap = new HashMap();
-        ampersandMap.put("pl", "oraz");
-        ampersandMap.put("en", "and");
-        ampersandMap.put("de", "brrr");
-
-        String ampersand = ampersandMap.get(eventRepository.languageCode);
+        String ampersand = context.getString(getStringResource(context, "ampersand"));
+//        Map<String, String> ampersandMap = new HashMap();
+//        ampersandMap.put("pl", "oraz");
+//        ampersandMap.put("en", "and");
+//        ampersandMap.put("de", "brrr");
+//
+//        String ampersand = ampersandMap.get(eventRepository.languageCode);
 
         int nearestDate = eventRepository.getAllDateFromToday().get(0);
         List<Event> eventsDuringNearestDate = eventRepository.getAllDuringGivenDate(nearestDate);

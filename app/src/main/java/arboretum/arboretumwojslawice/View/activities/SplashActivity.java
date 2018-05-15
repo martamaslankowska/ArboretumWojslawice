@@ -4,16 +4,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
-import android.util.Log;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.util.Locale;
@@ -23,8 +16,6 @@ import javax.inject.Inject;
 import arboretum.arboretumwojslawice.Commons.Globals;
 import arboretum.arboretumwojslawice.Model.AppDatabase;
 import arboretum.arboretumwojslawice.Model.DAO.HotelDao;
-import arboretum.arboretumwojslawice.Model.businessentity.Plant;
-import arboretum.arboretumwojslawice.R;
 import arboretum.arboretumwojslawice.ViewModel.SplashViewModel;
 import dagger.android.support.DaggerAppCompatActivity;
 import io.reactivex.Completable;
@@ -75,7 +66,7 @@ public class SplashActivity extends DaggerAppCompatActivity {
                             }
                             ,throwable -> {
                                 /* onError() */
-                                Toast.makeText(this, "Jakiś błąąąd... -.- -.-", Toast.LENGTH_LONG).show();
+                                Toast.makeText(this, "Jakiś błąąąd... -.- -.-", Toast.LENGTH_LONG);
                             });
 
 
@@ -96,7 +87,7 @@ public class SplashActivity extends DaggerAppCompatActivity {
 
                             }
                             ,throwable -> {
-                                Toast.makeText(this, "Oh no! Something went terribly wrong with news", Toast.LENGTH_LONG).show();
+                                Toast.makeText(this, "Oh no! Something went terribly wrong with news", Toast.LENGTH_LONG);
                             });
             compositeDisposable.add(cdNews);
 
@@ -109,12 +100,12 @@ public class SplashActivity extends DaggerAppCompatActivity {
                                 Globals.nearestEvents = eventRowList;
                             }
                             ,throwable -> {
-                                Toast.makeText(this, "Oh no! Something went terribly wrong with events", Toast.LENGTH_LONG).show();
+                                Toast.makeText(this, "Oh no! Something went terribly wrong with events", Toast.LENGTH_LONG);
                             });
             compositeDisposable.add(cdEvent);
 
             Disposable cdPlant = Maybe.fromCallable(() -> {
-                return splashViewModel.getRandomSeassonPlant();
+                return splashViewModel.getRandomSeasonPlant();
             })
                     .subscribeOn(Schedulers.computation())
                     .observeOn(AndroidSchedulers.mainThread())
@@ -122,7 +113,7 @@ public class SplashActivity extends DaggerAppCompatActivity {
                                 Globals.seasonPlant = plant;
                             }
                             ,throwable -> {
-                                Toast.makeText(this, "Oh no! Something went terribly wrong with plants", Toast.LENGTH_LONG).show();
+                                Toast.makeText(this, "Oh no! Something went terribly wrong with plants", Toast.LENGTH_LONG);
                             });
             compositeDisposable.add(cdPlant);
 

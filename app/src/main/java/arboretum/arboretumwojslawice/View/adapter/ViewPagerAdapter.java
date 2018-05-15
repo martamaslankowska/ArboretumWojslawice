@@ -23,7 +23,7 @@ public class ViewPagerAdapter extends PagerAdapter {
 
     private Context context;
     private LayoutInflater layoutInflater;
-    private List<PointOnRoute> mPlants;
+    private List<Plant> mPlants;
     View.OnClickListener listener;
 
     public ViewPagerAdapter(Context context, View.OnClickListener listener) {
@@ -46,7 +46,7 @@ public class ViewPagerAdapter extends PagerAdapter {
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = layoutInflater.inflate(R.layout.plant_page, null);
 
-        Plant plant = mPlants.get(position).getPlant();
+        Plant plant = mPlants.get(position);
 
         ImageView imageView = view.findViewById(R.id.plant_page_image);
         imageView.setImageResource(plant.getImageId(context));
@@ -73,7 +73,7 @@ public class ViewPagerAdapter extends PagerAdapter {
         void onClick(View view);
     }
 
-    public void setData(List<PointOnRoute> mPlants) {
+    public void setData(List<Plant> mPlants) {
         this.mPlants = mPlants;
     }
 }

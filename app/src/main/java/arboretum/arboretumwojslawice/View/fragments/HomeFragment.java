@@ -1,14 +1,10 @@
 package arboretum.arboretumwojslawice.View.fragments;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Typeface;
 import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,21 +13,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.IOException;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
-
 import javax.inject.Inject;
 
-import arboretum.arboretumwojslawice.Commons.DividerItemDecoration;
 import arboretum.arboretumwojslawice.Commons.Globals;
 import arboretum.arboretumwojslawice.Commons.WeatherManager;
 import arboretum.arboretumwojslawice.Model.additionalEntity.EventRowList;
 import arboretum.arboretumwojslawice.Model.businessentity.News;
 import arboretum.arboretumwojslawice.Model.businessentity.Plant;
 import arboretum.arboretumwojslawice.R;
-import arboretum.arboretumwojslawice.View.activities.NewsDetailActivity;
-import arboretum.arboretumwojslawice.View.adapter.NewsAdapter;
 import arboretum.arboretumwojslawice.ViewModel.NewsViewModel;
 import dagger.android.support.DaggerFragment;
 import io.reactivex.Maybe;
@@ -122,7 +111,7 @@ public class HomeFragment extends DaggerFragment {
                                 newsImage.setImageResource(news.getImageId(context));
                             }
                             , throwable -> {
-                                Toast.makeText(context, "Oh no! Something went terribly wrong with news", Toast.LENGTH_LONG).show();
+                                Toast.makeText(context, "Oh no! Something went terribly wrong with news", Toast.LENGTH_LONG);
                             });
             compositeDisposable.add(cdNews);
         } else {
@@ -157,7 +146,7 @@ public class HomeFragment extends DaggerFragment {
                                 eventText.setText(eventInfoText);
                             }
                             , throwable -> {
-                                Toast.makeText(context, "Oh no! Something went terribly wrong with events", Toast.LENGTH_LONG).show();
+                                Toast.makeText(context, "Oh no! Something went terribly wrong with events", Toast.LENGTH_LONG);
                             });
             compositeDisposable.add(cdEvent);
         } else {
@@ -180,7 +169,7 @@ public class HomeFragment extends DaggerFragment {
 
         if (Globals.seasonPlant == null) {
             Disposable cdPlant = Maybe.fromCallable(() -> {
-                return newsViewModel.getRandomSeassonPlant();
+                return newsViewModel.getRandomSeasonPlant();
             })
                     .subscribeOn(Schedulers.computation())
                     .observeOn(AndroidSchedulers.mainThread())
@@ -192,7 +181,7 @@ public class HomeFragment extends DaggerFragment {
                                 plantText.setText(plantGenusSpeciesText);
                             }
                             , throwable -> {
-                                Toast.makeText(context, "Oh no! Something went terribly wrong with plants", Toast.LENGTH_LONG).show();
+                                Toast.makeText(context, "Oh no! Something went terribly wrong with plants", Toast.LENGTH_LONG);
                             });
             compositeDisposable.add(cdPlant);
         } else {

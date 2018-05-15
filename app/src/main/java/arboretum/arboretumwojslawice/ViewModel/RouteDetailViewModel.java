@@ -1,5 +1,6 @@
 package arboretum.arboretumwojslawice.ViewModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -34,6 +35,25 @@ public class RouteDetailViewModel {
     public Route getById(int routeId) {
         return routeRepository.getById(routeId);
     }
+
+    public List<PointOnRoute> getPointsOnRoute(int routeId) {
+        return routeRepository.getRoutePointsByRouteId(routeId);
+    }
+
+    public List<Plant> getPlantsOnRoute(int routeId) {
+        List<PointOnRoute> pointsOnRoute = routeRepository.getRoutePointsByRouteId(routeId);
+        List<Plant> plantsOnRoute = new ArrayList<>();
+        for (int i=0; i<pointsOnRoute.size(); i++) {
+            plantsOnRoute.add(plantRepository.getById(pointsOnRoute.get(i).getIdPlant()));
+        }
+        return plantsOnRoute;
+    }
+
+
+
+
+
+
 
 
 

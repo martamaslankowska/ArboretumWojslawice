@@ -120,8 +120,9 @@ public class RouteFragment extends DaggerFragment implements RouteAdapter.OnItem
     public void onDetailClick(int route_id) {
         Intent intent = new Intent(getActivity().getApplicationContext(), RouteDetailActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putInt("ROUTE_ID", route_id);
+        bundle.putInt("ROUTE_ID", mRoutes.get(route_id).getIdRoute());
         intent.putExtra("BUNDLE", bundle);
+//        route_map.setImageResource(mRoutes.get(route_id).getMapImageId(getContext()));
 
         mAdapter.selectedPosition = route_id;
         mAdapter.notifyDataSetChanged();

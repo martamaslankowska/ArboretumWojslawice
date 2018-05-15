@@ -1,6 +1,7 @@
 package arboretum.arboretumwojslawice.View.activities;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.databinding.DataBindingUtil;
@@ -29,17 +30,25 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import arboretum.arboretumwojslawice.Commons.DividerItemDecoration;
 import arboretum.arboretumwojslawice.Commons.map.LonLat;
 import arboretum.arboretumwojslawice.Commons.map.PixelCoordinates;
 import arboretum.arboretumwojslawice.Model.Repository.PlantRepository;
 import arboretum.arboretumwojslawice.Model.businessentity.Location;
+import arboretum.arboretumwojslawice.Model.businessentity.Plant;
 import arboretum.arboretumwojslawice.Model.businessentity.PointOnRoute;
 import arboretum.arboretumwojslawice.Model.businessentity.Route;
 import arboretum.arboretumwojslawice.R;
 import arboretum.arboretumwojslawice.View.adapter.ViewPagerAdapter;
 import arboretum.arboretumwojslawice.ViewModel.RouteDetailViewModel;
 import arboretum.arboretumwojslawice.databinding.ActivityRouteDetailBinding;
+import arboretum.arboretumwojslawice.databinding.FragmentRouteBinding;
 import dagger.android.support.DaggerAppCompatActivity;
+import io.reactivex.Maybe;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 public class RouteDetailActivity extends DaggerAppCompatActivity implements ViewPagerAdapter.OnItemClickListener {
 
@@ -51,7 +60,7 @@ public class RouteDetailActivity extends DaggerAppCompatActivity implements View
     private Bundle bundle;
     private int route_id;
     private Route route;
-    private List<PointOnRoute> routePointList;
+    private List<Plant> routePointList;
     @Inject
     protected RouteDetailViewModel routeDetailViewModel;
     private int currentPage = 0;
@@ -59,6 +68,8 @@ public class RouteDetailActivity extends DaggerAppCompatActivity implements View
 
     ViewPager viewPager;
     ViewPagerAdapter viewPagerAdapter;
+    protected CompositeDisposable compositeDisposable;
+    Context context;
 
     private ImageView leftArrow;
     private ImageView rightArrow;
@@ -89,6 +100,8 @@ public class RouteDetailActivity extends DaggerAppCompatActivity implements View
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ActivityRouteDetailBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_route_detail);
+        compositeDisposable = new CompositeDisposable();
+        context = getApplicationContext();
 
         Toolbar toolbar = findViewById(R.id.toolbar_back);
         setSupportActionBar(toolbar);
@@ -136,88 +149,203 @@ public class RouteDetailActivity extends DaggerAppCompatActivity implements View
         bundle = intent.getBundleExtra(BUNDLE);
 
         route_id = bundle.getInt(ROUTE_ID);
-        route = routeDetailViewModel.getRouteById(route_id);
-
-        if(route_id == 1)
-        {
-            routePointList = routeDetailViewModel.getRoutePointsForRoute1();
-        }
-        else
-        {
-            routePointList = routeDetailViewModel.getRoutePointsForRoute1();
-        }
-
-        leftArrow = findViewById(R.id.route_detail_left_arrow);
-        leftArrow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(currentPage > 0 ) {
-                    viewPager.setCurrentItem(currentPage - 1);
-                }
-            }
-        });
-
-        rightArrow = findViewById(R.id.route_detail_right_arrow);
-        rightArrow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(currentPage < routePointList.size()) {
-                    viewPager.setCurrentItem(currentPage + 1);
-                }
-            }
-        });
-
-        viewPager = findViewById(R.id.viewPager);
-        viewPagerAdapter = new ViewPagerAdapter(this, listener);
-        viewPagerAdapter.setData(routePointList);
-        viewPager.setAdapter(viewPagerAdapter);
 
 
-        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-            }
+        /* beginning of route and routePointList usages */
 
-            @Override
-            public void onPageSelected(int position) {
-                currentPage = position;
+        Disposable cdRoute = Maybe.fromCallable(() -> {
+            return routeDetailViewModel.getById(route_id);
+        })
+                .subscribeOn(Schedulers.computation())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(routeDb -> {
+                            route = routeDb;
+                            Log.i("mRoutes", String.valueOf(route_id));
+                            binding.setRoute(route);
+                        }
+                        ,throwable -> {
+                            /* onError() */
+                            Toast.makeText(this, "Jakiś błąąąd w traskach... -.- -.-", Toast.LENGTH_LONG).show();
+                        });
 
-                /* map */
-                mapBitmap = BitmapFactory.decodeResource(resources, resources.getIdentifier("arboretum_map2", "drawable", getPackageName()));
-                drawCanvas();
+        compositeDisposable.add(cdRoute);
+
+
+        Disposable cdPointsOnRoute = Maybe.fromCallable(() -> {
+            return routeDetailViewModel.getPlantsOnRoute(route_id);
+        })
+                .subscribeOn(Schedulers.computation())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(routePoints -> {
+                            routePointList = routePoints;
+
+                            leftArrow = findViewById(R.id.route_detail_left_arrow);
+                            leftArrow.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    if(currentPage > 0 ) {
+                                        viewPager.setCurrentItem(currentPage - 1);
+                                    }
+                                }
+                            });
+
+                            rightArrow = findViewById(R.id.route_detail_right_arrow);
+                            rightArrow.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    if(currentPage < routePointList.size()) {
+                                        viewPager.setCurrentItem(currentPage + 1);
+                                    }
+                                }
+                            });
+
+                            viewPager = findViewById(R.id.viewPager);
+                            viewPagerAdapter = new ViewPagerAdapter(context, listener);
+                            viewPagerAdapter.setData(routePointList);
+                            viewPager.setAdapter(viewPagerAdapter);
+
+                            viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+                                @Override
+                                public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                                }
+
+                                @Override
+                                public void onPageSelected(int position) {
+                                    currentPage = position;
+
+                                    /* map */
+                                    mapBitmap = BitmapFactory.decodeResource(resources, resources.getIdentifier("arboretum_map2", "drawable", getPackageName()));
+                                    drawCanvas();
 //                double lon=routePointList.get(position).getX();
 //                double lat=routePointList.get(position).getY();
 //                PixelCoordinates p=new PixelCoordinates(countX(lon), countY(lat));
 //                int x=pointsPixelsCoordinates.get(position).x;
 //                int y=pointsPixelsCoordinates.get(position).y;
 //                canvas.drawBitmap(markerBitmap, p.x, p.y, null);
-                drawMarkers(places, position);
-                mapImage.setImageBitmap(canvasBitmap);
-                /* /map */
+                                    drawMarkers(places, position);
+                                    mapImage.setImageBitmap(canvasBitmap);
+                                    /* /map */
 
-                if(position == 0 && routePointList.size() > 1)
-                {
-                    leftArrow.setImageDrawable(null);
-                }
-                else if(position == 1)
-                {
-                    leftArrow.setImageResource(R.drawable.left_arrow);
-                }
+                                    if(position == 0 && routePointList.size() > 1)
+                                    {
+                                        leftArrow.setImageDrawable(null);
+                                    }
+                                    else if(position == 1)
+                                    {
+                                        leftArrow.setImageResource(R.drawable.left_arrow);
+                                    }
 
-                if(position == routePointList.size()-1)
-                {
-                    rightArrow.setImageDrawable(null);
-                }
-                else if(position == routePointList.size()-2)
-                {
-                    rightArrow.setImageResource(R.drawable.right_arrow);
-                }
-            }
+                                    if(position == routePointList.size()-1)
+                                    {
+                                        rightArrow.setImageDrawable(null);
+                                    }
+                                    else if(position == routePointList.size()-2)
+                                    {
+                                        rightArrow.setImageResource(R.drawable.right_arrow);
+                                    }
+                                }
 
-            @Override
-            public void onPageScrollStateChanged(int state) {
-            }
-        });
+                                @Override
+                                public void onPageScrollStateChanged(int state) {
+                                }
+                            });
+                        }
+                        ,throwable -> {
+                            /* onError() */
+                            Toast.makeText(this, "Jakiś błąąąd w traskach... -.- -.-", Toast.LENGTH_LONG).show();
+                        });
+
+        compositeDisposable.add(cdPointsOnRoute);
+
+
+
+//        route = routeDetailViewModel.getRouteById(route_id);
+
+//        if(route_id == 1)
+//        {
+//            routePointList = routeDetailViewModel.getRoutePointsForRoute1();
+//        }
+//        else
+//        {
+//            routePointList = routeDetailViewModel.getRoutePointsForRoute1();
+//        }
+//
+//        leftArrow = findViewById(R.id.route_detail_left_arrow);
+//        leftArrow.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                if(currentPage > 0 ) {
+//                    viewPager.setCurrentItem(currentPage - 1);
+//                }
+//            }
+//        });
+//
+//        rightArrow = findViewById(R.id.route_detail_right_arrow);
+//        rightArrow.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                if(currentPage < routePointList.size()) {
+//                    viewPager.setCurrentItem(currentPage + 1);
+//                }
+//            }
+//        });
+//
+//        viewPager = findViewById(R.id.viewPager);
+//        viewPagerAdapter = new ViewPagerAdapter(this, listener);
+//        viewPagerAdapter.setData(routePointList);
+//        viewPager.setAdapter(viewPagerAdapter);
+//
+//        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+//            @Override
+//            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+//            }
+//
+//            @Override
+//            public void onPageSelected(int position) {
+//                currentPage = position;
+//
+//                /* map */
+//                mapBitmap = BitmapFactory.decodeResource(resources, resources.getIdentifier("arboretum_map2", "drawable", getPackageName()));
+//                drawCanvas();
+////                double lon=routePointList.get(position).getX();
+////                double lat=routePointList.get(position).getY();
+////                PixelCoordinates p=new PixelCoordinates(countX(lon), countY(lat));
+////                int x=pointsPixelsCoordinates.get(position).x;
+////                int y=pointsPixelsCoordinates.get(position).y;
+////                canvas.drawBitmap(markerBitmap, p.x, p.y, null);
+//                drawMarkers(places, position);
+//                mapImage.setImageBitmap(canvasBitmap);
+//                /* /map */
+//
+//                if(position == 0 && routePointList.size() > 1)
+//                {
+//                    leftArrow.setImageDrawable(null);
+//                }
+//                else if(position == 1)
+//                {
+//                    leftArrow.setImageResource(R.drawable.left_arrow);
+//                }
+//
+//                if(position == routePointList.size()-1)
+//                {
+//                    rightArrow.setImageDrawable(null);
+//                }
+//                else if(position == routePointList.size()-2)
+//                {
+//                    rightArrow.setImageResource(R.drawable.right_arrow);
+//                }
+//            }
+//
+//            @Override
+//            public void onPageScrollStateChanged(int state) {
+//            }
+//        });
+
+        Log.i("mRoutes", String.valueOf(route_id));
+//        binding.setRoute(route);
+
+        /* end of routePointList usages */
+
 
         mButton = findViewById(R.id.route_detail_button);
         mButton.setOnClickListener(new View.OnClickListener() {
@@ -230,10 +358,6 @@ public class RouteDetailActivity extends DaggerAppCompatActivity implements View
                 startActivityForResult(intent, 123);
             }
         });
-
-        Log.i("mRoutes", String.valueOf(route_id));
-        binding.setRoute(route);
-
 
     }
 
@@ -311,7 +435,7 @@ public class RouteDetailActivity extends DaggerAppCompatActivity implements View
 
     @Override
     public void onClick(View view) {
-        int plantId = routePointList.get(viewPager.getCurrentItem()).getPlant().getIdPlant();
+        int plantId = routePointList.get(viewPager.getCurrentItem()).getIdPlant();
         Toast.makeText(getApplicationContext(), "This page was clicked: " + plantId, Toast.LENGTH_SHORT).show();
 
         Intent intent = new Intent(getApplicationContext(), PlantDetailActivity.class);
@@ -319,5 +443,11 @@ public class RouteDetailActivity extends DaggerAppCompatActivity implements View
         bundle.putInt(PLANT_ID, plantId);
         intent.putExtra(BUNDLE, bundle);
         startActivityForResult(intent, 123);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        compositeDisposable.clear();
     }
 }
