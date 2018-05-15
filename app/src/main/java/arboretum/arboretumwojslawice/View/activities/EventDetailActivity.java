@@ -83,9 +83,9 @@ public class EventDetailActivity extends DaggerAppCompatActivity {
                             mRecyclerView.addItemDecoration(new DividerItemDecoration(this, 0));
                             mAdapter.setData(mEventList);
                             /* toolbar */
-                            //Toolbar toolbar = findViewById(R.id.toolbar_back);
-                            //setSupportActionBar(toolbar);
-                           // getSupportActionBar().setTitle(mEventList.get(0).getBeginDateString());
+                            Toolbar toolbar = findViewById(R.id.toolbar_back);
+                            setSupportActionBar(toolbar);
+                            getSupportActionBar().setTitle("Nie wiem co tu napisać");
 
                             if (getSupportActionBar() != null) {
                                 getSupportActionBar().setDisplayHomeAsUpEnabled(true);
