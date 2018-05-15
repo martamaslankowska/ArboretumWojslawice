@@ -6,37 +6,44 @@
     android:layout_height="match_parent"
     tools:context="arboretum.arboretumwojslawice.View.activities.RulesActivity">
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+    <include
+        android:id="@+id/toolbar_back"
+        layout="@layout/toolbar_empty"
+        app:layout_constraintTop_toTopOf="parent"/>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <include
-                android:id="@+id/toolbar_back"
-                layout="@layout/toolbar_empty" />
-
             <TextView
                 android:id="@+id/rules_subtitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:layout_marginLeft="4sp"/>
+                android:layout_marginLeft="4sp"
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/rules_content1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"/>
+                android:layout_marginRight="8dp" />
 
             <ImageView
                 android:id="@+id/rules_image"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/rules_pictures"/>
+                android:src="@drawable/rules_pictures" />
 
             <TextView
                 android:id="@+id/rules_content2"
@@ -44,9 +51,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10sp"
                 android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"/>
+                android:layout_marginRight="8dp" />
 
         </LinearLayout>
     </ScrollView>
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

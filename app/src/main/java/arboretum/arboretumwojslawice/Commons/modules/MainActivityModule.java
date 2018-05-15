@@ -26,14 +26,4 @@ public abstract class MainActivityModule {
 
     @ContributesAndroidInjector(modules = FavouritesModule.class)
     abstract FavouritesFragment bindFavouritesFragment();
-
-    @ContributesAndroidInjector(modules = AttractionModule.class)
-    abstract AttractionFragment bindAttractionFragment();
-
-    @ContributesAndroidInjector(modules = HotelModule.class)
-    abstract HotelFragment bindHotelFragment();
-
-    @ContributesAndroidInjector(modules = RestaurantModule.class)
-    abstract RestaurantFragment bindRestaurantFragment();
-
 }
