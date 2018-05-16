@@ -129,6 +129,8 @@ public class NavigationActivity extends DaggerAppCompatActivity implements Locat
 
         mapImage = findViewById(R.id.map);
         resources = getResources();
+        createBitmap();
+        getBitmapWidthHeight();
         canvasBitmap = Bitmap.createBitmap(width,height,Bitmap.Config.RGB_565);
         mapBitmap = BitmapFactory.decodeResource(resources, resources.getIdentifier("arboretum_map2", "drawable", getPackageName()));
         x=countX(lon);
