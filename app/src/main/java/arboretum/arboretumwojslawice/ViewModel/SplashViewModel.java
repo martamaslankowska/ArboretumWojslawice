@@ -48,12 +48,6 @@ public class SplashViewModel {
     public EventRowList getEventNameConcatenate(Context context) {
         String eventNames = "";
         String ampersand = context.getString(getStringResource(context, "ampersand"));
-//        Map<String, String> ampersandMap = new HashMap();
-//        ampersandMap.put("pl", "oraz");
-//        ampersandMap.put("en", "and");
-//        ampersandMap.put("de", "brrr");
-//
-//        String ampersand = ampersandMap.get(eventRepository.languageCode);
 
         int nearestDate = eventRepository.getAllDateFromToday().get(0);
         List<Event> eventsDuringNearestDate = eventRepository.getAllDuringGivenDate(nearestDate);
@@ -62,6 +56,8 @@ public class SplashViewModel {
         if (nrOfEvents > 0) {
             if (nrOfEvents > 1) {
                 for (int i = 0; i < nrOfEvents; i++) {
+                    if (i!= 0 && i != (nrOfEvents - 1))
+                        eventNames += ",";
                     if (i == (nrOfEvents - 1))
                         eventNames += " " + ampersand + " " + eventsDuringNearestDate.get(i).getType().toLowerCase();
                     else

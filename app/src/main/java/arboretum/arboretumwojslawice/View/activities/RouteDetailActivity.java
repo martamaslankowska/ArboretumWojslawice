@@ -252,11 +252,10 @@ public class RouteDetailActivity extends DaggerAppCompatActivity implements View
                         }
                         ,throwable -> {
                             /* onError() */
-                            Toast.makeText(this, "Jakiś błąąąd w traskach... -.- -.-", Toast.LENGTH_LONG).show();
+                            Toast.makeText(this, "Jakiś błąąąd w traskach... -.- -.-", Toast.LENGTH_LONG);
                         });
 
         compositeDisposable.add(cdPointsOnRoute);
-
 
 
 //        route = routeDetailViewModel.getRouteById(route_id);

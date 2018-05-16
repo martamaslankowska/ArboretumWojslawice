@@ -49,7 +49,7 @@
         <item>ic_important</item>
         <item>ic_phone</item>
         <item>ic_important</item>
-        <item>ic_important</item>
+        <item>ic_settings</item>
     </string-array>
 
     <string name="favourites_text">Nie masz żadnych ulubionych roślin!</string>
