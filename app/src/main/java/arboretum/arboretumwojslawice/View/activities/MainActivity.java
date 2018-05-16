@@ -49,7 +49,7 @@ public class MainActivity extends DaggerAppCompatActivity {
 
         switch (item.getItemId()) {
             case R.id.navigation_home:
-                mFragmentManager.popBackStackImmediate();
+                //mFragmentManager.popBackStackImmediate();
                 mHomeFragment = new HomeFragment();
                 getSupportFragmentManager().beginTransaction()
                         .replace(R.id.fragment_container,mHomeFragment)
@@ -59,7 +59,7 @@ public class MainActivity extends DaggerAppCompatActivity {
                 Log.d("Arboretum", "Home" + String.valueOf(isExit));
                 return true;
             case R.id.navigation_map_and_route:
-                mFragmentManager.popBackStackImmediate();
+                //mFragmentManager.popBackStackImmediate();
                 mRouteMapFragment = new RouteMapFragment();
                 getSupportFragmentManager().beginTransaction()
                         .replace(R.id.fragment_container,mRouteMapFragment)
@@ -69,7 +69,7 @@ public class MainActivity extends DaggerAppCompatActivity {
                 Log.d("Arboretum", String.valueOf(isExit));
                 return true;
             case R.id.navigation_favourites:
-                mFragmentManager.popBackStackImmediate();
+                //mFragmentManager.popBackStackImmediate();
                 mFavouritesFragment = new FavouritesFragment();
                 getSupportFragmentManager().beginTransaction()
                         .replace(R.id.fragment_container,mFavouritesFragment)
@@ -79,7 +79,7 @@ public class MainActivity extends DaggerAppCompatActivity {
                 Log.d("Arboretum", String.valueOf(isExit));
                 return true;
             case R.id.navigation_more:
-                mFragmentManager.popBackStackImmediate();
+                //mFragmentManager.popBackStackImmediate();
                 mMoreFragment = new MoreFragment();
                 getSupportFragmentManager().beginTransaction()
                         .replace(R.id.fragment_container,mMoreFragment)
