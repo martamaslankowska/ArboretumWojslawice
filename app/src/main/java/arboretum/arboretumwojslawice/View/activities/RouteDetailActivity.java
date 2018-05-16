@@ -50,7 +50,7 @@ import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
-public class RouteDetailActivity extends DaggerAppCompatActivity implements ViewPagerAdapter.OnItemClickListener {
+public class RouteDetailActivity extends DaggerAppCompatActivity implements View.OnClickListener {
 
     public static final String BUNDLE = "BUNDLE";
     public static final String ROUTE_ID = "ROUTE_ID";
@@ -67,6 +67,7 @@ public class RouteDetailActivity extends DaggerAppCompatActivity implements View
     View.OnClickListener listener;
 
     ViewPager viewPager;
+    @Inject
     ViewPagerAdapter viewPagerAdapter;
     protected CompositeDisposable compositeDisposable;
     Context context;
@@ -200,9 +201,11 @@ public class RouteDetailActivity extends DaggerAppCompatActivity implements View
                             });
 
                             viewPager = findViewById(R.id.viewPager);
-                            viewPagerAdapter = new ViewPagerAdapter(context, listener);
+                            //viewPagerAdapter = new ViewPagerAdapter(context, listener);
                             viewPagerAdapter.setData(routePointList);
                             viewPager.setAdapter(viewPagerAdapter);
+
+
 
                             viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
                                 @Override
@@ -360,6 +363,8 @@ public class RouteDetailActivity extends DaggerAppCompatActivity implements View
 
     }
 
+
+
     public boolean onOptionsItemSelected(MenuItem item) {
         // handle arrow click here
         if (item.getItemId() == android.R.id.home) {
@@ -433,6 +438,12 @@ public class RouteDetailActivity extends DaggerAppCompatActivity implements View
     }
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        compositeDisposable.clear();
+    }
+
+    @Override
     public void onClick(View view) {
         int plantId = routePointList.get(viewPager.getCurrentItem()).getIdPlant();
         Toast.makeText(getApplicationContext(), "This page was clicked: " + plantId, Toast.LENGTH_SHORT).show();
@@ -442,11 +453,6 @@ public class RouteDetailActivity extends DaggerAppCompatActivity implements View
         bundle.putInt(PLANT_ID, plantId);
         intent.putExtra(BUNDLE, bundle);
         startActivityForResult(intent, 123);
-    }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        compositeDisposable.clear();
     }
 }

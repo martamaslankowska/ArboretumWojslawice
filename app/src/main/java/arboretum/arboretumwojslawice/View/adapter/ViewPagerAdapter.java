@@ -69,11 +69,8 @@ public class ViewPagerAdapter extends PagerAdapter {
         vp.removeView(view);
     }
 
-    public interface OnItemClickListener extends View.OnClickListener {
-        void onClick(View view);
-    }
-
     public void setData(List<Plant> mPlants) {
         this.mPlants = mPlants;
     }
+
 }
