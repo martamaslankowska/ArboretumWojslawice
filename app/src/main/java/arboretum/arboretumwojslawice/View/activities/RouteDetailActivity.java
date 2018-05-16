@@ -375,11 +375,11 @@ public class RouteDetailActivity extends DaggerAppCompatActivity implements View
         positionMarkerBitmap = BitmapFactory.decodeResource(resources,R.drawable.ic_marker_black_big);
         markerBitmap = BitmapFactory.decodeResource(resources, R.drawable.ic_marker_flower);
         colorMarkerBitmap = BitmapFactory.decodeResource(resources, R.drawable.ic_marker_flower_color);
-        GetBitmapWidthHeight();
+        getBitmapWidthHeight();
         canvasBitmap = Bitmap.createBitmap(width,height,Bitmap.Config.RGB_565);
     }
 
-    public void GetBitmapWidthHeight(){
+    public void getBitmapWidthHeight(){
         width = mapBitmap.getWidth();
         height = mapBitmap.getHeight();
     }

@@ -48,13 +48,13 @@ public class NavigationActivity extends DaggerAppCompatActivity implements Locat
     private Bundle bundle;
     private Route mRoute;
     private int route_id;
-
+    
     int x=0,y=0;
-    Bitmap bitmap1,bitmap2,bitmap3;
+    Bitmap positionMarkerBitmap,canvasBitmap,mapBitmap, markerBitmap;
     Canvas canvas;
-    ImageView imageview;
     Resources resources;
     int width, height;
+    private ImageView mapImage;
 
     //arboretum
     public final static double MinLat = 50.708060;
@@ -70,9 +70,11 @@ public class NavigationActivity extends DaggerAppCompatActivity implements Locat
 
 
     //restaurant
-    double lon=16.856737;
-    double lat=50.711166;
-    //double lon,lat;
+//    double lon=16.856737;
+//    double lat=50.711166;
+
+
+    double lon,lat;
 
 
     @Override
@@ -119,25 +121,23 @@ public class NavigationActivity extends DaggerAppCompatActivity implements Locat
 
         ActivityCompat.requestPermissions(NavigationActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 123);
         //uncomment to check real position
-//        Location l = getLocation();
-//        if (l != null) {
-//            lat = l.getLatitude();
-//            lon = l.getLongitude();
-//        }
+        Location l = getLocation();
+        if (l != null) {
+            lat = l.getLatitude();
+            lon = l.getLongitude();
+        }
 
-        imageview = findViewById(R.id.map);
+        mapImage = findViewById(R.id.map);
         resources = getResources();
-        CreateBitmap();
-        GetBitmapWidthHeight();
-        bitmap2 = Bitmap.createBitmap(width,height,Bitmap.Config.RGB_565);
-
+        canvasBitmap = Bitmap.createBitmap(width,height,Bitmap.Config.RGB_565);
+        mapBitmap = BitmapFactory.decodeResource(resources, resources.getIdentifier("arboretum_map2", "drawable", getPackageName()));
         x=countX(lon);
         y=countY(lat);
         //Toast.makeText(getApplicationContext(), x + "\n" +  y, Toast.LENGTH_SHORT).show();
-        DrawCanvas();
+        createBitmap();
+        drawCanvas();
         drawMarker(x,y);
-        imageview.setImageBitmap(bitmap2);
-
+        mapImage.setImageBitmap(canvasBitmap);
     }
 
    public Location getLocation(){
@@ -170,8 +170,11 @@ public class NavigationActivity extends DaggerAppCompatActivity implements Locat
         double lon = location.getLongitude();
         double lat = location.getLatitude();
         int x = countX(lon);
-        int y=countY(lat);
-        drawMarker(x,y);
+        int y = countY(lat);
+        mapBitmap = BitmapFactory.decodeResource(resources, resources.getIdentifier("arboretum_map2", "drawable", getPackageName()));
+        drawCanvas();
+        drawMarker(x, y);
+        mapImage.setImageBitmap(canvasBitmap);
     }
 
     @Override
@@ -186,24 +189,26 @@ public class NavigationActivity extends DaggerAppCompatActivity implements Locat
     public void onProviderDisabled(String s) {
     }
 
-    public void CreateBitmap(){
-        bitmap1 = BitmapFactory.decodeResource(resources,R.drawable.ic_marker_black_big);
-        bitmap3 = BitmapFactory.decodeResource(resources,R.drawable.arboretum_map2);
+    public void createBitmap(){
+        markerBitmap = BitmapFactory.decodeResource(resources,R.drawable.ic_marker_black_big);
+        mapBitmap = BitmapFactory.decodeResource(resources,R.drawable.arboretum_map2);
+        getBitmapWidthHeight();
+        canvasBitmap = Bitmap.createBitmap(width,height,Bitmap.Config.RGB_565);
     }
 
-    public void GetBitmapWidthHeight(){
-        width = bitmap3.getWidth();
-        height = bitmap3.getHeight();
+    public void getBitmapWidthHeight(){
+        width = mapBitmap.getWidth();
+        height = mapBitmap.getHeight();
         //Toast.makeText(getApplicationContext(), width + "\n" +  height, Toast.LENGTH_SHORT).show();
     }
 
-    public void DrawCanvas(){
-        canvas = new Canvas(bitmap2);
-        canvas.drawBitmap(bitmap3,0,0,null);
+    public void drawCanvas(){
+        canvas = new Canvas(canvasBitmap);
+        canvas.drawBitmap(mapBitmap,0,0,null);
     }
 
     public void drawMarker(int x, int y){
-        canvas.drawBitmap(bitmap1,x,y,null);
+        canvas.drawBitmap(markerBitmap,x,y,null);
     }
 
     public int countX(double lon){
