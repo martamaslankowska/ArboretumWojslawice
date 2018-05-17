@@ -25,6 +25,10 @@ public class PointOnRoute {
     @ColumnInfo(name = "Y")
     private Double y;
 
+    @ColumnInfo(name = "Highlighted")
+    private Boolean highlighted;
+
+
 
     @Ignore
     public PointOnRoute(Integer pointOrder) {
@@ -42,11 +46,12 @@ public class PointOnRoute {
         this.y = y;
     }
 
-    public PointOnRoute(Integer pointOrder, Integer idPlant, Double x, Double y) {
+    public PointOnRoute(Integer pointOrder, Integer idPlant, Double x, Double y, Boolean highlighted) {
         this.pointOrder = pointOrder;
         this.idPlant = idPlant;
         this.x = x;
         this.y = y;
+        this.highlighted = highlighted;
     }
 
     @Ignore
@@ -97,8 +102,15 @@ public class PointOnRoute {
         this.y = y;
     }
 
+    public Boolean getHighlighted() {
+        return highlighted;
+    }
 
-//    @Override
+    public void setHighlighted(Boolean highlighted) {
+        this.highlighted = highlighted;
+    }
+
+    //    @Override
 //    public String toString() {
 //        return "(RouteId = " + idRoute + ") nr " + pointOrder + " --> " + plant.getName() + "(id = " + plant.getIdPlant() + ")";
 //    }

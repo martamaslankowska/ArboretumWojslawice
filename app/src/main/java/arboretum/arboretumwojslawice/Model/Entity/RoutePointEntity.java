@@ -31,6 +31,10 @@ public class RoutePointEntity {
     @ColumnInfo(name = "PointOrder")
     private int pointOrder;
 
+    @ColumnInfo(name = "Highlighted")
+    private boolean highlighted;
+
+
 
     public int getIdRoute() {
         return idRoute;
@@ -54,5 +58,13 @@ public class RoutePointEntity {
 
     public void setPointOrder(int pointOrder) {
         this.pointOrder = pointOrder;
+    }
+
+    public boolean isHighlighted() {
+        return highlighted;
+    }
+
+    public void setHighlighted(boolean highlighted) {
+        this.highlighted = highlighted;
     }
 }

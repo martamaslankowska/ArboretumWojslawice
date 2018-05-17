@@ -25,7 +25,7 @@ public abstract class RouteDao extends BaseDao<RouteEntity> {
             "WHERE TranslationCode IN (:translationCode)")
     public abstract List<Route> getAll(String translationCode);
 
-    @Query("SELECT PointOrder, IdPlant, X, Y " +
+    @Query("SELECT PointOrder, IdPlant, X, Y, Highlighted " +
             "FROM Routes LEFT JOIN RoutePoints ON Routes.IdRoute = RoutePoints.IdRoute " +
             "LEFT JOIN Locations ON RoutePoints.IdLocation = Locations.IdLocation " +
             "WHERE Routes.IdRoute IN (:idRoute)")
