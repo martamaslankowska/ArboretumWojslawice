@@ -56,7 +56,7 @@ public class MainActivity extends DaggerAppCompatActivity {
                         .addToBackStack(null)
                         .commit();
                 isExit = 1;
-                Log.d("Arboretum", "Home" + String.valueOf(isExit));
+                Log.d("Arboretum", "Home: " + String.valueOf(isExit));
                 return true;
             case R.id.navigation_map_and_route:
                 //mFragmentManager.popBackStackImmediate();
@@ -66,7 +66,7 @@ public class MainActivity extends DaggerAppCompatActivity {
                         .addToBackStack(null)
                         .commit();
                 isExit = 0;
-                Log.d("Arboretum", String.valueOf(isExit));
+                Log.d("Arboretum", "MapRoute: " + String.valueOf(isExit));
                 return true;
             case R.id.navigation_favourites:
                 //mFragmentManager.popBackStackImmediate();
@@ -76,7 +76,7 @@ public class MainActivity extends DaggerAppCompatActivity {
                         .addToBackStack(null)
                         .commit();
                 isExit = 0;
-                Log.d("Arboretum", String.valueOf(isExit));
+                Log.d("Arboretum", "Favourites: " + String.valueOf(isExit));
                 return true;
             case R.id.navigation_more:
                 //mFragmentManager.popBackStackImmediate();
@@ -86,7 +86,7 @@ public class MainActivity extends DaggerAppCompatActivity {
                         .addToBackStack(null)
                         .commit();
                 isExit = 0;
-                Log.d("Arboretum", String.valueOf(isExit));
+                Log.d("Arboretum", "More: " + String.valueOf(isExit));
                 return true;
         }
         return false;
@@ -126,6 +126,8 @@ public class MainActivity extends DaggerAppCompatActivity {
                 .replace(R.id.fragment_container,mHomeFragment)
                 .addToBackStack(null)
                 .commit();
+        isExit = 0;
+        Log.d("Arboretum", "onCreate: " + String.valueOf(isExit));
 
     }
 
@@ -155,14 +157,47 @@ public class MainActivity extends DaggerAppCompatActivity {
             toast.setGravity(Gravity.CENTER, 0, 0);
             toast.makeText(getApplicationContext(), R.string.toast_exit, Toast.LENGTH_SHORT).show();
         }
-        Log.d("Arboretum", String.valueOf(isExit));
+        Log.d("Arboretum", "onBackPressed: " + String.valueOf(isExit));
     }
 
     @Override
     protected void onStart() {
+        Log.d("Arboretum", "onStart: " + String.valueOf(isExit));
         super.onStart();
     }
 
+    @Override
+    protected void onStop() {
+        Log.d("Arboretum", "onStop: " + String.valueOf(isExit));
+        super.onStop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        Log.d("Arboretum", "onDestroy: " + String.valueOf(isExit));
+        super.onDestroy();
+    }
+
+    @Override
+    protected void onRestart() {
+        Log.d("Arboretum", "onRestart: " + String.valueOf(isExit));
+        super.onRestart();
+    }
+
+    @Override
+    protected void onResume() {
+        if (isExit == 2) {
+            isExit = 1;
+        }
+        Log.d("Arboretum", "onResume: " + String.valueOf(isExit));
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        Log.d("Arboretum", "onPause: " + String.valueOf(isExit));
+        super.onPause();
+    }
 
     public void newsClick(View view) {
         Intent intent = new Intent(this, NewsDetailActivity.class);
