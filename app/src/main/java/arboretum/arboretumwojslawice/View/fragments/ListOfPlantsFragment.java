@@ -1,15 +1,12 @@
 package arboretum.arboretumwojslawice.View.fragments;
 
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.util.List;
@@ -25,7 +22,6 @@ import arboretum.arboretumwojslawice.ViewModel.PlantViewModel;
 import dagger.android.support.DaggerFragment;
 import io.reactivex.Completable;
 import io.reactivex.Maybe;
-import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
@@ -39,17 +35,17 @@ public class ListOfPlantsFragment extends DaggerFragment implements PlantAdapter
     public static final String TAB_ID = "TAB_ID";
     public static final String BUNDLE = "BUNDLE";
 
-    protected ListOfPlantsFragment.LayoutManagerType mCurrentLayoutManagerType;
+    protected ListOfPlantsFragment.LayoutManagerType currentLayoutManagerType;
 
-    protected RecyclerView mRecyclerView;
-
-    @Inject
-    protected PlantAdapter mAdapter;
+    protected RecyclerView recyclerView;
 
     @Inject
-    protected PlantViewModel mPlantViewModel;
-    protected RecyclerView.LayoutManager mLayoutManager;
-    protected List<Plant> mPlants;
+    protected PlantAdapter adapter;
+
+    @Inject
+    protected PlantViewModel plantViewModel;
+    protected RecyclerView.LayoutManager layoutManager;
+    protected List<Plant> plants;
     protected CompositeDisposable compositeDisposable;
     private boolean isFavourite;
 
@@ -59,7 +55,7 @@ public class ListOfPlantsFragment extends DaggerFragment implements PlantAdapter
     public void onItemClick(int position) {
         Intent intent = new Intent(getActivity().getApplicationContext(), PlantDetailActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putInt(PLANT_ID, mPlants.get(position).getIdPlant());
+        bundle.putInt(PLANT_ID, plants.get(position).getIdPlant());
         bundle.putInt(TAB_ID, n);
         intent.putExtra(BUNDLE, bundle);
         getActivity().startActivityForResult(intent, 123);
@@ -67,13 +63,13 @@ public class ListOfPlantsFragment extends DaggerFragment implements PlantAdapter
 
     @Override
     public void onHeartClick(int position) {
-        //Toast.makeText(getContext(), "Dodano do ulubionych; id: " + mPlants.get(position).getIdPlant(), Toast.LENGTH_SHORT).show();
-        //mPlantViewModel.setFavourite(mPlants.get(position).getIdPlant());
+        //Toast.makeText(getContext(), "Dodano do ulubionych; id: " + plants.get(position).getIdPlant(), Toast.LENGTH_SHORT).show();
+        //plantViewModel.setFavourite(plants.get(position).getIdPlant());
         //mImageView.setImageResource(R.drawable.icons8_heart_red);
 
 
         Disposable listOfPlants = Completable.fromAction(() -> {
-            isFavourite = mPlantViewModel.setFavourite(mPlants.get(position).getIdPlant());
+            isFavourite = plantViewModel.setFavourite(plants.get(position).getIdPlant());
         })
                 .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -124,13 +120,13 @@ public class ListOfPlantsFragment extends DaggerFragment implements PlantAdapter
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_list_of_plants, container, false);
 
-       // mPlantViewModel = new PlantViewModel();
-        mRecyclerView = view.findViewById(R.id.conifeerous_recycler_view);
+       // plantViewModel = new PlantViewModel();
+        recyclerView = view.findViewById(R.id.conifeerous_recycler_view);
         compositeDisposable = new CompositeDisposable();
 
 
         Disposable listOfPlants = Maybe.fromCallable(() -> {
-            return mPlantViewModel.getAllByKind(n);
+            return plantViewModel.getAllByKind(n);
         })
                 .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -143,12 +139,12 @@ public class ListOfPlantsFragment extends DaggerFragment implements PlantAdapter
 //                                Toast.makeText(getActivity(), "Ups, pusta baza :(", Toast.LENGTH_SHORT).show();
 //                            }
 
-                            mPlants = plants;
-
-                            mRecyclerView.setAdapter(mAdapter);
-                            mAdapter.setData(mPlants);
-                            mLayoutManager = new LinearLayoutManager(getActivity());
-                            mCurrentLayoutManagerType = ListOfPlantsFragment.LayoutManagerType.LINEAR_LAYOUT_MANAGER;
+                            this.plants = plants;
+                            recyclerView.addItemDecoration(new DividerItemDecoration(this.getContext(), 0));
+                            recyclerView.setAdapter(adapter);
+                            adapter.setData(this.plants);
+                            layoutManager = new LinearLayoutManager(getActivity());
+                            currentLayoutManagerType = ListOfPlantsFragment.LayoutManagerType.LINEAR_LAYOUT_MANAGER;
 
                         }
                         ,throwable -> {
@@ -161,7 +157,7 @@ public class ListOfPlantsFragment extends DaggerFragment implements PlantAdapter
 
         if (savedInstanceState != null) {
             // Restore saved layout manager type.
-            mCurrentLayoutManagerType = (ListOfPlantsFragment.LayoutManagerType) savedInstanceState
+            currentLayoutManagerType = (ListOfPlantsFragment.LayoutManagerType) savedInstanceState
                     .getSerializable(KEY_LAYOUT_MANAGER);
         }
         setRecyclerViewLayoutManager();
@@ -173,18 +169,18 @@ public class ListOfPlantsFragment extends DaggerFragment implements PlantAdapter
         int scrollPosition = 0;
 
         // If a layout manager has already been set, get current scroll position.
-        if (mRecyclerView.getLayoutManager() != null) {
-            scrollPosition = ((LinearLayoutManager) mRecyclerView.getLayoutManager())
+        if (recyclerView.getLayoutManager() != null) {
+            scrollPosition = ((LinearLayoutManager) recyclerView.getLayoutManager())
                     .findFirstCompletelyVisibleItemPosition();
         }
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        mRecyclerView.scrollToPosition(scrollPosition);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.scrollToPosition(scrollPosition);
     }
 
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
         // Save currently selected layout manager.
-        savedInstanceState.putSerializable(KEY_LAYOUT_MANAGER, mCurrentLayoutManagerType);
+        savedInstanceState.putSerializable(KEY_LAYOUT_MANAGER, currentLayoutManagerType);
         super.onSaveInstanceState(savedInstanceState);
     }
 

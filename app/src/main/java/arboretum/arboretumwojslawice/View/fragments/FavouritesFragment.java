@@ -14,6 +14,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import arboretum.arboretumwojslawice.Commons.DividerItemDecoration;
 import arboretum.arboretumwojslawice.Model.businessentity.Plant;
 import arboretum.arboretumwojslawice.R;
 import arboretum.arboretumwojslawice.View.activities.PlantDetailActivity;
@@ -33,25 +34,25 @@ public class FavouritesFragment extends DaggerFragment implements FavouritesAdap
     public static final String PLANT_ID = "PLANT_ID";
     public static final String BUNDLE = "BUNDLE";
 
-    protected FavouritesFragment.LayoutManagerType mCurrentLayoutManagerType;
+    protected FavouritesFragment.LayoutManagerType currentLayoutManagerType;
 
-    protected RecyclerView mRecyclerView;
+    protected RecyclerView recyclerView;
     private TextView noFavouritesTextView;
 
     @Inject
-    protected FavouritesAdapter mAdapter;
+    protected FavouritesAdapter adapter;
 
     @Inject
-    protected FavouriteViewModel mFavouriteViewModel;
-    protected RecyclerView.LayoutManager mLayoutManager;
-    protected List<Plant> mPlants;
+    protected FavouriteViewModel favouriteViewModel;
+    protected RecyclerView.LayoutManager layoutManager;
+    protected List<Plant> plants;
     protected CompositeDisposable compositeDisposable;
 
     @Override
     public void onItemClick(int position) {
         Intent intent = new Intent(getActivity().getApplicationContext(), PlantDetailActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putInt(PLANT_ID, mPlants.get(position).getIdPlant());
+        bundle.putInt(PLANT_ID, plants.get(position).getIdPlant());
         intent.putExtra(BUNDLE, bundle);
         getActivity().startActivityForResult(intent, 123);
     }
@@ -71,24 +72,24 @@ public class FavouritesFragment extends DaggerFragment implements FavouritesAdap
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_favourites, container, false);
 
-        mRecyclerView = view.findViewById(R.id.favourite_recycler_view);
+        recyclerView = view.findViewById(R.id.favourite_recycler_view);
         compositeDisposable = new CompositeDisposable();
         noFavouritesTextView = view.findViewById(R.id.noFavouriteTextView);
 
         Disposable listOfPlants = Maybe.fromCallable(() -> {
-            return mFavouriteViewModel.getAllFavourites();
+            return favouriteViewModel.getAllFavourites();
         })
                 .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(prices -> {
 
-                            mPlants = prices;
-
-                            mRecyclerView.setAdapter(mAdapter);
-                            mAdapter.setData(mPlants);
-                            mLayoutManager = new LinearLayoutManager(getActivity());
-                            mCurrentLayoutManagerType = FavouritesFragment.LayoutManagerType.LINEAR_LAYOUT_MANAGER;
-                            if (!mPlants.isEmpty()) {
+                            plants = prices;
+                            recyclerView.addItemDecoration(new DividerItemDecoration(this.getContext(), 0));
+                            recyclerView.setAdapter(adapter);
+                            adapter.setData(plants);
+                            layoutManager = new LinearLayoutManager(getActivity());
+                            currentLayoutManagerType = FavouritesFragment.LayoutManagerType.LINEAR_LAYOUT_MANAGER;
+                            if (!plants.isEmpty()) {
                                 noFavouritesTextView.setVisibility(View.INVISIBLE);
                             } else {
                                 noFavouritesTextView.setText(R.string.favourites_text);
@@ -104,13 +105,13 @@ public class FavouritesFragment extends DaggerFragment implements FavouritesAdap
 
         //adapter = new PlantAdapter(listener);
 //        recyclerView.setAdapter(adapter);
-//        adapter.setData(mPlants);
+//        adapter.setData(plants);
 //        layoutManager = new LinearLayoutManager(getActivity());
 //        currentLayoutManagerType = ListOfPlantsFragment.LayoutManagerType.LINEAR_LAYOUT_MANAGER;
 
         if (savedInstanceState != null) {
             // Restore saved layout manager type.
-            mCurrentLayoutManagerType = (FavouritesFragment.LayoutManagerType) savedInstanceState
+            currentLayoutManagerType = (FavouritesFragment.LayoutManagerType) savedInstanceState
                     .getSerializable(KEY_LAYOUT_MANAGER);
         }
         setRecyclerViewLayoutManager();
@@ -122,18 +123,18 @@ public class FavouritesFragment extends DaggerFragment implements FavouritesAdap
         int scrollPosition = 0;
 
         // If a layout manager has already been set, get current scroll position.
-        if (mRecyclerView.getLayoutManager() != null) {
-            scrollPosition = ((LinearLayoutManager) mRecyclerView.getLayoutManager())
+        if (recyclerView.getLayoutManager() != null) {
+            scrollPosition = ((LinearLayoutManager) recyclerView.getLayoutManager())
                     .findFirstCompletelyVisibleItemPosition();
         }
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        mRecyclerView.scrollToPosition(scrollPosition);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.scrollToPosition(scrollPosition);
     }
 
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
         // Save currently selected layout manager.
-        savedInstanceState.putSerializable(KEY_LAYOUT_MANAGER, mCurrentLayoutManagerType);
+        savedInstanceState.putSerializable(KEY_LAYOUT_MANAGER, currentLayoutManagerType);
         super.onSaveInstanceState(savedInstanceState);
     }
 
