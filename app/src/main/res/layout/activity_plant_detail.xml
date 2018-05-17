@@ -50,7 +50,7 @@
             android:textSize="@dimen/nonrec_font_size_big"
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/plant_location_map_button"
-            app:layout_constraintHorizontal_bias="0.057"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/plant_detail_image" />
 
@@ -104,7 +104,7 @@
 
         <ScrollView
             android:id="@+id/route_scroll_view"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginBottom="@dimen/nonrec_half_margin"
             android:layout_marginTop="@dimen/nonrec_margin"

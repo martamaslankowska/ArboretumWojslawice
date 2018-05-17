@@ -61,7 +61,7 @@ public class NewsViewModel {
                         eventNames += " " + eventsDuringNearestDate.get(i).getType().toLowerCase();
                 }
             } else {
-                eventNames = eventsDuringNearestDate.get(0).getType().toLowerCase();
+                eventNames = " " + eventsDuringNearestDate.get(0).getType().toLowerCase();
             }
         }
 
