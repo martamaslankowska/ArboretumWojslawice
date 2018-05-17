@@ -8,26 +8,20 @@ import arboretum.arboretumwojslawice.Model.Repository.EventRepository;
 import arboretum.arboretumwojslawice.Model.businessentity.Event;
 
 public class EventDetailViewModel {
-    private List<Event> mEvent;
     @Inject
-    protected EventRepository mEventRepo;
+    protected EventRepository eventRepo;
 
     @Inject
     public EventDetailViewModel(){}
 
-    public List<Event> getData() {
-        mEvent = mEventRepo.getEventsForMichal();
-        return mEvent;
-    }
-
     // return one event founded by id
     public Event getEventById(int plant_id) {
-        return mEventRepo.getById(plant_id);
+        return eventRepo.getById(plant_id);
     }
 
     public String getAllEventNameInDate(int date) {
         List<Event> eventInTheDay;
-        eventInTheDay = mEventRepo.getAllDuringGivenDate(date);
+        eventInTheDay = eventRepo.getAllDuringGivenDate(date);
         String names = "";
         for(int j = 0; j < eventInTheDay.size(); j++)
         {
@@ -51,6 +45,6 @@ public class EventDetailViewModel {
 
 
     public List<Event> getAllDuringGivenDate(int date) {
-        return mEventRepo.getAllDuringGivenDate(date);
+        return eventRepo.getAllDuringGivenDate(date);
     }
 }

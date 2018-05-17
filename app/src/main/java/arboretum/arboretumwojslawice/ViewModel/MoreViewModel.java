@@ -18,26 +18,26 @@ import arboretum.arboretumwojslawice.R;
  */
 
 public class MoreViewModel {
-    private List<MoreOptionItem> mOptions;
-    private Context mContext;
+    private List<MoreOptionItem> options;
+    private Context context;
 
     @Inject
     public MoreViewModel(AppController appController) {
-        mContext = appController.getBaseContext();
+        context = appController.getBaseContext();
     }
 
     public List<MoreOptionItem> getData() {
-        mOptions = new ArrayList<>();
-        List<String> options = Arrays.asList(mContext.getResources().getStringArray(R.array.more_options));
+        options = new ArrayList<>();
+        List<String> options = Arrays.asList(context.getResources().getStringArray(R.array.more_options));
         for (String item : options) {
-            mOptions.add(new MoreOptionItem(item));
+            this.options.add(new MoreOptionItem(item));
         }
 
-        List<String> options_images = Arrays.asList(mContext.getResources().getStringArray(R.array.more_options_images));
+        List<String> options_images = Arrays.asList(context.getResources().getStringArray(R.array.more_options_images));
         for (int i=0; i<options_images.size(); i++) {
-            mOptions.get(i).setImageName(options_images.get(i));
+            this.options.get(i).setImageName(options_images.get(i));
             Log.i("MoreViewModel", options_images.get(i));
         }
-        return mOptions;
+        return this.options;
     }
 }

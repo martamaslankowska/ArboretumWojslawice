@@ -3,9 +3,7 @@ package arboretum.arboretumwojslawice.ViewModel;
 import android.content.Context;
 
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
 
 import javax.inject.Inject;

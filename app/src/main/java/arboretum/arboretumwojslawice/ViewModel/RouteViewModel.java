@@ -12,7 +12,6 @@ import arboretum.arboretumwojslawice.Model.businessentity.Route;
  */
 
 public class RouteViewModel {
-    List<Route> mRoutes;
 
     @Inject
     protected RouteRepository routeRepository;
@@ -28,23 +27,4 @@ public class RouteViewModel {
         return routeRepository.getById(routeId);
     }
 
-
-
-    /* Niech to ktoś skasuje..... :p */
-
-    public List<Route> getData() {
-        mRoutes = routeRepository.getRoutesForMichal();
-        return mRoutes;
-    }
-
-    // return one plant founded by id
-    public Route getRouteById(int plant_id) {
-        getData();
-        for(int i = 0; i < mRoutes.size(); i++) {
-            if(mRoutes.get(i).getIdRoute() == plant_id) {
-                return mRoutes.get(i);
-            }
-        }
-        return mRoutes.get(plant_id);
-    }
 }

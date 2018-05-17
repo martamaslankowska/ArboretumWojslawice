@@ -96,7 +96,7 @@ public class NavigationActivity extends DaggerAppCompatActivity implements Locat
                 .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(routes -> {
-                            mRoute = routeViewModel.getRouteById(route_id); //do mRoute przypisujemy odpowiednią trasę
+                            Route route = routes;
 
                             /* toolbar */
                             Toolbar toolbar = findViewById(R.id.toolbar_back);
@@ -107,7 +107,7 @@ public class NavigationActivity extends DaggerAppCompatActivity implements Locat
                                 getSupportActionBar().setDisplayShowHomeEnabled(true);
                             }
                             getSupportActionBar().setTitle(R.string.toolbar_navigation);
-                            getSupportActionBar().setSubtitle(mRoute.getName());
+                            getSupportActionBar().setSubtitle(route.getName());
                             /* /toolbar */
                         }
                         ,throwable -> {

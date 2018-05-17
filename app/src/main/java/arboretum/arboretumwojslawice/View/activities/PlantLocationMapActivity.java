@@ -8,10 +8,10 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,12 +20,16 @@ import javax.inject.Inject;
 
 import arboretum.arboretumwojslawice.Commons.map.LonLat;
 import arboretum.arboretumwojslawice.Commons.map.PixelCoordinates;
-import arboretum.arboretumwojslawice.Model.Repository.PlantRepository;
 import arboretum.arboretumwojslawice.Model.businessentity.Location;
 import arboretum.arboretumwojslawice.Model.businessentity.Plant;
 import arboretum.arboretumwojslawice.R;
 import arboretum.arboretumwojslawice.ViewModel.PlantViewModel;
 import dagger.android.support.DaggerAppCompatActivity;
+import io.reactivex.Maybe;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 public class PlantLocationMapActivity extends DaggerAppCompatActivity {
 
@@ -36,7 +40,7 @@ public class PlantLocationMapActivity extends DaggerAppCompatActivity {
     @Inject
     protected PlantViewModel plantViewModel;
     private Bundle bundle;
-    private Plant mPlant;
+    private CompositeDisposable compositeDisposable;
 
     /* map variables*/
     int x=0,y=0;
@@ -45,7 +49,6 @@ public class PlantLocationMapActivity extends DaggerAppCompatActivity {
     ImageView imageview;
     Resources resources;
     int width, height;
-    PlantRepository plantRepo;
     List<LonLat> places = new ArrayList<>();
     List<Location> locations;
 
@@ -61,46 +64,42 @@ public class PlantLocationMapActivity extends DaggerAppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plant_location_map);
+        compositeDisposable = new CompositeDisposable();
 
         Intent intent = getIntent();
         bundle = intent.getBundleExtra(BUNDLE);
 
         plant_id = bundle.getInt(PLANT_ID);
-        mPlant = plantViewModel.getPlantById(plant_id); //do mPlant przypisujemy odpowiednią roślinkę
 
-        /* toolbar */
-        Toolbar toolbar = findViewById(R.id.toolbar_back);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle(R.string.toolbar_plant_location_map);
-        getSupportActionBar().setSubtitle(mPlant.getName());
 
-        if (getSupportActionBar() != null){
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setDisplayShowHomeEnabled(true);
-        }
-        /* /toolbar */
+        Disposable cdPlant = Maybe.fromCallable(() -> {
+            return plantViewModel.getById(plant_id);
+        })
+                .subscribeOn(Schedulers.computation())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(dbPlant -> {
+                            Plant plant = dbPlant;
 
-        /* get data from database */
-//        Disposable gettingPlants = Maybe.fromCallable(() -> {
-//            return plantRepo.getAllPlants();
-//        })
-//                .subscribeOn(Schedulers.computation())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe(plants -> {
-//                            /* onSuccess() :) */
-//                            try {
-//                                mPlant = plants.get(plant_id);
-//                                Toast.makeText(this, "pobrane z bazy :D", Toast.LENGTH_SHORT).show();
-//                            } catch (Exception e){
-//                                Toast.makeText(this, "nieudało się :(", Toast.LENGTH_SHORT).show();
-//                            }
-//                        }
-//                        ,throwable -> {
-//                            /* onError() */
-//                            Toast.makeText(this, "Jakiś błąąąd... -.- -.-", Toast.LENGTH_LONG).show();
-//                        });
-         /* /get data from database */
-        locations = mPlant.getLocations();
+                            /* toolbar */
+                            Toolbar toolbar = findViewById(R.id.toolbar_back);
+                            setSupportActionBar(toolbar);
+                            getSupportActionBar().setTitle(R.string.toolbar_plant_location_map);
+                            getSupportActionBar().setSubtitle(plant.getName());
+
+                            if (getSupportActionBar() != null) {
+                                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+                                getSupportActionBar().setDisplayShowHomeEnabled(true);
+                            }
+                            /* /toolbar */
+                            locations = plant.getLocations();
+                        }
+                        ,throwable -> {
+                            /* onError() */
+                            Toast.makeText(this, "Jakiś błąąąd... -.- -.-", Toast.LENGTH_LONG).show();
+                        });
+
+        compositeDisposable.add(cdPlant);
+
 //        Toast.makeText(this, locations.get(0).getX()+", "+locations.get(0).getY() , Toast.LENGTH_LONG).show();
 //        for (Location l: locations) {
 //            double lat = l.getX();
