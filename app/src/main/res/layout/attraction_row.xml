@@ -12,13 +12,13 @@
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:focusable="true"
-        android:layout_marginBottom="4dp">
+        android:focusable="true">
 
         <ImageView
             android:id="@+id/attractionImage"
-            android:layout_width="match_parent"
-            android:layout_height="150sp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="H,16:8"
             android:scaleType="centerCrop"
             android:src="@{attraction.getImageId(context)}"
             app:layout_constraintEnd_toEndOf="parent"
@@ -30,13 +30,14 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="#a6000000"
-            android:text="@{attraction.getName() + ' ' + attraction.getDistanceString()}"
+            android:text="@{attraction.getName() + ' ' + '-' + ' ' + attraction.getDistanceString()}"
             android:textColor="@color/white"
-            android:textSize="24sp"
-            android:paddingLeft="@dimen/nonrec_half_margin"
+            android:textSize="@dimen/nonrec_font_size_big"
+            android:paddingLeft="@dimen/nonrec_margin"
+            android:paddingRight="@dimen/nonrec_margin"
             android:textStyle="bold"
-            android:paddingTop="4dp"
-            android:paddingBottom="4dp"
+            android:paddingTop="@dimen/nonrec_half_margin"
+            android:paddingBottom="@dimen/nonrec_half_margin"
             app:layout_constraintBottom_toBottomOf="@+id/attractionImage"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -49,10 +50,10 @@
             android:layout_marginTop="8dp"
             android:text="@{attraction.getDescription()}"
             android:textColor="@color/darkTextGray"
-            android:textSize="16sp"
+            android:textSize="@dimen/nonrec_font_size_small"
             android:paddingBottom="8dp"
-            android:paddingLeft="@dimen/nonrec_half_margin"
-            android:paddingRight="@dimen/nonrec_half_margin"
+            android:paddingLeft="@dimen/nonrec_margin"
+            android:paddingRight="@dimen/nonrec_margin"
             app:layout_constraintTop_toBottomOf="@+id/attractionImage"
             tools:ignore="MissingConstraints" />
 
