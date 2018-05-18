@@ -164,6 +164,12 @@ public class Event implements AdapterItem {
         return time;
     }
 
+    public String getTimeBeginString() {
+        Integer minutes = timeBegin - ((timeBegin/100)*100);
+        Integer hour = timeBegin/100;
+        return hour + ":" + minutes;
+    }
+
     public void setTimeBegin(Date time) {
         Integer minutes = time.getMinutes();
         Integer hour = time.getHours();
@@ -186,6 +192,12 @@ public class Event implements AdapterItem {
         time.setHours(hour);
         time.setMinutes(minutes);
         return time;
+    }
+
+    public String getTimeEndString() {
+        Integer minutes = timeEnd - ((timeEnd/100)*100);
+        Integer hour = timeEnd/100;
+        return hour + ":" + minutes;
     }
 
     public void setTimeEnd(Date time) {

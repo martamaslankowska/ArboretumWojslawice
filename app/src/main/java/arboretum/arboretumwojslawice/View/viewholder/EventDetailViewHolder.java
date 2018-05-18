@@ -1,5 +1,7 @@
 package arboretum.arboretumwojslawice.View.viewholder;
 
+import android.view.View;
+
 import arboretum.arboretumwojslawice.Commons.BindingViewHolder;
 import arboretum.arboretumwojslawice.Model.businessentity.Event;
 import arboretum.arboretumwojslawice.databinding.EventDetailRowBinding;
@@ -13,5 +15,11 @@ public class EventDetailViewHolder extends BindingViewHolder<Event, EventDetailR
     public void bind(Event item) {
         binding.setEvent(item);
         binding.executePendingBindings();
+
+        if(item.getDescription() == null)
+        {
+            binding.eventDetailDescription.setVisibility(View.GONE);
+           // binding.eventDetailDescription.setText("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+        }
     }
 }

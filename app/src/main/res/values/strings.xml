@@ -158,4 +158,8 @@
 ♦ Fotografowanie i filmowanie w celach komercyjnych wymaga uzgodnienia z dyrekcją.\n\t
 ♦ Dzwon zapowiada zamknięcie bramy za 15 minut.</string>
 
+    <!--Event-->
+    <string name="event_time_begin">Od godz.: %s</string>
+    <string name="event_time_end">Do godz.: %s</string>
+
 </resources>
