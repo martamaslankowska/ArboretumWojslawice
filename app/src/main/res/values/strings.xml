@@ -129,6 +129,11 @@
     <string name="plant_title">W okresie rozkwitu</string>
 
 
+    <!-- ATTRACTIONS -->
+    <string name="attractions_distance">w odległości %s</string>
+
+
+
     <!-- Toasts -->
     <string name="toast_exit">Naciśnij jeszcze raz przycisk "Powrót", aby zakończyć działanie aplikacji</string>
     <string name="chose_language">Wybierz język:</string>

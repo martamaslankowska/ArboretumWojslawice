@@ -12,14 +12,13 @@
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:focusable="true"
-        android:layout_marginBottom="4dp">
+        android:focusable="true">
 
         <ImageView
             android:id="@+id/hotelImage"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintDimensionRatio="H,16:8"
+            app:layout_constraintDimensionRatio="H,16:9"
             android:scaleType="centerCrop"
             android:src="@{hotel.getImageId(context)}"
             app:layout_constraintEnd_toEndOf="parent"
@@ -31,13 +30,29 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="#a6000000"
+            android:paddingLeft="@dimen/nonrec_margin"
+            android:paddingRight="@dimen/nonrec_margin"
+            android:paddingTop="@dimen/nonrec_half_margin"
             android:text="@{hotel.getName()}"
             android:textColor="@color/white"
-            android:textSize="24sp"
-            android:paddingLeft="@dimen/nonrec_half_margin"
+            android:textSize="@dimen/nonrec_font_size_big"
             android:textStyle="bold"
-            android:paddingTop="4dp"
-            android:paddingBottom="4dp"
+            app:layout_constraintBottom_toTopOf="@+id/hotelRating"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/hotelRating"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="#a6000000"
+            android:text="@{hotel.getName()}"
+            android:textColor="@color/white"
+            android:textSize="@dimen/nonrec_font_size_small"
+            android:paddingLeft="@dimen/nonrec_margin"
+            android:paddingRight="@dimen/nonrec_margin"
+            android:paddingBottom="@dimen/nonrec_half_margin"
             app:layout_constraintBottom_toBottomOf="@+id/hotelImage"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -50,7 +65,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/hotelName"
+            app:layout_constraintTop_toBottomOf="@+id/hotelRating"
             app:srcCompat="@drawable/ic_location" />
 
         <TextView
@@ -125,20 +140,20 @@
             app:layout_constraintTop_toBottomOf="@+id/websiteImage"
             app:srcCompat="@drawable/ic_star_yellow" />
 
-        <TextView
-            android:id="@+id/hotelRating"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:text="@{hotel.getRatingString()}"
-            android:textColor="@color/darkTextGray"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="@+id/ratingImage"
-            app:layout_constraintStart_toEndOf="@+id/ratingImage"
-            app:layout_constraintTop_toTopOf="@+id/ratingImage"
-            tools:ignore="MissingConstraints" />
+        <!--<TextView-->
+            <!--android:id="@+id/hotelRating"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginBottom="8dp"-->
+            <!--android:layout_marginStart="8dp"-->
+            <!--android:layout_marginTop="8dp"-->
+            <!--android:text="@{hotel.getRatingString()}"-->
+            <!--android:textColor="@color/darkTextGray"-->
+            <!--android:textSize="16sp"-->
+            <!--app:layout_constraintBottom_toBottomOf="@+id/ratingImage"-->
+            <!--app:layout_constraintStart_toEndOf="@+id/ratingImage"-->
+            <!--app:layout_constraintTop_toTopOf="@+id/ratingImage"-->
+            <!--tools:ignore="MissingConstraints" />-->
 
 
     </android.support.constraint.ConstraintLayout>

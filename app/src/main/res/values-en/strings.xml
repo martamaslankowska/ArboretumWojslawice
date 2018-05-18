@@ -66,5 +66,10 @@
     <string name="plant_title">Flowering plants</string>
 
 
+    <!-- ATTRACTIONS -->
+    <string name="attractions_distance">distance: %s</string>
+
+
+
 </resources>
 
