@@ -5,16 +5,22 @@
     android:layout_height="@dimen/plant_page_image_height">
 
     <ImageView
-        android:layout_width="@dimen/plant_page_image_width"
-        android:layout_height="match_parent"
-        android:id="@+id/plant_page_image" />
+        android:id="@+id/plant_page_image"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:scaleType="centerCrop" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="8dp"
+        android:layout_marginLeft="16dp"
         android:layout_marginRight="8dp"
         android:layout_toEndOf="@+id/plant_page_image">
 
@@ -22,6 +28,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/plant_page_name"
+            android:textSize="@dimen/plant_page_font_size"
+            android:textColor="@color/darkTextGray"
+            android:textStyle="bold"
             android:layout_gravity="center"
             android:gravity="center_vertical"/>
 
@@ -29,15 +38,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/plant_page_genus"
+            android:textSize="@dimen/plant_page_font_size_small"
+            android:textColor="@color/darkTextLightGray"
+            android:textStyle="italic"
             android:layout_gravity="center"
             android:gravity="center_vertical"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/plant_page_kind"
-            android:layout_below="@+id/plant_page_genus"
-            android:layout_gravity="center"
-            android:gravity="center_vertical|bottom" />
     </LinearLayout>
 </RelativeLayout>

@@ -53,7 +53,8 @@ public class ViewPagerAdapter extends PagerAdapter {
         TextView name_textView = view.findViewById(R.id.plant_page_name);
         name_textView.setText(plant.getName());
         TextView genus_textView = view.findViewById(R.id.plant_page_genus);
-        genus_textView.setText(plant.getGenusName());
+        String genusSpeciesName = plant.getGenusName() + " " + plant.getSpeciesName();
+        genus_textView.setText(genusSpeciesName);
 
         ViewPager vp = (ViewPager) container;
         view.setOnClickListener(listener);

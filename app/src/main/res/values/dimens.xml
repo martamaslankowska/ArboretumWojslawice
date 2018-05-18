@@ -23,6 +23,8 @@
 
     <!-- Plant page (slider in route detail) -->
     <dimen name="plant_page_image_width">100dp</dimen>
+    <dimen name="plant_page_font_size">16sp</dimen>
+    <dimen name="plant_page_font_size_small">15sp</dimen>
 
     <!-- Plant detail-->
     <dimen name="plant_detail_image_height">120dp</dimen>
