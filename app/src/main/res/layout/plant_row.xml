@@ -30,7 +30,7 @@
         <android.support.constraint.ConstraintLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
+            android:layout_marginTop="4dp"
             android:focusable="true"
             app:layout_constraintBottom_toBottomOf="@+id/plant_image"
             app:layout_constraintEnd_toStartOf="@+id/plant_heart"
@@ -61,6 +61,7 @@
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="2dp"
                 android:text="@{plant.getGenusName()}"
+                android:textColor="@color/darkTextLightGray"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/plant_name"
                 app:layout_constraintTop_toBottomOf="@+id/plant_name" />
@@ -72,6 +73,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_marginLeft="4dp"
                 android:text="@{plant.getSpeciesName()}"
+                android:textColor="@color/darkTextLightGray"
                 app:layout_constraintHorizontal_bias="0"
                 app:layout_constraintStart_toEndOf="@+id/plant_genus"
                 app:layout_constraintTop_toTopOf="@+id/plant_genus" />

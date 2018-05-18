@@ -30,7 +30,7 @@
         <android.support.constraint.ConstraintLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/nonrec_margin"
+            android:paddingBottom="@dimen/nonrec_margin"
             android:orientation="vertical">
 
 
@@ -203,9 +203,10 @@
                 android:id="@+id/extraMailImage"
                 android:layout_width="@dimen/open_hours_icon_size"
                 android:layout_height="@dimen/open_hours_icon_size"
-                app:srcCompat="@drawable/ic_mail"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="376dp" />
+                android:layout_marginStart="@dimen/nonrec_margin"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/extraMailText"
+                app:srcCompat="@drawable/ic_mail" />
 
             <TextView
                 android:id="@+id/extraMailText"

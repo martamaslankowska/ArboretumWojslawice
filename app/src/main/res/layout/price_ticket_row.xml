@@ -23,8 +23,9 @@
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
             android:text="@{price.getType()}"
-            android:textSize="18dp"
             android:textStyle="bold"
+            android:textColor="@color/darkTextGray"
+            android:textSize="@dimen/nonrec_font_size"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -34,7 +35,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
             android:text="@{price.getDescription()}"
-            android:textSize="14dp"
+            android:textColor="@color/darkTextLightGray"
+            android:textSize="@dimen/nonrec_font_size_small"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ticket_name" />
 
@@ -44,7 +46,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
             android:text="@{@string/price_amount(price.getAmountString())}"
-            android:textSize="18dp"
+            android:textSize="@dimen/nonrec_font_size"
+            android:textColor="@color/darkTextGray"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

@@ -24,7 +24,8 @@
             android:layout_margin="4dp"
             android:layout_marginTop="4dp"
             android:text="@{price.getType()}"
-            android:textSize="18dp"
+            android:textColor="@color/darkTextGray"
+            android:textSize="@dimen/nonrec_font_size"
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/service_amount"
             app:layout_constraintHorizontal_bias="0.0"
@@ -37,7 +38,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
             android:text="@{price.getDescription()}"
-            android:textSize="14dp"
+            android:textColor="@color/darkTextLightGray"
+            android:textSize="@dimen/nonrec_font_size_small"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/service_name" />
 
@@ -47,7 +49,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
             android:text="@{@string/price_amount(price.getAmountString())}"
-            android:textSize="18dp"
+            android:textColor="@color/darkTextGray"
+            android:textSize="@dimen/nonrec_font_size"
             android:textAlignment="textEnd"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
