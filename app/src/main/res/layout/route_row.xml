@@ -26,7 +26,8 @@
 
         <TextView
             android:id="@+id/route_name"
-            android:textSize="16dp"
+            android:textSize="@dimen/nonrec_font_size"
+            android:textColor="@color/darkTextGray"
             android:textStyle="bold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -36,6 +37,8 @@
         <TextView
             android:id="@+id/route_length"
             android:layout_below="@id/route_name"
+            android:textColor="@color/darkTextLightGray"
+            android:textSize="@dimen/nonrec_font_size_small"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_toStartOf="@id/route_detail_arrow"
@@ -43,9 +46,11 @@
 
         <TextView
             android:id="@+id/route_time"
-            android:layout_below="@id/route_length"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@id/route_length"
+            android:textColor="@color/darkTextLightGray"
+            android:textSize="@dimen/nonrec_font_size_small"
             android:layout_toStartOf="@id/route_detail_arrow"
             android:text="@{@string/route_time(route.getTimeString())}"/>
 

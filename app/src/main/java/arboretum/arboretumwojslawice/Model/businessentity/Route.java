@@ -126,7 +126,7 @@ public class Route implements AdapterItem {
 
     public String getTimeString() {
         Date time = getTimeDate();
-        String stringTime = time.getHours() + ":" + time.getMinutes();
+        String stringTime = time.getHours() + "h " + time.getMinutes() + "min";
         return stringTime;
     }
 

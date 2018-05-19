@@ -29,7 +29,8 @@
             <ImageView
                 android:id="@+id/route_detail_map"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/route_detail_map_height"
+                android:layout_height="175dp"
+                android:scaleType="centerCrop"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -38,9 +39,9 @@
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="@dimen/route_detail_margin_left_right"
-                android:layout_marginRight="@dimen/route_detail_margin_left_right"
-                android:layout_marginTop="8dp"
+                android:layout_marginLeft="@dimen/nonrec_margin"
+                android:layout_marginRight="@dimen/nonrec_margin"
+                android:layout_marginTop="@dimen/nonrec_margin"
                 android:layout_marginBottom="4dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/route_detail_map">
@@ -52,8 +53,9 @@
                     android:layout_marginEnd="8dp"
                     android:minWidth="100dp"
                     android:text="@{route.getName()}"
-                    android:textSize="18dp"
+                    android:textSize="@dimen/nonrec_font_size_big"
                     android:textStyle="bold"
+                    android:textColor="@color/darkTextGray"
                     app:layout_constraintEnd_toStartOf="@+id/route_detail_button"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -66,7 +68,8 @@
                     android:layout_marginTop="4dp"
                     android:minWidth="100dp"
                     android:text="@{@string/route_length(route.getLengthString())}"
-                    android:textSize="14dp"
+                    android:textSize="@dimen/nonrec_font_size"
+                    android:textColor="@color/darkTextLightGray"
                     app:layout_constraintEnd_toStartOf="@+id/route_detail_button"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/route_detail_name" />
@@ -78,33 +81,25 @@
                     android:layout_marginEnd="8dp"
                     android:minWidth="100dp"
                     android:text="@{@string/route_time(route.getTimeString())}"
-                    android:textSize="14dp"
+                    android:textSize="@dimen/nonrec_font_size"
+                    android:textColor="@color/darkTextLightGray"
                     app:layout_constraintEnd_toStartOf="@+id/route_detail_button"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/route_detail_length" />
 
-                <View
-                    android:id="@+id/route_detail_divider1"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@android:color/darker_gray"
-                    app:layout_constraintTop_toBottomOf="@+id/route_detail_time"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="4dp"/>
+
 
                 <ScrollView
                     android:id="@+id/route_scroll_view"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
+                    android:layout_marginTop="@dimen/nonrec_margin"
                     android:fillViewport="true"
                     android:scrollbars="vertical"
-
                     app:layout_constraintBottom_toTopOf="@+id/route_detail_divider2"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/route_detail_divider1">
+                    app:layout_constraintTop_toBottomOf="@+id/route_detail_time">
 
                     <TextView
                         android:id="@+id/route_detail_description"
@@ -113,21 +108,12 @@
                         android:layout_gravity="top"
                         android:text="@{route.getDescription()}"
                         android:textAlignment="inherit"
-                        android:textSize="16dp"
+                        android:textSize="@dimen/nonrec_font_size_small"
+                        android:textColor="@color/darkTextLightGray"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent" />
                 </ScrollView>
 
-                <View
-                    android:id="@+id/route_detail_divider2"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginBottom="4dp"
-                    android:background="@android:color/darker_gray"
-                    app:layout_constraintBottom_toTopOf="@+id/route_detail_pager"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
 
                 <RelativeLayout
                     android:id="@+id/route_detail_pager"
@@ -158,15 +144,26 @@
                         android:src="@drawable/right_arrow" />
                 </RelativeLayout>
 
+                <View
+                    android:id="@+id/route_detail_divider2"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="4dp"
+                    android:background="@android:color/darker_gray"
+                    app:layout_constraintBottom_toTopOf="@+id/route_detail_pager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+
                 <ImageView
                     android:id="@+id/route_detail_button"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="@dimen/nonrec_margin"
+                    android:layout_marginTop="@dimen/nonrec_margin"
                     android:src="@drawable/icons8_play"
                     app:layout_constraintBottom_toBottomOf="@+id/route_detail_time"
                     app:layout_constraintEnd_toEndOf="parent"

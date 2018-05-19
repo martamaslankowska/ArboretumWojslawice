@@ -10,11 +10,13 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.method.ScrollingMovementMethod;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MenuItem;
@@ -163,6 +165,14 @@ public class RouteDetailActivity extends DaggerAppCompatActivity implements View
                             route = routeDb;
                             Log.i("mRoutes", String.valueOf(route_id));
                             binding.setRoute(route);
+
+
+                            DisplayMetrics displayMetrics = new DisplayMetrics();
+                            getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+                            int width = displayMetrics.widthPixels;
+
+                            mapImage.getLayoutParams().height = width/2;
+
                         }
                         ,throwable -> {
                             /* onError() */
@@ -446,7 +456,7 @@ public class RouteDetailActivity extends DaggerAppCompatActivity implements View
     @Override
     public void onClick(View view) {
         int plantId = routePointList.get(viewPager.getCurrentItem()).getIdPlant();
-        Toast.makeText(getApplicationContext(), "This page was clicked: " + plantId, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "This page was clicked: " + plantId, Toast.LENGTH_SHORT);
 
         Intent intent = new Intent(getApplicationContext(), PlantDetailActivity.class);
         Bundle bundle = new Bundle();
