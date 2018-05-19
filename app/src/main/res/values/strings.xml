@@ -164,7 +164,7 @@
 ♦ Dzwon zapowiada zamknięcie bramy za 15 minut.</string>
 
     <!--Event-->
-    <string name="event_time_begin">Od godz.: %s</string>
-    <string name="event_time_end">Do godz.: %s</string>
+    <string name="event_time_begin">Godz.: %s</string>
+    <string name="event_time_end">\u0020-\u0020%s</string>
 
 </resources>

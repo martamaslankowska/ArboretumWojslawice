@@ -107,6 +107,8 @@ public class Event implements AdapterItem {
         return (day<10 ? "0" : "") + String.valueOf(day) + "." + (month<10 ? "0" : "") + String.valueOf(month);
     }
 
+
+
     public void setDateBegin(Date dateBegin) {
         Integer day = dateBegin.getDay();
         Integer month = dateBegin.getMonth();
@@ -167,7 +169,7 @@ public class Event implements AdapterItem {
     public String getTimeBeginString() {
         Integer minutes = timeBegin - ((timeBegin/100)*100);
         Integer hour = timeBegin/100;
-        return hour + ":" + minutes;
+        return hour + ":" + (minutes == 0 ? "00" : minutes);
     }
 
     public void setTimeBegin(Date time) {
@@ -197,7 +199,7 @@ public class Event implements AdapterItem {
     public String getTimeEndString() {
         Integer minutes = timeEnd - ((timeEnd/100)*100);
         Integer hour = timeEnd/100;
-        return hour + ":" + minutes;
+        return hour + ":" + (minutes == 0 ? "00" : minutes);
     }
 
     public void setTimeEnd(Date time) {

@@ -10,5 +10,8 @@
     <color name="darkTextLightGray">#5b5b5b</color>
     <color name="darkTextGray">#3b3b3b</color>
     <color name="darkTextDarkGray">#292929</color>
+    <color name="calendar_border_month">#f5c416</color>
+    <color name="calendar_background_month">#ffdd00</color>
+    <color name="calendar_border">#bba595</color>
 
 </resources>

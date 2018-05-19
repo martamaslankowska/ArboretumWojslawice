@@ -12,7 +12,8 @@
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="2dp">
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp">
 
         <ImageView
             android:id="@+id/event_detail_icon"
@@ -20,9 +21,9 @@
             android:layout_height="25dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_marginBottom="8dp"
-            android:layout_marginLeft="8dp"
             android:src="@drawable/ic_clock"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/event_detail_name"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -54,7 +55,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
-            android:layout_marginStart="8dp"
             android:gravity="center_horizontal"
             android:text="@{@string/event_time_begin(event.getTimeBeginString())}"
             app:layout_constraintStart_toStartOf="parent"
@@ -64,26 +64,24 @@
         <TextView
             android:id="@+id/event_detail_end_hour"
             android:layout_width="wrap_content"
+            android:layout_marginTop="2dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="4dp"
             android:gravity="center_horizontal"
             android:text="@{@string/event_time_end(event.getTimeEndString())}"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/event_detail_start_hour" />
+            app:layout_constraintStart_toEndOf="@+id/event_detail_start_hour"
+            app:layout_constraintTop_toBottomOf="@+id/event_detail_name" />
 
 
         <TextView
             android:id="@+id/event_detail_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="2dp"
+            android:layout_marginTop="2dp"
             android:text="@{event.getDescription()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/event_detail_end_hour" />
+            app:layout_constraintTop_toBottomOf="@+id/event_detail_start_hour" />
 
     </android.support.constraint.ConstraintLayout>
 </layout>
