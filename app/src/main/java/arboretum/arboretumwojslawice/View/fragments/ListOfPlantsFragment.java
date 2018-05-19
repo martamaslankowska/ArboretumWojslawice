@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.util.List;
@@ -48,8 +49,9 @@ public class ListOfPlantsFragment extends DaggerFragment implements PlantAdapter
     protected List<Plant> plants;
     protected CompositeDisposable compositeDisposable;
     private boolean isFavourite;
-
     private int n;
+
+
 
     @Override
     public void onItemClick(int position) {
@@ -84,11 +86,14 @@ public class ListOfPlantsFragment extends DaggerFragment implements PlantAdapter
 
                             if (isFavourite) {
                                 Toast.makeText(getContext(), "Dodano do ulubionych", Toast.LENGTH_SHORT).show();
+                                ImageView heart = recyclerView.getChildAt(position).findViewById(R.id.plant_heart);
+                                heart.setImageResource(R.drawable.ic_favourite_plant_fill);
 
                             }
                             else {
                                 Toast.makeText(getContext(), "Usunięto z ulubionych", Toast.LENGTH_SHORT).show();
-
+                                ImageView heart = recyclerView.getChildAt(position).findViewById(R.id.plant_heart);
+                                heart.setImageResource(R.drawable.ic_favourite_plant_empty);
                             }
                         }
                         ,throwable -> {
