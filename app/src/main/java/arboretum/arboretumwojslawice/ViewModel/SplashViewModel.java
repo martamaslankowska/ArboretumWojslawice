@@ -58,7 +58,8 @@ public class SplashViewModel {
         String eventNames = "";
         String ampersand = context.getString(getStringResource(context, "ampersand"));
 
-        int nearestDate = eventRepository.getAllDateFromToday().get(0);
+//        int nearestDate = eventRepository.getAllDateFromToday().get(0);
+        int nearestDate = eventRepository.getToday();
         List<Event> eventsDuringNearestDate = eventRepository.getAllDuringGivenDate(nearestDate);
         int nrOfEvents = eventsDuringNearestDate.size();
 

@@ -11,12 +11,6 @@ import arboretum.arboretumwojslawice.R;
 
 public class RulesActivity extends AppCompatActivity {
 
-    TextView title;
-    TextView subtitle;
-    TextView content1;
-    TextView content2;
-    ImageView img;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,18 +26,6 @@ public class RulesActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
         /* /toolbar */
-
-        //title = findViewById(R.id.rules_title);
-        subtitle = findViewById(R.id.rules_subtitle);
-        content1 = findViewById(R.id.rules_content1);
-        content2 = findViewById(R.id.rules_content2);
-        img = findViewById(R.id.rules_image);
-
-        //title.setText(R.string.rules_title);
-        subtitle.setText(R.string.rules_subtitle);
-        content1.setText(R.string.rules_content_part1);
-        //img.setBackgroundResource(R.drawable.rules_pictures);
-        content2.setText(R.string.rules_content_part2);
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {

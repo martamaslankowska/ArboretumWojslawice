@@ -29,29 +29,45 @@
                 android:id="@+id/rules_subtitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="4sp"
-                android:textSize="16sp" />
+                android:text="@string/rules_subtitle"
+                android:textColor="@color/darkTextGray"
+                android:layout_marginStart="@dimen/nonrec_margin"
+                android:layout_marginEnd="@dimen/nonrec_margin"
+                android:layout_marginTop="@dimen/nonrec_margin"
+                android:textSize="@dimen/nonrec_font_size"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/rules_content1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp" />
+                android:text="@string/rules_content_part1"
+                android:textSize="@dimen/nonrec_font_size_small"
+                android:textColor="@color/darkTextGray"
+                android:layout_marginBottom="@dimen/nonrec_half_margin"
+                android:layout_marginStart="@dimen/nonrec_half_margin"
+                android:layout_marginEnd="@dimen/nonrec_margin" />
 
             <ImageView
                 android:id="@+id/rules_image"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/nonrec_half_margin"
+                android:layout_marginRight="@dimen/nonrec_half_margin"
                 android:src="@drawable/rules_pictures" />
 
             <TextView
                 android:id="@+id/rules_content2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10sp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp" />
+                android:text="@string/rules_content_part2"
+                android:textColor="@color/darkTextGray"
+                android:lineSpacingExtra="2dp"
+                android:textSize="@dimen/nonrec_font_size_small"
+                android:layout_marginTop="@dimen/nonrec_half_margin"
+                android:layout_marginBottom="@dimen/nonrec_margin"
+                android:layout_marginLeft="@dimen/nonrec_margin"
+                android:layout_marginRight="@dimen/nonrec_margin" />
 
         </LinearLayout>
     </ScrollView>

@@ -42,6 +42,11 @@ public class SplashActivity extends DaggerAppCompatActivity {
         AppDatabase database = AppDatabase.getAppDatabase(getApplicationContext());
         compositeDisposable = new CompositeDisposable();
 
+        /* Setting event image in HomeFragment */
+        int eventImageResource = splashViewModel.getEventImageId(getApplicationContext());
+        Globals.eventImageResource = eventImageResource;
+
+
         /* Deciding weather show language screen or not */
         mPrefs = PreferenceManager.getDefaultSharedPreferences(this);
         String language = mPrefs.getString(INFO, null);
@@ -76,9 +81,6 @@ public class SplashActivity extends DaggerAppCompatActivity {
         }
         else {
             /* SETTING DATA FOR NEWS FRAGMENT */
-
-            int eventImageResource = splashViewModel.getEventImageId(getApplicationContext());
-            Globals.eventImageResource = eventImageResource;
 
             Disposable cdNews = Maybe.fromCallable(() -> {
                 return splashViewModel.getCurrentNews();
