@@ -132,6 +132,7 @@
     <!-- ATTRACTIONS -->
     <string name="attractions_distance">w odległości %s</string>
     <string name="hotelrestaurant_distance">%s - w odległości %s</string>
+    <string name="hotelrestaurant_rating_info">brak informacji o ocenie</string>
 
 
 

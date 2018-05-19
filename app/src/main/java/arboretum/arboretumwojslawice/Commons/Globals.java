@@ -13,5 +13,6 @@ public class Globals {
     public static News currentNews = null;
     public static EventRowList nearestEvents = null;
     public static Plant seasonPlant = null;
+    public static int eventImageResource = 0;
 
 }

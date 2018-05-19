@@ -1,5 +1,6 @@
 package arboretum.arboretumwojslawice.View.viewholder;
 
+import android.graphics.Typeface;
 import android.view.View;
 
 import arboretum.arboretumwojslawice.Commons.BindingViewHolder;
@@ -24,6 +25,12 @@ public class RestaurantViewHolder extends BindingViewHolder<Restaurant, Restaura
         {
             binding.restaurantWebsiteImage.setVisibility(View.GONE);
             binding.restaurantWebsite.setVisibility(View.GONE);
+        }
+
+        if(item.getRating() == 0.0) {
+            binding.ratingBar.setVisibility(View.GONE);
+            binding.restaurantRatingTextView.setTypeface(binding.restaurantRatingTextView.getTypeface(), Typeface.ITALIC);
+            binding.restaurantRatingTextView.setPadding(16,0,0,12);
         }
     }
 }

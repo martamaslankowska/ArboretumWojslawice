@@ -77,6 +77,9 @@ public class SplashActivity extends DaggerAppCompatActivity {
         else {
             /* SETTING DATA FOR NEWS FRAGMENT */
 
+            int eventImageResource = splashViewModel.getEventImageId(getApplicationContext());
+            Globals.eventImageResource = eventImageResource;
+
             Disposable cdNews = Maybe.fromCallable(() -> {
                 return splashViewModel.getCurrentNews();
             })

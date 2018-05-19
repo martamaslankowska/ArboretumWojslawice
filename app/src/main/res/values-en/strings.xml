@@ -87,6 +87,8 @@
     <!-- ATTRACTIONS -->
     <string name="attractions_distance">distance: %s</string>
     <string name="hotelrestaurant_distance">%s - %s from Arboretum</string>
+    <string name="hotelrestaurant_rating_info">no rating information</string>
+
 
 
 

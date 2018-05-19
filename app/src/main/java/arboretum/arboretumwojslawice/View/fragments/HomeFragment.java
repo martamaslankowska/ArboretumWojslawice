@@ -62,6 +62,9 @@ public class HomeFragment extends DaggerFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        eventImage = view.findViewById(R.id.eventImageView);
+        eventImage.setImageResource(Globals.eventImageResource);
+
         /* SETTING THE WEATHER */
 
         weatherTemp = view.findViewById(R.id.weatherTemperatureTextView);
@@ -126,7 +129,6 @@ public class HomeFragment extends DaggerFragment {
 
         eventTitle = view.findViewById(R.id.eventTitleTextView);
         eventText = view.findViewById(R.id.eventInfoTextView);
-        eventImage = view.findViewById(R.id.eventImageView);
 
         if (Globals.nearestEvents == null) {
             Disposable cdEvent = Maybe.fromCallable(() -> {

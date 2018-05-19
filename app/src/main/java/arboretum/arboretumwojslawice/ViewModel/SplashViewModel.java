@@ -1,6 +1,7 @@
 package arboretum.arboretumwojslawice.ViewModel;
 
 import android.content.Context;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,9 +29,18 @@ public class SplashViewModel {
     PlantRepository plantRepository;
     @Inject
     EventRepository eventRepository;
+    List<String> eventImages;
+
 
     @Inject
-    SplashViewModel() {}
+    public SplashViewModel() {
+        eventImages = new ArrayList<>();
+        String eventImageName = "event_background_0";
+        for (int i=1; i<=7; i++) {
+            eventImages.add((eventImageName + String.valueOf(i)));
+            Log.i("NewsViewModel", eventImages.get(i-1));
+        }
+    }
 
 
     public News getCurrentNews() {
@@ -73,6 +83,18 @@ public class SplashViewModel {
 
     private int getStringResource(Context context, String stringName) {
         return context.getResources().getIdentifier(stringName, "string", "arboretum.arboretumwojslawice");
+    }
+
+
+
+    public String getEventImageName() {
+        Random r = new Random();
+        int index = r.nextInt(eventImages.size());
+        return eventImages.get(index);
+    }
+
+    public int getEventImageId(Context c) {
+        return c.getResources().getIdentifier("arboretum.arboretumwojslawice:drawable/" + getEventImageName(), null, null);
     }
 
 }

@@ -65,7 +65,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/nonrec_half_margin"
             android:paddingBottom="@dimen/nonrec_half_margin"
-            android:text="@{hotel.getRatingString()}"
+            android:text="@{hotel.getRatingString(context)}"
             android:textColor="@color/white"
             android:textSize="@dimen/nonrec_font_size_small"
             app:layout_constraintBottom_toBottomOf="@+id/hotelImage"

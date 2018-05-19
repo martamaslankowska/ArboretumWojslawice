@@ -1,7 +1,9 @@
 package arboretum.arboretumwojslawice.ViewModel;
 
 import android.content.Context;
+import android.util.Log;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
@@ -26,9 +28,7 @@ public class NewsViewModel {
     EventRepository eventRepository;
 
     @Inject
-    public NewsViewModel() {
-
-    }
+    public NewsViewModel() {}
 
     public News getCurrentNews() {
         return newsRepository.getAllPastNews().get(0);
@@ -80,5 +80,6 @@ public class NewsViewModel {
         int result = 10000*(year+1900) + 100*(month+1) + day;
         return result;
     }
+
 
 }

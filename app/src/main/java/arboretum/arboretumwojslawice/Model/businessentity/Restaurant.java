@@ -143,8 +143,11 @@ public class Restaurant implements AdapterItem {
         return distance.toString() + " km";
     }
 
-    public String getRatingString() {
-        return rating.toString();
+    public String getRatingString(Context context) {
+        if (rating > 0)
+            return rating.toString();
+        else
+            return context.getString(context.getResources().getIdentifier("hotelrestaurant_rating_info", "string", "arboretum.arboretumwojslawice"));
     }
 
     public Float getRatingFloat() {
