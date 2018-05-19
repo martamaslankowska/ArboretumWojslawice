@@ -37,25 +37,58 @@
             android:textColor="@color/white"
             android:textSize="@dimen/nonrec_font_size_big"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/attractionDistance"
+            app:layout_constraintBottom_toTopOf="@+id/attractionDistanceBackground"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent" />
 
+
+
+
         <TextView
-            android:id="@+id/attractionDistance"
+            android:id="@+id/attractionDistanceBackground"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="#a6000000"
-            android:text="@{@string/attractions_distance(attraction.getDistanceString())}"
+            android:text=" "
             android:textColor="@color/white"
-            android:textSize="@dimen/nonrec_font_size_small"
-            android:paddingLeft="@dimen/nonrec_margin"
+            android:textSize="@dimen/nonrec_font_size_smaller"
+            android:paddingLeft="24dp"
             android:paddingRight="@dimen/nonrec_margin"
             android:paddingBottom="@dimen/nonrec_half_margin"
             app:layout_constraintBottom_toBottomOf="@+id/attractionImage"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginBottom="6dp"
+            app:layout_constraintBottom_toBottomOf="@+id/attractionDistanceBackground"
+            app:layout_constraintStart_toStartOf="@+id/attractionDistanceBackground"
+            app:layout_constraintTop_toTopOf="@+id/attractionDistanceBackground"
+            app:srcCompat="@drawable/ic_location_white" />
+
+
+        <TextView
+            android:id="@+id/attractionDistanceTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginLeft="@dimen/nonrec_half_margin"
+            android:layout_marginRight="@dimen/nonrec_margin"
+            android:paddingBottom="7dp"
+            android:text="@{@string/attractions_distance(attraction.getDistanceString())}"
+            android:textColor="@color/white"
+            android:textSize="@dimen/nonrec_font_size_small"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintBottom_toBottomOf="@+id/attractionImage"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView" />
+
 
 
         <TextView
@@ -66,11 +99,13 @@
             android:text="@{attraction.getDescription()}"
             android:textColor="@color/darkTextGray"
             android:textSize="@dimen/nonrec_font_size_small"
-            android:paddingBottom="8dp"
+            android:paddingBottom="16dp"
             android:paddingLeft="@dimen/nonrec_margin"
             android:paddingRight="@dimen/nonrec_margin"
             app:layout_constraintTop_toBottomOf="@+id/attractionImage"
             tools:ignore="MissingConstraints" />
+
+
 
 
     </android.support.constraint.ConstraintLayout>

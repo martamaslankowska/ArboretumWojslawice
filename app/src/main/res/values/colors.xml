@@ -14,4 +14,8 @@
     <color name="calendar_background_month">#ffdd00</color>
     <color name="calendar_border">#bba595</color>
 
+    <!-- Rating bar colors -->
+    <color name="ratingActive">#f5f100</color>
+    <color name="ratingNonactive">#868686</color>
+
 </resources>

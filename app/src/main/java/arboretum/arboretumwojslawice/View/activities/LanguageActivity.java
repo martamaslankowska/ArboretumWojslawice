@@ -53,17 +53,17 @@ public class LanguageActivity extends AppCompatActivity {
     }
 
     public void polishLanguage(View view) {
-        Toast.makeText(getApplicationContext(), "Polski", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "Polski", Toast.LENGTH_LONG);
         setLanguage("pl");
     }
 
     public void englishLanguage(View view) {
-        Toast.makeText(getApplicationContext(), "Angielski", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "English", Toast.LENGTH_LONG);
         setLanguage("en");
     }
 
     public void germanLanguage(View view) {
-        Toast.makeText(getApplicationContext(), "Niemiecki, brrr...", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "Niemiecki, brrr...", Toast.LENGTH_LONG);
         setLanguage("de");
     }
 

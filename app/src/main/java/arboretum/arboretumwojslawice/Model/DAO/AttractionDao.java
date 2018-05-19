@@ -19,7 +19,8 @@ public abstract class AttractionDao extends BaseDao<AttractionEntity> {
 
     @Query("SELECT Attractions.IdAttraction, Name, Description, Image, Distance " +
             "FROM Attractions INNER JOIN AttractionsTranslations ON Attractions.IdAttraction = AttractionsTranslations.IdAttraction " +
-            "WHERE TranslationCode IN (:translationCode)")
+            "WHERE TranslationCode IN (:translationCode) " +
+            "ORDER BY Distance")
     public abstract List<Attraction> getAll(String translationCode);
 
     @Query("SELECT Attractions.IdAttraction, Name, Description, Image, Distance " +

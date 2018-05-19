@@ -37,25 +37,58 @@
             android:textColor="@color/white"
             android:textSize="@dimen/nonrec_font_size_big"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/hotelRating"
+            app:layout_constraintBottom_toTopOf="@+id/hotelRatingBackground"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
-            android:id="@+id/hotelRating"
+            android:id="@+id/hotelRatingBackground"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="#a6000000"
-            android:text="@{hotel.getName()}"
+            android:text=" "
             android:textColor="@color/white"
-            android:textSize="@dimen/nonrec_font_size_small"
+            android:textSize="@dimen/nonrec_font_size_smaller"
             android:paddingLeft="@dimen/nonrec_margin"
             android:paddingRight="@dimen/nonrec_margin"
             android:paddingBottom="@dimen/nonrec_half_margin"
             app:layout_constraintBottom_toBottomOf="@+id/hotelImage"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
+
+        <TextView
+            android:id="@+id/hotelRatingTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/nonrec_half_margin"
+            android:paddingBottom="@dimen/nonrec_half_margin"
+            android:text="@{hotel.getRatingString()}"
+            android:textColor="@color/white"
+            android:textSize="@dimen/nonrec_font_size_small"
+            app:layout_constraintBottom_toBottomOf="@+id/hotelImage"
+            app:layout_constraintStart_toEndOf="@+id/ratingBar" />
+
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            style="@style/RatingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
+            android:numStars="5"
+            android:stepSize="0.1"
+
+            android:progressBackgroundTint="@color/white"
+            android:secondaryProgressTint="@color/ratingActive"
+            android:progressTint="@color/ratingActive"
+
+            android:rating="@{hotel.getRatingFloat()}"
+            android:layout_marginBottom="6dp"
+            app:layout_constraintBottom_toBottomOf="@+id/hotelRatingTextView"
+            app:layout_constraintStart_toStartOf="@+id/hotelRatingBackground"
+            app:layout_constraintTop_toTopOf="@+id/hotelRatingTextView" />
 
 
         <ImageView
@@ -65,7 +98,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/hotelRating"
+            app:layout_constraintTop_toBottomOf="@+id/hotelRatingBackground"
             app:srcCompat="@drawable/ic_location" />
 
         <TextView

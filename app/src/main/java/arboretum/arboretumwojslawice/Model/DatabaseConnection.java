@@ -83,7 +83,7 @@ public class DatabaseConnection extends AsyncTask<Void,Void,Boolean>
 
         /*...*/
 
-        hotelEntities.add(new HotelEntity(1, "Hotel z bazy danych - oł jeee", "", 0, "", 0.0, 5.0, "news1"));
+        hotelEntities.add(new HotelEntity(1, "Hotel z bazy danych - oł jeee", "", "", "", 0.0, 5.0f, "news1"));
 
     }
 

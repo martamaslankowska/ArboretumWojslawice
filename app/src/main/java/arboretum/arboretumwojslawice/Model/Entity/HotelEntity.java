@@ -29,7 +29,7 @@ public class HotelEntity {
     private String address;
 
     @ColumnInfo(name = "Phone")
-    private int phone;
+    private String phone;
 
     @ColumnInfo(name = "Website")
     private String website;
@@ -44,7 +44,7 @@ public class HotelEntity {
     private String image;
 
 
-    public HotelEntity(int idHotel, String name, String address, int phone, String website, double distance, double rating, String image) {
+    public HotelEntity(int idHotel, String name, String address, String phone, String website, double distance, double rating, String image) {
         this.idHotel = idHotel;
         this.name = name;
         this.address = address;
@@ -79,14 +79,6 @@ public class HotelEntity {
         this.address = address;
     }
 
-    public int getPhone() {
-        return phone;
-    }
-
-    public void setPhone(int phone) {
-        this.phone = phone;
-    }
-
     public String getWebsite() {
         return website;
     }
@@ -103,19 +95,27 @@ public class HotelEntity {
         this.distance = distance;
     }
 
-    public double getRating() {
-        return rating;
-    }
-
-    public void setRating(double rating) {
-        this.rating = rating;
-    }
-
     public String getImage() {
         return image;
     }
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public double getRating() {
+        return rating;
+    }
+
+    public void setRating(double rating) {
+        this.rating = rating;
     }
 }

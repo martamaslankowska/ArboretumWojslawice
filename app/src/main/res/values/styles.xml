@@ -23,4 +23,9 @@
         <item name="colorControlNormal">@color/white</item>
     </style>
 
+    <!-- Rating bar -->
+    <style name="RatingBar" parent="@style/Widget.AppCompat.RatingBar.Small">
+
+    </style>
+
 </resources>

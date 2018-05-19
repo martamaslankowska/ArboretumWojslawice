@@ -22,7 +22,7 @@ public class Restaurant implements AdapterItem {
     private String address;
 
     @ColumnInfo(name = "Phone")
-    private Integer phone;
+    private String phone;
 
     @ColumnInfo(name = "Website")
     private String website;
@@ -37,7 +37,7 @@ public class Restaurant implements AdapterItem {
     private String image;
 
 
-    public Restaurant(Integer idRestaurant, String name, String address, Integer phone, String website, Double distance, Double rating, String image) {
+    public Restaurant(Integer idRestaurant, String name, String address, String phone, String website, Double distance, Double rating, String image) {
         this.idRestaurant = idRestaurant;
         this.name = name;
         this.address = address;
@@ -79,15 +79,7 @@ public class Restaurant implements AdapterItem {
         this.address = address;
     }
 
-    public Integer getPhone() {
-        return phone;
-    }
-
-    public void setPhone(Integer phone) {
-        this.phone = phone;
-    }
-
-    public String getWebsite() {
+   public String getWebsite() {
         return website;
     }
 
@@ -103,14 +95,6 @@ public class Restaurant implements AdapterItem {
         this.distance = distance;
     }
 
-    public Double getRating() {
-        return rating;
-    }
-
-    public void setRating(Double rating) {
-        this.rating = rating;
-    }
-
     public String getImage() {
         return image;
     }
@@ -121,6 +105,22 @@ public class Restaurant implements AdapterItem {
 
     public int getImageId(Context c) {
         return c.getResources().getIdentifier("arboretum.arboretumwojslawice:drawable/" + image, null, null);
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public Double getRating() {
+        return rating;
+    }
+
+    public void setRating(Double rating) {
+        this.rating = rating;
     }
 
     public String getImageIdString(Context c) {

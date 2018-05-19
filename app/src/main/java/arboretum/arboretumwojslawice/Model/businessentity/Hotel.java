@@ -5,6 +5,7 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 import android.content.Context;
+import android.util.Log;
 
 import arboretum.arboretumwojslawice.Commons.AdapterItem;
 import io.reactivex.annotations.NonNull;
@@ -26,7 +27,7 @@ public class Hotel implements AdapterItem {
     private String address;
 
     @ColumnInfo(name = "Phone")
-    private Integer phone;
+    private String phone;
 
     @ColumnInfo(name = "Website")
     private String website;
@@ -41,7 +42,7 @@ public class Hotel implements AdapterItem {
     private String image;
 
 
-    public Hotel(Integer idHotel, String name, String address, Integer phone, String website, Double distance, Double rating, String image) {
+    public Hotel(Integer idHotel, String name, String address, String phone, String website, Double distance, Double rating, String image) {
         this.idHotel = idHotel;
         this.name = name;
         this.address = address;
@@ -83,14 +84,6 @@ public class Hotel implements AdapterItem {
         this.address = address;
     }
 
-    public Integer getPhone() {
-        return phone;
-    }
-
-    public void setPhone(Integer phone) {
-        this.phone = phone;
-    }
-
     public String getWebsite() {
         return website;
     }
@@ -107,14 +100,6 @@ public class Hotel implements AdapterItem {
         this.distance = distance;
     }
 
-    public Double getRating() {
-        return rating;
-    }
-
-    public void setRating(Double rating) {
-        this.rating = rating;
-    }
-
     public String getImage() {
         return image;
     }
@@ -125,6 +110,22 @@ public class Hotel implements AdapterItem {
 
     public int getImageId(Context c) {
         return c.getResources().getIdentifier("arboretum.arboretumwojslawice:drawable/" + image, null, null);
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public Double getRating() {
+        return rating;
+    }
+
+    public void setRating(Double rating) {
+        this.rating = rating;
     }
 
     public String getImageIdString(Context c) {
@@ -143,6 +144,12 @@ public class Hotel implements AdapterItem {
     public String getDistanceString() {
         return distance.toString() + " km";
     }
+
+    public Float getRatingFloat() {
+        Log.i("HotelRating", String.valueOf(rating.floatValue()));
+        return rating.floatValue();
+    }
+
 
     public String getRatingString() {
         return rating.toString();
