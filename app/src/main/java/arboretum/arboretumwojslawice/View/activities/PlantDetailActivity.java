@@ -1,8 +1,10 @@
 package arboretum.arboretumwojslawice.View.activities;
 
+import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -11,6 +13,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.text.Layout;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -45,7 +48,7 @@ public class PlantDetailActivity extends DaggerAppCompatActivity {
     private CompositeDisposable compositeDisposable;
 
     private ImageView plantImage;
-    private TextView floweringTextView;
+    private TextView floweringTextView, noPlantTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +62,7 @@ public class PlantDetailActivity extends DaggerAppCompatActivity {
         plant_id = bundle.getInt(PLANT_ID);
         plantImage = findViewById(R.id.plant_detail_image);
         floweringTextView = findViewById(R.id.seassonTextView);
+        noPlantTextView = findViewById(R.id.noPlantImageTextView);
 
 
         Disposable cdPlant = Maybe.fromCallable(() -> {
@@ -100,13 +104,13 @@ public class PlantDetailActivity extends DaggerAppCompatActivity {
                             getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
                             int width = displayMetrics.widthPixels;
 
+                            plantImage.getLayoutParams().height = width/2;
+                            plantImage.setScaleType(ImageView.ScaleType.CENTER_CROP);
+
                             if (h < 300 || w < 300) {
-                                plantImage.setScaleType(ImageView.ScaleType.FIT_CENTER);
-                                plantImage.getLayoutParams().height = width/2;
-                            }
-                            else {
-                                plantImage.getLayoutParams().height = width/2;
-                                plantImage.setScaleType(ImageView.ScaleType.CENTER_CROP);
+                                plantImage.setColorFilter(Color.rgb(100, 100, 100), android.graphics.PorterDuff.Mode.MULTIPLY);
+                            } else {
+                                noPlantTextView.setVisibility(View.GONE);
                             }
 
                         }
@@ -130,5 +134,9 @@ public class PlantDetailActivity extends DaggerAppCompatActivity {
     public void getQRCode(View view) {
         Intent intent = new Intent(this, QRCodeActivity.class);
         startActivity(intent);
+    }
+
+    public int getImageId(Context c, String imageName) {
+        return c.getResources().getIdentifier("arboretum.arboretumwojslawice:drawable/" + imageName, null, null);
     }
 }

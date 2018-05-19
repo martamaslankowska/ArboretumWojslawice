@@ -32,7 +32,7 @@
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:scaleType="centerCrop"
-            android:src="@{plant.getImageId(context)}"
+            android:src="@{plant.getImageIdBig(context)}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar_back" />
@@ -131,6 +131,19 @@
                 android:textColor="@color/darkTextGray"
                 android:textSize="@dimen/nonrec_font_size_small" />
         </ScrollView>
+
+        <TextView
+            android:id="@+id/noPlantImageTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/plant_no_image"
+            android:textStyle="italic"
+            android:textColor="@color/white"
+            android:textSize="@dimen/nonrec_font_size"
+            app:layout_constraintBottom_toBottomOf="@+id/plant_detail_image"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/plant_detail_image"
+            app:layout_constraintTop_toTopOf="@+id/plant_detail_image" />
 
 
     </android.support.constraint.ConstraintLayout>

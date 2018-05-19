@@ -177,7 +177,7 @@ public class HomeFragment extends DaggerFragment {
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(plant -> {
                                 Globals.seasonPlant = plant;
-                                plantImage.setImageResource(plant.getImageId(context));
+                                plantImage.setImageResource(plant.getImageIdBig(context));
                                 plantTitle.setText(plant.getName());
                                 String plantGenusSpeciesText = plant.getGenusName() + " " + plant.getSpeciesName();
                                 plantText.setText(plantGenusSpeciesText);
@@ -188,7 +188,7 @@ public class HomeFragment extends DaggerFragment {
             compositeDisposable.add(cdPlant);
         } else {
             Plant plant = Globals.seasonPlant;
-            plantImage.setImageResource(plant.getImageId(context));
+            plantImage.setImageResource(plant.getImageIdBig(context));
             plantTitle.setText(plant.getName());
             String plantGenusSpeciesText = plant.getGenusName() + " " + plant.getSpeciesName();
             plantText.setText(plantGenusSpeciesText);

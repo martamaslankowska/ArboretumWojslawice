@@ -38,7 +38,6 @@ public class SplashViewModel {
         String eventImageName = "event_background_0";
         for (int i=1; i<=7; i++) {
             eventImages.add((eventImageName + String.valueOf(i)));
-            Log.i("NewsViewModel", eventImages.get(i-1));
         }
     }
 

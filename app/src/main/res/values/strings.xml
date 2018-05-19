@@ -135,6 +135,9 @@
     <string name="hotelrestaurant_rating_info">brak informacji o ocenie</string>
 
 
+    <!-- PLANTS -->
+    <string name="plant_no_image">brak zdjęcia</string>
+
 
     <!-- Toasts -->
     <string name="toast_exit">Naciśnij jeszcze raz przycisk "Powrót", aby zakończyć działanie aplikacji</string>
