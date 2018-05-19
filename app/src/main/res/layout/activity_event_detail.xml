@@ -12,46 +12,53 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="arboretum.arboretumwojslawice.View.activities.EventDetailActivity"
-        >
+        tools:context="arboretum.arboretumwojslawice.View.activities.EventDetailActivity"        >
 
         <include
             android:id="@+id/toolbar_back"
             layout="@layout/toolbar" />
 
-        <TextView
-            android:id="@+id/event_detail_date"
-            android:layout_width="wrap_content"
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/event_detail_header"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="12dp"
-            android:textSize="24sp"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/toolbar_back"
-            app:layout_constraintBottom_toTopOf="@id/event_detail_recycler_view" />
+            app:layout_constraintVertical_chainStyle="spread_inside">
 
-        <TextView
-            android:id="@+id/event_detail_names"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="12dp"
-            android:layout_marginBottom="4dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/event_detail_date"
-            app:layout_constraintTop_toBottomOf="@id/toolbar_back"
-            android:gravity="center|left"/>
+            <TextView
+                android:id="@+id/event_detail_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/event_detail_names"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="12dp"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/event_detail_date"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </android.support.constraint.ConstraintLayout>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/event_detail_recycler_view"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:scrollbars="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/event_detail_names"
-            android:scrollbars="vertical"
-            android:layout_marginBottom="8dp"/>
+            app:layout_constraintTop_toBottomOf="@+id/event_detail_header" />
 
     </android.support.constraint.ConstraintLayout>
 </layout>

@@ -16,19 +16,19 @@ public class EventDetailViewHolder extends BindingViewHolder<Event, EventDetailR
         binding.setEvent(item);
         binding.executePendingBindings();
 
-        if(item.getDescription() == null)
-        {
-            binding.eventDetailDescription.setVisibility(View.GONE);
-        }
-
-        if(item.getTimeEnd() == 0)
-        {
-            binding.eventDetailEndHour.setVisibility(View.GONE);
-        }
-
-        if(item.getTimeBegin() == 0)
-        {
-            binding.eventDetailStartHour.setVisibility(View.GONE);
-        }
+//        if(item.getDescription() == null)
+//        {
+//            binding.eventDetailDescription.setVisibility(View.GONE);
+//        }
+//
+//        if(item.getTimeEnd() == 0)
+//        {
+//            binding.eventDetailEndHour.setVisibility(View.GONE);
+//        }
+//
+//        if(item.getTimeBegin() == 0)
+//        {
+//            binding.eventDetailStartHour.setVisibility(View.GONE);
+//        }
     }
 }

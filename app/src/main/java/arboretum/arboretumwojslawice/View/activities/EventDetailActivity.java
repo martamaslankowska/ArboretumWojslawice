@@ -80,8 +80,10 @@ public class EventDetailActivity extends DaggerAppCompatActivity {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(event -> {
                             mEventList = event;
+                            Log.d("Liczba wydarzeń: ", String.valueOf(mEventList.size()));
                             mRecyclerView.addItemDecoration(new DividerItemDecoration(this, 0));
                             mAdapter.setData(mEventList);
+                            mRecyclerView.setAdapter(mAdapter);
                             /* toolbar */
                             Toolbar toolbar = findViewById(R.id.toolbar_back);
                             setSupportActionBar(toolbar);
@@ -101,7 +103,7 @@ public class EventDetailActivity extends DaggerAppCompatActivity {
 
         compositeDisposable.add(d_event);
 
-        mRecyclerView.setAdapter(mAdapter);
+
 
         Disposable d_event_names = Maybe.fromCallable(() -> {
             return eventDetailViewModel.getAllEventNameInDate(event_date);
@@ -119,7 +121,6 @@ public class EventDetailActivity extends DaggerAppCompatActivity {
 
         binding.eventDetailDate.setText(eventDetailViewModel.getDateString(event_date));
 
-        mLayoutManager = new LinearLayoutManager(this);
         setRecyclerViewLayoutManager();
 //        /* toolbar */
 //        Toolbar toolbar = findViewById(R.id.toolbar_back);
