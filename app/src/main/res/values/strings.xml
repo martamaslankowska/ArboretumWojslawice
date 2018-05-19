@@ -9,7 +9,7 @@
     <string name="title_qr_code">QR Code</string>
 
     <!-- Toolbars -->
-    <string name="toolbar_qr_code">QR Kod</string>
+    <string name="toolbar_qr_code">QR kod</string>
     <string name="toolbar_plants_list">Spis roślin</string>
     <string name="toolbar_events_list">Kalendarz imprez</string>
     <string name="toolbar_price">Cennik</string>
@@ -20,10 +20,10 @@
     <string name="toolbar_restaurants_list">Restauracje w pobliżu</string>
     <string name="toolbar_route_detail">Szczegóły trasy</string>
     <string name="toolbar_navigation">Nawigacja</string>
-    <string name="toolbar_neighbourhood">Okoliczne miejsca</string>
+    <string name="toolbar_neighbourhood">W pobliżu Wojsławic</string>
     <string name="toolbar_opening_hours">Godziny otwarcia</string>
     <string name="toolbar_settings">Ustawienia</string>
-    <string name="toolbar_plant_location_map">Lokalizacja kwiatków</string>
+    <string name="toolbar_plant_location_map">Lokalizacja rośliny</string>
 
     <!-- TabBars -->
     <string name="tab_map">Mapa</string>
@@ -44,9 +44,9 @@
     <string-array name="more_options_images">
         <item>ic_info</item>
         <item>ic_tickets_black</item>
-        <item>ic_important</item>
+        <item>ic_calendar</item>
         <item>ic_flowering</item>
-        <item>ic_important</item>
+        <item>ic_neighbourhood</item>
         <item>ic_phone</item>
         <item>ic_important</item>
         <item>ic_settings</item>
@@ -131,6 +131,7 @@
 
     <!-- ATTRACTIONS -->
     <string name="attractions_distance">w odległości %s</string>
+    <string name="hotelrestaurant_distance">%s - w odległości %s</string>
 
 
 

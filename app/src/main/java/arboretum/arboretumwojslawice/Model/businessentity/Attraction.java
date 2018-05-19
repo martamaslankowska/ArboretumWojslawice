@@ -91,7 +91,7 @@ public class Attraction implements AdapterItem {
     }
 
     public String getDistanceString() {
-        if (distance > 10 || ((double) distance.intValue()) == distance) {
+        if (((double) distance.intValue()) == distance) {
             return String.valueOf(distance.intValue()) + " km";
         }
         return distance.toString() + " km";

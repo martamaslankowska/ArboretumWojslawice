@@ -44,5 +44,7 @@
     <dimen name="nonrec_line_spacing">4dp</dimen>
     <dimen name="open_hours_icon_size">30dp</dimen>
 
+    <dimen name="hotelrestaurant_icon_size">24dp</dimen>
+
 
 </resources>

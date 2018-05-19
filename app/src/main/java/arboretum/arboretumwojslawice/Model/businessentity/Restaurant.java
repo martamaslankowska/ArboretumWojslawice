@@ -137,11 +137,22 @@ public class Restaurant implements AdapterItem {
     }
 
     public String getDistanceString() {
+        if (((double) distance.intValue()) == distance) {
+            return String.valueOf(distance.intValue()) + " km";
+        }
         return distance.toString() + " km";
     }
 
     public String getRatingString() {
         return rating.toString();
+    }
+
+    public Float getRatingFloat() {
+        return rating.floatValue();
+    }
+
+    public boolean noWebsite() {
+        return website == null || website.isEmpty();
     }
 
 

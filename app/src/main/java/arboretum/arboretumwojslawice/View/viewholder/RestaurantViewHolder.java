@@ -1,5 +1,7 @@
 package arboretum.arboretumwojslawice.View.viewholder;
 
+import android.view.View;
+
 import arboretum.arboretumwojslawice.Commons.BindingViewHolder;
 import arboretum.arboretumwojslawice.Model.businessentity.Restaurant;
 import arboretum.arboretumwojslawice.databinding.RestaurantRowBinding;
@@ -17,5 +19,11 @@ public class RestaurantViewHolder extends BindingViewHolder<Restaurant, Restaura
     public void bind(Restaurant item) {
         binding.setRestaurant(item);
         binding.executePendingBindings();
+
+        if(item.noWebsite())
+        {
+            binding.restaurantWebsiteImage.setVisibility(View.GONE);
+            binding.restaurantWebsite.setVisibility(View.GONE);
+        }
     }
 }

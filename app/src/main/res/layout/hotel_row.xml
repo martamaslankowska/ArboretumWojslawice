@@ -12,6 +12,7 @@
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingBottom="4dp"
         android:focusable="true">
 
         <ImageView
@@ -93,8 +94,8 @@
 
         <ImageView
             android:id="@+id/addressImage"
-            android:layout_width="@dimen/open_hours_icon_size"
-            android:layout_height="@dimen/open_hours_icon_size"
+            android:layout_width="@dimen/hotelrestaurant_icon_size"
+            android:layout_height="@dimen/hotelrestaurant_icon_size"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             app:layout_constraintStart_toStartOf="parent"
@@ -105,36 +106,39 @@
             android:id="@+id/hotelAddress"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:text="@{hotel.getAddress()}"
+            android:layout_marginEnd="@dimen/nonrec_margin"
+            android:layout_marginStart="@dimen/nonrec_half_margin"
+            android:layout_marginTop="2dp"
+            android:text="@{@string/hotelrestaurant_distance(hotel.getAddress(), hotel.getDistanceString())}"
             android:textColor="@color/darkTextGray"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="@+id/addressImage"
+            android:textSize="@dimen/nonrec_font_size_small"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0"
             app:layout_constraintStart_toEndOf="@+id/addressImage"
             app:layout_constraintTop_toTopOf="@+id/addressImage"
             tools:ignore="MissingConstraints" />
 
+
         <ImageView
             android:id="@+id/phoneImage"
-            android:layout_width="@dimen/open_hours_icon_size"
-            android:layout_height="@dimen/open_hours_icon_size"
-            android:layout_marginStart="8dp"
+            android:layout_width="@dimen/hotelrestaurant_icon_size"
+            android:layout_height="@dimen/hotelrestaurant_icon_size"
+            android:layout_marginStart="@dimen/nonrec_half_margin"
+            android:layout_marginTop="2dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/addressImage"
+            app:layout_constraintTop_toBottomOf="@+id/hotelAddress"
             app:srcCompat="@drawable/ic_phone" />
 
         <TextView
             android:id="@+id/hotelPhone"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginStart="@dimen/nonrec_half_margin"
             android:text="@{hotel.getPhoneString()}"
             android:textColor="@color/darkTextGray"
-            android:textSize="16sp"
+            android:textSize="@dimen/nonrec_font_size_small"
+            android:autoLink="phone"
+            android:textColorLink="@color/colorPrimary"
             app:layout_constraintBottom_toBottomOf="@+id/phoneImage"
             app:layout_constraintStart_toEndOf="@+id/phoneImage"
             app:layout_constraintTop_toTopOf="@+id/phoneImage"
@@ -142,9 +146,12 @@
 
         <ImageView
             android:id="@+id/websiteImage"
-            android:layout_width="@dimen/open_hours_icon_size"
-            android:layout_height="@dimen/open_hours_icon_size"
-            android:layout_marginStart="8dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginBottom="@dimen/nonrec_margin"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="4dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/phoneImage"
             app:srcCompat="@drawable/ic_info" />
@@ -153,40 +160,16 @@
             android:id="@+id/hotelWebsite"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
             android:text="@{hotel.getWebsite()}"
             android:textColor="@color/darkTextGray"
-            android:textSize="16sp"
+            android:textSize="@dimen/nonrec_font_size_small"
+            android:autoLink="web"
+            android:textColorLink="@color/darkTextGray"
             app:layout_constraintBottom_toBottomOf="@+id/websiteImage"
-            app:layout_constraintStart_toEndOf="@+id/websiteImage"
+            app:layout_constraintStart_toStartOf="@+id/hotelPhone"
             app:layout_constraintTop_toTopOf="@+id/websiteImage"
             tools:ignore="MissingConstraints" />
 
-        <ImageView
-            android:id="@+id/ratingImage"
-            android:layout_width="@dimen/open_hours_icon_size"
-            android:layout_height="@dimen/open_hours_icon_size"
-            android:layout_marginStart="8dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/websiteImage"
-            app:srcCompat="@drawable/ic_star_yellow" />
-
-        <!--<TextView-->
-            <!--android:id="@+id/hotelRating"-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginBottom="8dp"-->
-            <!--android:layout_marginStart="8dp"-->
-            <!--android:layout_marginTop="8dp"-->
-            <!--android:text="@{hotel.getRatingString()}"-->
-            <!--android:textColor="@color/darkTextGray"-->
-            <!--android:textSize="16sp"-->
-            <!--app:layout_constraintBottom_toBottomOf="@+id/ratingImage"-->
-            <!--app:layout_constraintStart_toEndOf="@+id/ratingImage"-->
-            <!--app:layout_constraintTop_toTopOf="@+id/ratingImage"-->
-            <!--tools:ignore="MissingConstraints" />-->
 
 
     </android.support.constraint.ConstraintLayout>

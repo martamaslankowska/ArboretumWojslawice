@@ -142,11 +142,13 @@ public class Hotel implements AdapterItem {
     }
 
     public String getDistanceString() {
+        if (((double) distance.intValue()) == distance) {
+            return String.valueOf(distance.intValue()) + " km";
+        }
         return distance.toString() + " km";
     }
 
     public Float getRatingFloat() {
-        Log.i("HotelRating", String.valueOf(rating.floatValue()));
         return rating.floatValue();
     }
 
