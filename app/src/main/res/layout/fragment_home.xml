@@ -60,6 +60,7 @@
                 android:layout_marginTop="@dimen/nonrec_half_margin"
                 android:paddingRight="@dimen/nonrec_half_margin"
                 android:src="@drawable/weather_empty"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/weatherStaticTextView"
                 app:layout_constraintTop_toBottomOf="@+id/weatherStaticTextView" />
 

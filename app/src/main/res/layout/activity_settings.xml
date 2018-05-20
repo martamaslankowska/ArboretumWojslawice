@@ -8,20 +8,26 @@
 
     <include
         android:id="@+id/toolbar_back"
-        layout="@layout/toolbar_empty" />
+        layout="@layout/toolbar_empty"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_back">
 
         <TextView
             android:id="@+id/chooseLanguage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="72dp"
-            android:layout_marginRight="8sp"
             android:layout_marginLeft="8sp"
+            android:layout_marginRight="8sp"
             android:text="@string/chose_language"
             android:textAlignment="center"
             android:textSize="20sp"
@@ -36,38 +42,37 @@
             app:layout_constraintTop_toBottomOf="@+id/chooseLanguage" />
 
 
-
         <RadioGroup
             android:id="@+id/radioGroup_language"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8sp">
+
             <RadioButton
                 android:id="@+id/polish"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Polski"
+                android:fontFamily="@font/lato_medium"
                 android:onClick="polishLanguage"
-                android:fontFamily="@font/lato_medium"/>
+                android:text="Polski" />
+
             <RadioButton
                 android:id="@+id/english"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="English"
                 android:fontFamily="@font/lato_medium"
-                android:onClick="englishLanguage"/>
+                android:onClick="englishLanguage"
+                android:text="English" />
+
             <RadioButton
                 android:id="@+id/german"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Deutsch"
                 android:fontFamily="@font/lato_medium"
-                android:onClick="germanLanguage"/>
+                android:onClick="germanLanguage"
+                android:text="Deutsch" />
         </RadioGroup>
 
     </LinearLayout>
-
-
-
 
 </android.support.constraint.ConstraintLayout>

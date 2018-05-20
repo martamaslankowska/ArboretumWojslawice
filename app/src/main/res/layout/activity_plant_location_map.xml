@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/map"
-        android:layout_width="386dp"
-        android:layout_height="512dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:src="@drawable/arboretum_map2"

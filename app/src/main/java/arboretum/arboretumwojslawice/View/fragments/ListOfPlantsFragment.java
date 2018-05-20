@@ -86,15 +86,18 @@ public class ListOfPlantsFragment extends DaggerFragment implements PlantAdapter
 
                             if (isFavourite) {
                                 Toast.makeText(getContext(), "Dodano do ulubionych", Toast.LENGTH_SHORT).show();
-                                ImageView heart = recyclerView.getChildAt(position).findViewById(R.id.plant_heart);
-                                heart.setImageResource(R.drawable.ic_favourite_plant_fill);
+                                plants.get(position).setFavourite(true);
+//                                ImageView heart = recyclerView.getChildAt(position).findViewById(R.id.plant_heart);
+//                                heart.setImageResource(R.drawable.ic_favourite_plant_fill);
 
                             }
                             else {
                                 Toast.makeText(getContext(), "Usunięto z ulubionych", Toast.LENGTH_SHORT).show();
-                                ImageView heart = recyclerView.getChildAt(position).findViewById(R.id.plant_heart);
-                                heart.setImageResource(R.drawable.ic_favourite_plant_empty);
+                                plants.get(position).setFavourite(false);
+//                                ImageView heart = recyclerView.getChildAt(position).findViewById(R.id.plant_heart);
+//                                heart.setImageResource(R.drawable.ic_favourite_plant_empty);
                             }
+                            adapter.notifyItemChanged(position);
                         }
                         ,throwable -> {
                             /* onError() */
@@ -102,7 +105,6 @@ public class ListOfPlantsFragment extends DaggerFragment implements PlantAdapter
                         });
 
         compositeDisposable.add(listOfPlants);
-
 
     }
 

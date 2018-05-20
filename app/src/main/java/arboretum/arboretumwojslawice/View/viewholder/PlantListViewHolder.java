@@ -4,6 +4,7 @@ import android.widget.ImageView;
 
 import arboretum.arboretumwojslawice.Commons.BindingViewHolder;
 import arboretum.arboretumwojslawice.Model.businessentity.Plant;
+import arboretum.arboretumwojslawice.R;
 import arboretum.arboretumwojslawice.View.adapter.PlantAdapter;
 import arboretum.arboretumwojslawice.databinding.PlantRowBinding;
 
