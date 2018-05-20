@@ -4,15 +4,20 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.widget.Toolbar;
+import android.util.DisplayMetrics;
 import android.util.SparseArray;
 import android.view.MenuItem;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,9 +30,17 @@ import java.io.IOException;
 
 import javax.inject.Inject;
 
+import arboretum.arboretumwojslawice.Model.businessentity.Plant;
 import arboretum.arboretumwojslawice.R;
 import arboretum.arboretumwojslawice.ViewModel.QRCodeViewModel;
 import dagger.android.support.DaggerAppCompatActivity;
+import io.reactivex.Flowable;
+import io.reactivex.Maybe;
+import io.reactivex.Single;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 public class QRCodeActivity extends DaggerAppCompatActivity {
 
@@ -39,6 +52,8 @@ public class QRCodeActivity extends DaggerAppCompatActivity {
     CameraSource cameraSource;
     final int requestCameraPermissionID = 1001;
     boolean firstLoop = true;
+
+    private CompositeDisposable compositeDisposable;
 
     public static final String BUNDLE = "BUNDLE";
     public static final String PLANT_ID = "PLANT_ID";
@@ -101,20 +116,52 @@ public class QRCodeActivity extends DaggerAppCompatActivity {
                 final SparseArray<Barcode> QRcodes = detections.getDetectedItems();
                 if (QRcodes.size() != 0 && firstLoop) {
                     firstLoop = false;
-                    Intent intent = new Intent(QRCodeActivity.this, PlantDetailActivity.class);
-                    Bundle bundle = new Bundle();
-                    bundle.putInt(PLANT_ID, Integer.valueOf(QRcodes.valueAt(0).displayValue));
-                    intent.putExtra(BUNDLE, bundle);
-                    startActivity(intent);
-                    finish();
+                    String qrResult = QRcodes.valueAt(0).displayValue;
+                    int plantId = Integer.valueOf(qrResult.substring(20));
 
-//                    intent.putExtra("plantName", QRcodes.valueAt(0).displayValue);
+                    compositeDisposable = new CompositeDisposable();
+                    Disposable cdPlant = Maybe.fromCallable(() -> {
+                        return qrCodeViewModel.getById(plantId);
+                    })
+                            .subscribeOn(Schedulers.computation())
+                            .observeOn(AndroidSchedulers.mainThread())
+                            .subscribe(dbPlant -> {
+
+                                        if (dbPlant != null) {
+                                            Intent intent = new Intent(QRCodeActivity.this, PlantDetailActivity.class);
+                                            Bundle bundle = new Bundle();
+                                            bundle.putInt(PLANT_ID, plantId);
+                                            intent.putExtra(BUNDLE, bundle);
+                                            Toast.makeText(getApplicationContext(), "Roslina jest w bazie", Toast.LENGTH_LONG).show();
+                                            startActivity(intent);
+                                            finish();
+                                        }
+                                        else {
+                                            //tutaj na razie nigdy nie wchodzimy
+                                            //TODO
+                                            Toast.makeText(getApplicationContext(), "Roslina nie istnieje. Spróbuj jeszcze raz", Toast.LENGTH_LONG).show();
+                                            //Thread.sleep(2000);
+                                            firstLoop = true;
+                                        }
+
+                                    }
+                                    ,throwable -> {
+                            /* onError() */
+                                        Toast.makeText(getApplicationContext(), "Jakiś błąąąd... -.- -.-", Toast.LENGTH_LONG).show();
+                                    });
+
+                    compositeDisposable.add(cdPlant);
+//
+//                    Intent intent = new Intent(QRCodeActivity.this, PlantDetailActivity.class);
+//                    Bundle bundle = new Bundle();
+//                    bundle.putInt(PLANT_ID, plantId);
+//                    intent.putExtra(BUNDLE, bundle);
 //                    startActivity(intent);
 //                    finish();
 
+
                     Vibrator vibrator = (Vibrator) getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
                     vibrator.vibrate(200);
-
                 }
             }
         });
