@@ -6,23 +6,27 @@
     android:layout_height="match_parent"
     tools:context="arboretum.arboretumwojslawice.View.activities.QRCodeActivity">
 
-
-
-    <LinearLayout
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
         <include
             android:id="@+id/toolbar_back"
-            layout="@layout/toolbar_empty" />
+            layout="@layout/toolbar_empty"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/title_qr_code" />
+        <SurfaceView
+            android:id="@+id/cameraSurfaceView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar_back"/>
 
-    </LinearLayout>
 
+    </android.support.constraint.ConstraintLayout>
 
 </android.support.constraint.ConstraintLayout>
