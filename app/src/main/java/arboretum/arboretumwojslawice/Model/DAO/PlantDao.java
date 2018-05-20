@@ -25,7 +25,8 @@ public abstract class PlantDao extends BaseDao<PlantEntity> {
             "FROM Plants LEFT JOIN Species ON Plants.IdSpecies = Species.IdSpecies " +
             "LEFT JOIN Genus ON Species.GenusName = Genus.Name " +
             "LEFT JOIN PlantsTranslations ON Plants.IdPlant = PlantsTranslations.IdPlant " +
-            "WHERE PlantsTranslations.TranslationCode IN (:translationCode)")
+            "WHERE PlantsTranslations.TranslationCode IN (:translationCode) " +
+            "ORDER BY PlantsTranslations.Name")
     public abstract List<Plant> getAll(String translationCode);
 
     @Query("SELECT IdLocation, X, Y " +
@@ -52,7 +53,8 @@ public abstract class PlantDao extends BaseDao<PlantEntity> {
             "FROM Plants LEFT JOIN Species ON Plants.IdSpecies = Species.IdSpecies " +
             "LEFT JOIN Genus ON Species.GenusName = Genus.Name " +
             "LEFT JOIN PlantsTranslations ON Plants.IdPlant = PlantsTranslations.IdPlant " +
-            "WHERE PlantsTranslations.TranslationCode IN (:translationCode) AND Favourite = 1")
+            "WHERE PlantsTranslations.TranslationCode IN (:translationCode) AND Favourite = 1 " +
+            "ORDER BY PlantsTranslations.Name")
     public abstract List<Plant> getFavouritePlants(String translationCode);
 
 

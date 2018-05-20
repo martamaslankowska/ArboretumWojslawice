@@ -73,7 +73,7 @@ public class EventRowList implements AdapterItem {
             case 12: monthString = "Grudzień"; break;
         }
 
-        return monthString;
+        return monthString.toUpperCase();
     }
 
 

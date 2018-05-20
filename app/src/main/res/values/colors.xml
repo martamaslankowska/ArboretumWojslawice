@@ -10,9 +10,9 @@
     <color name="darkTextLightGray">#5b5b5b</color>
     <color name="darkTextGray">#3b3b3b</color>
     <color name="darkTextDarkGray">#292929</color>
-    <color name="calendar_border_month">#f5c416</color>
-    <color name="calendar_background_month">#ffdd00</color>
-    <color name="calendar_border">#bba595</color>
+    <color name="calendar_border_month">#68b659</color>
+    <color name="calendar_background_month">#67b757</color>
+    <color name="calendar_border">#c6c3c1</color>
 
     <!-- Rating bar colors -->
     <color name="ratingActive">#f5f100</color>
