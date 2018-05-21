@@ -2,6 +2,7 @@ package arboretum.arboretumwojslawice.View.activities;
 
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.util.Linkify;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -21,10 +22,9 @@ import io.reactivex.schedulers.Schedulers;
 
 public class ContactActivity extends DaggerAppCompatActivity {
 
-//    TextView hotel;
-//    ImageView hotelImage;
+    TextView mainPhoneTextView;
     CompositeDisposable compositeDisposable;
-    //HotelRepository hotelRepo;
+
     @Inject
     protected ContactViewModel contactViewModel;
 
@@ -32,6 +32,10 @@ public class ContactActivity extends DaggerAppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact);
+
+        mainPhoneTextView = findViewById(R.id.mainPhoneText);
+        mainPhoneTextView.setAutoLinkMask(Linkify.PHONE_NUMBERS);
+
 
         /* toolbar */
         Toolbar toolbar = findViewById(R.id.toolbar_back);
@@ -43,48 +47,6 @@ public class ContactActivity extends DaggerAppCompatActivity {
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
         /* /toolbar */
-
-        //AppDatabase db = AppDatabase.getAppDatabase(getApplication().getApplicationContext());
-        //hotelRepo = new HotelRepository(db);
-
-//        hotel = findViewById(R.id.hotelText);
-//        hotelImage = findViewById(R.id.hotelImageView);
-//        Hotel hotelObject = new Hotel(1, "Aaa", "", 0, "", 9.0, 2.0, "news2");
-//
-//        try {
-////            String imageName = "news1"; // store only image name in database(means not   store "R.drawable.image") like "image".
-////            int id = getResources().getIdentifier("arboretum.arboretumwojslawice:drawable/" + imageName, null, null);
-//            int id = hotelObject.getImageId(this);
-//            hotelImage.setImageResource(id);
-//        } catch (Exception e) {
-//            Toast.makeText(this, "Coś z tą bazką nie pykło....", Toast.LENGTH_SHORT).show();
-//        }
-//
-//        compositeDisposable = new CompositeDisposable();
-//
-//        /* GETTING DATA FROM DATABASE - in RXJava (it's not so hard ;)) */
-//
-//        Disposable gettingHotels = Maybe.fromCallable(() -> {
-//            return contactViewModel.getAllHotels();
-//        })
-//                .subscribeOn(Schedulers.computation())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe(hotels -> {
-//                            /* onSuccess() :) */
-//                            try {
-//                                hotel.setText(hotels.get(0).getName());
-//                                Toast.makeText(this, "Uuu, są dane w bazie! O.o", Toast.LENGTH_SHORT).show();
-//                                Toast.makeText(this, "I to w dodatku w ilości sztuk " + String.valueOf(hotels.size()), Toast.LENGTH_SHORT).show();
-//                            } catch (Exception e){
-//                                Toast.makeText(this, "Ups, pusta baza :(", Toast.LENGTH_SHORT).show();
-//                            }
-//                        }
-//                        ,throwable -> {
-//                            /* onError() */
-//                            Toast.makeText(this, "Jakiś błąąąd... -.- -.-", Toast.LENGTH_LONG).show();
-//                        });
-//
-//        compositeDisposable.add(gettingHotels);
 
     }
 
@@ -99,7 +61,6 @@ public class ContactActivity extends DaggerAppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-//        compositeDisposable.clear();
     }
 
 }

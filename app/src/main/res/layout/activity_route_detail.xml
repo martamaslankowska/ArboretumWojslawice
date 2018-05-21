@@ -109,7 +109,7 @@
                         android:layout_gravity="top"
                         android:text="@{route.getDescription()}"
                         android:textAlignment="inherit"
-                        android:textSize="@dimen/nonrec_font_size_small"
+                        android:textSize="@dimen/nonrec_font_size"
                         android:textColor="@color/darkTextLightGray"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent" />
