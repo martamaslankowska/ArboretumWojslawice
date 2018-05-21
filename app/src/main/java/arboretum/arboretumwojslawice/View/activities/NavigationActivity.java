@@ -35,6 +35,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
+import uk.co.senab.photoview.PhotoViewAttacher;
 
 public class NavigationActivity extends DaggerAppCompatActivity implements LocationListener{
 
@@ -55,18 +56,13 @@ public class NavigationActivity extends DaggerAppCompatActivity implements Locat
     Resources resources;
     int width, height;
     private ImageView mapImage;
+    double scale = 2.3206200;
 
     //arboretum
     public final static double MinLat = 50.708060;
     public final static double MaxLat = 50.713493;
     public final static double MinLon = 16.853841;
     public final static double MaxLon = 16.867359;
-
-    //dom
-//    public final static double MinLat = 51.092267;
-//    public final static double MaxLat = 51.092772;
-//    public final static double MinLon = 17.001062;
-//    public final static double MaxLon = 17.002220;
 
 
     //restaurant
@@ -128,6 +124,9 @@ public class NavigationActivity extends DaggerAppCompatActivity implements Locat
         }
 
         mapImage = findViewById(R.id.map);
+        PhotoViewAttacher photoView = new PhotoViewAttacher(mapImage);
+        photoView.setScale((float)scale, true);
+        photoView.update();
         resources = getResources();
         createBitmap();
         getBitmapWidthHeight();
@@ -135,7 +134,6 @@ public class NavigationActivity extends DaggerAppCompatActivity implements Locat
         mapBitmap = BitmapFactory.decodeResource(resources, resources.getIdentifier("arboretum_map2", "drawable", getPackageName()));
         x=countX(lon);
         y=countY(lat);
-        //Toast.makeText(getApplicationContext(), x + "\n" +  y, Toast.LENGTH_SHORT).show();
         createBitmap();
         drawCanvas();
         drawMarker(x,y);
@@ -146,7 +144,7 @@ public class NavigationActivity extends DaggerAppCompatActivity implements Locat
         Context context = getApplicationContext();
         if(ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
 
-            //Toast.makeText(context, "brak pozwolenia na GPS", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "brak pozwolenia na GPS", Toast.LENGTH_SHORT).show();
             turnGpsOn();
             return null;
         }
@@ -201,7 +199,6 @@ public class NavigationActivity extends DaggerAppCompatActivity implements Locat
     public void getBitmapWidthHeight(){
         width = mapBitmap.getWidth();
         height = mapBitmap.getHeight();
-        //Toast.makeText(getApplicationContext(), width + "\n" +  height, Toast.LENGTH_SHORT).show();
     }
 
     public void drawCanvas(){

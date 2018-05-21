@@ -30,12 +30,14 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
+import uk.co.senab.photoview.PhotoViewAttacher;
 
 public class PlantLocationMapActivity extends DaggerAppCompatActivity {
 
     public static final String BUNDLE = "BUNDLE";
     public static final String PLANT_ID = "PLANT_ID";
     private int plant_id;
+    double scale = 2.3206200;
 
     @Inject
     protected PlantViewModel plantViewModel;
@@ -49,6 +51,8 @@ public class PlantLocationMapActivity extends DaggerAppCompatActivity {
     ImageView imageview;
     Resources resources;
     int width, height;
+
+
     List<LonLat> places = new ArrayList<>();
     List<Location> locations;
 
@@ -113,6 +117,9 @@ public class PlantLocationMapActivity extends DaggerAppCompatActivity {
         ActivityCompat.requestPermissions(PlantLocationMapActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 123);
 
         imageview = findViewById(R.id.map);
+        PhotoViewAttacher photoView = new PhotoViewAttacher(imageview);
+        photoView.setScale((float)scale, true);
+        photoView.update();
         resources = getResources();
         CreateBitmap();
 

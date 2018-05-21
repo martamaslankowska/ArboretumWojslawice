@@ -67,7 +67,10 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.google.dagger:dagger-android-support:2.15'
 
-    //QR Code
+    //map
+    implementation 'com.github.chrisbanes:PhotoView:1.2.6'
+
+    //QR
     implementation 'com.google.android.gms:play-services:11.6.0'
 
 }

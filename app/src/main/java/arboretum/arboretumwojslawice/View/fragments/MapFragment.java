@@ -19,6 +19,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +28,7 @@ import arboretum.arboretumwojslawice.Commons.map.LonLat;
 import arboretum.arboretumwojslawice.Commons.map.MapManager;
 import arboretum.arboretumwojslawice.Commons.map.PixelCoordinates;
 import arboretum.arboretumwojslawice.R;
+import uk.co.senab.photoview.PhotoViewAttacher;
 
 /**
  * Created by weronika on 22.03.2018.
@@ -42,6 +44,9 @@ public class MapFragment extends Fragment implements LocationListener {
     Resources resources;
     int width, height;
     private ImageView mapImage;
+    double scale = 2.3206200;
+    double scale_pom = 1.6206200;
+    float scale2 = (float) scale_pom;
     //test
     List<LonLat> placesT = new ArrayList<>();
     List<LonLat> placesV = new ArrayList<>();
@@ -80,17 +85,41 @@ public class MapFragment extends Fragment implements LocationListener {
         /* map */
         fillCoordinates();
         mapImage = rootView.findViewById(R.id.map);
+        PhotoViewAttacher photoView = new PhotoViewAttacher(mapImage);
+        photoView.setScale((float)scale, true);
+        photoView.update();
         resources = getResources();
         //mapBitmap = BitmapFactory.decodeResource(resources, resources.getIdentifier("route_"+route_id, "drawable", getPackageName()));
         mapBitmap = BitmapFactory.decodeResource(resources, resources.getIdentifier("arboretum_map2", "drawable", getActivity().getPackageName()));
         createBitmap();
         drawCanvas();
         //0 -toilets, 1-viewpoints, 2-picnicplaces
-        drawMarkers(placesT, 0);
-        drawMarkers(placesV, 1);
+        //drawMarkers(placesT, 0);
+        //drawMarkers(placesV, 1);
         drawMarkers(placesP, 2);
         drawPositionMarker(y,x);
         mapImage.setImageBitmap(canvasBitmap);
+
+
+        photoView.setOnScaleChangeListener(new PhotoViewAttacher.OnScaleChangeListener() {
+            @Override
+            public void onScaleChange(float v, float v1, float v2) {
+               scale = photoView.getScale();
+               if(scale<2.5){
+                   createBitmap();
+                   drawCanvas();
+                   drawMarkers(placesV, 1);
+                   mapImage.setImageBitmap(canvasBitmap);
+               }
+                if(scale>2.5) {
+                    createBitmap();
+                    drawCanvas();
+                    drawMarkers(placesT, 0);
+                    mapImage.setImageBitmap(canvasBitmap);
+                }
+            }
+        });
+
         /* /map */
 
         // Inflate the layout for this fragment
