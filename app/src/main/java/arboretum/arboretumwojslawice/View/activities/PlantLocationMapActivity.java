@@ -86,6 +86,16 @@ public class PlantLocationMapActivity extends DaggerAppCompatActivity {
         }
         /* /toolbar */
 
+        ActivityCompat.requestPermissions(PlantLocationMapActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 123);
+
+        imageview = findViewById(R.id.map);
+        PhotoViewAttacher photoView = new PhotoViewAttacher(imageview);
+        photoView.setScale((float)scale, true);
+        photoView.update();
+        resources = getResources();
+        CreateBitmap();
+        DrawCanvas();
+
 
         Disposable cdLocations = Maybe.fromCallable(() -> {
             return plantViewModel.getPlantLocations(plant_id);
@@ -94,6 +104,12 @@ public class PlantLocationMapActivity extends DaggerAppCompatActivity {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(locationList -> {
                             locations = locationList;
+
+                              /* map */
+                            fillPlantsCoordinates();
+                            drawMarkers(places);
+                            imageview.setImageBitmap(canvasBitmap);
+        /* /map */
                         }
                         ,throwable -> {
                             /* onError() */
@@ -110,21 +126,7 @@ public class PlantLocationMapActivity extends DaggerAppCompatActivity {
 //        }
 
 
-        /* map */
-        fillPlantsCoordinates();
-        ActivityCompat.requestPermissions(PlantLocationMapActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 123);
 
-        imageview = findViewById(R.id.map);
-        PhotoViewAttacher photoView = new PhotoViewAttacher(imageview);
-        photoView.setScale((float)scale, true);
-        photoView.update();
-        resources = getResources();
-        CreateBitmap();
-
-        DrawCanvas();
-        drawMarkers(places);
-        imageview.setImageBitmap(canvasBitmap);
-        /* /map */
     }
 
 
@@ -179,11 +181,15 @@ public class PlantLocationMapActivity extends DaggerAppCompatActivity {
     }
 
     public void fillPlantsCoordinates(){
-        places.add(new LonLat(16.856811,50.712181));
-        places.add(new LonLat(16.858742,50.712460));
-        places.add(new LonLat(16.861521,50.712269));
-        places.add(new LonLat(16.863012,50.710591));
-        places.add(new LonLat(16.859096,50.710021));
+
+        for(Location l:locations){
+            places.add(new LonLat(l.getY(), l.getX()));
+        }
+//        places.add(new LonLat(16.856811,50.712181));
+//        places.add(new LonLat(16.858742,50.712460));
+//        places.add(new LonLat(16.861521,50.712269));
+//        places.add(new LonLat(16.863012,50.710591));
+//        places.add(new LonLat(16.859096,50.710021));
     }
 }
 
