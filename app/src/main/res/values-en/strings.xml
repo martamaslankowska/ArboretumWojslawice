@@ -30,7 +30,7 @@
 
     <!-- Marta - example strings to use with data binding -->
     <string name="route_length">Route length - %s</string>
-    <string name="route_time">Estimated time - %sh</string>
+    <string name="route_time">Estimated time - %s</string>
 
     <!-- Marta - example strings to use in PriceActivity (activity_price.xml) -->
     <string name="price_title">Prices (tickets)</string>

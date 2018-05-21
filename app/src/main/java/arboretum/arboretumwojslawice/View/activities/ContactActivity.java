@@ -33,8 +33,9 @@ public class ContactActivity extends DaggerAppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact);
 
-        mainPhoneTextView = findViewById(R.id.mainPhoneText);
-        mainPhoneTextView.setAutoLinkMask(Linkify.PHONE_NUMBERS);
+        /* Not working :( */
+//        mainPhoneTextView = findViewById(R.id.mainPhoneText);
+//        mainPhoneTextView.setAutoLinkMask(Linkify.PHONE_NUMBERS);
 
 
         /* toolbar */

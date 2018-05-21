@@ -167,14 +167,15 @@ public class Plant implements AdapterItem {
     }
 
     public int getImageId(Context c) {
+        String imageIcon = image;
         if (image == null || image.isEmpty())
-            image = Plant.DEFAULT_ICONS_NAMES[kind];
-        return c.getResources().getIdentifier("arboretum.arboretumwojslawice:drawable/" + image, null, null);
+            imageIcon = Plant.DEFAULT_ICONS_NAMES[kind];
+        return c.getResources().getIdentifier("arboretum.arboretumwojslawice:drawable/" + imageIcon, null, null);
     }
 
     public int getImageIdBig(Context c) {
         String bigImage = image;
-        if (image == null || image.isEmpty() || image.equals(Plant.DEFAULT_ICONS_NAMES[kind]))
+        if (image == null || image.isEmpty())
             bigImage = Plant.DEFAULT_IMAGES_NAMES[kind];
         return c.getResources().getIdentifier("arboretum.arboretumwojslawice:drawable/" + bigImage, null, null);
     }

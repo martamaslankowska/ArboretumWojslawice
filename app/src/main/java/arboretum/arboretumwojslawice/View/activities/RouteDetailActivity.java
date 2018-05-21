@@ -87,6 +87,7 @@ public class RouteDetailActivity extends DaggerAppCompatActivity implements View
     int width, height;
     private ImageView mapImage;
     //test
+    List<PointOnRoute> locations = new ArrayList<>();
     List<LonLat> places = new ArrayList<>();
     ArrayList<PixelCoordinates> pointsPixelsCoordinates= new ArrayList();
 
@@ -119,39 +120,39 @@ public class RouteDetailActivity extends DaggerAppCompatActivity implements View
         textView.setMovementMethod(new ScrollingMovementMethod());
 
 //        /*map*/
-        fillPlantsCoordinates();
+
         mapImage = findViewById(R.id.route_detail_map);
         resources = getResources();
-        //mapBitmap = BitmapFactory.decodeResource(resources, resources.getIdentifier("route_"+route_id, "drawable", getPackageName()));
         mapBitmap = BitmapFactory.decodeResource(resources, resources.getIdentifier("arboretum_map2", "drawable", getPackageName()));
         createBitmap();
-        drawCanvas();
-        drawMarkers(places, 0);
-        /*drawing flowers*/
-//        ArrayList<PixelCoordinates> pointsPixelsCoordinates= new ArrayList();
-//        for(LonLat l: places){
-//            pointsPixelsCoordinates.add(new PixelCoordinates(countX(l.lon), countY(l.lat)));
-//        }
-//        for(int i=0; i<pointsPixelsCoordinates.size(); i++){
-//            if(i==0) {
-//                canvas.drawBitmap(colorMarkerBitmap, pointsPixelsCoordinates.get(i).x, pointsPixelsCoordinates.get(i).y, null);
-//            }else{
-//                canvas.drawBitmap(markerBitmap, pointsPixelsCoordinates.get(i).x, pointsPixelsCoordinates.get(i).y, null);
-//            }
-//        }
-//        for (PixelCoordinates p: pointsPixelsCoordinates) {
-//            canvas.drawBitmap(markerBitmap, p.x, p.y, null);
-//        }
-        /* /drawing flowers*/
-
-        mapImage.setImageBitmap(canvasBitmap);
-//        /* /map*/
 
 
         Intent intent = getIntent();
         bundle = intent.getBundleExtra(BUNDLE);
-
         route_id = bundle.getInt(ROUTE_ID);
+
+
+        Disposable cdLocations = Maybe.fromCallable(() -> {
+            return routeDetailViewModel.getPointsOnRoute(route_id);
+        })
+                .subscribeOn(Schedulers.computation())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(pointsOnRoute -> {
+                            locations = pointsOnRoute;
+
+                            fillPlantsCoordinates();
+                            drawCanvas();
+                            drawMarkers(places, 0);
+                            mapImage.setImageBitmap(canvasBitmap);
+
+                        }
+                        ,throwable -> {
+                            /* onError() */
+                            Toast.makeText(this, "Jakiś błąąąd w traskach... -.- -.-", Toast.LENGTH_LONG).show();
+                        });
+
+        compositeDisposable.add(cdLocations);
+
 
 
         /* beginning of route and routePointList usages */
@@ -229,12 +230,7 @@ public class RouteDetailActivity extends DaggerAppCompatActivity implements View
                                     /* map */
                                     mapBitmap = BitmapFactory.decodeResource(resources, resources.getIdentifier("arboretum_map2", "drawable", getPackageName()));
                                     drawCanvas();
-//                double lon=routePointList.get(position).getX();
-//                double lat=routePointList.get(position).getY();
-//                PixelCoordinates p=new PixelCoordinates(countX(lon), countY(lat));
-//                int x=pointsPixelsCoordinates.get(position).x;
-//                int y=pointsPixelsCoordinates.get(position).y;
-//                canvas.drawBitmap(markerBitmap, p.x, p.y, null);
+
                                     drawMarkers(places, position);
                                     mapImage.setImageBitmap(canvasBitmap);
                                     /* /map */
@@ -269,94 +265,6 @@ public class RouteDetailActivity extends DaggerAppCompatActivity implements View
                         });
 
         compositeDisposable.add(cdPointsOnRoute);
-
-
-//        route = routeDetailViewModel.getRouteById(route_id);
-
-//        if(route_id == 1)
-//        {
-//            routePointList = routeDetailViewModel.getRoutePointsForRoute1();
-//        }
-//        else
-//        {
-//            routePointList = routeDetailViewModel.getRoutePointsForRoute1();
-//        }
-//
-//        leftArrow = findViewById(R.id.route_detail_left_arrow);
-//        leftArrow.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                if(currentPage > 0 ) {
-//                    viewPager.setCurrentItem(currentPage - 1);
-//                }
-//            }
-//        });
-//
-//        rightArrow = findViewById(R.id.route_detail_right_arrow);
-//        rightArrow.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                if(currentPage < routePointList.size()) {
-//                    viewPager.setCurrentItem(currentPage + 1);
-//                }
-//            }
-//        });
-//
-//        viewPager = findViewById(R.id.viewPager);
-//        viewPagerAdapter = new ViewPagerAdapter(this, listener);
-//        viewPagerAdapter.setData(routePointList);
-//        viewPager.setAdapter(viewPagerAdapter);
-//
-//        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-//            @Override
-//            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-//            }
-//
-//            @Override
-//            public void onPageSelected(int position) {
-//                currentPage = position;
-//
-//                /* map */
-//                mapBitmap = BitmapFactory.decodeResource(resources, resources.getIdentifier("arboretum_map2", "drawable", getPackageName()));
-//                drawCanvas();
-////                double lon=routePointList.get(position).getX();
-////                double lat=routePointList.get(position).getY();
-////                PixelCoordinates p=new PixelCoordinates(countX(lon), countY(lat));
-////                int x=pointsPixelsCoordinates.get(position).x;
-////                int y=pointsPixelsCoordinates.get(position).y;
-////                canvas.drawBitmap(markerBitmap, p.x, p.y, null);
-//                drawMarkers(places, position);
-//                mapImage.setImageBitmap(canvasBitmap);
-//                /* /map */
-//
-//                if(position == 0 && routePointList.size() > 1)
-//                {
-//                    leftArrow.setImageDrawable(null);
-//                }
-//                else if(position == 1)
-//                {
-//                    leftArrow.setImageResource(R.drawable.left_arrow);
-//                }
-//
-//                if(position == routePointList.size()-1)
-//                {
-//                    rightArrow.setImageDrawable(null);
-//                }
-//                else if(position == routePointList.size()-2)
-//                {
-//                    rightArrow.setImageResource(R.drawable.right_arrow);
-//                }
-//            }
-//
-//            @Override
-//            public void onPageScrollStateChanged(int state) {
-//            }
-//        });
-
-        Log.i("mRoutes", String.valueOf(route_id));
-//        binding.setRoute(route);
-
-        /* end of routePointList usages */
 
 
         mButton = findViewById(R.id.route_detail_button);
@@ -405,7 +313,7 @@ public class RouteDetailActivity extends DaggerAppCompatActivity implements View
 
     public int countX(double lon){
         double ratioX=((lon-MinLon)*width)/(MaxLon-MinLon);
-        x=(int)ratioX;
+        x = (int)ratioX;
         return x;
     }
 
@@ -413,7 +321,7 @@ public class RouteDetailActivity extends DaggerAppCompatActivity implements View
         lat=(lat*Math.PI)/180.0;
         double worldMapWidth = ((width/(MaxLon-MinLon))*360)/(2*Math.PI);
         double mapOffsetY=(worldMapWidth/2*Math.log((1+Math.sin(MaxLat*Math.PI/180))/(1-Math.sin(MaxLat*Math.PI/180))));
-        y=(int)(height-((worldMapWidth/2*Math.log((1+Math.sin(lat))/(1-Math.sin(lat))))-mapOffsetY));
+        y = (int)(height-((worldMapWidth/2*Math.log((1+Math.sin(lat))/(1-Math.sin(lat))))-mapOffsetY));
         return y/4-24;
     }
 
@@ -437,12 +345,12 @@ public class RouteDetailActivity extends DaggerAppCompatActivity implements View
     /* /map */
 
     public void fillPlantsCoordinates(){
-        places.add(new LonLat(16.856811,50.712181));
-        places.add(new LonLat(16.858742,50.712460));
-        places.add(new LonLat(16.861521,50.712269));
-        places.add(new LonLat(16.863012,50.710591));
-        //places.add(new LonLat(16.859096,50.710021));
-        for(LonLat l: places){
+
+        for (PointOnRoute l:locations) {
+            places.add(new LonLat(l.getY(), l.getX()));
+        }
+
+        for (LonLat l: places) {
             pointsPixelsCoordinates.add(new PixelCoordinates(countX(l.lon), countY(l.lat)));
         }
     }

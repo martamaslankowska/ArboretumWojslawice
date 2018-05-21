@@ -95,7 +95,6 @@ public class PlantDetailActivity extends DaggerAppCompatActivity {
 
                             binding.setPlant(plant);
 
-
                             Drawable d = getResources().getDrawable(plant.getImageId(getApplicationContext()));
                             int h = d.getIntrinsicHeight();
                             int w = d.getIntrinsicWidth();
@@ -107,7 +106,7 @@ public class PlantDetailActivity extends DaggerAppCompatActivity {
                             plantImage.getLayoutParams().height = width/2;
                             plantImage.setScaleType(ImageView.ScaleType.CENTER_CROP);
 
-                            if (h < 300 || w < 300) {
+                            if (plant.getImage() == null || plant.getImage().isEmpty()) {
                                 plantImage.setColorFilter(Color.rgb(100, 100, 100), android.graphics.PorterDuff.Mode.MULTIPLY);
                             } else {
                                 noPlantTextView.setVisibility(View.GONE);
