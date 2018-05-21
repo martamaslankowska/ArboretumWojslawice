@@ -134,12 +134,14 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/nonrec_half_margin"
+            android:layout_marginEnd="@dimen/nonrec_margin"
+            android:autoLink="phone"
             android:text="@{hotel.getPhoneString()}"
             android:textColor="@color/darkTextGray"
-            android:textSize="@dimen/nonrec_font_size_small"
-            android:autoLink="phone"
             android:textColorLink="@color/colorPrimary"
+            android:textSize="@dimen/nonrec_font_size_small"
             app:layout_constraintBottom_toBottomOf="@+id/phoneImage"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/phoneImage"
             app:layout_constraintTop_toTopOf="@+id/phoneImage"
             tools:ignore="MissingConstraints" />
@@ -160,17 +162,17 @@
             android:id="@+id/hotelWebsite"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:autoLink="web"
+            android:layout_marginEnd="@dimen/nonrec_margin"
             android:text="@{hotel.getWebsite()}"
             android:textColor="@color/darkTextGray"
-            android:textSize="@dimen/nonrec_font_size_small"
-            android:autoLink="web"
             android:textColorLink="@color/darkTextGray"
+            android:textSize="@dimen/nonrec_font_size_small"
             app:layout_constraintBottom_toBottomOf="@+id/websiteImage"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/hotelPhone"
             app:layout_constraintTop_toTopOf="@+id/websiteImage"
             tools:ignore="MissingConstraints" />
-
-
 
     </android.support.constraint.ConstraintLayout>
 </layout>

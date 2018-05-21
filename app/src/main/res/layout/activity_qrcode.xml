@@ -6,11 +6,6 @@
     android:layout_height="match_parent"
     tools:context="arboretum.arboretumwojslawice.View.activities.QRCodeActivity">
 
-    <android.support.constraint.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/colorBlack">
-
         <include
             android:id="@+id/toolbar_back"
             layout="@layout/toolbar_empty"
@@ -28,8 +23,5 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar_back"/>
-
-
-    </android.support.constraint.ConstraintLayout>
 
 </android.support.constraint.ConstraintLayout>

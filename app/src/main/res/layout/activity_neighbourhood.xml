@@ -6,55 +6,61 @@
     android:layout_height="match_parent"
     tools:context="arboretum.arboretumwojslawice.View.activities.NeighbourhoodActivity">
 
-    <LinearLayout
+
+    <include
+        android:id="@+id/toolbar_back"
+        layout="@layout/toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
 
-        <include
-            android:id="@+id/toolbar_back"
-            layout="@layout/toolbar" />
+        android:paddingTop="@dimen/appbar_padding_top"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_back">
 
-        <android.support.design.widget.AppBarLayout
-            android:id="@+id/appbar"
+        <android.support.design.widget.TabLayout
+            android:id="@+id/neighbourhood_tabs"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="@dimen/appbar_padding_top"
-            android:theme="@style/AppTheme.AppBarOverlay">
+            android:layout_height="wrap_content">
 
-            <android.support.design.widget.TabLayout
-                android:id="@+id/neighbourhood_tabs"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+            <android.support.design.widget.TabItem
+                android:id="@+id/attractions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:icon="@drawable/ic_attraction" />
 
-                <android.support.design.widget.TabItem
-                    android:id="@+id/attractions"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:icon="@drawable/ic_attraction"/>
+            <android.support.design.widget.TabItem
+                android:id="@+id/restaurants"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:icon="@drawable/ic_restaurant" />
 
-                <android.support.design.widget.TabItem
-                    android:id="@+id/restaurants"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:icon="@drawable/ic_restaurant"/>
+            <android.support.design.widget.TabItem
+                android:id="@+id/hotels"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:icon="@drawable/ic_hotel" />
 
-                <android.support.design.widget.TabItem
-                    android:id="@+id/hotels"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:icon="@drawable/ic_hotel"/>
+        </android.support.design.widget.TabLayout>
+    </android.support.design.widget.AppBarLayout>
 
-            </android.support.design.widget.TabLayout>
-        </android.support.design.widget.AppBarLayout>
+    <FrameLayout
+        android:id="@+id/neighbourhood_fragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
 
-        <FrameLayout
-            android:id="@+id/neighbourhood_fragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appbar">
 
-        </FrameLayout>
-
-    </LinearLayout>
+    </FrameLayout>
 
 </android.support.constraint.ConstraintLayout>

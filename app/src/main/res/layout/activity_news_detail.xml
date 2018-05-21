@@ -13,9 +13,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include
-        android:id="@+id/toolbar_back"
-        layout="@layout/toolbar_empty" />
+        <include
+            android:id="@+id/toolbar_back"
+            layout="@layout/toolbar_empty"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
     <ImageView

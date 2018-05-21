@@ -30,8 +30,8 @@
         <android.support.constraint.ConstraintLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingBottom="@dimen/nonrec_margin"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/nonrec_margin">
 
 
             <TextView
@@ -53,7 +53,7 @@
 
             <TextView
                 android:id="@+id/mainTextInfo"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/nonrec_margin_horizontal"
                 android:layout_marginStart="@dimen/nonrec_margin_horizontal"
@@ -152,8 +152,8 @@
                 android:layout_marginStart="@dimen/nonrec_margin_horizontal"
                 android:text="@string/contact_main_tel_info"
                 android:textAlignment="gravity"
-                android:textSize="@dimen/nonrec_font_size_small"
                 android:textColor="@color/darkTextLightGray"
+                android:textSize="@dimen/nonrec_font_size_small"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/mainAddressImage"
@@ -162,7 +162,7 @@
 
             <View
                 android:id="@+id/line1"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="1dp"
                 android:layout_marginTop="@dimen/nonrec_margin"
                 android:background="@android:color/darker_gray"
@@ -188,7 +188,7 @@
 
             <TextView
                 android:id="@+id/extraTextInfo"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/nonrec_margin_horizontal"
                 android:layout_marginStart="@dimen/nonrec_margin_horizontal"
@@ -255,7 +255,7 @@
 
             <View
                 android:id="@+id/line2"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="1dp"
                 android:layout_marginTop="@dimen/nonrec_margin"
                 android:background="@android:color/darker_gray"

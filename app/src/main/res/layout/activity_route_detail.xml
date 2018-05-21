@@ -39,8 +39,6 @@
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="@dimen/nonrec_margin"
-                android:layout_marginRight="@dimen/nonrec_margin"
                 android:layout_marginTop="@dimen/nonrec_margin"
                 android:layout_marginBottom="4dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -52,6 +50,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
                     android:minWidth="100dp"
+                    android:layout_marginStart="@dimen/nonrec_margin"
                     android:text="@{route.getName()}"
                     android:textSize="@dimen/nonrec_font_size_big"
                     android:textStyle="bold"
@@ -62,6 +61,7 @@
 
                 <TextView
                     android:id="@+id/route_detail_length"
+                    android:layout_marginStart="@dimen/nonrec_margin"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
@@ -77,6 +77,7 @@
                 <TextView
                     android:id="@+id/route_detail_time"
                     android:layout_width="0dp"
+                    android:layout_marginStart="@dimen/nonrec_margin"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
                     android:minWidth="100dp"
@@ -104,6 +105,8 @@
 
                     <TextView
                         android:id="@+id/route_detail_description"
+                        android:layout_marginStart="@dimen/nonrec_margin"
+                        android:layout_marginEnd="@dimen/nonrec_margin"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="top"
@@ -120,6 +123,8 @@
                     android:id="@+id/route_detail_pager"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/nonrec_margin"
+                    android:layout_marginEnd="@dimen/nonrec_margin"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent">
@@ -161,6 +166,7 @@
                     android:id="@+id/route_detail_button"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
+                    android:layout_marginEnd="@dimen/nonrec_margin"
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
                     android:layout_marginBottom="@dimen/nonrec_margin"

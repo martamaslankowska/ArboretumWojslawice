@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
         <variable
@@ -7,7 +8,7 @@
             type="arboretum.arboretumwojslawice.Model.businessentity.Route"/>
     </data>
 
-    <RelativeLayout
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:focusable="true"
@@ -16,43 +17,49 @@
         android:paddingLeft="@dimen/route_list_row_padding_left_right"
         android:paddingRight="@dimen/route_list_row_padding_left_right">
 
-        <!--<TextView-->
-            <!--android:id="@+id/route_id"-->
-            <!--android:textSize="16dp"-->
-            <!--android:layout_alignParentTop="true"-->
-            <!--android:layout_width="20dp"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="@{route.getIdRoute()}"/>-->
-
         <TextView
             android:id="@+id/route_name"
             android:textSize="@dimen/nonrec_font_size"
             android:textColor="@color/darkTextGray"
             android:textStyle="bold"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_toStartOf="@id/route_detail_arrow"
-            android:text="@{route.getName()}"/>
-        <!--"-->
+            android:text="@{route.getName()}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginRight="12dp"
+            app:layout_constraintRight_toLeftOf="@id/route_detail_arrow"/>
+
         <TextView
             android:id="@+id/route_length"
             android:layout_below="@id/route_name"
             android:textColor="@color/darkTextLightGray"
             android:textSize="@dimen/nonrec_font_size_small"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_toStartOf="@id/route_detail_arrow"
-            android:text="@{@string/route_length(route.getLengthString())}"/>
+            android:text="@{@string/route_length(route.getLengthString())}"
+            app:layout_constraintTop_toTopOf="@id/route_name"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginRight="12dp"
+            app:layout_constraintRight_toLeftOf="@id/route_detail_arrow"/>
 
         <TextView
             android:id="@+id/route_time"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_below="@id/route_length"
             android:textColor="@color/darkTextLightGray"
             android:textSize="@dimen/nonrec_font_size_small"
             android:layout_toStartOf="@id/route_detail_arrow"
-            android:text="@{@string/route_time(route.getTimeString())}"/>
+            android:text="@{@string/route_time(route.getTimeString())}"
+            app:layout_constraintTop_toBottomOf="@id/route_length"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginRight="12dp"
+            app:layout_constraintRight_toLeftOf="@id/route_detail_arrow"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
         <ImageView
             android:id="@+id/route_detail_arrow"
@@ -61,7 +68,11 @@
             android:layout_height="50dp"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:src="@drawable/icons8_forward"/>
+            android:src="@drawable/icons8_forward"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent
+"/>
 
-    </RelativeLayout>
+    </android.support.constraint.ConstraintLayout>
 </layout>

@@ -42,9 +42,6 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent" />
 
-
-
-
         <TextView
             android:id="@+id/attractionDistanceBackground"
             android:layout_width="0dp"
@@ -90,18 +87,20 @@
             app:layout_constraintStart_toEndOf="@+id/imageView" />
 
 
-
         <TextView
             android:id="@+id/attractionDescription"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="@{attraction.getDescription()}"
-            android:textColor="@color/darkTextGray"
-            android:textSize="@dimen/nonrec_font_size_small"
             android:paddingBottom="16dp"
             android:paddingLeft="@dimen/nonrec_margin"
             android:paddingRight="@dimen/nonrec_margin"
+            android:text="@{attraction.getDescription()}"
+            android:textColor="@color/darkTextGray"
+            android:textSize="@dimen/nonrec_font_size_small"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/attractionImage"
             tools:ignore="MissingConstraints" />
 

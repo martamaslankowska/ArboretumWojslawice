@@ -57,7 +57,7 @@
             <TextView
                 android:id="@+id/plant_genus"
                 android:layout_width="0dp"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:layout_below="@id/plant_name"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="2dp"
@@ -72,10 +72,11 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
+                android:layout_marginBottom="8dp"
                 android:layout_marginLeft="4dp"
                 android:text="@{plant.getSpeciesName()}"
                 android:textColor="@color/darkTextLightGray"
-                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/plant_genus"
                 app:layout_constraintTop_toTopOf="@+id/plant_genus" />
 

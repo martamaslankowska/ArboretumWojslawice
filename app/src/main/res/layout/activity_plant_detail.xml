@@ -32,7 +32,7 @@
 
         <ImageView
             android:id="@+id/plant_detail_image"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="150dp"
             android:scaleType="centerCrop"
             android:src="@{plant.getImageIdBig(context)}"
