@@ -63,11 +63,6 @@ public class PlantActivity extends DaggerAppCompatActivity {
                         mListOfPlantsFragment.setArguments(numOfTab);
                         stos.push(2);
                         break;
-                    case 3:
-                        numOfTab.putInt("NumberOfTab", 3);
-                        mListOfPlantsFragment.setArguments(numOfTab);
-                        stos.push(3);
-                        break;
                 }
                 getSupportFragmentManager().beginTransaction()
                         .replace(R.id.plant_fragment, mListOfPlantsFragment)
