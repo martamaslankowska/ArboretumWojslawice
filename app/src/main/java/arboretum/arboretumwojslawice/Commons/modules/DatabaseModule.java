@@ -21,6 +21,7 @@ import arboretum.arboretumwojslawice.Model.DAO.PriceDao;
 import arboretum.arboretumwojslawice.Model.DAO.PriceTranslationDao;
 import arboretum.arboretumwojslawice.Model.DAO.RestaurantDao;
 import arboretum.arboretumwojslawice.Model.DAO.RouteDao;
+import arboretum.arboretumwojslawice.Model.DAO.RouteMapCoordDao;
 import arboretum.arboretumwojslawice.Model.DAO.RoutePointDao;
 import arboretum.arboretumwojslawice.Model.DAO.RouteTranslationDao;
 import arboretum.arboretumwojslawice.Model.DAO.SpeciesDao;
@@ -118,6 +119,12 @@ public class DatabaseModule {
     RouteDao providesRouteDao(AppDatabase appDatabase) {
         return appDatabase.getRouteDao();
     }
+
+//    @Singleton
+//    @Provides
+//    RouteMapCoordDao providesRouteMapCoordDao(AppDatabase appDatabase) {
+//        return appDatabase.getRouteMapCoordDao();
+//    }
 
     @Singleton
     @Provides
