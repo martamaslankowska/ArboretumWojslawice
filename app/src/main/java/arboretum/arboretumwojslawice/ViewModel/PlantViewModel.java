@@ -5,6 +5,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import arboretum.arboretumwojslawice.Model.Repository.PlantRepository;
+import arboretum.arboretumwojslawice.Model.businessentity.Location;
 import arboretum.arboretumwojslawice.Model.businessentity.Plant;
 
 /**
@@ -29,6 +30,10 @@ public class PlantViewModel {
 
     public Plant getById(int id) {
         return plantRepo.getById(id);
+    }
+
+    public List<Location> getPlantLocations(int id) {
+        return plantRepo.getLocationsByPlantId(id);
     }
 
 }

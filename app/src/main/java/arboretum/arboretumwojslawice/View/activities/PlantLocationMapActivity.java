@@ -72,37 +72,35 @@ public class PlantLocationMapActivity extends DaggerAppCompatActivity {
 
         Intent intent = getIntent();
         bundle = intent.getBundleExtra(BUNDLE);
-
         plant_id = bundle.getInt(PLANT_ID);
 
 
-        Disposable cdPlant = Maybe.fromCallable(() -> {
-            return plantViewModel.getById(plant_id);
+        /* toolbar */
+        Toolbar toolbar = findViewById(R.id.toolbar_back);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(R.string.toolbar_plant_location_map);
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
+        /* /toolbar */
+
+
+        Disposable cdLocations = Maybe.fromCallable(() -> {
+            return plantViewModel.getPlantLocations(plant_id);
         })
                 .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(dbPlant -> {
-                            Plant plant = dbPlant;
-
-                            /* toolbar */
-                            Toolbar toolbar = findViewById(R.id.toolbar_back);
-                            setSupportActionBar(toolbar);
-                            getSupportActionBar().setTitle(R.string.toolbar_plant_location_map);
-                            getSupportActionBar().setSubtitle(plant.getName());
-
-                            if (getSupportActionBar() != null) {
-                                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-                                getSupportActionBar().setDisplayShowHomeEnabled(true);
-                            }
-                            /* /toolbar */
-                            locations = plant.getLocations();
+                .subscribe(locationList -> {
+                            locations = locationList;
                         }
                         ,throwable -> {
                             /* onError() */
                             Toast.makeText(this, "Jakiś błąąąd... -.- -.-", Toast.LENGTH_LONG).show();
                         });
 
-        compositeDisposable.add(cdPlant);
+        compositeDisposable.add(cdLocations);
 
 //        Toast.makeText(this, locations.get(0).getX()+", "+locations.get(0).getY() , Toast.LENGTH_LONG).show();
 //        for (Location l: locations) {
