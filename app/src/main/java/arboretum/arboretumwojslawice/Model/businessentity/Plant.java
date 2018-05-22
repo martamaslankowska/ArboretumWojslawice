@@ -16,7 +16,9 @@ import arboretum.arboretumwojslawice.R;
 
 public class Plant implements AdapterItem {
 
-    private static final String[] DEFAULT_ICONS_NAMES = {"ic_tree_deciduous_black", "ic_tree_conifer_black", "ic_clover_black", "ic_world_black"};
+    private static final String DEFAULT_ICON_NAME = "plants_no_photo";
+    private static final String[] DEFAULT_ICONS_NAMES = {"plant_ic_default_00", "plant_ic_default_01", "plant_ic_default_02", "plant_ic_default_03"};
+    //    private static final String[] DEFAULT_ICONS_NAMES = {"ic_tree_deciduous_black", "ic_tree_conifer_black", "ic_clover_black", "ic_world_black"};
     private static final String[] DEFAULT_IMAGES_NAMES = {"plant_default_00", "plant_default_01", "plant_default_02", "plant_default_03"};
 
     @ColumnInfo(name = "IdPlant")
@@ -168,8 +170,10 @@ public class Plant implements AdapterItem {
 
     public int getImageId(Context c) {
         String imageIcon = image;
-        if (image == null || image.isEmpty())
+        if (image == null || image.isEmpty()) {
+//            imageIcon = Plant.DEFAULT_ICON_NAME;
             imageIcon = Plant.DEFAULT_ICONS_NAMES[kind];
+        }
         return c.getResources().getIdentifier("arboretum.arboretumwojslawice:drawable/" + imageIcon, null, null);
     }
 

@@ -21,8 +21,6 @@
             android:id="@+id/plant_image"
             android:layout_width="65dp"
             android:layout_height="65dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="4dp"
             android:scaleType="centerCrop"
             android:src="@{favourite.getImageId(context)}"
             app:layout_constraintBottom_toBottomOf="parent"

@@ -9,13 +9,13 @@
 
     <!-- italic -->
     <font
-        android:font="@font/lato_mediumitalic"
+        android:font="@font/lato_thinitalic"
         android:fontStyle="italic"
         android:fontWeight="400" />
 
     <!-- bold -->
     <font
-        android:font="@font/lato_bold"
+        android:font="@font/lato_thin"
         android:fontStyle="normal"
         android:fontWeight="700" />
 

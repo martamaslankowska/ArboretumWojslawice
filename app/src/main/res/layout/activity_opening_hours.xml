@@ -91,7 +91,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/nonrec_margin_horizontal"
                 android:text="@string/open_hours_opening_hours"
-                android:textColor="@color/darkTextGray"
+                android:textColor="@color/darkTextDarkGray"
                 android:textSize="@dimen/nonrec_font_size"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -151,15 +151,15 @@
                 app:layout_constraintTop_toBottomOf="@+id/ticketText" />
 
 
-            <View
-                android:id="@+id/line3"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="@dimen/nonrec_margin_vertical"
-                android:background="@android:color/darker_gray"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ticketHours" />
+            <!--<View-->
+                <!--android:id="@+id/line3"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="1dp"-->
+                <!--android:layout_marginTop="@dimen/nonrec_margin_vertical"-->
+                <!--android:background="@android:color/darker_gray"-->
+                <!--app:layout_constraintEnd_toEndOf="parent"-->
+                <!--app:layout_constraintStart_toStartOf="parent"-->
+                <!--app:layout_constraintTop_toBottomOf="@+id/ticketHours" />-->
 
 
             <ImageView
@@ -167,10 +167,10 @@
                 android:layout_width="@dimen/open_hours_icon_size"
                 android:layout_height="@dimen/open_hours_icon_size"
                 android:layout_marginStart="@dimen/nonrec_margin_horizontal"
-                android:layout_marginTop="@dimen/nonrec_margin_vertical"
+                android:layout_marginTop="8dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/line3"
-                app:srcCompat="@drawable/ic_terminal" />
+                app:layout_constraintTop_toBottomOf="@+id/ticketHours"
+                app:srcCompat="@drawable/weather_empty" />
 
             <TextView
                 android:id="@+id/info1Text"
@@ -178,7 +178,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/nonrec_margin_horizontal"
                 android:layout_marginStart="@dimen/nonrec_margin_horizontal"
-                android:layout_marginTop="@dimen/nonrec_margin_vertical"
+                android:layout_marginTop="8dp"
                 android:text="@string/open_hours_info1"
                 android:textAlignment="gravity"
                 android:textColor="@color/darkTextDarkGray"
@@ -186,7 +186,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/ticketImage"
-                app:layout_constraintTop_toBottomOf="@+id/line3" />
+                app:layout_constraintTop_toBottomOf="@+id/ticketHours" />
 
             <TextView
                 android:id="@+id/subinfo1Text"

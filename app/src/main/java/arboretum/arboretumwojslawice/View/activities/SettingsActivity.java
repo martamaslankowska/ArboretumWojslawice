@@ -11,6 +11,7 @@ import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.v4.content.IntentCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -38,7 +39,19 @@ public class SettingsActivity extends AppCompatActivity {
     @Inject
     Locale myLocale;
     RadioGroup rg;
+    RadioButton buttonPL, buttonEN, buttonDE;
     String language;
+
+    Thread thread = new Thread(){
+        @Override
+        public void run() {
+            try {
+                Thread.sleep(3500);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +59,10 @@ public class SettingsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_settings);
 
         rg = findViewById(R.id.radioGroup_language);
+        buttonPL = findViewById(R.id.polishButton);
+        buttonEN = findViewById(R.id.englishButton);
+        buttonDE = findViewById(R.id.germanButton);
+
 
         /* toolbar */
         Toolbar toolbar = findViewById(R.id.toolbar_back);
@@ -60,24 +77,40 @@ public class SettingsActivity extends AppCompatActivity {
 
         mPrefs = PreferenceManager.getDefaultSharedPreferences(this);
         language = LanguageManager.getLanguage(getApplicationContext());
+
+        String languageCode = Locale.getDefault().getLanguage();
+        switch(languageCode) {
+            case "pl":
+                buttonPL.setChecked(true);
+                break;
+            case "en":
+                buttonEN.setChecked(true);
+                break;
+            case "de":
+                buttonDE.setChecked(true);
+                break;
+        }
     }
 
 
     @SuppressLint("ResourceAsColor")
     public void polishLanguage(View view) {
-        Toast.makeText(getApplicationContext(), "Zmieniono język na polski", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "Zmieniono język na polski.\nAplikacja zostanie uruchomiona ponownie.", Toast.LENGTH_LONG).show();
+        buttonPL.setChecked(true);
         setLanguage("pl");
     }
 
     @SuppressLint("ResourceAsColor")
     public void englishLanguage(View view) {
-        Toast.makeText(getApplicationContext(), "Zmieniono język na angielski", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "The language has been changed to english.\nApplication will restart in a second.", Toast.LENGTH_LONG).show();
+        buttonEN.setChecked(true);
         setLanguage("en");
     }
 
     @SuppressLint("ResourceAsColor")
     public void germanLanguage(View view) {
-        Toast.makeText(getApplicationContext(), "Przemyśl swoje życie", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "Die Sprache wurde auf Deutsch geändert.\nDie Anwendung wird neu gestartet.", Toast.LENGTH_LONG).show();
+        buttonDE.setChecked(true);
         setLanguage("de");
     }
 
@@ -92,7 +125,16 @@ public class SettingsActivity extends AppCompatActivity {
         res.updateConfiguration(conf, dm);
 
         saveLanguageToSharedPreferences(languageCode);
-        restartApp(getApplicationContext());
+
+        // delay to show message about language change
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                restartApp(getApplicationContext());
+            }
+        }, 4000);
+
+//        restartApp(getApplicationContext());
     }
 
     private void restartApp(Context context) {
