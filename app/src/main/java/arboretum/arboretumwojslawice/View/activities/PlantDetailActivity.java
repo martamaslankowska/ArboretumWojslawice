@@ -47,7 +47,7 @@ public class PlantDetailActivity extends DaggerAppCompatActivity {
     private ImageView mLocationMapButton;
     private CompositeDisposable compositeDisposable;
 
-    private ImageView plantImage;
+    private ImageView plantImage, plantNoPhotoImage;
     private TextView floweringTextView, noPlantTextView;
 
     @Override
@@ -63,6 +63,7 @@ public class PlantDetailActivity extends DaggerAppCompatActivity {
         plantImage = findViewById(R.id.plant_detail_image);
         floweringTextView = findViewById(R.id.seassonTextView);
         noPlantTextView = findViewById(R.id.noPlantImageTextView);
+        plantNoPhotoImage = findViewById(R.id.plantNoImageView);
 
 
         Disposable cdPlant = Maybe.fromCallable(() -> {
@@ -95,9 +96,9 @@ public class PlantDetailActivity extends DaggerAppCompatActivity {
 
                             binding.setPlant(plant);
 
-                            Drawable d = getResources().getDrawable(plant.getImageId(getApplicationContext()));
-                            int h = d.getIntrinsicHeight();
-                            int w = d.getIntrinsicWidth();
+//                            Drawable d = getResources().getDrawable(plant.getImageId(getApplicationContext()));
+//                            int h = d.getIntrinsicHeight();
+//                            int w = d.getIntrinsicWidth();
 
                             DisplayMetrics displayMetrics = new DisplayMetrics();
                             getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
@@ -107,15 +108,21 @@ public class PlantDetailActivity extends DaggerAppCompatActivity {
                             plantImage.setScaleType(ImageView.ScaleType.CENTER_CROP);
 
                             if (plant.getImage() == null || plant.getImage().isEmpty()) {
-                                plantImage.setColorFilter(Color.rgb(100, 100, 100), android.graphics.PorterDuff.Mode.MULTIPLY);
+                                plantNoPhotoImage.setImageAlpha(200);
+                                plantNoPhotoImage.getLayoutParams().height = width/2;
+                                plantNoPhotoImage.setScaleType(ImageView.ScaleType.CENTER_CROP);
+
+                                noPlantTextView.setVisibility(View.GONE);
+//                                plantImage.setColorFilter(Color.rgb(100, 100, 100), android.graphics.PorterDuff.Mode.MULTIPLY);
                             } else {
                                 noPlantTextView.setVisibility(View.GONE);
+                                plantNoPhotoImage.setVisibility(View.GONE);
                             }
 
                         }
                         ,throwable -> {
                             /* onError() */
-                            Toast.makeText(this, "Jakiś błąąąd... -.- -.-", Toast.LENGTH_LONG).show();
+                            Toast.makeText(this, "Jakiś błąąąd... -.- -.-", Toast.LENGTH_LONG);
                         });
 
         compositeDisposable.add(cdPlant);

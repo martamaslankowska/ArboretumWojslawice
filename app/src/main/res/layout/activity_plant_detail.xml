@@ -23,7 +23,7 @@
 
         <ImageView
             android:id="@+id/plant_location_map_button"
-            android:layout_width="65dp"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/nonrec_margin"
             android:src="@drawable/ic_map"
@@ -146,6 +146,19 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/plant_detail_image"
             app:layout_constraintTop_toTopOf="@+id/plant_detail_image" />
+
+
+        <ImageView
+            android:id="@+id/plantNoImageView"
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/plants_no_photo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar_back" />
+
+
 
 
     </android.support.constraint.ConstraintLayout>
