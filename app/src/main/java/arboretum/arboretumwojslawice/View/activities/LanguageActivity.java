@@ -47,9 +47,6 @@ public class LanguageActivity extends AppCompatActivity {
 
         mPrefs = PreferenceManager.getDefaultSharedPreferences(this);
 
-
-
-
     }
 
     public void polishLanguage(View view) {

@@ -54,7 +54,8 @@ public class NewsDetailActivity extends DaggerAppCompatActivity {
                 .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(news -> {
-                        binding.setNews(news.get(0));
+                        if (!news.isEmpty())
+                            binding.setNews(news.get(0));
                         }
                         ,throwable -> {
                             /* onError() */

@@ -19,9 +19,16 @@ public abstract class RouteMapCoordDao extends BaseDao<RouteMapCoordEntity> {
             "WHERE IdRoute IN (:idRoute)")
     public abstract RouteMapCoord getRouteMapCoordByRouteId(int idRoute);
 
-//    @Query("SELECT MapImage " +
-//            "FROM RouteMapCoords " +
-//            "WHERE IdRoute IN (:idRoute) LIMIT 1")
-//    public abstract String getRouteMapByRouteId(int idRoute);
+
+    @Query("SELECT RouteMapCoords.IdRoute, Routes.MapImageDetailed, MinLat, MaxLat, MinLon, MaxLon " +
+            "FROM RouteMapCoords LEFT JOIN Routes ON RouteMapCoords.IdRoute = Routes.IdRoute " +
+            "WHERE Routes.IdRoute IN (:idRoute)")
+    public abstract RouteMapCoord getRouteMapCoordFromRoutes(int idRoute);
+
+
+    @Query("SELECT MapImage " +
+            "FROM RouteMapCoords " +
+            "WHERE IdRoute IN (:idRoute) LIMIT 1")
+    public abstract String getRouteMapByRouteId(int idRoute);
 
 }

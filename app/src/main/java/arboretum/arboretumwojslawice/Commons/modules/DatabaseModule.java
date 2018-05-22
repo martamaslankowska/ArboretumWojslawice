@@ -120,11 +120,11 @@ public class DatabaseModule {
         return appDatabase.getRouteDao();
     }
 
-//    @Singleton
-//    @Provides
-//    RouteMapCoordDao providesRouteMapCoordDao(AppDatabase appDatabase) {
-//        return appDatabase.getRouteMapCoordDao();
-//    }
+    @Singleton
+    @Provides
+    RouteMapCoordDao providesRouteMapCoordDao(AppDatabase appDatabase) {
+        return appDatabase.getRouteMapCoordDao();
+    }
 
     @Singleton
     @Provides

@@ -38,7 +38,7 @@ import android.content.Context;
         LocationEntity.class, PlantEntity.class, PlantTranslationEntity.class,
         PriceEntity.class, PriceTranslationEntity.class, RestaurantEntity.class,
         RouteEntity.class, RoutePointEntity.class, RouteTranslationEntity.class,
-//        RouteMapCoordEntity.class,
+        RouteMapCoordEntity.class,
         SpeciesEntity.class, NewsEntity.class, NewsTranslationEntity.class},
         version = 1)
     public abstract class AppDatabase extends RoomDatabase {
@@ -57,7 +57,7 @@ import android.content.Context;
         public abstract PriceTranslationDao getPriceTranslationDao();
         public abstract RestaurantDao getRestaurantDao();
         public abstract RouteDao getRouteDao();
-//        public abstract RouteMapCoordDao getRouteMapCoordDao();
+        public abstract RouteMapCoordDao getRouteMapCoordDao();
         public abstract RoutePointDao getRoutePointDao();
         public abstract RouteTranslationDao getRouteTranslationDao();
         public abstract SpeciesDao getSpeciesDao();

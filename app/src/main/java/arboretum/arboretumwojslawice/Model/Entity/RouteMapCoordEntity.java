@@ -11,8 +11,8 @@ import io.reactivex.annotations.NonNull;
 
 @Entity(tableName = "RouteMapCoords",
         foreignKeys = {
-                @ForeignKey(entity = RouteEntity.class, parentColumns = "IdRoute", childColumns = "IdRoute"),
-                @ForeignKey(entity = RouteEntity.class, parentColumns = "MapImageDetailed", childColumns = "MapImage")})
+                @ForeignKey(entity = RouteEntity.class, parentColumns = "IdRoute", childColumns = "IdRoute")})
+//                @ForeignKey(entity = RouteEntity.class, parentColumns = "MapImageDetailed", childColumns = "MapImage")})
 public class RouteMapCoordEntity {
 
     @PrimaryKey
@@ -49,6 +49,7 @@ public class RouteMapCoordEntity {
         this.minLon = minLon;
         this.maxLon = maxLon;
     }
+
 
 
     public int getIdRoute() {

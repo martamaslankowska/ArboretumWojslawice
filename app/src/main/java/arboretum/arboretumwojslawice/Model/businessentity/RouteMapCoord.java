@@ -1,6 +1,7 @@
 package arboretum.arboretumwojslawice.Model.businessentity;
 
 import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Ignore;
 
 public class RouteMapCoord {
 
@@ -32,6 +33,20 @@ public class RouteMapCoord {
         this.maxLon = maxLon;
     }
 
+
+    @Ignore
+    public RouteMapCoord(Integer idRoute, Double minLat, Double maxLat, Double minLon, Double maxLon) {
+        this.idRoute = idRoute;
+        this.minLat = minLat;
+        this.maxLat = maxLat;
+        this.minLon = minLon;
+        this.maxLon = maxLon;
+    }
+
+    @Ignore
+    public RouteMapCoord(Integer idRoute) {
+        this.idRoute = idRoute;
+    }
 
     public Integer getIdRoute() {
         return idRoute;
@@ -80,4 +95,6 @@ public class RouteMapCoord {
     public void setMaxLon(Double maxLon) {
         this.maxLon = maxLon;
     }
+
+
 }
