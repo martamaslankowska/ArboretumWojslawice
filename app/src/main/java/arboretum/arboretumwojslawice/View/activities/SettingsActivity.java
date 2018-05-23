@@ -34,24 +34,18 @@ import arboretum.arboretumwojslawice.R;
 
 public class SettingsActivity extends AppCompatActivity {
 
+    final String PL = "pl";
+    final String EN = "en";
+    final String DE = "de";
+
     SharedPreferences mPrefs;
     final String INFO = "select_language";
     @Inject
     Locale myLocale;
     RadioGroup rg;
     RadioButton buttonPL, buttonEN, buttonDE;
-    String language;
+    String language, languageCode;
 
-    Thread thread = new Thread(){
-        @Override
-        public void run() {
-            try {
-                Thread.sleep(3500);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,15 +72,15 @@ public class SettingsActivity extends AppCompatActivity {
         mPrefs = PreferenceManager.getDefaultSharedPreferences(this);
         language = LanguageManager.getLanguage(getApplicationContext());
 
-        String languageCode = Locale.getDefault().getLanguage();
+        languageCode = mPrefs.getString(INFO, PL);
         switch(languageCode) {
-            case "pl":
+            case PL:
                 buttonPL.setChecked(true);
                 break;
-            case "en":
+            case EN:
                 buttonEN.setChecked(true);
                 break;
-            case "de":
+            case DE:
                 buttonDE.setChecked(true);
                 break;
         }
@@ -95,23 +89,29 @@ public class SettingsActivity extends AppCompatActivity {
 
     @SuppressLint("ResourceAsColor")
     public void polishLanguage(View view) {
-        Toast.makeText(getApplicationContext(), "Zmieniono język na polski.\nAplikacja zostanie uruchomiona ponownie.", Toast.LENGTH_LONG).show();
-        buttonPL.setChecked(true);
-        setLanguage("pl");
+        if (!languageCode.equals(PL)) {
+            Toast.makeText(getApplicationContext(), "Zmieniono język na polski.\nAplikacja zostanie uruchomiona ponownie.", Toast.LENGTH_LONG).show();
+            buttonPL.setChecked(true);
+            setLanguage(PL);
+        }
     }
 
     @SuppressLint("ResourceAsColor")
     public void englishLanguage(View view) {
-        Toast.makeText(getApplicationContext(), "The language has been changed to english.\nApplication will restart in a second.", Toast.LENGTH_LONG).show();
-        buttonEN.setChecked(true);
-        setLanguage("en");
+        if (!languageCode.equals(EN)) {
+            Toast.makeText(getApplicationContext(), "The language has been changed to english.\nApplication will restart in a second.", Toast.LENGTH_LONG).show();
+            buttonEN.setChecked(true);
+            setLanguage(EN);
+        }
     }
 
     @SuppressLint("ResourceAsColor")
     public void germanLanguage(View view) {
-        Toast.makeText(getApplicationContext(), "Die Sprache wurde auf Deutsch geändert.\nDie Anwendung wird neu gestartet.", Toast.LENGTH_LONG).show();
-        buttonDE.setChecked(true);
-        setLanguage("de");
+        if (!languageCode.equals(DE)) {
+            Toast.makeText(getApplicationContext(), "Die Sprache wurde auf Deutsch geändert.\nDie Anwendung wird neu gestartet.", Toast.LENGTH_LONG).show();
+            buttonDE.setChecked(true);
+            setLanguage(DE);
+        }
     }
 
 
@@ -132,7 +132,7 @@ public class SettingsActivity extends AppCompatActivity {
             public void run() {
                 restartApp(getApplicationContext());
             }
-        }, 4000);
+        }, 3500);
 
 //        restartApp(getApplicationContext());
     }
