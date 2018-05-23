@@ -201,7 +201,7 @@
                 android:layout_height="0dp"
                 app:layout_constraintDimensionRatio="H,16:8"
                 android:scaleType="centerCrop"
-                android:src="@drawable/news1"
+                android:src="@drawable/event_background_01"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

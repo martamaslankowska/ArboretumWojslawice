@@ -36,51 +36,422 @@
                 android:text="@string/rules_subtitle"
                 android:textColor="@color/darkTextDarkGray"
                 android:textSize="@dimen/nonrec_font_size"
-                android:fontFamily="@font/lato_medium"
+                android:fontFamily="@font/lato_semibold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/rules_content1"
-                android:layout_width="match_parent"
+                android:id="@+id/minus1"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/nonrec_half_margin"
-                android:layout_marginStart="@dimen/nonrec_half_margin"
                 android:layout_marginTop="@dimen/nonrec_half_margin"
-                android:text="@string/rules_content_part1"
+                android:layout_marginStart="0dp"
+                android:text="-"
+                android:textColor="@color/darkTextGray"
+                android:textSize="@dimen/nonrec_font_size_small"
+                app:layout_constraintStart_toStartOf="@+id/rules_subtitle"
+                app:layout_constraintTop_toBottomOf="@+id/rules_subtitle" />
+
+            <TextView
+                android:id="@+id/rulesContent1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/nonrec_margin"
+                android:layout_marginStart="@dimen/nonrec_half_margin"
+                android:text="@string/rules_content_1"
                 android:textColor="@color/darkTextGray"
                 android:textSize="@dimen/nonrec_font_size_small"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/rules_subtitle" />
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/minus1"
+                app:layout_constraintTop_toTopOf="@+id/minus1" />
+
+            <TextView
+                android:id="@+id/minus1b"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-"
+                android:textColor="@color/darkTextGray"
+                android:textSize="@dimen/nonrec_font_size_small"
+                app:layout_constraintStart_toStartOf="@+id/minus1"
+                app:layout_constraintTop_toTopOf="@+id/rulesContent1b" />
+
+            <TextView
+                android:id="@+id/rulesContent1b"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/rules_content_1b"
+                android:textColor="@color/darkTextGray"
+                android:textSize="@dimen/nonrec_font_size_small"
+                app:layout_constraintEnd_toEndOf="@+id/rulesContent1"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/rulesContent1"
+                app:layout_constraintTop_toBottomOf="@+id/rulesContent1" />
+
+            <TextView
+                android:id="@+id/minus2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-"
+                android:textColor="@color/darkTextGray"
+                android:textSize="@dimen/nonrec_font_size_small"
+                app:layout_constraintStart_toStartOf="@+id/minus1b"
+                app:layout_constraintTop_toBottomOf="@+id/rulesContent1b" />
+
+            <TextView
+                android:id="@+id/rulesContent2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/rules_content_2"
+                android:textColor="@color/darkTextGray"
+                android:textSize="@dimen/nonrec_font_size_small"
+                app:layout_constraintEnd_toEndOf="@+id/rulesContent1b"
+                app:layout_constraintStart_toStartOf="@+id/rulesContent1b"
+                app:layout_constraintTop_toBottomOf="@+id/rulesContent1b" />
+
+            <TextView
+                android:id="@+id/minus3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-"
+                android:textColor="@color/darkTextGray"
+                android:textSize="@dimen/nonrec_font_size_small"
+                app:layout_constraintStart_toStartOf="@+id/minus2"
+                app:layout_constraintTop_toTopOf="@+id/rulesContent3" />
+
+            <TextView
+                android:id="@+id/rulesContent3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/rules_content_3"
+                android:textColor="@color/darkTextGray"
+                android:textSize="@dimen/nonrec_font_size_small"
+                app:layout_constraintEnd_toEndOf="@+id/rulesContent2"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/rulesContent2"
+                app:layout_constraintTop_toBottomOf="@+id/rulesContent2" />
+
+            <TextView
+                android:id="@+id/minus4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-"
+                android:textColor="@color/darkTextGray"
+                android:textSize="@dimen/nonrec_font_size_small"
+                app:layout_constraintStart_toStartOf="@+id/minus3"
+                app:layout_constraintTop_toTopOf="@+id/rulesContent4" />
+
+            <TextView
+                android:id="@+id/rulesContent4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/rules_content_4"
+                android:textColor="@color/darkTextGray"
+                android:textSize="@dimen/nonrec_font_size_small"
+                app:layout_constraintEnd_toEndOf="@+id/rulesContent3"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/rulesContent3"
+                app:layout_constraintTop_toBottomOf="@+id/rulesContent3" />
+
+            <TextView
+                android:id="@+id/minus5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-"
+                android:textColor="@color/darkTextGray"
+                android:textSize="@dimen/nonrec_font_size_small"
+                app:layout_constraintStart_toStartOf="@+id/minus4"
+                app:layout_constraintTop_toTopOf="@+id/rulesContent5" />
+
+            <TextView
+                android:id="@+id/rulesContent5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/rules_content_5"
+                android:textColor="@color/darkTextGray"
+                android:textSize="@dimen/nonrec_font_size_small"
+                app:layout_constraintEnd_toEndOf="@+id/rulesContent4"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/rulesContent4"
+                app:layout_constraintTop_toBottomOf="@+id/rulesContent4" />
+
+            <TextView
+                android:id="@+id/minus6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-"
+                android:textColor="@color/darkTextGray"
+                android:textSize="@dimen/nonrec_font_size_small"
+                app:layout_constraintStart_toStartOf="@+id/minus5"
+                app:layout_constraintTop_toTopOf="@+id/rulesContent6" />
+
+            <TextView
+                android:id="@+id/rulesContent6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/rules_content_6"
+                android:textColor="@color/darkTextGray"
+                android:textSize="@dimen/nonrec_font_size_small"
+                app:layout_constraintEnd_toEndOf="@+id/rulesContent5"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/rulesContent5"
+                app:layout_constraintTop_toBottomOf="@+id/rulesContent5" />
+
+            <TextView
+                android:id="@+id/minus7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-"
+                android:textColor="@color/darkTextGray"
+                android:textSize="@dimen/nonrec_font_size_small"
+                app:layout_constraintStart_toStartOf="@+id/minus6"
+                app:layout_constraintTop_toTopOf="@+id/rulesContent7" />
+
+            <TextView
+                android:id="@+id/rulesContent7"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/rules_content_7"
+                android:textColor="@color/darkTextGray"
+                android:textSize="@dimen/nonrec_font_size_small"
+                app:layout_constraintEnd_toEndOf="@+id/rulesContent6"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/rulesContent6"
+                app:layout_constraintTop_toBottomOf="@+id/rulesContent6" />
+
+            <TextView
+                android:id="@+id/minus8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-"
+                android:textColor="@color/darkTextGray"
+                android:textSize="@dimen/nonrec_font_size_small"
+                app:layout_constraintStart_toStartOf="@+id/minus7"
+                app:layout_constraintTop_toTopOf="@+id/rulesContent8" />
+
+            <TextView
+                android:id="@+id/rulesContent8"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/rules_content_8"
+                android:textColor="@color/darkTextGray"
+                android:textSize="@dimen/nonrec_font_size_small"
+                app:layout_constraintEnd_toEndOf="@+id/rulesContent7"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/rulesContent7"
+                app:layout_constraintTop_toBottomOf="@+id/rulesContent7" />
+
 
             <ImageView
                 android:id="@+id/rules_image"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/nonrec_half_margin"
-                android:layout_marginStart="@dimen/nonrec_half_margin"
-                android:layout_marginTop="@dimen/nonrec_half_margin"
+                android:layout_marginEnd="12dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="12dp"
                 android:src="@drawable/rules_pictures"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/rules_content1" />
+                app:layout_constraintTop_toBottomOf="@+id/rulesContent8" />
+
+
+            <ImageView
+                android:id="@+id/diamond11"
+                android:layout_width="@dimen/rules_diamond_image_size"
+                android:layout_height="@dimen/rules_diamond_image_size"
+                android:layout_marginTop="@dimen/rules_diamond_margin_top"
+                android:layout_marginStart="12dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/rulesContent11"
+                app:srcCompat="@drawable/ic_diamond" />
 
             <TextView
-                android:id="@+id/rules_content2"
+                android:id="@+id/rulesContent11"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/nonrec_margin"
                 android:layout_marginEnd="@dimen/nonrec_margin"
-                android:layout_marginTop="@dimen/nonrec_half_margin"
-                android:lineSpacingExtra="2dp"
-                android:text="@string/rules_content_part2"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="12dp"
+                android:text="@string/rules_content_11"
                 android:textColor="@color/darkTextGray"
                 android:textSize="@dimen/nonrec_font_size_small"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/rules_image"
-                app:layout_constraintRight_toRightOf="parent"/>
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/diamond11"
+                app:layout_constraintTop_toBottomOf="@+id/rules_image" />
+
+            <ImageView
+                android:id="@+id/diamond12"
+                android:layout_width="@dimen/rules_diamond_image_size"
+                android:layout_height="@dimen/rules_diamond_image_size"
+                android:layout_marginTop="@dimen/rules_diamond_margin_top"
+                app:layout_constraintStart_toStartOf="@+id/diamond11"
+                app:layout_constraintTop_toTopOf="@+id/rulesContent12"
+                app:srcCompat="@drawable/ic_diamond" />
+
+            <TextView
+                android:id="@+id/rulesContent12"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/nonrec_margin"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="4dp"
+                android:text="@string/rules_content_12"
+                android:textColor="@color/darkTextGray"
+                android:textSize="@dimen/nonrec_font_size_small"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/diamond12"
+                app:layout_constraintTop_toBottomOf="@+id/rulesContent11" />
+
+            <ImageView
+                android:id="@+id/diamond13"
+                android:layout_width="@dimen/rules_diamond_image_size"
+                android:layout_height="@dimen/rules_diamond_image_size"
+                android:layout_marginTop="@dimen/rules_diamond_margin_top"
+                app:layout_constraintStart_toStartOf="@+id/diamond12"
+                app:layout_constraintTop_toTopOf="@+id/rulesContent13"
+                app:srcCompat="@drawable/ic_diamond" />
+
+            <TextView
+                android:id="@+id/rulesContent13"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/nonrec_margin"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="4dp"
+                android:text="@string/rules_content_13"
+                android:textColor="@color/darkTextGray"
+                android:textSize="@dimen/nonrec_font_size_small"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/diamond13"
+                app:layout_constraintTop_toBottomOf="@+id/rulesContent12" />
+
+            <ImageView
+                android:id="@+id/diamond14"
+                android:layout_width="@dimen/rules_diamond_image_size"
+                android:layout_height="@dimen/rules_diamond_image_size"
+                android:layout_marginTop="@dimen/rules_diamond_margin_top"
+                app:layout_constraintStart_toStartOf="@+id/diamond13"
+                app:layout_constraintTop_toTopOf="@+id/rulesContent14"
+                app:srcCompat="@drawable/ic_diamond" />
+
+            <TextView
+                android:id="@+id/rulesContent14"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/nonrec_margin"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="4dp"
+                android:text="@string/rules_content_14"
+                android:textColor="@color/darkTextGray"
+                android:textSize="@dimen/nonrec_font_size_small"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/diamond14"
+                app:layout_constraintTop_toBottomOf="@+id/rulesContent13" />
+
+            <ImageView
+                android:id="@+id/diamond15"
+                android:layout_width="@dimen/rules_diamond_image_size"
+                android:layout_height="@dimen/rules_diamond_image_size"
+                android:layout_marginTop="@dimen/rules_diamond_margin_top"
+                app:layout_constraintStart_toStartOf="@+id/diamond14"
+                app:layout_constraintTop_toTopOf="@+id/rulesContent15"
+                app:srcCompat="@drawable/ic_diamond" />
+
+            <TextView
+                android:id="@+id/rulesContent15"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/nonrec_margin"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="4dp"
+                android:text="@string/rules_content_15"
+                android:textColor="@color/darkTextGray"
+                android:textSize="@dimen/nonrec_font_size_small"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/diamond15"
+                app:layout_constraintTop_toBottomOf="@+id/rulesContent14" />
+
+            <ImageView
+                android:id="@+id/diamond16"
+                android:layout_width="@dimen/rules_diamond_image_size"
+                android:layout_height="@dimen/rules_diamond_image_size"
+                android:layout_marginTop="@dimen/rules_diamond_margin_top"
+                app:layout_constraintStart_toStartOf="@+id/diamond15"
+                app:layout_constraintTop_toTopOf="@+id/rulesContent16"
+                app:srcCompat="@drawable/ic_diamond" />
+
+            <TextView
+                android:id="@+id/rulesContent16"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/nonrec_margin"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="4dp"
+                android:text="@string/rules_content_16"
+                android:textColor="@color/darkTextGray"
+                android:textSize="@dimen/nonrec_font_size_small"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/diamond16"
+                app:layout_constraintTop_toBottomOf="@+id/rulesContent15" />
+
+
+            <ImageView
+                android:id="@+id/diamond17"
+                android:layout_width="@dimen/rules_diamond_image_size"
+                android:layout_height="@dimen/rules_diamond_image_size"
+                android:layout_marginTop="@dimen/rules_diamond_margin_top"
+                app:layout_constraintStart_toStartOf="@+id/diamond16"
+                app:layout_constraintTop_toTopOf="@+id/rulesContent17"
+                app:srcCompat="@drawable/ic_diamond" />
+
+            <TextView
+                android:id="@+id/rulesContent17"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/nonrec_margin"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="4dp"
+                android:text="@string/rules_content_17"
+                android:textColor="@color/darkTextGray"
+                android:textSize="@dimen/nonrec_font_size_small"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/diamond17"
+                app:layout_constraintTop_toBottomOf="@+id/rulesContent16" />
+
+            <ImageView
+                android:id="@+id/diamond18"
+                android:layout_width="@dimen/rules_diamond_image_size"
+                android:layout_height="@dimen/rules_diamond_image_size"
+                android:layout_marginTop="@dimen/rules_diamond_margin_top"
+                app:layout_constraintStart_toStartOf="@+id/diamond17"
+                app:layout_constraintTop_toTopOf="@+id/rulesContent18"
+                app:srcCompat="@drawable/ic_diamond" />
+
+            <TextView
+                android:id="@+id/rulesContent18"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/nonrec_margin"
+                android:layout_marginEnd="@dimen/nonrec_margin"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="4dp"
+                android:text="@string/rules_content_18"
+                android:textColor="@color/darkTextGray"
+                android:textSize="@dimen/nonrec_font_size_small"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/diamond18"
+                app:layout_constraintTop_toBottomOf="@+id/rulesContent17" />
+
 
 
         </android.support.constraint.ConstraintLayout>

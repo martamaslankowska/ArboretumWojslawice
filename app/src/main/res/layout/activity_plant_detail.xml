@@ -24,9 +24,10 @@
         <ImageView
             android:id="@+id/plant_location_map_button"
             android:layout_width="50dp"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_marginEnd="@dimen/nonrec_margin"
             android:src="@drawable/ic_map"
+            android:layout_marginTop="@dimen/nonrec_half_margin"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/plantDetailName" />
 
@@ -51,7 +52,7 @@
             android:text="@{plant.getName()}"
             android:textColor="@color/darkTextGray"
             android:textSize="@dimen/nonrec_font_size_big"
-            android:textStyle="bold"
+            android:fontFamily="@font/lato_semibold"
             app:layout_constraintEnd_toStartOf="@+id/plant_location_map_button"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"

@@ -46,5 +46,8 @@
 
     <dimen name="hotelrestaurant_icon_size">24dp</dimen>
 
+    <dimen name="rules_diamond_margin_top">4dp</dimen>
+    <dimen name="rules_diamond_image_size">18dp</dimen>
+
 
 </resources>

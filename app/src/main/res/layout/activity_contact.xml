@@ -273,6 +273,7 @@
                 android:text="@string/contact_cafe_text"
                 android:textColor="@color/darkTextDarkGray"
                 android:textSize="@dimen/nonrec_font_size"
+                android:fontFamily="@font/lato_semibold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"

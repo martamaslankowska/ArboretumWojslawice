@@ -32,7 +32,7 @@
             android:text="@string/chose_language"
             android:textAlignment="center"
             android:textSize="@dimen/nonrec_font_size_big"
-            android:fontFamily="@font/lato_medium"
+            android:fontFamily="@font/lato_semibold"
             android:textColor="@color/darkTextDarkGray"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0"

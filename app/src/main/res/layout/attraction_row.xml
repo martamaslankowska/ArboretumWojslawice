@@ -36,7 +36,7 @@
             android:text="@{attraction.getName()}"
             android:textColor="@color/white"
             android:textSize="@dimen/nonrec_font_size_big"
-            android:textStyle="bold"
+            android:fontFamily="@font/lato_semibold"
             app:layout_constraintBottom_toTopOf="@+id/attractionDistanceBackground"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
