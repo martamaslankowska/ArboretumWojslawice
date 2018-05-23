@@ -13,7 +13,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
+    <android.support.constraint.ConstraintLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="vertical"
@@ -26,33 +26,42 @@
             android:id="@+id/chooseLanguage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8sp"
-            android:layout_marginRight="8sp"
+            android:layout_marginEnd="@dimen/nonrec_margin"
+            android:layout_marginStart="@dimen/nonrec_margin"
+            android:layout_marginTop="@dimen/nonrec_margin"
             android:text="@string/chose_language"
             android:textAlignment="center"
-            android:textSize="20sp"
-            android:textStyle="bold"
+            android:textSize="@dimen/nonrec_font_size_big"
+            android:fontFamily="@font/lato_medium"
+            android:textColor="@color/darkTextDarkGray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <View
             android:id="@+id/line4"
             android:layout_width="match_parent"
             android:layout_height="1dp"
+            android:layout_marginTop="@dimen/nonrec_margin"
             android:background="@android:color/darker_gray"
-            app:layout_constraintTop_toBottomOf="@+id/chooseLanguage" />
+            app:layout_constraintTop_toBottomOf="@+id/radioGroup_language" />
 
 
         <RadioGroup
             android:id="@+id/radioGroup_language"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8sp">
+            android:layout_marginTop="@dimen/nonrec_half_margin"
+            app:layout_constraintStart_toStartOf="@+id/chooseLanguage"
+            app:layout_constraintTop_toBottomOf="@+id/chooseLanguage">
 
             <RadioButton
                 android:id="@+id/polishButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/lato_medium"
+                android:textColor="@color/darkTextGray"
+                android:textSize="@dimen/nonrec_font_size"
                 android:onClick="polishLanguage"
                 android:text="Polski" />
 
@@ -60,7 +69,8 @@
                 android:id="@+id/englishButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/lato_medium"
+                android:textColor="@color/darkTextGray"
+                android:textSize="@dimen/nonrec_font_size"
                 android:onClick="englishLanguage"
                 android:text="English" />
 
@@ -68,11 +78,22 @@
                 android:id="@+id/germanButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/lato_medium"
+                android:textColor="@color/darkTextGray"
+                android:textSize="@dimen/nonrec_font_size"
                 android:onClick="germanLanguage"
                 android:text="Deutsch" />
         </RadioGroup>
 
-    </LinearLayout>
+        <ImageView
+            android:id="@+id/languageIconImageView"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="@dimen/nonrec_margin"
+            android:layout_marginTop="@dimen/nonrec_margin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_language" />
+
+    </android.support.constraint.ConstraintLayout>
 
 </android.support.constraint.ConstraintLayout>

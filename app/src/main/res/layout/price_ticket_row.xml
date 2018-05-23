@@ -26,7 +26,7 @@
             android:text="@{price.getType()}"
             android:textColor="@color/darkTextGray"
             android:textSize="@dimen/nonrec_font_size"
-            android:textStyle="bold"
+            android:fontFamily="@font/lato_medium"
             app:layout_constraintEnd_toStartOf="@+id/ticket_amount"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -52,6 +52,7 @@
             android:layout_margin="4dp"
             android:text="@{@string/price_amount(price.getAmountString())}"
             android:textSize="@dimen/nonrec_font_size"
+            android:fontFamily="@font/lato_medium"
             android:textColor="@color/darkTextGray"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

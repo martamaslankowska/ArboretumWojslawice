@@ -7,9 +7,12 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
 
-        <item name="android:fontFamily">@font/lato</item>
-        <item name="fontFamily">@font/lato</item>
+        <!--<item name="android:fontFamily">@font/lato</item>-->
+        <!--<item name="fontFamily">@font/lato</item>-->
 
+        <item name="android:textViewStyle">@style/LatoTextViewStyle</item>
+        <item name="android:buttonStyle">@style/LatoButtonStyle</item>
+        <item name="android:radioButtonStyle">@style/LatoRadioButtonStyle</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
@@ -27,5 +30,21 @@
     <style name="RatingBar" parent="@style/Widget.AppCompat.RatingBar.Small">
 
     </style>
+
+
+
+
+    <style name="LatoTextViewStyle" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/lato_regular</item>
+    </style>
+
+    <style name="LatoButtonStyle" parent="android:Widget.Holo.Button">
+        <item name="android:fontFamily">@font/lato_regular</item>
+    </style>
+
+    <style name="LatoRadioButtonStyle" parent="android:Widget.CompoundButton.RadioButton">
+        <item name="android:fontFamily">@font/lato_regular</item>
+    </style>
+
 
 </resources>
