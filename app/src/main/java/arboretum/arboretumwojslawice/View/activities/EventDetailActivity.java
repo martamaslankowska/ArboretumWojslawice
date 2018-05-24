@@ -92,7 +92,7 @@ public class EventDetailActivity extends DaggerAppCompatActivity {
                             /* toolbar */
                             Toolbar toolbar = findViewById(R.id.toolbar_back);
                             setSupportActionBar(toolbar);
-                            getSupportActionBar().setTitle("Kalendarz imprez");
+                            getSupportActionBar().setTitle(getString(R.string.toolbar_event_detail) + " " + dateIntString(event_date));
 
                             if (getSupportActionBar() != null) {
                                 getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -158,5 +158,13 @@ public class EventDetailActivity extends DaggerAppCompatActivity {
     public void getQRCode(View view) {
         Intent intent = new Intent(this, QRCodeActivity.class);
         startActivity(intent);
+    }
+
+    public String dateIntString(int date) {
+        Integer day = date - ((date/100)*100);
+        Integer month = (date/100) - ((date/10000)*100);
+        Integer year = date/10000;
+
+        return (day<10 ? "0" : "") + String.valueOf(day) + "." + (month<10 ? "0" : "") + String.valueOf(month);
     }
 }

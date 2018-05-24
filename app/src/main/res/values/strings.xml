@@ -24,6 +24,7 @@
     <string name="toolbar_opening_hours">Godziny otwarcia</string>
     <string name="toolbar_settings">Ustawienia</string>
     <string name="toolbar_plant_location_map">Lokalizacja rośliny</string>
+    <string name="toolbar_event_detail">Wydarzenia z</string>
 
     <!-- TabBars -->
     <string name="tab_map">Mapa</string>
