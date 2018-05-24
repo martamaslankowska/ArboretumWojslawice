@@ -131,7 +131,7 @@
 
     <!-- ATTRACTIONS -->
     <string name="attractions_distance">w odległości %s</string>
-    <string name="hotelrestaurant_distance">%s - w odległości %s</string>
+    <string name="hotelrestaurant_distance">%s \nw odległości %s</string>
     <string name="hotelrestaurant_rating_info">brak informacji o ocenie</string>
 
 
@@ -169,7 +169,7 @@
 
 
     <!--Event-->
-    <string name="event_time_begin">Godz.: %s</string>
+    <string name="event_time_begin">godz.: %s</string>
     <string name="event_time_end">\u0020-\u0020%s</string>
 
     <string-array name="months_name">

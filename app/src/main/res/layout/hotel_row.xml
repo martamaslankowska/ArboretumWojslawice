@@ -95,9 +95,10 @@
         <ImageView
             android:id="@+id/addressImage"
             android:layout_width="@dimen/hotelrestaurant_icon_size"
-            android:layout_height="@dimen/hotelrestaurant_icon_size"
+            android:layout_height="28dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
+            android:paddingTop="4dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/hotelRatingBackground"
             app:srcCompat="@drawable/ic_location" />
