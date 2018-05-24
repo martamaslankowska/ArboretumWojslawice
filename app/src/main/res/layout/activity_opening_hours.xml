@@ -38,12 +38,12 @@
                 android:layout_marginEnd="@dimen/nonrec_margin_horizontal"
                 android:layout_marginStart="@dimen/nonrec_margin_horizontal"
                 android:layout_marginTop="@dimen/nonrec_margin"
+                android:fontFamily="@font/lato_semibold"
                 android:lineSpacingExtra="@dimen/nonrec_line_spacing"
                 android:text="@string/open_hours_main_text"
                 android:textAlignment="center"
                 android:textColor="@color/darkTextDarkGray"
                 android:textSize="@dimen/nonrec_font_size_big"
-                android:fontFamily="@font/lato_semibold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -90,10 +90,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/nonrec_margin_horizontal"
+                android:fontFamily="@font/lato_semibold"
                 android:text="@string/open_hours_opening_hours"
                 android:textColor="@color/darkTextDarkGray"
                 android:textSize="@dimen/nonrec_font_size"
-                android:fontFamily="@font/lato_semibold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/openingText"
@@ -152,14 +152,14 @@
 
 
             <!--<View-->
-                <!--android:id="@+id/line3"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="1dp"-->
-                <!--android:layout_marginTop="@dimen/nonrec_margin_vertical"-->
-                <!--android:background="@android:color/darker_gray"-->
-                <!--app:layout_constraintEnd_toEndOf="parent"-->
-                <!--app:layout_constraintStart_toStartOf="parent"-->
-                <!--app:layout_constraintTop_toBottomOf="@+id/ticketHours" />-->
+            <!--android:id="@+id/line3"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="1dp"-->
+            <!--android:layout_marginTop="@dimen/nonrec_margin_vertical"-->
+            <!--android:background="@android:color/darker_gray"-->
+            <!--app:layout_constraintEnd_toEndOf="parent"-->
+            <!--app:layout_constraintStart_toStartOf="parent"-->
+            <!--app:layout_constraintTop_toBottomOf="@+id/ticketHours" />-->
 
 
             <ImageView
@@ -242,6 +242,20 @@
 
         </android.support.constraint.ConstraintLayout>
 
+
     </ScrollView>
+
+
+    <ImageView
+        android:id="@+id/gifImageView"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_gravity="center"
+        android:scaleType="fitEnd"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
 
 </android.support.constraint.ConstraintLayout>

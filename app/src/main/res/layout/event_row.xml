@@ -15,14 +15,15 @@
         android:focusable="true"
         android:paddingLeft="@dimen/nonrec_margin"
         android:paddingRight="@dimen/nonrec_margin"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp">
+        android:paddingTop="4dp"
+        android:paddingBottom="8dp">
 
         <TextView
             android:id="@+id/event_month_name"
             android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
+            android:layout_marginTop="6dp"
             android:textSize="10dp"
             android:paddingTop="2dp"
             android:paddingBottom="2dp"
@@ -53,6 +54,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_below="@id/event_date_begin_date"
+            android:layout_marginTop="2dp"
             android:text="@{event.getEventNames()}"
             android:textSize="@dimen/nonrec_font_size_small"
             android:textColor="@color/darkTextGray"

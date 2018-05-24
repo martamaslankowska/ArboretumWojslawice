@@ -77,4 +77,6 @@ dependencies {
     //QR
     implementation 'com.google.android.gms:play-services:11.6.0'
 
+    //GIF images
+    implementation 'com.github.bumptech.glide:glide:3.5.2'
 }
