@@ -24,6 +24,7 @@ public class PlantViewModel {
         return plantRepo.getAllByKind(kind);
     }
 
+
     public boolean setFavourite(int id) {
         return plantRepo.setFavouriteById(id);
     }

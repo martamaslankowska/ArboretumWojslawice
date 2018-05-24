@@ -44,7 +44,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
                 android:layout_marginStart="16dp"
-                android:lineSpacingMultiplier="1"
                 android:text="@{plant.getName()}"
                 android:textColor="@color/darkTextDarkGray"
                 android:textSize="@dimen/nonrec_font_size"
