@@ -15,5 +15,8 @@ public class EventListViewHolder extends BindingViewHolder<EventRowList, EventRo
     public void bind(EventRowList item) {
         binding.setEvent(item);
         binding.executePendingBindings();
+        if (binding.eventName.getText().length() < 30) {
+            binding.eventName.setPadding(0, 16, 0, 0);
+        }
     }
 }

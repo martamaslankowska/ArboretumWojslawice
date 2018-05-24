@@ -57,6 +57,9 @@ public class Plant implements AdapterItem {
     @Ignore
     private List<Location> locations;
 
+    @Ignore
+    private Boolean isGif;
+
 
     @Ignore
     public Plant() {}
@@ -74,6 +77,7 @@ public class Plant implements AdapterItem {
         this.seasonEnd = seasonEnd;
         this.description = description;
         this.locations = locations;
+        this.isGif = image == null ? false : image.startsWith("gif");
     }
 
     // needed for Dao to get all plants
@@ -89,6 +93,7 @@ public class Plant implements AdapterItem {
         this.seasonEnd = seasonEnd;
         this.description = description;
         this.favourite = favourite;
+        this.isGif = image == null ? false : image.startsWith("gif");
     }
 
     @Ignore
@@ -110,6 +115,7 @@ public class Plant implements AdapterItem {
         this.genusName = genusName;
         this.kind = kind;
         this.image = image;
+        this.isGif = image == null ? false : image.startsWith("gif");
     }
 
     public Integer getIdPlant() {
@@ -290,4 +296,12 @@ public class Plant implements AdapterItem {
         return 0;
     }
 
+
+    public Boolean getGif() {
+        return isGif;
+    }
+
+    public void setGif(Boolean gif) {
+        isGif = gif;
+    }
 }

@@ -9,6 +9,7 @@ import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.text.Layout;
@@ -19,6 +20,11 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
+
+import java.util.Random;
 
 import javax.inject.Inject;
 
@@ -49,12 +55,15 @@ public class PlantDetailActivity extends DaggerAppCompatActivity {
 
     private ImageView plantImage, plantNoPhotoImage;
     private TextView floweringTextView, noPlantTextView;
+    Context context;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ActivityPlantDetailBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_plant_detail);
         compositeDisposable = new CompositeDisposable();
+        context = getApplicationContext();
 
         Intent intent = getIntent();
         bundle = intent.getBundleExtra(BUNDLE);
@@ -104,17 +113,36 @@ public class PlantDetailActivity extends DaggerAppCompatActivity {
                             getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
                             int width = displayMetrics.widthPixels;
 
+                            int minGifTime = 1500;
+                            int maxGifTime = 3500;
+                            int gifTime = minGifTime + (int)(Math.random()) * ((maxGifTime - minGifTime));
+
                             plantImage.getLayoutParams().height = width/2;
                             plantImage.setScaleType(ImageView.ScaleType.CENTER_CROP);
+                            plantNoPhotoImage.getLayoutParams().height = width/2;
+                            plantNoPhotoImage.setScaleType(ImageView.ScaleType.CENTER_CROP);
 
-                            if (plant.getImage() == null || plant.getImage().isEmpty()) {
-                                plantNoPhotoImage.setImageAlpha(200);
-                                plantNoPhotoImage.getLayoutParams().height = width/2;
-                                plantNoPhotoImage.setScaleType(ImageView.ScaleType.CENTER_CROP);
-
+                            if (plant.getImage() == null || plant.getImage().isEmpty()) { // no image
                                 noPlantTextView.setVisibility(View.GONE);
+                                plantNoPhotoImage.setImageAlpha(200);
 //                                plantImage.setColorFilter(Color.rgb(100, 100, 100), android.graphics.PorterDuff.Mode.MULTIPLY);
-                            } else {
+                            } else if (plant.getGif()) { // gif image
+                                noPlantTextView.setVisibility(View.GONE);
+                                plantNoPhotoImage.setImageResource(R.drawable.weather_empty);
+
+                                final Handler handler = new Handler();
+                                handler.postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        GlideDrawableImageViewTarget imageViewTarget = new GlideDrawableImageViewTarget(plantNoPhotoImage, 1);
+                                        Glide.with(context)
+                                                .load(plant.getImageId(context))
+                                                .into(imageViewTarget);
+                                    }
+                                }, gifTime);
+
+
+                            } else { // normal image
                                 noPlantTextView.setVisibility(View.GONE);
                                 plantNoPhotoImage.setVisibility(View.GONE);
                             }

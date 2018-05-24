@@ -27,7 +27,6 @@
             android:layout_height="50dp"
             android:layout_marginEnd="@dimen/nonrec_margin"
             android:src="@drawable/ic_map"
-            android:layout_marginTop="@dimen/nonrec_half_margin"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/plantDetailName" />
 
@@ -135,18 +134,6 @@
                 android:textSize="@dimen/nonrec_font_size_small" />
         </ScrollView>
 
-        <TextView
-            android:id="@+id/noPlantImageTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/plant_no_image"
-            android:textStyle="italic"
-            android:textColor="@color/white"
-            android:textSize="@dimen/nonrec_font_size"
-            app:layout_constraintBottom_toBottomOf="@+id/plant_detail_image"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/plant_detail_image"
-            app:layout_constraintTop_toTopOf="@+id/plant_detail_image" />
 
 
         <ImageView
@@ -158,6 +145,20 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar_back" />
+
+
+        <TextView
+            android:id="@+id/noPlantImageTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/plant_no_image"
+            android:textStyle="italic"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/nonrec_font_size"
+            app:layout_constraintBottom_toBottomOf="@+id/plant_detail_image"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/plant_detail_image"
+            app:layout_constraintTop_toTopOf="@+id/plant_detail_image" />
 
 
 

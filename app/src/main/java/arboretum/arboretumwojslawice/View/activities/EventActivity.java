@@ -89,6 +89,11 @@ public class EventActivity extends DaggerAppCompatActivity implements EventAdapt
                             mEvents = events;
                             mRecyclerView.addItemDecoration(new DividerItemDecoration(this, 0));
                             mAdapter.setData(mEvents);
+
+                            mRecyclerView.setAdapter(mAdapter);
+
+                            mLayoutManager = new LinearLayoutManager(this);
+                            setRecyclerViewLayoutManager();
                         }
                         ,throwable -> {
                             Toast.makeText(this, "We have error here...", Toast.LENGTH_LONG);
@@ -96,11 +101,6 @@ public class EventActivity extends DaggerAppCompatActivity implements EventAdapt
 
         compositeDisposable.add(listOfEvents);
 
-
-        mRecyclerView.setAdapter(mAdapter);
-
-        mLayoutManager = new LinearLayoutManager(this);
-        setRecyclerViewLayoutManager();
     }
 
     public void setRecyclerViewLayoutManager() {
