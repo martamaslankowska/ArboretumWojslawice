@@ -90,7 +90,7 @@ public class SettingsActivity extends AppCompatActivity {
     @SuppressLint("ResourceAsColor")
     public void polishLanguage(View view) {
         if (!languageCode.equals(PL)) {
-            Toast.makeText(getApplicationContext(), "Zmieniono język na polski.\nAplikacja zostanie uruchomiona ponownie.", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Zmieniono język na polski.\nAplikacja zostanie uruchomiona ponownie.", Toast.LENGTH_SHORT).show();
             buttonPL.setChecked(true);
             setLanguage(PL);
         }
@@ -99,7 +99,7 @@ public class SettingsActivity extends AppCompatActivity {
     @SuppressLint("ResourceAsColor")
     public void englishLanguage(View view) {
         if (!languageCode.equals(EN)) {
-            Toast.makeText(getApplicationContext(), "The language has been changed to english.\nApplication will restart in a second.", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "The language has been changed to english.\nApplication will restart.", Toast.LENGTH_SHORT).show();
             buttonEN.setChecked(true);
             setLanguage(EN);
         }
@@ -108,7 +108,7 @@ public class SettingsActivity extends AppCompatActivity {
     @SuppressLint("ResourceAsColor")
     public void germanLanguage(View view) {
         if (!languageCode.equals(DE)) {
-            Toast.makeText(getApplicationContext(), "Die Sprache wurde auf Deutsch geändert.\nDie Anwendung wird neu gestartet.", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Die Sprache wurde auf Deutsch geändert.\nDie Anwendung wird neu gestartet.", Toast.LENGTH_SHORT).show();
             buttonDE.setChecked(true);
             setLanguage(DE);
         }
@@ -132,7 +132,7 @@ public class SettingsActivity extends AppCompatActivity {
             public void run() {
                 restartApp(getApplicationContext());
             }
-        }, 3500);
+        }, 2000);
 
 //        restartApp(getApplicationContext());
     }
