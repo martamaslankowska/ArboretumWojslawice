@@ -123,13 +123,13 @@ public class QRCodeActivity extends DaggerAppCompatActivity {
                                 Bundle bundle = new Bundle();
                                 bundle.putInt(PLANT_ID, plantId);
                                 intent.putExtra(BUNDLE, bundle);
-                                Toast.makeText(getApplicationContext(), "Roslina jest w bazie", Toast.LENGTH_LONG).show();
+                                //Toast.makeText(getApplicationContext(), "Roslina jest w bazie", Toast.LENGTH_LONG).show();
                                 startActivity(intent);
                                 finish();
                             }
                             else
                             {
-                                Toast.makeText(getApplicationContext(), "Roslina nie istnieje. Spróbuj jeszcze raz", Toast.LENGTH_LONG).show();
+                                //Toast.makeText(getApplicationContext(), "Roslina nie istnieje. Spróbuj jeszcze raz", Toast.LENGTH_LONG).show();
                                 Vibrator vibrator = (Vibrator) getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
                                 vibrator.vibrate(200);
                             }

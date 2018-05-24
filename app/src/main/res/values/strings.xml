@@ -172,4 +172,7 @@
     <string name="event_time_begin">Godz.: %s</string>
     <string name="event_time_end">\u0020-\u0020%s</string>
 
+    <!--Event-->
+    <string name="qr_code_information">Skieruj aparat na kod QR,\naby uzyskać więcej informacji o roślinie.</string>
+
 </resources>

@@ -93,8 +93,8 @@
     <!-- PLANTS -->
     <string name="plant_no_image">no image</string>
 
-
-
+    <!--Event-->
+    <string name="qr_code_information">Focus the camera at the QR code for more information about the plant.</string>
 
 
 </resources>

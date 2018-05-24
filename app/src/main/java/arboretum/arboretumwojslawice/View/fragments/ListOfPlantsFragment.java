@@ -161,7 +161,6 @@ public class ListOfPlantsFragment extends DaggerFragment implements PlantAdapter
 
         compositeDisposable.add(listOfPlants);
 
-
         if (savedInstanceState != null) {
             // Restore saved layout manager type.
             currentLayoutManagerType = (ListOfPlantsFragment.LayoutManagerType) savedInstanceState

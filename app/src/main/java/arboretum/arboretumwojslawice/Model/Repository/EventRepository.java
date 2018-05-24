@@ -1,20 +1,17 @@
 package arboretum.arboretumwojslawice.Model.Repository;
 
+import android.util.Log;
+
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 import javax.inject.Inject;
 
 import arboretum.arboretumwojslawice.Model.DAO.EventDao;
 import arboretum.arboretumwojslawice.Model.DAO.EventTranslationDao;
 import arboretum.arboretumwojslawice.Model.businessentity.Event;
-import arboretum.arboretumwojslawice.R;
-import io.reactivex.Maybe;
-import io.reactivex.Single;
 
 /**
  * Created by Komputer on 2018-03-25.
@@ -57,12 +54,13 @@ public class EventRepository extends BaseRepository {
         SimpleDateFormat mdformat = new SimpleDateFormat("yyyyMMdd");
         String strDate = mdformat.format(calendar.getTime());
 
-        Date date = new Date();
         Integer day = Integer.valueOf(strDate.substring(6, 8));
         Integer month = Integer.valueOf(strDate.substring(4, 6));
         Integer year = Integer.valueOf(strDate.substring(0, 4));
         Integer IntegerDate = 10000*year + 100*month + day;
 
-        return eventDao.getAllDateFromToday(IntegerDate, languageCode);
+        List<Integer> result = eventDao.getAllDateFromToday(IntegerDate, languageCode);
+
+        return result;
     }
 }

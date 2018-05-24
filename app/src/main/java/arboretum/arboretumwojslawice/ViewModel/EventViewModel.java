@@ -1,5 +1,7 @@
 package arboretum.arboretumwojslawice.ViewModel;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,6 +43,7 @@ public class EventViewModel {
                 }
             }
             eventRowList = new EventRowList(dateBeginInteger.get(i), names);
+            Log.d("Dzien " + i, eventRowList.getEventDateString());
             eventList.add(eventRowList);
         }
 

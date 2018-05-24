@@ -55,6 +55,7 @@ public class PlantAdapter extends RecyclerView.Adapter<BindingViewHolder> {
 
     public void setData(List<Plant> plant) {
         this.mPlants = plant;
-        notifyDataSetChanged();
+        this.notifyDataSetChanged();
+
     }
 }
