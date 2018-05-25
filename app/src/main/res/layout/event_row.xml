@@ -27,7 +27,7 @@
             android:textSize="10dp"
             android:paddingTop="2dp"
             android:paddingBottom="2dp"
-            android:text="@{event.getEventMonthString()}"
+            android:text="@{event.getEventMonthString(context)}"
             android:background="@drawable/border_for_events_calendar_month"
             android:textColor="@color/white"
             android:fontFamily="@font/lato_semibold"

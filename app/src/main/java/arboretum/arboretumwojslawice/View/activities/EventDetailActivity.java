@@ -18,6 +18,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import arboretum.arboretumwojslawice.Commons.DividerItemDecoration;
+import arboretum.arboretumwojslawice.Model.additionalEntity.EventRowList;
 import arboretum.arboretumwojslawice.Model.businessentity.Event;
 import arboretum.arboretumwojslawice.R;
 import arboretum.arboretumwojslawice.View.adapter.EventDetailAdapter;
@@ -38,6 +39,7 @@ public class EventDetailActivity extends DaggerAppCompatActivity {
     public static final String BUNDLE = "BUNDLE";
     public static final String EVENT_DATE = "EVENT_DATE";
     private List<Event> mEventList;
+    EventRowList eventRowList;
 
     protected RecyclerView mRecyclerView;
 
@@ -106,12 +108,13 @@ public class EventDetailActivity extends DaggerAppCompatActivity {
 
 
         Disposable d_event_names = Maybe.fromCallable(() -> {
-            return eventDetailViewModel.getAllEventNameInDate(event_date);
+            return eventDetailViewModel.getEventRowList(event_date);
         })
                 .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(events -> {
-                            binding.eventDetailNames.setText(events);
+                            eventRowList = events;
+                            binding.setEvent(eventRowList);
                         }
                         ,throwable -> {
                             Toast.makeText(this, "We have error here...", Toast.LENGTH_LONG);
@@ -119,7 +122,7 @@ public class EventDetailActivity extends DaggerAppCompatActivity {
 
         compositeDisposable.add(d_event_names);
 
-        binding.eventDetailDate.setText(eventDetailViewModel.getDateString(event_date));
+        //binding.eventDetailDate.setText(eventDetailViewModel.getDateString(event_date));
 
         setRecyclerViewLayoutManager();
 //        /* toolbar */

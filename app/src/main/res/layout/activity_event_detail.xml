@@ -5,7 +5,7 @@
     <data>
         <variable
             name="event"
-            type="arboretum.arboretumwojslawice.Model.businessentity.Event" />
+            type="arboretum.arboretumwojslawice.Model.additionalEntity.EventRowList" />
     </data>
 
     <android.support.constraint.ConstraintLayout
@@ -34,34 +34,10 @@
             app:layout_constraintTop_toBottomOf="@id/toolbar_back"
             app:layout_constraintVertical_chainStyle="spread_inside">
 
-            <!--<TextView-->
-                <!--android:id="@+id/event_detail_date"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginLeft="12dp"-->
-                <!--android:textSize="24sp"-->
-                <!--app:layout_constraintBottom_toBottomOf="parent"-->
-                <!--app:layout_constraintStart_toStartOf="parent"-->
-                <!--app:layout_constraintTop_toTopOf="parent" />-->
-
-            <!--<TextView-->
-                <!--android:id="@+id/event_detail_names"-->
-                <!--android:layout_width="0dp"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginLeft="8dp"-->
-                <!--android:layout_marginRight="12dp"-->
-                <!--android:textSize="24sp"-->
-                <!--android:textStyle="bold"-->
-                <!--app:layout_constraintBottom_toBottomOf="parent"-->
-                <!--app:layout_constraintEnd_toEndOf="parent"-->
-                <!--app:layout_constraintStart_toEndOf="@+id/event_detail_date"-->
-                <!--app:layout_constraintTop_toTopOf="parent" />-->
-
             <android.support.constraint.ConstraintLayout
                 android:id="@+id/eventCalendar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingTop="4dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
@@ -74,10 +50,10 @@
                     android:fontFamily="@font/lato_semibold"
                     android:paddingBottom="3dp"
                     android:paddingTop="3dp"
-                    android:text="..."
+                    android:text="@{event.getEventMonthString(context)}"
                     android:textAlignment="center"
                     android:textColor="@color/white"
-                    android:textSize="10dp"
+                    android:textSize="12dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -89,9 +65,9 @@
                     android:background="@drawable/border_for_events_calendar_day"
                     android:fontFamily="@font/lato_semibold"
                     android:gravity="center"
-                    android:text="..."
+                    android:text="@{event.getEventDayString()}"
                     android:textColor="@color/darkTextGray"
-                    android:textSize="20dp"
+                    android:textSize="28dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/event_month_name" />
 
@@ -105,7 +81,7 @@
                 android:layout_marginStart="@dimen/nonrec_margin"
                 android:layout_marginTop="2dp"
                 android:fontFamily="@font/lato_semibold"
-                android:text="..."
+                android:text="@{event.getEventNames()}"
                 android:textColor="@color/darkTextDarkGray"
                 android:textSize="@dimen/nonrec_font_size"
                 app:layout_constraintEnd_toEndOf="parent"

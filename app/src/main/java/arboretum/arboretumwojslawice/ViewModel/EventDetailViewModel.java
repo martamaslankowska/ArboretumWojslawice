@@ -5,6 +5,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import arboretum.arboretumwojslawice.Model.Repository.EventRepository;
+import arboretum.arboretumwojslawice.Model.additionalEntity.EventRowList;
 import arboretum.arboretumwojslawice.Model.businessentity.Event;
 
 public class EventDetailViewModel {
@@ -41,6 +42,26 @@ public class EventDetailViewModel {
         Integer year = date/10000;
 
         return (day<10 ? "0" : "") + String.valueOf(day) + "." + (month<10 ? "0" : "") + String.valueOf(month);
+    }
+
+    public EventRowList getEventRowList(int date) {
+        EventRowList eventRowList;
+
+        List<Event> eventInTheDay;
+        eventInTheDay = eventRepo.getAllDuringGivenDate(date);
+        String names = "";
+        for(int j = 0; j < eventInTheDay.size(); j++)
+        {
+            names += eventInTheDay.get(j).getType();
+
+            if(eventInTheDay.size() - 1 - j != 0)
+            {
+                names += " / ";
+            }
+        }
+        eventRowList = new EventRowList(date, names);
+
+        return eventRowList;
     }
 
 

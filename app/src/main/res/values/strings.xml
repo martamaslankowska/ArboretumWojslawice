@@ -172,7 +172,22 @@
     <string name="event_time_begin">Godz.: %s</string>
     <string name="event_time_end">\u0020-\u0020%s</string>
 
-    <!--Event-->
+    <string-array name="months_name">
+        <item>Styczeń</item>
+        <item>Luty</item>
+        <item>Marzec</item>
+        <item>Kwiecień</item>
+        <item>Maj</item>
+        <item>Czerwiec</item>
+        <item>Lipiec</item>
+        <item>Sierpień</item>
+        <item>Wrzesień</item>
+        <item>Październik</item>
+        <item>Listopad</item>
+        <item>Grudzień</item>
+    </string-array>
+
+    <!--QR code-->
     <string name="qr_code_information">Skieruj aparat na kod QR,\naby uzyskać więcej informacji o roślinie.</string>
 
 </resources>
