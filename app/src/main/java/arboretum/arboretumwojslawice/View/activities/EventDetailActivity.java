@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -42,6 +43,7 @@ public class EventDetailActivity extends DaggerAppCompatActivity {
     EventRowList eventRowList;
 
     protected RecyclerView mRecyclerView;
+    TextView eventsNames;
 
     @Inject
     protected EventDetailAdapter mAdapter;
@@ -63,6 +65,7 @@ public class EventDetailActivity extends DaggerAppCompatActivity {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_event_detail);
         ActivityEventDetailBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_event_detail);
+        eventsNames = findViewById(R.id.event_detail_names);
 
 
         Intent intent = getIntent();
@@ -112,6 +115,13 @@ public class EventDetailActivity extends DaggerAppCompatActivity {
                 .subscribe(events -> {
                             eventRowList = events;
                             binding.setEvent(eventRowList);
+
+                            eventsNames.setText(events.getEventNames());
+                            int nrOfLines = eventsNames.getLineCount();
+                            if (nrOfLines < 3)
+                                eventsNames.setPadding(0,12,0,0);
+                            if (nrOfLines > 3)
+                                eventsNames.setPadding(0,0,0,0);
                         }
                         ,throwable -> {
                             Toast.makeText(this, "We have error here...", Toast.LENGTH_LONG);

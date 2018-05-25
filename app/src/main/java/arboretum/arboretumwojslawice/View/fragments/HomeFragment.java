@@ -37,7 +37,7 @@ public class HomeFragment extends DaggerFragment {
     TextView weatherTemp, weatherDesc;
     ImageView weatherIcon;
     TextView newsTitle, newsText, eventTitle, eventText, plantTitle, plantText;
-    ImageView newsImage, eventImage, plantImage;
+    ImageView newsImage, eventImage, plantImage, plantNoImage;
 
     Context context;
     CompositeDisposable compositeDisposable;
@@ -169,6 +169,9 @@ public class HomeFragment extends DaggerFragment {
         plantTitle = view.findViewById(R.id.plantTitleTextView);
         plantText = view.findViewById(R.id.plantInfoTextView);
         plantImage = view.findViewById(R.id.plantImageView);
+        plantNoImage = view.findViewById(R.id.plantNoPhotoImageView);
+
+
 
         if (Globals.seasonPlant == null) {
             Disposable cdPlant = Maybe.fromCallable(() -> {
@@ -182,6 +185,8 @@ public class HomeFragment extends DaggerFragment {
                                 plantTitle.setText(plant.getName());
                                 String plantGenusSpeciesText = plant.getGenusName() + " " + plant.getSpeciesName();
                                 plantText.setText(plantGenusSpeciesText);
+
+                                checkPlantNoImage();
                             }
                             , throwable -> {
                                 Toast.makeText(context, "Oh no! Something went terribly wrong with plants", Toast.LENGTH_LONG);
@@ -193,7 +198,10 @@ public class HomeFragment extends DaggerFragment {
             plantTitle.setText(plant.getName());
             String plantGenusSpeciesText = plant.getGenusName() + " " + plant.getSpeciesName();
             plantText.setText(plantGenusSpeciesText);
+            checkPlantNoImage();
         }
+
+
 
     }
 
@@ -265,6 +273,14 @@ public class HomeFragment extends DaggerFragment {
             // txt_status.setText("Internet Connection Not Present");
             Log.v(TAG, "Internet Connection Not Present");
             return false;
+        }
+    }
+
+
+    private void checkPlantNoImage() {
+        if (Globals.seasonPlant.getImage() == null || Globals.seasonPlant.getImage().isEmpty()) {
+            plantNoImage.setImageResource(R.drawable.plants_no_photo);
+            plantNoImage.setImageAlpha(200);
         }
     }
 
