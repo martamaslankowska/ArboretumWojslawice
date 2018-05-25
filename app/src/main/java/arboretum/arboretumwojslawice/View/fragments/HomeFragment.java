@@ -3,6 +3,7 @@ package arboretum.arboretumwojslawice.View.fragments;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -244,7 +245,11 @@ public class HomeFragment extends DaggerFragment {
 
     private boolean isNetworkConnected() {
         ConnectivityManager cm = (ConnectivityManager) getContext().getSystemService(getContext().CONNECTIVITY_SERVICE);
-        return cm.getActiveNetworkInfo() != null;
+        NetworkInfo activeNetworkInfo = cm.getActiveNetworkInfo();
+
+        // return cm.getActiveNetworkInfo() != null;
+
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
     public boolean isInternetOn() {
