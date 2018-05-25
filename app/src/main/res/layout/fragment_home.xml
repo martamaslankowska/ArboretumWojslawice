@@ -288,6 +288,17 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <ImageView
+                android:id="@+id/plantNoPhotoImageView"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintDimensionRatio="H,16:8"
+                android:scaleType="centerCrop"
+                android:src="@drawable/weather_empty"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
                 android:id="@+id/plantTextView"
                 android:layout_width="match_parent"
@@ -313,7 +324,7 @@
                 android:layout_marginEnd="@dimen/nonrec_margin"
                 android:layout_marginStart="@dimen/nonrec_margin"
                 android:layout_marginTop="@dimen/nonrec_half_margin"
-                android:text="A już 15 maja..."
+                android:text="Brak fajnych roślin..."
                 android:textStyle="bold"
                 android:textColor="@color/darkTextGray"
                 android:textSize="@dimen/nonrec_font_size"

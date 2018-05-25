@@ -17,5 +17,6 @@
     <!-- Rating bar colors -->
     <color name="ratingActive">#f5f100</color>
     <color name="ratingNonactive">#868686</color>
+    <color name="light_gray">#d9d9d9</color>
 
 </resources>

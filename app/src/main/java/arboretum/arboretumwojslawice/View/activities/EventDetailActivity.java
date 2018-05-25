@@ -89,15 +89,12 @@ public class EventDetailActivity extends DaggerAppCompatActivity {
                             /* toolbar */
                             Toolbar toolbar = findViewById(R.id.toolbar_back);
                             setSupportActionBar(toolbar);
-                            getSupportActionBar().setTitle("Nie wiem co tu napisać");
+                            getSupportActionBar().setTitle("Kalendarz imprez");
 
                             if (getSupportActionBar() != null) {
                                 getSupportActionBar().setDisplayHomeAsUpEnabled(true);
                                 getSupportActionBar().setDisplayShowHomeEnabled(true);
                             }
-        /* /toolbar */
-
-                            //binding.setEvent(mEventList);
                         }
                         ,throwable -> {
                             Toast.makeText(this, "We have error here...", Toast.LENGTH_LONG);
@@ -125,17 +122,6 @@ public class EventDetailActivity extends DaggerAppCompatActivity {
         //binding.eventDetailDate.setText(eventDetailViewModel.getDateString(event_date));
 
         setRecyclerViewLayoutManager();
-//        /* toolbar */
-//        Toolbar toolbar = findViewById(R.id.toolbar_back);
-//        setSupportActionBar(toolbar);
-//        getSupportActionBar().setTitle(mEvent.getType());
-//        if (getSupportActionBar() != null) {
-//            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//            getSupportActionBar().setDisplayShowHomeEnabled(true);
-//        }
-//        /* /toolbar */
-//
-//        binding.setEvent(mEvent);
     }
 
     public void setRecyclerViewLayoutManager() {

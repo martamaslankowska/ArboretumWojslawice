@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:paddingLeft="@dimen/nonrec_margin"
             android:paddingTop="@dimen/nonrec_half_margin"
-            android:paddingBottom="@dimen/nonrec_half_margin"
+            android:paddingBottom="12dp"
             android:paddingRight="@dimen/nonrec_margin"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -91,6 +91,15 @@
 
         </android.support.constraint.ConstraintLayout>
 
+        <View
+            android:id="@+id/line"
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:background="@color/light_gray"
+            app:layout_constraintTop_toBottomOf="@+id/event_detail_header" />
+
+
+
         <android.support.v7.widget.RecyclerView
             android:id="@+id/event_detail_recycler_view"
             android:layout_width="0dp"
@@ -99,7 +108,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/event_detail_header" />
+            app:layout_constraintTop_toBottomOf="@+id/line" />
 
     </android.support.constraint.ConstraintLayout>
 </layout>
