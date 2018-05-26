@@ -14,8 +14,9 @@
         android:layout_height="wrap_content"
         android:focusable="true"
         android:paddingBottom="8dp"
+        android:paddingEnd="8dp"
         android:paddingStart="16dp"
-        android:paddingEnd="8dp">
+        tools:background="@color/white">
 
         <ImageView
             android:id="@+id/plant_image"
@@ -26,73 +27,120 @@
             android:src="@{plant.getImageId(context)}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@color/colorBlack"/>
 
-        <android.support.constraint.ConstraintLayout
+
+        <TextView
+            android:id="@+id/plant_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:focusable="true"
-            app:layout_constraintBottom_toBottomOf="@+id/plant_image"
-            app:layout_constraintEnd_toStartOf="@+id/plant_heart"
-            app:layout_constraintStart_toEndOf="@+id/plant_image"
-            app:layout_constraintTop_toTopOf="@+id/plant_image">
-
-            <TextView
-                android:id="@+id/plant_name"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:layout_marginStart="16dp"
-                android:text="@{plant.getName()}"
-                android:textColor="@color/darkTextDarkGray"
-                android:textSize="@dimen/nonrec_font_size"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="2dp"
+            android:text="@{plant.getName(), default=`Some namenamenamenamenamenamenamenamenamenamenamenamenamenamenamenamename`}"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:layout_constraintBottom_toTopOf="@id/plant_genus"
+            app:layout_constraintLeft_toRightOf="@+id/plant_image"
+            app:layout_constraintRight_toLeftOf="@+id/plant_heart"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
-            <TextView
-                android:id="@+id/plant_genus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/plant_name"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="2dp"
-                android:text="@{plant.getGenusName()}"
-                android:textColor="@color/darkTextLightGray"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/plant_name"
-                app:layout_constraintTop_toBottomOf="@+id/plant_name" />
-
-            <TextView
-                android:id="@+id/plant_species"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_marginBottom="8dp"
-                android:layout_marginStart="4dp"
-                android:text="@{plant.getSpeciesName()}"
-                android:textColor="@color/darkTextLightGray"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/plant_genus"
-                app:layout_constraintTop_toTopOf="@+id/plant_genus" />
-
-        </android.support.constraint.ConstraintLayout>
+        <TextView
+            android:id="@+id/plant_genus"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="@{plant.getGenusName(), default = `Genus and speciesGenus and speciesGenus and speciesGenus and species`}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="@id/plant_name"
+            app:layout_constraintStart_toStartOf="@+id/plant_name"
+            app:layout_constraintTop_toBottomOf="@+id/plant_name" />
 
 
         <ImageView
             android:id="@+id/plant_heart"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginTop="8dp"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
             android:layout_marginEnd="8dp"
+            android:layout_marginTop="8dp"
             android:src="@{plant.getFavourite() ? @drawable/ic_favourite_plant_fill : @drawable/ic_favourite_plant_empty}"
+            app:layout_constraintBottom_toBottomOf="@id/plant_genus"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/plant_image" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0"
+            tools:background="@color/colorBlack" />
+
+
+
+
+        <!--<android.support.constraint.ConstraintLayout-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginTop="4dp"-->
+            <!--android:focusable="true"-->
+            <!--app:layout_constraintBottom_toBottomOf="@+id/plant_image"-->
+            <!--app:layout_constraintEnd_toStartOf="@+id/plant_heart"-->
+            <!--app:layout_constraintStart_toEndOf="@+id/plant_image"-->
+            <!--app:layout_constraintTop_toTopOf="@+id/plant_image">-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/plant_name"-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginEnd="16dp"-->
+                <!--android:layout_marginStart="16dp"-->
+                <!--android:text="@{plant.getName()}"-->
+                <!--android:textColor="@color/darkTextDarkGray"-->
+                <!--android:textSize="@dimen/nonrec_font_size"-->
+                <!--android:textStyle="bold"-->
+                <!--app:layout_constraintEnd_toEndOf="parent"-->
+                <!--app:layout_constraintStart_toStartOf="parent"-->
+                <!--app:layout_constraintTop_toTopOf="parent" />-->
+
+
+            <!--<TextView-->
+                <!--android:id="@+id/plant_genus"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_below="@id/plant_name"-->
+                <!--android:layout_marginBottom="8dp"-->
+                <!--android:layout_marginTop="2dp"-->
+                <!--android:text="@{plant.getGenusName()}"-->
+                <!--android:textColor="@color/darkTextLightGray"-->
+                <!--app:layout_constraintBottom_toBottomOf="parent"-->
+                <!--app:layout_constraintStart_toStartOf="@+id/plant_name"-->
+                <!--app:layout_constraintTop_toBottomOf="@+id/plant_name" />-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/plant_species"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_alignParentEnd="true"-->
+                <!--android:layout_marginBottom="8dp"-->
+                <!--android:layout_marginStart="4dp"-->
+                <!--android:text="@{plant.getSpeciesName()}"-->
+                <!--android:textColor="@color/darkTextLightGray"-->
+                <!--app:layout_constraintBottom_toBottomOf="parent"-->
+                <!--app:layout_constraintStart_toEndOf="@+id/plant_genus"-->
+                <!--app:layout_constraintTop_toTopOf="@+id/plant_genus" />-->
+
+        <!--</android.support.constraint.ConstraintLayout>-->
+
+
+        <!--<ImageView-->
+            <!--android:id="@+id/plant_heart"-->
+            <!--android:layout_width="30dp"-->
+            <!--android:layout_height="30dp"-->
+            <!--android:layout_marginTop="8dp"-->
+            <!--android:layout_alignParentEnd="true"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:layout_marginEnd="8dp"-->
+            <!--android:src="@{plant.getFavourite() ? @drawable/ic_favourite_plant_fill : @drawable/ic_favourite_plant_empty}"-->
+            <!--app:layout_constraintEnd_toEndOf="parent"-->
+            <!--app:layout_constraintTop_toTopOf="@+id/plant_image" />-->
 
     </android.support.constraint.ConstraintLayout>
 </layout>
