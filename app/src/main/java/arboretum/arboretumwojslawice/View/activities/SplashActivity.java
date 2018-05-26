@@ -1,21 +1,29 @@
 package arboretum.arboretumwojslawice.View.activities;
 
+import android.app.DownloadManager;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.widget.Toast;
 
 import java.util.Locale;
 
 import javax.inject.Inject;
 
+import arboretum.arboretumwojslawice.Commons.DownloadFileFromURL;
 import arboretum.arboretumwojslawice.Commons.Globals;
 import arboretum.arboretumwojslawice.Model.AppDatabase;
 import arboretum.arboretumwojslawice.Model.DAO.HotelDao;
+import arboretum.arboretumwojslawice.R;
 import arboretum.arboretumwojslawice.ViewModel.SplashViewModel;
 import dagger.android.support.DaggerAppCompatActivity;
 import io.reactivex.Completable;
@@ -24,6 +32,8 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
+
+import static android.content.ContentValues.TAG;
 
 public class SplashActivity extends DaggerAppCompatActivity {
 
@@ -39,6 +49,9 @@ public class SplashActivity extends DaggerAppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        if (isNetworkConnected() && isInternetOn()) {
+            new DownloadFileFromURL().execute("http://arboretumdb.cba.pl/ArboretumDB.db");
+        }
         AppDatabase database = AppDatabase.getAppDatabase(getApplicationContext());
         compositeDisposable = new CompositeDisposable();
 
@@ -144,6 +157,32 @@ public class SplashActivity extends DaggerAppCompatActivity {
         conf.locale = myLocale;
         res.updateConfiguration(conf, dm);
     }
+
+    public boolean isInternetOn() {
+        ConnectivityManager cm = (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);
+        // test for connection
+        if (cm.getActiveNetworkInfo() != null
+                && cm.getActiveNetworkInfo().isAvailable()
+                && cm.getActiveNetworkInfo().isConnected()) {
+            Log.v(TAG, "Internet is working");
+            // txt_status.setText("Internet is working");
+            return true;
+        } else {
+            // txt_status.setText("Internet Connection Not Present");
+            Log.v(TAG, "Internet Connection Not Present");
+            return false;
+        }
+    }
+
+    private boolean isNetworkConnected() {
+        ConnectivityManager cm = (ConnectivityManager) this.getSystemService(this.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = cm.getActiveNetworkInfo();
+
+        // return cm.getActiveNetworkInfo() != null;
+
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
+
 
 }
 
