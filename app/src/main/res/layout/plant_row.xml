@@ -37,10 +37,11 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="2dp"
-            android:text="@{plant.getName(), default=`Some namenamenamenamenamenamenamenamenamenamenamenamenamenamenamenamename`}"
-            android:textSize="16dp"
-            android:textStyle="bold"
+            android:layout_marginTop="4dp"
+            android:text="@{plant.getName(), default=`Some name name name name name name`}"
+            android:fontFamily="@font/lato_semibold"
+            android:textColor="@color/darkTextDarkGray"
+            android:textSize="@dimen/nonrec_font_size"
             app:layout_constraintVertical_chainStyle="packed"
             app:layout_constraintBottom_toTopOf="@id/plant_genus"
             app:layout_constraintLeft_toRightOf="@+id/plant_image"
@@ -53,7 +54,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
-            android:text="@{plant.getGenusName(), default = `Genus and speciesGenus and speciesGenus and speciesGenus and species`}"
+            android:text="@{plant.getGenusSpecies(), default = `Genus and species`}"
+            android:textSize="@dimen/nonrec_font_size_smaller"
+            android:textColor="@color/darkTextLightGray"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="@id/plant_name"
             app:layout_constraintStart_toStartOf="@+id/plant_name"
@@ -76,7 +79,7 @@
 
 
 
-        <!--<android.support.constraint.ConstraintLayout-->
+<!--<android.support.constraint.ConstraintLayout-->
             <!--android:layout_width="0dp"-->
             <!--android:layout_height="wrap_content"-->
             <!--android:layout_marginTop="4dp"-->

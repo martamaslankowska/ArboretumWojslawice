@@ -54,7 +54,7 @@ public class PlantDetailActivity extends DaggerAppCompatActivity {
     private CompositeDisposable compositeDisposable;
 
     private ImageView plantImage, plantNoPhotoImage;
-    private TextView floweringTextView, noPlantTextView;
+//    private TextView floweringTextView, noPlantTextView;
     Context context;
 
 
@@ -70,8 +70,7 @@ public class PlantDetailActivity extends DaggerAppCompatActivity {
 
         plant_id = bundle.getInt(PLANT_ID);
         plantImage = findViewById(R.id.plant_detail_image);
-        floweringTextView = findViewById(R.id.seassonTextView);
-        noPlantTextView = findViewById(R.id.noPlantImageTextView);
+        mLocationMapButton = findViewById(R.id.plant_location_map_button);
         plantNoPhotoImage = findViewById(R.id.plantNoImageView);
 
 
@@ -94,7 +93,6 @@ public class PlantDetailActivity extends DaggerAppCompatActivity {
                             }
                             /* /toolbar */
 
-                            mLocationMapButton = findViewById(R.id.plant_location_map_button);
                             mLocationMapButton.setOnClickListener(view -> {
                                 Intent intent_location = new Intent(getApplicationContext(), PlantLocationMapActivity.class);
                                 Bundle bundle_location = new Bundle();
@@ -104,6 +102,7 @@ public class PlantDetailActivity extends DaggerAppCompatActivity {
                             });
 
                             binding.setPlant(plant);
+
 
 //                            Drawable d = getResources().getDrawable(plant.getImageId(getApplicationContext()));
 //                            int h = d.getIntrinsicHeight();
@@ -119,15 +118,17 @@ public class PlantDetailActivity extends DaggerAppCompatActivity {
 
                             plantImage.getLayoutParams().height = width/2;
                             plantImage.setScaleType(ImageView.ScaleType.CENTER_CROP);
+                            plantImage.setImageResource(plant.getImageIdBig(context));
+
                             plantNoPhotoImage.getLayoutParams().height = width/2;
                             plantNoPhotoImage.setScaleType(ImageView.ScaleType.CENTER_CROP);
 
                             if (plant.getImage() == null || plant.getImage().isEmpty()) { // no image
-                                noPlantTextView.setVisibility(View.GONE);
+//                                noPlantTextView.setVisibility(View.GONE);
                                 plantNoPhotoImage.setImageAlpha(200);
 //                                plantImage.setColorFilter(Color.rgb(100, 100, 100), android.graphics.PorterDuff.Mode.MULTIPLY);
                             } else if (plant.getGif()) { // gif image
-                                noPlantTextView.setVisibility(View.GONE);
+//                                noPlantTextView.setVisibility(View.GONE);
                                 plantNoPhotoImage.setImageResource(R.drawable.weather_empty);
 
                                 final Handler handler = new Handler();
@@ -143,9 +144,11 @@ public class PlantDetailActivity extends DaggerAppCompatActivity {
 
 
                             } else { // normal image
-                                noPlantTextView.setVisibility(View.GONE);
-                                plantNoPhotoImage.setVisibility(View.GONE);
+//                                noPlantTextView.setVisibility(View.GONE);
+                                plantNoPhotoImage.setVisibility(View.INVISIBLE);
                             }
+
+                            mLocationMapButton.setImageResource(R.drawable.ic_nav_shadow);
 
                         }
                         ,throwable -> {
@@ -154,6 +157,7 @@ public class PlantDetailActivity extends DaggerAppCompatActivity {
                         });
 
         compositeDisposable.add(cdPlant);
+//        mLocationMapButton.setImageResource(R.drawable.ic_nav_shadow);
 
     }
 

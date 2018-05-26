@@ -304,4 +304,12 @@ public class Plant implements AdapterItem {
     public void setGif(Boolean gif) {
         isGif = gif;
     }
+
+    public String getGenusSpecies() {
+        return (genusName == null || genusName.isEmpty()) ? speciesName : (genusName + " " + speciesName);
+    }
+
+    public int getPlantLocationsIconId(Context c) {
+        return c.getResources().getIdentifier("arboretum.arboretumwojslawice:drawable/ic_nav_shadow", null, null);
+    }
 }
