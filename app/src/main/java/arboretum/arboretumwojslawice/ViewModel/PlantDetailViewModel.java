@@ -21,4 +21,8 @@ public class PlantDetailViewModel {
         return plantRepo.getById(id);
     }
 
+    public boolean setFavourite(int id) {
+        return plantRepo.setFavouriteById(id);
+    }
+
 }

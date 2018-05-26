@@ -13,12 +13,15 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
+import android.support.constraint.ConstraintLayout;
 import android.support.v4.content.IntentCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -108,10 +111,23 @@ public class SettingsActivity extends AppCompatActivity {
     @SuppressLint("ResourceAsColor")
     public void germanLanguage(View view) {
         if (!languageCode.equals(DE)) {
-            Toast.makeText(getApplicationContext(), "Die Sprache wurde auf Deutsch geändert.\nDie Anwendung wird neu gestartet.", Toast.LENGTH_SHORT).show();
+            String toastText = "Die Sprache wurde auf Deutsch geändert.\nDie Anwendung wird neu gestartet.";
+            makeToast(toastText).show();
+//            Toast.makeText(getApplicationContext(), "Die Sprache wurde auf Deutsch geändert.\nDie Anwendung wird neu gestartet.", Toast.LENGTH_SHORT).show();
             buttonDE.setChecked(true);
             setLanguage(DE);
         }
+    }
+
+
+    public Toast makeToast(String text) {
+        Toast toast = Toast.makeText(this, text, Toast.LENGTH_SHORT);
+        ConstraintLayout layout = (ConstraintLayout) toast.getView();
+        if (layout.getChildCount() > 0) {
+            TextView tv = (TextView) layout.getChildAt(0);
+            tv.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
+        }
+        return toast;
     }
 
 

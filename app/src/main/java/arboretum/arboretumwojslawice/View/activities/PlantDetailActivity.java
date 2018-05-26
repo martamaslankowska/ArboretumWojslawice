@@ -34,6 +34,7 @@ import arboretum.arboretumwojslawice.View.fragments.ListOfPlantsFragment;
 import arboretum.arboretumwojslawice.ViewModel.PlantDetailViewModel;
 import arboretum.arboretumwojslawice.databinding.ActivityPlantDetailBinding;
 import dagger.android.support.DaggerAppCompatActivity;
+import io.reactivex.Completable;
 import io.reactivex.Maybe;
 import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -53,9 +54,10 @@ public class PlantDetailActivity extends DaggerAppCompatActivity {
     private ImageView mLocationMapButton;
     private CompositeDisposable compositeDisposable;
 
-    private ImageView plantImage, plantNoPhotoImage;
-//    private TextView floweringTextView, noPlantTextView;
+    private ImageView plantImage, plantNoPhotoImage, favouriteImage;
     Context context;
+    private boolean isFavourite;
+
 
 
     @Override
@@ -72,6 +74,7 @@ public class PlantDetailActivity extends DaggerAppCompatActivity {
         plantImage = findViewById(R.id.plant_detail_image);
         mLocationMapButton = findViewById(R.id.plant_location_map_button);
         plantNoPhotoImage = findViewById(R.id.plantNoImageView);
+        favouriteImage = findViewById(R.id.plant_favourite_button);
 
 
         Disposable cdPlant = Maybe.fromCallable(() -> {
@@ -157,7 +160,35 @@ public class PlantDetailActivity extends DaggerAppCompatActivity {
                         });
 
         compositeDisposable.add(cdPlant);
-//        mLocationMapButton.setImageResource(R.drawable.ic_nav_shadow);
+
+
+        favouriteImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Disposable listOfPlants = Completable.fromAction(() -> {
+                    isFavourite = plantDetailViewModel.setFavourite(plant_id);
+                })
+                        .subscribeOn(Schedulers.computation())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(() -> {
+                                    if (isFavourite) {
+                                        Toast.makeText(context, "Dodano do ulubionych", Toast.LENGTH_SHORT).show();
+                                        favouriteImage.setImageResource(R.drawable.ic_favourite_plant_fill);
+//                                      plants.get(position).setFavourite(true);
+                                    }
+                                    else {
+                                        Toast.makeText(context, "Usunięto z ulubionych", Toast.LENGTH_SHORT).show();
+                                        favouriteImage.setImageResource(R.drawable.ic_favourite_plant_empty);
+//                                      plants.get(position).setFavourite(false);
+                                    }
+                                }
+                                ,throwable -> {
+                                    Toast.makeText(context, "Jakiś błąąąd... -.- -.-", Toast.LENGTH_LONG);
+                                });
+
+                compositeDisposable.add(listOfPlants);
+            }
+        });
 
     }
 
@@ -177,4 +208,6 @@ public class PlantDetailActivity extends DaggerAppCompatActivity {
     public int getImageId(Context c, String imageName) {
         return c.getResources().getIdentifier("arboretum.arboretumwojslawice:drawable/" + imageName, null, null);
     }
+
+
 }

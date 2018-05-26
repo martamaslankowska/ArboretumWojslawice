@@ -56,6 +56,7 @@ public class ListOfPlantsFragment extends DaggerFragment implements PlantAdapter
     @Override
     public void onItemClick(int position) {
         Intent intent = new Intent(getActivity().getApplicationContext(), PlantDetailActivity.class);
+
         Bundle bundle = new Bundle();
         bundle.putInt(PLANT_ID, plants.get(position).getIdPlant());
         bundle.putInt(TAB_ID, n);
@@ -119,6 +120,9 @@ public class ListOfPlantsFragment extends DaggerFragment implements PlantAdapter
         Bundle bundle = this.getArguments();
         if (bundle != null) {
             n = bundle.getInt("NumberOfTab");
+
+            // to nic nie zmienia...
+            adapter.notifyItemChanged(bundle.getInt(PLANT_ID));
         }
     }
 
@@ -196,6 +200,8 @@ public class ListOfPlantsFragment extends DaggerFragment implements PlantAdapter
         super.onDestroyView();
         compositeDisposable.clear();
     }
+
+
 
 }
 
