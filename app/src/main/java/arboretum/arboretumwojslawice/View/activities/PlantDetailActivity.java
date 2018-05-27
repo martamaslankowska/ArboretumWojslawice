@@ -172,12 +172,12 @@ public class PlantDetailActivity extends DaggerAppCompatActivity {
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(() -> {
                                     if (isFavourite) {
-                                        Toast.makeText(context, "Dodano do ulubionych", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(context,  getString(R.string.toast_add_favourite_toast), Toast.LENGTH_SHORT).show();
                                         favouriteImage.setImageResource(R.drawable.ic_favourite_plant_fill);
 //                                      plants.get(position).setFavourite(true);
                                     }
                                     else {
-                                        Toast.makeText(context, "Usunięto z ulubionych", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(context,  getString(R.string.toast_delete_favourite_toast), Toast.LENGTH_SHORT).show();
                                         favouriteImage.setImageResource(R.drawable.ic_favourite_plant_empty);
 //                                      plants.get(position).setFavourite(false);
                                     }

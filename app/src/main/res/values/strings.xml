@@ -191,4 +191,10 @@
     <!--QR code-->
     <string name="qr_code_information">Skieruj aparat na kod QR,\naby uzyskać więcej informacji o roślinie.</string>
 
+
+    <!-- TOASTS -->
+    <string name="toast_add_favourite_toast">Dodano do ulubionych</string>
+    <string name="toast_delete_favourite_toast">Usunięto z ulubionych</string>
+
+
 </resources>

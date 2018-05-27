@@ -22,7 +22,7 @@
     <string name="toolbar_restaurants_list">Restaurants in the neighbourhood</string>
     <string name="toolbar_route_detail">Route details</string>
     <string name="toolbar_navigation">Navigation</string>
-    <string name="toolbar_neighbourhood">In the neighbourhood...</string>
+    <string name="toolbar_neighbourhood">In the neighbourhood</string>
     <string name="toolbar_opening_hours">Opening hours</string>
     <string name="toolbar_settings">Settings</string>
     <string name="toolbar_plant_location_map">Plant locations</string>
@@ -30,6 +30,21 @@
 
     <string name="tab_map">Map</string>
     <string name="tab_route">Routes</string>
+
+
+    <!-- Options in MoreFragment-->
+    <string-array name="more_options">
+        <item>Opening hours</item>
+        <item>Prices</item>
+        <item>Events</item>
+        <item>List of plants</item>
+        <item>In the neighbourhood</item>
+        <item>Contact</item>
+        <item>Statute</item>
+        <item>Settings</item>
+    </string-array>
+
+
 
     <!-- Marta - example strings to use with data binding -->
     <string name="route_length">Route length - %s</string>
@@ -118,6 +133,10 @@
     <!-- QR code -->
     <string name="qr_code_information">Focus the camera at the QR code for more information about the plant.</string>
 
+
+    <!-- TOASTS -->
+    <string name="toast_add_favourite_toast">Added to favourite</string>
+    <string name="toast_delete_favourite_toast">Removed from favourite</string>
 
 </resources>
 

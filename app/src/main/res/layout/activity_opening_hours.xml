@@ -26,7 +26,8 @@
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/nonrec_margin">
 
             <!--<include-->
             <!--android:id="@+id/toolbar_back"-->
@@ -228,7 +229,6 @@
                 android:id="@+id/info2Text"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/nonrec_margin"
                 android:layout_marginEnd="@dimen/nonrec_margin_horizontal"
                 android:layout_marginStart="@dimen/nonrec_margin_horizontal"
                 android:layout_marginTop="@dimen/nonrec_margin_vertical"
@@ -236,7 +236,6 @@
                 android:textAlignment="gravity"
                 android:textColor="@color/darkTextGray"
                 android:textSize="@dimen/nonrec_font_size"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/ticketImage"
