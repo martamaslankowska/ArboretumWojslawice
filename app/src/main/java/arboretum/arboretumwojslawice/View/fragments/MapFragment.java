@@ -36,6 +36,7 @@ public class MapFragment extends Fragment implements LocationListener {
 
     /* map variables*/
     double lon=0, lat=0;
+    int xLon=0,yLat=0;
     int x=0,y=0;
     Bitmap positionMarkerBitmap,canvasBitmap,mapBitmap, toiletMarkerBitmap, viewpointsMarkerBitmap, picnicMarkerBitmap, parkingMarkerBitmap;
     Canvas canvas;
@@ -76,15 +77,15 @@ public class MapFragment extends Fragment implements LocationListener {
         View rootView = inflater.inflate(R.layout.fragment_map, container, false);
 
         /* location */
-        lon=16.856737;
-        lat=50.711166;
+        lon=16.856991;
+        lat=50.712718;
 //        Location l = getLocation();
 //        if (l != null) {
 //            lat = l.getLatitude();
 //            lon = l.getLongitude();
 //        }
-        x=countX(lon);
-        y=countY(lat);
+        xLon=countX(lon);
+        yLat=countY(lat);
         /* /location */
         /* map */
 
@@ -97,7 +98,7 @@ public class MapFragment extends Fragment implements LocationListener {
         mapBitmap = BitmapFactory.decodeResource(resources, resources.getIdentifier("arboretum_map3", "drawable", getActivity().getPackageName()));
         createBitmap();
         drawCanvas();
-        drawPositionMarker(x,y);
+        drawPositionMarker(lon,lat);
         canvas.drawBitmap(parkingMarkerBitmap, countX(16.856991), countY(50.712718), null);
         //0 -toilets, 1-viewpoints, 2-picnicplaces
         drawMarkers(placesToilet1, 0);
@@ -113,7 +114,7 @@ public class MapFragment extends Fragment implements LocationListener {
                if(scale>scale2){
                    createBitmap();
                    drawCanvas();
-                   drawPositionMarker(x,y);
+                   drawPositionMarker(lon,lat);
                    canvas.drawBitmap(parkingMarkerBitmap, countX(16.856991), countY(50.712718), null);
                    drawMarkers(placesToilet1, 0);
                    drawMarkers(placesViewpoints1, 1);
@@ -127,7 +128,7 @@ public class MapFragment extends Fragment implements LocationListener {
                 if(scale>scale3) {
                     createBitmap();
                     drawCanvas();
-                    drawPositionMarker(x,y);
+                    drawPositionMarker(lon,lat);
                     canvas.drawBitmap(parkingMarkerBitmap, countX(16.856991), countY(50.712718), null);
                     drawMarkers(placesToilet1, 0);
                     drawMarkers(placesViewpoints1, 1);
@@ -143,7 +144,7 @@ public class MapFragment extends Fragment implements LocationListener {
                 if (scale<scale2){
                     createBitmap();
                     drawCanvas();
-                    drawPositionMarker(x,y);
+                    drawPositionMarker(lon,lat);
                     canvas.drawBitmap(parkingMarkerBitmap, countX(16.856991), countY(50.712718), null);
                     drawMarkers(placesToilet1, 0);
                     drawMarkers(placesViewpoints1, 1);
@@ -195,8 +196,10 @@ public class MapFragment extends Fragment implements LocationListener {
         return y;
     }
 
-    public void drawPositionMarker(int x, int y){
-        canvas.drawBitmap(positionMarkerBitmap, x, y, null);
+    public void drawPositionMarker(double x, double y){
+        int lo = (int) (((Globals.MaxLon-lon)*width)/(Globals.MaxLon-Globals.MinLon));
+        int la = (int) (((lat - Globals.MinLat)*height)/(Globals.MaxLat-Globals.MinLat));
+        canvas.drawBitmap(positionMarkerBitmap, lo, la, null);
     }
 
     public void drawMarkers(List<LonLat> pointsCoordinates, int type){

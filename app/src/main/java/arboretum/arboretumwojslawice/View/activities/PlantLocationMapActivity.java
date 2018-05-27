@@ -38,7 +38,7 @@ public class PlantLocationMapActivity extends DaggerAppCompatActivity {
     public static final String BUNDLE = "BUNDLE";
     public static final String PLANT_ID = "PLANT_ID";
     private int plant_id;
-    double scale = 1.0f;
+    double scale = 1.5f;
 
     @Inject
     protected PlantViewModel plantViewModel;
