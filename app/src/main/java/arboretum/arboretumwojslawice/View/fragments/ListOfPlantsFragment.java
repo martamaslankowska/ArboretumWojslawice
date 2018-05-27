@@ -35,6 +35,8 @@ public class ListOfPlantsFragment extends DaggerFragment implements PlantAdapter
     public static final String PLANT_ID = "PLANT_ID";
     public static final String TAB_ID = "TAB_ID";
     public static final String BUNDLE = "BUNDLE";
+    public static final String PLANT_POSITION = "plantPosition";
+
 
     protected ListOfPlantsFragment.LayoutManagerType currentLayoutManagerType;
 
@@ -57,7 +59,7 @@ public class ListOfPlantsFragment extends DaggerFragment implements PlantAdapter
     public void onItemClick(int position) {
         Intent intent = new Intent(getActivity().getApplicationContext(), PlantDetailActivity.class);
 
-        this.getArguments().putInt(PLANT_ID, plants.get(position).getIdPlant());
+        this.getArguments().putInt(PLANT_POSITION, position);
 
         Bundle bundle = new Bundle();
         bundle.putInt(PLANT_ID, plants.get(position).getIdPlant());
@@ -122,9 +124,6 @@ public class ListOfPlantsFragment extends DaggerFragment implements PlantAdapter
         Bundle bundle = this.getArguments();
         if (bundle != null) {
             n = bundle.getInt("NumberOfTab");
-
-            // to nic nie zmienia...
-            adapter.notifyItemChanged(bundle.getInt(PLANT_ID));
         }
     }
 
@@ -144,21 +143,12 @@ public class ListOfPlantsFragment extends DaggerFragment implements PlantAdapter
                 .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(plants -> {
-                            /* onSuccess() :) */
-//                            int length = prices.size();
-//                            try {
-//                                Toast.makeText(getActivity(), "Było odwołanie do bazy i fajnie :)\nLiczba kwiatków w bazie: " + String.valueOf(length), Toast.LENGTH_SHORT).show();
-//                            } catch (Exception e){
-//                                Toast.makeText(getActivity(), "Ups, pusta baza :(", Toast.LENGTH_SHORT).show();
-//                            }
-
                             this.plants = plants;
                             recyclerView.addItemDecoration(new DividerItemDecoration(this.getContext(), 0));
                             recyclerView.setAdapter(adapter);
                             adapter.setData(this.plants);
                             layoutManager = new LinearLayoutManager(getActivity());
                             currentLayoutManagerType = ListOfPlantsFragment.LayoutManagerType.LINEAR_LAYOUT_MANAGER;
-
                         }
                         ,throwable -> {
                             /* onError() */
@@ -195,6 +185,19 @@ public class ListOfPlantsFragment extends DaggerFragment implements PlantAdapter
         savedInstanceState.putSerializable(KEY_LAYOUT_MANAGER, currentLayoutManagerType);
         super.onSaveInstanceState(savedInstanceState);
     }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        Bundle bundle = this.getArguments();
+        // to nic nie zmienia...
+        int plantPosition = bundle.getInt(PLANT_POSITION);
+        adapter.notifyItemChanged(plantPosition);
+    }
+
+
 
 
     @Override
