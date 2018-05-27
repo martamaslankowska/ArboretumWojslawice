@@ -153,12 +153,14 @@ public class PlantLocationMapActivity extends DaggerAppCompatActivity {
     }
 
     public void drawMarkers(List<LonLat> pointsCoordinates){
-        ArrayList<PixelCoordinates> pointsPixelsCoordinates= new ArrayList();
-        for(LonLat l: pointsCoordinates){
-            pointsPixelsCoordinates.add(new PixelCoordinates(countX(l.lon), countY(l.lat)));
-        }
-        for (PixelCoordinates p: pointsPixelsCoordinates) {
-            canvas.drawBitmap(markerBitmap, p.x, p.y, null);
+        if(pointsCoordinates.size()!=0) {
+            ArrayList<PixelCoordinates> pointsPixelsCoordinates = new ArrayList();
+            for (LonLat l : pointsCoordinates) {
+                pointsPixelsCoordinates.add(new PixelCoordinates(countX(l.lon), countY(l.lat)));
+            }
+            for (PixelCoordinates p : pointsPixelsCoordinates) {
+                canvas.drawBitmap(markerBitmap, p.x, p.y, null);
+            }
         }
     }
 
