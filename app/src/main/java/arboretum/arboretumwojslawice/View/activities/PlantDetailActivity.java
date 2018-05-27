@@ -209,5 +209,10 @@ public class PlantDetailActivity extends DaggerAppCompatActivity {
         return c.getResources().getIdentifier("arboretum.arboretumwojslawice:drawable/" + imageName, null, null);
     }
 
-
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent();
+        setResult(1, intent);
+        finish();
+    }
 }

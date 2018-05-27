@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,6 +32,7 @@ import io.reactivex.schedulers.Schedulers;
 
 public class ListOfPlantsFragment extends DaggerFragment implements PlantAdapter.OnItemClickListener{
 
+    static final int REQUEST = 1;
     private static final String KEY_LAYOUT_MANAGER = "fragment_list_of_plants";
     public static final String PLANT_ID = "PLANT_ID";
     public static final String TAB_ID = "TAB_ID";
@@ -65,7 +67,7 @@ public class ListOfPlantsFragment extends DaggerFragment implements PlantAdapter
         bundle.putInt(PLANT_ID, plants.get(position).getIdPlant());
         bundle.putInt(TAB_ID, n);
         intent.putExtra(BUNDLE, bundle);
-        getActivity().startActivityForResult(intent, 123);
+        startActivityForResult(intent, REQUEST);
     }
 
     @Override
@@ -136,7 +138,6 @@ public class ListOfPlantsFragment extends DaggerFragment implements PlantAdapter
         recyclerView = view.findViewById(R.id.conifeerous_recycler_view);
         compositeDisposable = new CompositeDisposable();
 
-
         Disposable listOfPlants = Maybe.fromCallable(() -> {
             return plantViewModel.getAllByKind(n);
         })
@@ -145,8 +146,8 @@ public class ListOfPlantsFragment extends DaggerFragment implements PlantAdapter
                 .subscribe(plants -> {
                             this.plants = plants;
                             recyclerView.addItemDecoration(new DividerItemDecoration(this.getContext(), 0));
-                            recyclerView.setAdapter(adapter);
                             adapter.setData(this.plants);
+                            recyclerView.setAdapter(adapter);
                             layoutManager = new LinearLayoutManager(getActivity());
                             currentLayoutManagerType = ListOfPlantsFragment.LayoutManagerType.LINEAR_LAYOUT_MANAGER;
                         }
@@ -190,14 +191,7 @@ public class ListOfPlantsFragment extends DaggerFragment implements PlantAdapter
     @Override
     public void onResume() {
         super.onResume();
-
-        Bundle bundle = this.getArguments();
-        // to nic nie zmienia...
-        int plantPosition = bundle.getInt(PLANT_POSITION);
-        adapter.notifyItemChanged(plantPosition);
     }
-
-
 
 
     @Override
@@ -207,6 +201,37 @@ public class ListOfPlantsFragment extends DaggerFragment implements PlantAdapter
     }
 
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
+        Log.d("Lista roslin", "WESZLO");
+
+        if (requestCode == REQUEST) {
+            if (resultCode == 1) {
+                compositeDisposable = new CompositeDisposable();
+
+                Disposable listOfPlants = Maybe.fromCallable(() -> {
+                    return plantViewModel.getAllByKind(n);
+                })
+                        .subscribeOn(Schedulers.computation())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(plants -> {
+                                    this.plants = plants;
+                                    adapter.setData(this.plants);
+                                    recyclerView.setAdapter(adapter);
+
+
+                                    adapter.notifyDataSetChanged();
+                                }
+                                , throwable -> {
+                                    /* onError() */
+                                    Toast.makeText(getActivity(), "Jakiś błąąąd... -.- -.-", Toast.LENGTH_LONG);
+                                });
+
+                compositeDisposable.add(listOfPlants);
+            }
+        }
+
+    }
 }
 
