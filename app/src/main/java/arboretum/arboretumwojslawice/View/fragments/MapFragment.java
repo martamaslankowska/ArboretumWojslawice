@@ -78,11 +78,11 @@ public class MapFragment extends Fragment implements LocationListener {
         /* location */
         lon=16.856737;
         lat=50.711166;
-        Location l = getLocation();
-        if (l != null) {
-            lat = l.getLatitude();
-            lon = l.getLongitude();
-        }
+//        Location l = getLocation();
+//        if (l != null) {
+//            lat = l.getLatitude();
+//            lon = l.getLongitude();
+//        }
         x=countX(lon);
         y=countY(lat);
         /* /location */
@@ -94,16 +94,15 @@ public class MapFragment extends Fragment implements LocationListener {
         photoView.setScale(baseScale, true);
         photoView.update();
         resources = getResources();
-        //mapBitmap = BitmapFactory.decodeResource(resources, resources.getIdentifier("route_"+route_id, "drawable", getPackageName()));
         mapBitmap = BitmapFactory.decodeResource(resources, resources.getIdentifier("arboretum_map3", "drawable", getActivity().getPackageName()));
         createBitmap();
         drawCanvas();
         drawPositionMarker(x,y);
         canvas.drawBitmap(parkingMarkerBitmap, countX(16.856991), countY(50.712718), null);
         //0 -toilets, 1-viewpoints, 2-picnicplaces
-//        drawMarkers(placesToilet1, 0);
-//        drawMarkers(placesViewpoints1, 1);
-//        drawMarkers(placesPicnic1, 2);
+        drawMarkers(placesToilet1, 0);
+        drawMarkers(placesViewpoints1, 1);
+        drawMarkers(placesPicnic1, 2);
         mapImage.setImageBitmap(canvasBitmap);
 
 
@@ -114,27 +113,41 @@ public class MapFragment extends Fragment implements LocationListener {
                if(scale>scale2){
                    createBitmap();
                    drawCanvas();
-//                   drawMarkers(placesToilet1, 0);
-//                   drawMarkers(placesViewpoints1, 1);
-//                   drawMarkers(placesPicnic1, 2);
-//
-//                   drawMarkers(placesViewpoints2, 1);
-//                   drawMarkers(placesPicnic2, 2);
+                   drawPositionMarker(x,y);
+                   canvas.drawBitmap(parkingMarkerBitmap, countX(16.856991), countY(50.712718), null);
+                   drawMarkers(placesToilet1, 0);
+                   drawMarkers(placesViewpoints1, 1);
+                   drawMarkers(placesPicnic1, 2);
+
+                   drawMarkers(placesViewpoints2, 1);
+                   drawMarkers(placesPicnic2, 2);
 
                    mapImage.setImageBitmap(canvasBitmap);
                }
                 if(scale>scale3) {
                     createBitmap();
                     drawCanvas();
-//                    drawMarkers(placesToilet1, 0);
-//                    drawMarkers(placesViewpoints1, 1);
-//                    drawMarkers(placesPicnic1, 2);
-//
-//                    drawMarkers(placesViewpoints2, 1);
-//                    drawMarkers(placesPicnic2, 2);
-//
-//                    drawMarkers(placesViewpoints3, 1);
-//                    drawMarkers(placesPicnic3, 2);
+                    drawPositionMarker(x,y);
+                    canvas.drawBitmap(parkingMarkerBitmap, countX(16.856991), countY(50.712718), null);
+                    drawMarkers(placesToilet1, 0);
+                    drawMarkers(placesViewpoints1, 1);
+                    drawMarkers(placesPicnic1, 2);
+
+                    drawMarkers(placesViewpoints2, 1);
+                    drawMarkers(placesPicnic2, 2);
+
+                    drawMarkers(placesViewpoints3, 1);
+                    drawMarkers(placesPicnic3, 2);
+                    mapImage.setImageBitmap(canvasBitmap);
+                }
+                if (scale<scale2){
+                    createBitmap();
+                    drawCanvas();
+                    drawPositionMarker(x,y);
+                    canvas.drawBitmap(parkingMarkerBitmap, countX(16.856991), countY(50.712718), null);
+                    drawMarkers(placesToilet1, 0);
+                    drawMarkers(placesViewpoints1, 1);
+                    drawMarkers(placesPicnic1, 2);
                     mapImage.setImageBitmap(canvasBitmap);
                 }
             }
@@ -166,27 +179,21 @@ public class MapFragment extends Fragment implements LocationListener {
     }
 
     public int countX(double lon){
-        double ratioX=((lon- Globals.MinLon)*width)/(Globals.MaxLon-Globals.MinLon);
-        //double ratioX=((Globals.MaxLon - lon)*width)/(Globals.MaxLon-Globals.MinLon);
+        double ratioX=((Globals.MaxLon-lon)*width)/(Globals.MaxLon-Globals.MinLon);
         x=(int)ratioX;
-        return x-100;
+        return x;
     }
 
     public int countY(double lat){
-        lat=(lat*Math.PI)/180.0;
-        double worldMapWidth = ((width/(Globals.MaxLon-Globals.MinLon))*360)/(2*Math.PI);
-        double mapOffsetY=(worldMapWidth/2*Math.log((1+Math.sin(Globals.MaxLat*Math.PI/180))/(1-Math.sin(Globals.MaxLat*Math.PI/180))));
-        y=(int)(height-((worldMapWidth/2*Math.log((1+Math.sin(lat))/(1-Math.sin(lat))))-mapOffsetY));
-        return height-(y/4+24);
-    }
-
-//    public int countY(double lat){
 //        lat=(lat*Math.PI)/180.0;
 //        double worldMapWidth = ((width/(Globals.MaxLon-Globals.MinLon))*360)/(2*Math.PI);
 //        double mapOffsetY=(worldMapWidth/2*Math.log((1+Math.sin(Globals.MaxLat*Math.PI/180))/(1-Math.sin(Globals.MaxLat*Math.PI/180))));
 //        y=(int)(height-((worldMapWidth/2*Math.log((1+Math.sin(lat))/(1-Math.sin(lat))))-mapOffsetY));
-//        return y/4+300;
-//    }
+//        return y/4-24;
+        double ratioY=((lat - Globals.MinLat)*height)/(Globals.MaxLat-Globals.MinLat);
+        y=(int)ratioY;
+        return y;
+    }
 
     public void drawPositionMarker(int x, int y){
         canvas.drawBitmap(positionMarkerBitmap, x, y, null);
@@ -226,27 +233,27 @@ public class MapFragment extends Fragment implements LocationListener {
 
     public void fillCoordinates(){
         placesToilet1.add(new LonLat(16.857349,50.712130));
-        placesToilet1.add(new LonLat(16.859760,50.712175));
-        placesViewpoints1.add(new LonLat(16.854539,50.711776));
-        placesViewpoints1.add(new LonLat(16.858177,50.710130));
-        placesViewpoints1.add(new LonLat(16.862673,50.709100));
-        placesViewpoints1.add(new LonLat(16.861043,50.712136));
-        placesViewpoints1.add(new LonLat(16.862775,50.712671));
-        placesPicnic1.add(new LonLat(16.865043,50.710777));
-        placesPicnic1.add(new LonLat(16.860442,50.709297));
-        placesPicnic1.add(new LonLat(16.854293,50.711144));
+        placesToilet1.add(new LonLat(16.859760,50.712175)); //ok
+        placesViewpoints1.add(new LonLat(16.862536,50.709226));
+        placesViewpoints1.add(new LonLat(16.862264,50.712533));
+        placesViewpoints1.add(new LonLat(16.861220,50.712189));
+        placesViewpoints1.add(new LonLat(16.857960,50.712030));
+        placesViewpoints1.add(new LonLat(16.855558,50.711991)); //ok
+        placesPicnic1.add(new LonLat(16.865909,50.710302));
+        placesPicnic1.add(new LonLat(16.859945,50.709690));
+        placesPicnic1.add(new LonLat(16.854811,50.711422)); //ok
 
-        placesViewpoints2.add(new LonLat(16.854021,50.711426));
-        placesViewpoints2.add(new LonLat(16.864572,50.711924));
-        placesPicnic2.add(new LonLat(16.863050,50.711771));
+        placesViewpoints2.add(new LonLat(16.864719,50.711679));
+        placesViewpoints2.add(new LonLat(16.854277,50.711642));
         placesPicnic2.add(new LonLat(16.854834,50.711344));
+        placesPicnic2.add(new LonLat(16.855516,50.711719));
 
-        placesViewpoints3.add(new LonLat(16.854424,50.710728));
-        placesViewpoints3.add(new LonLat(16.856648,50.710913));
-        placesPicnic3.add(new LonLat(16.855605,50.711489));
-        placesPicnic3.add(new LonLat(16.859766,50.712394));
-        placesPicnic3.add(new LonLat(16.862847,50.712412));
-        placesPicnic3.add(new LonLat(16.863310,50.711148));
+        placesViewpoints3.add(new LonLat(16.856623,50.710972));
+        placesViewpoints3.add(new LonLat(16.854283,50.710972));
+        placesPicnic3.add(new LonLat(16.863279,50.711035));
+        placesPicnic3.add(new LonLat(16.864500,50.711778));
+        placesPicnic3.add(new LonLat(16.859992,50.712403));
+        placesPicnic3.add(new LonLat(16.858238,50.711628));
     }
 
     public Location getLocation(){

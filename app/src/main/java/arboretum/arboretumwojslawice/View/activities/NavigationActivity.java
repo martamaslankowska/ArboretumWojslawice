@@ -66,9 +66,9 @@ public class NavigationActivity extends DaggerAppCompatActivity implements Locat
 
 
     //restaurant
-//    double lon=16.856737;
-//    double lat=50.711166;
-    double lon,lat;
+    double lon=16.856991;
+    double lat=50.712718;
+//    double lon,lat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,11 +114,11 @@ public class NavigationActivity extends DaggerAppCompatActivity implements Locat
 
         ActivityCompat.requestPermissions(NavigationActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 123);
         //uncomment to check real position
-        Location l = getLocation();
-        if (l != null) {
-            lat = l.getLatitude();
-            lon = l.getLongitude();
-        }
+//        Location l = getLocation();
+//        if (l != null) {
+//            lat = l.getLatitude();
+//            lon = l.getLongitude();
+//        }
 
         mapImage = findViewById(R.id.map);
         PhotoViewAttacher photoView = new PhotoViewAttacher(mapImage);
@@ -208,6 +208,7 @@ public class NavigationActivity extends DaggerAppCompatActivity implements Locat
     }
 
     public int countX(double lon){
+        //double ratioX=((lon-MinLon)*width)/(MaxLon-MinLon);
         double ratioX=((lon-MinLon)*width)/(MaxLon-MinLon);
         x=(int)ratioX;
         return x;
