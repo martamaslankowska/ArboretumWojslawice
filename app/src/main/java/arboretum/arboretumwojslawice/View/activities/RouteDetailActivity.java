@@ -129,7 +129,8 @@ public class RouteDetailActivity extends DaggerAppCompatActivity implements View
         fillPlantsCoordinates();
         mapImage = findViewById(R.id.route_detail_map);
         resources = getResources();
-        String name = "map_route_detailed_0"+(route_id+1);
+        String name = "map"+(route_id+1);
+        Globals.routeMapName=name;
         mapBitmap = BitmapFactory.decodeResource(resources, resources.getIdentifier(name, "drawable", getPackageName()));
         //mapBitmap = BitmapFactory.decodeResource(resources, resources.getIdentifier("arboretum_map2", "drawable", getPackageName()));
         createBitmap();
@@ -322,17 +323,15 @@ public class RouteDetailActivity extends DaggerAppCompatActivity implements View
     }
 
     public int countX(double lon){
-        double ratioX=((lon-MinLon)*width)/(MaxLon-MinLon);
-        x = (int)ratioX;
+        double ratioX=((Globals.MaxLon-lon)*width)/(Globals.MaxLon-Globals.MinLon);
+        x=(int)ratioX;
         return x;
     }
 
     public int countY(double lat){
-        lat=(lat*Math.PI)/180.0;
-        double worldMapWidth = ((width/(MaxLon-MinLon))*360)/(2*Math.PI);
-        double mapOffsetY=(worldMapWidth/2*Math.log((1+Math.sin(MaxLat*Math.PI/180))/(1-Math.sin(MaxLat*Math.PI/180))));
-        y = (int)(height-((worldMapWidth/2*Math.log((1+Math.sin(lat))/(1-Math.sin(lat))))-mapOffsetY));
-        return y/4-24;
+        double ratioY=((lat - Globals.MinLat)*height)/(Globals.MaxLat-Globals.MinLat);
+        y=(int)ratioY;
+        return y;
     }
 
     public void drawMarker(int x, int y){

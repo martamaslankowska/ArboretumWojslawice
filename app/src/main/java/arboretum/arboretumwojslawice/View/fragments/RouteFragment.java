@@ -110,6 +110,8 @@ public class RouteFragment extends DaggerFragment implements RouteAdapter.OnItem
     public void onItemClick(int route_id) {
         route_map =  rootView.findViewById(R.id.route_map);
         route_map.setImageResource(mRoutes.get(route_id).getMapImageId(getContext()));
+        String name = "map"+route_id;
+
         mAdapter.selectedPosition = route_id;
         mAdapter.notifyDataSetChanged();
 

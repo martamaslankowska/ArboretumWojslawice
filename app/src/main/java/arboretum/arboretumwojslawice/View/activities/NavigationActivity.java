@@ -134,7 +134,7 @@ public class NavigationActivity extends DaggerAppCompatActivity implements Locat
         createBitmap();
         getBitmapWidthHeight();
         canvasBitmap = Bitmap.createBitmap(width,height,Bitmap.Config.RGB_565);
-        mapBitmap = BitmapFactory.decodeResource(resources, resources.getIdentifier("arboretum_map3", "drawable", getPackageName()));
+        mapBitmap = BitmapFactory.decodeResource(resources, resources.getIdentifier(Globals.routeMapName, "drawable", getPackageName()));
         x=countX(lon);
         y=countY(lat);
         createBitmap();
@@ -175,7 +175,7 @@ public class NavigationActivity extends DaggerAppCompatActivity implements Locat
         double lat = location.getLatitude();
         int x = countX(lon);
         int y = countY(lat);
-        mapBitmap = BitmapFactory.decodeResource(resources, resources.getIdentifier("arboretum_map3", "drawable", getPackageName()));
+        mapBitmap = BitmapFactory.decodeResource(resources, resources.getIdentifier(Globals.routeMapName, "drawable", getPackageName()));
         drawCanvas();
         drawMarker(x, y);
         drawMarkers();
@@ -196,7 +196,7 @@ public class NavigationActivity extends DaggerAppCompatActivity implements Locat
 
     public void createBitmap(){
         positionMarkerBitmap = BitmapFactory.decodeResource(resources,R.drawable.ic_marker_black_big);
-        mapBitmap = BitmapFactory.decodeResource(resources,R.drawable.arboretum_map3);
+        mapBitmap = BitmapFactory.decodeResource(resources,resources.getIdentifier(Globals.routeMapName, "drawable", getPackageName()));
         markerBitmap = BitmapFactory.decodeResource(resources, R.drawable.ic_marker_flower);
         GetBitmapWidthHeight();
         canvasBitmap = Bitmap.createBitmap(width,height,Bitmap.Config.RGB_565);

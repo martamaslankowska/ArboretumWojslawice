@@ -55,7 +55,8 @@ public class Globals {
     public final static double MaxLat = 50.713243;
     public final static double MaxLon = 16.867159;
     public final static double MinLon = 16.853841;
-    public final static List<LonLat> plantsPlaces = new ArrayList<>();
+    public static List<LonLat> plantsPlaces = new ArrayList<>();
+    public static String routeMapName = "";
     /* /map */
 
 
