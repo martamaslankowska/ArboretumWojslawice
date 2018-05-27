@@ -44,7 +44,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/nonrec_margin"
                 android:layout_marginStart="@dimen/nonrec_margin"
-                android:text="Pogoda na dziś!"
+                android:text="@string/weather_main"
                 android:textSize="@dimen/nonrec_font_size_big"
                 android:textColor="@color/darkTextDarkGray"
                 android:textStyle="bold"

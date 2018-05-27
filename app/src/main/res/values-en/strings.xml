@@ -73,6 +73,7 @@
 
 
     <!-- WEATHER -->
+    <string name="weather_main">Current weather!</string>
     <string name="weather_no_info">no weather information\ninternet connection needed</string>
     <string name="weather_clear_sky">Clear sky</string>
     <string name="weather_few_clouds">Few clouds</string>
@@ -137,6 +138,8 @@
     <!-- TOASTS -->
     <string name="toast_add_favourite_toast">Added to favourite</string>
     <string name="toast_delete_favourite_toast">Removed from favourite</string>
+
+    <string name="favourites_text">You do not have any\nfavourite plants yet!</string>
 
 </resources>
 
