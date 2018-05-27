@@ -23,6 +23,7 @@ import arboretum.arboretumwojslawice.Commons.DownloadFileFromURL;
 import arboretum.arboretumwojslawice.Commons.Globals;
 import arboretum.arboretumwojslawice.Model.AppDatabase;
 import arboretum.arboretumwojslawice.Model.DAO.HotelDao;
+import arboretum.arboretumwojslawice.Model.DziadekDatabaseHelper;
 import arboretum.arboretumwojslawice.R;
 import arboretum.arboretumwojslawice.ViewModel.SplashViewModel;
 import dagger.android.support.DaggerAppCompatActivity;
@@ -39,6 +40,8 @@ public class SplashActivity extends DaggerAppCompatActivity {
 
     SharedPreferences mPrefs;
     final String INFO = "select_language";
+    final String URL = "http://arboretumdb.cba.pl/ArboretumDB.db";
+    final String TAG = "Arboretum";
 
     @Inject
     SplashViewModel splashViewModel;
@@ -49,11 +52,10 @@ public class SplashActivity extends DaggerAppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if (isNetworkConnected() && isInternetOn()) {
-            new DownloadFileFromURL().execute("http://arboretumdb.cba.pl/ArboretumDB.db");
-        }
         AppDatabase database = AppDatabase.getAppDatabase(getApplicationContext());
         compositeDisposable = new CompositeDisposable();
+
+        Globals.isDownload = false;
 
         /* Setting event image in HomeFragment */
         int eventImageResource = splashViewModel.getEventImageId(getApplicationContext());
@@ -86,8 +88,6 @@ public class SplashActivity extends DaggerAppCompatActivity {
                                 /* onError() */
                                 Toast.makeText(this, "Jakiś błąąąd... -.- -.-", Toast.LENGTH_LONG);
                             });
-
-
             Intent intent = new Intent(this, LanguageActivity.class);
             startActivity(intent);
             finish();
@@ -137,6 +137,22 @@ public class SplashActivity extends DaggerAppCompatActivity {
 
 
             setLanguage(language);
+            /*POBIERANIE BAZY Z INTERNETU*/
+//            if (isNetworkConnected() && isInternetOn()) {
+//                new DownloadFileFromURL().execute(URL);
+//                Log.d(TAG, "pobieram baze z internetu");
+//                Intent intent = new Intent(this, MainActivity.class);
+//                startActivity(intent);
+//                while (!Globals.isDownload) {
+//                }
+//                Log.d(TAG, "pobrało się");
+//                finish();
+//            }
+//            else {
+//                Intent intent = new Intent(this, MainActivity.class);
+//                startActivity(intent);
+//                finish();
+//            }
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
             finish();

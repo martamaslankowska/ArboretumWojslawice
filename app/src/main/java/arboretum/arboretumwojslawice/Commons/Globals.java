@@ -1,6 +1,10 @@
 package arboretum.arboretumwojslawice.Commons;
 
 import android.app.Application;
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.util.Log;
 
 import arboretum.arboretumwojslawice.Model.additionalEntity.EventRowList;
 import arboretum.arboretumwojslawice.Model.businessentity.News;
@@ -14,5 +18,32 @@ public class Globals {
     public static EventRowList nearestEvents = null;
     public static Plant seasonPlant = null;
     public static int eventImageResource = 0;
+    public static boolean isDownload = false;
+    final static String TAG = "Arboretum";
+
+    public static boolean isInternetOn(Context c) {
+        ConnectivityManager cm = (ConnectivityManager) c.getSystemService(Context.CONNECTIVITY_SERVICE);
+        // test for connection
+        if (cm.getActiveNetworkInfo() != null
+                && cm.getActiveNetworkInfo().isAvailable()
+                && cm.getActiveNetworkInfo().isConnected()) {
+            Log.v(TAG, "Internet is working");
+            // txt_status.setText("Internet is working");
+            return true;
+        } else {
+            // txt_status.setText("Internet Connection Not Present");
+            Log.v(TAG, "Internet Connection Not Present");
+            return false;
+        }
+    }
+
+    public static boolean isNetworkConnected(Context c) {
+        ConnectivityManager cm = (ConnectivityManager) c.getSystemService(c.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = cm.getActiveNetworkInfo();
+
+        // return cm.getActiveNetworkInfo() != null;
+
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
 
 }

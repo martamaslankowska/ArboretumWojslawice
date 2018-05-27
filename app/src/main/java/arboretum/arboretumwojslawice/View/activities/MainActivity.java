@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import arboretum.arboretumwojslawice.Commons.DownloadFileFromURL;
 import arboretum.arboretumwojslawice.Commons.Globals;
 import arboretum.arboretumwojslawice.Commons.LocaleHelper;
 import arboretum.arboretumwojslawice.R;
@@ -41,6 +42,9 @@ public class MainActivity extends DaggerAppCompatActivity {
     RouteMapFragment mRouteMapFragment = new RouteMapFragment();
     FavouritesFragment mFavouritesFragment = new FavouritesFragment();
     MoreFragment mMoreFragment = new MoreFragment();
+
+    final String URL = "http://arboretumdb.cba.pl/ArboretumDB.db";
+    final String TAG = "Arboretum";
 
     int isExit = 1;
 
@@ -128,6 +132,15 @@ public class MainActivity extends DaggerAppCompatActivity {
                 .commit();
         isExit = 0;
         Log.d("Arboretum", "onCreate: " + String.valueOf(isExit));
+
+        /*POBIERANIE BAZY Z INTERNETU*/
+        if (Globals.isNetworkConnected(this) && Globals.isInternetOn(this)) {
+            new DownloadFileFromURL().execute(URL);
+            Log.d(TAG, "pobieram baze z internetu");
+            while (!Globals.isDownload) {
+            }
+            Log.d(TAG, "pobrało się");
+        }
 
     }
 

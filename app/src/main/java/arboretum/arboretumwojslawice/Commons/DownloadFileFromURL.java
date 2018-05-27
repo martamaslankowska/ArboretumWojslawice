@@ -68,6 +68,7 @@ public class DownloadFileFromURL extends AsyncTask<String, String, String> {
             // closing streams
             output.close();
             input.close();
+            Globals.isDownload = true;
 
         } catch (Exception e) {
             Log.e("Arboretum", "nie pobrało się!");

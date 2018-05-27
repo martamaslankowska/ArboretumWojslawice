@@ -15,6 +15,7 @@ import android.widget.Toast;
 import java.util.List;
 import java.util.Locale;
 
+import arboretum.arboretumwojslawice.Commons.Globals;
 import arboretum.arboretumwojslawice.Model.AppDatabase;
 import arboretum.arboretumwojslawice.Model.DAO.HotelDao;
 import arboretum.arboretumwojslawice.Model.DziadekDatabaseHelper;
@@ -44,6 +45,7 @@ public class LanguageActivity extends AppCompatActivity {
         } catch (Exception e) {
             Log.e("DB - Splash screen", e.getMessage());
         }
+
 
         mPrefs = PreferenceManager.getDefaultSharedPreferences(this);
 
