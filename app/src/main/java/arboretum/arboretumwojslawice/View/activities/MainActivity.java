@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
@@ -16,16 +17,30 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.List;
+
+import javax.inject.Inject;
+
+import arboretum.arboretumwojslawice.Commons.DividerItemDecoration;
 import arboretum.arboretumwojslawice.Commons.DownloadFileFromURL;
 import arboretum.arboretumwojslawice.Commons.Globals;
 import arboretum.arboretumwojslawice.Commons.LocaleHelper;
+import arboretum.arboretumwojslawice.Model.businessentity.Plant;
 import arboretum.arboretumwojslawice.R;
 import arboretum.arboretumwojslawice.View.BottomNavigationViewHelper;
 import arboretum.arboretumwojslawice.View.fragments.FavouritesFragment;
 import arboretum.arboretumwojslawice.View.fragments.HomeFragment;
 import arboretum.arboretumwojslawice.View.fragments.MoreFragment;
 import arboretum.arboretumwojslawice.View.fragments.RouteMapFragment;
+import arboretum.arboretumwojslawice.ViewModel.ContactViewModel;
+import arboretum.arboretumwojslawice.ViewModel.MainViewModel;
 import dagger.android.support.DaggerAppCompatActivity;
+import io.reactivex.Completable;
+import io.reactivex.Maybe;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 import static arboretum.arboretumwojslawice.View.activities.EventActivity.EVENT_DATE;
 import static arboretum.arboretumwojslawice.View.fragments.ListOfPlantsFragment.BUNDLE;
@@ -47,6 +62,14 @@ public class MainActivity extends DaggerAppCompatActivity {
     final String TAG = "Arboretum";
 
     int isExit = 1;
+
+
+    protected List<Plant> favouritesPlants;
+    protected CompositeDisposable compositeDisposable;
+    protected CompositeDisposable compositeDisposable2;
+
+    @Inject
+    protected MainViewModel mainViewModel;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = item -> {
@@ -133,14 +156,56 @@ public class MainActivity extends DaggerAppCompatActivity {
         isExit = 0;
         Log.d("Arboretum", "onCreate: " + String.valueOf(isExit));
 
-        /*POBIERANIE BAZY Z INTERNETU*/
-        if (Globals.isNetworkConnected(this) && Globals.isInternetOn(this)) {
-            new DownloadFileFromURL().execute(URL);
-            Log.d(TAG, "pobieram baze z internetu");
-            while (!Globals.isDownload) {
-            }
-            Log.d(TAG, "pobrało się");
-        }
+        compositeDisposable = new CompositeDisposable();
+        compositeDisposable2 = new CompositeDisposable();
+
+        Disposable listOfPlants = Maybe.fromCallable(() -> {
+            return mainViewModel.getAllFavourites();
+        })
+                .subscribeOn(Schedulers.computation())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe((List<Plant> plant) -> {
+
+                            favouritesPlants = plant;
+                            /*POBIERANIE BAZY Z INTERNETU*/
+                            if (Globals.isNetworkConnected(this) && Globals.isInternetOn(this)) {
+                                new DownloadFileFromURL().execute(URL);
+                                Log.d(TAG, "pobieram baze z internetu");
+                                while (!Globals.isDownload) {
+                                }
+                                Log.d(TAG, "pobrało się");
+                                Disposable fav = Completable.fromAction(() -> {
+                                    mainViewModel.setAllFavourites(favouritesPlants);
+                                })
+                                        .subscribeOn(Schedulers.computation())
+                                        .observeOn(AndroidSchedulers.mainThread())
+                                        .subscribe(() -> {
+
+                                        }
+                                                ,throwable -> {
+                            /* onError() */
+                                                    Toast.makeText(this, "Jakiś błąąąd... -.- -.-", Toast.LENGTH_LONG);
+                                                });
+                                compositeDisposable.add(fav);
+                            }
+                        }
+                        ,throwable -> {
+                            /* onError() */
+                            Toast.makeText(this, "Jakiś błąąąd... -.- -.-", Toast.LENGTH_LONG);
+                        });
+
+        compositeDisposable.add(listOfPlants);
+
+//        /*POBIERANIE BAZY Z INTERNETU*/
+//        if (Globals.isNetworkConnected(this) && Globals.isInternetOn(this)) {
+//            new DownloadFileFromURL().execute(URL);
+//            Log.d(TAG, "pobieram baze z internetu");
+//            while (!Globals.isDownload) {
+//            }
+//            Log.d(TAG, "pobrało się");
+//        }
+
+
 
     }
 

@@ -40,7 +40,6 @@ public class SplashActivity extends DaggerAppCompatActivity {
 
     SharedPreferences mPrefs;
     final String INFO = "select_language";
-    final String URL = "http://arboretumdb.cba.pl/ArboretumDB.db";
     final String TAG = "Arboretum";
 
     @Inject
@@ -137,22 +136,6 @@ public class SplashActivity extends DaggerAppCompatActivity {
 
 
             setLanguage(language);
-            /*POBIERANIE BAZY Z INTERNETU*/
-//            if (isNetworkConnected() && isInternetOn()) {
-//                new DownloadFileFromURL().execute(URL);
-//                Log.d(TAG, "pobieram baze z internetu");
-//                Intent intent = new Intent(this, MainActivity.class);
-//                startActivity(intent);
-//                while (!Globals.isDownload) {
-//                }
-//                Log.d(TAG, "pobrało się");
-//                finish();
-//            }
-//            else {
-//                Intent intent = new Intent(this, MainActivity.class);
-//                startActivity(intent);
-//                finish();
-//            }
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
             finish();
