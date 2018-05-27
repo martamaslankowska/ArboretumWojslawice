@@ -57,6 +57,8 @@ public class ListOfPlantsFragment extends DaggerFragment implements PlantAdapter
     public void onItemClick(int position) {
         Intent intent = new Intent(getActivity().getApplicationContext(), PlantDetailActivity.class);
 
+        this.getArguments().putInt(PLANT_ID, plants.get(position).getIdPlant());
+
         Bundle bundle = new Bundle();
         bundle.putInt(PLANT_ID, plants.get(position).getIdPlant());
         bundle.putInt(TAB_ID, n);

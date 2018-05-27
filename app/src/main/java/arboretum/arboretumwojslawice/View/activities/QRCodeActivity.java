@@ -146,13 +146,11 @@ public class QRCodeActivity extends DaggerAppCompatActivity {
             public void receiveDetections(Detector.Detections<Barcode> detections) {
                 final SparseArray<Barcode> QRcodes = detections.getDetectedItems();
 
-
                 if (QRcodes.size() != 0) {
                     firstLoop = false;
                     String qrResult = QRcodes.valueAt(0).displayValue;
-                    plantId = Integer.valueOf(qrResult.substring(20));
+                    plantId = qrResult.length() < 22 ? -1 : Integer.valueOf(qrResult.substring(20));
                     subject.onNext(plantId);
-
 //                    Disposable cdPlant = Maybe.fromCallable(() -> {
 //                        return qrCodeViewModel.getById(plantId);
 //                    })
@@ -191,9 +189,6 @@ public class QRCodeActivity extends DaggerAppCompatActivity {
 //                    intent.putExtra(BUNDLE, bundle);
 //                    startActivity(intent);
 //                    finish();
-
-
-
                 }
             }
         });
