@@ -20,7 +20,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_back">
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_back"
+        android:background="@drawable/background40">
 
         <TextView
             android:id="@+id/chooseLanguage"
@@ -29,11 +30,11 @@
             android:layout_marginEnd="@dimen/nonrec_margin"
             android:layout_marginStart="@dimen/nonrec_margin"
             android:layout_marginTop="@dimen/nonrec_margin"
+            android:fontFamily="@font/lato_semibold"
             android:text="@string/chose_language"
             android:textAlignment="center"
-            android:textSize="@dimen/nonrec_font_size_big"
-            android:fontFamily="@font/lato_semibold"
             android:textColor="@color/darkTextDarkGray"
+            android:textSize="@dimen/nonrec_font_size_big"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0"
             app:layout_constraintStart_toStartOf="parent"
@@ -60,28 +61,28 @@
                 android:id="@+id/polishButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/darkTextGray"
-                android:textSize="@dimen/nonrec_font_size"
                 android:onClick="polishLanguage"
-                android:text="Polski" />
+                android:text="Polski"
+                android:textColor="@color/darkTextGray"
+                android:textSize="@dimen/nonrec_font_size" />
 
             <RadioButton
                 android:id="@+id/englishButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/darkTextGray"
-                android:textSize="@dimen/nonrec_font_size"
                 android:onClick="englishLanguage"
-                android:text="English" />
+                android:text="English"
+                android:textColor="@color/darkTextGray"
+                android:textSize="@dimen/nonrec_font_size" />
 
             <RadioButton
                 android:id="@+id/germanButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/darkTextGray"
-                android:textSize="@dimen/nonrec_font_size"
                 android:onClick="germanLanguage"
-                android:text="Deutsch" />
+                android:text="Deutsch"
+                android:textColor="@color/darkTextGray"
+                android:textSize="@dimen/nonrec_font_size" />
         </RadioGroup>
 
         <ImageView

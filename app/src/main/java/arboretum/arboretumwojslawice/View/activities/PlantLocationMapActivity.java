@@ -118,15 +118,6 @@ public class PlantLocationMapActivity extends DaggerAppCompatActivity {
 
         compositeDisposable.add(cdLocations);
 
-//        Toast.makeText(this, locations.get(0).getX()+", "+locations.get(0).getY() , Toast.LENGTH_LONG).show();
-//        for (Location l: locations) {
-//            double lat = l.getX();
-//            double lon = l.getY();
-//            places.add(new LonLat(lon, lat));
-//        }
-
-
-
     }
 
 
@@ -181,15 +172,9 @@ public class PlantLocationMapActivity extends DaggerAppCompatActivity {
     }
 
     public void fillPlantsCoordinates(){
-
         for(Location l:locations){
             places.add(new LonLat(l.getY(), l.getX()));
         }
-//        places.add(new LonLat(16.856811,50.712181));
-//        places.add(new LonLat(16.858742,50.712460));
-//        places.add(new LonLat(16.861521,50.712269));
-//        places.add(new LonLat(16.863012,50.710591));
-//        places.add(new LonLat(16.859096,50.710021));
     }
 }
 

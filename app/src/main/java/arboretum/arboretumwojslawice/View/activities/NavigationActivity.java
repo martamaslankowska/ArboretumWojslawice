@@ -68,10 +68,7 @@ public class NavigationActivity extends DaggerAppCompatActivity implements Locat
     //restaurant
 //    double lon=16.856737;
 //    double lat=50.711166;
-
-
     double lon,lat;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

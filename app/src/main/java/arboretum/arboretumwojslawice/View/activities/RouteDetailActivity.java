@@ -119,17 +119,24 @@ public class RouteDetailActivity extends DaggerAppCompatActivity implements View
         TextView textView = findViewById(R.id.route_detail_description);
         textView.setMovementMethod(new ScrollingMovementMethod());
 
-//        /*map*/
-
-        mapImage = findViewById(R.id.route_detail_map);
-        resources = getResources();
-        mapBitmap = BitmapFactory.decodeResource(resources, resources.getIdentifier("arboretum_map2", "drawable", getPackageName()));
-        createBitmap();
-
 
         Intent intent = getIntent();
         bundle = intent.getBundleExtra(BUNDLE);
         route_id = bundle.getInt(ROUTE_ID);
+
+        /*map*/
+        fillPlantsCoordinates();
+        mapImage = findViewById(R.id.route_detail_map);
+        resources = getResources();
+        String name = "map_route_detailed_0"+(route_id+1);
+        mapBitmap = BitmapFactory.decodeResource(resources, resources.getIdentifier(name, "drawable", getPackageName()));
+        //mapBitmap = BitmapFactory.decodeResource(resources, resources.getIdentifier("arboretum_map2", "drawable", getPackageName()));
+        createBitmap();
+        drawCanvas();
+        drawMarkers(places, 0);
+
+        mapImage.setImageBitmap(canvasBitmap);
+        /* /map*/
 
 
         Disposable cdLocations = Maybe.fromCallable(() -> {
@@ -228,7 +235,9 @@ public class RouteDetailActivity extends DaggerAppCompatActivity implements View
                                     currentPage = position;
 
                                     /* map */
-                                    mapBitmap = BitmapFactory.decodeResource(resources, resources.getIdentifier("arboretum_map2", "drawable", getPackageName()));
+                                    String name = "map_route_detailed_0"+(route_id);
+                                    mapBitmap = BitmapFactory.decodeResource(resources, resources.getIdentifier(name, "drawable", getPackageName()));
+                                    //mapBitmap = BitmapFactory.decodeResource(resources, resources.getIdentifier("arboretum_map2", "drawable", getPackageName()));
                                     drawCanvas();
 
                                     drawMarkers(places, position);

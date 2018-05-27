@@ -46,4 +46,15 @@ public class Globals {
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
+//    public final static double MinLat = 50.708060;
+//    public final static double MaxLat = 50.713493;
+//    public final static double MinLon = 16.853841;
+//    public final static double MaxLon = 16.867359;
+
+    public final static double MinLat = 50.708045;
+    public final static double MaxLat = 50.713123;
+    public final static double MinLon = 16.867141;
+    public final static double MaxLon = 16.853570;
+
+
 }
