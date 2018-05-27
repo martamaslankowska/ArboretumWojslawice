@@ -18,6 +18,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import arboretum.arboretumwojslawice.Commons.Globals;
 import arboretum.arboretumwojslawice.Commons.map.LonLat;
 import arboretum.arboretumwojslawice.Commons.map.PixelCoordinates;
 import arboretum.arboretumwojslawice.Model.businessentity.Location;
@@ -123,7 +124,7 @@ public class PlantLocationMapActivity extends DaggerAppCompatActivity {
 
     public void CreateBitmap(){
         positionMarkerBitmap = BitmapFactory.decodeResource(resources,R.drawable.ic_marker_black_big);
-        mapBitmap = BitmapFactory.decodeResource(resources,R.drawable.arboretum_map2);
+        mapBitmap = BitmapFactory.decodeResource(resources,R.drawable.arboretum_map3);
         markerBitmap = BitmapFactory.decodeResource(resources, R.drawable.ic_marker_flower);
         GetBitmapWidthHeight();
         canvasBitmap = Bitmap.createBitmap(width,height,Bitmap.Config.RGB_565);
@@ -140,17 +141,15 @@ public class PlantLocationMapActivity extends DaggerAppCompatActivity {
     }
 
     public int countX(double lon){
-        double ratioX=((lon-MinLon)*width)/(MaxLon-MinLon);
+        double ratioX=((Globals.MaxLon-lon)*width)/(Globals.MaxLon-Globals.MinLon);
         x=(int)ratioX;
         return x;
     }
 
     public int countY(double lat){
-        lat=(lat*Math.PI)/180.0;
-        double worldMapWidth = ((width/(MaxLon-MinLon))*360)/(2*Math.PI);
-        double mapOffsetY=(worldMapWidth/2*Math.log((1+Math.sin(MaxLat*Math.PI/180))/(1-Math.sin(MaxLat*Math.PI/180))));
-        y=(int)(height-((worldMapWidth/2*Math.log((1+Math.sin(lat))/(1-Math.sin(lat))))-mapOffsetY));
-        return y/4-24;
+        double ratioY=((lat - Globals.MinLat)*height)/(Globals.MaxLat-Globals.MinLat);
+        y=(int)ratioY;
+        return y;
     }
 
     public void drawMarkers(List<LonLat> pointsCoordinates){
