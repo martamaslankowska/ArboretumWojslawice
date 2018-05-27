@@ -228,6 +228,7 @@
                 android:id="@+id/info2Text"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/nonrec_margin"
                 android:layout_marginEnd="@dimen/nonrec_margin_horizontal"
                 android:layout_marginStart="@dimen/nonrec_margin_horizontal"
                 android:layout_marginTop="@dimen/nonrec_margin_vertical"
@@ -235,6 +236,7 @@
                 android:textAlignment="gravity"
                 android:textColor="@color/darkTextGray"
                 android:textSize="@dimen/nonrec_font_size"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/ticketImage"
@@ -247,16 +249,16 @@
     </ScrollView>
 
 
-    <ImageView
-        android:id="@+id/gifImageView"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_gravity="center"
-        android:scaleType="fitEnd"
-        android:layout_marginBottom="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+    <!--<ImageView-->
+        <!--android:id="@+id/gifImageView"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="300dp"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:scaleType="fitEnd"-->
+        <!--android:layout_marginBottom="20dp"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"/>-->
 
 
 </android.support.constraint.ConstraintLayout>

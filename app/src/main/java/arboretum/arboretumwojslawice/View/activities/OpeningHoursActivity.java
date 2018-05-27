@@ -37,21 +37,21 @@ public class OpeningHoursActivity extends AppCompatActivity {
         /* /toolbar */
 
 
-        gifImageView = findViewById(R.id.gifImageView);
-
-        final Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-
-                // load and run gif for one time only
-                GlideDrawableImageViewTarget imageViewTarget = new GlideDrawableImageViewTarget(gifImageView, 1);
-                Glide.with(context)
-                        .load(R.drawable.bird_test)
-                        .into(imageViewTarget);
-
-            }
-        }, 1500); // 1.5 second delay
+//        gifImageView = findViewById(R.id.gifImageView);
+//
+//        final Handler handler = new Handler();
+//        handler.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//
+//                // load and run gif for one time only
+//                GlideDrawableImageViewTarget imageViewTarget = new GlideDrawableImageViewTarget(gifImageView, 1);
+//                Glide.with(context)
+//                        .load(R.drawable.bird_test)
+//                        .into(imageViewTarget);
+//
+//            }
+//        }, 1500); // 1.5 second delay
 
     }
 

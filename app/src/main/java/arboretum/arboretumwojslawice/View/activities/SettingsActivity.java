@@ -19,8 +19,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -93,7 +95,9 @@ public class SettingsActivity extends AppCompatActivity {
     @SuppressLint("ResourceAsColor")
     public void polishLanguage(View view) {
         if (!languageCode.equals(PL)) {
-            Toast.makeText(getApplicationContext(), "Zmieniono język na polski.\nAplikacja zostanie uruchomiona ponownie.", Toast.LENGTH_SHORT).show();
+            String toastText = "Zmieniono język na polski.\nAplikacja zostanie uruchomiona ponownie.";
+            Toast toast = makeToast(toastText);
+            toast.show();
             buttonPL.setChecked(true);
             setLanguage(PL);
         }
@@ -102,7 +106,9 @@ public class SettingsActivity extends AppCompatActivity {
     @SuppressLint("ResourceAsColor")
     public void englishLanguage(View view) {
         if (!languageCode.equals(EN)) {
-            Toast.makeText(getApplicationContext(), "The language has been changed to english.\nApplication will restart.", Toast.LENGTH_SHORT).show();
+            String toastText = "The language has been changed to english.\nApplication will restart.";
+            Toast toast = makeToast(toastText);
+            toast.show();
             buttonEN.setChecked(true);
             setLanguage(EN);
         }
@@ -112,21 +118,26 @@ public class SettingsActivity extends AppCompatActivity {
     public void germanLanguage(View view) {
         if (!languageCode.equals(DE)) {
             String toastText = "Die Sprache wurde auf Deutsch geändert.\nDie Anwendung wird neu gestartet.";
-            makeToast(toastText).show();
-//            Toast.makeText(getApplicationContext(), "Die Sprache wurde auf Deutsch geändert.\nDie Anwendung wird neu gestartet.", Toast.LENGTH_SHORT).show();
+            Toast toast = makeToast(toastText);
+            toast.show();
             buttonDE.setChecked(true);
             setLanguage(DE);
         }
     }
 
 
-    public Toast makeToast(String text) {
-        Toast toast = Toast.makeText(this, text, Toast.LENGTH_SHORT);
-        ConstraintLayout layout = (ConstraintLayout) toast.getView();
-        if (layout.getChildCount() > 0) {
-            TextView tv = (TextView) layout.getChildAt(0);
-            tv.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
-        }
+    public Toast makeToast(String textString) {
+        LayoutInflater inflater = getLayoutInflater();
+        View layout = inflater.inflate(R.layout.toast_language_change, findViewById(R.id.custom_toast_container));
+
+        TextView text = layout.findViewById(R.id.text);
+        text.setText(textString);
+
+        Toast toast = new Toast(getApplicationContext());
+//        toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+        toast.setDuration(Toast.LENGTH_SHORT);
+        toast.setView(layout);
+//        toast.show();
         return toast;
     }
 
@@ -148,7 +159,7 @@ public class SettingsActivity extends AppCompatActivity {
             public void run() {
                 restartApp(getApplicationContext());
             }
-        }, 2000);
+        }, 1800);
 
 //        restartApp(getApplicationContext());
     }

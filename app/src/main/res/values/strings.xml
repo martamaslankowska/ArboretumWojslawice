@@ -6,7 +6,7 @@
     <string name="title_more">Więcej</string>
     <string name="title_map">Mapa</string>
     <string name="title_route">Trasy</string>
-    <string name="title_qr_code">QR Code</string>
+    <string name="title_qr_code">QR kod</string>
 
     <!-- Toolbars -->
     <string name="toolbar_qr_code">QR kod</string>

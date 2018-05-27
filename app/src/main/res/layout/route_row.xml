@@ -12,54 +12,54 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:focusable="true"
-        android:paddingTop="@dimen/route_list_row_padding_top_bottom"
-        android:paddingBottom="@dimen/route_list_row_padding_top_bottom"
+        android:paddingTop="@dimen/nonrec_half_margin"
+        android:paddingBottom="@dimen/nonrec_half_margin"
         android:paddingLeft="@dimen/route_list_row_padding_left_right"
         android:paddingRight="@dimen/route_list_row_padding_left_right">
 
         <TextView
             android:id="@+id/route_name"
-            android:textSize="@dimen/nonrec_font_size"
-            android:textColor="@color/darkTextGray"
-            android:textStyle="bold"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginRight="12dp"
             android:layout_toStartOf="@id/route_detail_arrow"
             android:text="@{route.getName()}"
-            app:layout_constraintTop_toTopOf="parent"
+            android:textColor="@color/darkTextGray"
+            android:textSize="@dimen/nonrec_font_size"
+            android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="parent"
-            android:layout_marginRight="12dp"
-            app:layout_constraintRight_toLeftOf="@id/route_detail_arrow"/>
+            app:layout_constraintBottom_toTopOf="@id/route_length"
+            app:layout_constraintRight_toLeftOf="@id/route_detail_arrow"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/route_length"
-            android:layout_below="@id/route_name"
-            android:textColor="@color/darkTextLightGray"
-            android:textSize="@dimen/nonrec_font_size_small"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_toStartOf="@id/route_detail_arrow"
-            android:text="@{@string/route_length(route.getLengthString())}"
-            app:layout_constraintTop_toTopOf="@id/route_name"
+            android:text="@{@string/route_length(route.getLengthString()) + '\n' + @string/route_time(route.getTimeString())}"
+            android:textColor="@color/darkTextLightGray"
+            android:textSize="@dimen/nonrec_font_size_small"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/route_name"
             app:layout_constraintLeft_toLeftOf="parent"
-            android:layout_marginRight="12dp"
-            app:layout_constraintRight_toLeftOf="@id/route_detail_arrow"/>
-
-        <TextView
-            android:id="@+id/route_time"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/route_length"
-            android:textColor="@color/darkTextLightGray"
-            android:textSize="@dimen/nonrec_font_size_small"
-            android:layout_toStartOf="@id/route_detail_arrow"
-            android:text="@{@string/route_time(route.getTimeString())}"
-            app:layout_constraintTop_toBottomOf="@id/route_length"
-            app:layout_constraintLeft_toLeftOf="parent"
-            android:layout_marginRight="12dp"
             app:layout_constraintRight_toLeftOf="@id/route_detail_arrow"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@+id/route_name" />
+
+        <!--<TextView-->
+            <!--android:id="@+id/route_time"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_below="@id/route_length"-->
+            <!--android:textColor="@color/darkTextLightGray"-->
+            <!--android:textSize="@dimen/nonrec_font_size_small"-->
+            <!--android:layout_toStartOf="@id/route_detail_arrow"-->
+            <!--android:text="@{@string/route_time(route.getTimeString())}"-->
+            <!--app:layout_constraintTop_toBottomOf="@id/route_length"-->
+            <!--app:layout_constraintLeft_toLeftOf="parent"-->
+            <!--android:layout_marginRight="12dp"-->
+            <!--app:layout_constraintRight_toLeftOf="@id/route_detail_arrow"-->
+            <!--app:layout_constraintBottom_toBottomOf="parent"/>-->
 
         <ImageView
             android:id="@+id/route_detail_arrow"

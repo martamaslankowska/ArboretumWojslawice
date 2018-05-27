@@ -5,6 +5,9 @@
     <string name="title_map_and_route">Map / Route</string>
     <string name="title_favoutites">Favourites</string>
     <string name="title_more">More</string>
+    <string name="title_map">Map</string>
+    <string name="title_route">Routes</string>
+    <string name="title_qr_code">QR code</string>
 
 
     <!-- Toolbars -->
