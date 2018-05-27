@@ -6,6 +6,10 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.util.Log;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import arboretum.arboretumwojslawice.Commons.map.LonLat;
 import arboretum.arboretumwojslawice.Model.additionalEntity.EventRowList;
 import arboretum.arboretumwojslawice.Model.businessentity.News;
 import arboretum.arboretumwojslawice.Model.businessentity.Plant;
@@ -46,15 +50,13 @@ public class Globals {
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
+    /* map */
     public final static double MinLat = 50.708576;
     public final static double MaxLat = 50.713243;
     public final static double MaxLon = 16.867159;
     public final static double MinLon = 16.853841;
-
-//    public final static double MinLat = 50.708045;
-//    public final static double MaxLat = 50.713123;
-//    public final static double MinLon = 16.867141;
-//    public final static double MaxLon = 16.853570;
+    public final static List<LonLat> plantsPlaces = new ArrayList<>();
+    /* /map */
 
 
 }

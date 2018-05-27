@@ -22,9 +22,15 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.inject.Inject;
 
 import arboretum.arboretumwojslawice.Commons.DividerItemDecoration;
+import arboretum.arboretumwojslawice.Commons.Globals;
+import arboretum.arboretumwojslawice.Commons.map.LonLat;
+import arboretum.arboretumwojslawice.Commons.map.PixelCoordinates;
 import arboretum.arboretumwojslawice.Model.businessentity.Route;
 import arboretum.arboretumwojslawice.R;
 import arboretum.arboretumwojslawice.ViewModel.RouteViewModel;
@@ -51,12 +57,12 @@ public class NavigationActivity extends DaggerAppCompatActivity implements Locat
     private int route_id;
     
     int x=0,y=0;
-    Bitmap positionMarkerBitmap,canvasBitmap,mapBitmap, markerBitmap;
+    Bitmap positionMarkerBitmap,canvasBitmap, mapBitmap, markerBitmap;
     Canvas canvas;
     Resources resources;
     int width, height;
     private ImageView mapImage;
-    double scale = 2.3206200;
+    double scale = 1.0f;
 
     //arboretum
     public final static double MinLat = 50.708060;
@@ -128,12 +134,13 @@ public class NavigationActivity extends DaggerAppCompatActivity implements Locat
         createBitmap();
         getBitmapWidthHeight();
         canvasBitmap = Bitmap.createBitmap(width,height,Bitmap.Config.RGB_565);
-        mapBitmap = BitmapFactory.decodeResource(resources, resources.getIdentifier("arboretum_map2", "drawable", getPackageName()));
+        mapBitmap = BitmapFactory.decodeResource(resources, resources.getIdentifier("arboretum_map3", "drawable", getPackageName()));
         x=countX(lon);
         y=countY(lat);
         createBitmap();
         drawCanvas();
         drawMarker(x,y);
+        drawMarkers();
         mapImage.setImageBitmap(canvasBitmap);
     }
 
@@ -168,9 +175,10 @@ public class NavigationActivity extends DaggerAppCompatActivity implements Locat
         double lat = location.getLatitude();
         int x = countX(lon);
         int y = countY(lat);
-        mapBitmap = BitmapFactory.decodeResource(resources, resources.getIdentifier("arboretum_map2", "drawable", getPackageName()));
+        mapBitmap = BitmapFactory.decodeResource(resources, resources.getIdentifier("arboretum_map3", "drawable", getPackageName()));
         drawCanvas();
         drawMarker(x, y);
+        drawMarkers();
         mapImage.setImageBitmap(canvasBitmap);
     }
 
@@ -187,11 +195,18 @@ public class NavigationActivity extends DaggerAppCompatActivity implements Locat
     }
 
     public void createBitmap(){
-        markerBitmap = BitmapFactory.decodeResource(resources,R.drawable.ic_marker_black_big);
-        mapBitmap = BitmapFactory.decodeResource(resources,R.drawable.arboretum_map2);
-        getBitmapWidthHeight();
+        positionMarkerBitmap = BitmapFactory.decodeResource(resources,R.drawable.ic_marker_black_big);
+        mapBitmap = BitmapFactory.decodeResource(resources,R.drawable.arboretum_map3);
+        markerBitmap = BitmapFactory.decodeResource(resources, R.drawable.ic_marker_flower);
+        GetBitmapWidthHeight();
         canvasBitmap = Bitmap.createBitmap(width,height,Bitmap.Config.RGB_565);
     }
+
+    public void GetBitmapWidthHeight(){
+        width = mapBitmap.getWidth();
+        height = mapBitmap.getHeight();
+    }
+
 
     public void getBitmapWidthHeight(){
         width = mapBitmap.getWidth();
@@ -204,22 +219,36 @@ public class NavigationActivity extends DaggerAppCompatActivity implements Locat
     }
 
     public void drawMarker(int x, int y){
-        canvas.drawBitmap(markerBitmap,x,y,null);
+        canvas.drawBitmap(positionMarkerBitmap,x,y,null);
+    }
+
+    public void drawMarkers(){
+        if(Globals.plantsPlaces.size()!=0) {
+            ArrayList<PixelCoordinates> plantsCoordinates = new ArrayList();
+            for (LonLat l : Globals.plantsPlaces) {
+                plantsCoordinates.add(new PixelCoordinates(countX(l.lon), countY(l.lat)));
+            }
+            for (PixelCoordinates p : plantsCoordinates) {
+                canvas.drawBitmap(markerBitmap, p.x, p.y, null);
+            }
+        }
     }
 
     public int countX(double lon){
-        //double ratioX=((lon-MinLon)*width)/(MaxLon-MinLon);
-        double ratioX=((lon-MinLon)*width)/(MaxLon-MinLon);
+        double ratioX=((Globals.MaxLon-lon)*width)/(Globals.MaxLon-Globals.MinLon);
         x=(int)ratioX;
         return x;
     }
 
     public int countY(double lat){
-        lat=(lat*Math.PI)/180.0;
-        double worldMapWidth = ((width/(MaxLon-MinLon))*360)/(2*Math.PI);
-        double mapOffsetY=(worldMapWidth/2*Math.log((1+Math.sin(MaxLat*Math.PI/180))/(1-Math.sin(MaxLat*Math.PI/180))));
-        y=(int)(height-((worldMapWidth/2*Math.log((1+Math.sin(lat))/(1-Math.sin(lat))))-mapOffsetY));
-        return y/4-24;
+//        lat=(lat*Math.PI)/180.0;
+//        double worldMapWidth = ((width/(MaxLon-MinLon))*360)/(2*Math.PI);
+//        double mapOffsetY=(worldMapWidth/2*Math.log((1+Math.sin(MaxLat*Math.PI/180))/(1-Math.sin(MaxLat*Math.PI/180))));
+//        y=(int)(height-((worldMapWidth/2*Math.log((1+Math.sin(lat))/(1-Math.sin(lat))))-mapOffsetY));
+//        return y/4-24;
+        double ratioY=((lat - Globals.MinLat)*height)/(Globals.MaxLat-Globals.MinLat);
+        y=(int)ratioY;
+        return y;
     }
 
     private void turnGPSOn(){

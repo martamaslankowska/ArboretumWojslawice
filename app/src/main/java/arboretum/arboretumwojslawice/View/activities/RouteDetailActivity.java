@@ -33,6 +33,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import arboretum.arboretumwojslawice.Commons.DividerItemDecoration;
+import arboretum.arboretumwojslawice.Commons.Globals;
 import arboretum.arboretumwojslawice.Commons.map.LonLat;
 import arboretum.arboretumwojslawice.Commons.map.PixelCoordinates;
 import arboretum.arboretumwojslawice.Model.Repository.PlantRepository;
@@ -354,9 +355,10 @@ public class RouteDetailActivity extends DaggerAppCompatActivity implements View
     /* /map */
 
     public void fillPlantsCoordinates(){
-
+        Globals.plantsPlaces.clear();
         for (PointOnRoute l:locations) {
             places.add(new LonLat(l.getY(), l.getX()));
+            Globals.plantsPlaces.add(new LonLat(l.getY(), l.getX()));
         }
 
         for (LonLat l: places) {
