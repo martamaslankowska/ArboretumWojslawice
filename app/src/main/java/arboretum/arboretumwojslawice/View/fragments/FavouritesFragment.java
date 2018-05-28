@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,6 +39,7 @@ public class FavouritesFragment extends DaggerFragment implements FavouritesAdap
 
     protected RecyclerView recyclerView;
     private TextView noFavouritesTextView;
+    FrameLayout background;
 
     @Inject
     protected FavouritesAdapter adapter;
@@ -75,6 +77,7 @@ public class FavouritesFragment extends DaggerFragment implements FavouritesAdap
         recyclerView = view.findViewById(R.id.favourite_recycler_view);
         compositeDisposable = new CompositeDisposable();
         noFavouritesTextView = view.findViewById(R.id.noFavouriteTextView);
+        background = view.findViewById(R.id.fragmentFavourites);
 
         Disposable listOfPlants = Maybe.fromCallable(() -> {
             return favouriteViewModel.getAllFavourites();
@@ -93,6 +96,8 @@ public class FavouritesFragment extends DaggerFragment implements FavouritesAdap
                                 noFavouritesTextView.setVisibility(View.INVISIBLE);
                             } else {
                                 noFavouritesTextView.setText(R.string.favourites_text);
+                                background.setBackground(view.getResources().getDrawable(R.drawable.background40));
+
                             }
                         }
                         ,throwable -> {
