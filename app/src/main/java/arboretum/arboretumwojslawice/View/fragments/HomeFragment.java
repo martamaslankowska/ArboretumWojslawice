@@ -82,7 +82,10 @@ public class HomeFragment extends DaggerFragment {
                     String weatherName = getWeatherIconName(weather_description);
 
                     weatherTemp.setTextSize(32);
-                    weatherTemp.setText(weather_temperature.replace(",00", ""));
+//                    Double temp = Double.parseDouble(weather_temperature);
+//                    String weather_temp = String.valueOf(temp.intValue());
+                    String weather_temp = weather_temperature.length() > 2 ? weather_temperature.substring(0,2) + weather_temperature.substring(weather_temperature.length()-1) : weather_temperature;
+                    weatherTemp.setText(weather_temp);
                     weatherDesc.setText(getStringResourceByName(weatherName));
                     weatherIcon.setImageResource(getDrawableId(weatherName));
                 }

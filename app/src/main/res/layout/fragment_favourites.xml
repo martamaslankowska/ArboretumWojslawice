@@ -21,6 +21,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:textSize="@dimen/nonrec_font_size"
+        android:lineSpacingExtra="4dp"
+        android:textAlignment="center"
         android:textColor="@color/darkTextDarkGray"
         android:textStyle="bold"
         android:layout_marginBottom="10dp"
