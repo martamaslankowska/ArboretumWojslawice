@@ -60,6 +60,9 @@ public class SplashViewModel {
 
 //        int nearestDate = eventRepository.getAllDateFromToday().get(0);
         int nearestDate = eventRepository.getToday();
+        if (!eventRepository.getAllDateFromToday().isEmpty())
+            nearestDate = eventRepository.getAllDateFromToday().get(0);
+
         List<Event> eventsDuringNearestDate = eventRepository.getAllDuringGivenDate(nearestDate);
         int nrOfEvents = eventsDuringNearestDate.size();
 

@@ -46,14 +46,14 @@ public abstract class EventDao extends BaseDao<EventEntity> {
 
     @Query("SELECT DISTINCT Date " +
             "FROM (SELECT DISTINCT DateBegin as 'DATE' " +
-                "FROM Events LEFT JOIN EventsTranslations ON Events.IdEvent = EventsTranslations.IdEvent " +
-                "WHERE DateBegin >= (:actualDate) AND TranslationCode IN (:translationCode) " +
+                "FROM Events " +
+                "WHERE DateBegin >= (:actualDate) " +
                 "UNION ALL " +
                 "SELECT DISTINCT (:actualDate) as 'DATE' " +
-                "FROM Events LEFT JOIN EventsTranslations ON Events.IdEvent = EventsTranslations.IdEvent " +
-                "WHERE DateBegin < (:actualDate) AND DateEnd >= (:actualDate) AND TranslationCode IN (:translationCode))" +
+                "FROM Events " +
+                "WHERE DateBegin < (:actualDate) AND DateEnd >= (:actualDate))" +
             "ORDER BY Date ")
-    public abstract List<Integer> getAllDateFromToday(int actualDate, String translationCode);
+    public abstract List<Integer> getAllDateFromToday(int actualDate);
 
 
     /* probably temporary */

@@ -114,7 +114,10 @@ public class HomeFragment extends DaggerFragment {
                     .subscribe(news -> {
                                 Globals.currentNews = news;
                                 newsTitle.setText(news.getName());
-                                newsText.setText(news.getDescription());
+                                if (news.getDescription() == null || news.getDescription().isEmpty())
+                                    newsText.setVisibility(View.GONE);
+                                else
+                                    newsText.setText(news.getDescription());
                                 newsImage.setImageResource(news.getImageId(context));
                             }
                             , throwable -> {
@@ -124,9 +127,14 @@ public class HomeFragment extends DaggerFragment {
         } else {
             News news = Globals.currentNews;
             newsTitle.setText(news.getName());
-            newsText.setText(news.getDescription());
+            if (news.getDescription() == null || news.getDescription().isEmpty())
+                newsText.setVisibility(View.GONE);
+            else
+                newsText.setText(news.getDescription());
             newsImage.setImageResource(news.getImageId(context));
         }
+
+
 
 
         /* SETTING EVENTS */

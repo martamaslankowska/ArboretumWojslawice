@@ -59,7 +59,7 @@ public class EventRepository extends BaseRepository {
         Integer year = Integer.valueOf(strDate.substring(0, 4));
         Integer IntegerDate = 10000*year + 100*month + day;
 
-        List<Integer> result = eventDao.getAllDateFromToday(IntegerDate, languageCode);
+        List<Integer> result = eventDao.getAllDateFromToday(IntegerDate);
 
         return result;
     }
