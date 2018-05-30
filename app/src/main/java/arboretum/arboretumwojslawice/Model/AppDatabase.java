@@ -8,6 +8,7 @@ import arboretum.arboretumwojslawice.Model.Entity.GenusEntity;
 import arboretum.arboretumwojslawice.Model.Entity.HotelEntity;
 import arboretum.arboretumwojslawice.Model.Entity.LocationEntity;
 import arboretum.arboretumwojslawice.Model.Entity.NewsEntity;
+import arboretum.arboretumwojslawice.Model.Entity.NewsImageEntity;
 import arboretum.arboretumwojslawice.Model.Entity.NewsTranslationEntity;
 import arboretum.arboretumwojslawice.Model.Entity.PlantEntity;
 import arboretum.arboretumwojslawice.Model.Entity.PlantTranslationEntity;
@@ -38,7 +39,7 @@ import android.content.Context;
         LocationEntity.class, PlantEntity.class, PlantTranslationEntity.class,
         PriceEntity.class, PriceTranslationEntity.class, RestaurantEntity.class,
         RouteEntity.class, RoutePointEntity.class, RouteTranslationEntity.class,
-        RouteMapCoordEntity.class,
+        RouteMapCoordEntity.class, NewsImageEntity.class,
         SpeciesEntity.class, NewsEntity.class, NewsTranslationEntity.class},
         version = 1)
     public abstract class AppDatabase extends RoomDatabase {
@@ -63,6 +64,7 @@ import android.content.Context;
         public abstract SpeciesDao getSpeciesDao();
         public abstract NewsDao getNewsDao();
         public abstract NewsTranslationDao getNewsTranslationDao();
+        public abstract NewsImageDao getNewsImageDao();
 
 
     private static AppDatabase INSTANCE;

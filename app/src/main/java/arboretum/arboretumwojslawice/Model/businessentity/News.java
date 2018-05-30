@@ -9,6 +9,7 @@ import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
+import java.util.List;
 import java.util.Locale;
 
 import javax.inject.Inject;
@@ -34,12 +35,22 @@ public class News implements AdapterItem {
     @ColumnInfo(name = "Date")
     private Integer date;
 
+    @Ignore
+    private List<NewsImage> extraImages;
+
+
     public News(Integer idNews, String name, String description, String image, Integer date) {
         this.idNews = idNews;
         this.name = name;
         this.description = description;
         this.image = image;
         this.date = date;
+    }
+
+
+    @Ignore
+    public News(List<NewsImage> extraImages) {
+        this.extraImages = extraImages;
     }
 
     @Ignore

@@ -7,11 +7,12 @@ import android.arch.persistence.room.Query;
 import java.util.List;
 
 import arboretum.arboretumwojslawice.Model.Entity.EventEntity;
+import arboretum.arboretumwojslawice.Model.Entity.NewsEntity;
 import arboretum.arboretumwojslawice.Model.businessentity.Event;
 import arboretum.arboretumwojslawice.Model.businessentity.News;
 
 @Dao
-public abstract class NewsDao extends BaseDao<EventEntity> {
+public abstract class NewsDao extends BaseDao<NewsEntity> {
 
     @Query("SELECT News.IdNews, Name, Date, Description, Image " +
             "FROM News LEFT JOIN NewsTranslations ON News.IdNews = NewsTranslations.IdNews " +
