@@ -69,10 +69,8 @@ public class NewsAdapter extends BaseAdapter {
             imageView = (ImageView) convertView;
         }
 
-        imageView.setImageResource(R.drawable.image_acer_65_internet);
-
         int imageRes = newsImage.getImageId(context);
-
+        imageView.setImageResource(imageRes);
         return imageView;
     }
 

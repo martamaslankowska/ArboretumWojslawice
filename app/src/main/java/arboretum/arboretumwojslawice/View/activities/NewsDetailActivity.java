@@ -1,5 +1,6 @@
 package arboretum.arboretumwojslawice.View.activities;
 
+import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.graphics.drawable.Drawable;
@@ -7,12 +8,19 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.inject.Inject;
 
+import arboretum.arboretumwojslawice.Model.businessentity.NewsImage;
 import arboretum.arboretumwojslawice.Model.businessentity.Plant;
 import arboretum.arboretumwojslawice.R;
 import arboretum.arboretumwojslawice.View.adapter.NewsAdapter;
@@ -31,12 +39,17 @@ public class NewsDetailActivity extends DaggerAppCompatActivity {
     NewsDetailViewModel newsDetailViewModel;
     private CompositeDisposable compositeDisposable;
 
+    TextView titleTextView, descTextView;
+    ImageView mainImageView;
+    Context context;
+
+    List<NewsImage> newsImages;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_news_detail);
-//        ActivityNewsDetailBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_news_detail);
+        setContentView(R.layout.activity_news_detail_grid);
+        context = getApplicationContext();
         compositeDisposable = new CompositeDisposable();
 
         /* toolbar */
@@ -50,6 +63,7 @@ public class NewsDetailActivity extends DaggerAppCompatActivity {
         }
         /* /toolbar */
 
+        GridView gridView = findViewById(R.id.gridview);
 
         Disposable cdNews = Maybe.fromCallable(() -> {
             return newsDetailViewModel.getCurrentNews();
@@ -57,8 +71,6 @@ public class NewsDetailActivity extends DaggerAppCompatActivity {
                 .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(news -> {
-//                            binding.setNews(news);
-
 
                     Disposable cdImages = Maybe.fromCallable(() -> {
                         return newsDetailViewModel.getAllImagesById(news.getIdNews());
@@ -67,26 +79,36 @@ public class NewsDetailActivity extends DaggerAppCompatActivity {
                             .observeOn(AndroidSchedulers.mainThread())
                             .subscribe(images -> {
 
-                                if (images.isEmpty())
+                                if (images.isEmpty()) {
                                     setContentView(R.layout.activity_news_detail);
-                                else {
-                                    setContentView(R.layout.activity_news_detail_grid);
+                                    titleTextView = findViewById(R.id.newsTitleTextView);
+                                    descTextView = findViewById(R.id.plant_detail_description);
+                                    mainImageView = findViewById(R.id.newsImageView);
 
-                                    GridView gridView = findViewById(R.id.gridview);
+                                    titleTextView.setText(news.getName());
+                                    descTextView.setText(news.getDescription());
+                                    mainImageView.setImageResource(news.getImageId(context));
+                                }
+                                else {
+//                                    setContentView(R.layout.activity_news_detail_grid);
+                                    titleTextView = findViewById(R.id.titleTextView);
+                                    mainImageView = findViewById(R.id.mainImageView);
+
+                                    titleTextView.setText(news.getName());
+                                    mainImageView.setImageResource(news.getImageId(context));
+
+                                    images.add(0, new NewsImage(1000, news.getIdNews(), news.getImage()));
+                                    newsImages = images;
+
+//                                    GridView gridView = findViewById(R.id.gridview);
                                     NewsAdapter newsAdapter = new NewsAdapter(this, images);
                                     gridView.setAdapter(newsAdapter);
                                 }
-
-
-                                        int length = images.size();
-                                        Toast.makeText(this, String.valueOf(length), Toast.LENGTH_SHORT).show();
-                                    }
-                                    ,throwable -> {
-                                        /* onError() */
-                                        Toast.makeText(this, "Jakiś błąąąd z obrazkami... -.- -.-", Toast.LENGTH_LONG).show();
-                                    });
-
-
+                            }
+                            ,throwable -> {
+                                /* onError() */
+                                Toast.makeText(this, "Jakiś błąąąd z obrazkami... -.- -.-", Toast.LENGTH_LONG).show();
+                            });
                         }
                         ,throwable -> {
                             /* onError() */
@@ -94,6 +116,18 @@ public class NewsDetailActivity extends DaggerAppCompatActivity {
                         });
 
         compositeDisposable.add(cdNews);
+
+
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView parent, View view, int position, long id) {
+                if (newsImages.size() > position) {
+                    NewsImage newsImage = newsImages.get(position);
+                    mainImageView.setImageResource(newsImage.getImageId(context));
+                }
+            }
+        });
+
 
     }
 
