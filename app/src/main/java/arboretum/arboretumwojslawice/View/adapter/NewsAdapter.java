@@ -1,57 +1,80 @@
 package arboretum.arboretumwojslawice.View.adapter;
 
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
+import android.content.Context;
+import android.util.DisplayMetrics;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.GridView;
+import android.widget.ImageView;
 
 import java.util.List;
 
 import javax.inject.Inject;
 
-import arboretum.arboretumwojslawice.Commons.BindingViewHolder;
-import arboretum.arboretumwojslawice.Model.businessentity.News;
-import arboretum.arboretumwojslawice.View.viewholder.NewsViewHolder;
-import arboretum.arboretumwojslawice.databinding.NewsRowBinding;
+import arboretum.arboretumwojslawice.Model.businessentity.NewsImage;
+import arboretum.arboretumwojslawice.R;
 
-public class NewsAdapter extends RecyclerView.Adapter<BindingViewHolder> {
+public class NewsAdapter extends BaseAdapter {
 
-    private List<News> mNews;
+    private List<NewsImage> images;
+    private Context context;
 
     @Inject
-    public NewsAdapter() {
+    public NewsAdapter() { }
+
+    // 1
+    public NewsAdapter(Context context, List<NewsImage> images) {
+        this.context = context;
+        this.images = images;
     }
 
+    // 2
     @Override
-    public BindingViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        NewsRowBinding binding = NewsRowBinding.inflate(inflater, parent, false);
+    public int getCount() {
+        return images.size();
+    }
 
-        switch (viewType) {
-            case 0:
-                return new NewsViewHolder(binding);
-            default:
-                throw new IllegalArgumentException("This viewType is not supported " + viewType);
+    // 3
+    @Override
+    public long getItemId(int position) {
+        return 0;
+    }
+
+    // 4
+    @Override
+    public Object getItem(int position) {
+        return null;
+    }
+
+    // 5
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        NewsImage newsImage = images.get(position);
+        ImageView imageView;
+
+        DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+//        float dpHeight = displayMetrics.heightPixels / displayMetrics.density;
+        float width = displayMetrics.widthPixels;
+
+        if (convertView == null) {
+//            final LayoutInflater layoutInflater = LayoutInflater.from(context);
+//            convertView = layoutInflater.inflate(R.layout.news_grid, null);
+            imageView = new ImageView(context);
+            imageView.setLayoutParams(new GridView.LayoutParams((int)(width *0.32), (int)(width *0.32)));
+            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+//            imageView.setPadding(0, 8, 0, 8);
+        } else {
+//            imageView = convertView.findViewById(R.id.gridImageView);
+            imageView = (ImageView) convertView;
         }
+
+        imageView.setImageResource(R.drawable.image_acer_65_internet);
+
+        int imageRes = newsImage.getImageId(context);
+
+        return imageView;
     }
 
-    @Override
-    public void onBindViewHolder(BindingViewHolder holder, int position) {
-        News option = mNews.get(position);
-        holder.bind(option);
-    }
 
-    @Override
-    public int getItemCount() {
-        return mNews.size();
-    }
-
-    public interface OnItemClickListener
-    {
-        void onItemClick(int position);
-    }
-
-    public void setData(List<News> option) {
-        this.mNews = option;
-        notifyDataSetChanged();
-    }
 }

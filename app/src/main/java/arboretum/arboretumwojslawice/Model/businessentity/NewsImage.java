@@ -1,6 +1,7 @@
 package arboretum.arboretumwojslawice.Model.businessentity;
 
 import android.arch.persistence.room.ColumnInfo;
+import android.content.Context;
 
 
 public class NewsImage {
@@ -44,5 +45,10 @@ public class NewsImage {
 
     public void setExtraImage(String extraImage) {
         this.extraImage = extraImage;
+    }
+
+    public int getImageId(Context c) {
+        return c.getResources().getIdentifier("arboretum.arboretumwojslawice:drawable/" + extraImage, null, null);
+
     }
 }

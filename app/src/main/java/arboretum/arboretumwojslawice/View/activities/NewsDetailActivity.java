@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
 import android.view.MenuItem;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -14,6 +15,7 @@ import javax.inject.Inject;
 
 import arboretum.arboretumwojslawice.Model.businessentity.Plant;
 import arboretum.arboretumwojslawice.R;
+import arboretum.arboretumwojslawice.View.adapter.NewsAdapter;
 import arboretum.arboretumwojslawice.ViewModel.NewsDetailViewModel;
 import arboretum.arboretumwojslawice.databinding.ActivityNewsDetailBinding;
 import dagger.android.support.DaggerAppCompatActivity;
@@ -33,11 +35,12 @@ public class NewsDetailActivity extends DaggerAppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ActivityNewsDetailBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_news_detail);
+        setContentView(R.layout.activity_news_detail);
+//        ActivityNewsDetailBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_news_detail);
         compositeDisposable = new CompositeDisposable();
 
         /* toolbar */
-        Toolbar toolbar = findViewById(R.id.toolbar_back);
+        Toolbar toolbar = findViewById(R.id.toolbar_back_news);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(getString(R.string.title_home));
 
@@ -49,13 +52,41 @@ public class NewsDetailActivity extends DaggerAppCompatActivity {
 
 
         Disposable cdNews = Maybe.fromCallable(() -> {
-            return newsDetailViewModel.getAllPastNews();
+            return newsDetailViewModel.getCurrentNews();
         })
                 .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(news -> {
-                        if (!news.isEmpty())
-                            binding.setNews(news.get(0));
+//                            binding.setNews(news);
+
+
+                    Disposable cdImages = Maybe.fromCallable(() -> {
+                        return newsDetailViewModel.getAllImagesById(news.getIdNews());
+                    })
+                            .subscribeOn(Schedulers.computation())
+                            .observeOn(AndroidSchedulers.mainThread())
+                            .subscribe(images -> {
+
+                                if (images.isEmpty())
+                                    setContentView(R.layout.activity_news_detail);
+                                else {
+                                    setContentView(R.layout.activity_news_detail_grid);
+
+                                    GridView gridView = findViewById(R.id.gridview);
+                                    NewsAdapter newsAdapter = new NewsAdapter(this, images);
+                                    gridView.setAdapter(newsAdapter);
+                                }
+
+
+                                        int length = images.size();
+                                        Toast.makeText(this, String.valueOf(length), Toast.LENGTH_SHORT).show();
+                                    }
+                                    ,throwable -> {
+                                        /* onError() */
+                                        Toast.makeText(this, "Jakiś błąąąd z obrazkami... -.- -.-", Toast.LENGTH_LONG).show();
+                                    });
+
+
                         }
                         ,throwable -> {
                             /* onError() */

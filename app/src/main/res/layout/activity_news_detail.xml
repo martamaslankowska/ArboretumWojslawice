@@ -14,7 +14,7 @@
     android:layout_height="match_parent">
 
         <include
-            android:id="@+id/toolbar_back"
+            android:id="@+id/toolbar_back_news"
             layout="@layout/toolbar_empty"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -31,7 +31,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_back" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_back_news" />
 
         <TextView
             android:id="@+id/newsTitleTextView"

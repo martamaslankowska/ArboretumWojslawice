@@ -7,8 +7,10 @@ import java.util.List;
 import javax.inject.Inject;
 
 import arboretum.arboretumwojslawice.Model.DAO.NewsDao;
+import arboretum.arboretumwojslawice.Model.DAO.NewsImageDao;
 import arboretum.arboretumwojslawice.Model.DAO.NewsTranslationDao;
 import arboretum.arboretumwojslawice.Model.businessentity.News;
+import arboretum.arboretumwojslawice.Model.businessentity.NewsImage;
 import arboretum.arboretumwojslawice.R;
 
 public class NewsRepository extends BaseRepository {
@@ -17,6 +19,9 @@ public class NewsRepository extends BaseRepository {
 
     @Inject
     NewsTranslationDao newsTranslationDao;
+
+    @Inject
+    NewsImageDao newsImageDao;
 
     @Inject
     public NewsRepository() {}
@@ -33,5 +38,10 @@ public class NewsRepository extends BaseRepository {
     public News getById(int id) {
         return newsDao.getById(id, languageCode);
     }
+
+    public List<NewsImage> getExtraImages(int id) {
+        return newsImageDao.getAllByNewsId(id);
+    }
+
 
 }

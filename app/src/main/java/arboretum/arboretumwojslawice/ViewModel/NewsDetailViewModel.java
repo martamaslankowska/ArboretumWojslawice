@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import arboretum.arboretumwojslawice.Model.Repository.NewsRepository;
 import arboretum.arboretumwojslawice.Model.businessentity.News;
+import arboretum.arboretumwojslawice.Model.businessentity.NewsImage;
 
 public class NewsDetailViewModel {
 
@@ -18,4 +19,13 @@ public class NewsDetailViewModel {
     public List<News> getAllPastNews() {
         return newsRepository.getAllPastNews();
     }
+
+    public News getCurrentNews() {
+        return newsRepository.getAllPastNews().get(0);
+    }
+
+    public List<NewsImage> getAllImagesById(int id) {
+        return newsRepository.getExtraImages(id);
+    }
+
 }
