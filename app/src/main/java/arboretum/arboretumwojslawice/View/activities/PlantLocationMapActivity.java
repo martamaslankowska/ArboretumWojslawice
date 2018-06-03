@@ -124,10 +124,10 @@ public class PlantLocationMapActivity extends DaggerAppCompatActivity {
 
     public void CreateBitmap(){
         positionMarkerBitmap = BitmapFactory.decodeResource(resources,R.drawable.ic_marker_black_big);
-        mapBitmap = BitmapFactory.decodeResource(resources,R.drawable.arboretum_map3);
+        mapBitmap = BitmapFactory.decodeResource(resources,R.drawable.full_map);
         markerBitmap = BitmapFactory.decodeResource(resources, R.drawable.ic_marker_flower);
         GetBitmapWidthHeight();
-        canvasBitmap = Bitmap.createBitmap(width,height,Bitmap.Config.RGB_565);
+        canvasBitmap = Bitmap.createBitmap(width,height,Bitmap.Config.ARGB_8888);
     }
 
     public void GetBitmapWidthHeight(){

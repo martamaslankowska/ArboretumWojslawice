@@ -95,7 +95,7 @@ public class MapFragment extends Fragment implements LocationListener {
         photoView.setScale(baseScale, true);
         photoView.update();
         resources = getResources();
-        mapBitmap = BitmapFactory.decodeResource(resources, resources.getIdentifier("arboretum_map3", "drawable", getActivity().getPackageName()));
+        mapBitmap = BitmapFactory.decodeResource(resources, resources.getIdentifier("full_map", "drawable", getActivity().getPackageName()));
         createBitmap();
         drawCanvas();
         drawPositionMarker(lon,lat);
@@ -166,7 +166,7 @@ public class MapFragment extends Fragment implements LocationListener {
         picnicMarkerBitmap = BitmapFactory.decodeResource(resources, R.drawable.ic_marker_picnic);
         parkingMarkerBitmap = BitmapFactory.decodeResource(resources, R.drawable.ic_marker_parking);
         GetBitmapWidthHeight();
-        canvasBitmap = Bitmap.createBitmap(width,height,Bitmap.Config.RGB_565);
+        canvasBitmap = Bitmap.createBitmap(width,height,Bitmap.Config.ARGB_8888);
     }
 
     public void GetBitmapWidthHeight(){
@@ -235,15 +235,15 @@ public class MapFragment extends Fragment implements LocationListener {
     }
 
     public void fillCoordinates(){
-        placesToilet1.add(new LonLat(16.857349,50.712130));
+        placesToilet1.add(new LonLat(16.857349,50.712030));
         placesToilet1.add(new LonLat(16.859760,50.712175)); //ok
-        placesViewpoints1.add(new LonLat(16.862536,50.709226));
+        placesViewpoints1.add(new LonLat(16.862536,50.709998));
         placesViewpoints1.add(new LonLat(16.862264,50.712533));
         placesViewpoints1.add(new LonLat(16.861220,50.712189));
         placesViewpoints1.add(new LonLat(16.857960,50.712030));
-        placesViewpoints1.add(new LonLat(16.855558,50.711991)); //ok
+        placesViewpoints1.add(new LonLat(16.855558,50.711791)); //ok
         placesPicnic1.add(new LonLat(16.865909,50.710302));
-        placesPicnic1.add(new LonLat(16.859945,50.709690));
+        placesPicnic1.add(new LonLat(16.859945,50.709990));
         placesPicnic1.add(new LonLat(16.854811,50.711422)); //ok
 
         placesViewpoints2.add(new LonLat(16.864719,50.711679));
