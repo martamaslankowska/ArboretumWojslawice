@@ -79,7 +79,7 @@ public class NewsDetailActivity extends DaggerAppCompatActivity {
                             .observeOn(AndroidSchedulers.mainThread())
                             .subscribe(images -> {
 
-                                if (images.isEmpty()) {
+                                if (news.getDescription() != null && !news.getDescription().isEmpty()) {
                                     setContentView(R.layout.activity_news_detail);
                                     titleTextView = findViewById(R.id.newsTitleTextView);
                                     descTextView = findViewById(R.id.plant_detail_description);

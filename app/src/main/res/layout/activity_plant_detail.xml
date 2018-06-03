@@ -151,12 +151,12 @@
 
         <ImageView
             android:id="@+id/plant_location_map_button"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:layout_marginBottom="@dimen/nonrec_margin"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_marginEnd="@dimen/nonrec_margin"
-            app:layout_constraintBottom_toBottomOf="@+id/plantNoImageView"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintBottom_toBottomOf="@+id/seassonImageView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/seassonImageView" />
 
 
 

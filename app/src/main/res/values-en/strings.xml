@@ -141,5 +141,15 @@
 
     <string name="favourites_text">You do not have any\nfavourite plants yet!</string>
 
+
+    <!--&lt;!&ndash; EVENTS - CALENDAR &ndash;&gt;-->
+    <!--<string name="calendar_01"></string>-->
+    <!--<string name="calendar_02"></string>-->
+    <!--<string name="calendar_03"></string>-->
+    <!--<string name="calendar_04"></string>-->
+    <!--<string name="calendar_05"></string>-->
+
+
+
 </resources>
 

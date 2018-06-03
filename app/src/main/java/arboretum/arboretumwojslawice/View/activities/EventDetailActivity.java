@@ -116,12 +116,17 @@ public class EventDetailActivity extends DaggerAppCompatActivity {
                             eventRowList = events;
                             binding.setEvent(eventRowList);
 
-                            eventsNames.setText(events.getEventNames());
+                            int stringNumber = (int) (Math.random() * 3) + 1;  // returns numbers from 1 to n
+
+                            String stringName = "calendar_0" + String.valueOf(stringNumber);
+                            String eventTitle = getStringResourceByName(stringName);
+
+                            eventsNames.setText(eventTitle.toUpperCase());
                             int nrOfLines = eventsNames.getLineCount();
                             if (nrOfLines < 3)
-                                eventsNames.setPadding(0,12,0,0);
-                            if (nrOfLines > 3)
-                                eventsNames.setPadding(0,0,0,0);
+                                eventsNames.setPadding(0,16,0,0);
+                            else if (nrOfLines < 4)
+                                eventsNames.setPadding(0,8,0,0);
                         }
                         ,throwable -> {
                             Toast.makeText(this, "We have error here...", Toast.LENGTH_LONG);
@@ -167,4 +172,13 @@ public class EventDetailActivity extends DaggerAppCompatActivity {
 
         return (day<10 ? "0" : "") + String.valueOf(day) + "." + (month<10 ? "0" : "") + String.valueOf(month);
     }
+
+
+    private String getStringResourceByName(String aString) {
+        String packageName = getPackageName();
+        int resId = getResources().getIdentifier(aString, "string", packageName);
+        return getString(resId);
+    }
+
+
 }

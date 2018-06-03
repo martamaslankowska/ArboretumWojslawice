@@ -21,7 +21,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar_back"
-        android:background="@drawable/background40">
+        android:background="@drawable/back_settings">
 
         <TextView
             android:id="@+id/chooseLanguage"
