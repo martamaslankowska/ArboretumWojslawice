@@ -53,4 +53,8 @@ public class RouteRepository extends BaseRepository {
     public List<PointOnRoute> getRoutePointsByRouteId(int idRoute) {
         return routeDao.getRoutePointsByRouteId(idRoute);
     }
+
+    public List<PointOnRoute> getHighlightedRoutePointsByRouteId(int idRoute) {
+        return routeDao.getHighlightedRoutePointsByRouteId(idRoute);
+    }
 }

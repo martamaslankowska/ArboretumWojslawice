@@ -193,7 +193,7 @@ public class RouteDetailActivity extends DaggerAppCompatActivity implements View
 
 
         Disposable cdPointsOnRoute = Maybe.fromCallable(() -> {
-            return routeDetailViewModel.getPlantsOnRoute(route_id);
+            return routeDetailViewModel.getHighlightedPlantsOnRoute(route_id);
         })
                 .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())

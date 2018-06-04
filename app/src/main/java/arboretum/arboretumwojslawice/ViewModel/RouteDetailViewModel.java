@@ -45,4 +45,13 @@ public class RouteDetailViewModel {
         }
         return plantsOnRoute;
     }
+
+    public List<Plant> getHighlightedPlantsOnRoute(int routeId) {
+        List<PointOnRoute> pointsOnRoute = routeRepository.getHighlightedRoutePointsByRouteId(routeId);
+        List<Plant> plantsOnRoute = new ArrayList<>();
+        for (int i=0; i<pointsOnRoute.size(); i++) {
+            plantsOnRoute.add(plantRepository.getById(pointsOnRoute.get(i).getIdPlant()));
+        }
+        return plantsOnRoute;
+    }
 }
