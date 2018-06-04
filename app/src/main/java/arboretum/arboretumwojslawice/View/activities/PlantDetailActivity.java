@@ -151,7 +151,7 @@ public class PlantDetailActivity extends DaggerAppCompatActivity {
                                 plantNoPhotoImage.setVisibility(View.INVISIBLE);
                             }
 
-                            mLocationMapButton.setImageResource(R.drawable.ic_nav_shadow);
+                            mLocationMapButton.setImageResource(R.drawable.ic_map_plant_02);
 
                         }
                         ,throwable -> {

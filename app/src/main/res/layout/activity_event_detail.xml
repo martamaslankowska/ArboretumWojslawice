@@ -12,6 +12,7 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/back_calendar"
         tools:context="arboretum.arboretumwojslawice.View.activities.EventDetailActivity"        >
 
         <include
@@ -82,7 +83,6 @@
                 android:layout_marginTop="4dp"
                 android:paddingTop="2dp"
                 android:fontFamily="@font/lato_semibold"
-                android:text="@{event.getEventNames()}"
                 android:textColor="@color/darkTextDarkGray"
                 android:textSize="@dimen/nonrec_font_size"
                 app:layout_constraintEnd_toEndOf="parent"
