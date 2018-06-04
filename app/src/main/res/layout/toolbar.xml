@@ -14,7 +14,7 @@
         android:layout_height="match_parent"
         android:src="@drawable/ic_qr_white"
         android:background="@color/colorPrimary"
-        android:layout_marginEnd="@dimen/bottom_navigation_icon"
+        android:layout_marginEnd="@dimen/nonrec_half_margin"
         android:layout_gravity="right"
         android:contentDescription="Qr button"
         android:onClick="getQRCode"/>

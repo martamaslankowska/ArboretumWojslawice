@@ -23,6 +23,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -45,11 +46,15 @@ public class SettingsActivity extends AppCompatActivity {
 
     SharedPreferences mPrefs;
     final String INFO = "select_language";
+    final String SYNC = "sync";
     @Inject
     Locale myLocale;
     RadioGroup rg;
     RadioButton buttonPL, buttonEN, buttonDE;
     String language, languageCode;
+    CheckBox cb;
+    Boolean isSync;
+
 
 
     @Override
@@ -58,6 +63,7 @@ public class SettingsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_settings);
 
         rg = findViewById(R.id.radioGroup_language);
+        cb = findViewById(R.id.checkBox_sync);
         buttonPL = findViewById(R.id.polishButton);
         buttonEN = findViewById(R.id.englishButton);
         buttonDE = findViewById(R.id.germanButton);
@@ -76,6 +82,14 @@ public class SettingsActivity extends AppCompatActivity {
 
         mPrefs = PreferenceManager.getDefaultSharedPreferences(this);
         language = LanguageManager.getLanguage(getApplicationContext());
+        isSync = mPrefs.getBoolean(SYNC, false);
+
+        if (isSync) {
+            cb.setChecked(true);
+        }
+        else {
+            cb.setChecked(false);
+        }
 
         languageCode = mPrefs.getString(INFO, PL);
         switch(languageCode) {
@@ -91,6 +105,16 @@ public class SettingsActivity extends AppCompatActivity {
         }
     }
 
+    public void changeSync(View view) {
+        if (isSync) {
+            isSync = false;
+            saveSyncToSharedPreferences(false);
+        }
+        else {
+            isSync = true;
+            saveSyncToSharedPreferences(true);
+        }
+    }
 
     @SuppressLint("ResourceAsColor")
     public void polishLanguage(View view) {
@@ -176,6 +200,12 @@ public class SettingsActivity extends AppCompatActivity {
     private void saveLanguageToSharedPreferences(String languageCode) {
         SharedPreferences.Editor editor = mPrefs.edit();
         editor.putString(INFO, languageCode);
+        editor.commit(); // Very important to save the preference
+    }
+
+    private void saveSyncToSharedPreferences(Boolean sync) {
+        SharedPreferences.Editor editor = mPrefs.edit();
+        editor.putBoolean(SYNC, sync);
         editor.commit(); // Very important to save the preference
     }
 

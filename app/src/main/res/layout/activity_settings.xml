@@ -48,6 +48,14 @@
             android:background="@android:color/darker_gray"
             app:layout_constraintTop_toBottomOf="@+id/radioGroup_language" />
 
+        <View
+            android:id="@+id/line5"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"
+            android:layout_marginTop="@dimen/nonrec_margin"
+            app:layout_constraintTop_toBottomOf="@+id/checkBox_sync" />
+
 
         <RadioGroup
             android:id="@+id/radioGroup_language"
@@ -84,6 +92,42 @@
                 android:textColor="@color/darkTextGray"
                 android:textSize="@dimen/nonrec_font_size" />
         </RadioGroup>
+
+        <TextView
+            android:id="@+id/choose_sync"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/nonrec_margin"
+            android:layout_marginStart="@dimen/nonrec_margin"
+            android:layout_marginTop="@dimen/nonrec_margin"
+            android:fontFamily="@font/lato_semibold"
+            android:text="@string/chose_sync"
+            android:textAlignment="center"
+            android:textColor="@color/darkTextDarkGray"
+            android:textSize="@dimen/nonrec_font_size_big"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/line4" />
+
+        <CheckBox
+            android:id="@+id/checkBox_sync"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/checkBox_sync"
+            android:textColor="@color/darkTextDarkGray"
+            android:textSize="@dimen/nonrec_font_size"
+            android:layout_marginLeft="@dimen/nonrec_margin"
+            android:layout_marginTop="@dimen/nonrec_half_margin"
+            android:layout_marginRight="@dimen/nonrec_margin"
+            android:layout_marginBottom="@dimen/nonrec_margin"
+            android:onClick="changeSync"
+            android:paddingLeft="@dimen/nonrec_half_margin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/choose_sync"/>
+
 
         <ImageView
             android:id="@+id/languageIconImageView"

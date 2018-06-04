@@ -2,7 +2,9 @@ package arboretum.arboretumwojslawice.View.activities;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
@@ -57,6 +59,8 @@ public class MainActivity extends DaggerAppCompatActivity {
     RouteMapFragment mRouteMapFragment = new RouteMapFragment();
     FavouritesFragment mFavouritesFragment = new FavouritesFragment();
     MoreFragment mMoreFragment = new MoreFragment();
+    SharedPreferences mPrefs;
+    final String SYNC = "sync";
 
     final String URL = "http://arboretumdb.cba.pl/ArboretumDB.db";
     final String TAG = "Arboretum";
@@ -153,59 +157,53 @@ public class MainActivity extends DaggerAppCompatActivity {
                 .replace(R.id.fragment_container,mHomeFragment)
                 .addToBackStack(null)
                 .commit();
-        isExit = 0;
+        isExit = 1;
         Log.d("Arboretum", "onCreate: " + String.valueOf(isExit));
 
         compositeDisposable = new CompositeDisposable();
         compositeDisposable2 = new CompositeDisposable();
 
-        Disposable listOfPlants = Maybe.fromCallable(() -> {
-            return mainViewModel.getAllFavourites();
-        })
-                .subscribeOn(Schedulers.computation())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe((List<Plant> plant) -> {
+        mPrefs = PreferenceManager.getDefaultSharedPreferences(this);
+        Boolean isSync = mPrefs.getBoolean(SYNC, true);
 
-                            favouritesPlants = plant;
+        if(isSync) {
+            Disposable listOfPlants = Maybe.fromCallable(() -> {
+                return mainViewModel.getAllFavourites();
+            })
+                    .subscribeOn(Schedulers.computation())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe((List<Plant> plant) -> {
+
+                                favouritesPlants = plant;
                             /*POBIERANIE BAZY Z INTERNETU*/
-                            if (Globals.isNetworkConnected(this) && Globals.isInternetOn(this)) {
-                                new DownloadFileFromURL().execute(URL);
-                                Log.d(TAG, "pobieram baze z internetu");
-                                while (!Globals.isDownload) {
+                                if (Globals.isNetworkConnected(this) && Globals.isInternetOn(this)) {
+                                    new DownloadFileFromURL().execute(URL);
+                                    Log.d(TAG, "pobieram baze z internetu");
+                                    while (!Globals.isDownload) {
+                                    }
+                                    Log.d(TAG, "pobrało się");
+                                    Disposable fav = Completable.fromAction(() -> {
+                                        mainViewModel.setAllFavourites(favouritesPlants);
+                                    })
+                                            .subscribeOn(Schedulers.computation())
+                                            .observeOn(AndroidSchedulers.mainThread())
+                                            .subscribe(() -> {
+
+                                                    }
+                                                    , throwable -> {
+                            /* onError() */
+                                                        Toast.makeText(this, "Jakiś błąąąd... -.- -.-", Toast.LENGTH_LONG);
+                                                    });
+                                    compositeDisposable.add(fav);
                                 }
-                                Log.d(TAG, "pobrało się");
-                                Disposable fav = Completable.fromAction(() -> {
-                                    mainViewModel.setAllFavourites(favouritesPlants);
-                                })
-                                        .subscribeOn(Schedulers.computation())
-                                        .observeOn(AndroidSchedulers.mainThread())
-                                        .subscribe(() -> {
-
-                                        }
-                                                ,throwable -> {
-                            /* onError() */
-                                                    Toast.makeText(this, "Jakiś błąąąd... -.- -.-", Toast.LENGTH_LONG);
-                                                });
-                                compositeDisposable.add(fav);
                             }
-                        }
-                        ,throwable -> {
+                            , throwable -> {
                             /* onError() */
-                            Toast.makeText(this, "Jakiś błąąąd... -.- -.-", Toast.LENGTH_LONG);
-                        });
+                                Toast.makeText(this, "Jakiś błąąąd... -.- -.-", Toast.LENGTH_LONG);
+                            });
 
-        compositeDisposable.add(listOfPlants);
-
-//        /*POBIERANIE BAZY Z INTERNETU*/
-//        if (Globals.isNetworkConnected(this) && Globals.isInternetOn(this)) {
-//            new DownloadFileFromURL().execute(URL);
-//            Log.d(TAG, "pobieram baze z internetu");
-//            while (!Globals.isDownload) {
-//            }
-//            Log.d(TAG, "pobrało się");
-//        }
-
-
+            compositeDisposable.add(listOfPlants);
+        }
 
     }
 

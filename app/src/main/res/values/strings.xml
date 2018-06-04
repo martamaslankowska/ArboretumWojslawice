@@ -143,6 +143,8 @@
     <!-- Toasts -->
     <string name="toast_exit">Naciśnij jeszcze raz przycisk "Powrót", aby zakończyć działanie aplikacji</string>
     <string name="chose_language">Wybierz język:</string>
+    <string name="chose_sync">Synchronizacja bazy danych:</string>
+    <string name="checkBox_sync">Automatyczna aktualizacja danych po włączeniu aplikacji</string>
 
 
     <!--rules-->
