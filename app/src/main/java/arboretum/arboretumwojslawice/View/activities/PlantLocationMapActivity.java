@@ -149,7 +149,7 @@ public class PlantLocationMapActivity extends DaggerAppCompatActivity {
     public int countY(double lat){
         double ratioY=((lat - Globals.MinLat)*height)/(Globals.MaxLat-Globals.MinLat);
         y=(int)ratioY;
-        return y;
+        return y+110;
     }
 
     public void drawMarkers(List<LonLat> pointsCoordinates){

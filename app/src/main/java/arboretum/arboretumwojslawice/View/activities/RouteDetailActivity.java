@@ -356,8 +356,10 @@ public class RouteDetailActivity extends DaggerAppCompatActivity implements View
     public void fillPlantsCoordinates(){
         Globals.plantsPlaces.clear();
         for (PointOnRoute l:locations) {
-            places.add(new LonLat(l.getY(), l.getX()));
-            Globals.plantsPlaces.add(new LonLat(l.getY(), l.getX()));
+            if(l.getHighlighted()==true) {
+                places.add(new LonLat(l.getY(), l.getX()));
+                Globals.plantsPlaces.add(new LonLat(l.getY(), l.getX()));
+            }
         }
 
         for (LonLat l: places) {
