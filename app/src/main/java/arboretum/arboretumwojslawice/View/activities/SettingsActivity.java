@@ -116,6 +116,15 @@ public class SettingsActivity extends AppCompatActivity {
         }
     }
 
+
+    public void aboutUsClick(View view) {
+//        Toast.makeText(this, "Był onClick ^_^", Toast.LENGTH_SHORT).show();
+
+        Intent intent = new Intent(this, AboutUsActivity.class);
+        startActivityForResult(intent, 123);
+    }
+
+
     @SuppressLint("ResourceAsColor")
     public void polishLanguage(View view) {
         if (!languageCode.equals(PL)) {

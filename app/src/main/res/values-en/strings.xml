@@ -26,6 +26,8 @@
     <string name="toolbar_opening_hours">Opening hours</string>
     <string name="toolbar_settings">Settings</string>
     <string name="toolbar_plant_location_map">Plant locations</string>
+    <string name="toolbar_about_us">About us (the authors)</string>
+
 
 
     <string name="tab_map">Map</string>
@@ -111,6 +113,16 @@
 
     <!-- PLANTS -->
     <string name="plant_no_image">no image</string>
+
+
+    <!-- Toasts -->
+    <string name="toast_exit">Press "Back" one more time\nto exit application</string>
+    <string name="choose_language">Choose language:</string>
+    <string name="choose_sync">Database synchronization:</string>
+    <string name="checkBox_sync">Automatic update of database after application start</string>
+    <string name="about_us">About the authors</string>
+
+
 
     <!--Event-->
     <string name="event_time_begin">Hour.: %s</string>

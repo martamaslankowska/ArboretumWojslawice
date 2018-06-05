@@ -25,6 +25,7 @@
     <string name="toolbar_settings">Ustawienia</string>
     <string name="toolbar_plant_location_map">Lokalizacja rośliny</string>
     <string name="toolbar_event_detail">Wydarzenia z</string>
+    <string name="toolbar_about_us">O nas, czyli o autorach</string>
 
     <!-- TabBars -->
     <string name="tab_map">Mapa</string>
@@ -142,9 +143,10 @@
 
     <!-- Toasts -->
     <string name="toast_exit">Naciśnij jeszcze raz przycisk "Powrót", aby zakończyć działanie aplikacji</string>
-    <string name="chose_language">Wybierz język:</string>
-    <string name="chose_sync">Synchronizacja bazy danych:</string>
+    <string name="choose_language">Wybierz język:</string>
+    <string name="choose_sync">Synchronizacja bazy danych:</string>
     <string name="checkBox_sync">Automatyczna aktualizacja danych po włączeniu aplikacji</string>
+    <string name="about_us">O autorach</string>
 
 
     <!--rules-->
