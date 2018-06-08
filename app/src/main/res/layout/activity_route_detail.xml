@@ -40,7 +40,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="@dimen/nonrec_margin"
-                android:layout_marginBottom="4dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/route_detail_map">
 
@@ -158,38 +157,47 @@
                     app:layout_constraintStart_toStartOf="parent" />
 
 
-
-
-                <RelativeLayout
+                <android.support.constraint.ConstraintLayout
                     android:id="@+id/route_detail_pager"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/nonrec_margin"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
                     android:layout_marginEnd="@dimen/nonrec_margin"
+                    android:layout_marginStart="@dimen/nonrec_margin"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent">
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/route_detail_divider2">
 
                     <ImageView
                         android:id="@+id/route_detail_left_arrow"
                         android:layout_width="40dp"
-                        android:layout_height="@dimen/plant_page_image_height"
-                        android:layout_alignParentLeft="true" />
+                        android:layout_height="0dp"
+                        android:layout_alignParentLeft="true"
+                        app:layout_constraintBottom_toBottomOf="@+id/viewPager"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <android.support.v4.view.ViewPager
                         android:id="@+id/viewPager"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/plant_page_image_height"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
                         android:layout_toEndOf="@+id/route_detail_left_arrow"
-                        android:layout_toStartOf="@+id/route_detail_right_arrow" />
+                        android:layout_toStartOf="@+id/route_detail_right_arrow"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/route_detail_right_arrow"
+                        app:layout_constraintStart_toEndOf="@+id/route_detail_left_arrow"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <ImageView
                         android:id="@+id/route_detail_right_arrow"
                         android:layout_width="40dp"
-                        android:layout_height="@dimen/plant_page_image_height"
+                        android:layout_height="0dp"
                         android:layout_alignParentRight="true"
-                        android:src="@drawable/right_arrow" />
-                </RelativeLayout>
+                        android:src="@drawable/right_arrow"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </android.support.constraint.ConstraintLayout>
 
 
                 <ImageView
