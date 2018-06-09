@@ -56,6 +56,7 @@
         android:verticalSpacing="10dp"
         android:numColumns="auto_fit"
         android:scrollbars="vertical"
+        android:nestedScrollingEnabled="true"
         android:smoothScrollbar="true"
         android:stretchMode="columnWidth"
         app:layout_constraintTop_toBottomOf="@+id/mainImageView"

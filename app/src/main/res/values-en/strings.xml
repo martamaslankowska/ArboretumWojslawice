@@ -26,6 +26,7 @@
     <string name="toolbar_opening_hours">Opening hours</string>
     <string name="toolbar_settings">Settings</string>
     <string name="toolbar_plant_location_map">Plant locations</string>
+    <string name="toolbar_event_detail">Events at</string>
     <string name="toolbar_about_us">About us (the authors)</string>
 
 
@@ -124,6 +125,34 @@
 
 
 
+
+    <!--rules-->
+    <string name="rules_title">REGULAMIN</string>
+    <string name="rules_subtitle">Szanowni Goście, nie zezwalamy:</string>
+
+    <string name="rules_content_1">zrywać i niszczyć roślin,</string>
+    <string name="rules_content_1b">zbierać nasion ani owoców (wyjątek stanowi sad czereśniowy),</string>
+    <string name="rules_content_2">deptać rabat,</string>
+    <string name="rules_content_3">przebywać na terenie parku w czasie burzy,</string>
+    <string name="rules_content_4">wprowadzać psów (z wyjątkiem psów przewodników),</string>
+    <string name="rules_content_5">wprowadzać rowerów,</string>
+    <string name="rules_content_6">pozostawiać bez opieki dzieci do lat 14,</string>
+    <string name="rules_content_7">palić papierosów,</string>
+    <string name="rules_content_8">spożywać alkoholu.</string>
+
+    <string name="rules_content_11">Ze względu na teren podgórski, zalecamy odpowiednie obuwie.</string>
+    <string name="rules_content_12">W czasie owocowania sadu czereśniowego Goście korzystają z drabin na własną odpowiedzialność.</string>
+    <string name="rules_content_13">Grillowanie jest dozwolone tylko w miejscach do tego wyznaczonych i odpowiednio oznakowanych.</string>
+    <string name="rules_content_14">Wynajęcie wigwamu z ogniskiem jest płatne i wymaga zgłoszenia pod nr tel. 696 137 984. (Cena obejmuje rezerwację miejsca, drewno, rozpalenie ogniska i sprzątanie)</string>
+    <string name="rules_content_15">Korzystanie przez dzieci z wydzielonego placu zabaw możliwe jest pod nadzorem osób dorosłych. (Na terenie placu zabaw obowiązuje „Regulamin placu zabaw”)</string>
+    <string name="rules_content_16">Za przestrzeganie regulaminu oraz zachowanie się grupy szkolnej odpowiada nauczyciel.</string>
+    <string name="rules_content_17">Fotografowanie i filmowanie w celach komercyjnych wymaga uzgodnienia z dyrekcją.</string>
+    <string name="rules_content_18">Dzwon zapowiada zamknięcie bramy za 15 minut.</string>
+
+
+
+
+
     <!--Event-->
     <string name="event_time_begin">Hour.: %s</string>
     <string name="event_time_end">\u0020-\u0020%s</string>
@@ -154,12 +183,12 @@
     <string name="favourites_text">You do not have any\nfavourite plants yet!</string>
 
 
-    <!--&lt;!&ndash; EVENTS - CALENDAR &ndash;&gt;-->
-    <!--<string name="calendar_01"></string>-->
-    <!--<string name="calendar_02"></string>-->
-    <!--<string name="calendar_03"></string>-->
-    <!--<string name="calendar_04"></string>-->
-    <!--<string name="calendar_05"></string>-->
+
+    <!-- EVENTS - CALENDAR -->
+    <string name="calendar_01">We cordially invite you to participate in events</string>
+    <string name="calendar_02">Arboretum has the pleasure to invite you to events</string>
+    <string name="calendar_03">We are happy to offer a wide variety of events</string>
+
 
 
 

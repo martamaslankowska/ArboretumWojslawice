@@ -36,7 +36,7 @@ public class HomeFragment extends DaggerFragment {
 
     TextView weatherTemp, weatherDesc;
     ImageView weatherIcon;
-    TextView newsTitle, newsText, eventTitle, eventText, plantTitle, plantText;
+    TextView newsTitle, newsText, eventTitle, eventText, plantTitle, plantText, plantMainTitle;
     ImageView newsImage, eventImage, plantImage, plantNoImage;
 
     Context context;
@@ -181,8 +181,7 @@ public class HomeFragment extends DaggerFragment {
         plantText = view.findViewById(R.id.plantInfoTextView);
         plantImage = view.findViewById(R.id.plantImageView);
         plantNoImage = view.findViewById(R.id.plantNoPhotoImageView);
-
-
+        plantMainTitle = view.findViewById(R.id.plantTextView);
 
         if (Globals.seasonPlant == null) {
             Disposable cdPlant = Maybe.fromCallable(() -> {
@@ -191,13 +190,22 @@ public class HomeFragment extends DaggerFragment {
                     .subscribeOn(Schedulers.computation())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(plant -> {
-                                Globals.seasonPlant = plant;
-                                plantImage.setImageResource(plant.getImageIdBig(context));
-                                plantTitle.setText(plant.getName());
-                                String plantGenusSpeciesText = plant.getGenusName() + " " + plant.getSpeciesName();
-                                plantText.setText(plantGenusSpeciesText);
+                                if (plant == null) {
+                                    plantTitle.setVisibility(View.GONE);
+                                    plantText.setVisibility(View.GONE);
+                                    plantImage.setVisibility(View.GONE);
+                                    plantNoImage.setVisibility(View.GONE);
+                                    plantMainTitle.setVisibility(View.GONE);
+                                }
+                                else {
+                                    Globals.seasonPlant = plant;
+                                    plantImage.setImageResource(plant.getImageIdBig(context));
+                                    plantTitle.setText(plant.getName());
+                                    String plantGenusSpeciesText = plant.getGenusName() + " " + plant.getSpeciesName();
+                                    plantText.setText(plantGenusSpeciesText);
 
-                                checkPlantNoImage();
+                                    checkPlantNoImage();
+                                }
                             }
                             , throwable -> {
                                 Toast.makeText(context, "Oh no! Something went terribly wrong with plants", Toast.LENGTH_LONG);

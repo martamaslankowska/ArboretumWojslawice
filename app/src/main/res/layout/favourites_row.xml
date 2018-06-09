@@ -12,76 +12,52 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:focusable="true"
-        android:paddingLeft="16dp"
-        android:paddingRight="8dp"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp">
+        android:paddingBottom="8dp"
+        android:paddingEnd="8dp"
+        android:paddingStart="16dp">
 
         <ImageView
             android:id="@+id/plant_image"
             android:layout_width="65dp"
             android:layout_height="65dp"
+            android:layout_marginTop="8dp"
             android:scaleType="centerCrop"
             android:src="@{favourite.getImageId(context)}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"/>
 
-        <android.support.constraint.ConstraintLayout
+
+        <TextView
+            android:id="@+id/plant_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="4dp"
-            android:layout_marginRight="@dimen/nonrec_half_margin"
-            android:focusable="true"
-            app:layout_constraintBottom_toBottomOf="@+id/plant_image"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/plant_image"
-            app:layout_constraintTop_toTopOf="@+id/plant_image">
-
-            <TextView
-                android:id="@+id/plant_name"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/nonrec_margin"
-                android:lineSpacingMultiplier="1"
-                android:text="@{favourite.getName()}"
-                android:textColor="@color/darkTextDarkGray"
-                android:textSize="@dimen/nonrec_font_size"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            android:text="@{favourite.getName(), default=`Some name name name name name name`}"
+            android:fontFamily="@font/lato_semibold"
+            android:textColor="@color/darkTextDarkGray"
+            android:textSize="@dimen/nonrec_font_size"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:layout_constraintBottom_toTopOf="@id/plant_genus"
+            app:layout_constraintLeft_toRightOf="@+id/plant_image"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
-            <TextView
-                android:id="@+id/plant_genus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/plant_name"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="2dp"
-                android:text="@{favourite.getGenusName()}"
-                android:textColor="@color/darkTextLightGray"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/plant_name"
-                app:layout_constraintTop_toBottomOf="@+id/plant_name" />
-
-            <TextView
-                android:id="@+id/plant_species"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="2dp"
-                android:layout_marginLeft="4dp"
-                android:text="@{favourite.getSpeciesName()}"
-                android:textColor="@color/darkTextLightGray"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/plant_genus"
-                app:layout_constraintTop_toBottomOf="@+id/plant_name" />
-
-        </android.support.constraint.ConstraintLayout>
-
+        <TextView
+            android:id="@+id/plant_genus"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="@{favourite.getGenusSpecies(), default = `Genus and species`}"
+            android:textSize="@dimen/nonrec_font_size_smaller"
+            android:textColor="@color/darkTextLightGray"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="@id/plant_name"
+            app:layout_constraintStart_toStartOf="@+id/plant_name"
+            app:layout_constraintTop_toBottomOf="@+id/plant_name" />
 
 
     </android.support.constraint.ConstraintLayout>

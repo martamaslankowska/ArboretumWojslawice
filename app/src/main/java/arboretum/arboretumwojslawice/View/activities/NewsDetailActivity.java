@@ -64,6 +64,7 @@ public class NewsDetailActivity extends DaggerAppCompatActivity {
         /* /toolbar */
 
         GridView gridView = findViewById(R.id.gridview);
+        gridView.setVerticalScrollBarEnabled(true);
 
         Disposable cdNews = Maybe.fromCallable(() -> {
             return newsDetailViewModel.getCurrentNews();

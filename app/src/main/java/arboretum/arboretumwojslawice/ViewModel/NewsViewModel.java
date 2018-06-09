@@ -37,6 +37,10 @@ public class NewsViewModel {
     public Plant getRandomSeasonPlant() {
         int today = plantRepository.getToday();
         List<Plant> plants = plantRepository.getAllSeasonPlants(today);
+
+        if (plants.isEmpty())
+            return null;
+
         Random r = new Random();
         int index = r.nextInt(plants.size());
         return plants.get(index);
