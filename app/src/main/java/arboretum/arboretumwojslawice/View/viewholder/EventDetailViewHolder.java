@@ -24,6 +24,10 @@ public class EventDetailViewHolder extends BindingViewHolder<Event, EventDetailR
             binding.eventDetailName.setVisibility(View.GONE);
         }
 
+        if(item.getDateEnd() == 0) {
+            binding.eventDetailManyDaysTextView.setVisibility(View.GONE);
+        }
+
         if(item.getTimeEnd() == 0){
             binding.eventDetailEndHour.setVisibility(View.GONE);
         }

@@ -3,11 +3,13 @@ package arboretum.arboretumwojslawice.Model.businessentity;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
+import android.content.Context;
 
 import java.sql.Time;
 import java.util.Date;
 
 import arboretum.arboretumwojslawice.Commons.AdapterItem;
+import arboretum.arboretumwojslawice.R;
 import io.reactivex.annotations.NonNull;
 
 /**
@@ -231,5 +233,38 @@ public class Event implements AdapterItem {
     public int getItemType() {
         return 0;
     }
+
+
+
+
+    public String getEventMonthInflectedString(Context context, Integer date) {
+        Integer month = (date/100) - ((date/10000)*100);
+        String monthString = "";
+        String [] months_list = context.getResources().getStringArray(R.array.months_name_inflected);
+        monthString = months_list[month-1];
+
+        return monthString;
+    }
+
+    public String getDateStartEndStringText(Context context) {
+        String text = context.getResources().getString(R.string.event_dates);
+        String res = text + " ";
+
+        String monthStart = getEventMonthInflectedString(context, dateBegin);
+        Integer dayStart = dateBegin - ((dateBegin/100)*100);
+        if (String.valueOf(dateEnd).length() == 8) {
+            String monthEnd = getEventMonthInflectedString(context, dateEnd);
+            Integer dayEnd = dateEnd - ((dateEnd / 100) * 100);
+
+            if (monthStart.equals(monthEnd))
+                res += String.valueOf(dayStart) + "-" + String.valueOf(dayEnd) + " " + monthStart;
+            else
+                res += String.valueOf(dayStart) + " " + monthStart + " - " + String.valueOf(dayEnd) + " " + monthEnd;
+        }
+
+        return res;
+    }
+
+
 
 }

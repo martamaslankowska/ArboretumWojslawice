@@ -65,5 +65,4 @@ public class EventRowList implements AdapterItem {
         return monthString.toUpperCase();
     }
 
-
 }

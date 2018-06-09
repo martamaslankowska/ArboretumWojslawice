@@ -76,9 +76,9 @@
     <!-- OPENING HOURS -->
     <string name="open_hours_main_text">Arboretum czynne od 15.04.2018\ndo 21.10.2018 (także w święta)</string>
     <string name="open_hours_opening_text">Godziny otwarcia Arboretum</string>
-    <string name="open_hours_opening_hours">pon-niedz 9:00-20:00</string>
+    <string name="open_hours_opening_hours">pon–niedz 9:00–20:00</string>
     <string name="open_hours_opening_ticket_text">Godziny otwarcia kas</string>
-    <string name="open_hours_opening_ticket_hours">pon-niedz 9:00-18:00</string>
+    <string name="open_hours_opening_ticket_hours">pon–niedz 9:00–18:00</string>
     <string name="open_hours_info1">Bilet można kupić także w biletomacie</string>
     <string name="open_hours_subinfo1">Kasy nr 1 i 2 wyposażone są\nw terminale płatnicze</string>
     <string name="open_hours_info2">Bilet jest ważny od momentu skasowania</string>
@@ -191,6 +191,23 @@
         <item>Listopad</item>
         <item>Grudzień</item>
     </string-array>
+
+    <string-array name="months_name_inflected">
+        <item>stycznia</item>
+        <item>lutego</item>
+        <item>marca</item>
+        <item>kwietnia</item>
+        <item>maja</item>
+        <item>czerwca</item>
+        <item>lipca</item>
+        <item>sierpnia</item>
+        <item>września</item>
+        <item>października</item>
+        <item>listopada</item>
+        <item>grudnia</item>
+    </string-array>
+    <string name="event_dates">Odbywa się w dniach:</string>
+
 
     <!--QR code-->
     <string name="qr_code_information">Skieruj aparat na kod QR,\naby uzyskać więcej informacji o roślinie.</string>
