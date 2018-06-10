@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -22,13 +21,13 @@
         android:layout_marginEnd="@dimen/nonrec_margin"
         android:layout_marginStart="@dimen/nonrec_margin"
         android:layout_marginTop="@dimen/nonrec_margin"
-        android:text=""
-        android:textSize="@dimen/nonrec_font_size_big"
         android:fontFamily="@font/lato_semibold"
+        android:text=""
         android:textColor="@color/darkTextDarkGray"
+        android:textSize="@dimen/nonrec_font_size_big"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar_back_news" />
 
 
@@ -36,8 +35,8 @@
         android:id="@+id/mainImageView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:scaleType="centerCrop"
         android:layout_marginTop="@dimen/nonrec_margin"
+        android:scaleType="centerCrop"
         app:layout_constraintDimensionRatio="H,16:8"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,25 +44,49 @@
         app:srcCompat="@drawable/weather_empty" />
 
 
-    <GridView
-        android:id="@+id/gridview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:columnWidth="100dp"
-        android:gravity="center"
-        android:layout_marginTop="10dp"
-        android:horizontalSpacing="10dp"
-        android:verticalSpacing="10dp"
-        android:numColumns="3"
-        android:scrollbars="vertical"
-        android:nestedScrollingEnabled="true"
-        android:smoothScrollbar="true"
-        android:stretchMode="columnWidth"
-        app:layout_constraintTop_toBottomOf="@+id/mainImageView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+    <!--<ScrollView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="0dp"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/mainImageView">-->
+
+        <!--<LinearLayout-->
+            <!--android:id="@+id/gridLayout"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--app:layout_constraintBottom_toBottomOf="parent"-->
+            <!--app:layout_constraintEnd_toEndOf="parent"-->
+            <!--app:layout_constraintStart_toStartOf="parent"-->
+            <!--app:layout_constraintTop_toTopOf="parent">-->
+
+            <GridView
+                android:id="@+id/gridview"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:columnWidth="100dp"
+                android:gravity="center"
+                android:horizontalSpacing="10dp"
+                android:nestedScrollingEnabled="true"
+                android:descendantFocusability="blocksDescendants"
+                android:numColumns="3"
+                android:scrollbars="vertical"
+                android:smoothScrollbar="true"
+                android:stretchMode="columnWidth"
+                android:verticalSpacing="10dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@id/mainImageView"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:layout_editor_absoluteY="10dp" />
 
 
+        <!--</LinearLayout>-->
+
+
+    <!--</ScrollView>-->
 
 
 </android.support.constraint.ConstraintLayout>
