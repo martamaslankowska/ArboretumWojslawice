@@ -38,7 +38,8 @@ public class PlantLocationMapActivity extends DaggerAppCompatActivity {
     public static final String BUNDLE = "BUNDLE";
     public static final String PLANT_ID = "PLANT_ID";
     private int plant_id;
-    double scale = 1.5f;
+    float scale = 1.0f;
+
 
     @Inject
     protected PlantViewModel plantViewModel;
@@ -91,7 +92,7 @@ public class PlantLocationMapActivity extends DaggerAppCompatActivity {
 
         imageview = findViewById(R.id.map);
         PhotoViewAttacher photoView = new PhotoViewAttacher(imageview);
-        photoView.setScale((float)scale, true);
+        photoView.setScale(scale, true);
         photoView.update();
         resources = getResources();
         CreateBitmap();

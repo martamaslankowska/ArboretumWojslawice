@@ -129,7 +129,7 @@ public class RouteDetailActivity extends DaggerAppCompatActivity implements View
         fillPlantsCoordinates();
         mapImage = findViewById(R.id.route_detail_map);
         resources = getResources();
-        String name = "map_route_detailed_0"+(route_id);
+        String name = "map"+(route_id-1);
         Globals.routeMapName=name;
         mapBitmap = BitmapFactory.decodeResource(resources, resources.getIdentifier(name, "drawable", getPackageName()));
         //mapBitmap = BitmapFactory.decodeResource(resources, resources.getIdentifier("arboretum_map2", "drawable", getPackageName()));
@@ -309,7 +309,7 @@ public class RouteDetailActivity extends DaggerAppCompatActivity implements View
         markerBitmap = BitmapFactory.decodeResource(resources, R.drawable.ic_marker_flower);
         colorMarkerBitmap = BitmapFactory.decodeResource(resources, R.drawable.ic_marker_flower_color);
         getBitmapWidthHeight();
-        canvasBitmap = Bitmap.createBitmap(width,height,Bitmap.Config.ARGB_8888);
+        canvasBitmap = Bitmap.createBitmap(width,height,Bitmap.Config.RGB_565);
     }
 
     public void getBitmapWidthHeight(){
