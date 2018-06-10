@@ -4,7 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/back_language">
 
     <TextView
         android:id="@+id/arboretum"
@@ -43,31 +44,53 @@
         app:layout_constraintGuide_percent="0.5" />
 
 
-    <TextView
-        android:id="@+id/polishTextView"
-        android:layout_width="wrap_content"
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/polishLayout"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="Polski"
-        android:textSize="32sp"
-        android:textColor="@color/colorBlack"
-        android:textStyle="bold"
         android:onClick="polishLanguage"
-        app:layout_constraintBottom_toBottomOf="@+id/polishImageView"
-        app:layout_constraintStart_toEndOf="@+id/polishImageView"
-        app:layout_constraintTop_toTopOf="@+id/polishImageView" />
-
-    <ImageView
-        android:id="@+id/polishImageView"
-        android:layout_width="80dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="8dp"
-        android:onClick="polishLanguage"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guidelineTop"
-        app:srcCompat="@drawable/pl" />
+        app:layout_constraintBottom_toTopOf="@id/englishLayout"
+        app:layout_constraintTop_toTopOf="@+id/guidelineTop">
 
+
+        <TextView
+            android:id="@+id/polishTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Polski"
+            android:textColor="@color/darkTextDarkGray"
+            android:textSize="32sp"
+            android:fontFamily="@font/lato_semibold"
+            app:layout_constraintBottom_toBottomOf="@+id/polishImageView"
+            app:layout_constraintStart_toEndOf="@+id/polishImageView"
+            app:layout_constraintTop_toTopOf="@+id/polishImageView" />
+
+        <ImageView
+            android:id="@+id/polishImageView"
+            android:layout_width="@dimen/lang_image_size_long"
+            android:layout_height="@dimen/lang_image_size_short"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="@dimen/lang_left_margin"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/flag_polish" />
+
+
+    </android.support.constraint.ConstraintLayout>
+
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/englishLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:onClick="englishLanguage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/germanLayout"
+        app:layout_constraintTop_toBottomOf="@+id/polishLayout">
 
     <TextView
         android:id="@+id/englishTextView"
@@ -75,52 +98,61 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:text="English"
+        android:textColor="@color/darkTextDarkGray"
         android:textSize="32sp"
-        android:textColor="@color/colorBlack"
-        android:textStyle="bold"
-        android:onClick="englishLanguage"
+        android:fontFamily="@font/lato_semibold"
         app:layout_constraintBottom_toBottomOf="@+id/englishImageView"
         app:layout_constraintStart_toEndOf="@+id/englishImageView"
         app:layout_constraintTop_toTopOf="@+id/englishImageView" />
 
     <ImageView
         android:id="@+id/englishImageView"
-        android:layout_width="80dp"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/lang_image_size_long"
+        android:layout_height="@dimen/lang_image_size_short"
         android:layout_marginBottom="8dp"
-        android:layout_marginStart="48dp"
+        android:layout_marginStart="@dimen/lang_left_margin"
         android:layout_marginTop="8dp"
-        android:onClick="englishLanguage"
-        app:layout_constraintBottom_toTopOf="@+id/germanImageView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/polishImageView"
-        app:srcCompat="@drawable/en" />
+        app:srcCompat="@drawable/flag_english" />
+
+    </android.support.constraint.ConstraintLayout>
 
 
-    <TextView
-        android:id="@+id/germanTextView"
-        android:layout_width="wrap_content"
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/germanLayout"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="Deutsch"
-        android:textSize="32sp"
-        android:textColor="@color/colorBlack"
-        android:textStyle="bold"
         android:onClick="germanLanguage"
-        app:layout_constraintBottom_toBottomOf="@+id/germanImageView"
-        app:layout_constraintStart_toEndOf="@+id/germanImageView"
-        app:layout_constraintTop_toTopOf="@+id/germanImageView" />
-
-    <ImageView
-        android:id="@+id/germanImageView"
-        android:layout_width="80dp"
-        android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:layout_marginStart="48dp"
-        android:onClick="germanLanguage"
         app:layout_constraintBottom_toTopOf="@+id/guidelineBottom"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/de" />
+        app:layout_constraintTop_toBottomOf="@+id/englishLayout">
+
+
+        <TextView
+            android:id="@+id/germanTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/lato_semibold"
+            android:text="Deutsch"
+            android:textColor="@color/darkTextDarkGray"
+            android:textSize="32sp"
+            app:layout_constraintBottom_toBottomOf="@+id/germanImageView"
+            app:layout_constraintStart_toEndOf="@+id/germanImageView"
+            app:layout_constraintTop_toTopOf="@+id/germanImageView" />
+
+        <ImageView
+            android:id="@+id/germanImageView"
+            android:layout_width="@dimen/lang_image_size_long"
+            android:layout_height="@dimen/lang_image_size_short"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="@dimen/lang_left_margin"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/flag_german" />
+
+    </android.support.constraint.ConstraintLayout>
 
 
     <android.support.constraint.Guideline
@@ -129,6 +161,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.9" />
+
 
 
 </android.support.constraint.ConstraintLayout>

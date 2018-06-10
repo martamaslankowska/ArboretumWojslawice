@@ -139,7 +139,7 @@ public class SettingsActivity extends AppCompatActivity {
     @SuppressLint("ResourceAsColor")
     public void englishLanguage(View view) {
         if (!languageCode.equals(EN)) {
-            String toastText = "The language has been changed to english.\nApplication will restart.";
+            String toastText = "The language has been changed to English.\nApplication will restart.";
             Toast toast = makeToast(toastText);
             toast.show();
             buttonEN.setChecked(true);

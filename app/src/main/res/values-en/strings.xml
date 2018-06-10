@@ -117,7 +117,7 @@
 
 
     <!-- Toasts -->
-    <string name="toast_exit">Press "Back" one more time\nto exit application</string>
+    <string name="toast_exit">Press `Back` button one more time\nto exit the application</string>
     <string name="choose_language">Choose language:</string>
     <string name="choose_sync">Database synchronization:</string>
     <string name="checkBox_sync">Automatic update of database after application start</string>

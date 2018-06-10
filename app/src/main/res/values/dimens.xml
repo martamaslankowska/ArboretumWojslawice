@@ -50,4 +50,10 @@
     <dimen name="rules_diamond_image_size">18dp</dimen>
 
 
+    <!-- Language layout -->
+    <dimen name="lang_image_size_long">60dp</dimen>
+    <dimen name="lang_image_size_short">45dp</dimen>
+    <dimen name="lang_left_margin">60dp</dimen>
+
+
 </resources>
