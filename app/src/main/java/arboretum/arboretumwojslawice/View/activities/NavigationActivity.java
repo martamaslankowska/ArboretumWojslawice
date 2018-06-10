@@ -199,7 +199,7 @@ public class NavigationActivity extends DaggerAppCompatActivity implements Locat
         mapBitmap = BitmapFactory.decodeResource(resources,resources.getIdentifier(Globals.routeMapName, "drawable", getPackageName()));
         markerBitmap = BitmapFactory.decodeResource(resources, R.drawable.ic_marker_flower);
         GetBitmapWidthHeight();
-        canvasBitmap = Bitmap.createBitmap(width,height,Bitmap.Config.RGB_565);
+        canvasBitmap = Bitmap.createBitmap(width,height,Bitmap.Config.ARGB_8888);
     }
 
     public void GetBitmapWidthHeight(){

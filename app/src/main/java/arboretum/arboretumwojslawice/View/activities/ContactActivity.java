@@ -1,15 +1,19 @@
 package arboretum.arboretumwojslawice.View.activities;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.util.Linkify;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import javax.inject.Inject;
 
+import arboretum.arboretumwojslawice.Commons.Globals;
 import arboretum.arboretumwojslawice.Model.businessentity.Hotel;
 import arboretum.arboretumwojslawice.R;
 import arboretum.arboretumwojslawice.ViewModel.ContactViewModel;
@@ -62,6 +66,12 @@ public class ContactActivity extends DaggerAppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+    }
+
+    public void onNavigationButtonClick(View view){
+        String uri = "http://maps.google.com/maps?saddr=" + 51.107215 + "," + 17.033463 + "&daddr=" + 50.712593+ "," + 16.856435;
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+        startActivity(intent);
     }
 
 }
