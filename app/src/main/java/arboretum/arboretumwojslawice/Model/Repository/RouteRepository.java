@@ -8,6 +8,7 @@ import javax.inject.Inject;
 
 import arboretum.arboretumwojslawice.Model.DAO.LocationDao;
 import arboretum.arboretumwojslawice.Model.DAO.RouteDao;
+import arboretum.arboretumwojslawice.Model.DAO.RouteMapCoordDao;
 import arboretum.arboretumwojslawice.Model.DAO.RoutePointDao;
 import arboretum.arboretumwojslawice.Model.DAO.RouteTranslationDao;
 import arboretum.arboretumwojslawice.Model.businessentity.PointOnRoute;
@@ -30,6 +31,8 @@ public class RouteRepository extends BaseRepository {
     RoutePointDao routePointDao;
     @Inject
     LocationDao locationDao;
+    @Inject
+    RouteMapCoordDao routeMapCoordDao;
 
     @Inject
     protected PlantRepository mPlantRepo;

@@ -344,11 +344,12 @@ public class RouteDetailActivity extends DaggerAppCompatActivity implements View
             pointsPixelsCoordinates.add(new PixelCoordinates(countX(l.lon), countY(l.lat)));
         }
         for(int i=0; i<pointsPixelsCoordinates.size(); i++) {
-            if (i == position) {
-                canvas.drawBitmap(colorMarkerBitmap, pointsPixelsCoordinates.get(i).x, pointsPixelsCoordinates.get(i).y, null);
-            } else {
+            if (i != position) {
                 canvas.drawBitmap(markerBitmap, pointsPixelsCoordinates.get(i).x, pointsPixelsCoordinates.get(i).y, null);
+            } else {
+                //canvas.drawBitmap(colorMarkerBitmap, pointsPixelsCoordinates.get(i).x, pointsPixelsCoordinates.get(i).y, null);
             }
+            canvas.drawBitmap(colorMarkerBitmap, pointsPixelsCoordinates.get(position).x, pointsPixelsCoordinates.get(position).y, null);
         }
     }
     /* /map */
