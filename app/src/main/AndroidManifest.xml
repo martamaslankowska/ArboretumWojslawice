@@ -11,6 +11,9 @@
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
+    <!--android:name=".Commons.di.AppController"-->
+    <!--android:name="android.support.multidex.MultiDexApplication"-->
+
     <application
         android:name=".Commons.di.AppController"
         android:allowBackup="false"

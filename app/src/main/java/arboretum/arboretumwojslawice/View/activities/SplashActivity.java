@@ -11,6 +11,7 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.multidex.MultiDex;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.widget.Toast;
@@ -48,8 +49,16 @@ public class SplashActivity extends DaggerAppCompatActivity {
 
 
     @Override
+    protected void attachBaseContext(Context context) {
+        super.attachBaseContext(context);
+        MultiDex.install(this);
+    }
+
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
 
         AppDatabase database = AppDatabase.getAppDatabase(getApplicationContext());
         compositeDisposable = new CompositeDisposable();
