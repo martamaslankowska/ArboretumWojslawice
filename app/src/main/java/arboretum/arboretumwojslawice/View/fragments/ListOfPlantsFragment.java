@@ -68,6 +68,7 @@ public class ListOfPlantsFragment extends DaggerFragment implements PlantAdapter
         bundle.putInt(TAB_ID, n);
         intent.putExtra(BUNDLE, bundle);
         startActivityForResult(intent, REQUEST);
+        recyclerView.scrollToPosition(position);
     }
 
     @Override
@@ -177,7 +178,9 @@ public class ListOfPlantsFragment extends DaggerFragment implements PlantAdapter
                     .findFirstCompletelyVisibleItemPosition();
         }
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerView.scrollToPosition(scrollPosition);
+
+        if(recyclerView.getScrollState() == 0)
+            recyclerView.scrollToPosition(scrollPosition);
     }
 
     @Override
