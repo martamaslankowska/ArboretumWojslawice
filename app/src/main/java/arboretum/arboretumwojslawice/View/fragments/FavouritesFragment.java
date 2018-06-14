@@ -96,7 +96,7 @@ public class FavouritesFragment extends DaggerFragment implements FavouritesAdap
                                 noFavouritesTextView.setVisibility(View.INVISIBLE);
                             } else {
                                 noFavouritesTextView.setText(R.string.favourites_text);
-                                background.setBackground(view.getResources().getDrawable(R.drawable.background40));
+                                background.setBackground(view.getResources().getDrawable(R.drawable.back_favourite));
 
                             }
                         }
