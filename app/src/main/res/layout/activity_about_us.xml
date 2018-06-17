@@ -30,7 +30,7 @@
             android:layout_marginEnd="@dimen/nonrec_margin"
             android:layout_marginStart="@dimen/nonrec_margin"
             android:layout_marginTop="@dimen/nonrec_margin"
-            android:text="Nic tu jeszcze nie ma, ale na pewno coś będzie, żeby Michał się cieszył :)"
+            android:text="@string/about_us_main"
             android:textSize="@dimen/nonrec_font_size"
             android:textColor="@color/darkTextGray"
             app:layout_constraintEnd_toEndOf="parent"

@@ -26,15 +26,13 @@ public abstract class RouteDao extends BaseDao<RouteEntity> {
     public abstract List<Route> getAll(String translationCode);
 
     @Query("SELECT PointOrder, IdPlant, X, Y, Highlighted " +
-            "FROM Routes LEFT JOIN RoutePoints ON Routes.IdRoute = RoutePoints.IdRoute " +
-            "LEFT JOIN Locations ON RoutePoints.IdLocation = Locations.IdLocation " +
-            "WHERE Routes.IdRoute IN (:idRoute)")
+            "FROM RoutePoints LEFT JOIN Locations ON RoutePoints.IdLocation = Locations.IdLocation " +
+            "WHERE IdRoute IN (:idRoute)")
     public abstract List<PointOnRoute> getRoutePointsByRouteId(int idRoute);
 
     @Query("SELECT PointOrder, IdPlant, X, Y, Highlighted " +
-            "FROM Routes LEFT JOIN RoutePoints ON Routes.IdRoute = RoutePoints.IdRoute " +
-            "LEFT JOIN Locations ON RoutePoints.IdLocation = Locations.IdLocation " +
-            "WHERE Routes.IdRoute IN (:idRoute) AND Highlighted == 1")
+            "FROM RoutePoints LEFT JOIN Locations ON RoutePoints.IdLocation = Locations.IdLocation " +
+            "WHERE IdRoute IN (:idRoute) AND Highlighted = 1")
     public abstract List<PointOnRoute> getHighlightedRoutePointsByRouteId(int idRoute);
 
 //    @Query("SELECT IdPlant " +
